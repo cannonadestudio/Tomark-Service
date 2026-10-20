@@ -1,0 +1,1726 @@
+{
+ "version": 1,
+ "updated": "2026-10-20",
+ "contacts": [
+  {
+   "id": "sk-tomark-s-r-o-factory-sales-spare-parts",
+   "name": "TOMARK s.r.o. (factory, sales, spare parts)",
+   "kind": "manufacturer",
+   "brands": [
+    "TOMARK Viper SD4",
+    "TOMARK Skyper GT9"
+   ],
+   "country": "SK",
+   "city": "Prešov",
+   "address": "Strojnícka 5, 08001 Prešov",
+   "lat": 48.981,
+   "lon": 21.244,
+   "email": "sales@tomarkaero.com",
+   "web": "https://www.tomarkaero.com",
+   "source": "https://www.tomarkaero.com/contact"
+  },
+  {
+   "id": "sk-tomark-service-center-raznany",
+   "name": "TOMARK Service Center Ražňany",
+   "kind": "manufacturer",
+   "brands": [
+    "TOMARK Viper SD4",
+    "TOMARK Skyper GT9"
+   ],
+   "country": "SK",
+   "city": "Ražňany",
+   "address": "Ražňany airfield",
+   "lat": 49.056,
+   "lon": 21.03,
+   "email": "service@tomarkaero.com",
+   "web": "https://www.tomarkaero.com",
+   "source": "https://www.tomarkaero.com/contact"
+  },
+  {
+   "id": "cz-tomark-aero-cz-s-r-o-manufacture",
+   "name": "TOMARK AERO CZ s.r.o. (manufacture)",
+   "kind": "manufacturer",
+   "brands": [
+    "TOMARK Viper SD4",
+    "TOMARK Skyper GT9"
+   ],
+   "country": "CZ",
+   "city": "Měšice",
+   "address": "Záhradní 467, 250 64 Měšice",
+   "lat": 50.198,
+   "lon": 14.52,
+   "email": "sales@tomarkaero.com",
+   "web": "https://www.tomarkaero.com",
+   "source": "https://www.tomarkaero.com/contact"
+  },
+  {
+   "id": "pl-skydealer-sp-z-o-o",
+   "name": "Skydealer Sp. z o.o.",
+   "kind": "dealer",
+   "brands": [
+    "TOMARK Viper SD4",
+    "TOMARK Skyper GT9",
+    "Shark"
+   ],
+   "country": "PL",
+   "city": "Wrocław",
+   "address": "pl. Powstańców Śl. 8/3, 53-314 Wrocław",
+   "lat": 51.097,
+   "lon": 17.029,
+   "phone": "+48 501 147 990",
+   "email": "info@vipersd4.pl",
+   "source": "https://www.tomarkaero.com/contact"
+  },
+  {
+   "id": "cz-letecka-skola-rakusan-kromeriz-airport",
+   "name": "Letecká škola Rakušan (Kroměříž airport)",
+   "kind": "dealer",
+   "brands": [
+    "TOMARK Viper SD4",
+    "TOMARK Skyper GT9"
+   ],
+   "country": "CZ",
+   "city": "Kroměříž",
+   "address": "Letiště Kroměříž (LKKM)",
+   "lat": 49.2856,
+   "lon": 17.417,
+   "phone": "+420 603 259 545",
+   "email": "letiste.km@tiscali.cz",
+   "source": "https://www.tomarkaero.com/contact"
+  },
+  {
+   "id": "fr-s-a-s-aquilair-aircraft",
+   "name": "S.A.S Aquilair Aircraft",
+   "kind": "dealer",
+   "brands": [
+    "TOMARK Viper SD4",
+    "TOMARK Skyper GT9"
+   ],
+   "country": "FR",
+   "city": "Gleizé",
+   "address": "Le Clos du Château, 504 Route de St. Fonds, 69400 Gleizé",
+   "lat": 45.99,
+   "lon": 4.7,
+   "phone": "+33 7 68 41 20 83",
+   "email": "info@aquilair.com",
+   "web": "https://www.aquilair.com",
+   "source": "https://www.tomarkaero.com/contact"
+  },
+  {
+   "id": "de-flugschule-hans-grade-aircraft-sales-gmbh",
+   "name": "Flugschule Hans Grade Aircraft Sales GmbH",
+   "kind": "dealer",
+   "brands": [
+    "TOMARK Viper SD4",
+    "TOMARK Skyper GT9"
+   ],
+   "country": "DE",
+   "city": "Trebbin",
+   "address": "Hans-Grade-Strasse 2, 14959 Trebbin (Schönhagen EDAZ)",
+   "lat": 52.2036,
+   "lon": 13.1586,
+   "phone": "+49 33731 17062",
+   "email": "aircraft-sales@flugschule-grade.de",
+   "web": "https://www.aircraft-sales-flugschule-grade.de",
+   "source": "https://www.tomarkaero.com/contact"
+  },
+  {
+   "id": "ie-newcastle-logistics-limited",
+   "name": "Newcastle Logistics Limited",
+   "kind": "dealer",
+   "brands": [
+    "TOMARK Viper SD4",
+    "TOMARK Skyper GT9"
+   ],
+   "country": "IE",
+   "city": "Newcastle, Co. Wicklow",
+   "address": "Newcastle Airfield, Sea Road, Newcastle, Co. Wicklow",
+   "lat": 53.0711,
+   "lon": -6.0453,
+   "source": "https://www.tomarkaero.com/contact"
+  },
+  {
+   "id": "ro-flyaround-ato-s-r-l",
+   "name": "FLYAROUND ATO S.R.L.",
+   "kind": "dealer",
+   "brands": [
+    "TOMARK Viper SD4",
+    "TOMARK Skyper GT9"
+   ],
+   "country": "RO",
+   "city": "Dezmir (Cluj)",
+   "address": "Aerodrome Dezmir (LRCL), Hangar 5, Planoarelor Street, Dezmir, Cluj",
+   "lat": 46.776,
+   "lon": 23.716,
+   "email": "info@flyaround.ro",
+   "web": "https://www.flyaround.ro",
+   "source": "https://www.tomarkaero.com/contact"
+  },
+  {
+   "id": "by-stroyplanaero",
+   "name": "StroyplanAero",
+   "kind": "dealer",
+   "brands": [
+    "TOMARK Viper SD4"
+   ],
+   "country": "BY",
+   "city": "Minsk",
+   "address": "Starinovskaya 17, office 7H, Minsk 220056",
+   "lat": 53.94,
+   "lon": 27.59,
+   "phone": "+375 17 265 02 52",
+   "email": "valanpilot@gmail.com",
+   "web": "https://www.vipersd4.by",
+   "source": "https://www.tomarkaero.com/contact"
+  },
+  {
+   "id": "at-brp-rotax-gmbh-co-kg-engine-manufacturer",
+   "name": "BRP-Rotax GmbH & Co KG (engine manufacturer)",
+   "kind": "manufacturer",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "AT",
+   "city": "Gunskirchen",
+   "address": "Rotaxstraße 1, 4623 Gunskirchen",
+   "lat": 48.1317,
+   "lon": 13.9397,
+   "web": "https://www.flyrotax.com",
+   "source": "https://www.flyrotax.com/p/about-rotax/distributors"
+  },
+  {
+   "id": "pl-faston-sp-z-o-o-sp-k-rotax-distributor-pl-ee-lt-",
+   "name": "Faston Sp. z o.o. Sp.k. (Rotax distributor PL, EE, LT, LV, UA)",
+   "kind": "rotax_distributor",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "PL",
+   "city": "Świdnik",
+   "address": "ul. Kuźnicza 4, 21-045 Świdnik",
+   "lat": 51.225,
+   "lon": 22.69,
+   "phone": "+48 81 751 28 82",
+   "email": "biuro@faston.pl",
+   "web": "https://www.flyrotax.com/dis/faston",
+   "source": "https://www.flyrotax.com/dis/faston"
+  },
+  {
+   "id": "cz-teveso-s-r-o-rotax-distributor-cz-sk",
+   "name": "Teveso s.r.o. (Rotax distributor CZ, SK)",
+   "kind": "rotax_distributor",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "CZ",
+   "city": "Hradec Králové",
+   "address": "Škroupova 441, 500 02 Hradec Králové",
+   "lat": 50.209,
+   "lon": 15.837,
+   "phone": "+420 495 217 127",
+   "email": "motory@teveso.cz",
+   "web": "https://www.flyrotax.com/dis/teveso",
+   "source": "https://www.flyrotax.com/dis/teveso"
+  },
+  {
+   "id": "de-franz-aircraft-engines-vertrieb-gmbh-rotax-distr",
+   "name": "Franz Aircraft Engines Vertrieb GmbH (Rotax distributor DE, AT, CH, NL, Nordics, HU, RO, BG)",
+   "kind": "rotax_distributor",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Schechen",
+   "address": "Am Weidengrund 1a, 83135 Schechen",
+   "lat": 47.928,
+   "lon": 12.122,
+   "phone": "+49 8039 9035-0",
+   "email": "info@franz-aircraft.de",
+   "web": "https://www.flyrotax.com/dis/franz",
+   "source": "https://www.flyrotax.com/dis/franz"
+  },
+  {
+   "id": "it-luciano-sorlini-s-p-a-rotax-distributor-it-es-pt",
+   "name": "Luciano Sorlini S.p.A. (Rotax distributor IT, ES, PT, GR, HR, Balkans, TR...)",
+   "kind": "rotax_distributor",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "IT",
+   "city": "Carzago Riviera",
+   "address": "Via G. Marconi 33, 25080 Carzago Riviera (BS)",
+   "lat": 45.531,
+   "lon": 10.452,
+   "phone": "+39 030 601033",
+   "email": "info@sorlini.com",
+   "web": "https://www.flyrotax.com/dis/sorlini",
+   "source": "https://flyrotax.com/dis/sorlini"
+  },
+  {
+   "id": "mc-moteur-aero-distribution-rotax-distributor-fr-be",
+   "name": "Moteur Aero Distribution (Rotax distributor FR, BE, LU, MC, N. Africa, Middle East)",
+   "kind": "rotax_distributor",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "MC",
+   "city": "Monaco",
+   "address": "16 Rue Révérend Père Louis Frolla, 98000 Monaco",
+   "lat": 43.733,
+   "lon": 7.417,
+   "phone": "+377 93 30 17 40",
+   "email": "info@moteuraerodistribution.com",
+   "web": "https://www.flyrotax.com/dis/moteur",
+   "source": "https://www.flyrotax.com/dis/moteur"
+  },
+  {
+   "id": "gb-cfs-aeroproducts-ltd-rotax-distributor-uk-ie-is",
+   "name": "CFS Aeroproducts Ltd (Rotax distributor UK, IE, IS)",
+   "kind": "rotax_distributor",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "GB",
+   "city": "Warwick",
+   "address": "1 Harris Road, Warwick CV34 5FY",
+   "lat": 52.272,
+   "lon": -1.57,
+   "phone": "+44 24 7630 5873",
+   "email": "rotax@cfsaero.com",
+   "web": "https://www.flyrotax.com/dis/cfs",
+   "source": "https://www.flyrotax.com/it/dis/cfs"
+  },
+  {
+   "id": "si-pipistrel-d-o-o-rotax-distributor-si",
+   "name": "Pipistrel d.o.o. (Rotax distributor SI)",
+   "kind": "rotax_distributor",
+   "brands": [
+    "Rotax",
+    "Pipistrel"
+   ],
+   "country": "SI",
+   "city": "Ajdovščina",
+   "address": "Goriška cesta 50a, 5270 Ajdovščina",
+   "lat": 45.888,
+   "lon": 13.894,
+   "phone": "+386 5 364 38 83",
+   "email": "leon.brecelj@pipistrel.si",
+   "web": "https://www.flyrotax.com/dis/pipistrel",
+   "source": "https://www.flyrotax.com/dis/pipistrel"
+  },
+  {
+   "id": "pl-j-j-team-sp-z-o-o",
+   "name": "J&J Team Sp. z o.o.",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax",
+    "Aerospool WT9 Dynamic",
+    "WT10 Advantic",
+    "Ellipse Spirit",
+    "TL-Ultralight"
+   ],
+   "country": "PL",
+   "city": "Leszno",
+   "address": "ul. Szybowników 28/H5, 64-100 Leszno (EPLS)",
+   "lat": 51.8342,
+   "lon": 16.5222,
+   "phone": "+48 695 370 701",
+   "email": "jj@jjteam.pl",
+   "web": "https://jjteam.pl",
+   "source": "https://www.flyrotax.com/dis/faston/p/service"
+  },
+  {
+   "id": "pl-henor",
+   "name": "HENOR",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax",
+    "Rotax 2-stroke"
+   ],
+   "country": "PL",
+   "city": "Wolsztyn",
+   "address": "Powodowo 1, 64-200 Wolsztyn",
+   "lat": 52.085,
+   "lon": 16.073,
+   "web": "https://henor.pl",
+   "source": "https://www.flyrotax.com/dis/faston/p/service"
+  },
+  {
+   "id": "pl-aeroprakt-polska-aeroprakt-manufacturing-sp-z-o-",
+   "name": "Aeroprakt Polska (Aeroprakt Manufacturing Sp. z o.o.)",
+   "kind": "dealer",
+   "brands": [
+    "Rotax",
+    "Aeroprakt A-22",
+    "Aeroprakt A-32"
+   ],
+   "country": "PL",
+   "city": "Gierałtowiczki",
+   "address": "ul. Aeroprakt 2, 34-122 Gierałtowiczki",
+   "lat": 49.95994,
+   "lon": 19.40283,
+   "phone": "+48 602 215 854",
+   "web": "https://www.aeroprakt.de/index.php/pl/",
+   "source": "https://www.flyrotax.com/dis/faston/p/service"
+  },
+  {
+   "id": "pl-bartolini-air-maintenance",
+   "name": "Bartolini Air Maintenance",
+   "kind": "dealer",
+   "brands": [
+    "Rotax",
+    "Tecnam",
+    "Daher"
+   ],
+   "country": "PL",
+   "city": "Łódź",
+   "address": "ul. Tymienieckiego 22/24, 90-349 Łódź",
+   "lat": 51.757,
+   "lon": 19.472,
+   "phone": "+48 721 158 111",
+   "web": "https://bartoliniair.com",
+   "source": "https://www.flyrotax.com/dis/faston/p/service"
+  },
+  {
+   "id": "pl-salamon-aircraft-service",
+   "name": "Salamon Aircraft Service",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "PL",
+   "city": "Rybnik",
+   "address": "ul. Żorska 332, 44-200 Rybnik",
+   "lat": 50.075,
+   "lon": 18.59,
+   "source": "https://www.flyrotax.com/dis/faston/p/service"
+  },
+  {
+   "id": "pl-gebi-sawomir-regulski",
+   "name": "GEBI – Sławomir Regulski",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax",
+    "Dynon",
+    "MGL"
+   ],
+   "country": "PL",
+   "city": "Przasnysz",
+   "address": "Sierakowo 79, 06-300 Przasnysz (next to EPPZ)",
+   "lat": 53.005,
+   "lon": 20.937,
+   "phone": "+48 603 800 757",
+   "email": "slawek@gebi.com.pl",
+   "web": "https://gebi.com.pl",
+   "source": "https://www.flyrotax.com/dis/faston/p/service"
+  },
+  {
+   "id": "pl-skydream",
+   "name": "Skydream",
+   "kind": "dealer",
+   "brands": [
+    "Bristell",
+    "Pipistrel",
+    "JMB VL-3"
+   ],
+   "country": "PL",
+   "city": "Gliwice",
+   "address": "ul. Akrobatów Lotniczych 28, 44-100 Gliwice (EPGL)",
+   "lat": 50.2694,
+   "lon": 18.6728,
+   "phone": "+48 32 411 01 53",
+   "email": "biuro@skydream.pl",
+   "web": "https://skydream.pl",
+   "source": "https://www.bristell.com/dealers/skydream/"
+  },
+  {
+   "id": "lt-baltic-aircraft",
+   "name": "Baltic Aircraft",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "LT",
+   "city": "Vilnius",
+   "address": "Justiniškių g. 62A-207, 05239 Vilnius",
+   "lat": 54.723,
+   "lon": 25.221,
+   "phone": "+370 686 34414",
+   "email": "info@balticaircraft.com",
+   "web": "https://balticaircraft.com",
+   "source": "https://www.flyrotax.com/dis/faston/p/service"
+  },
+  {
+   "id": "lv-avserv-engineering",
+   "name": "AVServ-Engineering",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "LV",
+   "city": "Ādaži (Eimuri)",
+   "address": "Airfield Ādaži, Lidlauks, Eimuri, Ādažu novads LV-2164",
+   "lat": 57.095,
+   "lon": 24.265,
+   "web": "http://www.avserv-engineering.com",
+   "source": "https://www.flyrotax.com/dis/faston/p/service"
+  },
+  {
+   "id": "ua-aerogamma",
+   "name": "Aerogamma",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "UA",
+   "city": "Chernivtsi",
+   "address": "Ruska 236E-1, 58023 Chernivtsi",
+   "lat": 48.294,
+   "lon": 25.99,
+   "source": "https://www.flyrotax.com/dis/faston/p/service"
+  },
+  {
+   "id": "fr-avirex-sas",
+   "name": "Avirex SAS",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "FR",
+   "city": "Vernouillet",
+   "address": "13 Boulevard de l'Industrie, 28500 Vernouillet",
+   "lat": 48.72,
+   "lon": 1.365,
+   "phone": "+33 2 37 42 30 09",
+   "email": "info@avirex.fr",
+   "web": "https://www.avirex.fr",
+   "source": "https://www.flyrotax.com/dis/moteur/p/service"
+  },
+  {
+   "id": "be-ulm-baisy-thy",
+   "name": "ULM Baisy-Thy",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "BE",
+   "city": "Genappe",
+   "address": "Route de Houtain 5, 1470 Genappe",
+   "lat": 50.58,
+   "lon": 4.43,
+   "phone": "+32 67 78 02 47",
+   "email": "info@ulm.be",
+   "web": "https://www.ulm.be",
+   "source": "https://www.flyrotax.com/dis/moteur/p/service"
+  },
+  {
+   "id": "fr-piston-engine",
+   "name": "Piston Engine",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "FR",
+   "city": "Pullay",
+   "address": "3 rue des Jonquilles, 27130 Pullay",
+   "lat": 48.741,
+   "lon": 0.878,
+   "phone": "+33 6 60 72 19 48",
+   "email": "contact@piston-engine.com",
+   "web": "https://www.piston-engine.com",
+   "source": "https://www.flyrotax.com/dis/moteur/p/service"
+  },
+  {
+   "id": "fr-roanne-aero-maintenance",
+   "name": "Roanne Aéro Maintenance",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "FR",
+   "city": "Saint-Léger-sur-Roanne",
+   "address": "Aéroport de Roanne-Renaison, 42155 Saint-Léger-sur-Roanne",
+   "lat": 46.0583,
+   "lon": 4.0014,
+   "phone": "+33 9 83 93 67 62",
+   "email": "roanne.aero@gmail.com",
+   "web": "https://www.roanne-aero.com",
+   "source": "https://www.flyrotax.com/dis/moteur/p/service"
+  },
+  {
+   "id": "fr-fly-west-loisirs-vannes-xenon-groupe",
+   "name": "Fly West Loisirs Vannes (Xénon Groupe)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "FR",
+   "city": "Monterblanc",
+   "address": "Aérodrome de Vannes, 56250 Monterblanc",
+   "lat": 47.7233,
+   "lon": -2.7186,
+   "phone": "+33 2 51 51 13 54",
+   "web": "https://www.flywest-loisirs.fr",
+   "source": "https://www.flyrotax.com/dis/moteur/p/service"
+  },
+  {
+   "id": "fr-xenon-asa-xenon-groupe-la-rochelle",
+   "name": "Xenon ASA (Xénon Groupe) La Rochelle",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "FR",
+   "city": "La Rochelle",
+   "address": "Aérodrome de La Rochelle–Ré, 19 rue du Jura, 17000 La Rochelle",
+   "lat": 46.1792,
+   "lon": -1.1953,
+   "phone": "+33 6 04 11 34 61",
+   "web": "https://www.flywest-loisirs.fr",
+   "source": "https://www.flyrotax.com/dis/moteur/p/service"
+  },
+  {
+   "id": "fr-gt-aeroservices",
+   "name": "GT Aeroservices",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "FR",
+   "city": "Biscarrosse",
+   "address": "Aérodrome de Biscarrosse, rue Costes et Bellonte, 40600 Biscarrosse",
+   "lat": 44.3694,
+   "lon": -1.1306,
+   "phone": "+33 6 07 32 04 96",
+   "web": "https://www.gtaeroservices.com",
+   "source": "https://www.flyrotax.com/dis/moteur/p/service"
+  },
+  {
+   "id": "gb-ventura-aviation",
+   "name": "Ventura Aviation",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "GB",
+   "city": "Royston",
+   "address": "Top Farm, Lower Road, Croydon, Royston SG8 0EQ",
+   "lat": 52.126,
+   "lon": -0.11,
+   "phone": "+44 7394 504234",
+   "email": "morne@flyventura.co.uk",
+   "web": "https://www.flyventura.co.uk",
+   "source": "https://www.flyrotax.com/dis/cfs/p/service"
+  },
+  {
+   "id": "gb-alba-airsports-flight-training",
+   "name": "Alba Airsports Flight Training",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "GB",
+   "city": "Perth",
+   "address": "Hangar 1, Perth Airport, PH2 6PL",
+   "lat": 56.4392,
+   "lon": -3.3722,
+   "phone": "+44 7411 747272",
+   "email": "Kevin@alba-airsports.co.uk",
+   "web": "https://www.alba-airsports.co.uk",
+   "source": "https://www.flyrotax.com/dis/cfs/p/service"
+  },
+  {
+   "id": "gb-airmasters",
+   "name": "Airmasters",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "GB",
+   "city": "Sulby",
+   "address": "Airfield Farm, Sulby, Northampton NN6 6EZ",
+   "lat": 52.43,
+   "lon": -1.04,
+   "phone": "+44 1858 880008",
+   "email": "rotaxservice@gmail.com",
+   "web": "https://www.airmasters.co.uk",
+   "source": "https://www.flyrotax.com/dis/cfs/p/service"
+  },
+  {
+   "id": "gb-eccleston-aviation-mobile-service",
+   "name": "Eccleston Aviation (mobile service)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "GB",
+   "city": "Leyland",
+   "address": "77 Fossdale Moss, Leyland PR26 7AS (office; mobile service)",
+   "lat": 53.68,
+   "lon": -2.73,
+   "phone": "+44 7939 571270",
+   "email": "enquiries@ecclestonaviation.co.uk",
+   "web": "https://ecclestonaviation.co.uk",
+   "source": "https://www.flyrotax.com/dis/cfs/p/service"
+  },
+  {
+   "id": "gb-gs-aviation-europe-ltd",
+   "name": "GS Aviation Europe Ltd",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "GB",
+   "city": "Marlborough",
+   "address": "Clench Common, Marlborough SN8 4NZ",
+   "lat": 51.386,
+   "lon": -1.738,
+   "phone": "+44 1672 515535",
+   "email": "gsaviationeurope@gmail.com",
+   "web": "https://www.gsaviation.co.uk",
+   "source": "https://www.flyrotax.com/dis/cfs/p/service"
+  },
+  {
+   "id": "cz-brm-aero-s-r-o-bristell-factory",
+   "name": "BRM AERO s.r.o. (Bristell factory)",
+   "kind": "manufacturer",
+   "brands": [
+    "Bristell"
+   ],
+   "country": "CZ",
+   "city": "Kunovice",
+   "address": "Letecká 255, 686 04 Kunovice",
+   "lat": 49.0294,
+   "lon": 17.4397,
+   "phone": "+420 608 306 338",
+   "email": "info@bristell.com",
+   "web": "https://www.bristell.com",
+   "source": "https://www.bristell.com/contact"
+  },
+  {
+   "id": "de-bristell-sales-service-gmbh",
+   "name": "Bristell Sales & Service GmbH",
+   "kind": "dealer",
+   "brands": [
+    "Bristell"
+   ],
+   "country": "DE",
+   "city": "Appenweier",
+   "address": "Beethovenstr. 15, 77767 Appenweier",
+   "lat": 48.54,
+   "lon": 7.98,
+   "phone": "+49 176 31532134",
+   "email": "sales@bristell-sales.de",
+   "web": "https://bristell-sales.de",
+   "source": "https://www.bristell.com/dealers/bristell-sales-service-gmbh/"
+  },
+  {
+   "id": "sk-shark-aero-s-r-o-factory",
+   "name": "SHARK.AERO s.r.o. (factory)",
+   "kind": "manufacturer",
+   "brands": [
+    "Shark"
+   ],
+   "country": "SK",
+   "city": "Hlboké (Senica)",
+   "address": "Senica Airport, Hlboké 406, 906 31 Hlboké",
+   "lat": 48.6561,
+   "lon": 17.3328,
+   "phone": "+421 903 655 977",
+   "email": "shark@shark.aero",
+   "web": "https://www.shark.aero",
+   "source": "https://www.shark.aero/contact"
+  },
+  {
+   "id": "de-comco-ikarus-gmbh-factory",
+   "name": "Comco Ikarus GmbH (factory)",
+   "kind": "manufacturer",
+   "brands": [
+    "Comco Ikarus C42"
+   ],
+   "country": "DE",
+   "city": "Hohentengen",
+   "address": "Am Flugplatz 11, 88367 Hohentengen (Mengen EDTM)",
+   "lat": 48.0539,
+   "lon": 9.3728,
+   "phone": "+49 7572 60080",
+   "web": "https://www.comco-ikarus.de",
+   "source": "https://japan.ahk.de/en/membership/member-directory/comco-ikarus-gmbh"
+  },
+  {
+   "id": "it-tecnam-costruzioni-aeronautiche-tecnam-hq",
+   "name": "Tecnam (Costruzioni Aeronautiche Tecnam) HQ",
+   "kind": "manufacturer",
+   "brands": [
+    "Tecnam"
+   ],
+   "country": "IT",
+   "city": "Capua",
+   "address": "Via Maiorise, 81043 Capua (CE)",
+   "lat": 41.1161,
+   "lon": 14.1781,
+   "phone": "+39 0823 622297",
+   "web": "https://www.tecnam.com",
+   "source": "https://www.tecnam.com/contact/"
+  },
+  {
+   "id": "de-henning-stein-steffi-stein-gbr",
+   "name": "Henning Stein & Steffi Stein GbR",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Weinböhla",
+   "address": "Meißner Str. 16, 01689 Weinböhla",
+   "lat": 51.166,
+   "lon": 13.566,
+   "phone": "+49 172 3508181",
+   "web": "https://www.stein-ul.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-lightplane-aerosystems",
+   "name": "Lightplane Aerosystems",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Kesselsdorf",
+   "address": "Stamsrieder Weg 10, 01723 Kesselsdorf",
+   "lat": 51.043,
+   "lon": 13.574,
+   "phone": "+49 176 85942165",
+   "web": "https://www.lightplane-aerosystems.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-flugsportzentrum-bautzen-gmbh-co-kg",
+   "name": "Flugsportzentrum Bautzen GmbH & Co. KG",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Kamenz",
+   "address": "Zum Tower 3, 01917 Kamenz",
+   "lat": 51.2969,
+   "lon": 14.1297,
+   "phone": "+49 3578 309034-6",
+   "web": "https://www.fsz-bautzen.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-fsb-aircraft-maintenance-gmbh",
+   "name": "FSB Aircraft Maintenance GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Trebbin (Schönhagen)",
+   "address": "Flugplatz B2, 14959 Trebbin OT Schönhagen",
+   "lat": 52.204,
+   "lon": 13.16,
+   "phone": "+49 33731 31199912",
+   "web": "https://www.fsb-aircraft.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-ruwe-aero-gmbh",
+   "name": "RUWE AERO GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Strausberg",
+   "address": "Flugplatzstraße F3 Haus 1, 15344 Strausberg",
+   "lat": 52.5806,
+   "lon": 13.915,
+   "phone": "+49 3341 306570",
+   "web": "https://www.ruwe.aero",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-motoren-clemens-gmbh",
+   "name": "Motoren Clemens GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Strausberg",
+   "address": "Flugplatzstraße F1 Haus 21, 15344 Strausberg",
+   "lat": 52.5812,
+   "lon": 13.916,
+   "phone": "+49 151 43247043",
+   "web": "https://www.motoren-clemens.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-ultb-eggersdorf-gmbh",
+   "name": "ULTB Eggersdorf GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Müncheberg",
+   "address": "Am Flugplatz 4, 15374 Müncheberg",
+   "lat": 52.481,
+   "lon": 14.087,
+   "phone": "+49 33432 72455",
+   "web": "https://www.ultb.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-aerotours-technik-gmbh",
+   "name": "Aerotours Technik GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Strausberg",
+   "address": "Lilienthalstr. 4, 15344 Strausberg",
+   "lat": 52.579,
+   "lon": 13.912,
+   "phone": "+49 3341 3036488",
+   "web": "https://www.aerotours-technik.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-breezer-aircraft-gmbh-co-kg",
+   "name": "Breezer Aircraft GmbH & Co. KG",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax",
+    "Breezer"
+   ],
+   "country": "DE",
+   "city": "Bredstedt",
+   "address": "Jens-Patent-Weg 1, 25821 Bredstedt",
+   "lat": 54.619,
+   "lon": 8.966,
+   "phone": "+49 4671 931393",
+   "web": "https://www.breezeraircraft.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-asf-aviation-service-franz",
+   "name": "ASF Aviation Service Franz",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Reußenköge",
+   "address": "Sophien-Magdalenen-Koog 12, 25821 Reußenköge",
+   "lat": 54.6,
+   "lon": 8.9,
+   "phone": "+49 160 3329999",
+   "web": "https://www.asf.repair",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-ltb-wilhelm-tank-gmbh-co-mariensiel-kg",
+   "name": "LTB Wilhelm Tank GmbH & Co. Mariensiel KG",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Sande",
+   "address": "Flugplatz Mariensiel, 26452 Sande",
+   "lat": 53.5022,
+   "lon": 8.0522,
+   "phone": "+49 4421 201010",
+   "web": "https://www.wilhelm-tank.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-air-service-heinz-mobile-ul-service",
+   "name": "Air Service Heinz (mobile UL service)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Hodenhagen",
+   "address": "Kurt-Hujer-Weg 8, 29693 Hodenhagen (EDVH)",
+   "lat": 52.7615,
+   "lon": 9.6053,
+   "phone": "+49 172 5838287",
+   "web": "https://www.airservice-heinz.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-flugwerk-nrw",
+   "name": "Flugwerk.NRW",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Steinheim-Vinsebeck",
+   "address": "Frankenbergstr. 23, 32839 Steinheim-Vinsebeck",
+   "lat": 51.89,
+   "lon": 9.06,
+   "phone": "+49 170 2350392",
+   "web": "https://www.flugwerk.nrw",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-qme-camo-gmbh-breitscheid",
+   "name": "QME CAMO GmbH (Breitscheid)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Breitscheid",
+   "address": "Auf der Hub 4, 35767 Breitscheid",
+   "lat": 50.6764,
+   "lon": 8.1697,
+   "phone": "+49 2275 3773900",
+   "web": "https://www.qme.expert",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-rwl-german-flight-academy-gmbh",
+   "name": "RWL German Flight Academy GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Mönchengladbach",
+   "address": "Am Flughafen 20, RWL-Center, 41066 Mönchengladbach",
+   "lat": 51.2303,
+   "lon": 6.5044,
+   "phone": "+49 2161 689040",
+   "web": "https://www.rwl-flight.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-qme-camo-gmbh-monchengladbach",
+   "name": "QME CAMO GmbH (Mönchengladbach)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Mönchengladbach",
+   "address": "Flughafen 95, 41066 Mönchengladbach",
+   "lat": 51.231,
+   "lon": 6.506,
+   "phone": "+49 2275 3773900",
+   "web": "https://www.qme.expert",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-fk-service-center-gmbh",
+   "name": "FK Service-Center GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Senden",
+   "address": "Ascheberger Str. 23b, 48308 Senden",
+   "lat": 51.857,
+   "lon": 7.483,
+   "phone": "+49 170 8888883",
+   "email": "fk-service@ottmarsbocholt.de",
+   "web": "https://www.fk-servicecenter.com",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-qme-camo-gmbh-kerpen",
+   "name": "QME CAMO GmbH (Kerpen)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Kerpen",
+   "address": "Löhrsgasse 35, 50171 Kerpen",
+   "lat": 50.87,
+   "lon": 6.7,
+   "phone": "+49 2275 3773900",
+   "web": "https://www.qme.expert",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-flugzeugwerft-bonn-hangelar-gmbh",
+   "name": "Flugzeugwerft Bonn-Hangelar GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Sankt Augustin",
+   "address": "Flugplatz Hangelar, 53757 Sankt Augustin",
+   "lat": 50.7689,
+   "lon": 7.1633,
+   "phone": "+49 2241 924977",
+   "web": "https://www.flugzeugwerft.com",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-gm-aviation-gmbh",
+   "name": "GM Aviation GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax",
+    "Tecnam"
+   ],
+   "country": "DE",
+   "city": "Winningen",
+   "address": "Flugplatz 1, 56333 Winningen",
+   "lat": 50.325,
+   "lon": 7.5306,
+   "phone": "+49 2606 9648710",
+   "web": "https://www.gma.gmbh",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-a-r-m-t-gmbh",
+   "name": "A.R.M.T. GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Hamm",
+   "address": "Ostenallee 9, Flugplatz Hamm-Lippewiesen, 59063 Hamm",
+   "lat": 51.6897,
+   "lon": 7.8161,
+   "phone": "+49 163 4897923",
+   "web": "https://www.armt.aero",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-spessart-air-service-gmbh",
+   "name": "Spessart Air Service GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Großostheim",
+   "address": "Flugplatz, 63762 Großostheim",
+   "lat": 49.9389,
+   "lon": 9.0636,
+   "phone": "+49 6026 6066",
+   "web": "https://www.spessartair.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-b-f-technik-vertriebs-gmbh-fk-lightplanes",
+   "name": "B&F Technik Vertriebs GmbH (FK Lightplanes)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax",
+    "FK Lightplanes"
+   ],
+   "country": "DE",
+   "city": "Speyer",
+   "address": "Anton-Dengler-Straße 8, 67346 Speyer",
+   "lat": 49.3047,
+   "lon": 8.4511,
+   "phone": "+49 6232 72076",
+   "web": "https://www.fk-lightplanes.com",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-airservice-speyer",
+   "name": "Airservice Speyer",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Speyer",
+   "address": "Rheinhäuser Weide 1-3, 67346 Speyer",
+   "lat": 49.306,
+   "lon": 8.453,
+   "phone": "+49 170 2192119",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-asw-aero-service-worms-gmbh",
+   "name": "ASW Aero-Service-Worms GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Worms",
+   "address": "Am Flugplatz 3, 67547 Worms",
+   "lat": 49.6067,
+   "lon": 8.3683,
+   "phone": "+49 6241 207333",
+   "web": "https://www.aeroserviceworms.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-air-service-kruger",
+   "name": "Air Service Krüger",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Mannheim",
+   "address": "Seckenheimer Landstr. 170, 68163 Mannheim",
+   "lat": 49.4731,
+   "lon": 8.5142,
+   "phone": "+49 621 31996991",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-airplaneservice-enrico-bender",
+   "name": "AirPlaneService – Enrico Bender",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Neresheim",
+   "address": "Hinteres Härdtle 4, 73450 Neresheim",
+   "lat": 48.755,
+   "lon": 10.335,
+   "phone": "+49 173 9091926",
+   "web": "https://www.aps-eb.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-fly-winx-gmbh",
+   "name": "FLY WINX GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Neresheim",
+   "address": "Hinteres Härtle 8/1, 73450 Neresheim",
+   "lat": 48.7555,
+   "lon": 10.336,
+   "phone": "+49 7367 5099595",
+   "web": "https://www.flywinx.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-planeworx-gmbh",
+   "name": "PLANEWORX GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Neresheim",
+   "address": "Hinteres Härtle 8/1, 73450 Neresheim",
+   "lat": 48.756,
+   "lon": 10.337,
+   "phone": "+49 7367 3654699",
+   "web": "https://www.planeworx.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-ltb-sammet-gmbh",
+   "name": "LTB Sammet GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Heubach",
+   "address": "Am Flugplatz 3, 73540 Heubach",
+   "lat": 48.8028,
+   "lon": 9.9289,
+   "phone": "+49 7173 12077",
+   "web": "https://www.sammet-ltb.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-flugzeugservice-sudbaden-gmbh",
+   "name": "Flugzeugservice Südbaden GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Seelbach",
+   "address": "Oberes Feld 2, 77960 Seelbach",
+   "lat": 48.31,
+   "lon": 7.94,
+   "phone": "+49 176 28032010",
+   "web": "https://www.flugzeugservice-suedbaden.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-air-performance",
+   "name": "Air Performance",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Eschbach",
+   "address": "Hartheimer Straße 12, 79427 Eschbach",
+   "lat": 47.88,
+   "lon": 7.65,
+   "phone": "+49 176 34952162",
+   "web": "https://www.air-performance.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-airprofis-by-korellas-aero-service",
+   "name": "AirProfis by Korellas Aero-Service",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Eschbach",
+   "address": "Freiburger Straße 11a, 79427 Eschbach",
+   "lat": 47.885,
+   "lon": 7.655,
+   "phone": "+49 7634 507046",
+   "web": "https://www.air-profis.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-ft-maintenance-gmbh",
+   "name": "FT Maintenance GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Eggenfelden",
+   "address": "Zainach 3, 84307 Eggenfelden",
+   "lat": 48.3961,
+   "lon": 12.7236,
+   "phone": "+49 8721 5086081",
+   "web": "https://www.flightteam.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-air-service-muhldorf",
+   "name": "Air Service Mühldorf",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Mühldorf am Inn",
+   "address": "Flugplatzstr. 6, 84453 Mühldorf",
+   "lat": 48.2794,
+   "lon": 12.5028,
+   "phone": "+49 8631 162498",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-air-nuggets-gmbh",
+   "name": "Air Nuggets GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Türkheim",
+   "address": "Buchenstr. 4a, 86842 Türkheim",
+   "lat": 48.06,
+   "lon": 10.64,
+   "phone": "+49 172 8884642",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-ltb-sebald-ug",
+   "name": "LTB Sebald UG",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Nellingen",
+   "address": "Walter-Herzog-Str. 24, 89191 Nellingen",
+   "lat": 48.54,
+   "lon": 9.8,
+   "phone": "+49 7337 921074",
+   "web": "https://www.ltb-sebald.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-air-campus-magdeburg-gmbh",
+   "name": "Air Campus Magdeburg GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Magdeburg",
+   "address": "Ottersleber Chaussee 91, Magdeburg (source lists postcode 93120)",
+   "lat": 52.0736,
+   "lon": 11.6264,
+   "phone": "+49 391 40097105",
+   "web": "https://www.air-campus-magdeburg.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-safe-takeoff-gmbh-co-kg",
+   "name": "Safe Takeoff GmbH & Co KG",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Atting",
+   "address": "Flugplatzstraße 4, 94348 Atting",
+   "lat": 48.9008,
+   "lon": 12.5181,
+   "phone": "+49 172 8630334",
+   "web": "https://www.safetakeoff.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-piloten-service-robert-rieger-gmbh",
+   "name": "Piloten-Service Robert Rieger GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Vilshofen",
+   "address": "Flugplatz 2, 94474 Vilshofen",
+   "lat": 48.6347,
+   "lon": 13.1953,
+   "phone": "+49 8541 8974",
+   "web": "https://www.pilotenservice-rieger.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "de-junkers-profly-gmbh",
+   "name": "Junkers Profly GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DE",
+   "city": "Kulmbach",
+   "address": "Am Flugplatz 1, 95326 Kulmbach",
+   "lat": 50.135,
+   "lon": 11.4597,
+   "phone": "+49 9221 879312",
+   "web": "https://www.junkers-profly.de",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "at-leon-tech-gmbh",
+   "name": "LEON-TECH GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "AT",
+   "city": "St. Georgen am Ybbsfelde",
+   "address": "Hermannsdorf 37, 3304 St. Georgen am Ybbsfelde",
+   "lat": 48.13,
+   "lon": 14.95,
+   "phone": "+43 664 595900120111",
+   "web": "https://www.leon-tech.at",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "at-hb-flugtechnik-gmbh",
+   "name": "HB-Flugtechnik GmbH",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "AT",
+   "city": "Haid",
+   "address": "Dr. A. Schärf-Str. 42, 4053 Haid",
+   "lat": 48.2,
+   "lon": 14.25,
+   "phone": "+43 7229 79104",
+   "web": "https://www.hb-flugtechnik.at",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "at-luftfahrzeugtechnik-zell-am-see-gmbh-co-kg",
+   "name": "Luftfahrzeugtechnik Zell am See GmbH & Co KG",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "AT",
+   "city": "Zell am See",
+   "address": "Kaprunerstrasse 15, 5700 Zell am See",
+   "lat": 47.2922,
+   "lon": 12.7875,
+   "phone": "+43 6542 20111",
+   "web": "https://www.werftzell.com",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "at-aac-austrian-aircraft-corp",
+   "name": "AAC Austrian Aircraft Corp.",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "AT",
+   "city": "Feldkirchen bei Graz",
+   "address": "Flughafen Graz, 8073 Feldkirchen",
+   "lat": 46.9911,
+   "lon": 15.4397,
+   "phone": "+43 676 4947873",
+   "web": "https://www.aac.at",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "dk-general-aviation-service-aps",
+   "name": "General Aviation Service ApS",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DK",
+   "city": "Roskilde",
+   "address": "Solhøjgårdsvej 6, 4000 Roskilde",
+   "lat": 55.5856,
+   "lon": 12.1314,
+   "phone": "+45 72 170 180",
+   "web": "https://www.gaservice.dk",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "dk-dan-glide-aps",
+   "name": "Dan-Glide ApS",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "DK",
+   "city": "Vamdrup",
+   "address": "Lufthavnsvej 9D, 6580 Vamdrup",
+   "lat": 55.4363,
+   "lon": 9.3309,
+   "phone": "+45 97 52 23 66",
+   "web": "https://www.dan-glide.dk",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "fi-tradeaid-oy-ltd",
+   "name": "Tradeaid Oy Ltd",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "FI",
+   "city": "Mäntsälä",
+   "address": "Sivutie 5, 04600 Mäntsälä",
+   "lat": 60.633,
+   "lon": 25.32,
+   "phone": "+358 400 299808",
+   "web": "https://www.tradeaid.fi",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "fi-aerotecno-oy",
+   "name": "Aerotecno Oy",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "FI",
+   "city": "Hämeenkoski",
+   "address": "Pajatie 22, 16800 Hämeenkoski",
+   "lat": 61.02,
+   "lon": 25.15,
+   "phone": "+358 500 629453",
+   "web": "https://www.aerotecno.fi",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "hu-autogyro-kft-mura-airfield",
+   "name": "Autogyro Kft. (Mura Airfield)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "HU",
+   "city": "Becsehely",
+   "address": "Mura Airfield, 8866 Becsehely",
+   "lat": 46.45,
+   "lon": 16.78,
+   "phone": "+36 20 775 4976",
+   "web": "https://www.one-two-fly.hu",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "hu-autogyro-kft-service-center",
+   "name": "Autogyro Kft. (Service Center)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "HU",
+   "city": "Szentpéterfa",
+   "address": "Kossuth u. 96, 9799 Szentpéterfa",
+   "lat": 47.093,
+   "lon": 16.483,
+   "phone": "+36 20 933 0877",
+   "web": "https://www.one-two-fly.hu",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "nl-cycloon-holland-b-v",
+   "name": "Cycloon Holland B.V.",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "NL",
+   "city": "Maastricht-Airport",
+   "address": "Vliegveldweg 148, 6199 AD Maastricht-Airport",
+   "lat": 50.9117,
+   "lon": 5.7701,
+   "phone": "+31 77 201 8702",
+   "web": "https://www.cycloonholland.nl",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "nl-hangar-one-technics-avionics-b-v",
+   "name": "Hangar One Technics & Avionics B.V.",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "NL",
+   "city": "Teuge",
+   "address": "De Zanden 113, 7395 PG Teuge",
+   "lat": 52.2447,
+   "lon": 6.0467,
+   "phone": "+31 55 323 1967",
+   "web": "https://www.hangar-one.eu",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "no-nordic-aviation-maintenance-as",
+   "name": "Nordic Aviation Maintenance AS",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax",
+    "Shark"
+   ],
+   "country": "NO",
+   "city": "Notodden",
+   "address": "Merdevegen 4E, 3676 Notodden",
+   "lat": 59.5657,
+   "lon": 9.2122,
+   "phone": "+47 920 33926",
+   "web": "https://www.nordicaviationmaintenance.no",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "no-fly1-a-s",
+   "name": "FLY1 A/S",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "NO",
+   "city": "Steinkjer",
+   "address": "Østeråsvegen 150, 7711 Steinkjer",
+   "lat": 64.02,
+   "lon": 11.49,
+   "phone": "+47 91 90 2920",
+   "web": "https://www.fly1.no",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "ro-airservice-s-r-l",
+   "name": "Airservice S.R.L.",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "RO",
+   "city": "Vatra Dornei",
+   "address": "Strada Bistriței 1, 725700 Vatra Dornei, Suceava",
+   "lat": 47.346,
+   "lon": 25.36,
+   "phone": "+40 742 698227",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "se-aeromar-ab",
+   "name": "Aeromar AB",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "SE",
+   "city": "Muskö",
+   "address": "Altorpsvägen 30, 148 95 Muskö",
+   "lat": 59.0,
+   "lon": 18.1,
+   "phone": "+46 73 7690000",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "ch-aerotec-ag",
+   "name": "Aerotec AG",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "CH",
+   "city": "Grenchen",
+   "address": "Flugplatz, 2540 Grenchen",
+   "lat": 47.1816,
+   "lon": 7.4172,
+   "phone": "+41 32 652 21 49",
+   "web": "https://www.aerotec.ch",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "ch-mecanair-s-a-yverdon",
+   "name": "Mécanair S.A. (Yverdon)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "CH",
+   "city": "Yverdon-les-Bains",
+   "address": "Ch. de l'Aérodrome 6, 1400 Yverdon",
+   "lat": 46.7619,
+   "lon": 6.6133,
+   "phone": "+41 24 426 40 80",
+   "web": "https://www.mecanair.ch",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "ch-mecanair-s-a-ecuvillens",
+   "name": "Mécanair S.A. (Ecuvillens)",
+   "kind": "rotax_service",
+   "brands": [
+    "Rotax"
+   ],
+   "country": "CH",
+   "city": "Ecuvillens",
+   "address": "Rte de l'Aérodrome 30, 1730 Ecuvillens",
+   "lat": 46.755,
+   "lon": 7.0761,
+   "phone": "+41 26 411 92 30",
+   "web": "https://www.mecanair.ch",
+   "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  }
+ ]
+}

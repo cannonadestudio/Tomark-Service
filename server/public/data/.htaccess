@@ -1,0 +1,10 @@
+# Public data read by the apps: JSON only, no scripts, CORS open for reading.
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+  Header set Cache-Control "no-cache"
+</IfModule>
+AddType application/json .json
+Options -Indexes
+<FilesMatch "\.(php|phtml|phar)$">
+  Require all denied
+</FilesMatch>

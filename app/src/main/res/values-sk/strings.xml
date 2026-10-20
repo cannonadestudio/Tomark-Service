@@ -96,7 +96,11 @@
     <string name="cat_other">Iné</string>
     <string name="bulletins_for">Bulletiny pre %1$s</string>
     <string name="list_updated">Stav zoznamu: %1$s</string>
-    <string name="bulletins_hint">Názvy podľa originálu TOMARK / Rotax / EASA. Každý označte ako vykonaný alebo netýka sa. Plné texty: technická podpora TOMARK (bezplatná registrácia). Platnosť pre výr. číslo motora overte v dokumente.</string>
+    <string name="bulletins_hint">Každý označte ako vykonaný alebo netýka sa.</string>
+    <string name="fr24">Posledné lety (Flightradar24)</string>
+    <string name="fr24_hint">Lety vidno len pri vysielaní ADS-B.</string>
+    <string name="news_title">Oznámenia</string>
+    <string name="data_source">Zdroj údajov: %1$s</string>
     <string name="refresh">Obnoviť</string>
     <string name="refresh_ok">Aktualizované (%1$d nových)</string>
     <string name="refresh_fail">Bez pripojenia – zobrazujem uložený zoznam</string>

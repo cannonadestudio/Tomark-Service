@@ -110,6 +110,18 @@ data class Contact(
 @Serializable
 data class ContactFeed(val version: Int = 0, val updated: String = "", val contacts: List<Contact> = emptyList())
 
+// ---------------------------------------------------------------- announcements from the management system
+
+@Serializable
+data class News(val id: String, val date: String = "", val title: String, val text: String = "", val url: String? = null)
+
+@Serializable
+data class NewsFeed(val version: Int = 0, val updated: String = "", val messages: List<News> = emptyList())
+
+/** data/config.json on GitHub: points all apps to the owner's own server when set. */
+@Serializable
+data class RemoteConfig(val dataBaseUrl: String? = null)
+
 // ---------------------------------------------------------------- user data (filesDir/state.json)
 
 @Serializable
@@ -178,4 +190,5 @@ data class AppState(
     val logbookUri: String? = null,
     val logbookSyncedEpochDay: Long? = null,
     val logbookError: String? = null,
+    val dismissedNewsIds: Set<String> = emptySet(),
 )

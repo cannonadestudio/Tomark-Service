@@ -1,0 +1,4 @@
+Options -Indexes
+<Files "locate_private.php">
+  Require all denied
+</Files>

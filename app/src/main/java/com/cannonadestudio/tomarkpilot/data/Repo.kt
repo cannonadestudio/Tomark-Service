@@ -14,15 +14,14 @@ import java.util.UUID
 
 /** Single source of truth: bundled aircraft data, bulletin feed and the owner's records. */
 object Repo {
-    /** Online bulletin list. Edit data/bulletins.json in the GitHub repo to publish new bulletins. */
-    const val FEED_URL =
-        "https://raw.githubusercontent.com/cannonadestudio/Tomark-Service/main/data/bulletins.json"
-    /** Aircraft types (speeds, maintenance programme) edited in the web panel. */
-    const val TYPES_URL =
-        "https://raw.githubusercontent.com/cannonadestudio/Tomark-Service/main/data/types.json"
-    /** Online list of dealers, service centres, mechanics, instructors and examiners. */
-    const val CONTACTS_URL =
-        "https://raw.githubusercontent.com/cannonadestudio/Tomark-Service/main/data/contacts.json"
+    /** Default data location (GitHub). data/config.json there can redirect every app to the owner's server. */
+    const val GITHUB_DATA = "https://raw.githubusercontent.com/cannonadestudio/Tomark-Service/main/data"
+
+    @Volatile
+    var dataBase: String = GITHUB_DATA
+        private set
+
+    private fun url(name: String) = "${dataBase.trimEnd('/')}/$name.json"
 
     private val json = Json { ignoreUnknownKeys = true; encodeDefaults = true; explicitNulls = false }
     private lateinit var app: Context
@@ -45,6 +44,11 @@ object Repo {
     private val stateFile get() = File(app.filesDir, "state.json")
     private val contactsCache get() = File(app.filesDir, "contacts_cache.json")
     private val typesCache get() = File(app.filesDir, "types_cache.json")
+    private val newsCache get() = File(app.filesDir, "news_cache.json")
+    private val baseCache get() = File(app.filesDir, "data_base.txt")
+
+    private val _news = MutableStateFlow(NewsFeed())
+    val news: StateFlow<NewsFeed> = _news.asStateFlow()
     private val feedCache get() = File(app.filesDir, "bulletins_cache.json")
 
     fun init(context: Context) {
@@ -54,6 +58,8 @@ object Repo {
             types = runCatching { json.decodeFromString<List<AircraftType>>(typesCache.readText()) }.getOrNull()
                 ?.takeIf { it.isNotEmpty() } ?: json.decodeFromString(readAsset("types.json"))
             _feed.value = loadFeed()
+            runCatching { baseCache.readText().trim() }.getOrNull()?.takeIf { it.startsWith("https://") }?.let { dataBase = it }
+            _news.value = runCatching { json.decodeFromString<NewsFeed>(newsCache.readText()) }.getOrNull() ?: NewsFeed()
             _contacts.value = runCatching { json.decodeFromString<ContactFeed>(contactsCache.readText()) }.getOrNull()
                 ?: json.decodeFromString(readAsset("contacts.json"))
             val loaded = runCatching { json.decodeFromString<AppState>(stateFile.readText()) }.getOrNull()
@@ -87,7 +93,7 @@ object Repo {
     /** Downloads the online list. Returns the number of bulletins that were not known before. */
     suspend fun refreshBulletins(): Result<Int> = withContext(Dispatchers.IO) {
         runCatching {
-            val conn = URL(FEED_URL).openConnection() as HttpURLConnection
+            val conn = URL(url("bulletins")).openConnection() as HttpURLConnection
             conn.connectTimeout = 10_000
             conn.readTimeout = 15_000
             conn.setRequestProperty("Cache-Control", "no-cache")
@@ -119,10 +125,39 @@ object Repo {
         }
     }
 
+    /** Reads data/config.json on GitHub; a dataBaseUrl there moves all data downloads to that server. */
+    private fun resolveBase() {
+        runCatching {
+            val cfg = json.decodeFromString<RemoteConfig>(download("$GITHUB_DATA/config.json"))
+            val b = cfg.dataBaseUrl?.trim()?.takeIf { it.startsWith("https://") } ?: GITHUB_DATA
+            dataBase = b
+            baseCache.writeText(b)
+        }
+    }
+
+    /** Everything at once: data location, bulletins, contacts, types, announcements. */
+    suspend fun refreshAll() = withContext(Dispatchers.IO) {
+        resolveBase()
+        refreshBulletins()
+        refreshContacts()
+        refreshTypes()
+        refreshNews()
+    }
+
+    suspend fun refreshNews(): Result<Int> = withContext(Dispatchers.IO) {
+        runCatching {
+            val text = download(url("news"))
+            val remote = json.decodeFromString<NewsFeed>(text)
+            newsCache.writeText(text)
+            _news.value = remote
+            remote.messages.size
+        }
+    }
+
     /** Downloads the online contacts list (replaces the previous online list; local edits stay). */
     suspend fun refreshContacts(): Result<Int> = withContext(Dispatchers.IO) {
         runCatching {
-            val text = download(CONTACTS_URL)
+            val text = download(url("contacts"))
             val remote = json.decodeFromString<ContactFeed>(text)
             if (remote.contacts.isEmpty()) error("empty list")
             contactsCache.writeText(text)
@@ -134,7 +169,7 @@ object Repo {
     /** Downloads aircraft types from the web panel. Types removed online but still used by an aircraft are kept. */
     suspend fun refreshTypes(): Result<Int> = withContext(Dispatchers.IO) {
         runCatching {
-            val text = download(TYPES_URL)
+            val text = download(url("types"))
             val remote = json.decodeFromString<List<AircraftType>>(text)
             if (remote.size < 2 || remote.any { it.speeds.isEmpty() }) error("suspicious types list")
             val used = _state.value.aircraft.map { it.typeId }.toSet()

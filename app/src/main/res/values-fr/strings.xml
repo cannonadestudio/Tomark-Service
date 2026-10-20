@@ -96,7 +96,11 @@
     <string name="cat_other">Autre</string>
     <string name="bulletins_for">Bulletins pour %1$s</string>
     <string name="list_updated">Liste du : %1$s</string>
-    <string name="bulletins_hint">Titres tels que publiés par TOMARK / Rotax / EASA. Marquez chacun comme appliqué ou non applicable. Textes complets : support technique TOMARK (inscription gratuite). Applicabilité par n° moteur : voir le document.</string>
+    <string name="bulletins_hint">Marquez chacun comme appliqué ou non applicable.</string>
+    <string name="fr24">Derniers vols (Flightradar24)</string>
+    <string name="fr24_hint">Visible seulement si l\'avion émet en ADS-B.</string>
+    <string name="news_title">Annonces</string>
+    <string name="data_source">Source des données : %1$s</string>
     <string name="refresh">Actualiser</string>
     <string name="refresh_ok">Liste mise à jour (%1$d nouveaux)</string>
     <string name="refresh_fail">Pas de connexion – liste enregistrée</string>

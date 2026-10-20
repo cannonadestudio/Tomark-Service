@@ -2,6 +2,15 @@
 
 package com.cannonadestudio.tomarkpilot.ui
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.TravelExplore
+import androidx.compose.material3.IconButton
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.platform.LocalContext
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -94,6 +103,45 @@ fun HomeScreen(
                 Text(type.name, style = MaterialTheme.typography.titleSmall, color = Color.White)
             }
             Chip(if (type.category == "EASA") "EASA ${type.tcds ?: ""}".trim() else "UL / LSA", HbgPink, Color.White)
+        }
+        // Flightradar24 – last flights of this registration
+        val ctx = LocalContext.current
+        Row(
+            Modifier.clickable {
+                val reg = aircraft.registration.trim().lowercase().replace(" ", "")
+                try {
+                    ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.flightradar24.com/data/aircraft/" + Uri.encode(reg))))
+                } catch (_: ActivityNotFoundException) {
+                }
+            }.padding(vertical = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Icon(Icons.Filled.TravelExplore, null, tint = Color.White)
+            Spacer(Modifier.width(6.dp))
+            Column {
+                Text(stringResource(R.string.fr24), color = Color.White, fontWeight = FontWeight.SemiBold)
+                Text(stringResource(R.string.fr24_hint), color = Color.White.copy(alpha = 0.8f), style = MaterialTheme.typography.bodySmall)
+            }
+        }
+        // Announcements from the management system
+        val news by Repo.news.collectAsState()
+        news.messages.filter { it.id !in state.dismissedNewsIds }.take(3).forEach { n ->
+            Card(Modifier.fillMaxWidth().padding(top = 8.dp)) {
+                Row(Modifier.padding(12.dp), verticalAlignment = Alignment.Top) {
+                    Column(Modifier.weight(1f)) {
+                        Text(stringResource(R.string.news_title) + (if (n.date.isNotBlank()) " · " + n.date else ""), style = MaterialTheme.typography.labelMedium, color = HbgPink)
+                        Text(n.title, fontWeight = FontWeight.SemiBold)
+                        if (n.text.isNotBlank()) Text(n.text, style = MaterialTheme.typography.bodySmall)
+                        n.url?.let { u ->
+                            Text(u, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.clickable { try { ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(u))) } catch (_: ActivityNotFoundException) {} })
+                        }
+                    }
+                    IconButton(onClick = { Repo.update { it.copy(dismissedNewsIds = it.dismissedNewsIds + n.id) } }) {
+                        Icon(Icons.Filled.Close, stringResource(R.string.close))
+                    }
+                }
+            }
         }
         Spacer(Modifier.height(12.dp))
 

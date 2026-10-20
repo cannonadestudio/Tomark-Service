@@ -1,0 +1,17 @@
+# Put a reverse proxy with HTTPS (e.g. Caddy, Traefik, nginx + Let's Encrypt) in front – the apps require https://
+services:
+  aerohangar:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./volumes/data:/var/www/public/data
+      - ./volumes/state:/var/www/private/state
+  cron:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./volumes/data:/var/www/public/data
+      - ./volumes/state:/var/www/private/state
+    entrypoint: ["/bin/sh", "-c", "while true; do php /var/www/public/cron/fetch_tomark.php; sleep 86400; done"]

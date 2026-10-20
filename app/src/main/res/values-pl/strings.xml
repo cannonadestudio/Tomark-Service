@@ -96,7 +96,11 @@
     <string name="cat_other">Inne</string>
     <string name="bulletins_for">Biuletyny dla %1$s</string>
     <string name="list_updated">Stan listy: %1$s</string>
-    <string name="bulletins_hint">Tytuły jak w oryginale TOMARK / Rotax / EASA. Oznacz każdy jako wykonany lub nie dotyczy. Pełne teksty: wsparcie techniczne TOMARK (darmowa rejestracja). Dotyczy-li numeru silnika – sprawdź w dokumencie.</string>
+    <string name="bulletins_hint">Oznacz każdy jako wykonany lub nie dotyczy.</string>
+    <string name="fr24">Ostatnie loty (Flightradar24)</string>
+    <string name="fr24_hint">Loty widać tylko, gdy samolot nadaje ADS-B i jest śledzony przez FR24.</string>
+    <string name="news_title">Komunikaty</string>
+    <string name="data_source">Źródło danych: %1$s</string>
     <string name="refresh">Odśwież</string>
     <string name="refresh_ok">Zaktualizowano (%1$d nowych)</string>
     <string name="refresh_fail">Brak połączenia – pokazuję zapisaną listę</string>

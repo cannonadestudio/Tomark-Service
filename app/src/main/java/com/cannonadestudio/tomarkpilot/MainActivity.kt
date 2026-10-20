@@ -98,7 +98,7 @@ class MainActivity : ComponentActivity() {
         // Re-read the logbook export every time the app comes to the front.
         lifecycleScope.launch { Repo.syncLogbook() }
         // Fresh bulletins, contacts and types whenever the app is opened (the daily job covers the rest).
-        lifecycleScope.launch { Repo.refreshBulletins(); Repo.refreshContacts(); Repo.refreshTypes() }
+        lifecycleScope.launch { Repo.refreshAll() }
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -293,6 +293,8 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
             }
         }
         Spacer(Modifier.height(16.dp))
+        Text(stringResource(R.string.data_source, Repo.dataBase), style = MaterialTheme.typography.bodySmall)
+        Spacer(Modifier.height(12.dp))
         Text(stringResource(R.string.disclaimer_text))
         Spacer(Modifier.height(12.dp))
         Text(stringResource(R.string.about_text))
