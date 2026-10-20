@@ -146,6 +146,32 @@ switch ($action) {
         }
         out(200, ['added' => $added]);
 
+    case 'import_contacts':
+        // Official lists collected by the GitHub bot (ULC examiners, maintenance organisations).
+        // Replaces all entries with the given id prefixes; contacts added in the panel stay untouched.
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
+        if (!hash_equals((string)(ah_config()['cronKey'] ?? 'x'), (string)($_GET['key'] ?? ''))) out(403, ['error' => 'bad key']);
+        $prefixes = array_values(array_filter((array)($body['prefixes'] ?? []), fn($p) => is_string($p) && preg_match('/^ulc-[a-z-]+$/', $p)));
+        $incoming = array_values(array_filter((array)($body['contacts'] ?? []), fn($c) => is_array($c) && !empty($c['id']) && !empty($c['name']) && !empty($c['kind'])
+            && array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));
+        if (!$prefixes || !$incoming) out(400, ['error' => 'nothing to import']);
+        $path = ah_data_path('contacts');
+        $raw = is_file($path) ? (string)file_get_contents($path) : '';
+        $feed = $raw ? json_decode($raw, true) : ['version' => 0, 'updated' => '', 'contacts' => []];
+        $keep = array_values(array_filter($feed['contacts'], fn($c) => !array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));
+        $ids = array_flip(array_column($keep, 'id'));
+        foreach ($incoming as $c) if (!isset($ids[$c['id']])) { $keep[] = $c; $ids[$c['id']] = 1; }
+        $feed['contacts'] = $keep;
+        $feed['version'] = ($feed['version'] ?? 0) + 1;
+        $feed['updated'] = date('Y-m-d');
+        $json = json_encode($feed, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n";
+        if ($json !== $raw) {
+            ah_backup('contacts', $raw);
+            ah_write_atomic($path, $json);
+            ah_log('bot', 'import_contacts: ' . count($incoming) . ' official entries');
+        }
+        out(200, ['imported' => count($incoming), 'total' => count($keep)]);
+
     default:
         out(404, ['error' => 'unknown action']);
 }

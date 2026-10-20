@@ -25,6 +25,13 @@ docker compose up -d --build
 ```
 Panel na porcie 8080 – postaw przed nim HTTPS (Caddy, Traefik albo nginx + Let's Encrypt). Dane i konfiguracja zostają w `volumes/`. Kontener `cron` sprawdza TOMARK raz dziennie.
 
+## Automatyczne dane z GitHuba
+Biuletyny (EASA, producenci, TOMARK – codziennie) i listy ULC (egzaminatorzy, organizacje obsługowe – co tydzień) zbiera automat na GitHubie. Żeby trafiały też na serwer, dodaj w repozytorium (Settings → Secrets and variables → Actions) dwa sekrety:
+- `AH_SERVER` = `https://twoja-domena.pl/aerohangar`
+- `AH_CRON_KEY` = wartość `cronKey` z `private/state/config.php`
+
+Serwer dopisuje tylko nowe biuletyny, a listy ULC podmienia w całości – wpisy dodane w panelu zostają nietknięte.
+
 ## Przełączenie aplikacji na serwer
 W repozytorium GitHub zmień `data/config.json`:
 ```json

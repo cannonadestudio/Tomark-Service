@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-24.04
     env:
       DRY_RUN: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[collect]') && '1' || '0' }}
+      AH_SERVER: ${{ secrets.AH_SERVER }}
+      AH_CRON_KEY: ${{ secrets.AH_CRON_KEY }}
     steps:
       - uses: actions/checkout@v5
       - run: pip install --quiet pdfplumber
@@ -33,3 +35,6 @@ jobs:
           git commit -m "Auto: ULC examiners and maintenance organisations"
           git pull --rebase --quiet
           git push
+      - name: Send official lists to own server (if configured)
+        if: env.DRY_RUN != '1' && env.AH_SERVER != ''
+        run: python3 tools/push_contacts_to_server.py
