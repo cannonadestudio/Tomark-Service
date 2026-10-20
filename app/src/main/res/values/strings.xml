@@ -173,6 +173,13 @@
     <string name="kind_dealer">Dealer</string>
     <string name="kind_rotax_distributor">Rotax distributor</string>
     <string name="kind_rotax_service">Rotax service</string>
+    <string name="examiners_title">ULC examiners (public data)</string>
+    <string name="examiners_hint">Lists of examiners published by the Polish CAA (aeroplanes, UL, mechanics) are not part of the app. Download them only if you need them.</string>
+    <string name="examiners_loaded">%1$d examiners on this phone (list of %2$s), refreshed automatically</string>
+    <string name="examiners_download">Download public data</string>
+    <string name="examiners_refresh">Refresh</string>
+    <string name="examiners_remove">Remove from phone</string>
+    <string name="examiners_done">Downloaded %1$d examiners</string>
     <string name="kind_maintenance">Maintenance organisation</string>
     <string name="kind_mechanic">Mechanic</string>
     <string name="kind_instructor">Instructor</string>

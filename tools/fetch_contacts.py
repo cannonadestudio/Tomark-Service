@@ -15,6 +15,7 @@ import pdfplumber
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONTACTS = os.path.join(ROOT, "data/contacts.json")
+EXAMINERS = os.path.join(ROOT, "data/examiners.json")
 GEOCACHE = os.path.join(ROOT, "tools/geocache.json")
 DRY = os.environ.get("DRY_RUN") == "1"
 TODAY = datetime.date.today()
@@ -275,26 +276,34 @@ def main():
     if DRY or not collected:
         notice("dry run – nothing written" if DRY else "nothing collected")
         return
-    feed = json.load(open(CONTACTS, encoding="utf-8"))
-    def owner(cid):  # longest matching prefix, so "ulc-exam-ul-…" belongs to the UL list, not "ulc-exam-"
-        ps = [p for p in collected if cid.startswith(p)]
-        return max(ps, key=len) if ps else None
+    def write(path, prefixes_all, wanted):
+        """Replace entries of the lists that were collected; keep everything else in that file."""
+        feed = json.load(open(path, encoding="utf-8")) if os.path.exists(path) else {"version": 0, "updated": "", "contacts": []}
+        def owner(cid):  # longest matching prefix, so "ulc-exam-ul-…" belongs to the UL list, not "ulc-exam-"
+            ps = [p for p in prefixes_all if cid.startswith(p)]
+            return max(ps, key=len) if ps else None
+        keep = [c for c in feed["contacts"] if not (owner(c["id"]) and collected.get(owner(c["id"])))]
+        merged, ids = [], set()
+        for c in keep + [c for p in wanted for c in collected.get(p, [])]:
+            if c["id"] not in ids:
+                ids.add(c["id"])
+                merged.append(c)
+        feed["contacts"] = merged
+        feed["version"] = feed.get("version", 0) + 1
+        feed["updated"] = TODAY.isoformat()
+        json.dump(feed, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        return len(merged)
 
-    keep = [c for c in feed["contacts"] if not (owner(c["id"]) and collected[owner(c["id"])])]
-    new = [c for items in collected.values() for c in items]
-    ids = set()
-    merged = []
-    for c in keep + new:
-        if c["id"] in ids:
-            continue
-        ids.add(c["id"])
-        merged.append(c)
-    feed["contacts"] = merged
-    feed["version"] = feed.get("version", 0) + 1
-    feed["updated"] = TODAY.isoformat()
+    exam_prefixes = [p for p in collected if p.startswith("ulc-exam-")]
+    # Examiners (personal data published by ULC) live in a separate file the app downloads only on request.
+    n_exam = write(EXAMINERS, exam_prefixes, exam_prefixes)
+    # …and are removed from the general contacts list, which is bundled with the app.
+    feed = json.load(open(CONTACTS, encoding="utf-8"))
+    feed["contacts"] = [c for c in feed["contacts"] if not c["id"].startswith("ulc-exam-")]
     json.dump(feed, open(CONTACTS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    n_cont = write(CONTACTS, ["ulc-pl-"], ["ulc-pl-"]) if "ulc-pl-" in collected else len(feed["contacts"])
     json.dump(cache, open(GEOCACHE, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
-    notice(f"contacts written: {len(merged)}")
+    notice(f"written: contacts {n_cont}, examiners {n_exam}")
 
 
 if __name__ == "__main__":

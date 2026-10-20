@@ -199,6 +199,8 @@ data class AppState(
     val logbookSyncedEpochDay: Long? = null,
     val logbookError: String? = null,
     val dismissedNewsIds: Set<String> = emptySet(),
+    /** Public ULC examiner lists are downloaded only after the user asks for them. */
+    val examinersEnabled: Boolean = false,
     /** Backup file chosen by the user (e.g. on Google Drive). Device-specific, never restored from a backup. */
     val backupUri: String? = null,
     val lastBackupMillis: Long? = null,

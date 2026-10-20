@@ -2,7 +2,7 @@
 /** Shared helpers for the AeroHangar management system. This folder must not be web-readable. */
 declare(strict_types=1);
 
-const AH_FILES = ['bulletins', 'contacts', 'types', 'news'];
+const AH_FILES = ['bulletins', 'contacts', 'types', 'news', 'examiners'];
 const AH_KEEP_BACKUPS = 40;
 
 define('AH_PRIVATE', __DIR__);
@@ -178,6 +178,7 @@ function ah_validate(string $f, $d): ?string
             }
             return null;
         case 'contacts':
+        case 'examiners':
             if (!isset($d['contacts']) || !is_array($d['contacts'])) return 'missing "contacts"';
             $ids = [];
             foreach ($d['contacts'] as $c) {

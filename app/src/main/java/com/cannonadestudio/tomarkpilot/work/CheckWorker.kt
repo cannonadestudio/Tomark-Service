@@ -95,6 +95,7 @@ class CheckWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx,
         private const val ID_MAINT_BASE = 2000
 
         fun createChannel(ctx: Context) {
+            if (Build.VERSION.SDK_INT < 26) return
             val ch = NotificationChannel(CHANNEL, ctx.getString(R.string.notif_channel), NotificationManager.IMPORTANCE_DEFAULT)
             ctx.getSystemService(NotificationManager::class.java).createNotificationChannel(ch)
         }

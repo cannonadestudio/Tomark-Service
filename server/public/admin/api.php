@@ -155,7 +155,8 @@ switch ($action) {
         $incoming = array_values(array_filter((array)($body['contacts'] ?? []), fn($c) => is_array($c) && !empty($c['id']) && !empty($c['name']) && !empty($c['kind'])
             && array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));
         if (!$prefixes || !$incoming) out(400, ['error' => 'nothing to import']);
-        $path = ah_data_path('contacts');
+        $target = in_array($body['file'] ?? 'contacts', ['contacts', 'examiners'], true) ? ($body['file'] ?? 'contacts') : 'contacts';
+        $path = ah_data_path($target);
         $raw = is_file($path) ? (string)file_get_contents($path) : '';
         $feed = $raw ? json_decode($raw, true) : ['version' => 0, 'updated' => '', 'contacts' => []];
         $keep = array_values(array_filter($feed['contacts'], fn($c) => !array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));
@@ -166,9 +167,9 @@ switch ($action) {
         $feed['updated'] = date('Y-m-d');
         $json = json_encode($feed, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n";
         if ($json !== $raw) {
-            ah_backup('contacts', $raw);
+            ah_backup($target, $raw);
             ah_write_atomic($path, $json);
-            ah_log('bot', 'import_contacts: ' . count($incoming) . ' official entries');
+            ah_log('bot', "import $target: " . count($incoming) . ' official entries');
         }
         out(200, ['imported' => count($incoming), 'total' => count($keep)]);
 

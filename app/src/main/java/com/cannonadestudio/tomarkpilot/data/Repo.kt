@@ -52,6 +52,11 @@ object Repo {
     private val newsCache get() = File(app.filesDir, "news_cache.json")
     private val baseCache get() = File(app.filesDir, "data_base.txt")
 
+    private val examinersCache get() = File(app.filesDir, "examiners_cache.json")
+    private val _examiners = MutableStateFlow(ContactFeed())
+    /** Examiner lists (public ULC data) – empty until the user downloads them. */
+    val examiners: StateFlow<ContactFeed> = _examiners.asStateFlow()
+
     private val _news = MutableStateFlow(NewsFeed())
     val news: StateFlow<NewsFeed> = _news.asStateFlow()
     private val feedCache get() = File(app.filesDir, "bulletins_cache.json")
@@ -64,6 +69,7 @@ object Repo {
                 ?.takeIf { it.isNotEmpty() } ?: json.decodeFromString(readAsset("types.json"))
             _feed.value = loadFeed()
             runCatching { baseCache.readText().trim() }.getOrNull()?.takeIf { it.startsWith("https://") }?.let { dataBase = it }
+            _examiners.value = runCatching { json.decodeFromString<ContactFeed>(examinersCache.readText()) }.getOrNull() ?: ContactFeed()
             _news.value = runCatching { json.decodeFromString<NewsFeed>(newsCache.readText()) }.getOrNull() ?: NewsFeed()
             _contacts.value = runCatching { json.decodeFromString<ContactFeed>(contactsCache.readText()) }.getOrNull()
                 ?: json.decodeFromString(readAsset("contacts.json"))
@@ -147,6 +153,26 @@ object Repo {
         refreshContacts()
         refreshTypes()
         refreshNews()
+        if (_state.value.examinersEnabled) refreshExaminers()
+    }
+
+    /** Downloads the public ULC examiner lists (button in Contacts). */
+    suspend fun refreshExaminers(): Result<Int> = withContext(Dispatchers.IO) {
+        runCatching {
+            val text = download(url("examiners"))
+            val remote = json.decodeFromString<ContactFeed>(text)
+            examinersCache.writeText(text)
+            _examiners.value = remote
+            if (!_state.value.examinersEnabled) update { it.copy(examinersEnabled = true) }
+            remote.contacts.size
+        }
+    }
+
+    /** Removes the downloaded examiner data from the phone. */
+    fun removeExaminers() {
+        examinersCache.delete()
+        _examiners.value = ContactFeed()
+        update { it.copy(examinersEnabled = false) }
     }
 
     suspend fun refreshNews(): Result<Int> = withContext(Dispatchers.IO) {
@@ -192,9 +218,10 @@ object Repo {
     val typesVersion: StateFlow<Int> = _typesVersion.asStateFlow()
 
     /** Online + user contacts. A user contact with the same id replaces the online one. */
-    fun contacts(s: AppState = _state.value, feed: ContactFeed = _contacts.value): List<Contact> {
+    fun contacts(s: AppState = _state.value, feed: ContactFeed = _contacts.value, exams: ContactFeed = _examiners.value): List<Contact> {
         val local = s.localContacts.associateBy { it.id }
-        return (feed.contacts.filter { it.id !in local } + s.localContacts).filter { it.id !in s.hiddenContactIds }
+        val online = feed.contacts + (if (s.examinersEnabled) exams.contacts.filter { e -> feed.contacts.none { it.id == e.id } } else emptyList())
+        return (online.filter { it.id !in local } + s.localContacts).filter { it.id !in s.hiddenContactIds }
     }
 
     fun saveContact(c: Contact) = update { s ->

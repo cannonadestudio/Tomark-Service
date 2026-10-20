@@ -11,21 +11,33 @@ android {
 
     defaultConfig {
         applicationId = "com.cannonadestudio.tomarkpilot"
-        minSdk = 26
+        minSdk = 23
         targetSdk = 35
-        versionCode = 6
-        versionName = "2.3.0"
+        versionCode = 7
+        versionName = "2.4.0"
     }
 
+    // Release signing: the key comes from GitHub secrets (see README "Podpis aplikacji").
+    // Without them the release APK is signed with the debug key (fine for testing only).
+    val ksFile = System.getenv("AH_KEYSTORE_FILE")
+    signingConfigs {
+        if (ksFile != null && file(ksFile).exists()) {
+            create("release") {
+                storeFile = file(ksFile)
+                storePassword = System.getenv("AH_KEYSTORE_PASSWORD")
+                keyAlias = "aerohangar"
+                keyPassword = System.getenv("AH_KEYSTORE_PASSWORD")
+            }
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
-            // Debug key so the release APK installs straight from GitHub Actions.
-            // Replace with your own keystore before publishing on Google Play.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true   // java.time on Android 6–7
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -53,5 +65,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
 
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
     testImplementation("junit:junit:4.13.2")
 }

@@ -822,5 +822,33 @@
  "about_sources": {
   "de": "Sources: EASA TCDS (A.606, A.006, A.583, A.412, A.527, A.065, A.439, A.537, A.644, A.598, A.642); DULV / DAeC / Traficom / BMAA data sheets; manufacturer POH/AFM; BRP-Rotax MML-912; TOMARK technical support list; EASA AD 2026-0170; flyrotax.com distributor pages.",
   "cs": "Sources: EASA TCDS (A.606, A.006, A.583, A.412, A.527, A.065, A.439, A.537, A.644, A.598, A.642); DULV / DAeC / Traficom / BMAA data sheets; manufacturer POH/AFM; BRP-Rotax MML-912; TOMARK technical support list; EASA AD 2026-0170; flyrotax.com distributor pages."
+ },
+ "examiners_title": {
+  "de": "ULC-Prüfer (öffentliche Daten)",
+  "cs": "Examinátoři ULC (veřejné údaje)"
+ },
+ "examiners_hint": {
+  "de": "Die vom polnischen Luftfahrtamt veröffentlichten Prüferlisten (Flugzeuge, UL, Mechaniker) sind nicht Teil der App. Nur bei Bedarf herunterladen.",
+  "cs": "Seznamy examinátorů zveřejněné polským ÚCL (letouny, UL, mechanici) nejsou součástí aplikace. Stáhněte je jen v případě potřeby."
+ },
+ "examiners_loaded": {
+  "de": "%1$d Prüfer auf diesem Telefon (Liste vom %2$s), automatisch aktualisiert",
+  "cs": "%1$d examinátorů v telefonu (seznam z %2$s), aktualizace automaticky"
+ },
+ "examiners_download": {
+  "de": "Öffentliche Daten laden",
+  "cs": "Stáhnout veřejné údaje"
+ },
+ "examiners_refresh": {
+  "de": "Aktualisieren",
+  "cs": "Obnovit"
+ },
+ "examiners_remove": {
+  "de": "Vom Telefon löschen",
+  "cs": "Smazat z telefonu"
+ },
+ "examiners_done": {
+  "de": "%1$d Prüfer geladen",
+  "cs": "Staženo %1$d examinátorů"
  }
 }

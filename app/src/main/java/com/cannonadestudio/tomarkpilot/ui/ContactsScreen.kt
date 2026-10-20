@@ -56,6 +56,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -152,7 +153,9 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
         listOfNotNull(type?.manufacturer, type?.name?.split(" ")?.firstOrNull()).map { it.lowercase() }.filter { it.length > 2 }
     }
     val localIds = state.localContacts.map { it.id }.toSet()
-    val all = Repo.contacts(state, feed)
+    val exams by Repo.examiners.collectAsState()
+    var examLoading by remember { mutableStateOf(false) }
+    val all = Repo.contacts(state, feed, exams)
     val list = all
         .filter { kinds.isEmpty() || it.kind in kinds }
         .filter { !onlyMyBrand || it.kind.startsWith("rotax") || it.brands.any { b -> brandWords.any { w -> b.lowercase().contains(w) } } }
@@ -222,6 +225,38 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
                             CONTACT_KINDS.forEach { k ->
                                 FilterChip(k in kinds, { kinds = if (k in kinds) kinds - k else kinds + k }, label = { Text(kindName(k)) })
                             }
+                        }
+                    }
+                }
+                // Public examiner data is not part of the installed app – downloaded on request only.
+                Card(Modifier.fillMaxWidth().padding(top = 8.dp)) {
+                    Column(Modifier.padding(12.dp)) {
+                        Text(stringResource(R.string.examiners_title), style = MaterialTheme.typography.titleSmall)
+                        Text(
+                            if (state.examinersEnabled && exams.contacts.isNotEmpty())
+                                stringResource(R.string.examiners_loaded, exams.contacts.size, exams.updated)
+                            else stringResource(R.string.examiners_hint),
+                            style = MaterialTheme.typography.bodySmall,
+                        )
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            if (examLoading) {
+                                CircularProgressIndicator(Modifier.size(22.dp))
+                            } else {
+                                TextButton(onClick = {
+                                    examLoading = true
+                                    scope.launch {
+                                        val r = Repo.refreshExaminers()
+                                        examLoading = false
+                                        Toast.makeText(ctx, r.fold({ ctx.getString(R.string.examiners_done, it) }, { ctx.getString(R.string.refresh_fail) }), Toast.LENGTH_SHORT).show()
+                                    }
+                                }) { Text(stringResource(if (state.examinersEnabled) R.string.examiners_refresh else R.string.examiners_download)) }
+                            }
+                            if (state.examinersEnabled) {
+                                TextButton(onClick = { Repo.removeExaminers() }) { Text(stringResource(R.string.examiners_remove)) }
+                            }
+                            TextButton(onClick = {
+                                open(ctx, Intent(Intent.ACTION_VIEW, Uri.parse("https://ulc.gov.pl/personel-lotniczy/komisja-egzaminacyjna/egzaminy-praktyczne")))
+                            }) { Text("ULC") }
                         }
                     }
                 }

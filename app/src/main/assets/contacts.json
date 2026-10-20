@@ -1,5 +1,5 @@
 {
- "version": 1,
+ "version": 4,
  "updated": "2026-10-20",
  "contacts": [
   {
@@ -1721,6 +1721,1239 @@
    "phone": "+41 26 411 92 30",
    "web": "https://www.mecanair.ch",
    "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0001",
+   "name": "Navcom Systems Sp. z o.o. Sp. k.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Świdnik",
+   "address": "21-040 Świdnik",
+   "lat": 51.2111567,
+   "lon": 22.6878974,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0001",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0003",
+   "name": "AEROKLUB PODHALAŃSKI Z SIEDZIBĄ W ŁOSOSINIE DOLNEJ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Łososina Dolna",
+   "address": "33-314 Łososina Dolna",
+   "lat": 49.7537304,
+   "lon": 20.622221,
+   "phone": "184448409",
+   "email": "zarzadzanie.podhalanski@gmail.com",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0003",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0005",
+   "name": "STOWARZYSZENIE AEROKLUB RYBNICKIEGO OKRĘGU",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Rybnik",
+   "address": "44-200 Rybnik",
+   "lat": 50.0975174,
+   "lon": 18.5350579,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0005",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0008",
+   "name": "AEROKLUB BIELSKO-BIALSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Bielsko-Biała",
+   "address": "43-300 Bielsko-Biała",
+   "lat": 49.8181415,
+   "lon": 19.0441659,
+   "phone": "338151870",
+   "email": "dyrektor@epba.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0008",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0009",
+   "name": "AEROKLUB CZĘSTOCHOWSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kościelec",
+   "address": "42-240 Kościelec",
+   "lat": 52.17427,
+   "lon": 18.56979,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0009",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0010",
+   "name": "AEROKLUB JELENIOGÓRSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Jelenia Góra",
+   "address": "58-500 JELENIA GÓRA",
+   "lat": 50.9088622,
+   "lon": 15.7765641,
+   "phone": "757526020",
+   "email": "aerovip@o2.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0010",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0011",
+   "name": "AEROKLUB BYDGOSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Bydgoszcz",
+   "address": "85-157 Bydgoszcz",
+   "lat": 53.1059601,
+   "lon": 17.9728904,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0011",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0012",
+   "name": "Aeroklub Pomorski",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Toruń",
+   "address": "87-100 Toruń",
+   "lat": 53.0211332,
+   "lon": 18.6228646,
+   "phone": "566222474",
+   "email": "sekretariat@aeroklub.torun.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0012",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0013",
+   "name": "AEROGRYF AVIATION Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Szczecin",
+   "address": "70-800 Szczecin",
+   "lat": 53.396743,
+   "lon": 14.6269131,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0013",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0014",
+   "name": "AEROKLUB GDAŃSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Pruszcz Gdański",
+   "address": "83-000 Pruszcz Gdański",
+   "lat": 54.2592994,
+   "lon": 18.6447915,
+   "phone": "586923437",
+   "email": "amo@aeroklub.gda.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0014",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0015",
+   "name": "ADRIANA - AVIATION\" SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kijewo Królewskie",
+   "address": "86-253 Kijewo Królewskie",
+   "lat": 53.2601294,
+   "lon": 18.4457299,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0015",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0016",
+   "name": "WOJSKOWE ZAKŁADY LOTNICZE NR 2 SPÓŁKA AKCYJNA",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Bydgoszcz",
+   "address": "85-915 Bydgoszcz",
+   "lat": 53.1316155,
+   "lon": 18.0014988,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0016",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0017",
+   "name": "AEROKLUB ŁÓDZKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Łódź",
+   "address": "94-328 Łódź",
+   "lat": 51.732361,
+   "lon": 19.4065374,
+   "phone": "426843550",
+   "email": "sekretariat@aeroklub-lodz.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0017",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0018",
+   "name": "Stowarzyszenie Aeroklub Nowy Targ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Nowy Targ",
+   "address": "34-400 Nowy Targ",
+   "lat": 49.4828196,
+   "lon": 20.0325767,
+   "phone": "609153960",
+   "email": "aeroklub@aeroklub.nowytarg.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0018",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0019",
+   "name": "Zonda.Aero Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Białe Błota",
+   "address": "86-005 Białe Błota",
+   "lat": 53.0759361,
+   "lon": 17.9128366,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0019",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0020",
+   "name": "AEROKLUB NADWIŚLAŃSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Lisie Kąty",
+   "address": "86-302 Lisie Kąty",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0020",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0021",
+   "name": "INVESTA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Piła",
+   "address": "Al. Poznańska 28a, 64-920 Piła",
+   "lat": 53.1504958,
+   "lon": 16.7460267,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0021",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0022",
+   "name": "Aeroplan S.C.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mirosławice",
+   "address": "55-050 Mirosławice",
+   "phone": "717816385",
+   "email": "aeroplan1@o2.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0022",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0023",
+   "name": "CENTRUM LOTNICZE - AEROKLUB KAZIMIERZ BISKUPI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kazimierz Biskupi",
+   "address": "62-530 Kazimierz Biskupi",
+   "lat": 52.2928316,
+   "lon": 18.1747275,
+   "email": "aeroklub@o2.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0023",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0024",
+   "name": "WIRKK-SERWIS SZYBOWCÓW Jerzy Biskup",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Międzybrodzie Żywieckie",
+   "address": "ul. Kolejowa 36, 34-312 Międzybrodzie Żywieckie",
+   "phone": "504153758",
+   "email": "office@gliderservice.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0024",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0025",
+   "name": "Zakład Naprawczy Sprzętu Lotniczego Antoni Nowak",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Żywiec",
+   "address": "ul. Kolonia Browar 25, 34-300 Żywiec",
+   "lat": 49.6856397,
+   "lon": 19.201743,
+   "phone": "338618984",
+   "email": "anteklot@bb.onet.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0025",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0026",
+   "name": "HMJ Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "03-589 Warszawa",
+   "lat": 52.2794341,
+   "lon": 21.0568409,
+   "phone": "504079919",
+   "email": "hmj3@hmj.com.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0026",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0027",
+   "name": "SKY ADVENTURE Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Katowice",
+   "address": "40-127 Katowice",
+   "lat": 50.2685273,
+   "lon": 19.0227369,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0027",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0029",
+   "name": "AIR-PARTNER Robert Kasprzak",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mielec",
+   "address": "39-300 Mielec",
+   "lat": 50.2885008,
+   "lon": 21.4413443,
+   "phone": "175836954",
+   "email": "partner-air@post.home.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0029",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0030",
+   "name": "BIERNAT SPÓŁKA JAWNA",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Gądki",
+   "address": "62-023 Gądki",
+   "lat": 52.3157376,
+   "lon": 17.0566268,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0030",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0031",
+   "name": "Aeroklub Stalowowolski",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Zaleszany",
+   "address": "37-415 Zaleszany",
+   "lat": 50.6399163,
+   "lon": 21.9145152,
+   "phone": "158440118",
+   "email": "technika@aeroklubstalowowolski.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0031",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0032",
+   "name": "Smart Aviation Aircraft Maintenance Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Poznań",
+   "address": "61-102 Poznań",
+   "lat": 52.4079444,
+   "lon": 16.9429197,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0032",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0033",
+   "name": "AEROKLUB POZNAŃSKI IM. WANDY MODLIBOWSKIEJ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Poznań",
+   "address": "61-139 Poznań",
+   "lat": 52.4027041,
+   "lon": 16.9521829,
+   "email": "camo@aeroklub.poznan.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0033",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0034",
+   "name": "AEROKLUB BIAŁOSTOCKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Białystok",
+   "address": "15-602 Białystok",
+   "lat": 53.132398,
+   "lon": 23.1591679,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0034",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0036",
+   "name": "First European Aviation Company Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "01-934 Warszawa",
+   "lat": 52.2823977,
+   "lon": 20.8978843,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0036",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0037",
+   "name": "UNIFLY Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Białystok",
+   "address": "15-312 Białystok",
+   "lat": 53.1203029,
+   "lon": 23.1525065,
+   "phone": "600359833",
+   "email": "balony@ballooning.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0037",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0041",
+   "name": "Aeroklub \"ORLĄT\" w Dęblinie",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Dęblin",
+   "address": "08-521 Dęblin",
+   "lat": 51.5541159,
+   "lon": 21.8665942,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0041",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0043",
+   "name": "AEROKLUB RZESZOWSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Jasionka",
+   "address": "36-002 Jasionka",
+   "lat": 52.0834024,
+   "lon": 22.3862893,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0043",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0044",
+   "name": "AEROKLUB KRAKOWSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kraków",
+   "address": "30-552 Kraków",
+   "lat": 50.0352922,
+   "lon": 19.9675532,
+   "phone": "122873663",
+   "email": "biuro@aeroklubkrakowski.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0044",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0045",
+   "name": "POLITECHNIKA ŚLĄSKA",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Gliwice",
+   "address": "44-100 GLIWICE",
+   "lat": 50.2904955,
+   "lon": 18.6680561,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0045",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0046",
+   "name": "AIRCOM Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Nidzica",
+   "address": "13-100 Nidzica",
+   "lat": 53.3890649,
+   "lon": 20.4423376,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0046",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0047",
+   "name": "AEROKLUB ŚLĄSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Katowice",
+   "address": "40-271 Katowice",
+   "lat": 50.2413988,
+   "lon": 19.0349655,
+   "phone": "322561053",
+   "email": "biuro@aeroklub.katowice.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0047",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0048",
+   "name": "AEROKLUB OSTROWSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Ostrów Wielkopolski",
+   "address": "63-400 Ostrów Wielkopolski",
+   "lat": 51.6463779,
+   "lon": 17.8121834,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0048",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0049",
+   "name": "NEXBAU Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Wolsztyn",
+   "address": "64-200 Wolsztyn",
+   "lat": 52.1093235,
+   "lon": 16.1275611,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0049",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0051",
+   "name": "POLINAR SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kraków",
+   "address": "31-567 Kraków",
+   "lat": 50.0566669,
+   "lon": 19.9772105,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0051",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0053",
+   "name": "AEROKLUB ZIEMI ZAMOJSKIEJ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mokre",
+   "address": "22-400 MOKRE",
+   "lat": 52.7001411,
+   "lon": 23.1656507,
+   "phone": "846169259",
+   "email": "aerozam@wp.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0053",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0054",
+   "name": "AEROKLUB LUBELSKI W RADAWCU",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Motycz",
+   "address": "21-030 Motycz",
+   "lat": 51.2395618,
+   "lon": 22.3812812,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0054",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0055",
+   "name": "Aeroklub Ziemi Lubuskiej",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Zielona Góra",
+   "address": "66-015 Zielona Góra",
+   "lat": 51.9707037,
+   "lon": 15.4497684,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0055",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0057",
+   "name": "TARGOR AVIATION Sp.z o.o. Sp.k.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Rzekuń",
+   "address": "07-411 Rzekuń",
+   "lat": 53.0472399,
+   "lon": 21.6306533,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0057",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0058",
+   "name": "Lotnicza Akademia Wojskowa",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Dęblin",
+   "address": "08-521 Dęblin",
+   "lat": 51.5541159,
+   "lon": 21.8665942,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0058",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0059",
+   "name": "Air Res Aviation Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Jasionka",
+   "address": "36-002 Jasionka",
+   "lat": 52.0834024,
+   "lon": 22.3862893,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0059",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0060",
+   "name": "Klub Sportów Balonowych",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Wrocław",
+   "address": "54-154 Wrocław",
+   "lat": 51.1288904,
+   "lon": 16.9747231,
+   "phone": "604462225",
+   "email": "camoksb@gmail.com",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0060",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0061",
+   "name": "AEROKLUB GLIWICKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Gliwice",
+   "address": "44-100 Gliwice",
+   "lat": 50.2904955,
+   "lon": 18.6680561,
+   "phone": "322301592",
+   "email": "dyrektor@aeroklub.gliwice.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0061",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0062",
+   "name": "BW WANICKI SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mogilany",
+   "address": "32-031 Mogilany",
+   "lat": 49.945375,
+   "lon": 19.8918665,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0062",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0063",
+   "name": "Zakład Przeglądów i Napraw Statków Powietrznych Maciej",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Krzemieniewo",
+   "address": "64-120 Krzemieniewo",
+   "lat": 51.8643734,
+   "lon": 16.8283371,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0063",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0064",
+   "name": "AIR-POL\" SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Legionowo",
+   "address": "05-120 Legionowo",
+   "lat": 52.4020124,
+   "lon": 20.9229943,
+   "phone": "227740711",
+   "email": "air-pol@air-pol.com.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0064",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0065",
+   "name": "PROPELLER Sp.z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "ul. Przydrożna 11a, 00-714 Warszawa",
+   "lat": 52.2027455,
+   "lon": 21.0508532,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0065",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0066",
+   "name": "AEROKLUB ZIEMI PIOTRKOWSKIEJ im. Gen. Stanisława",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Piotrków Trybunalski",
+   "address": "97-300 Piotrków Trybunalski",
+   "lat": 51.4113089,
+   "lon": 19.6896888,
+   "phone": "446477473",
+   "email": "prezes@azp.com.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0066",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0068",
+   "name": "AEROKLUB WARSZAWSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "01-934 Warszawa",
+   "lat": 52.2823977,
+   "lon": 20.8978843,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0068",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0069",
+   "name": "Green Aviation Sp. z o. o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mielec",
+   "address": "ul. Jadernych 7, 39-300 Mielec",
+   "lat": 50.2885008,
+   "lon": 21.4413443,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0069",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0070",
+   "name": "AEROKLUB ŚWIDNIK",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Świdnik",
+   "address": "21-040 Świdnik",
+   "lat": 51.2111567,
+   "lon": 22.6878974,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0070",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0071",
+   "name": "Serwis Lotniczy Włodzimierz Nowak",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Rybnik",
+   "address": "44-200 Rybnik",
+   "lat": 50.0975174,
+   "lon": 18.5350579,
+   "phone": "324239131",
+   "email": "nowakw@vp.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0071",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0072",
+   "name": "GA SYSTEM Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mielec",
+   "address": "39-300 Mielec",
+   "lat": 50.2885008,
+   "lon": 21.4413443,
+   "phone": "794360600",
+   "email": "camo@gasystem.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0072",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0073",
+   "name": "AERO CLUB\" SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Konstancin Jeziorna",
+   "address": "05-510 Konstancin Jeziorna",
+   "lat": 52.0765305,
+   "lon": 21.0925783,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0073",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0074",
+   "name": "AIR-WAY Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Przedecz",
+   "address": "62-635 Przedecz",
+   "lat": 52.3373507,
+   "lon": 18.9198356,
+   "phone": "605532555",
+   "email": "biuro@air-way.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0074",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0076",
+   "name": "AVIATION SERVICE NS SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "ul. GEN. SYLWESTRA KALISKIEGO 57, 01-476 WARSZAWA",
+   "lat": 52.2556061,
+   "lon": 20.8969029,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0076",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0078",
+   "name": "STOWARZYSZENIE AEROKLUB ZIEMI MAZOWIECKIEJ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Płock",
+   "address": "09-400 Płock",
+   "lat": 52.5651453,
+   "lon": 19.648642,
+   "phone": "883433862",
+   "email": "dyrektor@aeroklubplock.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0078",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0080",
+   "name": "Polska Akademia Lotnicza Sp. z o. o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "02-146 Warszawa",
+   "lat": 52.1834013,
+   "lon": 20.9641214,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0080",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0081",
+   "name": "POLITECHNIKA POZNAŃSKA",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Poznań",
+   "address": "61-131 Poznań",
+   "lat": 52.3972813,
+   "lon": 16.9620634,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0081",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0084",
+   "name": "Air Modlin Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Nowy Dwór",
+   "address": "05-160 Nowy Dwór",
+   "lat": 52.4373525,
+   "lon": 20.6698439,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0084",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0086",
+   "name": "HELIMOT sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Biskupice",
+   "address": "62-007 Biskupice",
+   "lat": 51.1523459,
+   "lon": 22.946692,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0086",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0087",
+   "name": "MGGP Aero Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Tarnów",
+   "address": "33-100 Tarnów",
+   "lat": 50.0201683,
+   "lon": 20.980377,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0087",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0088",
+   "name": "EXTEND AERO SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Krosno",
+   "address": "38-400 Krosno",
+   "lat": 49.6948568,
+   "lon": 21.7496462,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0088",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0089",
+   "name": "MG GLIDERS Polska Grzegorz Malchar",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Ligota",
+   "address": "43-518 Ligota",
+   "lat": 49.8933426,
+   "lon": 18.9426441,
+   "phone": "606812541",
+   "email": "g.malchar@wp.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0089",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0091",
+   "name": "ATC Service Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Rzeszów",
+   "address": "35-010 Rzeszów",
+   "lat": 50.0396741,
+   "lon": 21.9940167,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0091",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0092",
+   "name": "Skydream Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kaniów",
+   "address": "UL. NAD BIAŁKĄ 49, 43-514 KANIÓW",
+   "lat": 49.935126,
+   "lon": 19.0508016,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0092",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0093",
+   "name": "NWT POLSKA SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Leszno",
+   "address": "64-100 Leszno",
+   "lat": 51.8418724,
+   "lon": 16.5687747,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0093",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0094",
+   "name": "Glider TechCare Kamil Gaweł",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "01-934 Warszawa",
+   "lat": 52.2823977,
+   "lon": 20.8978843,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0094",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0095",
+   "name": "IBEX M.S. sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "01-248 Warszawa",
+   "lat": 52.2236567,
+   "lon": 20.9420935,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0095",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0096",
+   "name": "SkyAMS Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mielec",
+   "address": "39-300 Mielec",
+   "lat": 50.2885008,
+   "lon": 21.4413443,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0096",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0097",
+   "name": "HELI SUPPORT Przemysław Nowowiejski",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Błonie",
+   "address": "05-870 Błonie",
+   "lat": 52.1931964,
+   "lon": 20.589859,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0097",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0098",
+   "name": "Państwowa Akademia Nauk Stosowanych w Chełmie",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Chełm",
+   "address": "22-100 Chełm",
+   "lat": 51.1272192,
+   "lon": 23.4667962,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0098",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0099",
+   "name": "Zakład Napraw i Budowy Sprzętu Latającego i Pływającego",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "04-083 Warszawa",
+   "lat": 52.2430571,
+   "lon": 21.089486,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0099",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0102",
+   "name": "CERTIFLY SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Łódź",
+   "address": "94-328 ŁÓDŹ",
+   "lat": 51.732361,
+   "lon": 19.4065374,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0102",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   }
  ]
 }

@@ -70,7 +70,7 @@ fun AppTheme(content: @Composable () -> Unit) {
 // ---------------------------------------------------------------- helpers
 
 @Composable
-fun lang(): String = LocalConfiguration.current.locales[0].language
+fun lang(): String = androidx.core.os.ConfigurationCompat.getLocales(LocalConfiguration.current)[0]?.language ?: "en"
 
 const val KT_TO_KMH = 1.852
 

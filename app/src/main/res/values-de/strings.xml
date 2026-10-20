@@ -172,6 +172,13 @@
     <string name="kind_dealer">Händler</string>
     <string name="kind_rotax_distributor">Rotax-Distributor</string>
     <string name="kind_rotax_service">Rotax-Service</string>
+    <string name="examiners_title">ULC-Prüfer (öffentliche Daten)</string>
+    <string name="examiners_hint">Die vom polnischen Luftfahrtamt veröffentlichten Prüferlisten (Flugzeuge, UL, Mechaniker) sind nicht Teil der App. Nur bei Bedarf herunterladen.</string>
+    <string name="examiners_loaded">%1$d Prüfer auf diesem Telefon (Liste vom %2$s), automatisch aktualisiert</string>
+    <string name="examiners_download">Öffentliche Daten laden</string>
+    <string name="examiners_refresh">Aktualisieren</string>
+    <string name="examiners_remove">Vom Telefon löschen</string>
+    <string name="examiners_done">%1$d Prüfer geladen</string>
     <string name="kind_maintenance">Wartungsbetrieb</string>
     <string name="kind_mechanic">Mechaniker</string>
     <string name="kind_instructor">Fluglehrer</string>
