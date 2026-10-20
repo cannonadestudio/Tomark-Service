@@ -2,6 +2,7 @@
 """Weekly contact collector (GitHub Actions) – official ULC lists:
   * practical examiners – aeroplanes / gliders / balloons (FE, CRE, IRE, FIE …)
   * examiners – ultralights, gyroplanes, paragliders (UACP, UAGP …)
+  * examiners – aircraft mechanics
   * approved maintenance organisations Part-CAO and Part-145
 The newest PDF is always taken from the ULC page that links it. Entries are replaced as a whole
 (prefix ulc-…), so the app always shows the current lists. Coordinates: region (voivodeship) centre for
@@ -21,6 +22,8 @@ UA = {"User-Agent": "Mozilla/5.0 (AeroHangar contacts; +https://github.com/canno
 
 EXAM_PAGE = "https://ulc.gov.pl/personel-lotniczy/komisja-egzaminacyjna/egzaminy-praktyczne"
 ORG_PAGE = "https://ulc.gov.pl/technika-lotnicza/wykazy-organizacji"
+# Used when the examiner page does not link a mechanics list (ULC sometimes keeps it under "dla egzaminatora").
+MECH_FALLBACK = "https://ulc.gov.pl/_download/personel_lotniczy/dla-egzaminatora/01-2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
 
 VOIV = {  # approximate centres (capital cities) for "nearest" sorting
     "dolnośląskie": (51.11, 17.03, "Wrocław"), "kujawsko-pomorskie": (53.12, 18.01, "Bydgoszcz"),
@@ -98,7 +101,7 @@ def logical(r):
     return (r + [""] * 7)[:7]
 
 
-def parse_examiners(url, label, ul):
+def parse_examiners(url, label, ul, prefix=None):
     """Lines of: certificate | name / e-mail / tel. | region | category | scope | description | valid until.
     One examiner spans many lines; a new examiner starts at a line with a name in column 2."""
     rows = pdf_rows(url)
@@ -142,7 +145,9 @@ def parse_examiners(url, label, ul):
                 pass
 
     if DRY and skipped:
-        notice(mask(f"UNMATCHED {label[:25]} ({len(skipped)}): " + " ## ".join(skipped[:30])))
+        notice(mask(f"UNMATCHED {label[-25:]} ({len(skipped)}): " + " ## ".join(skipped[:30])))
+    if DRY and "mechanicy" in label:
+        notice(mask("MECH ROWS: " + " ## ".join(" ¦ ".join(" ".join((c or "").split())[:28] for c in logical(r)) for r in rows[:25])))
     if DRY:
         pass
     out, seen = [], set()
@@ -150,7 +155,7 @@ def parse_examiners(url, label, ul):
         if p["valid"] and max(p["valid"]) < TODAY:
             continue  # all authorisations expired
         key = re.sub(r"\W+", "-", p["name"].lower()).strip("-")
-        cid = f"ulc-exam-{'ul-' if ul else ''}{key}"[:80]
+        cid = f"{prefix or ('ulc-exam-ul-' if ul else 'ulc-exam-')}{key}"[:80]
         if cid in seen:
             continue
         seen.add(cid)
@@ -238,7 +243,11 @@ def main():
             collected["ulc-exam-"] = parse_examiners(a, "Egzaminator ULC (samoloty/szybowce/balony)", False)
         if u:
             collected["ulc-exam-ul-"] = parse_examiners(u, "Egzaminator ULC (UL, wiatrakowce, paralotnie)", True)
-        notice(f"examiner lists: A={a} UL={u}")
+        mech = pick(ex, "EGZAMINATOR", "MECHANI") or MECH_FALLBACK
+        collected["ulc-exam-mech-"] = parse_examiners(mech, "Egzaminator ULC – mechanicy lotniczy", False, prefix="ulc-exam-mech-")
+        for c in collected["ulc-exam-mech-"]:
+            c["brands"] = ["Mechanik"] + [b for b in c.get("brands", []) if b != "Mechanik"][:3]
+        notice(f"examiner lists: A={a} UL={u} MECH={mech}")
     except Exception as e:
         notice(f"examiners: ERROR {type(e).__name__}: {e}")
     try:
