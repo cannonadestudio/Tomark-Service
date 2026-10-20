@@ -1,5 +1,5 @@
 {
- "version": 2,
+ "version": 3,
  "updated": "2026-10-20",
  "contacts": [
   {
@@ -2981,8 +2981,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Świdnik\nLegal",
-   "address": "21-040 Świdnik\nLegal",
+   "city": "Świdnik",
+   "address": "21-040 Świdnik",
+   "lat": 51.2111567,
+   "lon": 22.6878974,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0001",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3011,8 +3013,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Rybnik\nLegal",
-   "address": "44-200 Rybnik\nLegal",
+   "city": "Rybnik",
+   "address": "44-200 Rybnik",
+   "lat": 50.0975174,
+   "lon": 18.5350579,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0005",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3024,8 +3028,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Bielsko-Biała\nLegal",
-   "address": "43-300 Bielsko-Biała\nLegal",
+   "city": "Bielsko-Biała",
+   "address": "43-300 Bielsko-Biała",
+   "lat": 49.8181415,
+   "lon": 19.0441659,
    "phone": "338151870",
    "email": "dyrektor@epba.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0008",
@@ -3039,8 +3045,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Kościelec\nLegal",
-   "address": "42-240 Kościelec\nLegal",
+   "city": "Kościelec",
+   "address": "42-240 Kościelec",
+   "lat": 52.17427,
+   "lon": 18.56979,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0009",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3052,7 +3060,7 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "JELENIA GÓRA",
+   "city": "Jelenia Góra",
    "address": "58-500 JELENIA GÓRA",
    "lat": 50.9088622,
    "lon": 15.7765641,
@@ -3069,8 +3077,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Bydgoszcz\nLegal",
-   "address": "85-157 Bydgoszcz\nLegal",
+   "city": "Bydgoszcz",
+   "address": "85-157 Bydgoszcz",
+   "lat": 53.1059601,
+   "lon": 17.9728904,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0011",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3082,8 +3092,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Toruń\nLegal",
-   "address": "87-100 Toruń\nLegal",
+   "city": "Toruń",
+   "address": "87-100 Toruń",
+   "lat": 53.0211332,
+   "lon": 18.6228646,
    "phone": "566222474",
    "email": "sekretariat@aeroklub.torun.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0012",
@@ -3097,8 +3109,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Szczecin\nLegal",
-   "address": "70-800 Szczecin\nLegal",
+   "city": "Szczecin",
+   "address": "70-800 Szczecin",
+   "lat": 53.396743,
+   "lon": 14.6269131,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0013",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3142,8 +3156,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Bydgoszcz\nLegal",
-   "address": "85-915 Bydgoszcz\nLegal",
+   "city": "Bydgoszcz",
+   "address": "85-915 Bydgoszcz",
+   "lat": 53.1316155,
+   "lon": 18.0014988,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0016",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3155,8 +3171,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Łódź\nLegal",
-   "address": "94-328 Łódź\nLegal",
+   "city": "Łódź",
+   "address": "94-328 Łódź",
+   "lat": 51.732361,
+   "lon": 19.4065374,
    "phone": "426843550",
    "email": "sekretariat@aeroklub-lodz.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0017",
@@ -3215,8 +3233,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Piła\nLegal",
-   "address": "Al. Poznańska 28a, 64-920 Piła\nLegal",
+   "city": "Piła",
+   "address": "Al. Poznańska 28a, 64-920 Piła",
+   "lat": 53.1504958,
+   "lon": 16.7460267,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0021",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3228,8 +3248,8 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Mirosławice\nLegal",
-   "address": "55-050 Mirosławice\nLegal",
+   "city": "Mirosławice",
+   "address": "55-050 Mirosławice",
    "phone": "717816385",
    "email": "aeroplan1@o2.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0022",
@@ -3274,8 +3294,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Żywiec\nLegal",
-   "address": "ul. Kolonia Browar 25, 34-300 Żywiec\nLegal",
+   "city": "Żywiec",
+   "address": "ul. Kolonia Browar 25, 34-300 Żywiec",
+   "lat": 49.6856397,
+   "lon": 19.201743,
    "phone": "338618984",
    "email": "anteklot@bb.onet.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0025",
@@ -3289,8 +3311,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Warszawa\nLegal",
-   "address": "03-589 Warszawa\nLegal",
+   "city": "Warszawa",
+   "address": "03-589 Warszawa",
+   "lat": 52.2794341,
+   "lon": 21.0568409,
    "phone": "504079919",
    "email": "hmj3@hmj.com.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0026",
@@ -3304,8 +3328,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Katowice\nLegal",
-   "address": "40-127 Katowice\nLegal",
+   "city": "Katowice",
+   "address": "40-127 Katowice",
+   "lat": 50.2685273,
+   "lon": 19.0227369,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0027",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3334,8 +3360,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Gądki\nLegal",
-   "address": "62-023 Gądki\nLegal",
+   "city": "Gądki",
+   "address": "62-023 Gądki",
+   "lat": 52.3157376,
+   "lon": 17.0566268,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0030",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3347,8 +3375,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Zaleszany\nLegal",
-   "address": "37-415 Zaleszany\nLegal",
+   "city": "Zaleszany",
+   "address": "37-415 Zaleszany",
+   "lat": 50.6399163,
+   "lon": 21.9145152,
    "phone": "158440118",
    "email": "technika@aeroklubstalowowolski.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0031",
@@ -3362,8 +3392,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Poznań\nLegal",
-   "address": "61-102 Poznań\nLegal",
+   "city": "Poznań",
+   "address": "61-102 Poznań",
+   "lat": 52.4079444,
+   "lon": 16.9429197,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0032",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3375,8 +3407,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Poznań\nLegal",
-   "address": "61-139 Poznań\nLegal",
+   "city": "Poznań",
+   "address": "61-139 Poznań",
+   "lat": 52.4027041,
+   "lon": 16.9521829,
    "email": "camo@aeroklub.poznan.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0033",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
@@ -3389,8 +3423,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Białystok\nLegal",
-   "address": "15-602 Białystok\nLegal",
+   "city": "Białystok",
+   "address": "15-602 Białystok",
+   "lat": 53.132398,
+   "lon": 23.1591679,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0034",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3402,8 +3438,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Warszawa\nLegal",
-   "address": "01-934 Warszawa\nLegal",
+   "city": "Warszawa",
+   "address": "01-934 Warszawa",
+   "lat": 52.2823977,
+   "lon": 20.8978843,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0036",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3415,8 +3453,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Białystok\nLegal",
-   "address": "15-312 Białystok\nLegal",
+   "city": "Białystok",
+   "address": "15-312 Białystok",
+   "lat": 53.1203029,
+   "lon": 23.1525065,
    "phone": "600359833",
    "email": "balony@ballooning.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0037",
@@ -3430,8 +3470,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Dęblin\nLegal",
-   "address": "08-521 Dęblin\nLegal",
+   "city": "Dęblin",
+   "address": "08-521 Dęblin",
+   "lat": 51.5541159,
+   "lon": 21.8665942,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0041",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3443,8 +3485,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Jasionka\nLegal",
-   "address": "36-002 Jasionka\nLegal",
+   "city": "Jasionka",
+   "address": "36-002 Jasionka",
+   "lat": 52.0834024,
+   "lon": 22.3862893,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0043",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3456,8 +3500,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Kraków\nLegal",
-   "address": "30-552 Kraków\nLegal",
+   "city": "Kraków",
+   "address": "30-552 Kraków",
+   "lat": 50.0352922,
+   "lon": 19.9675532,
    "phone": "122873663",
    "email": "biuro@aeroklubkrakowski.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0044",
@@ -3471,8 +3517,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "GLIWICE\nLegal",
-   "address": "44-100 GLIWICE\nLegal",
+   "city": "Gliwice",
+   "address": "44-100 GLIWICE",
+   "lat": 50.2904955,
+   "lon": 18.6680561,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0045",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3484,8 +3532,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Nidzica\nLegal",
-   "address": "13-100 Nidzica\nLegal",
+   "city": "Nidzica",
+   "address": "13-100 Nidzica",
+   "lat": 53.3890649,
+   "lon": 20.4423376,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0046",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3497,8 +3547,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Katowice\nLegal",
-   "address": "40-271 Katowice\nLegal",
+   "city": "Katowice",
+   "address": "40-271 Katowice",
+   "lat": 50.2413988,
+   "lon": 19.0349655,
    "phone": "322561053",
    "email": "biuro@aeroklub.katowice.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0047",
@@ -3527,8 +3579,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Wolsztyn\nLegal",
-   "address": "64-200 Wolsztyn\nLegal",
+   "city": "Wolsztyn",
+   "address": "64-200 Wolsztyn",
+   "lat": 52.1093235,
+   "lon": 16.1275611,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0049",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3540,8 +3594,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Kraków\nLegal",
-   "address": "31-567 Kraków\nLegal",
+   "city": "Kraków",
+   "address": "31-567 Kraków",
+   "lat": 50.0566669,
+   "lon": 19.9772105,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0051",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3553,8 +3609,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "MOKRE\nLegal",
-   "address": "22-400 MOKRE\nLegal",
+   "city": "Mokre",
+   "address": "22-400 MOKRE",
+   "lat": 52.7001411,
+   "lon": 23.1656507,
    "phone": "846169259",
    "email": "aerozam@wp.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0053",
@@ -3568,8 +3626,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Motycz\nLegal",
-   "address": "21-030 Motycz\nLegal",
+   "city": "Motycz",
+   "address": "21-030 Motycz",
+   "lat": 51.2395618,
+   "lon": 22.3812812,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0054",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3596,8 +3656,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Rzekuń\nLegal",
-   "address": "07-411 Rzekuń\nLegal",
+   "city": "Rzekuń",
+   "address": "07-411 Rzekuń",
+   "lat": 53.0472399,
+   "lon": 21.6306533,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0057",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3609,8 +3671,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Dęblin\nLegal",
-   "address": "08-521 Dęblin\nLegal",
+   "city": "Dęblin",
+   "address": "08-521 Dęblin",
+   "lat": 51.5541159,
+   "lon": 21.8665942,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0058",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3622,8 +3686,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Jasionka\nLegal",
-   "address": "36-002 Jasionka\nLegal",
+   "city": "Jasionka",
+   "address": "36-002 Jasionka",
+   "lat": 52.0834024,
+   "lon": 22.3862893,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0059",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3635,8 +3701,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Wrocław\nLegal",
-   "address": "54-154 Wrocław\nLegal",
+   "city": "Wrocław",
+   "address": "54-154 Wrocław",
+   "lat": 51.1288904,
+   "lon": 16.9747231,
    "phone": "604462225",
    "email": "camoksb@gmail.com",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0060",
@@ -3650,8 +3718,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Gliwice\nLegal",
-   "address": "44-100 Gliwice\nLegal",
+   "city": "Gliwice",
+   "address": "44-100 Gliwice",
+   "lat": 50.2904955,
+   "lon": 18.6680561,
    "phone": "322301592",
    "email": "dyrektor@aeroklub.gliwice.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0061",
@@ -3665,8 +3735,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Mogilany\nLegal",
-   "address": "32-031 Mogilany\nLegal",
+   "city": "Mogilany",
+   "address": "32-031 Mogilany",
+   "lat": 49.945375,
+   "lon": 19.8918665,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0062",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3678,8 +3750,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Krzemieniewo\nLegal",
-   "address": "64-120 Krzemieniewo\nLegal",
+   "city": "Krzemieniewo",
+   "address": "64-120 Krzemieniewo",
+   "lat": 51.8643734,
+   "lon": 16.8283371,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0063",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3691,8 +3765,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Legionowo\nLegal",
-   "address": "05-120 Legionowo\nLegal",
+   "city": "Legionowo",
+   "address": "05-120 Legionowo",
+   "lat": 52.4020124,
+   "lon": 20.9229943,
    "phone": "227740711",
    "email": "air-pol@air-pol.com.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0064",
@@ -3706,8 +3782,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Warszawa\nLegal",
-   "address": "ul. Przydrożna 11a, 00-714 Warszawa\nLegal",
+   "city": "Warszawa",
+   "address": "ul. Przydrożna 11a, 00-714 Warszawa",
+   "lat": 52.2027455,
+   "lon": 21.0508532,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0065",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3736,8 +3814,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Warszawa\nLegal",
-   "address": "01-934 Warszawa\nLegal",
+   "city": "Warszawa",
+   "address": "01-934 Warszawa",
+   "lat": 52.2823977,
+   "lon": 20.8978843,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0068",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3749,8 +3829,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Mielec\nLegal",
-   "address": "ul. Jadernych 7, 39-300 Mielec\nLegal",
+   "city": "Mielec",
+   "address": "ul. Jadernych 7, 39-300 Mielec",
+   "lat": 50.2885008,
+   "lon": 21.4413443,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0069",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3762,8 +3844,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Świdnik\nLegal",
-   "address": "21-040 Świdnik\nLegal",
+   "city": "Świdnik",
+   "address": "21-040 Świdnik",
+   "lat": 51.2111567,
+   "lon": 22.6878974,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0070",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3775,8 +3859,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Rybnik\nLegal",
-   "address": "44-200 Rybnik\nLegal",
+   "city": "Rybnik",
+   "address": "44-200 Rybnik",
+   "lat": 50.0975174,
+   "lon": 18.5350579,
    "phone": "324239131",
    "email": "nowakw@vp.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0071",
@@ -3790,8 +3876,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Mielec\nLegal",
-   "address": "39-300 Mielec\nLegal",
+   "city": "Mielec",
+   "address": "39-300 Mielec",
+   "lat": 50.2885008,
+   "lon": 21.4413443,
    "phone": "794360600",
    "email": "camo@gasystem.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0072",
@@ -3820,8 +3908,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Przedecz\nLegal",
-   "address": "62-635 Przedecz\nLegal",
+   "city": "Przedecz",
+   "address": "62-635 Przedecz",
+   "lat": 52.3373507,
+   "lon": 18.9198356,
    "phone": "605532555",
    "email": "biuro@air-way.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0074",
@@ -3835,8 +3925,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "WARSZAWA\nLegal",
-   "address": "ul. GEN. SYLWESTRA KALISKIEGO 57, 01-476 WARSZAWA\nLegal",
+   "city": "Warszawa",
+   "address": "ul. GEN. SYLWESTRA KALISKIEGO 57, 01-476 WARSZAWA",
+   "lat": 52.2556061,
+   "lon": 20.8969029,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0076",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3848,8 +3940,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Płock\nLegal",
-   "address": "09-400 Płock\nLegal",
+   "city": "Płock",
+   "address": "09-400 Płock",
+   "lat": 52.5651453,
+   "lon": 19.648642,
    "phone": "883433862",
    "email": "dyrektor@aeroklubplock.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0078",
@@ -3863,8 +3957,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Warszawa\nLegal",
-   "address": "02-146 Warszawa\nLegal",
+   "city": "Warszawa",
+   "address": "02-146 Warszawa",
+   "lat": 52.1834013,
+   "lon": 20.9641214,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0080",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3876,8 +3972,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Poznań\nLegal",
-   "address": "61-131 Poznań\nLegal",
+   "city": "Poznań",
+   "address": "61-131 Poznań",
+   "lat": 52.3972813,
+   "lon": 16.9620634,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0081",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3904,8 +4002,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Biskupice\nLegal",
-   "address": "62-007 Biskupice\nLegal",
+   "city": "Biskupice",
+   "address": "62-007 Biskupice",
+   "lat": 51.1523459,
+   "lon": 22.946692,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0086",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3917,8 +4017,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Tarnów\nLegal",
-   "address": "33-100 Tarnów\nLegal",
+   "city": "Tarnów",
+   "address": "33-100 Tarnów",
+   "lat": 50.0201683,
+   "lon": 20.980377,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0087",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3930,8 +4032,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Krosno\nLegal",
-   "address": "38-400 Krosno\nLegal",
+   "city": "Krosno",
+   "address": "38-400 Krosno",
+   "lat": 49.6948568,
+   "lon": 21.7496462,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0088",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3943,8 +4047,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Ligota\nLegal",
-   "address": "43-518 Ligota\nLegal",
+   "city": "Ligota",
+   "address": "43-518 Ligota",
+   "lat": 49.8933426,
+   "lon": 18.9426441,
    "phone": "606812541",
    "email": "g.malchar@wp.pl",
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0089",
@@ -3958,8 +4064,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Rzeszów\nLegal",
-   "address": "35-010 Rzeszów\nLegal",
+   "city": "Rzeszów",
+   "address": "35-010 Rzeszów",
+   "lat": 50.0396741,
+   "lon": 21.9940167,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0091",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3971,8 +4079,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "KANIÓW\nLegal",
-   "address": "UL. NAD BIAŁKĄ 49, 43-514 KANIÓW\nLegal",
+   "city": "Kaniów",
+   "address": "UL. NAD BIAŁKĄ 49, 43-514 KANIÓW",
+   "lat": 49.935126,
+   "lon": 19.0508016,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0092",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3984,8 +4094,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Leszno\nLegal",
-   "address": "64-100 Leszno\nLegal",
+   "city": "Leszno",
+   "address": "64-100 Leszno",
+   "lat": 51.8418724,
+   "lon": 16.5687747,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0093",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -3997,8 +4109,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Warszawa\nLegal",
-   "address": "01-934 Warszawa\nLegal",
+   "city": "Warszawa",
+   "address": "01-934 Warszawa",
+   "lat": 52.2823977,
+   "lon": 20.8978843,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0094",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -4010,8 +4124,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Warszawa\nLegal",
-   "address": "01-248 Warszawa\nLegal",
+   "city": "Warszawa",
+   "address": "01-248 Warszawa",
+   "lat": 52.2236567,
+   "lon": 20.9420935,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0095",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -4023,8 +4139,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Mielec\nLegal",
-   "address": "39-300 Mielec\nLegal",
+   "city": "Mielec",
+   "address": "39-300 Mielec",
+   "lat": 50.2885008,
+   "lon": 21.4413443,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0096",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -4036,8 +4154,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Błonie\nLegal",
-   "address": "05-870 Błonie\nLegal",
+   "city": "Błonie",
+   "address": "05-870 Błonie",
+   "lat": 52.1931964,
+   "lon": 20.589859,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0097",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -4049,8 +4169,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Chełm\nLegal",
-   "address": "22-100 Chełm\nLegal",
+   "city": "Chełm",
+   "address": "22-100 Chełm",
+   "lat": 51.1272192,
+   "lon": 23.4667962,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0098",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -4062,8 +4184,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "Warszawa\nLegal",
-   "address": "04-083 Warszawa\nLegal",
+   "city": "Warszawa",
+   "address": "04-083 Warszawa",
+   "lat": 52.2430571,
+   "lon": 21.089486,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0099",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   },
@@ -4075,8 +4199,10 @@
     "Part-CAO"
    ],
    "country": "PL",
-   "city": "ŁÓDŹ\nLegal",
-   "address": "94-328 ŁÓDŹ\nLegal",
+   "city": "Łódź",
+   "address": "94-328 ŁÓDŹ",
+   "lat": 51.732361,
+   "lon": 19.4065374,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0102",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   }
