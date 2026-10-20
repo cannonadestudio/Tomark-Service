@@ -1,5 +1,5 @@
 {
- "version": 3,
+ "version": 4,
  "updated": "2026-10-20",
  "contacts": [
   {
@@ -1858,7 +1858,7 @@
    ],
    "country": "PL",
    "email": "mardab.fi@gmail.com",
-   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) B737 300-900 – TR B737 300-900, IR, ATPL(A); woj. mazowieckie; woj. kujawsko-pomorskie; woj. wielkopolskie; woj. dolnośląskie; woj. opolskie. Ważne do 28.02.2029. PL/TRE/10219 PL/TRE/17067 PL/TRE/7815",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) B737 300-900 – TR B737 300-900, IR, ATPL(A); woj. mazowieckie; woj. kujawsko-pomorskie; woj. wielkopolskie; woj. dolnośląskie; woj. opolskie; woj. śląskie; woj. podkarpackie; woj. lubelskie; woj. świętokrzyskie; woj. Małopolskie; śląskie; woj. pomorskie. Ważne do 28.02.2029. PL/TRE/10219 PL/TRE/17067 PL/TRE/7815",
    "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
   },
   {
@@ -2464,7 +2464,7 @@
    "country": "PL",
    "phone": "792320340",
    "email": "wmrozek@op.pl",
-   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. podkarpackie; TRE(A) B737 300-900; woj. mazowieckie woj. lubelskie – FE(S); woj. dolnośląskie – FE(A); woj. opolskie – CRE SEP(Land); FE(S). PL/TRE/9427 PL/FE/7168 PL/TRE/2678",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. podkarpackie; TRE(A) B737 300-900; woj. mazowieckie woj. lubelskie – FE(S); woj. dolnośląskie – FE(A); woj. opolskie – CRE SEP(Land); FE(S); woj. wielkopolskie woj. lubuskie woj. dolnośląskie – FE(A) CRE SEP(Land); FE(A); CRE SEP(Land); CRE MEP(Land); IRE(A) SE/ME; FIE(A). PL/TRE/9427 PL/FE/7168 PL/TRE/2678",
    "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
   },
   {
@@ -2844,13 +2844,13 @@
    "brands": [
     "E/T",
     "INS(SL)",
-    "Teoria: MTBiGM Poz. 664/13",
     "PHGP - ust. 1.3.3. Zał. nr 4",
+    "PHGP - ust. 9 pkt. 1 Zał. nr 2:",
     "UL"
    ],
    "country": "PL",
    "email": "jacek@ticada.pl",
-   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; INS(SL); Teoria: MTBiGM Poz. 664/13; PHGP - ust. 1.3.3. Zał. nr 4; Praktyka: MI Poz. 1745/18; PHGP - ust. 9 pkt. 1 Zał. nr 2:. Ważne do 31.05.2029. PL/27882 PL/12438 PL/13377",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; INS(SL); PHGP - ust. 1.3.3. Zał. nr 4; PHGP - ust. 9 pkt. 1 Zał. nr 2:; PHG(L); INS - ust. 1.4.1.3. Zał. nr 4; UACP - ust. 1.3.3. Zał. nr 5; INS(A) - ust. 1.4.3.3. Zał. nr 5; TM(PHG) ust. 1.3.3. Zał. nr 9; TM(A) ust. 1.3.3. Zał. nr 9; UACP - ust. 10 pkt. 1 Zał. nr 2:; UAP(L). Ważne do 31.05.2029. PL/27882 PL/12438 PL/13377",
    "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
   },
   {
@@ -2970,8 +2970,155 @@
    "country": "PL",
    "phone": "601251308",
    "email": "tw@topr.pl",
-   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(PJ) – PJ(B)(C)(D); INS; INS(SL); INS(AFF); TANDEM. PL/17956",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(PJ) – PJ(B)(C)(D); INS; INS(SL); INS(AFF); TANDEM; INS(TANDEM). PL/17956",
    "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-mech-bartler-szczepan",
+   "name": "Bartler Szczepan",
+   "kind": "examiner",
+   "brands": [
+    "Mechanik",
+    "B1.2, B2, C",
+    "Socata M880B (Lycoming, Continental, Franklin)",
+    "MS 890 and Rallye 235 Series (Lycoming, Continental, Franklin)"
+   ],
+   "country": "PL",
+   "phone": "663447266",
+   "email": "marekbartler@gmail.com",
+   "note": "Egzaminator ULC – mechanicy lotniczy. B1.2, B2, C – Cessna series 150, 152 (Lycoming, Continental); Socata M880B (Lycoming, Continental, Franklin); MS 890 and Rallye 235 Series (Lycoming, Continental, Franklin); PZL-110 Koliber, PZL-150 Koliber (Franklin, Lycoming); PZL-104 Wilga (Ivchenko, Lycoming); PZL-101 Gawron, Jak-12A/M (Ivchenko); Antonow An-2 (Shvetsov-ASz-62IR); Piper Cup (Continental); Aero AT-3 (Limbach, Rotax); Socata TB9 (Lycoming); Piper PA-28R-201 Arrow (Lycoming); Zlin Z-26 Series (Walter/AVIA/LOM). PL/SEN-M/3872",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
+  },
+  {
+   "id": "ulc-exam-mech-głusiec-krzysztof",
+   "name": "Głusiec Krzysztof",
+   "kind": "examiner",
+   "brands": [
+    "Mechanik",
+    "B1.1, B1.2, B1.3, B2, C",
+    "Cessna/Reims-Cessna 152/F152 Series (Lycoming)",
+    "Cessna/Reims Cessna 172/F172 Series (Continental, Lycoming)"
+   ],
+   "country": "PL",
+   "phone": "785889898",
+   "email": "krzysztof.glusiec@wp.pl",
+   "note": "Egzaminator ULC – mechanicy lotniczy. B1.1, B1.2, B1.3, B2, C – Cessna/Reims-Cessna 150/F150 Series (Continental); Cessna/Reims-Cessna 152/F152 Series (Lycoming); Cessna/Reims Cessna 172/F172 Series (Continental, Lycoming); Zlin Z-42 Series, Zlin 142 (LOM); PZL-104 Wilga 35,PZL-104 Wilga 80, PZL-104 M/F Wilga 2000 (Ivchenko,; Lycoming); PZL-101 Gawron, Jak-12A/M (Ivchenko); PZL-106 A/AS BR/BS BT Kruk (Walter M601); PZL-110 Koliber, PZL-150 Koliber (Franklin, Lycoming); Rockwell S-2R \"Thrush\" (AiResearch TPE/PZL-3S); PZL M-18 Dromader (ASz-62); Antonow An-2 (Shvetsov-ASz-62IR). PL/M/3216",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
+  },
+  {
+   "id": "ulc-exam-mech-janowski-wiesław",
+   "name": "Janowski Wiesław",
+   "kind": "examiner",
+   "brands": [
+    "Mechanik",
+    "B1.2, B2, C"
+   ],
+   "country": "PL",
+   "phone": "507813625",
+   "email": "wjanowski@panschelm.edu.pl",
+   "note": "Egzaminator ULC – mechanicy lotniczy. B1.2, B2, C. PL/M/2915",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
+  },
+  {
+   "id": "ulc-exam-mech-kinstler-zbigniew",
+   "name": "Kinstler Zbigniew",
+   "kind": "examiner",
+   "brands": [
+    "Mechanik",
+    "B1.2, B2, C"
+   ],
+   "country": "PL",
+   "phone": "603683277",
+   "email": "zbyszekptr@poczta.fm",
+   "note": "Egzaminator ULC – mechanicy lotniczy. B1.2, B2, C. PL/M/12211",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
+  },
+  {
+   "id": "ulc-exam-mech-kosierb-andrzej",
+   "name": "Kosierb Andrzej",
+   "kind": "examiner",
+   "brands": [
+    "Mechanik",
+    "B1.3, B2, C"
+   ],
+   "country": "PL",
+   "phone": "502472588",
+   "email": "andrzejkosierb@wp.pl",
+   "note": "Egzaminator ULC – mechanicy lotniczy. B1.3, B2, C. PL/M/7654",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
+  },
+  {
+   "id": "ulc-exam-mech-krawczyk-karol",
+   "name": "Krawczyk Karol",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "664216001",
+   "email": "karolkrawczyk.poczta@gmail.com",
+   "note": "Egzaminator ULC – mechanicy lotniczy. . PL/M/48512",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf",
+   "brands": [
+    "Mechanik"
+   ]
+  },
+  {
+   "id": "ulc-exam-mech-kusek-krzysztof",
+   "name": "Kusek Krzysztof",
+   "kind": "examiner",
+   "brands": [
+    "Mechanik",
+    "B1.2, B2, C"
+   ],
+   "country": "PL",
+   "phone": "604712937",
+   "email": "kkusek@poczta.onet.pl",
+   "note": "Egzaminator ULC – mechanicy lotniczy. B1.2, B2, C. PL/M/7011",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
+  },
+  {
+   "id": "ulc-exam-mech-moch-piotr",
+   "name": "Moch Piotr",
+   "kind": "examiner",
+   "brands": [
+    "Mechanik",
+    "B1.2",
+    "B2L(com/nav)",
+    "B2L(dozorowanie)"
+   ],
+   "country": "PL",
+   "phone": "668095897",
+   "email": "p-moch@o2.pl",
+   "note": "Egzaminator ULC – mechanicy lotniczy. B1.2; B2L(com/nav); B2L(dozorowanie); B2L(przyrządy); B2L(systemy płatowca); L1; L2. PL/M/3351",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
+  },
+  {
+   "id": "ulc-exam-mech-nicałek-jacek",
+   "name": "Nicałek Jacek",
+   "kind": "examiner",
+   "brands": [
+    "Mechanik",
+    "B1.2, B1.3, B1.4, C"
+   ],
+   "country": "PL",
+   "phone": "503126580",
+   "email": "j.nicalek@gmail.com",
+   "note": "Egzaminator ULC – mechanicy lotniczy. B1.2, B1.3, B1.4, C. PL/MT.66.0388/18282M",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
+  },
+  {
+   "id": "ulc-exam-mech-pawełek-krzysztof",
+   "name": "Pawełek Krzysztof",
+   "kind": "examiner",
+   "brands": [
+    "Mechanik",
+    "B1.2, B2, C",
+    "B1.2, B1,3, B1.4, B2, C",
+    "31.03.2028"
+   ],
+   "country": "PL",
+   "phone": "602474461",
+   "email": "kpawelek@royal-star.pl",
+   "note": "Egzaminator ULC – mechanicy lotniczy. B1.2, B2, C; B1.2, B1,3, B1.4, B2, C; 31.03.2028 – B1.2, B1,3, B1.4, B2, C; B1.2, B1.3, B2, C; 28.02.2028 – B1.2, B1.3, B2, C; B1.1, B1.2, B2, C; 28.02.2029 – B1.1, B1.2, B2, C. PL//M/13938 PL/M/4316 PL/M/6798",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
   },
   {
    "id": "ulc-pl-pl-cao-0001",
