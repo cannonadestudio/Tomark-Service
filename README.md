@@ -1,50 +1,36 @@
-# Viper & Skyper Pilot
+# AeroHangar
 
-Aplikacja Android dla właścicieli i pilotów samolotów TOMARK **Viper SD-4** (RTC, Night-VFR, UL/LSA) i **Skyper GT9**.
-Nieoficjalna – niezwiązana z TOMARK s.r.o.
-
-## Co robi
+Aplikacja Android dla właścicieli i pilotów samolotów z silnikami **Rotax 912** – TOMARK Viper SD-4 / Skyper GT9 i 23 inne typy (Tecnam, Aquila, Diamond, Flight Design, WT9, Breezer, Bristell, C42, Aeroprakt, Shark, FK9, EV-97, Remos, Pipistrel, Faeta, VL3, Savage). Nieoficjalna – niezwiązana z producentami ani BRP-Rotax.
 
 | Karta | Zawartość |
 |---|---|
-| **Karta** | Najważniejsze prędkości (VS0, VS1, podejście, VFE, VA, VC, VNE…) w kt / km/h, nalot, najbliższe prace, biuletyny bez statusu |
-| **Instrukcja** | Ograniczenia z TCDS (masy, CG, obciążenia, klapy, napęd, płyny), edycja prędkości z własnej AFM, dołączony PDF instrukcji (offline), notatki |
-| **Serwis** | Program obsługi EASA lub UL: terminy w godzinach i miesiącach („co nastąpi wcześniej”), tolerancje wg SB_SD4-03-2023, historia, własne pozycje |
-| **Biuletyny** | AD / ASB / SB / SIB przypisane do typu, status wykonany / nie dotyczy, codzienne pobieranie nowej listy i powiadomienia |
+| **Karta** | Prędkości w siatce 3 kolumny (kt / km/h), nalot (także z logbooka), najbliższe prace, otwarte biuletyny |
+| **Instrukcja** | Dane z TCDS / kart typu, własne wartości z AFM, PDF instrukcji offline, notatki |
+| **Serwis** | Program EASA lub UL + Rotax wg MML-912, tolerancje, historia z edycją wpisów, własne pozycje |
+| **Biuletyny** | TOMARK, Rotax (grupa ROTAX_912), EASA AD – status wykonany / nie dotyczy |
+| **Kontakty** | Dealerzy, serwisy Rotax, mechanicy, instruktorzy, egzaminatorzy – najbliżsi wg GPS, import/eksport |
 
-Wiele samolotów, 4 języki (PL, EN, SK, FR – wg języka telefonu).
+## Skąd aplikacja bierze dane (zawsze aktualne)
 
-## Pierwsze uruchomienie (budowa APK)
+Aplikacja pobiera `data/bulletins.json`, `data/contacts.json` i `data/types.json` z tego repo **przy każdym otwarciu i raz dziennie**. Te same pliki są wbudowane w APK na wypadek braku sieci.
 
-1. Załóż na koncie **cannonadestudio** publiczne repozytorium **Tomark-Service** (publiczne – aplikacja czyta z niego listę biuletynów).
-2. Wgraj zawartość tego folderu (np. `git init && git add . && git commit -m init && git remote add origin https://github.com/cannonadestudio/Tomark-Service.git && git push -u origin main`).
-3. W zakładce **Actions** uruchomi się „Build APK” – po kilku minutach pobierzesz `TomarkPilot-apk` (debug i release).
+- **Panel webowy** `docs/admin/` – dodawanie, edycja i usuwanie biuletynów, kontaktów (w tym mechaników, instruktorów, egzaminatorów) i typów samolotów. Zapis idzie prosto do `data/*.json`.
+- **Automat** `.github/workflows/update-bulletins.yml` – codziennie czyta publiczną listę wsparcia technicznego TOMARK i dopisuje nowe dokumenty.
+- Dane osobiste (samoloty, nalot, wpisy serwisowe, własne kontakty) zostają tylko w telefonie użytkownika.
 
-Release jest podpisany kluczem debug – przed publikacją w Google Play podmień `signingConfig` na własny keystore.
+### Uruchomienie panelu
+1. Repo → **Settings → Pages** → Source: *Deploy from a branch*, branch `main`, folder `/docs` → Save.
+2. Panel: `https://cannonadestudio.github.io/Tomark-Service/admin/`
+3. GitHub → **Settings → Developer settings → Fine-grained tokens** → nowy token: tylko repo *Tomark-Service*, uprawnienie *Contents: Read and write*. Wklej go w panelu (zostaje w przeglądarce).
 
-## Jak opublikować nowy biuletyn
+## Logbook
 
-1. Dopisz wpis w `tools/build_data.py` (lista `bulletins`) – `id`, data, tytuł, grupy (`SD4_RTC`, `SD4_NVFR`, `SD4_UL`, `GT9`), rodzaj, obowiązkowy.
-2. `python3 tools/build_data.py` (generuje `data/bulletins.json` i dane wbudowane).
-3. Commit + push. Telefony pobiorą listę w ciągu doby i pokażą powiadomienie – bez wydawania nowej wersji.
+Każdy użytkownik wskazuje w Ustawieniach (ⓘ) własny plik eksportu logbooka – CSV (`;`, `,` lub tab) albo JSON z kolumną znaków i kolumną czasu lotu (`1:30`, `1,5`, minuty). Przy samolocie zaznacza „Pobieraj nalot z logbooka”: obecny nalot zostaje, kolejne loty są doliczane przy każdym otwarciu i codziennie.
 
-Teksty interfejsu: `tools/build_strings.py` → `python3 tools/build_strings.py`.
+## Budowa
+
+Każdy push do `main` buduje APK w Actions (artefakt `TomarkPilot-apk`). `tools/build_data.py --bootstrap` odtwarza dane od zera – **nadpisuje zmiany z panelu**, normalnie nieużywany.
 
 ## Pochodzenie danych
 
-**Potwierdzone (verified):**
-- Prędkości, masy, CG, obciążenia, klapy, napęd, płyny Viper SD-4 RTC / Night-VFR – EASA TCDS A.606 Issue 4 (18.03.2025).
-- Przeglądy EASA 25 h / 50 h / 100 h / 2000 h i tolerancje (±1,25 / ±2,5 / ±5 / ±100 h, liczenie od terminu, nie od wykonania) – SB_SD4-03-2023, SB-SD4-01-2024.
-- Przegląd 100 h / 1 rok dla Viper UL – SB_LŠZ_SD4-03-2017.
-- ARC co 12 mies. – Part-ML.
-- Lista biuletynów – strona wsparcia technicznego TOMARK (stan 20.10.2026), EASA AD 2026-0170, Rotax ASB-2026-001.
-
-**Do weryfikacji (⚠ w aplikacji):**
-- Prędkości Viper UL i Skyper GT9 – dane marketingowe producenta / Wikipedia, nie AFM.
-- Prędkość podejścia – obliczona 1,3×VS0.
-- VR, VX, VY, najlepsze szybowanie – brak w źródłach publicznych, do wpisania z AFM.
-- Interwały Rotax (olej 100 h/12 mies., świece 200 h, reduktor 1000 h, guma 5 lat, TBO 2000 h/15 lat), przegląd roczny EASA, przepisy krajowe UL – do potwierdzenia z AMM i Rotax MML-912.
-- Śmigło i spadochron ratowniczy – interwał do ustawienia wg instrukcji producenta.
-- Status „obowiązkowy” przy części SB – tam gdzie nieznany, aplikacja pokazuje „Sprawdź dokument”.
-
-Wiążące są zawsze aktualne AFM, AMM, biuletyny i dyrektywy samolotu.
+Prędkości z EASA TCDS, kart typu DULV/DAeC/Traficom/BMAA i POH producentów; Rotax wg MML-912 Ed.4 Rev.1 (olej/świece/reduktor z opracowań RAANZ – do potwierdzenia). Wartości ⚠ są niepotwierdzone. Dealerzy i serwisy ze stron dystrybutorów Rotax i producentów (stan 20.10.2026, współrzędne przybliżone). Wiążące są zawsze AFM, AMM, biuletyny i dyrektywy samolotu.
