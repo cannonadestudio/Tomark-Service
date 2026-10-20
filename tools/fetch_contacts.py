@@ -204,9 +204,12 @@ def parse_orgs(url, label, approval_rx, cache):
         chunk = text[m.end(): matches[i + 1].start() if i + 1 < len(matches) else m.end() + 800]
         email = EMAIL.search(chunk)
         tel = TEL_RX.search(chunk)
-        post = re.search(r"\b(\d{2}-\d{3})\s+([A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ-]+(?:\s+[A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźż-]+)?)", chunk)
+        chunk = re.sub(r"\b(Legal|Registered|Address|address|Seat|seat)\b", " ", chunk)
+        post = re.search(r"\b(\d{2}-\d{3})[^\S\n]+([A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ-]+(?:[^\S\n]+[A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ-]+)?)", chunk)
         street = re.search(r"(?:ul\.|al\.|ulica)\s*[^,\n/]{3,40}", chunk, re.I)
-        city = (post.group(2) if post else "").split("|")[0].strip()
+        city = " ".join((post.group(2) if post else "").split("|")[0].split())
+        if city.isupper():
+            city = city.title()
         if not post:
             seat = re.search(r"Siedziba organizacji[^:|]*[:|]?\s*([^|\n]{4,80})", chunk)
             if seat:
