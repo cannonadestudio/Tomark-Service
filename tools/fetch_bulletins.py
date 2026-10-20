@@ -56,9 +56,12 @@ def find_date(text, fmt="dmy"):
     m = re.search(r"\b(\d{1,2})\.? ([A-Za-z]{3,9}) (\d{4})\b", t)          # 03 Sep 2026
     if m and m.group(2).lower() in MONTHS:
         return f"{int(m.group(3)):04d}-{MONTHS[m.group(2).lower()]:02d}-{int(m.group(1)):02d}"
-    m = re.search(r"\b(\d{1,2})\.? (\w+) (\d{4})\b", t)                    # 9 únor 2015
+    m = re.search(r"\b(\d{1,2})\.?\s*\|?\s*(\w+) (\d{4})\b", t)            # 9 únor 2015 / 3. | květen 2019
     if m and m.group(2).lower() in CZ_MONTHS:
         return f"{int(m.group(3)):04d}-{CZ_MONTHS[m.group(2).lower()]:02d}-{int(m.group(1)):02d}"
+    m = re.search(r"\b(20\d{2}|19\d{2})_(\d{2})_", t)                     # file names like 2019_07_SB-…
+    if m and 1 <= int(m.group(2)) <= 12:
+        return f"{m.group(1)}-{m.group(2)}-01"
     return None
 
 
@@ -173,7 +176,7 @@ def from_links(src):
                     title = t2
                     break
         date = find_date(block, src.get("date_fmt", "dmy")) or next(
-            (d for d in (find_date(w, src.get("date_fmt", "dmy")) for w in windows) if d), None)
+            (d for d in (find_date(w, src.get("date_fmt", "dmy")) for w in windows) if d), None) or find_date(fname)
         block = block + " | " + windows[0]
         title = title or fname
         prev = out.get(key)

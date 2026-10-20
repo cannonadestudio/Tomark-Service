@@ -1092,94 +1092,6 @@
    "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-20-limitation-of-ethanol-content-in-fuel.pdf"
   },
   {
-   "id": "IKARUSSB420222019REV1",
-   "date": "2026-10-20",
-   "title": "SB-42-022-2019-Rev.1: 2019_07_ A-Säulenriss",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2019_07_SB-42-022-2019-Rev.1_A-Saeulenriss.pdf"
-  },
-  {
-   "id": "IKARUSSB420212019",
-   "date": "2026-10-20",
-   "title": "SB-42-021-2019: 2019_06_-Silikonschlauch-Ladedruckabnahme",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2019_06_SB-42-021-2019-Silikonschlauch-Ladedruckabnahme.pdf"
-  },
-  {
-   "id": "IKARUSSB420202017",
-   "date": "2026-10-20",
-   "title": "SB-42-020-2017: 2017_05_ Start-Akkus",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2017_05_SB-42-020-2017-Start-Akkus.pdf"
-  },
-  {
-   "id": "IKARUSSB420192015",
-   "date": "2026-10-20",
-   "title": "SB-42-019-2015: 2017_04_ Kraftstoffpumpe Ergänzung",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2017_04_SB-42-019-2015-Kraftstoffpumpe-Ergänzung.pdf"
-  },
-  {
-   "id": "IKARUSSB420182014",
-   "date": "2026-10-20",
-   "title": "SB-42-018-2014: 2014_07_ Fahrtmesser",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2014_07_SB-42-018-2014-Fahrtmesser.pdf"
-  },
-  {
-   "id": "IKARUSSB420172013",
-   "date": "2026-10-20",
-   "title": "SB-42-017-2013: 2013_12_ Kraftstoffsystem",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2013_12_SB-42-017-2013-Kraftstoffsystem.pdf"
-  },
-  {
-   "id": "IKARUSSB420162013",
-   "date": "2026-10-20",
-   "title": "SB-42-016-2013: 2013_04_ HR-Lagerbock",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2013_04_SB-42-016-2013-HR-Lagerbock.pdf"
-  },
-  {
-   "id": "IKARUSSB420222019",
-   "date": "2026-10-20",
-   "title": "SB-42-022-2019: 2019_07_ Rev.1-A-pillar-rupture_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/SB-42-022-2019-Rev.1_A-pillar_rupture_EN.pdf"
-  },
-  {
    "id": "IKARUSSB421508",
    "date": "2026-10-20",
    "title": "SB-42-15-08: 2008_SB 42-15 08-Rudder-bellcrank_EN",
@@ -1200,116 +1112,6 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2008_SB-42-14-08-Rudder-pedal_EN.pdf"
-  },
-  {
-   "id": "IKARUSSB421301",
-   "date": "2026-10-20",
-   "title": "SB-42-13-01: 2006_01_SB 42-13 01-06 Rev.1-Rudder-pedal_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2006_01_SB-42-13-01-06-Rev.1-Rudder-pedal_EN.pdf"
-  },
-  {
-   "id": "IKARUSSB421207",
-   "date": "2026-10-20",
-   "title": "SB-42-12-07: 2005_07_SB 42-12 07-05-Safety-belt-attachment_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2005_07_SB-42-12-07-05-Safety-belt-attachment_EN.pdf"
-  },
-  {
-   "id": "IKARUSSB421004",
-   "date": "2026-10-20",
-   "title": "SB-42-10-04: 2005_04_SB 42-10 04-05-Elevator-bearing-block_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2005_04_SB-42-10-04-05-Elevator-bearing-block_EN.pdf"
-  },
-  {
-   "id": "IKARUSSB420909",
-   "date": "2026-10-20",
-   "title": "SB-42-09-09: 2004_09_SB 42-09 09-04-BIG-wheel-axle_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2004_09_SB-42-09-09-04-BIG-wheel-axle_EN.pdf"
-  },
-  {
-   "id": "IKARUSSB420809",
-   "date": "2026-10-20",
-   "title": "SB-42-08-09: 2003_09_SB 42-08 09-03-Compensating-line_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2003_09_SB-42-08-09-03-Compensating-line_EN.pdf"
-  },
-  {
-   "id": "IKARUSSB420709",
-   "date": "2026-10-20",
-   "title": "SB-42-07-09: 2003_09_SB 42-07 09-03 Ballistic-recovery-system_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2003_09_SB-42-07-09-03-Ballistic-recovery-system_EN.pdf"
-  },
-  {
-   "id": "IKARUSSB420605",
-   "date": "2026-10-20",
-   "title": "SB-42-06-05: 2002_05_SB 42-06 05-02 Rear-roof-frame_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2002_05_SB-42-06-05-02-Rear-roof-frame_EN.pdf"
-  },
-  {
-   "id": "IKARUSSB420504",
-   "date": "2026-10-20",
-   "title": "SB-42-05-04: 2002_04_SB 42-05 04-02-Tank mounts_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2002_04_SB-42-05-04-02-Tank-mounts_EN.pdf"
-  },
-  {
-   "id": "IKARUSSB420410",
-   "date": "2026-10-20",
-   "title": "SB-42-04-10: 2001_10_SB 42-04 10-01-Sleeve-hose_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2001_10_SB-42-04-10-01-Sleeve-hose_EN.pdf"
-  },
-  {
-   "id": "IKARUSSB420310",
-   "date": "2026-10-20",
-   "title": "SB-42-03-10: 2001_10_SB 42-03 10-01-Fuel-hose-fabric_EN",
-   "groups": [
-    "IKARUS"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2001_10_SB-42-03-10-01-Fuel-hose-fabric_EN.pdf"
   },
   {
    "id": "REMOSSB013",
@@ -1453,28 +1255,6 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://remos.com/wp-content/uploads/2017/03/SB-001-landing-gear_01.pdf"
-  },
-  {
-   "id": "TL5SST2019",
-   "date": "2026-10-20",
-   "title": "5.S.ST.2019: 3. | květen 2019 | Kontrola svazků el. vedení za přístrojovou deskou.",
-   "groups": [
-    "TLULTRALIGHT"
-   ],
-   "kind": "SB",
-   "mandatory": null,
-   "url": "https://www.tl-ultralight.cz/cs/bulletin/zavazny-servisni-bulletin-kontrola-svazku-el.-vedeni-za-pristrojovou-deskou-12125"
-  },
-  {
-   "id": "TL2SSIST2015",
-   "date": "2026-10-20",
-   "title": "2.S.SI-ST.2015: 9. | únor 2015 | ​Během provozu flotily TL 3000 Sirius a TL 2000 Sting S4 vybavených hlavními podvozkovými koly s válcovými opěrnými pouzdry brzdového kotouče bylo zjištěno, že při celkovém opotřebení brzdových destiček ",
-   "groups": [
-    "TLULTRALIGHT"
-   ],
-   "kind": "SIB",
-   "mandatory": null,
-   "url": "https://www.tl-ultralight.cz/cs/bulletin/bulletin-2.s.si_st.2015-11162"
   },
   {
    "id": "EASA-AD-2026-0191-E",
@@ -3335,6 +3115,50 @@
    "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2019-2_R0_Signed.pdf"
   },
   {
+   "id": "IKARUSSB420222019REV1",
+   "date": "2019-07-01",
+   "title": "SB-42-022-2019-Rev.1:  A-Säulenriss",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2019_07_SB-42-022-2019-Rev.1_A-Saeulenriss.pdf"
+  },
+  {
+   "id": "IKARUSSB420222019",
+   "date": "2019-07-01",
+   "title": "SB-42-022-2019:  Rev.1-A-pillar-rupture_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/SB-42-022-2019-Rev.1_A-pillar_rupture_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420212019",
+   "date": "2019-06-01",
+   "title": "SB-42-021-2019: Silikonschlauch-Ladedruckabnahme",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2019_06_SB-42-021-2019-Silikonschlauch-Ladedruckabnahme.pdf"
+  },
+  {
+   "id": "TL5SST2019",
+   "date": "2019-05-03",
+   "title": "5.S.ST.2019: Kontrola svazků el. vedení za přístrojovou deskou.",
+   "groups": [
+    "TLULTRALIGHT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tl-ultralight.cz/cs/bulletin/zavazny-servisni-bulletin-kontrola-svazku-el.-vedeni-za-pristrojovou-deskou-12125"
+  },
+  {
    "id": "EVEKTORRTCIBRTC035BR1",
    "date": "2019-04-18",
    "title": "ib-rtc-035b-r1: Information | Issue of Illustrated Parts Catalogue on SportStar RTC airplane, Doc. No. SPORTSTAR-0396G-02712-00, Issue No: 002.00",
@@ -3521,6 +3345,28 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTLS-06.pdf"
+  },
+  {
+   "id": "IKARUSSB420202017",
+   "date": "2017-05-01",
+   "title": "SB-42-020-2017:  Start-Akkus",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2017_05_SB-42-020-2017-Start-Akkus.pdf"
+  },
+  {
+   "id": "IKARUSSB420192015",
+   "date": "2017-04-01",
+   "title": "SB-42-019-2015:  Kraftstoffpumpe Ergänzung",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2017_04_SB-42-019-2015-Kraftstoffpumpe-Ergänzung.pdf"
   },
   {
    "id": "SB_SD4-01-2016",
@@ -3754,6 +3600,17 @@
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_19A-2015_R1_EN.zip"
   },
   {
+   "id": "TL2SSIST2015",
+   "date": "2015-02-09",
+   "title": "2.S.SI-ST.2015: ​Během provozu flotily TL 3000 Sirius a TL 2000 Sting S4 vybavených hlavními podvozkovými koly s válcovými opěrnými pouzdry brzdového kotouče bylo zjištěno, že při celkovém opotřebení brzdových destiček ",
+   "groups": [
+    "TLULTRALIGHT"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.tl-ultralight.cz/cs/bulletin/bulletin-2.s.si_st.2015-11162"
+  },
+  {
    "id": "FLIGHTDESIGNSAASTMCTLS04",
    "date": "2014-11-25",
    "title": "SA-ASTM-CTLS-04: CTLSi Engine Installation Redundancy Diagnosis / ASB-914-044R1. | All CT type aircrafts with aircraft serial number earlier than x 12 05-02 (excluded, with (x) being the identifier of the relevant model, when applicable)",
@@ -3809,6 +3666,17 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "IKARUSSB420182014",
+   "date": "2014-07-01",
+   "title": "SB-42-018-2014:  Fahrtmesser",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2014_07_SB-42-018-2014-Fahrtmesser.pdf"
+  },
+  {
    "id": "ZB-SD4-02-2014",
    "date": "2014-06-19",
    "title": "Replacement of tow-hook lock (SK)",
@@ -3842,6 +3710,17 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "IKARUSSB420172013",
+   "date": "2013-12-01",
+   "title": "SB-42-017-2013:  Kraftstoffsystem",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2013_12_SB-42-017-2013-Kraftstoffsystem.pdf"
+  },
+  {
    "id": "ZB-SD4-04-2013",
    "date": "2013-08-05",
    "title": "Static pressure port relocated to rear fuselage (SK)",
@@ -3873,6 +3752,17 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "IKARUSSB420162013",
+   "date": "2013-04-01",
+   "title": "SB-42-016-2013:  HR-Lagerbock",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2013_04_SB-42-016-2013-HR-Lagerbock.pdf"
   },
   {
    "id": "FLIGHTDESIGNSAASTMCT2K04",
@@ -5217,6 +5107,50 @@
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_02A.zip"
   },
   {
+   "id": "IKARUSSB421301",
+   "date": "2006-01-01",
+   "title": "SB-42-13-01: SB 42-13 01-06 Rev.1-Rudder-pedal_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2006_01_SB-42-13-01-06-Rev.1-Rudder-pedal_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB421207",
+   "date": "2005-07-01",
+   "title": "SB-42-12-07: SB 42-12 07-05-Safety-belt-attachment_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2005_07_SB-42-12-07-05-Safety-belt-attachment_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB421004",
+   "date": "2005-04-01",
+   "title": "SB-42-10-04: SB 42-10 04-05-Elevator-bearing-block_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2005_04_SB-42-10-04-05-Elevator-bearing-block_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420909",
+   "date": "2004-09-01",
+   "title": "SB-42-09-09: SB 42-09 09-04-BIG-wheel-axle_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2004_09_SB-42-09-09-04-BIG-wheel-axle_EN.pdf"
+  },
+  {
    "id": "AEROSPOOLULZBWT901A2003",
    "date": "2003-09-24",
    "title": "ZB WT9 01A/2003: Check of the landing gear legs | attachment.",
@@ -5226,6 +5160,72 @@
    "kind": "SB",
    "mandatory": true,
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_01A.pdf"
+  },
+  {
+   "id": "IKARUSSB420809",
+   "date": "2003-09-01",
+   "title": "SB-42-08-09: SB 42-08 09-03-Compensating-line_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2003_09_SB-42-08-09-03-Compensating-line_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420709",
+   "date": "2003-09-01",
+   "title": "SB-42-07-09: SB 42-07 09-03 Ballistic-recovery-system_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2003_09_SB-42-07-09-03-Ballistic-recovery-system_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420605",
+   "date": "2002-05-01",
+   "title": "SB-42-06-05: SB 42-06 05-02 Rear-roof-frame_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2002_05_SB-42-06-05-02-Rear-roof-frame_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420504",
+   "date": "2002-04-01",
+   "title": "SB-42-05-04: SB 42-05 04-02-Tank mounts_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2002_04_SB-42-05-04-02-Tank-mounts_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420410",
+   "date": "2001-10-01",
+   "title": "SB-42-04-10: SB 42-04 10-01-Sleeve-hose_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2001_10_SB-42-04-10-01-Sleeve-hose_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420310",
+   "date": "2001-10-01",
+   "title": "SB-42-03-10: SB 42-03 10-01-Fuel-hose-fabric_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2001_10_SB-42-03-10-01-Fuel-hose-fabric_EN.pdf"
   }
  ]
 }
