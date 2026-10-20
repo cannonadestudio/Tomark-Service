@@ -15,7 +15,7 @@ jobs:
   update:
     runs-on: ubuntu-24.04
     env:
-      DRY_RUN: ${{ github.event_name == 'push' && '1' || '0' }}
+      DRY_RUN: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[collect]') && '1' || '0' }}
       AH_SERVER: ${{ secrets.AH_SERVER }}
       AH_CRON_KEY: ${{ secrets.AH_CRON_KEY }}
     steps:

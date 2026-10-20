@@ -5,7 +5,7 @@
   "_info": "rules: regex on the AD row text (upper case) -> groups. Only rows matching a rule are kept.",
   "rules": [
    [
-    "\\bROTAX\\b.*\\b91[2-6]",
+    "\\bROTAX\\b.*\\b91[24]\\b",
     [
      "ROTAX_912"
     ]

@@ -199,6 +199,11 @@ def from_easa():
             if not m or bi is None:
                 continue
             row = clean(p.blocks[bi])
+            no_here = m.group(1)
+            # Some rows run into the next one – cut at the next AD number.
+            other = [x for x in re.finditer(r"\b\d{4}-\d{4}(?:R\d+)?(?:-E)?\b", row) if x.group(0) != no_here]
+            if other:
+                row = row[: other[0].start()]
             hits = [(rx.pattern, gs) for rx, gs in rules if rx.search(row.upper())]
             groups = sorted({g for _, gs in hits for g in gs})
             if not groups:
