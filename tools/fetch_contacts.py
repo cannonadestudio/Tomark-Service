@@ -206,9 +206,16 @@ def parse_orgs(url, label, approval_rx, cache):
         tel = TEL_RX.search(chunk)
         post = re.search(r"\b(\d{2}-\d{3})\s+([A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ-]+(?:\s+[A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźż-]+)?)", chunk)
         street = re.search(r"(?:ul\.|al\.|ulica)\s*[^,\n/]{3,40}", chunk, re.I)
-        city = post.group(2) if post else ""
+        city = (post.group(2) if post else "").split("|")[0].strip()
+        if not post:
+            seat = re.search(r"Siedziba organizacji[^:|]*[:|]?\s*([^|\n]{4,80})", chunk)
+            if seat:
+                city = seat.group(1).split(",")[-1].strip()
+        # GA focus: Part-145 only when it maintains small aircraft / piston engines
+        if "145" in label and not re.search(r"\bA2\b|\bA3\b|\bB2\b|tłokow|piston|ELA|CS-LSA|CS-VLA", chunk, re.I):
+            continue
         addr = ", ".join(x for x in ((street.group(0).strip() if street else ""), (post.group(0) if post else "")) if x)
-        ll = geocode(f"{post.group(1)} {city}, Polska", cache) if post else None
+        ll = geocode(f"{post.group(1)} {city}, Polska", cache) if post else (geocode(f"{city}, Polska", cache) if city else None)
         orgs[no] = {"id": "ulc-pl-" + re.sub(r"\W+", "-", no.lower()).strip("-"), "name": name[:120], "kind": "maintenance",
                     "brands": [label.replace("Organizacja obsługowa ", "")], "country": "PL", "city": city, "address": addr,
                     "lat": ll[0] if ll else None, "lon": ll[1] if ll else None,
