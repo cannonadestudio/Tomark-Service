@@ -1,5 +1,5 @@
 {
- "version": 2,
+ "version": 3,
  "updated": "2026-10-20",
  "bulletins": [
   {
@@ -14,6 +14,1513 @@
    "url": "https://www.flyrotax.com/services/technical-documentation.html"
   },
   {
+   "id": "AQUILASBAT01001B32",
+   "date": "2026-10-20",
+   "title": "SB-AT01-001-B32: L List of Service Bulletins, Airworthiness Directives ()",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2025/09/LSB_AT01_001_B32_Liste_der_SB.pdf"
+  },
+  {
+   "id": "AQUILASBAT0100103",
+   "date": "2026-10-20",
+   "title": "SB-AT01-001-03: Omission of Vortex Generator",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_001_03_vortex_O_obsolete.pdf"
+  },
+  {
+   "id": "AQUILASBAT0100104",
+   "date": "2026-10-20",
+   "title": "SB-AT01-001-04: Omission of Vortex Generator",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_001_04_vortex_removal_O.pdf"
+  },
+  {
+   "id": "AQUILASBAT0100202",
+   "date": "2026-10-20",
+   "title": "SB-AT01-002-02: Terminating Action: Wing, Bonding of Wingshell – Airworthiness Directive",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_002_02-LTA-2004-303R1.pdf"
+  },
+  {
+   "id": "AQUILASBAT0100302",
+   "date": "2026-10-20",
+   "title": "SB-AT01-003-02: Winterization Kit",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_003_02_winter_kit_O.pdf"
+  },
+  {
+   "id": "AQUILASBAT0100401",
+   "date": "2026-10-20",
+   "title": "SB-AT01-004-01: Engine Controls",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_004_01_triebwerksbedienzuege_M.pdf"
+  },
+  {
+   "id": "AQUILASBAT0100501",
+   "date": "2026-10-20",
+   "title": "SB-AT01-005-01: CG-Aircraft Empty",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_005_01_Leergew_SP_M.pdf"
+  },
+  {
+   "id": "AQUILASBAT0100601",
+   "date": "2026-10-20",
+   "title": "SB-AT01-006-01: Nose Gear Strut",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_006_01_Stuetzstrebe_BFW_O.pdf"
+  },
+  {
+   "id": "AQUILASBAT0100701",
+   "date": "2026-10-20",
+   "title": "SB-AT01-007-01: Parking Brake Actuation",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_007_01_parkbremse_O.pdf"
+  },
+  {
+   "id": "AQUILASBAT0100803",
+   "date": "2026-10-20",
+   "title": "SB-AT01-008-03: Check/ Replacement of Exhaust System",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_008_03_abgasanlage_cracks_M.pdf"
+  },
+  {
+   "id": "AQUILASBAT0100902",
+   "date": "2026-10-20",
+   "title": "SB-AT01-009-02: Inspection of the Canopy Locking Mechanism",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_009_02_Haubenverriegelung_M_closed.pdf"
+  },
+  {
+   "id": "AQUILASBAT0101001",
+   "date": "2026-10-20",
+   "title": "SB-AT01-010-01: Extension to NVFR-Operation – Maintenance Instruction",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_010_01-WA_AT01_1020_301english.pdf"
+  },
+  {
+   "id": "AQUILASBAT0101201",
+   "date": "2026-10-20",
+   "title": "SB-AT01-012-01: Replacement of Fuel Return Hose – Work Instruction",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_012_01-WI_english.pdf"
+  },
+  {
+   "id": "AQUILASBAT0101301",
+   "date": "2026-10-20",
+   "title": "SB-AT01-013-01: Swivel-head Replacement at NLG Shock-absorber – Retrofit/ Installation Instruction",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_013_01-UA-AT01-5140-106.pdf"
+  },
+  {
+   "id": "AQUILASBAT0101401",
+   "date": "2026-10-20",
+   "title": "SB-AT01-014-01: 406 MHz ELT Retrofit – Work Instruction",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_014_01-UA-AT01-8770-100.pdf"
+  },
+  {
+   "id": "AQUILASBAT0101501",
+   "date": "2026-10-20",
+   "title": "SB-AT01-015-01: OAT Sensor Position – Work Instruction",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_015_01-UA-AT01-7900-002.pdf"
+  },
+  {
+   "id": "AQUILASBAT0101601",
+   "date": "2026-10-20",
+   "title": "SB-AT01-016-01: Fire Extinguisher Retrofit",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_016_01_Feuerloescher_O.pdf"
+  },
+  {
+   "id": "AQUILASBAT0101701",
+   "date": "2026-10-20",
+   "title": "SB-AT01-017-01: Mode S Transponder Retrofit",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_017_01_Mode_S_Transponder_O.pdf"
+  },
+  {
+   "id": "AQUILASBAT0101801",
+   "date": "2026-10-20",
+   "title": "SB-AT01-018-01: Edge Protection Main Landing Gear Retrofit",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_018_01_Kantenschutz_HFW_O.pdf"
+  },
+  {
+   "id": "AQUILASBAT0101901",
+   "date": "2026-10-20",
+   "title": "SB-AT01-019-01: Inspection / Replacement of Anti-slip on the Wings",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_019_01_Trittschutz_Tragfluegel_M.pdf"
+  },
+  {
+   "id": "AQUILASBAT0102002",
+   "date": "2026-10-20",
+   "title": "SB-AT01-020-02: Check of Fuel Quantity Indication – Wing Tanks – Airworthiness Directive",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_020_02-easa_ad_2011_0021.pdf"
+  },
+  {
+   "id": "AQUILASBAT0102103",
+   "date": "2026-10-20",
+   "title": "SB-AT01-021-03: Minimal Visibility Conditions for NVFR-Operation",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_021_03_NVFR_restrictions_M.pdf"
+  },
+  {
+   "id": "AQUILASBAT0102201",
+   "date": "2026-10-20",
+   "title": "SB-AT01-022-01: Lower Engine Mount Attachment to Fire Wall",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_022_01_TW-Traeger_Verschraubung_Brandspant_M.pdf"
+  },
+  {
+   "id": "AQUILASBAT0102601",
+   "date": "2026-10-20",
+   "title": "SB-AT01-026-01: Retrofit “Slip – Hood”",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_026_01_Slip_hood_O.pdf"
+  },
+  {
+   "id": "AQUILASBAT0102702",
+   "date": "2026-10-20",
+   "title": "SB-AT01-027-02: Sealing “Fuel Tank Opening – Bonding Bore” – Airworthiness Directive",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_027_02-AD_2013-0236.pdf"
+  },
+  {
+   "id": "AQUILASBAT0102802",
+   "date": "2026-10-20",
+   "title": "SB-AT01-028-02: Operating Time Extension at 6000FH",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_028_02_6000h_inspection.pdf"
+  },
+  {
+   "id": "AQUILASBAT0102903",
+   "date": "2026-10-20",
+   "title": "SB-AT01-029-03: If New Type of Cylinder Head Lowering of Operating Limitation for CHT to max. 120°C (248°F) and Change of Coolant / Cooling System",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_029_03_CHT-Limit_M.pdf"
+  },
+  {
+   "id": "AQUILASBAT0102901",
+   "date": "2026-10-20",
+   "title": "SB-AT01-029-01: Retrofit/ Installation Instruction",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_029_02-UA.pdf"
+  },
+  {
+   "id": "AQUILASBAT0102902",
+   "date": "2026-10-20",
+   "title": "SB-AT01-029-02: Flight Manual Supplement AT01",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_029_02-AFM_page_1-8_2-4_5.pdf"
+  },
+  {
+   "id": "AQUILASBAT0103001",
+   "date": "2026-10-20",
+   "title": "SB-AT01-030-01: Inspection of Water Radiator for Sufficient Spacing and Possible Chafing Damage",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_030_01_radiator_chafing_M.pdf"
+  },
+  {
+   "id": "AQUILASBAT0103101",
+   "date": "2026-10-20",
+   "title": "SB-AT01-031-01: Change of Maximum Allowable Fuel Pressure",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_031_01_fuel_pressure_max_O.pdf"
+  },
+  {
+   "id": "AQUILASBAT0103201",
+   "date": "2026-10-20",
+   "title": "SB-AT01-032-01: Inspection of Bonding Strip Attachment at Aileron Control",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "http://wordpress.p481126.webspaceconfig.de/wp-content/uploads/2018/09/SB_AT01_032_01_aileron_bonding_M.pdf"
+  },
+  {
+   "id": "AQUILASBAT0103301",
+   "date": "2026-10-20",
+   "title": "SB-AT01-033-01: Drain_Hose_Fuel_Pump",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2019/11/SB_AT01_033_A01_drain_hose_fuel_pump.pdf"
+  },
+  {
+   "id": "BRISTELLALLSB000CZ00012025",
+   "date": "2026-10-20",
+   "title": "all-sb-0-0-0-cz-0001-2025: ALL-SB-0-0--2025 | Service  — Safety Directive/Alert | Rivets check inside of the frame | Missing rivets were found in the internal fuselage structure. | Affected models and serial numbers listed in the  () | Stáhnout",
+   "groups": [
+    "BRISTELL"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.bristell.com/downloads/bulletins/all-sb-0-0-0-cz-0001-2025-1-vydani.pdf"
+  },
+  {
+   "id": "SHARKSHARKAEROSB010",
+   "date": "2026-10-20",
+   "title": "shark-aero-sb-010: SHARK SB 010 | Inspection of main landing gear assembly",
+   "groups": [
+    "SHARK"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.shark.aero/uploads/support/service-bulletins/shark-aero-sb-010-landing-gear-inspection.pdf"
+  },
+  {
+   "id": "SHARKSHARKAEROSB009",
+   "date": "2026-10-20",
+   "title": "shark-aero-sb-009: SHARK SB 009 | Inspection of wire loom clearance",
+   "groups": [
+    "SHARK"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.shark.aero/uploads/support/service-bulletins/shark-aero-sb-009-engine-electronic-wires-check.pdf"
+  },
+  {
+   "id": "SHARKSHARKAEROSB008",
+   "date": "2026-10-20",
+   "title": "shark-aero-sb-008: SHARK SB 008 | Inspection of fuel hoses",
+   "groups": [
+    "SHARK"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.shark.aero/uploads/support/service-bulletins/shark-aero-sb-008.pdf"
+  },
+  {
+   "id": "SHARKSHARKAEROSB007",
+   "date": "2026-10-20",
+   "title": "shark-aero-sb-007: SHARK SB 007 | Announcement of New AFM Revision G",
+   "groups": [
+    "SHARK"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.shark.aero/uploads/support/service-bulletins/shark-aero-sb-007-ma-075-rev-g.pdf"
+  },
+  {
+   "id": "SHARKSHARKAEROSB005",
+   "date": "2026-10-20",
+   "title": "shark-aero-sb-005: SHARK SB 005 | Announcement of New AFM Revision F",
+   "groups": [
+    "SHARK"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.shark.aero/uploads/support/service-bulletins/shark-aero-sb-005.pdf"
+  },
+  {
+   "id": "SHARKSHARKAEROSB004",
+   "date": "2026-10-20",
+   "title": "shark-aero-sb-004: SHARK SB 004 | Inspection and modification of oil hose attachment",
+   "groups": [
+    "SHARK"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.shark.aero/uploads/support/service-bulletins/shark-aero-sb-004.pdf"
+  },
+  {
+   "id": "SHARKSHARKAEROSB003",
+   "date": "2026-10-20",
+   "title": "shark-aero-sb-003: SHARK SB 003 | Announcement of New AFM Revision B",
+   "groups": [
+    "SHARK"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.shark.aero/uploads/support/service-bulletins/shark-aero-sb-003.pdf"
+  },
+  {
+   "id": "SHARKSHARKAEROASB002",
+   "date": "2026-10-20",
+   "title": "shark-aero-asb-002: SHARK ASB 002 | Flaps Circuit Breaker Procedure Update",
+   "groups": [
+    "SHARK"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.shark.aero/uploads/support/service-bulletins/shark-aero-asb-002.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2201",
+   "date": "2026-10-20",
+   "title": "IB A-22-01: A-22 and A-22L (MTOM 472,5 kg) | Number | Type | Affected aircraft (serial numbers)",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_01_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2202",
+   "date": "2026-10-20",
+   "title": "IB A-22-02: 1 - 70",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_02_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2203",
+   "date": "2026-10-20",
+   "title": "IB A-22-03: 60 - 103, 106",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_03_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2204",
+   "date": "2026-10-20",
+   "title": "IB A-22-04: 1 - 130",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_04_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2205",
+   "date": "2026-10-20",
+   "title": "IB A-22-05: all",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_05_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2206",
+   "date": "2026-10-20",
+   "title": "IB A-22-06: all aircraft with nose metal spring",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_06_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2207",
+   "date": "2026-10-20",
+   "title": "IB A-22-07: all aircraft with nose metal spring",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_07_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2209",
+   "date": "2026-10-20",
+   "title": "IB A-22-09: 1 - 280",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_09_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2210",
+   "date": "2026-10-20",
+   "title": "IB A-22-10: 95 - 282",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_10_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2211",
+   "date": "2026-10-20",
+   "title": "IB A-22-11: Extension to IB-A-22-06",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_11_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2212",
+   "date": "2026-10-20",
+   "title": "IB A-22-12: all",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_12_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2213",
+   "date": "2026-10-20",
+   "title": "IB A-22-13: 1 - 344, 346 - 349, 351, 354, 355, 360",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/ib_a22_13_eng.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA2214",
+   "date": "2026-10-20",
+   "title": "IB A-22-14: 1 - 381 | SA A-22-15 | All aircraft with flight time over 500 hours",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB--22-14-Ammendment-of-AFM.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA2217",
+   "date": "2026-10-20",
+   "title": "SB A22-17: All aircraft that require replacement of the rudder control cables according to SA A22-15 or the cables' fairleads due to wear",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/SB_A22LS-17--replacement_of_rudder_cables_and_fairleads.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA2220",
+   "date": "2026-10-20",
+   "title": "SB A22-20: All aircraft with Czech seatbelt system buckles",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/SB_A-22LS-20-Harness_system_check.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS24",
+   "date": "2026-10-20",
+   "title": "SB A22LS-24: A-22L2: 345, 350, 352-605 | A-22LS: 1-343 | N A22LS-25 | Notification | All aircraft",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/Bulletins/sb-a22ls-24-amendment-to-poh.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA2218",
+   "date": "2026-10-20",
+   "title": "SB A22-18: all A-22 and A-22L aircraft",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/sb-a-22-18-fuselage-reinforcement-1.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA2219",
+   "date": "2026-10-20",
+   "title": "SB A-22-19: A-22 and A-22L aircraft",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/sb-a-22-19-limitation-of-ethanol-content-in-fuel.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS01",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-01: A-22 and A-22L aircraft | A-22L2 (MTOM 472,5 kg)/A-22LS (MTOM 600 kg) | Number | Type | Affected aircraft (serial numbers)",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB-A-22LS-01-Vibration-of-the-main-landing-gear-legs-.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS02",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-02: A-22L2: 345, 350 | A-22LS: 1 - 42, 49",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB-A-22LS-02-Modernization-of-the-main-landing-gear-.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS03",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-03: A-22L2: 345 | A-22LS: 1 - 42",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB--22LS-03-Inspection-and-reinforcement-of-the-tail-boom.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS04",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-04: A-22L2: 345, 350, 352, 353, 356, 357, 359, 360 - 374, 375 - 390 | A-22LS: 1 - 116",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB-A-22LS-04-Ammendmentt-of-AMM.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS05",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-05: A-22L2: 345 - 393 | A-22LS: 1 - 125",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB-A-22LS-05-Installation-of-protecting-cover.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS06",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-06: A-22L2: 1 - 434 | A-22LS: 1 - 177",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB-A-22LS-06-Modernization-of-parking-brake-valve.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS07",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-07: all airplanes equipped with TOST E 85 tow coupling. Incrase of glider weight up to 700 kg",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://www.aeroprakt.de/images/Bulletins/IB-A-22LS-07.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS08",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-08: all airplanes equipped with TOST E 85 tow coupling. Incrase of glider weight up to 700 kg",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB-A-22LS-08-Ammendment-of-AMM.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS09",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-09: A-22L2: 345 - 450 | A-22LS: 1 - 206",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB-A-22LS-09-Ammendment-of-AMM.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS10",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-10: A-22L2: 345 - 470 | A-22LS: 1 - 237",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB--22LS-10-Inspection-of-cardan-rings-and-ammendment-of-AMM.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22IBA22LS11",
+   "date": "2026-10-20",
+   "title": "IB A-22LS-11: A-22L2: 345, 350, 352, 353, 356, 357, 359, 360 - 374, 375 - 387, 389 - 393, 396 - 402, 405 - 408, 410, 413 - 422, 426 - 428, 430 - 432, 435, 436, 440 - 444, 447, 448, 450 - 464, 466, 467, 469, 473 - 481 | A-22LS: 3-14, 1",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/IB-A-22LS-11-Ammendment-of-AMM.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS14",
+   "date": "2026-10-20",
+   "title": "SB A-22LS-14: A-22L2: 345, 350, 352, 353, 356, 357, 359, 361 - 369, 371 - 373, 375 - 381, 383-387, 389 - 393, 396 - 402, 405 - 408, 410, 413 - 422, 426, 428, 430 - 432, 435, 436, 440 - 444, 447 - 461, 463, 464, 466, 467, 469, 471 - 48",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/SB--22LS-14-Ammendment-of-AMM.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS15",
+   "date": "2026-10-20",
+   "title": "SB A-22LS-15: A-22L2: 345-528 | A-22LS: 1-282 | SA A-22LS-16 | All aircraft with flight time over 500 hours or service life over 5 years",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/SB--22LS-15-Ammendment-of-AMM.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS17",
+   "date": "2026-10-20",
+   "title": "SB A-22LS-17: All aircraft that require replacement of the rudder control cables according to SA A22LS-16 or the cables' fairleads due to wear",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/SB_A22LS-17--replacement_of_rudder_cables_and_fairleads.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS18",
+   "date": "2026-10-20",
+   "title": "SB A22LS-18: All aircraft that require replacement of the rudder control cables according to SA A22LS-16 or the cables' fairleads due to wear",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/Bulletins/SB_A-22LS-18_AMM_amendment_-_windscreen_glass_inspection.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS19",
+   "date": "2026-10-20",
+   "title": "SB A22LS-19: A-22L2: 351-598 | A-22LS: 1-370",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/Bulletins/SB_A22LS-19-replacement_of_nose_wheel_fork_hinge_bracket.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS20",
+   "date": "2026-10-20",
+   "title": "SB A22LS-20: All aircraft with Czech seatbelt system buckles",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/Bulletins/SB_A-22LS-20-Harness_system_check.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS21",
+   "date": "2026-10-20",
+   "title": "SB A22LS-21: A-22LS: 1-378 excl. 82, 180, 329, 330, 338, 342, 343, 347, 348, 350, 352, 353, 355, 357, 361, 375 (not registered in , DK, LT, PL)",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/Bulletins/sb-a22ls-21-change-of-rescue-system-rocket-attachment1.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS22",
+   "date": "2026-10-20",
+   "title": "SB A22LS-22: A-22LS: 1-378 excl. 82, 180, 329, 330, 338, 342, 343, 347, 348, 350, 352, 353, 355, 357, 361, 375 (not registered in , DK, LT, PL)",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/Bulletins/sb-a22ls-22-change-of-water-pump-screw-clamp-torque.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS23",
+   "date": "2026-10-20",
+   "title": "SB A22LS-23: A-22LS: 82, 180, 329, 330, 338, 342, 343, 347, 348, 350, 352, 353, 355, 357, 361, 375 (registered in , DK, LT, PL)",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/Bulletins/sb-a22ls-23-change-of-rescue-system-rocket-attachment-for-germany-denmark-poland-and-lithuania.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS26",
+   "date": "2026-10-20",
+   "title": "SB A22LS-26: A-22L2: 345, 350, 352-605 | A-22LS: 1-343 | N A22LS-25 | Notification | All aircraft",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://www.aeroprakt.de/images/Bulletins/sb-a-22ls-26-upgrade-of-a-22ls-fleet-in-germany.pdf"
+  },
+  {
+   "id": "AEROPRAKTA22SBA22LS27",
+   "date": "2026-10-20",
+   "title": "SB A-22LS-27: Service | All A-22LS aircraft up to and including #567 | all A-22L2 aircraft up to and including #608",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/BulletinsUL/sb-a-22ls-27-limitation-of-ethanol-content-in-fuel.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3202",
+   "date": "2026-10-20",
+   "title": "SB A32-02: Service | A-32: 017 - 030 | A-32L: 002 - 005",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/SB_A32-02-modification_of_AMHT.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3204",
+   "date": "2026-10-20",
+   "title": "SB A32-04: Safety | A-32: 001 - 056 | A-32L: 001 - 018",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/SB_A32-04_reinforcement_of_roof_at_frame_No3.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3205",
+   "date": "2026-10-20",
+   "title": "SB A32-05: Service | A-32: 001 - 053 | A-32L: 001 - 017",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/SB_A32-05_reinforcement_of_frame_No10.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3206",
+   "date": "2026-10-20",
+   "title": "SB A32-06: Safety | (AMM Amendment) | A-32: 001 - 116 | A-32L: 001 - 025",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/SB_A32-06_AMM_amendment_-_windscreen_glass_inspection.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3207",
+   "date": "2026-10-20",
+   "title": "SB A32-07: Service | A-32: 001 - 120 | A-32L: 001 - 025",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/SB_A32-07_replacement_of_the_nose_wheel_fork_hinge_bracket_.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3209",
+   "date": "2026-10-20",
+   "title": "SB A32-09: Service | A32: 035 - 113 | A32L: 001 - 025",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-09-replacement-of-the-control-sectors.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3210",
+   "date": "2026-10-20",
+   "title": "SB A32-10: Service | (in German) | A-32: 58, 73, 84, 95, 98, 99, 100, 105, 108, 113, 121, 123, 124, 132, 133, 137, 138, 144, 150, 154, 155, 162, 167, 170 and 173",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/SB_A32-10_upgrade_of_A32_fleet_in_Germany_German.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3211",
+   "date": "2026-10-20",
+   "title": "SB A32-11: Service | A-32: 129, 144, 147, 151, 153, 156, 163, 169, 171, 172, 176, 179, and 183",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-11-relocation-of-is-fuel-pump.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3212",
+   "date": "2026-10-20",
+   "title": "SB A32-12: Service | All A-32 aircraft up to and including 206 | All A-32L aircraft up to and including 025",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-12-amendment-to-poh.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3213",
+   "date": "2026-10-20",
+   "title": "SB A32-13: Service | All A-32 aircraft up to and including 225 | All A-32L aircraft up to and including 025",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-13-amendment-to-amm.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3214",
+   "date": "2026-10-20",
+   "title": "SB A32-14: Service | All A-32 aircraft from 002 to and including 215 (excluding 213) | All A-32L aircraft from 002 to and including 025",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-14-installation-the-rear-mounts-screens.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3215",
+   "date": "2026-10-20",
+   "title": "SB A32-15: Service | All A-32 aircraft from 002 to and including 2XX | All A-32L aircraft from 002 to and including 025",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-15-replacement-of-the-oil-system-hoses.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3216",
+   "date": "2026-10-20",
+   "title": "SB A32-16: Service Bulettin | A-32: 001-071, 074, 076-078, 080, 082, 083, 085-091, 094, 097, 101-103, 106, 107, 109-111, 114-117, 125, 128, 129, 131, 139-144, 146, 147, 151-153, 156, 158, 160, 161, 163, 164, 168, 169, 171, 172, 176",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-16-asi-marking-change-3.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3218",
+   "date": "2026-10-20",
+   "title": "SB A32-18: Service | A-32 001-037 | A-32L 001-004",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-18-amm-change-50-hour-work.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3219",
+   "date": "2026-10-20",
+   "title": "SB A32-19: Service | A-32 002-071, 073-075, 078, 079, 082, 083, 085, 087, 091, 093, 094, 096, 097, 102, 109, 110, 111, 115, 116, 118, 119, 120, 123, 125-128, 130, 131, 140, 143-148, 153-155, 157, 163, 164, 168, 169, 171, 179, 182, ",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-19-trim-tab-deflection-in-poh.pdf"
+  },
+  {
+   "id": "AEROPRAKTA32SBA3220",
+   "date": "2026-10-20",
+   "title": "SB A32-20: Service | All A32 aircraft up to and including #335 | All A32L aircraft up to and including #032",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aeroprakt.de/images/Bulletins_A32_A32L/sb-a32-20-limitation-of-ethanol-content-in-fuel.pdf"
+  },
+  {
+   "id": "IKARUSSB420222019REV1",
+   "date": "2026-10-20",
+   "title": "SB-42-022-2019-Rev.1: 2019_07_ A-Säulenriss",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2019_07_SB-42-022-2019-Rev.1_A-Saeulenriss.pdf"
+  },
+  {
+   "id": "IKARUSSB420212019",
+   "date": "2026-10-20",
+   "title": "SB-42-021-2019: 2019_06_-Silikonschlauch-Ladedruckabnahme",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2019_06_SB-42-021-2019-Silikonschlauch-Ladedruckabnahme.pdf"
+  },
+  {
+   "id": "IKARUSSB420202017",
+   "date": "2026-10-20",
+   "title": "SB-42-020-2017: 2017_05_ Start-Akkus",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2017_05_SB-42-020-2017-Start-Akkus.pdf"
+  },
+  {
+   "id": "IKARUSSB420192015",
+   "date": "2026-10-20",
+   "title": "SB-42-019-2015: 2017_04_ Kraftstoffpumpe Ergänzung",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2017_04_SB-42-019-2015-Kraftstoffpumpe-Ergänzung.pdf"
+  },
+  {
+   "id": "IKARUSSB420182014",
+   "date": "2026-10-20",
+   "title": "SB-42-018-2014: 2014_07_ Fahrtmesser",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2014_07_SB-42-018-2014-Fahrtmesser.pdf"
+  },
+  {
+   "id": "IKARUSSB420172013",
+   "date": "2026-10-20",
+   "title": "SB-42-017-2013: 2013_12_ Kraftstoffsystem",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2013_12_SB-42-017-2013-Kraftstoffsystem.pdf"
+  },
+  {
+   "id": "IKARUSSB420162013",
+   "date": "2026-10-20",
+   "title": "SB-42-016-2013: 2013_04_ HR-Lagerbock",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2013_04_SB-42-016-2013-HR-Lagerbock.pdf"
+  },
+  {
+   "id": "IKARUSSB420222019",
+   "date": "2026-10-20",
+   "title": "SB-42-022-2019: 2019_07_ Rev.1-A-pillar-rupture_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/SB-42-022-2019-Rev.1_A-pillar_rupture_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB421508",
+   "date": "2026-10-20",
+   "title": "SB-42-15-08: 2008_SB 42-15 08-Rudder-bellcrank_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2008_SB-42-15-08-Rudder-bellcrank_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB421408",
+   "date": "2026-10-20",
+   "title": "SB-42-14-08: 2008_SB 42-14 08-Rudder-pedal_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2008_SB-42-14-08-Rudder-pedal_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB421301",
+   "date": "2026-10-20",
+   "title": "SB-42-13-01: 2006_01_SB 42-13 01-06 Rev.1-Rudder-pedal_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2006_01_SB-42-13-01-06-Rev.1-Rudder-pedal_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB421207",
+   "date": "2026-10-20",
+   "title": "SB-42-12-07: 2005_07_SB 42-12 07-05-Safety-belt-attachment_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2005_07_SB-42-12-07-05-Safety-belt-attachment_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB421004",
+   "date": "2026-10-20",
+   "title": "SB-42-10-04: 2005_04_SB 42-10 04-05-Elevator-bearing-block_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2005_04_SB-42-10-04-05-Elevator-bearing-block_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420909",
+   "date": "2026-10-20",
+   "title": "SB-42-09-09: 2004_09_SB 42-09 09-04-BIG-wheel-axle_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2004_09_SB-42-09-09-04-BIG-wheel-axle_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420809",
+   "date": "2026-10-20",
+   "title": "SB-42-08-09: 2003_09_SB 42-08 09-03-Compensating-line_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2003_09_SB-42-08-09-03-Compensating-line_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420709",
+   "date": "2026-10-20",
+   "title": "SB-42-07-09: 2003_09_SB 42-07 09-03 Ballistic-recovery-system_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2003_09_SB-42-07-09-03-Ballistic-recovery-system_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420605",
+   "date": "2026-10-20",
+   "title": "SB-42-06-05: 2002_05_SB 42-06 05-02 Rear-roof-frame_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2002_05_SB-42-06-05-02-Rear-roof-frame_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420504",
+   "date": "2026-10-20",
+   "title": "SB-42-05-04: 2002_04_SB 42-05 04-02-Tank mounts_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2002_04_SB-42-05-04-02-Tank-mounts_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420410",
+   "date": "2026-10-20",
+   "title": "SB-42-04-10: 2001_10_SB 42-04 10-01-Sleeve-hose_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2001_10_SB-42-04-10-01-Sleeve-hose_EN.pdf"
+  },
+  {
+   "id": "IKARUSSB420310",
+   "date": "2026-10-20",
+   "title": "SB-42-03-10: 2001_10_SB 42-03 10-01-Fuel-hose-fabric_EN",
+   "groups": [
+    "IKARUS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2001_10_SB-42-03-10-01-Fuel-hose-fabric_EN.pdf"
+  },
+  {
+   "id": "REMOSSB013",
+   "date": "2026-10-20",
+   "title": "SB-013: aircraft-battery",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-013-aircraft-battery.pdf"
+  },
+  {
+   "id": "REMOSSB012",
+   "date": "2026-10-20",
+   "title": "SB-012: ROTAX-modification-CHT-revision",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-012-ROTAX-modification-CHT-revision.pdf"
+  },
+  {
+   "id": "REMOSSB011",
+   "date": "2026-10-20",
+   "title": "SB-011: ROTAX-modification-CHT",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-011-ROTAX-modification-CHT.pdf"
+  },
+  {
+   "id": "REMOSSB010",
+   "date": "2026-10-20",
+   "title": "SB-010: ROTAX-carburetor-floater",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-010-ROTAX-carburetor-floater.pdf"
+  },
+  {
+   "id": "REMOSSB009",
+   "date": "2026-10-20",
+   "title": "SB-009: ROTAX-carburetor-floater",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-009-ROTAX-carburetor-floater.pdf"
+  },
+  {
+   "id": "REMOSSB008",
+   "date": "2026-10-20",
+   "title": "SB-008: ROTAX-crankshaft",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-008-ROTAX-crankshaft.pdf"
+  },
+  {
+   "id": "REMOSSB007",
+   "date": "2026-10-20",
+   "title": "SB-007: engine-indications_01",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-007-engine-indications_01.pdf"
+  },
+  {
+   "id": "REMOSSB006",
+   "date": "2026-10-20",
+   "title": "SB-006: handbook-corrections_01",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-006-handbook-corrections_01.pdf"
+  },
+  {
+   "id": "REMOSSB005",
+   "date": "2026-10-20",
+   "title": "SB-005: nose-gear_01",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-005-nose-gear_01.pdf"
+  },
+  {
+   "id": "REMOSSB004",
+   "date": "2026-10-20",
+   "title": "SB-004: nose-gear-ultralight_01",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-004-nose-gear-ultralight_01.pdf"
+  },
+  {
+   "id": "REMOSSB003",
+   "date": "2026-10-20",
+   "title": "SB-003: nose-gear_01",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-003-nose-gear_01.pdf"
+  },
+  {
+   "id": "REMOSSB002",
+   "date": "2026-10-20",
+   "title": "SB-002: landing-gear_01",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-002-landing-gear_01.pdf"
+  },
+  {
+   "id": "REMOSSB001",
+   "date": "2026-10-20",
+   "title": "SB-001: landing-gear_01",
+   "groups": [
+    "REMOS"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://remos.com/wp-content/uploads/2017/03/SB-001-landing-gear_01.pdf"
+  },
+  {
+   "id": "TL5SST2019",
+   "date": "2026-10-20",
+   "title": "5.S.ST.2019: 3. | květen 2019 | Kontrola svazků el. vedení za přístrojovou deskou.",
+   "groups": [
+    "TLULTRALIGHT"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tl-ultralight.cz/cs/bulletin/zavazny-servisni-bulletin-kontrola-svazku-el.-vedeni-za-pristrojovou-deskou-12125"
+  },
+  {
+   "id": "TL2SSIST2015",
+   "date": "2026-10-20",
+   "title": "2.S.SI-ST.2015: 9. | únor 2015 | ​Během provozu flotily TL 3000 Sirius a TL 2000 Sting S4 vybavených hlavními podvozkovými koly s válcovými opěrnými pouzdry brzdového kotouče bylo zjištěno, že při celkovém opotřebení brzdových destiček ",
+   "groups": [
+    "TLULTRALIGHT"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.tl-ultralight.cz/cs/bulletin/bulletin-2.s.si_st.2015-11162"
+  },
+  {
+   "id": "EASA-AD-2026-0191-E",
+   "date": "2026-10-02",
+   "title": "EASA AD 2026-0191-E: SUSPENSION OF FLIGHT OPERATIONS | ELIXIR AIRCRAFT | Elixir | 287 kb",
+   "groups": [
+    "ELIXIRAIRCRA"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2026-0191-E"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC085A",
+   "date": "2026-09-18",
+   "title": "sb-rtc-085a: Service | 1. Inspect the trailing edge ribs visually. 2. If you find a crack on any trailing edge rib, install the OPRTC133 stiffener as specified in the work procedure.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-085a-en"
+  },
+  {
+   "id": "AEROSPOOLULSBWT932A2026R0",
+   "date": "2026-09-17",
+   "title": "SBWT9-32A-2026-R0: EN | Turbocharger Wastegate Servo Cable Cooling",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/SBWT9_32A_2026_R0_EN_Signed.pdf"
+  },
+  {
+   "id": "EASA-AD-2026-0137R1",
+   "date": "2026-09-15",
+   "title": "EASA AD 2026-0137R1: Doors – Door Locking Mechanism – Modification | PIPISTREL VERTICAL SOLUTIONS d.o.o. | Virus SW | Virus SW 121 | Virus SW 121A (Explorer) | Virus SW 121C (Velis Club) | Virus SW 121X (X-Eye) | Virus SW 128 (Velis Electro)",
+   "groups": [
+    "PIPISTREL"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2026-0137R1"
+  },
+  {
    "id": "EASA-AD-2026-0170",
    "date": "2026-09-03",
    "title": "ATA 72 – Engine – Propeller Gearbox – Inspection (Rotax 912 ULS2/S2)",
@@ -24,6 +1531,61 @@
    "kind": "AD",
    "mandatory": true,
    "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0170.pdf/AD_2026-0170_1"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC042B",
+   "date": "2026-09-01",
+   "title": "ib-rtc-042b: Show detailSee all SportStar bulletins | Airworthiness Directives | EASA AD No.: 2026-0170 | Airworthiness Directive | ATA 72 – Engine – Propeller Gearbox – Inspection | EASA AD No.: 2025-0145-E | Airworthiness Directive",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-042b-cz"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC038BR8",
+   "date": "2026-07-17",
+   "title": "ib-rtc-038b-r8: ib-rtc-038b-r8-cz",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-038b-r8-cz"
+  },
+  {
+   "id": "EVEKTORHARMONYHARMONYLSA045A",
+   "date": "2026-07-17",
+   "title": "Harmony-LSA-045a: R1 | Removing the oil cooler strut.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/69d4f0741a92bcc3722487e2_Harmony_LSA-045a_R1_EN.pdf"
+  },
+  {
+   "id": "EVEKTORSPORTSTARSPORTSTARMAX046AR1",
+   "date": "2026-07-03",
+   "title": "SportStar-MAX-046a-R1: Service | Issue of Revision 1 of Supplement No. 21, Doc. No. SSM2008AOIUSS21, which includes added compliance with CFR Title 14 Part 91.205 and Part 91.411 requirements for IFR under VMC operation.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/6a47926114c9a76537865f5f_SportStar_MAX_046a_R1.pdf"
+  },
+  {
+   "id": "EVEKTORSPORTSTARSPORTSTAR045A",
+   "date": "2026-07-03",
+   "title": "SPORTSTAR-045a: SR | Cracks were found on some propeller spinners during regular examinations.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/655df55c0609b177e6b2874b_Bulletin_Harmony_LSA_027a_SPORTSTAR_045a_EN.pdf"
   },
   {
    "id": "ASB_SD4UL-01-2026",
@@ -59,6 +1621,83 @@
    "url": "https://www.flyrotax.com/services/technical-documentation.html"
   },
   {
+   "id": "EVEKTORRTCMBRTC083A",
+   "date": "2026-06-18",
+   "title": "mb-rtc-083a: SR- | Perform the inspection and actions according to ASB_2026-001R01 and ASB_A-2026-001R01 Rotax.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-083a-sr-en"
+  },
+  {
+   "id": "EVEKTORHARMONYHARMONYLSA049A",
+   "date": "2026-06-12",
+   "title": "Harmony-LSA-049a: Perform the inspection and actions according to ASB_A 2026-001R01 Rotax.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/6a58ca325acbe8a53826f706_Harmony_LSA-049a_EN.pdf"
+  },
+  {
+   "id": "EVEKTOREV97EV97041A",
+   "date": "2026-04-29",
+   "title": "EV97-041a: Increasing the safety of the oil system of THE ROTAX 912 ULS2 / S2 series engines by installing the PYROJACKET PJA 14 protective sleeves on the oil system hoses.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/649190d111c829cde81f4022_Bulletin%20EV97_041a_EN.pdf"
+  },
+  {
+   "id": "EVEKTORHARMONYHARMONYLSA048B",
+   "date": "2026-04-29",
+   "title": "Harmony-LSA-048b: Information | Notice of release of Flight Manual for Harmony LSA without vortex.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/6a2bcb776e59e84c97cecc07_Harmony_LSA_048b_EN.pdf"
+  },
+  {
+   "id": "EVEKTORHARMONYHARMONYLSA046A",
+   "date": "2026-04-20",
+   "title": "Harmony-LSA-046a: Inspection of the bearing swaging of the adjustable rod eyes ONL 3779.1",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/69f31bbde9b9dff30404848a_Harmony_LSA-046a_EN.pdf"
+  },
+  {
+   "id": "EVEKTORHARMONYHARMONYLSA047B",
+   "date": "2026-04-20",
+   "title": "Harmony-LSA-047b: Inspection of the bearing swaging of the adjustable rod eyes ONL 3779.1 | Harmony LSA-47b | Information | Installation of the MATCO brake system S3243001S.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/69e5f0d6db9709ecfeebea01_Harmony_LSA_047b_EN.pdf"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC040AR11",
+   "date": "2026-04-17",
+   "title": "sb-rtc-040a-r11: Service | Revision of Chapter 02 and 07, and inclusion of Supplement No. 44 into the List of Supplemnts in Chapter 09 of the Pilot´s Operating Handbook, doc. No. ERTC019-10-AS /ERTC020-10-AS for the SportStar RTC aircraf",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-040a-r11-en"
+  },
+  {
    "id": "TOM-TC-606-VTP-H",
    "date": "2026-04-13",
    "title": "List of Valid Technical Publications, Revision H",
@@ -80,6 +1719,72 @@
    "kind": "DOC",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC038BR7",
+   "date": "2026-04-07",
+   "title": "ib-rtc-038b-r7: Information | Issue of Revision 7 of Airplane Maintenance Manual for SportStar RTC, Issue 02, Doc No. ERTC021-10-AS / ERTC022-10-AS.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-038b-r7-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC082AR1",
+   "date": "2026-04-07",
+   "title": "mb-rtc-082a-r1: SR- | In the operation of another type of aircraft which has identical pull rod end with adjustable eye installed, cases of bearing clearance were detected. The clearance occurs due to inadequate securing (swaging) of th",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-082a-r1-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC080AR2",
+   "date": "2026-04-01",
+   "title": "mb-rtc-080a-r2: SR- | Consistently performing a pre-flight inspection in the engine compartment can eliminate the recurring occurrence of cracks in the exhaust system of SportStar RTC aircraft in service.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-080a-r2-sr-en"
+  },
+  {
+   "id": "BRISTELLB23SBM000ALL00052026",
+   "date": "2026-03-20",
+   "title": "b23-sbm-0-0-0-all-0005-2026: Could become AD | This SB could be made  by an EASA Airworthiness Directive (AD) | VISUAL INSPECTION OF NOSE LANDING GEAR LEG FOR CRACKS IN WELDS | Visual inspection of aircraft nose landing gear leg for possible cracks,",
+   "groups": [
+    "BRISTELL"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.bristell.com/downloads/bulletins/b23-sbm-0-0-0-all-0005-2026-1-0-signed.pdf"
+  },
+  {
+   "id": "BRISTELLALLSBM000DE00062026",
+   "date": "2026-03-20",
+   "title": "all-sbm-0-0-0-de-0006-2026: GERMANY ONLY | service | CG RANGE CHANGE | Compliance of aircraft with weight and CG limits specified in German Kennblatt 66253 | BRISTELL LSA (Ultra-light category aircraft) All models listed in German Kennblatt 66253 I",
+   "groups": [
+    "BRISTELL"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.bristell.com/downloads/bulletins/all-sbm-0-0-0-de-0006-2026-issue-1-signed.pdf"
+  },
+  {
+   "id": "AQUILASBAT01047A01",
+   "date": "2026-03-19",
+   "title": "SB-AT01-047-A01: Exhaust pipe clamps 914 ()",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2026/03/SB_AT01_047_A01_Exhaust_pipe_clamps_914.pdf"
   },
   {
    "id": "SB_SD4-02-2026",
@@ -127,6 +1832,39 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "EVEKTORRTCIBRTC081B",
+   "date": "2025-12-17",
+   "title": "ib-rtc-081b: Information | Installation of the MATCO brake system S3243001S. (Replacement of the brake system RTC-S5 00-51 01 or S3245001S).",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-081b-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC082A",
+   "date": "2025-11-14",
+   "title": "mb-rtc-082a: EN | In the operation of another type of aircraft which has identical pull rod end with adjustable eye installed, cases of bearing clearance were detected. The clearance occurs due to inadequate securing (swaging) of the",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-082a-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC080AR1",
+   "date": "2025-11-12",
+   "title": "mb-rtc-080a-r1: SR- | Consistently performing a pre-flight inspection in the engine compartment can eliminate the recurring occurrence of cracks in the exhaust system of SportStar RTC aircraft in service.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-080a-r1-sr-en"
+  },
+  {
    "id": "SB_SD4UL-02-2025",
    "date": "2025-11-03",
    "title": "Replacement of fuel hoses",
@@ -148,6 +1886,215 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "AQUILASBAT01045A01",
+   "date": "2025-09-24",
+   "title": "SB-AT01-045-A01: Check of Fuel Return Lines ()",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2025/09/SB_AT01_045_A01_KS-Ruecklauf.pdf"
+  },
+  {
+   "id": "BRISTELLALLSA000ALL00042025",
+   "date": "2025-07-17",
+   "title": "all-sa-0-0-0-all-0004-2025: service  — Safety directive/alert | Nose wheel steering inspection | Nose wheel steering inspection Kontrola řízení příďového kola | Models with fixed tricycle landing gear with steerable nose wheel | Stáhnout",
+   "groups": [
+    "BRISTELL"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.bristell.com/downloads/bulletins/all-sa-0-0-0-all-0004-2025-issue-1-pj-mb.pdf"
+  },
+  {
+   "id": "BRISTELLALLSA000CZ00042025",
+   "date": "2025-07-17",
+   "title": "all-sa-0-0-0-cz-0004-2025: ALL-SA-0-0-0-ALL-0004-2025 | service  — Safety directive/alert | Nose wheel steering inspection | Nose wheel steering inspection Kontrola řízení příďového kola | Models with fixed tricycle landing gear with steerable nos",
+   "groups": [
+    "BRISTELL"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.bristell.com/downloads/bulletins/all-sa-0-0-0-cz-0004-2025-1-vydani-pj-mb.pdf"
+  },
+  {
+   "id": "BRISTELLALLSB000ALL00032025",
+   "date": "2025-07-14",
+   "title": "all-sb-0-0-0-all-0003-2025: ALL-SB-0-0-0--0003-2025 | Service | Front undercarriage inspection | Visual inspection of the front undercarriage leg and fork for possible cracks, especially around welds and for deformation. | All models with fixed tri",
+   "groups": [
+    "BRISTELL"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.bristell.com/downloads/bulletins/all-sb-0-0-0-all-0003-2025-1st-issue-signed.pdf"
+  },
+  {
+   "id": "BRISTELLALLSB000CZ00032025",
+   "date": "2025-07-14",
+   "title": "all-sb-0-0-0-cz-0003-2025: Service | Front undercarriage inspection | Visual inspection of the front undercarriage leg and fork for possible cracks, especially around welds and for deformation. | All models with fixed tricycle landing gear | Stáhn",
+   "groups": [
+    "BRISTELL"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.bristell.com/downloads/bulletins/all-sb-0-0-0-cz-0003-2025.pdf"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC080A",
+   "date": "2025-07-09",
+   "title": "mb-rtc-080a: SR- | Consistently performing a pre-flight inspection in the engine compartment can eliminate the recurring occurrence of cracks in the exhaust system of SportStar RTC aircraft in service.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-080a-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC075BR2",
+   "date": "2025-07-09",
+   "title": "ib-rtc-075b-r2: Information | Výrobce umožňuje vybavit letouny řady SportStar RTC brzdovou soustavou BERINGER S3240101S (RETROFIT).",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-075b-r2-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC079AR1",
+   "date": "2025-07-09",
+   "title": "mb-rtc-079a-r1: SR- | Foot control pedal assembly without a weld reinforcement on countershaft may have been installed in some of the SportStar RTC aircraft.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-079a-r1-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC075BR3",
+   "date": "2025-07-09",
+   "title": "ib-rtc-075b-r3: Information | The manufacturer allows the SportStar RTC series aircraft to be equipped with the Beringer S3240101S (RETROFIT) brake system.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-075b-r3-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC079A",
+   "date": "2025-04-01",
+   "title": "mb-rtc-079a: SR- | Foot control pedal assembly without a weld reinforcement on countershaft was installed in some of the SportStar RTC aircraft.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-079a-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC075BR1",
+   "date": "2025-04-01",
+   "title": "ib-rtc-075b-r1: Information | Výrobce umožňuje vybavit letouny řady SportStar RTC brzdovou soustavou BERINGER S3240101S (RETROFIT).",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-075b-r1-en"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC040AR10",
+   "date": "2025-03-06",
+   "title": "sb-rtc-040a-r10: Service | Added Supplement No. 45 into the List of Supplements.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-040a-r10-en"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW99",
+   "date": "2025-02-12",
+   "title": "SB-ASTM-CTSW-99: Service  Equipment Manufacturer Notification | all s/n | along with each individual Notification. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2025/02/PZ01006002_16.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCTSW99",
+   "date": "2025-02-12",
+   "title": "SB-SECS-CTSW-99: Service  Equipment Manufacturer Notification | all s/n | along with each individual Notification. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2025/02/PZ01006008_09.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS99",
+   "date": "2025-02-12",
+   "title": "SB-ASTM-CTLS-99: Service  Equipment Manufacturer Notification | all s/n | along with each individual Notification. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2025/02/PZ01006002_16.pdf"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC077AR4",
+   "date": "2025-01-23",
+   "title": "mb-rtc-077a-r4: SR- | Deformation defects were found on some of the inner pipes of the exhaust muffler as part of regular inspections.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-077a-r4-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC040AR9",
+   "date": "2025-01-23",
+   "title": "sb-rtc-040a-r9: Service | Added Note concerning limitation placards, added other variant of placard located on the instrument panel in the POH, Section 2. In Supplement No. 23 and 31, added Note concerning limitation placards. In Supple",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-040a-r9-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC077AR3",
+   "date": "2025-01-16",
+   "title": "mb-rtc-077a-r3: SR- | Deformation defects were found on some of the inner pipes of the exhaust muffler as part of regular inspections.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-077a-r3-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC078B",
+   "date": "2025-01-16",
+   "title": "ib-rtc-078b: r pipes of the exhaust muffler as part of regular inspections. | NB-RTC-078b_CZ | NB-RTC-078b_EN | Notification | The Rotax engine manufacturer has issued  Service Bulletins SB-912-080UL and SB-912 i-015iS ordering inspe",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/ib-rtc-078b-en"
   },
   {
    "id": "SB_SD4-01-2025",
@@ -195,6 +2142,369 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "EVEKTORRTCMBRTC077AR2",
+   "date": "2024-12-11",
+   "title": "mb-rtc-077a-r2: SR- | Deformation defects were found on some of the inner pipes of the exhaust muffler as part of regular inspections.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-077a-r2-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC074BR1",
+   "date": "2024-12-09",
+   "title": "ib-rtc-074b-r1: EN | Information | The aircraft manufacturer allows the aircraft to be equipped with the Rotax 912 S engine.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-074b-r1-en"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC075B",
+   "date": "2024-12-09",
+   "title": "ib-rtc-075b: EN | Information | Výrobce umožňuje vybavit letouny řady SportStar RTC brzdovou soustavou BERINGER S3240101S (RETROFIT).",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-075b-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC077AR1",
+   "date": "2024-11-15",
+   "title": "mb-rtc-077a-r1: SR- | Deformation defects were found on some of the inner pipes of the exhaust muffler as part of regular inspections.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-077a-r1-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC077A",
+   "date": "2024-11-05",
+   "title": "mb-rtc-077a: SR- | Deformation defects were found on some of the inner pipes of the exhaust muffler as part of regular inspections.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-077a-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC038BR6",
+   "date": "2024-11-05",
+   "title": "sb-rtc-038b-r6: Service | Issue of Revision 6 of Airplane Maintenance Manual for SportStar RTC Issue 02, Doc. No. ERTC022-10-AS.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-038b-r6-en"
+  },
+  {
+   "id": "EVEKTOREV97EV97019A",
+   "date": "2024-09-01",
+   "title": "ev97-019a: Show detailSee all EuroStar Bulletins | Airworthiness Directives | No actual documents for downloading. For more informations please use the form bellow | Occurance Reporting | Occurence Reporting | Occurence Reporting |",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-ev97-019a-cz"
+  },
+  {
+   "id": "AEROSPOOLULZBWT931A2024R2",
+   "date": "2024-08-28",
+   "title": "ZBWT9-31A-2024-R2: SK | Installation of safety equipmnet - stall strips | 2",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_31A_2024_R2_SK_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT931A2024R3",
+   "date": "2024-08-28",
+   "title": "ZBWT9-31A-2024-R3: EN | Installation of safety equipmnet - stall strips | 3",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_31A_2024_R3_EN_Signed.zip"
+  },
+  {
+   "id": "BRISTELLALLSB000DE00022024",
+   "date": "2024-07-19",
+   "title": "all-sb-0-0-0-de-0002-2024: GERMANY ONLY | Service | Control surfaces deflection | It was found that the deflections of the ailerons are not in the specified range. Measurement/adjustment of control surfaces deflections. | All models listed in Germ",
+   "groups": [
+    "BRISTELL"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.bristell.com/downloads/bulletins/all-sb-0-0-0-de-0002-2024-1st-issue.pdf"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC040AR8",
+   "date": "2024-06-13",
+   "title": "sb-rtc-040a-r8: Service | Consolidated procedure for coolant check, adapted the procedure of use parking brake due to the installation of brake system with Beringer components, updated heating/ventilating system, added supplement No. 42",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-040a-r8-en"
+  },
+  {
+   "id": "EVEKTORSPORTSTARSPORTSTAR047B",
+   "date": "2024-05-16",
+   "title": "SportStar-047b: Information | Performance of the activity according to the definition document No. Z-SP-01/2026.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/6a47829b0a5a81fe29368eb0_SportStar_047b_EN.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT930A2024R0",
+   "date": "2024-05-03",
+   "title": "ZBWT9-30A-2024-R0: Installation of forward fuel pump",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_30A_2024_R0_EN_Signed.zip"
+  },
+  {
+   "id": "EVEKTOREV97EV97045A",
+   "date": "2024-02-14",
+   "title": "EV97-045a: SR | Inspection of the bearing swaging of the adjustable rod eyes ONL 3779.1.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/69f85f34656e18400526967d_EV97_045a_EN.pdf"
+  },
+  {
+   "id": "EVEKTORSPORTSTARSPORTSTARMAX046A",
+   "date": "2024-02-14",
+   "title": "SportStar-MAX-046a: Service | Issue of Revision 1 of Supplement No. 21, Doc. No.SSM2008AOIUSS21, which includes added compliance with CFR Title 14 Part 91.205 and Part 91.411 requirements for IFR under VMC operation.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/66474874fce816cdda8a1df4_Bulletin_SportStar_MAX-046a_Vyd%C3%A1n%C3%AD_Revize_1_Dodatku_POH_%C4%8D_21.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT929A2024R0",
+   "date": "2024-02-09",
+   "title": "ZBWT9-29A-2024-R0: Inspection of the emergency parachute cover",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_29A_2024_R0_Signed.zip"
+  },
+  {
+   "id": "BRISTELLALLSA500ALL00012024",
+   "date": "2024-02-08",
+   "title": "all-sa-5-0-0-all-0001-2024: SAFETY DIRECTIVE/ALERT | ROTAX 912 IS Engine Attachment | Engine attachment inspection, screw replacement. Kontrola uchycení motoru, výměna šroubů. | All models equipped with Rotax 912 iS engine and the original one-piec",
+   "groups": [
+    "BRISTELL"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.bristell.com/downloads/bulletins/all-sa-5-0-0-all-0001-2024-signed.pdf"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC076B",
+   "date": "2024-01-22",
+   "title": "sb-rtc-076b: Service | Performance of the activity according to Doc. no. OPRTC104.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-076b-en"
+  },
+  {
+   "id": "AQUILASBAT01043A01",
+   "date": "2024-01-02",
+   "title": "SB-AT01-043-A01: Retrofit of lower cowling for oil sump on turbo charger a. imp. cabin heating ()",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2024/02/SB_AT01_043_A01_CowlingHeating_R914-2.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT928A2023R2",
+   "date": "2023-12-07",
+   "title": "ZBWT9-28A-2023-R2: Increase of maximum takeoff weight (MTOW) to 600 kg. | 2",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_28A_2023_R2_Signed.zip"
+  },
+  {
+   "id": "AQUILASBAT01042A01",
+   "date": "2023-11-30",
+   "title": "SB-AT01-042-A01: Retrofit of an Autopilot (restricted) Garmin G3X ()",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2023/11/SB_AT01_042_A01_Nachruestung_AutopilotG3X.pdf"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC038BR5",
+   "date": "2023-11-29",
+   "title": "sb-rtc-038b-r5: Service | Issue of Revision 5 of Airplane Maintenance Manual for SportStar RTC Issue 02, Doc. No. ERTC022-10-AS.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-038b-r5-en"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCT02",
+   "date": "2023-10-26",
+   "title": "SA-ASTM-CT-02: Checking Nut on Stabilizer Control | all aircraft built before September 2023 | Until the next scheduled maintenance event or within the next three months. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/11/PZ27400700_00.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCT03",
+   "date": "2023-10-26",
+   "title": "SA-SECS-CT-03: Checking Nut on Stabilizer Control | all aircraft built before September 2023 | Until the next scheduled maintenance event or within the next three months. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/11/PZ27400700_00.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCT2K05",
+   "date": "2023-10-26",
+   "title": "SA-ASTM-CT2K-05: Checking Nut on Stabilizer Control | all aircraft built before September 2023 | Until the next scheduled maintenance event or within the next three months. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/11/PZ27400700_00.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCT2K06",
+   "date": "2023-10-26",
+   "title": "SA-SECS-CT2K-06: Checking Nut on Stabilizer Control | all aircraft built before September 2023 | Until the next scheduled maintenance event or within the next three months. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/11/PZ27400700_00.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTSW07",
+   "date": "2023-10-26",
+   "title": "SA-ASTM-CTSW-07: Checking Nut on Stabilizer Control | all aircraft built before September 2023 | Until the next scheduled maintenance event or within the next three months. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/11/PZ27400700_00.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCTSW07",
+   "date": "2023-10-26",
+   "title": "SA-SECS-CTSW-07: Checking Nut on Stabilizer Control | all aircraft built before September 2023 | Until the next scheduled maintenance event or within the next three months. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/11/PZ27400700_00.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTLS05",
+   "date": "2023-10-26",
+   "title": "SA-ASTM-CTLS-05: Checking Nut on Stabilizer Control | all aircraft built before September 2023 | Until the next scheduled maintenance event or within the next three months. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/11/PZ27400700_00.pdf"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC074B",
+   "date": "2023-10-10",
+   "title": "ib-rtc-074b: Information | Required installation of the Rotax 912 S engine in SportStar RTC airplane, S/N 2016 1910.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-074b-en"
+  },
+  {
+   "id": "AQUILASBAT01036A01",
+   "date": "2023-10-09",
+   "title": "SB-AT01-036-A01: SB AT01 036 01 Installation of Fuel Return Lines10 mm",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2021/05/SB_AT01_036_A01_Einbau_KS-Ruecklauf_10mm.pdf"
+  },
+  {
+   "id": "AQUILASBAT01037A02",
+   "date": "2023-10-09",
+   "title": "SB-AT01-037-A02: SB AT01 037 02 Installation of Reinforced NLG-Fork ()",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2023/10/SB_AT01_037_A02_verstaerkte_BFW-Schwinge.pdf"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC040AR7",
+   "date": "2023-10-02",
+   "title": "sb-rtc-040a-r7: Service | Addition of Supplement No. 39, 40, 41 into List of Supplements in Section 9 of the Pilot’s Operating Handbook doc. No. ERTC020-10-AS for SPORTSTAR RTC.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-040a-r7-en"
+  },
+  {
    "id": "SB-SD4-03-2023",
    "date": "2023-09-15",
    "title": "Specification of aircraft inspection tolerances",
@@ -240,6 +2550,127 @@
    "url": "https://www.tomarkaero.com/wp-content/uploads/technical_support/bulletins/2023/SB_SD4-04-2023_IR-Exchange-of-stator-assy--and-propeller-shaft-on-ROTAX-912ULS.pdf"
   },
   {
+   "id": "EVEKTOREV97EV97028AR1",
+   "date": "2023-09-01",
+   "title": "EV97-028a-R1: SR | Insufficient insertion of the wing flap drive pins into the guides in flaps can cause wear of the guides and subsequent problems in operation. In the extreme case the loss of flaps controllability can occur.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/6625f50782cb1e5b9a91fe12_EV97_028a_R1_SR_EN.pdf"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC073A",
+   "date": "2023-09-01",
+   "title": "sb-rtc-073a: SR- | Service | Issue of Revision 3 of Supplement No. 31 to the ERTC020-10-AS.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-073a-sr-en"
+  },
+  {
+   "id": "EVEKTOREV97EV97044A",
+   "date": "2023-08-07",
+   "title": "EV97-044a: Service | The ROTAX engine manufacturer has issued Service Bulletins SB-SB-912-078UL / SB-914-059UL / SB-912 i-014iS ordering the replacement of the propeller shaft and its accessories.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/64f18d224e5556b64b93b08a_Bulletin_Harmony_LSA_025a_EV97_044a_SPORTSTAR_045a_Harmony_001a_EN.pdf"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC072A",
+   "date": "2023-08-07",
+   "title": "sb-rtc-072a: SR- | Service | The ROTAX engine manufacturer has issued Service  SB-912-078UL ordering the replacement of the propeller shaft and its accessories.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-072a-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC068A",
+   "date": "2023-07-18",
+   "title": "mb-rtc-068a: SR_R1- | Unification of the strength class of the fastening bolts in the joint of the engine and the engine mount hinges and the resulting minimization of the possibility that these bolts will be accidentally interchange",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-068a-sr-r1-en"
+  },
+  {
+   "id": "EVEKTORSPORTSTARSPORTSTAR043A",
+   "date": "2023-06-28",
+   "title": "sportstar-043a: SR_R2- | Unification of the strength class of the fastening bolts in the joint of the engine and the engine mount hinges and the resulting minimization of the possibility that these bolts will be accidentally interchange",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-sportstar-043a-sr-r2-en"
+  },
+  {
+   "id": "EVEKTOREV97EV97042AR1",
+   "date": "2023-06-09",
+   "title": "EV97-042a-R1: SR_R1 | Unification of the strength class of the fastening bolts in the joint of the engine and the engine mount hinges and the resulting minimization of the possibility that these bolts will be accidentally interchanged",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/64d34398894fe6f9fa5d62d4_Bulletin_EV97_042a_R1_SR_EN.pdf"
+  },
+  {
+   "id": "EVEKTOREV97EV97042A",
+   "date": "2023-06-09",
+   "title": "ev97-042a: SR_R1- | Unification of the strength class of the fastening bolts in the joint of the engine and the engine mount hinges and the resulting minimization of the possibility that these bolts will be accidentally interchange",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-ev97-042a-sr-r1-en"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC069AR1",
+   "date": "2023-05-19",
+   "title": "mb-rtc-069a-r1: SR- | When installing, replacing or repairing the brake caliper bodies, the brake caliper cuff may be fitted incorrectly, which may cause the brake system to malfunction.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-069a-r1-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC038BR4",
+   "date": "2023-05-19",
+   "title": "sb-rtc-038b-r4: Service | Issue of Revision 4 of Airplane Maintenance Manual for SportStar RTC Issue 02, Doc. No. ERTC022-10-AS.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-038b-r4-en"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC070B",
+   "date": "2023-04-24",
+   "title": "sb-rtc-070b: EN | Service | Issue of Revision No. 1 of Supplement No. 37 of POH, doc. no. ERTC020-10-AS-037, which contains a clarification of the propeller blade pitch setting value",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-070b-en"
+  },
+  {
    "id": "SB-SD4-02-2023",
    "date": "2023-03-30",
    "title": "Installation of two DYNON SkyView HDX displays (SV-HDX1100)",
@@ -250,6 +2681,160 @@
    "kind": "SB",
    "mandatory": false,
    "url": "https://www.tomarkaero.com/wp-content/uploads/SB_SD4-02-2023_IR.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCT04",
+   "date": "2023-03-21",
+   "title": "SB-ASTM-CT-04: Battery Installation on CT Series Aircraft | all S/N | no later than the next annual inspection of the aircraft | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/03/PZ24000700_00-1.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCT04",
+   "date": "2023-03-21",
+   "title": "SB-SECS-CT-04: Battery Installation on CT Series Aircraft | all S/N | no later than the next annual inspection of the aircraft | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/03/PZ24000700_00-1.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCT2K06",
+   "date": "2023-03-21",
+   "title": "SB-ASTM-CT2K-06: Battery Installation on CT Series Aircraft | all S/N | no later than the next annual inspection of the aircraft | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/03/PZ24000700_00-1.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCT2K05",
+   "date": "2023-03-21",
+   "title": "SB-SECS-CT2K-05: Battery Installation on CT Series Aircraft | all S/N | no later than the next annual inspection of the aircraft | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/03/PZ24000700_00-1.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW18",
+   "date": "2023-03-21",
+   "title": "SB-ASTM-CTSW-18: Battery Installation on CT Series Aircraft | all S/N | no later than the next annual inspection of the aircraft | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/03/PZ24000700_00-1.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCTSW10",
+   "date": "2023-03-21",
+   "title": "SB-SECS-CTSW-10: Battery Installation on CT Series Aircraft | all S/N | no later than the next annual inspection of the aircraft | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/03/PZ24000700_00-1.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTHL01",
+   "date": "2023-03-21",
+   "title": "SB-ASTM-CTHL-01: Battery Installation on CT Series Aircraft | all S/N | no later than the next annual inspection of the aircraft | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/03/PZ24000700_00-1.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS21",
+   "date": "2023-03-21",
+   "title": "SB-ASTM-CTLS-21: Battery Installation on CT Series Aircraft | all S/N | no later than the next annual inspection of the aircraft | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2023/03/PZ24000700_00-1.pdf"
+  },
+  {
+   "id": "EVEKTORRTCMBRTC069A",
+   "date": "2023-03-16",
+   "title": "mb-rtc-069a: SR- | When installing, replacing or repairing the brake caliper bodies, the brake caliper cuff may be fitted incorrectly, which may cause the brake system to malfunction.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.evektor.com/documents/mb-rtc-069a-sr-en"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC067A",
+   "date": "2023-03-16",
+   "title": "sb-rtc-067a: SR_R1- | Service | Increasing the safety of the oil system of THE ROTAX 912 ULS2 / S2 series engines by installing the PYROJACKET PJA 14 protective sleeves on the oil system hoses.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-067a-sr-r1-en"
+  },
+  {
+   "id": "AQUILASBAT01038A02",
+   "date": "2023-02-24",
+   "title": "SB-AT01-038-A02: SB AT01 038 02 Bonding_Center Tunnel_to_Baggage Frame",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2021/05/SB_AT01_038_A02_Bonding_CenterTunnel_to_BaggageFrame.pdf"
+  },
+  {
+   "id": "AQUILASBAT01039A01",
+   "date": "2023-02-24",
+   "title": "SB-AT01-039-A01: SB AT01 039 01 Gap Cover Baggage Compartment",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2021/05/SB_AT01_039_A01_Gap_Cover_BaggageCompartment.pdf"
+  },
+  {
+   "id": "AQUILASBAT01040A01",
+   "date": "2023-02-24",
+   "title": "SB-AT01-040-A01: SB AT01 040 01 G3X Fuel Level Indication",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2021/06/SB_AT01_040_A01_G3X_Fuel_Level_Indication.pdf"
+  },
+  {
+   "id": "AQUILASBAT01041A01",
+   "date": "2023-02-24",
+   "title": "SB-AT01-041-A01: SB AT01 041 01 912 Exhaust Diameter 44mm ()",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2023/02/SB_AT01_041_A01_exhaust_912_O44mm.pdf"
   },
   {
    "id": "SB-SD4-01-2023",
@@ -287,6 +2872,17 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "AEROSPOOLRTCSBTC20221",
+   "date": "2022-06-30",
+   "title": "SBTC-2022-1: Replacement of push rod end bearings in elevator and aileron control system. | 1",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBTC-2022-1_R1_Signed.zip"
+  },
+  {
    "id": "SB-SD4-01-2022",
    "date": "2022-04-28",
    "title": "Installation of DUC Hélices FLASH-R propeller H-FSH_3-D-R_I",
@@ -296,6 +2892,94 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC066AR1",
+   "date": "2022-04-28",
+   "title": "sb-rtc-066a-r1: Service | The engine manufacturer (ROTAX) has issued Service  SB-912-076UL ordering the replacement of the fuel pump nipple fittings. The reason for the replacement is the fact that a certain number of fuel pump nipple f",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-066a-r1-en"
+  },
+  {
+   "id": "AEROSPOOLULZBWT927A2022R1",
+   "date": "2022-04-11",
+   "title": "ZBWT9 27A-2022-R1: Update of the Pilot's Operating Handbook (POH) for aicraft registered in Portugal. | 1",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_27A_2022_R1_EN_Signed.zip"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC063B",
+   "date": "2022-03-16",
+   "title": "ib-rtc-063b: Information | It concerns SportStar RTC aircraft equipped with WOODCOMP KW31-033 propeller.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-063b-en"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW17",
+   "date": "2022-01-24",
+   "title": "SB-ASTM-CTSW-17: BRS Harness and Pickup Collar Verification | all S/N equipped with a BRS 6-1350HS recovery system (canister type) | immediate action. The Owner/Operator visual inspection must be completed prior to next flight. | BRS/Fli",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2022/01/PZ25606009_00.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS20",
+   "date": "2022-01-24",
+   "title": "SB-ASTM-CTLS-20: BRS Harness and Pickup Collar Verification | all S/N equipped with a BRS 6-1350HS recovery system (canister type) | immediate action. The Owner/Operator visual inspection must be completed prior to next flight. | BRS/Fli",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2022/01/PZ25606009_00.pdf"
+  },
+  {
+   "id": "AQUILASBAT0103401",
+   "date": "2022-01-18",
+   "title": "SB-AT01-034-01: Retrofit of an_Autopilot (Restricted) Garmin GFC500 ()",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2022/01/SB_AT01_034_A01_Nachruestung_AutopilotGFC500.pdf"
+  },
+  {
+   "id": "AQUILASBAT0103501",
+   "date": "2022-01-18",
+   "title": "SB-AT01-035-01: Increase of Permissible Gross Weight to 800kg ()",
+   "groups": [
+    "AQUILA"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://aquila-aviation.de/wp-content/uploads/2022/01/SB_AT01_035_A01_MTOM_800kg.pdf"
+  },
+  {
+   "id": "BRISTELLALLSA000ALL00022021",
+   "date": "2021-11-11",
+   "title": "all-sa-0-0-0-all-0002-2021: Safety directive/Safety alert | Seat attachment | Seat attachment brackets replacement. Výměna konzol uchycení sedačky. | All UL and LSA models of BRISTELL | Stáhnout",
+   "groups": [
+    "BRISTELL"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.bristell.com/downloads/bulletins/bulletin-seat-attachment-all-sa-0-0-0-all-0002-2021-signed.pdf"
   },
   {
    "id": "SB-SD4-01-2021",
@@ -309,6 +2993,171 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "FLIGHTDESIGNSBASTMCTSW16",
+   "date": "2021-08-25",
+   "title": "SB-ASTM-CTSW-16: Exhaust System Checking and Muffler Removal | D-21-02-51 | prior to next flight | AU 0100 2000",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2021/08/PZ78006001_01-1.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS19",
+   "date": "2021-08-25",
+   "title": "SB-ASTM-CTLS-19: Exhaust System Checking and Muffler Removal | F-20-11-02, F-20-11-03, F-21-05-01, F-21-04-51, F-21-03-04, F-21-03-01 | prior to next flight | AF 0480 0001 AU 0100 2000",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2021/08/PZ78006001_01-1.pdf"
+  },
+  {
+   "id": "AEROSPOOLRTCSBTC20211",
+   "date": "2021-08-04",
+   "title": "SBTC-2021-1: Update of Pilot’s Operating Handbook, updated maintenance instructions to Aircraft Maintenance Manual and replacement of interior placards. | 1",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBTC-2021-1_R1_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLRTCSBTC20212",
+   "date": "2021-08-04",
+   "title": "SBTC-2021-2: Replacement of throttle controller with simple throttle controller.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBTC-2021-2_R0_Signed.zip"
+  },
+  {
+   "id": "EVEKTOREV97EV97039A",
+   "date": "2021-07-01",
+   "title": "ev97-039a: Service | Due to a deviation in the manufacturing process some tailpipe of muffler may have anomalies in the welded joint. In some cases, there is possibility that cracks may occur on a limited number of muffler tailpipe",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ev97-039a"
+  },
+  {
+   "id": "EVEKTOREV97EV97038B",
+   "date": "2021-07-01",
+   "title": "ev97-038b: nload | EV97 038b | Information | Based on an agreement between the French Microlight Association (FFPLUM) and the French Civil Aviation Authority (DGAC), a 2019 New French Microlight Regulation has been issued, where tw",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ev97-038b"
+  },
+  {
+   "id": "AEROSPOOLULZBWT926A2021",
+   "date": "2021-03-12",
+   "title": "ZBWT9 26A/2021: Engine mount inspection of aircraft | with fixed landing gear and engine | Rotax 912 iS.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_26A_2021_R0_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20208R0",
+   "date": "2021-02-01",
+   "title": "SBRTC-2020-8-R0: CANCELED: Replacement of throttle controller with simple throttle controller.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2020-8_R0_CANCELLED.pdf"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20193R0",
+   "date": "2021-01-25",
+   "title": "SBRTC-2019-3-R0: Possible retrofit of Major Design Change – Transponder Garmin GTX 335 with ADS-B Out.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2019-3_R0_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20194R0",
+   "date": "2021-01-25",
+   "title": "SBRTC-2019-4-R0: Update of Dynon SkyView firmware to version 15.4.7.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2019-4_R0_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20205R0",
+   "date": "2021-01-25",
+   "title": "SBRTC-2020-5-R0: Replacement of fuel pressure sensor ROAD unit by fuel pressure sensor KAVLICO.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2020-5_R0_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20206R0",
+   "date": "2021-01-25",
+   "title": "SBRTC-2020-6-R0: Equivalent oil hoses CONTI OLNS1 (Rotax P/N 956390) and CONTI M4M-2 (Rotax P/N 956394).",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2020-6_R0_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20207R0",
+   "date": "2021-01-25",
+   "title": "SBRTC-2020-7-R0: Modification of traffic information system from TRX-1500 to AT-1.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2020-7_R0_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT925A2020",
+   "date": "2020-12-21",
+   "title": "ZBWT9 25A/2020: Installation of parachute front spacer | between firewall and parachute fabric | container. | 1",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_25A_2020_R1_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20209R0",
+   "date": "2020-12-21",
+   "title": "SBRTC-2020-9-R0: Exchange of carburetor floats (pair) on Rotax 912 engines.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2020-9_R0_Signed.pdf"
+  },
+  {
    "id": "SB-SD4-02-2020",
    "date": "2020-12-15",
    "title": "Exchange of carburettor floats on ROTAX 912 ULS (P/N 861185 / 861188)",
@@ -318,6 +3167,83 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS18",
+   "date": "2020-10-30",
+   "title": "SB-ASTM-CTLS-18: Inspection of Float Mount Brackets | S/N 07-11-13 through current production | latest within 3 months following the issue date of the SB | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/11/PF04206000_00.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT924A2020",
+   "date": "2020-08-28",
+   "title": "ZBWT9 24A/2020: Replacement of the main and auxiliary | fuel pump check valves on the aircraft | equipped with engine Rotax 914UL.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_24A_2020_R0_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT923A2020",
+   "date": "2020-08-25",
+   "title": "ZBWT9 23A/2020: Inspection of gap between the | elevator root hinge assembly and the | vertical stabilizer skin.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_23A_2020_R0_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20204R1",
+   "date": "2020-07-27",
+   "title": "SBRTC-2020-4-R1: Inspection of gap between the elevator root hinge assembly and the vertical stabilizer. | 1",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2020-4_R1_Signed.pdf"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20201R0",
+   "date": "2020-03-10",
+   "title": "SBRTC-2020-1-R0: Replacement of the original AVE-WPSTR/G-20D MOD(1) Navigation / Position / Strobe LED Lights by the AVE-WPSTR/G-20D MOD(2).",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2020-1_R0_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20202R1",
+   "date": "2020-03-10",
+   "title": "SBRTC-2020-2-R1: Change of brake hoses connection to the calipers. | 1",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2020-2_R1_Signed.zip"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20203R0",
+   "date": "2020-03-10",
+   "title": "SBRTC-2020-3-R0: Replacement of ELT Kannad 406 AF-COMPACT unit by the ELT Kannad AF INTEGRA unit.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2020-3_R0_Signed.zip"
   },
   {
    "id": "SB-SD4-01-2020",
@@ -332,6 +3258,61 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "FLIGHTDESIGNSBASTMCTSW15",
+   "date": "2019-12-23",
+   "title": "SB-ASTM-CTSW-15: Repair procedure to additional wires protection | E-18-10-55, D-19-05-03 | immediate action (within the next 10 hours) | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2021/08/PZ24006014_00.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS17",
+   "date": "2019-12-23",
+   "title": "SB-ASTM-CTLS-17: Repair procedure to additional wires protection | F-18-10-52, F-18-10-54, F-18-11-03, F-18-11-04, F-19-03-01, F-19-04-51, F-19-04-55, F-19-05-01, F-19-05-02, F-19-05-05, F-19-05-06, F-19-08-52, F-19-11-01, F-19-11-02, F-",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-LTUL-CTLS-15-and-SB-ASTM-CTLS-17.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS16",
+   "date": "2019-11-22",
+   "title": "SB-ASTM-CTLS-16: Installation of Starter Solenoid on CTLS with Large SLA Battery | F-10-01-01, F-10-01-02, F-10-01-03, F-10-02-07, F-10-02-08, F-10-06-04, F-10-07-05, F-10-07-06, F-10-07-07; F-10-08-05, F-10-08-06, F-10-08-11, F-10-08-12",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-16.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW14",
+   "date": "2019-08-26",
+   "title": "SB-ASTM-CTSW-14: Dynon Autopilot Servo SV42T Inspection and Replacement of Linear Actuator Servo Pulley | in case of alteration of autopilot servo system to SV42T servo or auto pilot installation retrofits | before the next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTSW-14.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS15",
+   "date": "2019-08-26",
+   "title": "SB-ASTM-CTLS-15: Dynon Autopilot Servo SV42T Inspection and Replacement of Linear Actuator Servo Pulley | F-19-02-54, F-18-03-01, F-18-08-52, F-18-07-03, F-18-07-02, F-18-08-51, F-18-09-01, F-18-10-50, F-18-09-05, F-18-10-52, F-19-04-51,",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-15.pdf"
+  },
+  {
    "id": "SB-SD4-01-2019",
    "date": "2019-08-09",
    "title": "Replacement of circlip Rotax P/N 945785 in both carburettors (912 ULS)",
@@ -341,6 +3322,72 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20192R0",
+   "date": "2019-07-29",
+   "title": "SBRTC-2019-2-R0: Replacement of circlip (carburetor) for Rotax Engine Type 912.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2019-2_R0_Signed.pdf"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC035BR1",
+   "date": "2019-04-18",
+   "title": "ib-rtc-035b-r1: Information | Issue of Illustrated Parts Catalogue on SportStar RTC airplane, Doc. No. SPORTSTAR-0396G-02712-00, Issue No: 002.00",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-035b-r1-en"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC045BR1",
+   "date": "2019-04-18",
+   "title": "ib-rtc-045b-r1: Information | The engine manufacturer issued SB-912-063R1 and SB-912- 063ULR2 service bulletins regarding the replacement of fuel pumps. After replacement of the original fuel pumps p/n 892542 and 892546 for the pump p/n",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-045b-r1-en"
+  },
+  {
+   "id": "AEROSPOOLRTCSBRTC20191R0",
+   "date": "2019-04-16",
+   "title": "SBRTC-2019-1-R0: Possible retrofit of Major Design Change - Propeller KW-31 and towing equipment.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2019-1_R0_Signed.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS14",
+   "date": "2019-03-20",
+   "title": "SB-ASTM-CTLS-14: Installation of Reinforcement Plates on 4 Point Harnesses for CTLS Series | not limited | latest within 6 months following the issue date of this , or at the next annual inspection of the aircraft, whichever comes first.",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-14.pdf"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC046B",
+   "date": "2019-01-22",
+   "title": "ib-rtc-046b: Information | Inspection of passage of cables of the external power source through the fire wall. In case of insufficient inspection of cables of the external power source in the area of passage through the fire wall, th",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-046b-en"
   },
   {
    "id": "TOM-TC-01-ICA",
@@ -355,6 +3402,39 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "AEROSPOOLULZBWT922A2018",
+   "date": "2018-08-15",
+   "title": "ZBWT9 22A/2018: Inspection of nose fixed landing gear | WT-9 Dynamic.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_22A_2018_R0.zip"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC043B",
+   "date": "2018-07-12",
+   "title": "ib-rtc-043b: Information | Based on operational experience, the airplane manufacturer has decided to refresh general procedures during taxiing, takeoff and landing with crosswind.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-043b-en"
+  },
+  {
+   "id": "EVEKTORRTCIBRTC041B",
+   "date": "2018-06-13",
+   "title": "ib-rtc-041b: Information | Variant of the throttle control instead of the original throttle control No. E6 04-06 01.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-041b-en"
+  },
+  {
    "id": "SB-SD4-06-2017-R2",
    "date": "2018-02-12",
    "title": "Valve push-rod assy / rocker arms inspection or replacement – ROTAX 912/914",
@@ -366,6 +3446,17 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "EVEKTOREV97EV97018AR1",
+   "date": "2018-01-31",
+   "title": "ev97-018a-r1: R1 | Service | Based on the experience of operation, the airplane manufacturer specified the Canopy Opening in Flight Emergency Procedure.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ev97-018a-r1"
+  },
+  {
    "id": "SB-SD4-01-2017-R1",
    "date": "2017-12-12",
    "title": "Additional exhaust silencer installation",
@@ -375,6 +3466,28 @@
    "kind": "SB",
    "mandatory": false,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "EVEKTOREV97EV97035A",
+   "date": "2017-11-30",
+   "title": "ev97-035a: SR | Information | Inspection of the Magnum emergency system due to the repeated non-compliance with service instructions of the emergency system manufacturer on aircraft in the operation.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ev97-035a-sr"
+  },
+  {
+   "id": "EVEKTOREV97EV97036B",
+   "date": "2017-10-20",
+   "title": "ev97-036b: Information | Due to repeated non-compliance with service instructions of the emergency system manufacturer and in order to increase the emergency system safety the airplane manufacturer points out on the compliance with",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ev97-036b"
   },
   {
    "id": "SB-B-SD4-04-2017",
@@ -399,6 +3512,17 @@
    "url": "https://www.tomarkaero.com/wp-content/uploads/technical_support/bulletins/2017/SB_LSZ_SD4-03-2017_SVK.pdf"
   },
   {
+   "id": "FLIGHTDESIGNSNASTMCTLS06",
+   "date": "2017-05-02",
+   "title": "SN-ASTM-CTLS-06: CTLE-LSA Compliance as a Light-Sport Aircraft | not limited | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTLS-06.pdf"
+  },
+  {
    "id": "SB_SD4-01-2016",
    "date": "2016-08-16",
    "title": "Inspection / replacement of Rotax 912/914 carburettor floats",
@@ -408,6 +3532,105 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "AEROSPOOLULZBWT920A2016",
+   "date": "2016-08-11",
+   "title": "ZBWT9 20A/2016: Exhaust silencer FG",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_20A_2016_R0.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT921A2016",
+   "date": "2016-08-11",
+   "title": "ZBWT9 21A/2016: Added warning for performing of | sideslip maneuver into the POH",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_21A_2016_R0.zip"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS13",
+   "date": "2016-08-04",
+   "title": "SB-ASTM-CTLS-13: Verification of Stabilator Mounting Pivot | all s/n | prior to next flight | AC 0480 0002, Rev.00, CT / CTLS-HL Airplane Maintenance Manual (AMM)",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-13.pdf"
+  },
+  {
+   "id": "EVEKTOREV97EV97033A",
+   "date": "2016-07-26",
+   "title": "ev97-033a: SR | Information | The installation of mechanical catch against the opening of the canopy.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ev97-033a-sr"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT2K09",
+   "date": "2016-04-13",
+   "title": "SN-ASTM-CT2k-09: Spare Parts Availability | not limited | n/a | Flight and Maintenance Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT2k-09.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT2K10",
+   "date": "2016-04-13",
+   "title": "SN-SECS-CT2k-10: Spare Parts Availability | not limited | n/a | Flight and Maintenance Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT2k-10.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCTSW06",
+   "date": "2016-04-13",
+   "title": "SN-ASTM-CTSW-06: Spare Parts Availability | not limited | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTSW-06.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCTSW06",
+   "date": "2016-04-13",
+   "title": "SN-SECS-CTSW-06: Spare Parts Availability | not limited | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CTSW-06.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCTLS05",
+   "date": "2016-04-13",
+   "title": "SN-ASTM-CTLS-05: Spare Parts Availability | not limited | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTLS-05.pdf"
   },
   {
    "id": "SIB-SD4-02-2015",
@@ -421,6 +3644,72 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "FLIGHTDESIGNSBASTMCTLS12",
+   "date": "2015-12-02",
+   "title": "SB-ASTM-CTLS-12: in the level of a Service Directive USA Data Plate Replacement | F-12-04-01; F-12-05-04; F-12-05-05; F-12-07-04; F-12-07-05; F-13-01-06; F-13-01-07; F-13-01-08; F-13-02-01; F-13-02-02; F-13-02-03; F-13-03-07; F-13-03-08;",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-12.pdf"
+  },
+  {
+   "id": "EVEKTOREV97EV97034A",
+   "date": "2015-11-23",
+   "title": "ev97-034a: SR | Information | The manufacturer of ROTAX engines orders exchange of carburetors floats on engines.",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ev97-034a-sr"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW13",
+   "date": "2015-10-02",
+   "title": "SB-ASTM-CTSW-13: Verification of Rescue System Cover Installation | all s/n | latest within 3 months following the issue date of this Notification, or at the next annual inspection of the aircraft, whichever comes first. | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTSW-13.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCTSW08",
+   "date": "2015-10-02",
+   "title": "SB-SECS-CTSW-08: SB-LTUL-CTSW-14 | Verification of Rescue System Cover Installation. | up to serial number D-11-07-08 (including) | latest within 3 months following the issue date of this Notification, or at the next annual inspection of",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-LTUL-CTSW-13-and-SB-SECS-CTSW-08.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCTSW09",
+   "date": "2015-10-02",
+   "title": "SB-SECS-CTSW-09: SB-LTUL-CTSW-13 | Inspection Horizontal Tail. | Aircraft S/N that have a horizontal tail produced of Aramid fabric installed | each 100 hrs inspection | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CTSW-09-and-SB-LTUL-CTSW-13.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS11",
+   "date": "2015-10-02",
+   "title": "SB-ASTM-CTLS-11: Verification of Rescue System Cover Installation | All CTLS-LSA prior to serial number F-15-04-50 (including). | latest within 3 months following the issue date of this Notification, or at the next annual inspection of t",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-11.pdf"
+  },
+  {
    "id": "SIB-SD4-01-2015",
    "date": "2015-09-16",
    "title": "Visual inspection of rudder pedals (SK)",
@@ -430,6 +3719,83 @@
    "kind": "SIB",
    "mandatory": false,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "EVEKTOREV97EV97032A",
+   "date": "2015-05-18",
+   "title": "ev97-032a: SR | Information | Defective production lot of Semperit FUB 386 DN6 fuel hoses. Replacement of the fuel hoses as defined in the .",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ev97-032a-sr"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCTLS04",
+   "date": "2015-05-15",
+   "title": "SN-ASTM-CTLS-04: Supporting Information to Engine Start-Up of Rotax 912 iS on Flight Design Aircraft | All aircraft with any version of engine Rotax 912 iS series installed | n/a | Supplement to the Aircraft Operating Instructions with R",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTLS-04.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT919A2015",
+   "date": "2015-04-21",
+   "title": "ZBWT9 19A/2015: Rev. 1 | Modification or replacement of water | thermostat. | 1",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_19A-2015_R1_EN.zip"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTLS04",
+   "date": "2014-11-25",
+   "title": "SA-ASTM-CTLS-04: CTLSi Engine Installation Redundancy Diagnosis / ASB-914-044R1. | All CT type aircrafts with aircraft serial number earlier than x 12 05-02 (excluded, with (x) being the identifier of the relevant model, when applicable)",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTLS-04.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW12",
+   "date": "2014-11-11",
+   "title": "SB-ASTM-CTSW-12: SB-LTUL-CTSW-12 | Inspection of BRS Handle Bracket | All aircrafts with Airframe Emergency Parachute System BRS 1050 or 1350 installed, from S/N D-05-01-01 onwards. | as part of every regular 100 hrs inspection | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-LTUL-CTSW-12-and-SB-ASTM-CTSW-12.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTHL03",
+   "date": "2014-11-04",
+   "title": "SA-ASTM-CTHL-03: Installation verification of BRS Pickup Collar | All aircrafts with Airframe Emergency Parachute System BRS 1350 HS installed, and with S/N up to C-11-11-02, included. Aircraft with higher S/N are not affected. | prior t",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTHL-03.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS08",
+   "date": "2014-09-09",
+   "title": "SB-ASTM-CTLS-08: SB-ASTM-CTLS -08 | Replacement of regulator A and regulator B for ROTAX engine type 912iS. | Aircraft that have fuse boxes installed, as identified in concurrent Rotax SB-912 i-004iS. As minimum, the following aircraft S",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-08.pdf"
   },
   {
    "id": "ZB-SD4-03-2014",
@@ -452,6 +3818,17 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "AEROSPOOLULZBWT918A2013",
+   "date": "2014-03-20",
+   "title": "ZBWT9 18A/2013: Rev. 1 | Airbox and carburetor drain / vent | connection. | 1",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_18A.zip"
   },
   {
    "id": "ZB-SD4-01-2014",
@@ -498,6 +3875,83 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "FLIGHTDESIGNSAASTMCT2K04",
+   "date": "2013-03-07",
+   "title": "SA-ASTM-CT2K-04: Inspection for applicability of Rotax ASB-912-062UL R1 / ASB-914-044UL R1, ASB-912-062R1 / ASB-914-044R1. | aircraft serial number earlier than x 12 05 02 (excluded, with (x) being the identifier of the relevant model, w",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CT2K-04.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCT2K05",
+   "date": "2013-03-07",
+   "title": "SA-SECS-CT2K-05: Inspection for applicability of Rotax ASB-912-062UL R1 / ASB-914-044UL R1, ASB-912-062R1 / ASB-914-044R1. | aircraft serial number earlier than x-12-05-02 (excluded, with (x) being the identifier of the relevant model, (",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CT2K-05.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTSW06",
+   "date": "2013-03-07",
+   "title": "SA-ASTM-CTSW-06: SA-ASTM- CTSW-06 | Inspection for applicability of Rotax ASB-912-062UL R1 / ASB-914-044UL R1, ASB-912-062R1 / ASB-914-044R1. | All CTSW aircrafts with aircraft serial number earlier than x 12 05 02 (excluded, with (x) be",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTSW-06.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCTSW06",
+   "date": "2013-03-07",
+   "title": "SA-SECS-CTSW-06: Inspection for applicability of Rotax ASB-912-062UL R1 / ASB-914-044UL R1, ASB-912-062R1 / ASB-914-044R1. | All above listed CT type aircraft models with aircraft serial number earlier than x 12 05 02 (excluded, with (x)",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CTSW-06.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTHL02",
+   "date": "2013-03-07",
+   "title": "SA-ASTM-CTHL-02: Inspection for applicability of Rotax ASB-912-062UL R1 / ASB-914-044UL R1, ASB-912-062R1 / ASB-914-044R1. | All CT and MC type aircrafts with aircraft serial number earlier than x 12 05 02 (excluded, with (x) being the i",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTHL-02.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTLS03",
+   "date": "2013-03-07",
+   "title": "SA-ASTM-CTLS-03: SA-ASTM- CTLS-03 | Inspection for applicability of Rotax ASB-912-062UL R1 / ASB-914-044UL R1, ASB-912-062R1 / ASB-914-044R1. | All CT type aircrafts with aircraft serial number earlier than x 12 05-02 (excluded, with (x)",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTLS-03.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT917A2012",
+   "date": "2012-11-26",
+   "title": "ZBWT9 17A/2012: Change of Time between overhaul | intervals (TBO) of Woodcomp | propellers",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_17A.zip"
+  },
+  {
    "id": "ZB-SD4-01-2012",
    "date": "2012-09-28",
    "title": "Nose gear steering rod installation change (SK)",
@@ -507,6 +3961,1271 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "AEROSPOOLULZBWT916A2012",
+   "date": "2012-09-24",
+   "title": "ZBWT9 16A/2012: Swing bearings and flaps push | rods check",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_16A.zip"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW10",
+   "date": "2012-07-30",
+   "title": "SB-ASTM-CTSW-10: Inspection of the Rescue System Rear Harness connection | from 06-01-07(included) to 06-11-13(included); only those with installed BRS1350 HS Airframe Emergency Parachute System | before the next flight | PARACHUTE INSTA",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTSW-10.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCT2K03",
+   "date": "2012-05-30",
+   "title": "SA-ASTM-CT2K-03: SA-ASTM-CT2K- 03 | Inspection for applicability of Rotax ASB-912-061 / ASB-912-061UL | all s/n | before the next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CT2K-03.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCT2K04",
+   "date": "2012-05-30",
+   "title": "SA-SECS-CT2K-04: Inspection for applicability of Rotax ASB-912-061 / ASB-912-061UL | all s/n | before the next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CT2K-04.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTSW05",
+   "date": "2012-05-30",
+   "title": "SA-ASTM-CTSW-05: SA-ASTM- CTSW- 05 | Inspection for applicability of Rotax ASB-912-061 / ASB-912-061UL | all s/n | before the next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTSW-05.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCTSW05",
+   "date": "2012-05-30",
+   "title": "SA-SECS-CTSW-05: Inspection for applicability of Rotax ASB-912-061 / ASB-912-061UL | All CTSW up to S/N 11-07-08 | before the next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CTSW-05.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTLS02",
+   "date": "2012-05-30",
+   "title": "SA-ASTM-CTLS-02: SA-ASTM- CTLS- 02 | Inspection for applicability of Rotax ASB-912-061 / ASB-912-061UL | CTLS up to S/N F-12-02-10 | prior to next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTLS-02.pdf"
+  },
+  {
+   "id": "EVEKTOREV97EV97031A",
+   "date": "2011-12-01",
+   "title": "ev97-031a: Information | The manufacturer of Rotax 914 F a Rotax 914 UL engines informs about a possibility of clutch slipping during the engine operation, which can lead to an undesirable increase of engine speed above the set lim",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ev97-031a"
+  },
+  {
+   "id": "AEROSPOOLULZBWT915A2011",
+   "date": "2011-11-30",
+   "title": "ZBWT9 15A/2011: Check of crankshaft journal (power | take off side) for Rotax engine type | 912 and 914 (Series).",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_15A.zip"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCT02",
+   "date": "2011-11-28",
+   "title": "SA-SECS-CT--02: Engine Mount Bolts | all s/n up to D-11-07-08, F-11-07-06 and E-11-06-01 (incl.) | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CT_-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCT2K02",
+   "date": "2011-11-28",
+   "title": "SA-ASTM-CT2K-02: Checking of the Crankshaft Journal for ROTAX Engine Type 912 and 914 | all s/n | before the next flight, but at latest before | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CT2K-02.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCT2K03",
+   "date": "2011-11-28",
+   "title": "SA-SECS-CT2K-03: Checking of the Crankshaft Journal for ROTAX Engine Type 912 and 914 | all s/n | before the next flight, but at latest before | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CT2K-03.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTSW04",
+   "date": "2011-11-28",
+   "title": "SA-ASTM-CTSW-04: Checking of the Crankshaft Journal for ROTAX Engine Type 912 and 914 | All S/N up to S/N D-11-07-08 (inclusive) | before next flight, but at latest before | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTSW-04.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCTSW04",
+   "date": "2011-11-28",
+   "title": "SA-SECS-CTSW-04: Checking of the Crankshaft Journal for ROTAX Engine Type 912 and 914 | All S/N up to S/N D-11-07-08 (inclusive) | before next flight, but at latest before | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CTSW-04.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTHL01",
+   "date": "2011-11-28",
+   "title": "SA-ASTM-CTHL-01: Checking of the Crankshaft Journal for ROTAX Engine Type 912 and 914 | All S/N up to S/N C-11-02-01 (inclusive) | before next flight, but at latest before | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTHL-01.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTLS01",
+   "date": "2011-11-28",
+   "title": "SA-ASTM-CTLS-01: Checking of the Crankshaft Journal for ROTAX Engine Type 912 and 914 | All S/N up to S/N F-11-07-06 (inclusive) | before next flight, but at latest before | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTLS-01.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT914A2011",
+   "date": "2011-09-12",
+   "title": "ZBWT9 14A/2011: Change in WT- 9 Dynamic Flight | Manual and Operating, | Maintenance and repair manual",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_14A.zip"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS06",
+   "date": "2011-05-19",
+   "title": "SB-ASTM-CTLS-06: Tow Bar Markings and Operation | F-10-01-01; F-10-01-02; F-10-01-03; F-10-01-05; F-10-01-16; F-10-01-17; F-10-02-05; F-10-02-06; F-10-02-07; F-10-02-08; F-10-02-10; F-10-03-01; F-10-03-11; F-10-04-03; F-10-04-04; F-10-05",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-06.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT913A2011",
+   "date": "2011-05-06",
+   "title": "ZBWT9 13A/2011: Exhaust silencer",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_13A.zip"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCTLS02",
+   "date": "2011-03-28",
+   "title": "SN-ASTM-CTLS-02: Elimination of Noise in Radio from Dynon SkyView SV-D1000 | F-09-10-14; F-10-02-06; F-10-02-07; F-10-02-08; F-10-05-11; F-10-06-02; F-10-06-03; F-10-07-05; F-10-07-06; F-10-07-07; F-10-08-06; F-10-08-11; F-10-08-12; F-10",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTLS-02.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW09",
+   "date": "2010-12-23",
+   "title": "SB-ASTM-CTSW-09: Correction of Gross Weight Metric Conversion to Pounds | All serial numbers with applicable Aircraft Operating Instructions (AOI) revision 5, 5a, 5b, 6, 7, 8. | before 30 days after the issuance of this notice | AU 010 0",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2021/02/SB-ASTM-CTSW-99.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT912A2010",
+   "date": "2010-11-11",
+   "title": "ZBWT9 12A/2010: Change in the WT-9 Dynamic | maintenance schedule (canceliation | of the airframe 50h periodical | inspection",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_12A.zip"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCT03",
+   "date": "2010-10-08",
+   "title": "SB-ASTM-CT---03: Garmin SL30 and SL40 Comm Radio Spurious Emissions Correction | Aircraft witd Garmin SL30 or SL40 & aircraft production date before AUG 2010 (excluded), or retrofitted witd SL 30/40 produced before to OCT 2010 (excluded)",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CT__-03.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCT03",
+   "date": "2010-10-08",
+   "title": "SB-SECS-CT---03: Garmin SL30 and SL40 Comm Radio Spurious Emissions Correction | All aircraft with Garmin SL30Garmin SL40 units installed and with aircraft production date earlier than August 2010 (excluded) or when retrofitted with name",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CT__-03.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCT2K05",
+   "date": "2010-10-08",
+   "title": "SB-ASTM-CT2k-05: Garmin SL30 and SL40 Comm Radio Spurious Emissions Correction | All aircraft with Garmin SL30 Garmin SL40 units installed and with aircraft production date earlier than August 2010 (excluded), or when retrofitted with na",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CT2k-05.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCT2K04",
+   "date": "2010-10-08",
+   "title": "SB-SECS-CT2k-04: Garmin SL30 and SL40 Comm Radio Spurious Emissions Correction | All aircraft with Garmin SL30 Garmin SL40 units installed and with aircraft production date earlier than August 2010 (excluded), or when retrofitted with na",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CT2k-04.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW08",
+   "date": "2010-10-08",
+   "title": "SB-ASTM-CTSW-08: Garmin SL30 and SL40 Comm Radio Spurious Emissions Correction | All aircraft with Garmin SL30 Garmin SL40 units installed and with aircraft production date earlier than August 2010 (excluded), or when retrofitted with na",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTSW-08.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCTSW06",
+   "date": "2010-10-08",
+   "title": "SB-SECS-CTSW-06: Garmin SL30 and SL40 Comm Radio Spurious Emissions Correction | All aircraft with Garmin SL30 Garmin SL40 units installed and with aircraft production date earlier than August 2010 (excluded), or when retrofitted with na",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CTSW-06.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS05",
+   "date": "2010-10-08",
+   "title": "SB-ASTM-CTLS-05: Garmin SL30 and SL40 Comm Radio Spurious Emissions Correction | All aircraft with Garmin SL30 Garmin SL40 units installed and with aircraft production date earlier than August 2010 (excluded), or when retrofitted with na",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-05.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCT02",
+   "date": "2010-05-06",
+   "title": "SB-SECS-CT---02: Fuel Filter Exchange | All serial numbers prior to D-09-02-10 or F-09-02-01 (usage of letters at beginning of S/N started in 2008, therefore all S/N beginning without a letter are affected) | n/a | CT Parts and Maintenan",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CT__-02.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCT2K04",
+   "date": "2010-05-06",
+   "title": "SB-ASTM-CT2k-04: Fuel Filter Exchange | All serial numbers prior to D-09-02-10 or F-09-02-01 (usage of letters at beginning of S/N started in 2008, therefore all S/N beginning without a letter are affected) | before the next flight | CT ",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CT2k-04.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCT2K03",
+   "date": "2010-05-06",
+   "title": "SB-SECS-CT2k-03: Fuel Filter Exchange | All serial numbers prior to D-09-02-10 or F-09-02-01 (usage of letters at beginning of S/N started in 2008, therefore all S/N beginning without a letter are affected) | before the next flight | CT ",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CT2k-03.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW06",
+   "date": "2010-05-06",
+   "title": "SB-ASTM-CTSW-06: Fuel Filter Exchange | All serial numbers prior to D-09-02-10 or F-09-02-01 (usage of letters at beginning of S/N started in 2008, therefore all S/N beginning without a letter are affected) | before the next flight | CT ",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTSW-06.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCTSW04",
+   "date": "2010-05-06",
+   "title": "SB-SECS-CTSW-04: Fuel Filter Exchange | All serial numbers prior to D-09-02-10 (usage of letters at beginning of S/N started in 2008, therefore all S/N beginning without a letter are affected) | before the next flight | CT Parts and Main",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CTSW-04.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS01",
+   "date": "2010-05-06",
+   "title": "SB-ASTM-CTLS-01: Fuel Filter Exchange | All serial numbers prior to F-09-02-01 (usage of letters at beginning of S/N started in 2008, therefore all S/N beginning without a letter are affected) | before the next flight | CT Parts and Main",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-01.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW07",
+   "date": "2009-11-30",
+   "title": "SB-ASTM-CTSW-07: Stabilizer rear wall stiffening | S/N range 06-09-01 to 07-05-03, when equipped with full span trim tab, plus aircraft that do have trim tab balancing weights but do not have pre-formed stiffeners supporting each individ",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTSW-07.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCTSW05",
+   "date": "2009-11-30",
+   "title": "SB-SECS-CTSW-05: Stabilizer rear wall stiffening | S/N range 06-09-01 to 07-05-03, when equipped with full span trim tab, plus aircraft that do have trim tab balancing weights but do not have pre-formed stiffeners supporting each individ",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CTSW-05.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS02",
+   "date": "2009-11-30",
+   "title": "SB-ASTM-CTLS-02: Rudder Centring Fork-Control Stop Replacement. | F-08-04-09, F-08-04-10, F-08-04-11, F-08-04-12, F-08-04-13, F-08-04-14, F-08-04-15, F-08-04-16, F-08-04-17, F-08-05-08, F-08-05-09, F-08-05-10, F-08-05-11, F-08-05-12, F-0",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-02.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTLS03",
+   "date": "2009-11-30",
+   "title": "SB-ASTM-CTLS-03: Rudder Centring Fork-Control Stop Replacement. | F-08-10-21, F-08-11-20, F-08-11-28, F-08-12-17, F-09-01-08, F-09-01-09, F-09-01-10, F-09-02-10, F-09-02-12, F-09-02-13, F-09-02-16, F-09-03-12, F-09-03-13, F-09-03-14, F-0",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-03.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT911A2009",
+   "date": "2009-10-05",
+   "title": "ZBWT9 11A/2009: E10 fuel use approval (Unleaded | gasoline blended with 10% ethanol) | and WT-9 Dynamic Normal | procedures for Airplane securing | modification",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_11A.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT910A2008",
+   "date": "2009-01-14",
+   "title": "ZBWT9 10A/2008: Change in Flight Manual for | aeroplane WT-9 Dynamic, pages | 0-4, 0-5, 3-5, 3-6.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_10A.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT907A2008",
+   "date": "2008-11-27",
+   "title": "ZBWT9 07A/2008: Throttle lever nut locking.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_07A.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT909A2008",
+   "date": "2008-10-20",
+   "title": "ZBWT9 09A/2008: Change in the Operating, | Maintenance and repair manual for | aeroplane WT 9 Dynamic, page 3-8. | Completion of the item 6.1.1 Wing | disassembly into a Periodic | inspection listing.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_09A.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT908A2008",
+   "date": "2008-10-15",
+   "title": "ZBWT9 08A/2008: The engine bed used in fixed landing | gear version.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_08A.zip"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCT01",
+   "date": "2008-10-15",
+   "title": "SA-ASTM-CT--01: Engine Mount Bolts | s/n up to 05-05-01 (including) | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CT_-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCT01",
+   "date": "2008-10-15",
+   "title": "SB-ASTM-CT--01: Landing Gear Inspection | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CT_-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCT02",
+   "date": "2008-10-15",
+   "title": "SB-ASTM-CT--02: Inspection of Neuform 3-Bladed Variable Pitch Propeller Installation | All aircrafts equipped witd Neuform 3-blade Variable Pitch Propeller | before tde next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CT_-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT01",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT--01: Rohacell ® foam core | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT_-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT02",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT--02: Engine coolant | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT_-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT03",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT--03: Coolant hose chafing | up to 02-06-04-25 (including) | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT_-03-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT04",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT--04: Upper rudder hinge | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT_-04-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT05",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT--05: Aileron Bracket | up to 04-04-01 | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT_-05-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCT01",
+   "date": "2008-10-15",
+   "title": "SA-SECS-CT--01: Securing of control system bolts | All s/n | before the next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CT_-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCT01",
+   "date": "2008-10-15",
+   "title": "SB-SECS-CT--01: Landing Gear Inspection | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CT_-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT01",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT--01: Rohacell ® foam core | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT_-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT02",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT--02: Engine coolant | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT_-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT03",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT--03: Coolant hose chafing | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT_-03-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT04",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT--04: Upper rudder hinge | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT_-04-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT06",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT--06: Aileron Bracket | up to 04-04-01 | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT_-06-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT05",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT--05: Detection of Damages from Hard Landings | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT_-05-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCT2K01",
+   "date": "2008-10-15",
+   "title": "SA-ASTM-CT2k-01: Engine Mount Bolts | up to 05-05-01 (incl.) | n/a | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CT2k-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCT2K01",
+   "date": "2008-10-15",
+   "title": "SB-ASTM-CT2k-01: Radiator Isolator Mounts | from 03-04-03-16 to 05-06-03 | before the next flight | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CT2k-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCT2K02",
+   "date": "2008-10-15",
+   "title": "SB-ASTM-CT2k-02: Landing Gear Inspection | all s/n | n/a | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CT2k-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCT2K03",
+   "date": "2008-10-15",
+   "title": "SB-ASTM-CT2k-03: Inspection of Neuform 3-Bladed Variable Pitch Propeller Installation | All aircrafts equipped with Neuform 3-blade Variable Pitch Propeller | before the next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CT2k-03-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT2K01",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT2k-01: Rohacell ® foam core | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT2k-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT2K02",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT2k-02: Engine coolant | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT2k-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT2K03",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT2k-03: Coolant hose chafing | up to 01-04-01-12 (not incl.) | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT2k-03-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT2K04",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT2k-04: Coolant hose chafing | up to 02-06-04-25 (incl.) | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT2k-04-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT2K05",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT2k-05: Upper rudder hinge | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT2k-05-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT2K06",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT2k-06: Aileron Bracket | up to 04-04-01 | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT2k-06-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT2K07",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CT2k-07: Maintenance Inspection Intervals | all s/n | n/a | Maintenance and Inspection Procedures Manual, Rotax engine Maintenance Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT2k-07-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCT2K02",
+   "date": "2008-10-15",
+   "title": "SA-SECS-CT2k-02: Engine Mount Bolts | up to 05-05-01 | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CT2k-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCT2K01",
+   "date": "2008-10-15",
+   "title": "SA-SECS-CT2k-01: Securing of control system bolts | all s/n | before the next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CT2k-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCT2K01",
+   "date": "2008-10-15",
+   "title": "SB-SECS-CT2k-01: Radiator Isolator Mounts | from 03-04-03-16 to 05-06-03 | before the next flight | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CT2k-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCT2K02",
+   "date": "2008-10-15",
+   "title": "SB-SECS-CT2k-02: Landing Gear Inspection | all s/n | n/a | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CT2k-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT2K01",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT2k-01: Rohacell ® foam core | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT2k-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT2K02",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT2k-02: Engine coolant | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT2k-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT2K03",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT2k-03: Coolant hose chafing | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT2k-03-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT2K04",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT2k-04: Coolant hose chafing | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT2k-04-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT2K05",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT2k-05: Upper rudder hinge | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT2k-05-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT2K07",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT2k-07: Aileron Bracket | up to 04-04-01 | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT2k-07-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT2K08",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT2k-08: Maintenance Inspection Intervals | all s/n | n/a | Maintenance and Inspection Procedures Manual, Rotax engine Maintenance Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT2k-08-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT2K06",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CT2k-06: Detection of Damages from Hard Landings | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT2k-06-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTSW01",
+   "date": "2008-10-15",
+   "title": "SA-ASTM-CTSW-01: Engine Mount Bolts | all s/n up to 05-05-01 (incl.) | n/a | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTSW-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTSW02",
+   "date": "2008-10-15",
+   "title": "SA-ASTM-CTSW-02: Servo Tab Spring | from 05-11-09 up to 06-09-05 | within the next 25 hours, or at the next maintenance interval, whichever occurs first | Maintenance Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTSW-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSAASTMCTSW03",
+   "date": "2008-10-15",
+   "title": "SA-ASTM-CTSW-03: en_1 | Trim Tab Reinforcement | CTSW 2006-2007 from 06-07-15 up to 07-05-18 | before the next flight | 070625 Trim Tab Reinforcement Procedure; Maintenance Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTSW-03-en_1.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW01",
+   "date": "2008-10-15",
+   "title": "SB-ASTM-CTSW-01: Radiator Isolator Mounts | all s/n from 03-04-03-16 to 05-06-03 | before the next flight | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTSW-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW02",
+   "date": "2008-10-15",
+   "title": "SB-ASTM-CTSW-02: Landing Gear Inspection | all s/n | every 300 hours, at the annual inspection, or after a hard landing, whichever occurs first. | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTSW-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW03",
+   "date": "2008-10-15",
+   "title": "SB-ASTM-CTSW-03: Servo Tab Hinge Enhancement | 05-12-01, 05-12-02, 05-12-03, 05-12-05, 05-12-06, 05-12-07, 05-12-08, 06-01-07, 06-01-08, 06-01-09, 06-01-10, 06-01-11, 06-01-12, 06-02-05, 06-02-06 | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTSW-03-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBASTMCTSW05",
+   "date": "2008-10-15",
+   "title": "SB-ASTM-CTSW-05: Inspection of Neuform 3-Bladed Variable Pitch Propeller Installation | All aircrafts equipped with Neuform 3-blade Variable Pitch Propeller | before the next flight | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTSW-05-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCTSW01",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CTSW-01: Rohacell ® foam core | all s/n | n/a | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTSW-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCTSW02",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CTSW-02: Engine coolant | all s/n | n/a | Rotax engine manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTSW-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCTSW03",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CTSW-03: Upper rudder hinge | all s/n | n/a | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTSW-03-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCTSW04",
+   "date": "2008-10-15",
+   "title": "SN-ASTM-CTSW-04: Maintenance Inspection Intervals | all s/n | n/a | Maintenance and Inspection Procedures Manual; Rotax Maintenance Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTSW-04-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCTSW01",
+   "date": "2008-10-15",
+   "title": "SA-SECS-CTSW-01: Engine Mount Bolts | all s/n up to 05-05-01 | in the next 20 hours | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CTSW-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCTSW02",
+   "date": "2008-10-15",
+   "title": "SA-SECS-CTSW-02: Servo Tab Spring | CTSW 2006 from 05-11-09 to 06-09-05 | within the next 25 hours, or at the next maintenance interval, whichever occurs first | Maintenance Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CTSW-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSASECSCTSW03",
+   "date": "2008-10-15",
+   "title": "SA-SECS-CTSW-03: Trim Tab Reinforcement | CTSW 2006 model year 2006 and 2007 s/n from 06-07-15 to 07-05-18 (incl.) when equipped with full span trim tab (assembled before September 1st 2007) | before the next flight | 070625 Trim Tab Rei",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-SECS-CTSW-03-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCTSW01",
+   "date": "2008-10-15",
+   "title": "SB-SECS-CTSW-01: Radiator Isolator Mounts | all s/n from 03-04-03-16 to 05-06-03 | before the next flight | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CTSW-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSBSECSCTSW02",
+   "date": "2008-10-15",
+   "title": "SB-SECS-CTSW-02: Landing Gear Inspection | all s/n | every 300 hours, at the annual inspection, or after a hard landing, whichever occurs first. | Maintenance and Inspection Procedures Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-SECS-CTSW-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCTSW01",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CTSW-01: Rohaceall ® foam core | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CTSW-01-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCTSW02",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CTSW-02: Engine coolant | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CTSW-02-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCTSW03",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CTSW-03: Upper rudder hinge | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CTSW-03-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCTSW04",
+   "date": "2008-10-15",
+   "title": "SN-SECS-CTSW-04: Maintenance Inspection Intervals | all s/n | n/a | Maintenance and Inspection Procedures Manual; Rotax Maintenance Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CTSW-04-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT06",
+   "date": "2008-09-22",
+   "title": "SN-ASTM-CT--06: Information on Usage of Etdanol Blended Fuel | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT_-06-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT07",
+   "date": "2008-09-22",
+   "title": "SN-SECS-CT--07: Information on Usage of Ethanol Blended Fuel | All s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT_-07-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCT2K08",
+   "date": "2008-09-22",
+   "title": "SN-ASTM-CT2k-08: Information on Usage of Ethanol Blended Fuel | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CT2k-08-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCT2K09",
+   "date": "2008-09-22",
+   "title": "SN-SECS-CT2k-09: Information on Usage of Ethanol Blended Fuel | all s/n | n/a | n/a",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CT2k-09-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCTSW05",
+   "date": "2008-09-22",
+   "title": "SN-ASTM-CTSW-05: Information on Usage of Ethanol Blended Fuel | all s/n | n/a | Aircraft Operation Instructions; Rotax engine Operators Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTSW-05-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNSECSCTSW05",
+   "date": "2008-09-22",
+   "title": "SN-SECS-CTSW-05: Information on Usage of Ethanol Blended Fuel | all s/n | n/a | Aircraft Operation Instructions; Rotax engine Operators Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-SECS-CTSW-05-en.pdf"
+  },
+  {
+   "id": "FLIGHTDESIGNSNASTMCTLS01",
+   "date": "2008-09-22",
+   "title": "SN-ASTM-CTLS-01: Information on Usage of Ethanol Blended Fuel | all s/n | n/a | Aircraft Operation Instructions; Rotax engine Operators Manual",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTLS-01-en.pdf"
+  },
+  {
+   "id": "AEROSPOOLULZBWT906A2008",
+   "date": "2008-07-03",
+   "title": "ZB WT9 06A/2008: Replacement of fuel connection | hose (ø18 mm) between central | section fuel tank and wing fuel tank",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_06A.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT905A2007",
+   "date": "2007-10-17",
+   "title": "ZB WT9 05A/2007: Replacement of planetary gearbox | gear wheels of propeller adjustment | mechanism and inspection of | mechanical stops of minimal angle | of attack of propeller blades.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_05A.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT903A2007",
+   "date": "2007-01-25",
+   "title": "ZB WT9 03A/2007: Securing of the brushes of propeller | speed control unit",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_03A.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT902A2006",
+   "date": "2006-10-26",
+   "title": "ZB WT9 02A/2006: Elevator play check and its | elimination.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_02A.zip"
+  },
+  {
+   "id": "AEROSPOOLULZBWT901A2003",
+   "date": "2003-09-24",
+   "title": "ZB WT9 01A/2003: Check of the landing gear legs | attachment.",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_01A.pdf"
   }
  ]
 }
