@@ -41,6 +41,11 @@ def notice(msg):
     print(("::notice::" if os.environ.get("GITHUB_ACTIONS") else "") + msg.replace("\n", " | "))
 
 
+def mask(s):  # keep personal contact data out of public CI logs
+    s = re.sub(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+", "<e-mail>", s)
+    return re.sub(r"\+?\d[\d\s-]{7,}\d", "<tel>", s)
+
+
 def get(url, binary=False):
     data = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60).read()
     return data if binary else data.decode("utf-8", "replace")
@@ -60,8 +65,7 @@ def pick(urls, *needles, exclude=()):
 
 
 def debug_rows(label, rows, n=8):
-    if DRY:
-        notice(f"RAW {label}: " + " ## ".join(" | ".join(c.replace(chr(10), " / ")[:60] for c in r) for r in rows[:n]))
+    pass
 
 
 def pdf_rows(url):
@@ -98,35 +102,28 @@ def parse_examiners(url, label, ul):
     """Lines of: certificate | name / e-mail / tel. | region | category | scope | description | valid until.
     One examiner spans many lines; a new examiner starts at a line with a name in column 2."""
     rows = pdf_rows(url)
-    if DRY:
-        for i, raw in enumerate(rows[3:45]):
-            notice(f"EX{i:02d} " + " ¦ ".join(" ".join((c or "").split())[:45] for c in logical(raw)))
-    people, cur, pending = [], None, []
+    people, cur = [], None
     for raw in rows:
         r = [" ".join((c or "").split()) for c in logical(raw)]
         c0, c1, c2, c3, c4, c5, c6 = r
         if c1.lower().startswith("nazwisko") or c0.lower().startswith("nr"):
             continue
-        certs = CERT.findall(c0) + re.findall(r"PL/[A-Z]+/\d+|\b\d{3,5}/\d{2}\b", c0) if c0 else []
-        for part in [x.strip() for x in re.split(r" / |;", c1) if x.strip()]:
-            if EMAIL.search(part):
-                if cur is not None and not cur["email"]:
-                    cur["email"] = EMAIL.search(part).group(0)
-            elif TEL_RX.search(part) or re.fullmatch(r"[\d\s+-]{9,15}", part):
-                if cur is not None and not cur["phone"]:
-                    m = TEL_RX.search(part)
-                    cur["phone"] = norm_phone(m.group(1) if m else part)
-            elif NAME_RX.match(part):
-                cur = {"name": part, "email": "", "phone": "", "regions": [], "quals": [], "valid": [], "certs": pending}
-                pending = []
-                people.append(cur)
-        for c in certs:
-            if cur is None:
-                pending.append(c)
-            elif c not in cur["certs"]:
-                cur["certs"].append(c)
+        cert = re.search(r"PL/[A-Z]+/\d+|\b\d{2,5}/\d{2,4}\b", c0)
+        # Name = text of column 2 before the first e-mail / "tel."
+        head = re.split(r"\S+@\S+|\btel\.?", c1, maxsplit=1, flags=re.I)[0].strip(" ,;/")
+        if cert and head and re.match(r"^[A-ZŁŚŻŹĆŃÓĄĘ][^\d@]{3,}$", head):
+            cur = {"name": head, "email": "", "phone": "", "regions": [], "quals": [], "valid": [], "certs": [cert.group(0)]}
+            people.append(cur)
+        elif cert and cur is not None and cert.group(0) not in cur["certs"]:
+            cur["certs"].append(cert.group(0))
         if cur is None:
             continue
+        em = EMAIL.search(c1)
+        if em and not cur["email"]:
+            cur["email"] = em.group(0)
+        tel = TEL_RX.search(c1)
+        if tel and not cur["phone"]:
+            cur["phone"] = norm_phone(tel.group(1))
         for v in VOIV:
             if v in c2.lower() and v not in cur["regions"]:
                 cur["regions"].append(v)
@@ -240,8 +237,10 @@ def main():
         notice(f"organisations: ERROR {type(e).__name__}: {e}")
 
     for prefix, items in collected.items():
-        sample = " || ".join(f"{c['name']} [{c.get('city','')}] {c.get('email','')} {c.get('phone','')} {c.get('note','')[:80]}" for c in items[:3])
-        notice(f"{prefix}: {len(items)} entries; e.g. {sample}")
+        sample = " || ".join(f"{c['name']} [{c.get('city','')}] {'e-mail' if c.get('email') else '-'} {'tel' if c.get('phone') else '-'} {c.get('note','')[:90]}" for c in items[:4])
+        with_contact = sum(1 for c in items if c.get("email") or c.get("phone"))
+        with_coords = sum(1 for c in items if c.get("lat"))
+        notice(mask(f"{prefix}: {len(items)} entries, {with_contact} with contact, {with_coords} with coords; e.g. {sample}"))
 
     if DRY or not collected:
         notice("dry run – nothing written" if DRY else "nothing collected")
