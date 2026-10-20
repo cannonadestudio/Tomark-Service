@@ -26,10 +26,10 @@ jobs:
       - name: Commit
         if: env.DRY_RUN != '1'
         run: |
-          git pull --rebase --quiet
           if git diff --quiet -- data tools; then echo "No changes"; exit 0; fi
           git config user.name "contacts-bot"
           git config user.email "contacts-bot@users.noreply.github.com"
           git add data tools
           git commit -m "Auto: ULC examiners and maintenance organisations"
+          git pull --rebase --quiet
           git push
