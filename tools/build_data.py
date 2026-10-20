@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Generates app/src/main/assets/types.json, app/src/main/assets/bulletins.json
+"""BOOTSTRAP ONLY. Since the web panel (docs/admin) exists, data/*.json is the source of truth
+and is edited there; CI copies data/*.json into the app assets. Running this again
+overwrites data/ – it requires --bootstrap.
+
+Originally generated app/src/main/assets/types.json, app/src/main/assets/bulletins.json
 and data/bulletins.json (the online feed the app downloads).
 
 Edit the definitions below, run `python3 tools/build_data.py`, commit.
@@ -167,25 +171,55 @@ def task(id_, title, cat, mandatory, source, verified, hours=None, months=None,
 SB0323 = "SB_SD4-03-2023"
 ROTAX = "Rotax MML-912 – sprawdź aktualną rewizję / verify"
 
+MML = "Rotax MML-912 Ed.4 Rev.1 (2021)"
+MML2 = "Rotax MML-912 wg źródeł wtórnych (RAANZ, rotax-owner) – sprawdź 05-20-00"
+
 def rotax_tasks():
     return [
-        task("rotax_oil", L("Wymiana oleju i filtra (Rotax)", "Oil & filter change (Rotax)", "Výmena oleja a filtra (Rotax)", "Vidange huile et filtre (Rotax)"),
-             "engine", True, ROTAX, False, hours=100, months=12,
-             note=L("Przy częstym użyciu AVGAS Rotax zaleca krótszy interwał.", "With frequent AVGAS use Rotax recommends a shorter interval.")),
-        task("rotax_plugs", L("Świece zapłonowe", "Spark plugs", "Zapaľovacie sviečky", "Bougies"), "engine", True, ROTAX, False, hours=200),
-        task("rotax_gearbox", L("Przegląd reduktora", "Gearbox inspection", "Prehliadka reduktora", "Inspection réducteur"), "engine", True, ROTAX, False, hours=1000),
-        task("rotax_rubber", L("Wymiana elementów gumowych silnika", "Engine rubber parts replacement", "Výmena gumových dielov motora", "Remplacement pièces caoutchouc moteur"),
-             "engine", True, ROTAX, False, months=60),
-        task("rotax_tbo", L("Remont główny silnika (TBO)", "Engine overhaul (TBO)", "Generálna oprava motora (TBO)", "Révision générale moteur (TBO)"),
-             "engine", True, ROTAX, False, hours=2000, months=180,
-             note=L("TBO zależy od numeru seryjnego silnika i biuletynów Rotax.", "TBO depends on engine S/N and Rotax bulletins.")),
+        task("rotax_25h", L("Rotax: pierwsza kontrola po 25 h (nowy / po remoncie)", "Rotax: first check at 25 h (new / overhauled)", "Rotax: prvá kontrola po 25 h (nový / po GO)", "Rotax : premier contrôle à 25 h (neuf / révisé)"),
+             "engine", True, MML, True, once=25),
+        task("rotax_100h", L("Rotax: przegląd 100 h / 12 mies.", "Rotax: 100 h / 12 month inspection", "Rotax: prehliadka 100 h / 12 mes.", "Rotax : visite 100 h / 12 mois"),
+             "engine", True, MML, True, hours=100, months=12, tol=10,
+             note=L("Tolerancja wg MML: ±10 h / ±2 mies.", "MML tolerance: ±10 h / ±2 months.", "Tolerancia MML: ±10 h / ±2 mes.", "Tolérance MML : ±10 h / ±2 mois")),
+        task("rotax_oil", L("Rotax: wymiana oleju i filtra", "Rotax: oil & filter change", "Rotax: výmena oleja a filtra", "Rotax : vidange huile et filtre"),
+             "engine", True, MML2, False, hours=100, months=12,
+             note=L("Przy AVGAS >30% czasu pracy: co 50 h – ustaw interwał.", "With leaded AVGAS >30% of operation: every 50 h – adjust interval.", "Pri AVGAS >30 % prevádzky: každých 50 h.", "Avec AVGAS plombé >30 % : toutes les 50 h.")),
+        task("rotax_plugs", L("Rotax: świece zapłonowe", "Rotax: spark plugs", "Rotax: zapaľovacie sviečky", "Rotax : bougies"), "engine", True, MML2, False, hours=200,
+             note=L("Przy AVGAS >30%: co 100 h.", "With leaded AVGAS >30%: every 100 h.", "Pri AVGAS >30 %: každých 100 h.", "Avec AVGAS >30 % : toutes les 100 h.")),
+        task("rotax_gearbox", L("Rotax: reduktor / sprzęgło przeciążeniowe", "Rotax: gearbox / overload clutch", "Rotax: reduktor / preťažovacia spojka", "Rotax : réducteur / embrayage"), "engine", True, MML2, False, hours=1000,
+             note=L("600 h dla sprzęgła P/N 996886 bez otworów i AVGAS >30%.", "600 h for clutch P/N 996886 without drain holes and AVGAS >30%.", "600 h pre spojku P/N 996886 bez otvorov a AVGAS >30 %.", "600 h pour embrayage P/N 996886 sans trous et AVGAS >30 %.")),
+        task("rotax_rubber", L("Rotax: wymiana gumy i pompy paliwa (5 lat)", "Rotax: rubber parts & fuel pump (5 years)", "Rotax: gumové diely a palivové čerpadlo (5 rokov)", "Rotax : caoutchoucs et pompe à carburant (5 ans)"),
+             "engine", True, MML + " 05-10-00", True, months=60,
+             note=L("Membrany i króćce gaźników, węże paliwa i chłodzenia, część węży oleju, pasek, pompa paliwa.", "Carb diaphragms & sockets, fuel and coolant hoses, some oil hoses, V-belt, fuel pump.", "Membrány a hrdlá karburátorov, hadice paliva a chladenia, remeň, čerpadlo.", "Membranes et pipes carbu, durites carburant/refroidissement, courroie, pompe.")),
+        task("rotax_tbo", L("Rotax: remont główny (TBO)", "Rotax: overhaul (TBO)", "Rotax: generálna oprava (TBO)", "Rotax : révision générale (TBO)"),
+             "engine", True, MML + " 05-10-00", True, hours=2000, months=180,
+             note=L("2000 h / 15 lat tylko od określonych numerów seryjnych (np. 912 ULS od 6775790, 912 S od 4923890). Starsze: 1200–1500 h – ustaw interwał.",
+                    "2000 h / 15 y only from given S/N (e.g. 912 ULS from 6775790, 912 S from 4923890). Older: 1200–1500 h – set the interval.",
+                    "2000 h / 15 r. len od určených v. č. (912 ULS od 6775790, 912 S od 4923890). Staršie: 1200–1500 h.",
+                    "2000 h / 15 ans seulement à partir de certains N° (912 ULS dès 6775790, 912 S dès 4923890). Anciens : 1200–1500 h.")),
         task("prop", L("Przegląd śmigła", "Propeller inspection", "Prehliadka vrtule", "Inspection hélice"), "propeller", True,
              "Instrukcja producenta śmigła / propeller manual – ustaw interwał", False),
         task("brs_repack", L("Spadochron ratowniczy – przepakowanie", "Rescue parachute – repack", "Záchranný padák – prebalenie", "Parachute – repliage"),
-             "rescue", True, "Instrukcja producenta BRS / Galaxy / Stratos – ustaw interwał", False),
+             "rescue", True, "Instrukcja producenta BRS / Galaxy / Stratos / Junkers – ustaw interwał", False),
         task("brs_rocket", L("Spadochron ratowniczy – rakieta / żywotność", "Rescue parachute – rocket / service life", "Záchranný padák – raketa / životnosť", "Parachute – fusée / durée de vie"),
              "rescue", True, "Instrukcja producenta BRS – ustaw interwał", False),
     ]
+
+def generic_easa_tasks():
+    return [
+        task("airframe_100h", L("Przegląd okresowy płatowca (wg AMM)", "Airframe periodic inspection (per AMM)", "Periodická prehliadka draku (podľa AMM)", "Visite périodique cellule (selon AMM)"),
+             "airframe", True, "AMM producenta – sprawdź / verify", False, hours=100, months=12),
+        task("arc", L("Przegląd zdatności (ARC)", "Airworthiness review (ARC)", "Kontrola letovej spôsobilosti (ARC)", "Examen de navigabilité (ARC)"),
+             "regulatory", True, "Part-ML, ML.A.901 (Rozp. UE 1321/2014)", True, months=12),
+    ] + rotax_tasks()
+
+def generic_ul_tasks():
+    return [
+        task("ul_100h", L("Przegląd okresowy płatowca 100 h / 12 mies.", "Airframe periodic inspection 100 h / 12 months", "Periodická prehliadka draku 100 h / 12 mes.", "Visite périodique cellule 100 h / 12 mois"),
+             "airframe", True, "Instrukcja obsługi producenta – sprawdź / verify", False, hours=100, months=12),
+        task("ul_national", L("Przegląd / dokument zdatności wg przepisów krajowych UL", "National UL airworthiness renewal", "Obnova spôsobilosti podľa národných predpisov UL", "Renouvellement navigabilité ULM national"),
+             "regulatory", True, "Przepisy krajowe (np. ULC, LAA) – ustaw / set", False, months=12),
+    ] + rotax_tasks()
 
 def easa_tasks(nvfr):
     amm = "TOM-TC-15-AMM" if nvfr else "TOM-TC-01-AMM"
@@ -273,9 +307,112 @@ types = [
     },
 ]
 
+
+# ---------------------------------------------------------------- other Rotax types
+ZONES = {"VS0": "white", "VS1": "green", "VFE": "white", "VNE": "red", "VAPP": "approach", "VR": "approach"}
+ORDER = ["VS0", "VS1", "VAPP", "VFE", "VA", "VC", "VNE", "VR", "VX", "VY", "VBG"]
+LBL["VAPP"] = L("Podejście (wg AFM)", "Approach (AFM)", "Priblíženie (AFM)", "Approche (AFM)")
+
+def gtype(id_, name, maker, cat, tcds, unit, vals, src, verified, groups, mtow, fuel, engine, note=None, unverified_keys=()):
+    speeds = []
+    for k in ORDER:
+        v = vals.get(k)
+        if v is None:
+            if k == "VAPP" and vals.get("VS0"):
+                speeds.append(approach(vals["VS0"], unit))
+            else:
+                u = unknown(k); u["zone"] = ZONES.get(k, "normal"); speeds.append(u)
+            continue
+        ok = verified and k not in unverified_keys
+        speeds.append(spd(k, LBL[k], v, unit, src if ok else (src + " (brochure)"), ok, ZONES.get(k, "normal")))
+    items = [
+        item(L("MTOW", "MTOW"), mtow, src),
+        item(L("Silnik", "Engine", "Motor", "Moteur"), engine, src),
+        item(L("Paliwo", "Fuel", "Palivo", "Carburant"), fuel, src),
+    ]
+    if note:
+        items.append(item(L("Uwaga", "Note", "Poznámka", "Remarque"), note, src))
+    return {
+        "id": id_, "name": name, "family": maker.lower().split()[0], "manufacturer": maker, "category": cat,
+        "tcds": tcds, "bulletinGroups": groups + ["ROTAX_912"],
+        "speeds": speeds,
+        "manual": [sec("data", L("Dane podstawowe", "Basic data", "Základné údaje", "Données de base"), items)],
+        "tasks": generic_easa_tasks() if cat == "EASA" else generic_ul_tasks(),
+    }
+
+CAS = L("Prędkości w TCDS podane jako CAS – IAS sprawdź w AFM.", "TCDS speeds are CAS – check IAS in the AFM.", "Rýchlosti v TCDS sú CAS – IAS overte v AFM.", "Vitesses TCDS en CAS – vérifier l'IAS dans l'AFM.")
+TC = lambda n: f"EASA TCDS {n}"
+
+types += [
+    gtype("p2002jf", "Tecnam P2002 JF", "Tecnam", "EASA", "EASA.A.006", "kt",
+          {"VS0": 38, "VS1": 41, "VFE": 67, "VA": 96, "VC": 110, "VNE": 138}, TC("A.006 Iss.13"), True, ["TECNAM"],
+          "580 kg (600/620 kg z MOD)", "100 L / 99 L", "Rotax 912 S2 / S3", unverified_keys=("VS0", "VS1")),
+    gtype("p2008jc", "Tecnam P2008 JC", "Tecnam", "EASA", "EASA.A.583", "kt",
+          {"VFE": 72, "VA": 98, "VC": 111, "VNE": 141}, TC("A.583 Iss.14 (KCAS)"), True, ["TECNAM"],
+          "630 kg (650 kg opcja)", "124 L / 120 L", "Rotax 912 S2", note=CAS),
+    gtype("p92js", "Tecnam P92-JS", "Tecnam", "EASA", "EASA.A.412", "kt",
+          {"VFE": 68, "VA": 93, "VC": 106, "VNE": 134}, TC("A.412 Iss.04"), True, ["TECNAM"],
+          "550 kg (600 kg z MOD92/41)", "70 L (90 L opcja)", "Rotax 912 S2"),
+    gtype("aquila_a211", "Aquila A211 (AT01)", "Aquila", "EASA", "EASA.A.527", "kt",
+          {"VS0": 39, "VS1": 49, "VAPP": 60, "VFE": 90, "VA": 112, "VC": 130, "VNE": 165, "VX": 52, "VY": 65, "VBG": 78},
+          TC("A.527 + AFM FM-AT01-1010-103"), True, ["AQUILA"], "750 kg", "120 L / 109,6 L", "Rotax 912 S3 / iSc3"),
+    gtype("hk36", "Diamond HK 36 Super Dimona", "Diamond", "EASA", "EASA.A.065", "kmh",
+          {"VA": 176, "VNE": 261}, TC("A.065 Iss.05"), True, ["DIAMOND"], "770 kg", "55 L (79 L opcja)", "Rotax 912 A2/A3/S3"),
+    gtype("dv20", "Diamond DV 20 Katana", "Diamond", "EASA", "EASA.A.439", "kmh",
+          {"VFE": 150, "VA": 193, "VC": 215, "VNE": 291}, TC("A.439 Iss.03"), True, ["DIAMOND"], "730 kg", "79 L / 77 L", "Rotax 912 A3 / S3"),
+    gtype("ctls", "Flight Design CTLS", "Flight Design", "EASA", "EASA.A.537", "kt",
+          {"VFE": 62, "VA": 105, "VC": 120, "VNE": 145}, TC("A.537 Iss.7"), True, ["FLIGHTDESIGN"], "600 kg", "130 L / 126 L", "Rotax 912 S2 / ULS2 / iS",
+          note=L("VFE: klapy 1 – 105 kt, klapy 2 – 80 kt, klapy 3 – 62 kt.", "VFE: flaps 1 – 105 kt, flaps 2 – 80 kt, flaps 3 – 62 kt.")),
+    gtype("wt9", "Aerospool WT9 Dynamic LSA", "Aerospool", "EASA", "EASA.A.644", "kt",
+          {"VFE": 83, "VA": 96, "VC": 113, "VNE": 142}, TC("A.644 Iss.04 (KCAS)"), True, ["AEROSPOOL"], "600 kg", "126 L / 119 L", "Rotax 912 ULS2", note=CAS),
+    gtype("breezer_b600", "Breezer B600", "Breezer", "EASA", "EASA.A.598", "kmh",
+          {"VFE": 126, "VA": 179, "VC": 197, "VNE": 252}, TC("A.598 Iss.02"), True, ["BREEZER"], "600 kg", "76 L / 74 L", "Rotax 912 ULS2"),
+    gtype("bristell_b23", "BRM Aero Bristell B23", "BRM Aero", "EASA", "EASA.A.642", "kt",
+          {"VS0": 43, "VS1": 50, "VFE": 81, "VA": 98, "VC": 135, "VNE": 156}, TC("A.642 Iss.09"), True, ["BRISTELL"], "750 kg", "2 × 60 L", "Rotax 912 S3 / iSc3"),
+    gtype("bristell_ul", "BRM Aero Bristell UL / NG5", "BRM Aero", "UL", None, "kmh",
+          {"VS0": 73, "VFE": 139, "VA": 162, "VNE": 285}, "DAeC Kennblatt 66253 / ULC UL.A.00-015/2023 (CAS)", True, ["BRISTELL"], "600 kg", "2 × 60 L", "Rotax 912 S / ULS / iS"),
+    gtype("c42", "Comco Ikarus C42", "Comco Ikarus", "UL", None, "kt",
+          {"VS0": 32, "VS1": 41, "VAPP": 58, "VFE": 63, "VA": 82, "VNE": 121, "VX": 48, "VY": 60, "VBG": 58},
+          "C42 POH OHB/C42/001 Iss.19 (UK)", True, ["IKARUS"], "450 / 472,5 kg (UK), do 560 kg wg kraju", "50 / 65 L", "Rotax 912 / 912 S / iS"),
+    gtype("a22ls", "Aeroprakt A22LS Foxbat / Vision", "Aeroprakt", "UL", None, "kmh",
+          {"VS0": 60, "VS1": 77, "VAPP": 100, "VFE": 132, "VA": 175, "VNE": 229, "VX": 90, "VY": 100, "VBG": 100},
+          "DULV Kennblatt 991-22 1 / ULC UL.A.00-010/2023 / POH", True, ["AEROPRAKT"], "600 kg", "90 L (114 L opcja)", "Rotax 912 S / ULS"),
+    gtype("a32", "Aeroprakt A32 Vixxen", "Aeroprakt", "UL", None, "kmh",
+          {"VS0": 50, "VS1": 60, "VAPP": 100, "VFE": 147, "VA": 151, "VNE": 240, "VX": 100, "VY": 120, "VBG": 110},
+          "A32 POH A32-048 (2018)", True, ["AEROPRAKT"], "600 kg", "90 L (114 L opcja)", "Rotax 912 ULS",
+          note=L("Sprawdź SB-A32-16 (zmiana oznaczeń prędkościomierza).", "Check SB-A32-16 (ASI marking change).")),
+    gtype("shark600", "Shark.Aero Shark 600", "Shark.Aero", "UL", None, "kmh",
+          {"VS0": 60, "VS1": 85, "VAPP": 95, "VFE": 141, "VA": 185, "VNE": 328, "VX": 135, "VY": 150, "VBG": 135},
+          "Shark600 MA-075 Rev.G (2026)", True, ["SHARK"], "600 kg", "100 L (150 L opcja)", "Rotax 912 ULS",
+          note=L("VNE 328 km/h do 3000 ft – maleje z wysokością (tabela w AFM).", "VNE 328 km/h up to 3000 ft – decreases with altitude (AFM table).")),
+    gtype("fk9", "FK Lightplanes FK9 Mk IV / ELA", "FK Lightplanes", "UL", None, "kmh",
+          {"VS0": 65, "VFE": 105, "VA": 151, "VNE": 230}, "Traficom FIN/U021", True, ["FK"], "450 / 472,5 kg (FI)", "42–78 L", "Rotax 912 UL / ULS"),
+    gtype("ev97", "Evektor EV-97 Eurostar SL", "Evektor", "UL", None, "kmh",
+          {"VS0": 58, "VFE": 125, "VA": 160, "VNE": 270}, "Traficom FIN/U018 / ULC UL.A.00-013/2023", True, ["EVEKTOR"], "450 / 472,5 kg", "65 L", "Rotax 912 ULS"),
+    gtype("remos_gx", "Remos GX", "Remos", "UL", None, "kt",
+          {"VS0": 42, "VS1": 44, "VAPP": 60, "VFE": 78, "VA": 88, "VC": 107, "VNE": 135, "VX": 50, "VY": 60, "VBG": 60},
+          "Remos GX POH R07 (2017)", True, ["REMOS"], "600 kg", "84 L / 80 L", "Rotax 912 ULS2",
+          note=L("VNE maleje z wysokością (128 kt @5000 ft).", "VNE decreases with altitude (128 kt @5000 ft).")),
+    gtype("virus_sw", "Pipistrel Virus SW", "Pipistrel", "UL", None, "kt",
+          {"VS0": 47, "VFE": 65, "VA": 100, "VNE": 163}, "BMAA TADS BM-97", True, ["PIPISTREL"], "600 kg", "100 L / 98 L", "Rotax 912 ULS"),
+    gtype("alpha_trainer", "Pipistrel Alpha Trainer", "Pipistrel", "UL", None, "kmh",
+          {"VNE": 250}, "Wikipedia / broszura", False, ["PIPISTREL"], "550 kg", "50 L", "Rotax 912 UL",
+          note=L("Ograniczenia zmienione SB-162-00-80-005 – sprawdź POH.", "Limits changed by SB-162-00-80-005 – check the POH.")),
+    gtype("faeta", "Atec 321 Faeta NG", "Atec", "UL", None, "kmh",
+          {"VS0": 67, "VS1": 90, "VFE": 117, "VA": 180, "VNE": 245}, "Traficom FIN/U048 (CAS)", True, ["ATEC"], "600 kg", "2 × 50 L", "Rotax 912 iS"),
+    gtype("vl3", "JMB VL3", "JMB", "UL", None, "kmh",
+          {"VS0": 65, "VNE": 315}, "broszura JMB", False, ["JMB"], "600 kg", "120 L", "Rotax 912 ULS / iS"),
+    gtype("savage_cub", "Zlin Savage Cub", "Zlin Aviation", "UL", None, "kmh",
+          {"VS0": 52, "VNE": 205}, "Wikipedia / aeropedia", False, ["ZLIN"], "450–560 kg", "64–68 L", "Rotax 912 UL / ULS",
+          note=L("Źródła publiczne są sprzeczne – wszystkie wartości z POH.", "Public sources disagree – take all values from the POH.")),
+]
+for t in types[:4]:
+    t["manufacturer"] = "TOMARK"
+    t["bulletinGroups"] = t["bulletinGroups"] + ["ROTAX_912"]
+
 # ---------------------------------------------------------------- bulletins
 TS = "https://www.tomarkaero.com/en/technical-support/"
-RTC, NV, UL, GT = "SD4_RTC", "SD4_NVFR", "SD4_UL", "GT9"
+RTC, NV, UL, GT, RX = "SD4_RTC", "SD4_NVFR", "SD4_UL", "GT9", "ROTAX_912"
 
 def b(id_, date, title, groups, kind, mandatory=None, url=TS):
     return {"id": id_, "date": date, "title": title, "groups": groups, "kind": kind,
@@ -286,7 +423,13 @@ bulletins = [
       "https://ad.easa.europa.eu/blob/EASA_AD_2026_0170.pdf/AD_2026-0170_1"),
     b("ASB_SD4UL-01-2026", "2026-07-01", "Inspection of the propeller gearbox for ROTAX 912, 912 i (Series) Aircraft Engines", [UL], "ASB", True),
     b("ASB_SD4-04-2026", "2026-06-30", "Inspection of the propeller gearbox for ROTAX 912 ULS2 Aircraft Engines", [RTC], "ASB", True),
-    b("ROTAX-ASB-2026-001", "2026-06-22", "Rotax ASB: Inspection of the propeller gearbox for 912 / 912 i / 914 (S/N listed) – also UL/ULS engines", [RTC, NV, UL, GT], "ASB", True,
+    b("ROTAX-ASB-2026-001", "2026-06-22", "Rotax ASB-2026-001 / ASB_A-2026-001: Inspection of the propeller gearbox – 912 / 912 i / 914 incl. UL/ULS (affected S/N listed)", [RX], "ASB", True,
+      "https://www.flyrotax.com/services/technical-documentation.html"),
+    b("ROTAX-SB-912-078UL", "2023-09-14", "Rotax SB-912-078UL: Exchange of propeller shaft – 912 UL/ULS (affected S/N listed; date = TOMARK SB-SD4-04-2023 reference)", [RX], "SB", True,
+      "https://www.flyrotax.com/services/technical-documentation.html"),
+    b("ROTAX-SB-912-077UL", "2023-09-14", "Rotax SB-912-077UL: Exchange of stator assembly – 912 UL/ULS (affected S/N listed; date = TOMARK SB-SD4-04-2023 reference)", [RX], "SB", True,
+      "https://www.flyrotax.com/services/technical-documentation.html"),
+    b("ROTAX-DOCS", "2026-10-20", "Rotax technical documentation – current SB/SI/SL and manuals (check your engine S/N)", [RX], "DOC", None,
       "https://www.flyrotax.com/services/technical-documentation.html"),
     b("TOM-TC-606-VTP-H", "2026-04-13", "List of Valid Technical Publications, Revision H", [RTC, NV], "DOC"),
     b("TOM-TC-01-AMM-H", "2026-04-08", "Aircraft Maintenance Manual Viper SD-4 RTC Issue H", [RTC], "DOC"),
@@ -341,7 +484,23 @@ def dump(path, obj):
     print("wrote", path)
 
 if __name__ == "__main__":
+    import sys
+    if "--bootstrap" not in sys.argv:
+        sys.exit("data/*.json is now edited in the web panel. Re-run with --bootstrap to overwrite it from this script.")
     dump("app/src/main/assets/types.json", types)
-    feed = {"version": 1, "updated": "2026-10-20", "bulletins": bulletins}
+    dump("data/types.json", types)
+    import datetime
+    auto_path = os.path.join(ROOT, "tools/bulletins_auto.json")
+    if os.path.exists(auto_path):
+        have = {x["id"] for x in bulletins}
+        bulletins += [a for a in json.load(open(auto_path, encoding="utf-8")) if a["id"] not in have]
+    bulletins.sort(key=lambda x: x["date"], reverse=True)
+    feed = {"version": 2, "updated": max(x["date"] for x in bulletins) if bulletins else "", "bulletins": bulletins}
     dump("app/src/main/assets/bulletins.json", feed)
     dump("data/bulletins.json", feed)
+    src = json.load(open(os.path.join(ROOT, "tools/contacts_source.json"), encoding="utf-8"))
+    keep = ("id", "name", "kind", "brands", "country", "city", "address", "lat", "lon", "phone", "email", "web", "source")
+    contacts = [{k: c[k] for k in keep if c.get(k) not in (None, "", [])} for c in src]
+    cfeed = {"version": 1, "updated": "2026-10-20", "contacts": contacts}
+    dump("app/src/main/assets/contacts.json", cfeed)
+    dump("data/contacts.json", cfeed)

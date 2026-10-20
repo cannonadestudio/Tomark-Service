@@ -29,7 +29,11 @@ class CheckWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx,
 
     override suspend fun doWork(): Result {
         Repo.init(applicationContext)
-        Repo.refreshBulletins()   // failure is fine – we still check maintenance
+        // Failures are fine – we still check maintenance with what we have.
+        Repo.refreshBulletins()
+        Repo.refreshContacts()
+        Repo.refreshTypes()
+        Repo.syncLogbook()
 
         val s = Repo.state.value
         val feed = Repo.feed.value

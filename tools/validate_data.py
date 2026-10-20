@@ -9,7 +9,7 @@ def load(p):
     with open(os.path.join(ROOT, p), encoding="utf-8") as f:
         return json.load(f)
 
-types = load("app/src/main/assets/types.json")
+types = load("data/types.json")
 groups = set()
 for t in types:
     for k in ("id", "name", "family", "category", "speeds", "manual", "tasks", "bulletinGroups"):
@@ -29,7 +29,7 @@ for t in types:
             if not task["title"].get(lang):
                 errors.append(f"{t['id']}/{task['id']}: missing title {lang}")
 
-for path in ("app/src/main/assets/bulletins.json", "data/bulletins.json"):
+for path in ("data/bulletins.json",):
     feed = load(path)
     ids = [b["id"] for b in feed["bulletins"]]
     if len(ids) != len(set(ids)):
@@ -41,6 +41,19 @@ for path in ("app/src/main/assets/bulletins.json", "data/bulletins.json"):
             if g not in groups:
                 errors.append(f"{path}/{bl['id']}: unknown group {g}")
 
+cf = load("data/contacts.json")
+cids = [c["id"] for c in cf["contacts"]]
+if len(cids) != len(set(cids)):
+    errors.append("contacts: duplicate ids")
+for c in cf["contacts"]:
+    if c["kind"] not in ("manufacturer", "dealer", "rotax_distributor", "rotax_service", "mechanic", "instructor", "examiner"):
+        errors.append(f"contact {c['id']}: bad kind")
+    if not (-90 <= c.get("lat", 0) <= 90 and -180 <= c.get("lon", 0) <= 180):
+        errors.append(f"contact {c['id']}: bad coords")
+tids = [t["id"] for t in types]
+if len(tids) != len(set(tids)):
+    errors.append("duplicate type ids")
+
 if errors:
     print("\n".join(errors)); sys.exit(1)
-print(f"OK: {len(types)} types, {len(ids)} bulletins")
+print(f"OK: {len(types)} types, {len(ids)} bulletins, {len(cids)} contacts")

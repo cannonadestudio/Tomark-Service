@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Viper &amp; Skyper Pilot</string>
+    <string name="app_name" translatable="false">AeroHangar</string>
     <string name="tab_home">Home</string>
     <string name="tab_manual">Manual</string>
     <string name="tab_service">Maintenance</string>
@@ -125,10 +125,56 @@
     <string name="notif_channel">Maintenance and bulletins</string>
     <string name="notif_new_bulletins">%1$d new bulletin(s) for your aircraft</string>
     <string name="notif_maintenance">%1$s: %2$d maintenance item(s) due</string>
+    <string name="tab_contacts">Contacts</string>
+    <string name="cat_easa_generic">EASA certified</string>
+    <string name="type_search">Search type or manufacturer</string>
+    <string name="editing_entry">Editing an earlier entry</string>
+    <string name="note_plain">Note</string>
+    <string name="link_logbook">Take hours from the logbook</string>
+    <string name="link_logbook_hint">Today\'s total stays; flights logged later for this registration are added automatically. Choose the logbook file in Settings (ⓘ).</string>
+    <string name="logbook_linked">Hours synced from the logbook</string>
+    <string name="logbook_error">Logbook: %1$s</string>
+    <string name="logbook_title">Logbook link</string>
+    <string name="logbook_hint">Point the app at your own logbook export (CSV or JSON, e.g. from Pilot Logbook, saved on the phone or in Drive). It needs a registration column and a flight-time column. The file is re-read every time you open the app and once a day.</string>
+    <string name="logbook_none">No file chosen</string>
+    <string name="logbook_synced">Last read: %1$s</string>
+    <string name="logbook_choose">Choose file</string>
+    <string name="logbook_sync_now">Sync now</string>
+    <string name="logbook_unlink">Disconnect</string>
+    <string name="logbook_sync_ok">Updated %1$d aircraft</string>
+    <string name="contacts_title">Dealers, service &amp; people</string>
+    <string name="sorted_by_distance">Nearest first (your location)</string>
+    <string name="no_location">Location off – sorted by country</string>
+    <string name="contacts_search">Search name, city, brand</string>
+    <string name="only_my_type">For my aircraft</string>
+    <string name="contacts_refreshed">Contacts updated (%1$d)</string>
+    <string name="contacts_import">Import from file (JSON)</string>
+    <string name="contacts_export">Share my contacts (JSON)</string>
+    <string name="contacts_unhide">Show hidden contacts again</string>
+    <string name="contacts_imported">Imported %1$d contacts</string>
+    <string name="contacts_import_fail">Import failed: %1$s</string>
+    <string name="contacts_hint">The shared list is maintained online and refreshed daily. Your own entries and edits stay on this phone; share them as a file or ask the list maintainer to publish them.</string>
+    <string name="contact_add">Add contact</string>
+    <string name="contact_edit">Edit contact</string>
+    <string name="contact_mine">my entry</string>
+    <string name="contact_name">Name / company</string>
+    <string name="contact_brands">Types / brands (comma separated)</string>
+    <string name="contact_phone">Phone</string>
+    <string name="contact_address">Address / airfield</string>
+    <string name="contact_city">City</string>
+    <string name="contact_country">Country</string>
+    <string name="use_my_location">Use my location</string>
+    <string name="kind_manufacturer">Manufacturer</string>
+    <string name="kind_dealer">Dealer</string>
+    <string name="kind_rotax_distributor">Rotax distributor</string>
+    <string name="kind_rotax_service">Rotax service</string>
+    <string name="kind_mechanic">Mechanic</string>
+    <string name="kind_instructor">Instructor</string>
+    <string name="kind_examiner">Examiner</string>
     <string name="disclaimer_title">Important</string>
-    <string name="disclaimer_text">Unofficial app, not affiliated with TOMARK s.r.o. Data come from public sources (EASA TCDS A.606, manufacturer website, published service bulletins) and are a reminder only. The current AFM, AMM, service bulletins and airworthiness directives of your aircraft, and your maintenance organisation, are always binding. Items marked ⚠ have not been confirmed against the manuals.</string>
+    <string name="disclaimer_text">Unofficial app, not affiliated with any aircraft manufacturer or BRP-Rotax. Data come from public sources (EASA TCDS, national data sheets, manufacturer documents, published bulletins) and are a reminder only. The current AFM, AMM, service bulletins and airworthiness directives of your aircraft, and your maintenance organisation, are always binding. Items marked ⚠ have not been confirmed against the manuals.</string>
     <string name="accept">I understand</string>
     <string name="about">About</string>
-    <string name="about_text">Bulletins are refreshed daily from an online list maintained by the app author. Maintenance and bulletin reminders arrive as notifications.</string>
-    <string name="about_sources" translatable="false">Sources: EASA TCDS A.606 Issue 4 (18 Mar 2025); tomarkaero.com (specifications, technical support list); SB_SD4-03-2023; EASA AD 2026-0170; Rotax ASB-2026-001.</string>
+    <string name="about_text">Bulletins and contacts are refreshed daily from online lists maintained by the app author (the TOMARK list is checked automatically every day). Maintenance and bulletin reminders arrive as notifications.</string>
+    <string name="about_sources" translatable="false">Sources: EASA TCDS (A.606, A.006, A.583, A.412, A.527, A.065, A.439, A.537, A.644, A.598, A.642); DULV / DAeC / Traficom / BMAA data sheets; manufacturer POH/AFM; BRP-Rotax MML-912; TOMARK technical support list; EASA AD 2026-0170; flyrotax.com distributor pages.</string>
 </resources>

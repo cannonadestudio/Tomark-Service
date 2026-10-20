@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -32,6 +33,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -81,6 +84,7 @@ fun AircraftListScreen(state: AppState, onEdit: (Aircraft?) -> Unit, onSelected:
 /** Add / edit form. [existing] == null creates a new aircraft. */
 @Composable
 fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
+    val scope = rememberCoroutineScope()
     var typeId by remember { mutableStateOf(existing?.typeId ?: Repo.types.first().id) }
     var reg by remember { mutableStateOf(existing?.registration ?: "") }
     var serial by remember { mutableStateOf(existing?.serial ?: "") }
@@ -88,20 +92,36 @@ fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
     var hours by remember { mutableStateOf(existing?.hours?.let { fmtH(it) } ?: "") }
     var ref by remember { mutableStateOf(existing?.referenceEpochDay?.let { fmtEpochDay(it) } ?: "") }
     var confirmDelete by remember { mutableStateOf(false) }
+    var typeQuery by remember { mutableStateOf("") }
+    var linkLogbook by remember { mutableStateOf(existing?.logbookBaseHours != null) }
     val valid = reg.isNotBlank() && parseNum(hours) != null && (ref.isBlank() || parseDate(ref) != null)
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         Text(stringResource(R.string.aircraft_type), style = MaterialTheme.typography.titleMedium)
+        Text(Repo.type(typeId)?.name ?: "", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+        OutlinedTextField(
+            typeQuery, { typeQuery = it }, Modifier.fillMaxWidth(), singleLine = true,
+            placeholder = { Text(stringResource(R.string.type_search)) },
+        )
+        val shown = Repo.types.filter {
+            typeQuery.isBlank() || it.name.contains(typeQuery.trim(), true) || it.manufacturer.contains(typeQuery.trim(), true)
+        }
         listOf("EASA", "UL").forEach { cat ->
-            Text(
-                stringResource(if (cat == "EASA") R.string.cat_easa else R.string.cat_ul),
-                style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(top = 8.dp),
-            )
-            Repo.types.filter { it.category == cat }.forEach { t ->
-                Row(Modifier.fillMaxWidth().clickable { typeId = t.id }, verticalAlignment = Alignment.CenterVertically) {
-                    RadioButton(typeId == t.id, { typeId = t.id })
-                    Text(t.name)
+            val inCat = shown.filter { it.category == cat }
+            if (inCat.isNotEmpty()) {
+                Text(
+                    stringResource(if (cat == "EASA") R.string.cat_easa_generic else R.string.cat_ul),
+                    style = MaterialTheme.typography.labelLarge, color = HbgPink,
+                    modifier = Modifier.padding(top = 8.dp),
+                )
+            }
+            inCat.groupBy { it.manufacturer }.forEach { (maker, list) ->
+                Text(maker, style = MaterialTheme.typography.labelMedium, modifier = Modifier.padding(start = 8.dp, top = 4.dp))
+                list.forEach { t ->
+                    Row(Modifier.fillMaxWidth().clickable { typeId = t.id }, verticalAlignment = Alignment.CenterVertically) {
+                        RadioButton(typeId == t.id, { typeId = t.id })
+                        Text(t.name)
+                    }
                 }
             }
         }
@@ -119,6 +139,13 @@ fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
         NumberField(hours, { hours = it }, stringResource(R.string.total_hours), Modifier.fillMaxWidth())
         DateField(ref, { ref = it }, stringResource(R.string.reference_date), Modifier.fillMaxWidth())
         Text(stringResource(R.string.reference_date_hint), style = MaterialTheme.typography.bodySmall)
+        Row(Modifier.fillMaxWidth().clickable { linkLogbook = !linkLogbook }, verticalAlignment = Alignment.CenterVertically) {
+            Checkbox(linkLogbook, { linkLogbook = it })
+            Column {
+                Text(stringResource(R.string.link_logbook))
+                Text(stringResource(R.string.link_logbook_hint), style = MaterialTheme.typography.bodySmall)
+            }
+        }
         if (existing == null) {
             Spacer(Modifier.height(8.dp))
             Text(stringResource(R.string.setup_hint), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
@@ -128,15 +155,24 @@ fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
             Button(enabled = valid, onClick = {
                 val h = parseNum(hours)!!
                 val base = existing ?: Aircraft(id = Repo.newId(), typeId = typeId, registration = "")
-                Repo.upsertAircraft(
-                    base.copy(
-                        typeId = typeId, registration = reg.trim(), serial = serial.trim(), engineSerial = engine.trim(),
-                        hours = h,
-                        hoursUpdatedEpochDay = if (existing?.hours == h) existing.hoursUpdatedEpochDay else LocalDate.now().toEpochDay(),
-                        referenceEpochDay = parseDate(ref)?.toEpochDay(),
+                scope.launch {
+                    // Linking: keep today's total, count only logbook flights on top of it.
+                    val lbBase = when {
+                        !linkLogbook -> null
+                        existing?.logbookBaseHours != null && existing.registration == reg.trim() && existing.hours == h -> existing.logbookBaseHours
+                        else -> h - (Repo.logbookHoursFor(reg.trim()) ?: 0.0)
+                    }
+                    Repo.upsertAircraft(
+                        base.copy(
+                            typeId = typeId, registration = reg.trim(), serial = serial.trim(), engineSerial = engine.trim(),
+                            hours = h,
+                            hoursUpdatedEpochDay = if (existing?.hours == h) existing.hoursUpdatedEpochDay else LocalDate.now().toEpochDay(),
+                            referenceEpochDay = parseDate(ref)?.toEpochDay(),
+                            logbookBaseHours = lbBase,
+                        )
                     )
-                )
-                onDone()
+                    onDone()
+                }
             }) { Text(stringResource(R.string.save)) }
             Spacer(Modifier.width(8.dp))
             OutlinedButton(onClick = onDone) { Text(stringResource(R.string.cancel)) }

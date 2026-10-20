@@ -20,6 +20,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.Checkbox
@@ -148,6 +149,7 @@ fun intervalText(t: TaskDef): String {
 @Composable
 private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onDismiss: () -> Unit) {
     var tab by remember { mutableIntStateOf(0) }
+    var editing by remember { mutableStateOf<CompletionRecord?>(null) }
     var date by remember { mutableStateOf(fmtDate(LocalDate.now())) }
     var hours by remember { mutableStateOf(fmtH(a.hours)) }
     var note by remember { mutableStateOf("") }
@@ -170,6 +172,9 @@ private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onD
                 Spacer(Modifier.height(12.dp))
                 when (tab) {
                     0 -> {
+                        if (editing != null) {
+                            Text(stringResource(R.string.editing_entry), color = HbgPink, style = MaterialTheme.typography.bodySmall)
+                        }
                         DateField(date, { date = it }, stringResource(R.string.done_date), Modifier.fillMaxWidth())
                         NumberField(hours, { hours = it }, stringResource(R.string.done_hours), Modifier.fillMaxWidth())
                         OutlinedTextField(note, { note = it }, label = { Text(stringResource(R.string.note)) }, modifier = Modifier.fillMaxWidth())
@@ -185,6 +190,11 @@ private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onD
                                     Text("${fmtEpochDay(r.epochDay)} · ${fmtH(r.hours)} h", fontWeight = FontWeight.SemiBold)
                                     if (r.note.isNotBlank()) Text(r.note, style = MaterialTheme.typography.bodySmall)
                                 }
+                                IconButton(onClick = {
+                                    editing = r
+                                    date = fmtEpochDay(r.epochDay); hours = fmtH(r.hours); note = r.note
+                                    tab = 0
+                                }) { Icon(Icons.Filled.Edit, stringResource(R.string.edit)) }
                                 IconButton(onClick = {
                                     Repo.update { s -> s.copy(completions = s.completions.filterNot { it.id == r.id }) }
                                 }) { Icon(Icons.Filled.Delete, stringResource(R.string.delete)) }
@@ -218,12 +228,19 @@ private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onD
         confirmButton = {
             if (tab == 0) {
                 TextButton(enabled = parseDate(date) != null && parseNum(hours) != null, onClick = {
-                    val rec = CompletionRecord(
-                        id = Repo.newId(), aircraftId = a.id, taskId = d.task.id,
-                        epochDay = parseDate(date)!!.toEpochDay(), hours = parseNum(hours)!!,
-                        dueAtHours = d.dueHours, note = note.trim(),
-                    )
-                    Repo.update { s -> s.copy(completions = s.completions + rec) }
+                    val ed = editing
+                    if (ed != null) {
+                        // Correcting an earlier entry keeps its id and the due time it was logged against.
+                        val fixed = ed.copy(epochDay = parseDate(date)!!.toEpochDay(), hours = parseNum(hours)!!, note = note.trim())
+                        Repo.update { s -> s.copy(completions = s.completions.map { if (it.id == ed.id) fixed else it }) }
+                    } else {
+                        val rec = CompletionRecord(
+                            id = Repo.newId(), aircraftId = a.id, taskId = d.task.id,
+                            epochDay = parseDate(date)!!.toEpochDay(), hours = parseNum(hours)!!,
+                            dueAtHours = d.dueHours, note = note.trim(),
+                        )
+                        Repo.update { s -> s.copy(completions = s.completions + rec) }
+                    }
                     onDismiss()
                 }) { Text(stringResource(R.string.save)) }
             } else {

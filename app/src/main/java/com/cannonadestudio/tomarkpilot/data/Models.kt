@@ -60,7 +60,8 @@ data class TaskDef(
 data class AircraftType(
     val id: String,
     val name: String,
-    val family: String,          // viper | skyper
+    val family: String,
+    val manufacturer: String = "",
     val category: String,        // EASA | UL
     val tcds: String? = null,
     val bulletinGroups: List<String>,
@@ -84,6 +85,30 @@ data class Bulletin(
 
 @Serializable
 data class BulletinFeed(val version: Int = 0, val updated: String = "", val bulletins: List<Bulletin> = emptyList())
+
+// ---------------------------------------------------------------- contacts feed
+
+@Serializable
+data class Contact(
+    val id: String,
+    val name: String,
+    /** manufacturer | dealer | rotax_distributor | rotax_service | mechanic | instructor | examiner */
+    val kind: String,
+    val brands: List<String> = emptyList(),
+    val country: String = "",
+    val city: String = "",
+    val address: String = "",
+    val lat: Double? = null,
+    val lon: Double? = null,
+    val phone: String = "",
+    val email: String = "",
+    val web: String = "",
+    val source: String = "",
+    val note: String = "",
+)
+
+@Serializable
+data class ContactFeed(val version: Int = 0, val updated: String = "", val contacts: List<Contact> = emptyList())
 
 // ---------------------------------------------------------------- user data (filesDir/state.json)
 
@@ -110,6 +135,8 @@ data class Aircraft(
     val customTasks: List<TaskDef> = emptyList(),
     val pohUri: String? = null,
     val notes: String = "",
+    /** Hours before the logbook started; null = not linked to the logbook. hours = base + logbook sum. */
+    val logbookBaseHours: Double? = null,
 )
 
 @Serializable
@@ -144,4 +171,11 @@ data class AppState(
     val notifiedBulletinIds: Set<String> = emptySet(),
     val useKmh: Boolean = false,
     val disclaimerAccepted: Boolean = false,
+    /** Contacts added or edited by the user (an edited feed contact keeps its id). */
+    val localContacts: List<Contact> = emptyList(),
+    val hiddenContactIds: Set<String> = emptySet(),
+    /** Logbook export file (content:// URI) chosen by the user. */
+    val logbookUri: String? = null,
+    val logbookSyncedEpochDay: Long? = null,
+    val logbookError: String? = null,
 )

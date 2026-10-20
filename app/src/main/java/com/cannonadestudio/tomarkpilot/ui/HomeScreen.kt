@@ -5,6 +5,8 @@ package com.cannonadestudio.tomarkpilot.ui
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -85,56 +87,60 @@ fun HomeScreen(
     val openBulletins = Repo.openBulletins(aircraft, state, feed)
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
-        // Header
+        // Header – white on the gradient background
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
-                Text(aircraft.registration, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
-                Text(type.name, style = MaterialTheme.typography.titleSmall)
+                Text(aircraft.registration, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, color = Color.White)
+                Text(type.name, style = MaterialTheme.typography.titleSmall, color = Color.White)
             }
-            Chip(
-                if (type.category == "EASA") "EASA ${type.tcds ?: ""}".trim() else "UL / LSA",
-                MaterialTheme.colorScheme.primaryContainer, MaterialTheme.colorScheme.onPrimaryContainer,
-            )
+            Chip(if (type.category == "EASA") "EASA ${type.tcds ?: ""}".trim() else "UL / LSA", HbgPink, Color.White)
         }
         Spacer(Modifier.height(12.dp))
 
-        // Speeds
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(stringResource(R.string.speeds), style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
-            SingleChoiceSegmentedButtonRow {
-                SegmentedButton(
-                    selected = !state.useKmh, onClick = { Repo.update { it.copy(useKmh = false) } },
-                    shape = SegmentedButtonDefaults.itemShape(0, 2),
-                ) { Text("kt") }
-                SegmentedButton(
-                    selected = state.useKmh, onClick = { Repo.update { it.copy(useKmh = true) } },
-                    shape = SegmentedButtonDefaults.itemShape(1, 2),
-                ) { Text("km/h") }
+        // Speeds – 3 equal tiles per row
+        Card(Modifier.fillMaxWidth()) {
+            Column(Modifier.padding(12.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(stringResource(R.string.speeds), style = MaterialTheme.typography.titleMedium, modifier = Modifier.weight(1f))
+                    SingleChoiceSegmentedButtonRow {
+                        SegmentedButton(
+                            selected = !state.useKmh, onClick = { Repo.update { it.copy(useKmh = false) } },
+                            shape = SegmentedButtonDefaults.itemShape(0, 2),
+                        ) { Text("kt") }
+                        SegmentedButton(
+                            selected = state.useKmh, onClick = { Repo.update { it.copy(useKmh = true) } },
+                            shape = SegmentedButtonDefaults.itemShape(1, 2),
+                        ) { Text("km/h") }
+                    }
+                }
+                Spacer(Modifier.height(8.dp))
+                val known = type.speeds.filter { (aircraft.speedOverrides[it.key] ?: it.value) != null }
+                val missing = type.speeds.filter { (aircraft.speedOverrides[it.key] ?: it.value) == null }
+                known.chunked(3).forEach { row ->
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                        modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min).padding(bottom = 6.dp),
+                    ) {
+                        row.forEach { SpeedTile(it, aircraft, state.useKmh, lg, Modifier.weight(1f).fillMaxHeight()) }
+                        repeat(3 - row.size) { Spacer(Modifier.weight(1f)) }
+                    }
+                }
+                if (missing.isNotEmpty()) {
+                    Text(
+                        stringResource(R.string.missing_speeds, missing.joinToString(", ") { it.key }),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.clickable { onTab(MainActivity.TAB_MANUAL) }.padding(vertical = 4.dp),
+                    )
+                }
+                Text(
+                    stringResource(R.string.speeds_disclaimer),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
             }
         }
-        Spacer(Modifier.height(8.dp))
-        val known = type.speeds.filter { (aircraft.speedOverrides[it.key] ?: it.value) != null }
-        val missing = type.speeds.filter { (aircraft.speedOverrides[it.key] ?: it.value) == null }
-        known.chunked(2).forEach { row ->
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)) {
-                row.forEach { SpeedTile(it, aircraft, state.useKmh, lg, Modifier.weight(1f)) }
-                if (row.size == 1) Spacer(Modifier.weight(1f))
-            }
-        }
-        if (missing.isNotEmpty()) {
-            Text(
-                stringResource(R.string.missing_speeds, missing.joinToString(", ") { it.key }),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.clickable { onTab(MainActivity.TAB_MANUAL) }.padding(vertical = 4.dp),
-            )
-        }
-        Text(
-            stringResource(R.string.speeds_disclaimer),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(12.dp))
 
         // Hours
         Card(Modifier.fillMaxWidth()) {
@@ -145,6 +151,14 @@ fun HomeScreen(
                     Text(stringResource(R.string.hours_now, fmtH(aircraft.hours)), style = MaterialTheme.typography.titleMedium)
                     aircraft.hoursUpdatedEpochDay?.let {
                         Text(stringResource(R.string.hours_updated, fmtEpochDay(it)), style = MaterialTheme.typography.bodySmall)
+                    }
+                    if (aircraft.logbookBaseHours != null) {
+                        val err = state.logbookError
+                        Text(
+                            if (err != null) stringResource(R.string.logbook_error, err) else stringResource(R.string.logbook_linked),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = if (err != null) Color(0xFFC62828) else MaterialTheme.colorScheme.secondary,
+                        )
                     }
                 }
                 FilledTonalButton(onClick = { hoursDialog = true }) { Text(stringResource(R.string.update_hours)) }
@@ -203,22 +217,23 @@ private fun SpeedTile(s: SpeedDef, a: Aircraft, kmh: Boolean, lg: String, modifi
         "red" -> Color(0xFFC62828) to Color.White
         "green" -> Color(0xFF2E7D32) to Color.White
         "white" -> Color(0xFFE3F2FD) to Color(0xFF0B2545)
-        "approach" -> Color(0xFFF2A541) to Color.Black
+        "approach" -> HbgPink to Color.White
         else -> MaterialTheme.colorScheme.primaryContainer to MaterialTheme.colorScheme.onPrimaryContainer
     }
     Card(modifier, colors = CardDefaults.cardColors(containerColor = bg, contentColor = fg)) {
-        Column(Modifier.padding(12.dp)) {
+        Column(Modifier.fillMaxSize().padding(horizontal = 8.dp, vertical = 8.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(s.key, fontWeight = FontWeight.Bold, fontSize = 15.sp, modifier = Modifier.weight(1f))
-                if (!s.verified && !overridden) Text("⚠", fontSize = 13.sp)
-                if (overridden) Text("✎", fontSize = 13.sp)
+                Text(s.key, fontWeight = FontWeight.Bold, fontSize = 13.sp, modifier = Modifier.weight(1f))
+                if (overridden) Text("✎", fontSize = 11.sp) else if (!s.verified) Text("⚠", fontSize = 11.sp)
             }
             Row(verticalAlignment = Alignment.Bottom) {
-                Text("$main", fontSize = 34.sp, fontWeight = FontWeight.Bold)
-                Spacer(Modifier.width(4.dp))
-                Text(if (kmh) "km/h" else "kt", fontSize = 14.sp, modifier = Modifier.padding(bottom = 6.dp))
+                Text("$main", fontSize = 26.sp, fontWeight = FontWeight.Bold, maxLines = 1)
+                Spacer(Modifier.width(2.dp))
+                Text(if (kmh) "km/h" else "kt", fontSize = 11.sp, modifier = Modifier.padding(bottom = 4.dp))
             }
-            Text("$other ${if (kmh) "kt" else "km/h"} · ${s.label.get(lg).removePrefix(s.key).trim()}", fontSize = 11.sp, maxLines = 2)
+            Spacer(Modifier.weight(1f))
+            Text("$other ${if (kmh) "kt" else "km/h"}", fontSize = 10.sp)
+            Text(s.label.get(lg).removePrefix(s.key).trim(), fontSize = 10.sp, maxLines = 2, lineHeight = 12.sp)
         }
     }
 }
@@ -271,7 +286,13 @@ fun HoursDialog(a: Aircraft, onDismiss: () -> Unit) {
         confirmButton = {
             TextButton(enabled = newTotal != null && newTotal >= 0, onClick = {
                 val h = newTotal ?: return@TextButton
-                Repo.upsertAircraft(a.copy(hours = h, hoursUpdatedEpochDay = LocalDate.now().toEpochDay()))
+                // When linked to the logbook, a manual correction shifts the base so the next sync keeps it.
+                Repo.upsertAircraft(
+                    a.copy(
+                        hours = h, hoursUpdatedEpochDay = LocalDate.now().toEpochDay(),
+                        logbookBaseHours = a.logbookBaseHours?.let { it + (h - a.hours) },
+                    )
+                )
                 onDismiss()
             }) { Text(stringResource(R.string.save)) }
         },

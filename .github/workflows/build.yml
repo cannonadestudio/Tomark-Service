@@ -22,6 +22,9 @@ jobs:
       - name: Validate data files
         run: python3 tools/validate_data.py
 
+      - name: Bundle current data into the app
+        run: cp data/bulletins.json data/contacts.json data/types.json app/src/main/assets/
+
       - name: Build
         run: |
           echo "sdk.dir=$ANDROID_HOME" > local.properties

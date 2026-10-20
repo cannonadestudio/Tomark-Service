@@ -13,6 +13,7 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
@@ -29,21 +30,36 @@ import kotlin.math.roundToInt
 
 // ---------------------------------------------------------------- theme
 
-private val Navy = Color(0xFF0B2545)
-private val Sky = Color(0xFF3E7CB1)
-private val Amber = Color(0xFFF2A541)
+// Colours taken from horyzontbezgranic.pl: violet → teal gradient, pink labels, white cards.
+val HbgViolet = Color(0xFF7A3E9D)
+val HbgBlue = Color(0xFF2E8FC4)
+val HbgTeal = Color(0xFF0FB3A6)
+val HbgPink = Color(0xFFE84F8C)
+val HbgInk = Color(0xFF2B2A33)
 
 private val LightColors = lightColorScheme(
-    primary = Navy, onPrimary = Color.White,
-    primaryContainer = Color(0xFFD6E4F5), onPrimaryContainer = Navy,
-    secondary = Sky, tertiary = Amber,
-    background = Color(0xFFF6F8FB), surface = Color.White,
+    primary = HbgViolet, onPrimary = Color.White,
+    primaryContainer = Color(0xFFEDE3F5), onPrimaryContainer = Color(0xFF3B1652),
+    secondary = HbgTeal, onSecondary = Color.White,
+    secondaryContainer = Color(0xFFD5F3F0), onSecondaryContainer = Color(0xFF00413B),
+    tertiary = HbgPink, onTertiary = Color.White,
+    background = Color(0xFFF4F1F8), surface = Color.White, onSurface = HbgInk,
+    surfaceVariant = Color(0xFFF0EDF4), onSurfaceVariant = Color(0xFF5E5A66),
 )
 private val DarkColors = darkColorScheme(
-    primary = Color(0xFF9CC3EC), onPrimary = Navy,
-    primaryContainer = Color(0xFF1B3A60), onPrimaryContainer = Color(0xFFD6E4F5),
-    secondary = Color(0xFF8DB7DB), tertiary = Amber,
-    background = Color(0xFF0E141B), surface = Color(0xFF151D27),
+    primary = Color(0xFFD0A8EA), onPrimary = Color(0xFF3B1652),
+    primaryContainer = Color(0xFF4E2768), onPrimaryContainer = Color(0xFFEDE3F5),
+    secondary = Color(0xFF6FDCD1), onSecondary = Color(0xFF00382F),
+    secondaryContainer = Color(0xFF005048), onSecondaryContainer = Color(0xFFD5F3F0),
+    tertiary = Color(0xFFFF8DB6),
+    background = Color(0xFF15121A), surface = Color(0xFF1F1B25),
+    surfaceVariant = Color(0xFF2A2531), onSurfaceVariant = Color(0xFFCBC4D2),
+)
+
+/** The site's diagonal violet → blue → teal gradient. */
+fun hbgGradient(dark: Boolean): Brush = Brush.linearGradient(
+    if (dark) listOf(Color(0xFF3A1D4C), Color(0xFF15405A), Color(0xFF07544E))
+    else listOf(HbgViolet, HbgBlue, HbgTeal)
 )
 
 @Composable

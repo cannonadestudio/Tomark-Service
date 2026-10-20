@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Low-wing aircraft seen from above, inside the 66dp safe zone, plus a small wrench. -->
+<!-- Original AeroHangar mark: aircraft climbing over a horizon with a pink sun. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp" android:height="108dp"
     android:viewportWidth="108" android:viewportHeight="108">
-    <!-- fuselage -->
-    <path android:fillColor="#FFFFFF"
-        android:pathData="M54,26 C56.5,26 57.5,29 57.5,33 L57.5,72 L56,80 L52,80 L50.5,72 L50.5,33 C50.5,29 51.5,26 54,26 Z" />
-    <!-- wing -->
-    <path android:fillColor="#FFFFFF"
-        android:pathData="M24,46 L50.5,43 L57.5,43 L84,46 L84,52 L57.5,52 L50.5,52 L24,52 Z" />
-    <!-- tailplane -->
-    <path android:fillColor="#FFFFFF"
-        android:pathData="M42,72 L66,72 L66,77 L42,77 Z" />
-    <!-- amber spinner -->
-    <path android:fillColor="#F2A541"
-        android:pathData="M54,22 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" />
+    <!-- sun -->
+    <path android:fillColor="#FFE84F8C"
+        android:pathData="M34,74 A20,20 0 0,1 74,74 Z" />
+    <!-- horizon -->
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M28,74.5 L80,74.5 L80,77 L28,77 Z" />
+    <!-- aircraft -->
+    <group android:pivotX="54" android:pivotY="54" android:rotation="-20" android:translateY="-6">
+        <path android:fillColor="#FFFFFFFF" android:strokeColor="#FF2E8FC4" android:strokeWidth="0.8"
+            android:pathData="M54,34 C55.6,34 56.4,36 56.4,38.5 L56.4,47 L76,55 L76,59 L56.4,54.5 L56.4,65 L61.5,69 L61.5,72 L54,70 L46.5,72 L46.5,69 L51.6,65 L51.6,54.5 L32,59 L32,55 L51.6,47 L51.6,38.5 C51.6,36 52.4,34 54,34 Z" />
+    </group>
 </vector>
