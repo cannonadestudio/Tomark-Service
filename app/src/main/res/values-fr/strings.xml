@@ -172,6 +172,7 @@
     <string name="kind_dealer">Concessionnaire</string>
     <string name="kind_rotax_distributor">Distributeur Rotax</string>
     <string name="kind_rotax_service">Atelier Rotax</string>
+    <string name="kind_maintenance">Atelier agréé</string>
     <string name="kind_mechanic">Mécanicien</string>
     <string name="kind_instructor">Instructeur</string>
     <string name="kind_examiner">Examinateur</string>

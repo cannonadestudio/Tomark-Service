@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Single table of UI texts -> res/values{,-pl,-sk,-fr}/strings.xml.
 Order per row: en, pl, sk, fr. Run after editing: python3 tools/build_strings.py"""
-import os
+import json, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -200,6 +200,7 @@ S = {
  "kind_dealer": ("Dealer", "Dealer", "Predajca", "Concessionnaire"),
  "kind_rotax_distributor": ("Rotax distributor", "Dystrybutor Rotax", "Distribútor Rotax", "Distributeur Rotax"),
  "kind_rotax_service": ("Rotax service", "Serwis Rotax", "Servis Rotax", "Atelier Rotax"),
+ "kind_maintenance": ("Maintenance organisation", "Organizacja obsługowa", "Organizácia údržby", "Atelier agréé"),
  "kind_mechanic": ("Mechanic", "Mechanik", "Mechanik", "Mécanicien"),
  "kind_instructor": ("Instructor", "Instruktor", "Inštruktor", "Instructeur"),
  "kind_examiner": ("Examiner", "Egzaminator", "Skúšobný komisár", "Examinateur"),
@@ -254,7 +255,14 @@ def esc(s):
     return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
              .replace("'", "\\'").replace('"', '\\"'))
 
-dirs = ["values", "values-pl", "values-sk", "values-fr"]
+# German and Czech live in tools/strings_de_cs.json ({"key": {"de": "...", "cs": "..."}}); missing keys fall back to English.
+EXTRA = json.load(open(os.path.join(ROOT, "tools/strings_de_cs.json"), encoding="utf-8"))
+EXTRA.setdefault("kind_maintenance", {"de": "Wartungsbetrieb", "cs": "Organizace údržby"})
+for k, v in S.items():
+    e = EXTRA.get(k, {})
+    S[k] = tuple(v) + (e.get("de", v[0]), e.get("cs", v[0]))
+
+dirs = ["values", "values-pl", "values-sk", "values-fr", "values-de", "values-cs"]
 for i, d in enumerate(dirs):
     path = os.path.join(ROOT, "app/src/main/res", d, "strings.xml")
     os.makedirs(os.path.dirname(path), exist_ok=True)

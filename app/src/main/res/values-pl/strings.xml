@@ -172,6 +172,7 @@
     <string name="kind_dealer">Dealer</string>
     <string name="kind_rotax_distributor">Dystrybutor Rotax</string>
     <string name="kind_rotax_service">Serwis Rotax</string>
+    <string name="kind_maintenance">Organizacja obsługowa</string>
     <string name="kind_mechanic">Mechanik</string>
     <string name="kind_instructor">Instruktor</string>
     <string name="kind_examiner">Egzaminator</string>

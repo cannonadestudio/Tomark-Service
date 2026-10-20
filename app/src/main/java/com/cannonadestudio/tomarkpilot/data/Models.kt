@@ -9,11 +9,15 @@ data class L10n(
     val en: String,
     val sk: String? = null,
     val fr: String? = null,
+    val de: String? = null,
+    val cs: String? = null,
 ) {
     fun get(lang: String): String = when (lang) {
         "pl" -> pl
-        "sk" -> sk ?: en
+        "sk" -> sk ?: cs ?: en
         "fr" -> fr ?: en
+        "de" -> de ?: en
+        "cs" -> cs ?: sk ?: en
         else -> en
     }
 

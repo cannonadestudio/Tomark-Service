@@ -1,0 +1,826 @@
+{
+ "app_name": {
+  "de": "AeroHangar",
+  "cs": "AeroHangar"
+ },
+ "tab_home": {
+  "de": "Übersicht",
+  "cs": "Přehled"
+ },
+ "tab_manual": {
+  "de": "Handbuch",
+  "cs": "Příručka"
+ },
+ "tab_service": {
+  "de": "Wartung",
+  "cs": "Údržba"
+ },
+ "tab_bulletins": {
+  "de": "Bulletins",
+  "cs": "Bulletiny"
+ },
+ "aircraft": {
+  "de": "Meine Flugzeuge",
+  "cs": "Moje letadla"
+ },
+ "add_aircraft": {
+  "de": "Flugzeug hinzufügen",
+  "cs": "Přidat letadlo"
+ },
+ "edit_aircraft": {
+  "de": "Flugzeug bearbeiten",
+  "cs": "Upravit letadlo"
+ },
+ "aircraft_type": {
+  "de": "Flugzeugmuster",
+  "cs": "Typ letadla"
+ },
+ "cat_easa": {
+  "de": "EASA-zugelassen (TCDS A.606)",
+  "cs": "Certifikováno EASA (TCDS A.606)"
+ },
+ "cat_ul": {
+  "de": "Ultraleicht / LSA (nationale Vorschriften)",
+  "cs": "UL / LSA (národní předpisy)"
+ },
+ "registration": {
+  "de": "Kennzeichen",
+  "cs": "Poznávací značka"
+ },
+ "serial_number": {
+  "de": "Werknummer des Flugzeugs",
+  "cs": "Výrobní číslo letadla"
+ },
+ "engine_serial": {
+  "de": "Motor-Seriennummer",
+  "cs": "Výrobní číslo motoru"
+ },
+ "total_hours": {
+  "de": "Gesamtflugzeit (h)",
+  "cs": "Celkový nálet (h)"
+ },
+ "add_flight_time": {
+  "de": "…oder Flugzeit hinzufügen (h)",
+  "cs": "…nebo přidejte čas letu (h)"
+ },
+ "reference_date": {
+  "de": "Bezugsdatum (JJJJ-MM-TT)",
+  "cs": "Referenční datum (RRRR-MM-DD)"
+ },
+ "reference_date_hint": {
+  "de": "Auslieferungsdatum oder Datum der letzten Jahresnachprüfung – gilt für Kalendertermine, die noch nicht erfasst sind.",
+  "cs": "Datum dodání nebo poslední roční prohlídky – použije se pro kalendářní termíny, které ještě nejsou zapsány."
+ },
+ "setup_hint": {
+  "de": "Tipp: Nach dem Speichern unter Wartung die zuletzt durchgeführten Prüfungen (Datum und Stunden) eintragen – daraus berechnet die App die nächsten Fälligkeiten.",
+  "cs": "Tip: Po uložení otevřete Údržbu a zapište naposledy provedené prohlídky (datum a nálet) – z nich aplikace počítá další termíny."
+ },
+ "type_change_warning": {
+  "de": "Eine Änderung des Musters ändert das Instandhaltungsprogramm und die Bulletins.",
+  "cs": "Změna typu mění program údržby a seznam bulletinů."
+ },
+ "save": {
+  "de": "Speichern",
+  "cs": "Uložit"
+ },
+ "cancel": {
+  "de": "Abbrechen",
+  "cs": "Zrušit"
+ },
+ "close": {
+  "de": "Schließen",
+  "cs": "Zavřít"
+ },
+ "delete": {
+  "de": "Löschen",
+  "cs": "Smazat"
+ },
+ "edit": {
+  "de": "Bearbeiten",
+  "cs": "Upravit"
+ },
+ "back": {
+  "de": "Zurück",
+  "cs": "Zpět"
+ },
+ "reset": {
+  "de": "Zurücksetzen",
+  "cs": "Obnovit"
+ },
+ "settings": {
+  "de": "Einstellungen",
+  "cs": "Nastavení"
+ },
+ "delete_aircraft_q": {
+  "de": "%1$s löschen?",
+  "cs": "Smazat %1$s?"
+ },
+ "delete_aircraft_text": {
+  "de": "Alle Wartungseinträge und Bulletin-Status dieses Flugzeugs werden gelöscht.",
+  "cs": "Smažou se všechny záznamy údržby a stavy bulletinů tohoto letadla."
+ },
+ "no_aircraft_title": {
+  "de": "Flugzeug hinzufügen",
+  "cs": "Přidejte své letadlo"
+ },
+ "no_aircraft_text": {
+  "de": "Muster wählen, Kennzeichen und aktuelle Flugstunden eingeben. Die App zeigt die wichtigsten Geschwindigkeiten und überwacht Wartung und Bulletins.",
+  "cs": "Vyberte typ, zadejte značku a aktuální nálet. Aplikace zobrazí klíčové rychlosti a bude hlídat údržbu a bulletiny."
+ },
+ "speeds": {
+  "de": "Wichtige Geschwindigkeiten (IAS)",
+  "cs": "Klíčové rychlosti (IAS)"
+ },
+ "missing_speeds": {
+  "de": "Nicht in öffentlichen Quellen – aus dem AFM eintragen: %1$s ›",
+  "cs": "Není ve veřejných zdrojích – doplňte z AFM: %1$s ›"
+ },
+ "speeds_disclaimer": {
+  "de": "⚠ = mit dem AFM abgleichen. Das AFM ist immer maßgebend.",
+  "cs": "⚠ = ověřte podle AFM. Závazná je vždy AFM."
+ },
+ "speed_edit_hint": {
+  "de": "Wert aus dem AFM Ihres Flugzeugs eingeben. Ihr Wert ersetzt den Standardwert in der gesamten App.",
+  "cs": "Zadejte hodnotu z AFM vašeho letadla. Nahradí výchozí hodnotu v celé aplikaci."
+ },
+ "default_value": {
+  "de": "Standard: %1$s",
+  "cs": "Výchozí: %1$s"
+ },
+ "own_value": {
+  "de": "Eigener Wert (aus AFM)",
+  "cs": "Vaše hodnota (z AFM)"
+ },
+ "source_label": {
+  "de": "Quelle: %1$s",
+  "cs": "Zdroj: %1$s"
+ },
+ "unverified_long": {
+  "de": "Nicht durch AFM/AMM bestätigt – prüfen.",
+  "cs": "Nepotvrzeno v AFM/AMM – ověřte."
+ },
+ "update_hours": {
+  "de": "Stunden aktualisieren",
+  "cs": "Aktualizovat nálet"
+ },
+ "hours_now": {
+  "de": "Gesamtzeit: %1$s h",
+  "cs": "Nálet: %1$s h"
+ },
+ "hours_updated": {
+  "de": "aktualisiert %1$s",
+  "cs": "aktualizováno %1$s"
+ },
+ "hours_hint": {
+  "de": "Flugzeit vom Start bis zur Landung zählen (SB_SD4-03-2023). Rotax-Positionen zählen Motorstunden – beide abgleichen.",
+  "cs": "Počítá se čas od vzletu po přistání (SB_SD4-03-2023). Položky Rotax se počítají v motohodinách – hlídejte shodu."
+ },
+ "hours_decrease_warning": {
+  "de": "Der neue Wert ist niedriger als der aktuelle.",
+  "cs": "Nová hodnota je nižší než současná."
+ },
+ "next_work": {
+  "de": "Anstehende Wartung",
+  "cs": "Nejbližší údržba"
+ },
+ "all_ok": {
+  "de": "Keine Wartung in nächster Zeit fällig.",
+  "cs": "Žádná údržba v nejbližší době."
+ },
+ "open_bulletins_n": {
+  "de": "%1$d Bulletin(s) ohne Status",
+  "cs": "%1$d bulletin(ů) bez stavu"
+ },
+ "open_bulletins_mandatory": {
+  "de": "davon %1$d verbindlich",
+  "cs": "z toho povinné: %1$d"
+ },
+ "status_ok": {
+  "de": "OK",
+  "cs": "OK"
+ },
+ "status_soon": {
+  "de": "Bald fällig",
+  "cs": "Brzy"
+ },
+ "status_due": {
+  "de": "Jetzt fällig",
+  "cs": "Termín nyní"
+ },
+ "status_overdue": {
+  "de": "ÜBERFÄLLIG",
+  "cs": "PO TERMÍNU"
+ },
+ "status_done": {
+  "de": "Erledigt",
+  "cs": "Provedeno"
+ },
+ "status_noint": {
+  "de": "Intervall festlegen",
+  "cs": "Nastavte interval"
+ },
+ "remaining_h": {
+  "de": "noch %1$s h",
+  "cs": "zbývá %1$s h"
+ },
+ "overdue_h": {
+  "de": "%1$s h überschritten",
+  "cs": "překročeno o %1$s h"
+ },
+ "remaining_d": {
+  "de": "noch %1$d Tage",
+  "cs": "zbývá %1$d dní"
+ },
+ "overdue_d": {
+  "de": "%1$d Tage überfällig",
+  "cs": "po termínu %1$d dní"
+ },
+ "due_at": {
+  "de": "bei %1$s h",
+  "cs": "při %1$s h"
+ },
+ "due_on": {
+  "de": "bis %1$s",
+  "cs": "do %1$s"
+ },
+ "need_reference_date": {
+  "de": "Bezugsdatum angeben oder letzte Durchführung eintragen",
+  "cs": "zadejte referenční datum nebo zapište poslední provedení"
+ },
+ "service_intro": {
+  "de": "Fälligkeiten werden ab der zuletzt eingetragenen Durchführung berechnet. Aktuelle Zeit: %1$s h. Auf eine Aufgabe tippen, um sie einzutragen, den Verlauf zu sehen oder das Intervall zu ändern.",
+  "cs": "Termíny se počítají od posledního zapsaného provedení. Aktuální nálet: %1$s h. Klepněte na položku pro zápis, historii nebo změnu intervalu."
+ },
+ "show_hidden": {
+  "de": "Ausgeblendete anzeigen",
+  "cs": "Zobrazit skryté"
+ },
+ "hidden": {
+  "de": "ausgeblendet",
+  "cs": "skryté"
+ },
+ "mandatory": {
+  "de": "Verbindlich",
+  "cs": "Povinné"
+ },
+ "recommended": {
+  "de": "Empfohlen",
+  "cs": "Doporučené"
+ },
+ "once_at": {
+  "de": "einmalig bei %1$s h",
+  "cs": "jednorázově při %1$s h"
+ },
+ "every_h": {
+  "de": "alle %1$s h",
+  "cs": "každých %1$s h"
+ },
+ "every_m": {
+  "de": "alle %1$d Monate",
+  "cs": "každých %1$d měs."
+ },
+ "tolerance": {
+  "de": "Toleranz ±%1$s h",
+  "cs": "tolerance ±%1$s h"
+ },
+ "last_done": {
+  "de": "Zuletzt: %1$s bei %2$s h",
+  "cs": "Naposledy: %1$s při %2$s h"
+ },
+ "check_interval": {
+  "de": "Intervall nicht durch AMM bestätigt – Unterlagen prüfen.",
+  "cs": "Interval nepotvrzen v AMM – ověřte v dokumentaci."
+ },
+ "custom_task": {
+  "de": "Eigene Aufgabe",
+  "cs": "Vlastní položka"
+ },
+ "mark_done": {
+  "de": "Eintragen",
+  "cs": "Zapsat"
+ },
+ "history": {
+  "de": "Verlauf",
+  "cs": "Historie"
+ },
+ "no_history": {
+  "de": "Noch keine Einträge.",
+  "cs": "Zatím bez záznamů."
+ },
+ "done_date": {
+  "de": "Datum (JJJJ-MM-TT)",
+  "cs": "Datum (RRRR-MM-DD)"
+ },
+ "done_hours": {
+  "de": "Bei Gesamtstunden",
+  "cs": "Při náletu (h)"
+ },
+ "note": {
+  "de": "Bemerkung (wer, was, CRS-Nr.)",
+  "cs": "Poznámka (kdo, co, č. CRS)"
+ },
+ "interval_hours": {
+  "de": "Intervall (Stunden)",
+  "cs": "Interval (hodiny)"
+ },
+ "interval_months": {
+  "de": "Intervall (Monate)",
+  "cs": "Interval (měsíce)"
+ },
+ "interval_hint": {
+  "de": "Was zuerst eintritt. Leer lassen für Standardwert.",
+  "cs": "Co nastane dříve. Prázdné = výchozí."
+ },
+ "save_interval": {
+  "de": "Intervall speichern",
+  "cs": "Uložit interval"
+ },
+ "hide_task": {
+  "de": "Ausblenden (nicht zutreffend)",
+  "cs": "Skrýt položku (netýká se)"
+ },
+ "delete_task": {
+  "de": "Aufgabe löschen",
+  "cs": "Smazat položku"
+ },
+ "add_task": {
+  "de": "Aufgabe hinzufügen",
+  "cs": "Přidat položku"
+ },
+ "task_name": {
+  "de": "Bezeichnung",
+  "cs": "Název práce"
+ },
+ "cat_airframe": {
+  "de": "Zelle",
+  "cs": "Drak"
+ },
+ "cat_engine": {
+  "de": "Motor",
+  "cs": "Motor"
+ },
+ "cat_propeller": {
+  "de": "Propeller",
+  "cs": "Vrtule"
+ },
+ "cat_rescue": {
+  "de": "Rettungssystem",
+  "cs": "Záchranný systém"
+ },
+ "cat_regulatory": {
+  "de": "Behördlich",
+  "cs": "Formální"
+ },
+ "cat_avionics": {
+  "de": "Avionik",
+  "cs": "Avionika"
+ },
+ "cat_other": {
+  "de": "Sonstiges",
+  "cs": "Ostatní"
+ },
+ "bulletins_for": {
+  "de": "Bulletins für %1$s",
+  "cs": "Bulletiny pro %1$s"
+ },
+ "list_updated": {
+  "de": "Stand der Liste: %1$s",
+  "cs": "Stav seznamu: %1$s"
+ },
+ "bulletins_hint": {
+  "de": "Jedes als durchgeführt oder nicht zutreffend markieren.",
+  "cs": "Každý označte jako provedený nebo netýká se."
+ },
+ "fr24": {
+  "de": "Letzte Flüge (Flightradar24)",
+  "cs": "Poslední lety (Flightradar24)"
+ },
+ "fr24_hint": {
+  "de": "Flüge erscheinen nur, wenn das Flugzeug ADS-B sendet bzw. von FR24 erfasst wird.",
+  "cs": "Lety jsou vidět jen tehdy, když letadlo vysílá ADS-B a je sledováno FR24."
+ },
+ "news_title": {
+  "de": "Mitteilungen",
+  "cs": "Oznámení"
+ },
+ "data_source": {
+  "de": "Datenquelle: %1$s",
+  "cs": "Zdroj údajů: %1$s"
+ },
+ "refresh": {
+  "de": "Aktualisieren",
+  "cs": "Obnovit"
+ },
+ "refresh_ok": {
+  "de": "Liste aktualisiert (%1$d neu)",
+  "cs": "Aktualizováno (%1$d nových)"
+ },
+ "refresh_fail": {
+  "de": "Keine Verbindung – gespeicherte Liste",
+  "cs": "Bez připojení – zobrazuji uložený seznam"
+ },
+ "filter_open": {
+  "de": "Ohne Status",
+  "cs": "Bez stavu"
+ },
+ "filter_hide_docs": {
+  "de": "Dokumente ausblenden",
+  "cs": "Skrýt dokumenty"
+ },
+ "bl_before_build": {
+  "de": "Vor dem Baujahr des Flugzeugs (%1$d) herausgegeben – meist ab Werk erledigt, prüfen",
+  "cs": "Vydán před rokem výroby letadla (%1$d) – obvykle proveden ve výrobě, ověřte"
+ },
+ "bl_new": {
+  "de": "NEU",
+  "cs": "NOVÝ"
+ },
+ "bl_done": {
+  "de": "Durchgeführt",
+  "cs": "Proveden"
+ },
+ "bl_na": {
+  "de": "Nicht zutreffend",
+  "cs": "Netýká se"
+ },
+ "bl_open": {
+  "de": "Offen",
+  "cs": "Otevřený"
+ },
+ "bl_clear": {
+  "de": "Status löschen",
+  "cs": "Zrušit stav"
+ },
+ "bl_mark_done": {
+  "de": "Als durchgeführt markieren",
+  "cs": "Označit jako provedený"
+ },
+ "bl_open_source": {
+  "de": "Quelle öffnen",
+  "cs": "Otevřít zdroj"
+ },
+ "bl_mandatory": {
+  "de": "Verbindlich",
+  "cs": "Povinný"
+ },
+ "bl_info": {
+  "de": "Informativ / optional",
+  "cs": "Informativní / volitelný"
+ },
+ "bl_unknown": {
+  "de": "Dokument prüfen",
+  "cs": "Ověřte dokument"
+ },
+ "my_poh": {
+  "de": "Mein AFM / POH",
+  "cs": "Moje příručka AFM / POH"
+ },
+ "my_poh_hint": {
+  "de": "PDF des Flughandbuchs für dieses Flugzeug anhängen – es lässt sich hier auch offline öffnen.",
+  "cs": "Připojte PDF letové příručky tohoto letadla – otevřete ji odsud i offline."
+ },
+ "attach_poh": {
+  "de": "PDF anhängen",
+  "cs": "Připojit PDF"
+ },
+ "replace_poh": {
+  "de": "Ersetzen",
+  "cs": "Změnit"
+ },
+ "open_poh": {
+  "de": "Öffnen",
+  "cs": "Otevřít"
+ },
+ "no_pdf_viewer": {
+  "de": "Keine PDF-App installiert.",
+  "cs": "Chybí aplikace pro PDF."
+ },
+ "poh_lost": {
+  "de": "Zugriff auf die Datei verloren – bitte erneut anhängen.",
+  "cs": "Přístup k souboru byl ztracen – připojte jej znovu."
+ },
+ "my_notes": {
+  "de": "Meine Notizen",
+  "cs": "Moje poznámky"
+ },
+ "notes_hint": {
+  "de": "z. B. lokale Verfahren, Checklisten-Hinweise, Kraftstoffverbrauch…",
+  "cs": "např. místní postupy, poznámky ke checklistu, spotřeba paliva…"
+ },
+ "notif_channel": {
+  "de": "Wartung und Bulletins",
+  "cs": "Údržba a bulletiny"
+ },
+ "notif_new_bulletins": {
+  "de": "%1$d neue(s) Bulletin(s) für Ihr Flugzeug",
+  "cs": "%1$d nový(ch) bulletin(ů) pro vaše letadlo"
+ },
+ "notif_maintenance": {
+  "de": "%1$s: %2$d Wartungsposition(en) fällig",
+  "cs": "%1$s: %2$d položek údržby k provedení"
+ },
+ "tab_contacts": {
+  "de": "Kontakte",
+  "cs": "Kontakty"
+ },
+ "cat_easa_generic": {
+  "de": "EASA-zugelassen",
+  "cs": "Certifikováno EASA"
+ },
+ "type_search": {
+  "de": "Muster oder Hersteller suchen",
+  "cs": "Hledat typ nebo výrobce"
+ },
+ "editing_entry": {
+  "de": "Früheren Eintrag bearbeiten",
+  "cs": "Upravujete dřívější záznam"
+ },
+ "note_plain": {
+  "de": "Bemerkung",
+  "cs": "Poznámka"
+ },
+ "link_logbook": {
+  "de": "Stunden aus dem Flugbuch übernehmen",
+  "cs": "Brát nálet z logbooku"
+ },
+ "link_logbook_hint": {
+  "de": "Die aktuelle Gesamtzeit bleibt; später im Flugbuch erfasste Flüge mit diesem Kennzeichen werden automatisch addiert. Die Flugbuch-Datei in den Einstellungen wählen (ⓘ).",
+  "cs": "Současný nálet zůstane, další lety z logbooku pro tuto značku se připočítají automaticky. Soubor logbooku vyberete v Nastavení (ⓘ)."
+ },
+ "logbook_linked": {
+  "de": "Stunden mit dem Flugbuch synchronisiert",
+  "cs": "Nálet synchronizován s logbookem"
+ },
+ "logbook_error": {
+  "de": "Flugbuch: %1$s",
+  "cs": "Logbook: %1$s"
+ },
+ "logbook_title": {
+  "de": "Flugbuch-Verknüpfung",
+  "cs": "Propojení s logbookem"
+ },
+ "logbook_hint": {
+  "de": "Eigenen Flugbuch-Export auswählen (CSV oder JSON, z. B. aus Pilot Logbook, auf dem Telefon oder in Drive gespeichert). Erforderlich sind eine Spalte für das Kennzeichen und eine für die Flugzeit. Die Datei wird bei jedem App-Start und einmal täglich neu eingelesen.",
+  "cs": "Vyberte vlastní export logbooku (CSV nebo JSON, např. z Pilot Logbook, uložený v telefonu nebo na Disku). Soubor musí mít sloupec se značkou a sloupec s časem letu. Načítá se při každém otevření aplikace a jednou denně."
+ },
+ "logbook_none": {
+  "de": "Keine Datei gewählt",
+  "cs": "Soubor nevybrán"
+ },
+ "logbook_synced": {
+  "de": "Zuletzt gelesen: %1$s",
+  "cs": "Poslední načtení: %1$s"
+ },
+ "logbook_choose": {
+  "de": "Datei wählen",
+  "cs": "Vybrat soubor"
+ },
+ "logbook_sync_now": {
+  "de": "Jetzt synchronisieren",
+  "cs": "Synchronizovat"
+ },
+ "logbook_unlink": {
+  "de": "Trennen",
+  "cs": "Odpojit"
+ },
+ "logbook_sync_ok": {
+  "de": "%1$d Flugzeug(e) aktualisiert",
+  "cs": "Aktualizováno letadel: %1$d"
+ },
+ "contacts_title": {
+  "de": "Händler, Werkstätten & Personen",
+  "cs": "Prodejci, servisy a osoby"
+ },
+ "sorted_by_distance": {
+  "de": "Nächste zuerst (Ihr Standort)",
+  "cs": "Nejbližší nahoře (podle polohy)"
+ },
+ "no_location": {
+  "de": "Standort aus – nach Land sortiert",
+  "cs": "Poloha vypnutá – řazeno podle země"
+ },
+ "contacts_search": {
+  "de": "Name, Ort, Marke suchen",
+  "cs": "Hledat název, město, značku"
+ },
+ "only_my_type": {
+  "de": "Für mein Flugzeug",
+  "cs": "Pro moje letadlo"
+ },
+ "contacts_refreshed": {
+  "de": "Kontakte aktualisiert (%1$d)",
+  "cs": "Kontakty aktualizovány (%1$d)"
+ },
+ "contacts_import": {
+  "de": "Aus Datei importieren (JSON)",
+  "cs": "Importovat ze souboru (JSON)"
+ },
+ "contacts_export": {
+  "de": "Meine Kontakte teilen (JSON)",
+  "cs": "Sdílet moje kontakty (JSON)"
+ },
+ "contacts_unhide": {
+  "de": "Ausgeblendete Kontakte wieder anzeigen",
+  "cs": "Znovu zobrazit skryté"
+ },
+ "contacts_imported": {
+  "de": "%1$d Kontakte importiert",
+  "cs": "Importováno kontaktů: %1$d"
+ },
+ "contacts_import_fail": {
+  "de": "Import fehlgeschlagen: %1$s",
+  "cs": "Chyba importu: %1$s"
+ },
+ "contacts_hint": {
+  "de": "Die gemeinsame Liste wird online gepflegt und täglich aktualisiert. Eigene Einträge und Änderungen bleiben auf diesem Telefon; sie können als Datei geteilt oder dem Betreuer der Liste zur Veröffentlichung gesendet werden.",
+  "cs": "Společný seznam se vede online a obnovuje se denně. Vaše záznamy a úpravy zůstávají v telefonu – můžete je sdílet jako soubor nebo poslat správci seznamu ke zveřejnění."
+ },
+ "contact_add": {
+  "de": "Kontakt hinzufügen",
+  "cs": "Přidat kontakt"
+ },
+ "contact_edit": {
+  "de": "Kontakt bearbeiten",
+  "cs": "Upravit kontakt"
+ },
+ "contact_mine": {
+  "de": "mein Eintrag",
+  "cs": "můj záznam"
+ },
+ "contact_name": {
+  "de": "Name / Firma",
+  "cs": "Název / jméno"
+ },
+ "contact_brands": {
+  "de": "Muster / Marken (durch Komma getrennt)",
+  "cs": "Typy / značky (oddělené čárkou)"
+ },
+ "contact_phone": {
+  "de": "Telefon",
+  "cs": "Telefon"
+ },
+ "contact_address": {
+  "de": "Adresse / Flugplatz",
+  "cs": "Adresa / letiště"
+ },
+ "contact_city": {
+  "de": "Ort",
+  "cs": "Město"
+ },
+ "contact_country": {
+  "de": "Land",
+  "cs": "Země"
+ },
+ "use_my_location": {
+  "de": "Meinen Standort verwenden",
+  "cs": "Použít moji polohu"
+ },
+ "kind_manufacturer": {
+  "de": "Hersteller",
+  "cs": "Výrobce"
+ },
+ "kind_dealer": {
+  "de": "Händler",
+  "cs": "Prodejce"
+ },
+ "kind_rotax_distributor": {
+  "de": "Rotax-Distributor",
+  "cs": "Distributor Rotax"
+ },
+ "kind_rotax_service": {
+  "de": "Rotax-Service",
+  "cs": "Servis Rotax"
+ },
+ "kind_mechanic": {
+  "de": "Mechaniker",
+  "cs": "Mechanik"
+ },
+ "kind_instructor": {
+  "de": "Fluglehrer",
+  "cs": "Instruktor"
+ },
+ "kind_examiner": {
+  "de": "Prüfer",
+  "cs": "Examinátor"
+ },
+ "backup_title": {
+  "de": "Sicherung in Google Drive",
+  "cs": "Záloha na Disku Google"
+ },
+ "backup_hint": {
+  "de": "Einmal eine Datei in Google Drive (oder einer anderen Cloud) wählen – die App speichert dort nach jeder Änderung Flugzeuge, Stunden, Wartungseinträge, Bulletin-Status und eigene Kontakte. Auf einem neuen Telefon „Wiederherstellen“ verwenden.",
+  "cs": "Jednou vyberte soubor na Disku Google (nebo v jiném cloudu) – aplikace tam po každé změně uloží letadla, nálet, záznamy údržby, stavy bulletinů a vlastní kontakty. Na novém telefonu použijte Obnovit."
+ },
+ "backup_off": {
+  "de": "Sicherung aus",
+  "cs": "Záloha vypnuta"
+ },
+ "backup_last": {
+  "de": "Zuletzt gesichert: %1$s",
+  "cs": "Poslední uložení: %1$s"
+ },
+ "backup_error": {
+  "de": "Sicherung: %1$s",
+  "cs": "Záloha: %1$s"
+ },
+ "backup_choose": {
+  "de": "Datei in Drive wählen",
+  "cs": "Vybrat soubor na Disku"
+ },
+ "backup_change": {
+  "de": "Datei ändern",
+  "cs": "Změnit soubor"
+ },
+ "backup_now": {
+  "de": "Jetzt sichern",
+  "cs": "Uložit nyní"
+ },
+ "backup_done": {
+  "de": "Sicherung gespeichert",
+  "cs": "Záloha uložena"
+ },
+ "backup_restore": {
+  "de": "Aus Sicherung wiederherstellen",
+  "cs": "Obnovit ze zálohy"
+ },
+ "backup_disable": {
+  "de": "Ausschalten",
+  "cs": "Vypnout"
+ },
+ "backup_restore_warn": {
+  "de": "Alle Daten auf diesem Telefon werden durch die Sicherung ersetzt (Flugzeuge, Stunden, Wartungseinträge, Bulletin-Status, eigene Kontakte). Angehängte PDF-Handbücher müssen erneut angehängt werden.",
+  "cs": "Všechna data v tomto telefonu budou nahrazena zálohou (letadla, nálet, záznamy údržby, stavy bulletinů, vlastní kontakty). Připojené PDF příručky bude nutné připojit znovu."
+ },
+ "backup_restore_ok": {
+  "de": "Ersetzen und wiederherstellen",
+  "cs": "Nahradit a obnovit"
+ },
+ "backup_restored": {
+  "de": "Wiederhergestellt – %1$d Flugzeug(e)",
+  "cs": "Obnoveno – letadla: %1$d"
+ },
+ "copy": {
+  "de": "Kopieren",
+  "cs": "Kopírovat"
+ },
+ "copied": {
+  "de": "Kopiert: %1$s",
+  "cs": "Zkopírováno: %1$s"
+ },
+ "tap_to_enter": {
+  "de": "zum Eingeben tippen",
+  "cs": "klepněte a zadejte"
+ },
+ "engine_sn_label": {
+  "de": "Motor-S/N",
+  "cs": "Č. motoru"
+ },
+ "gearbox_sn_label": {
+  "de": "Getriebe-S/N",
+  "cs": "Č. reduktoru"
+ },
+ "gearbox_serial": {
+  "de": "Getriebe-Seriennummer (optional)",
+  "cs": "Výrobní číslo reduktoru (volitelné)"
+ },
+ "year_built": {
+  "de": "Baujahr",
+  "cs": "Rok výroby"
+ },
+ "engine_sn": {
+  "de": "Motor-S/N: %1$s",
+  "cs": "Č. motoru: %1$s"
+ },
+ "engine_sn_missing": {
+  "de": "Motor-S/N: zum Eingeben tippen",
+  "cs": "Č. motoru: klepněte a zadejte"
+ },
+ "engine_sn_hint": {
+  "de": "Bulletins gelten oft für bestimmte Seriennummern von Motor oder Getriebe bzw. für bestimmte Baujahre des Flugzeugs. Die Seriennummern stehen auf den Typenschildern und im Motorbordbuch, das Baujahr in den Flugzeugpapieren.",
+  "cs": "Bulletiny se často týkají konkrétních výrobních čísel motoru či reduktoru nebo ročníků letadla. Čísla jsou na typových štítcích a v deníku motoru, rok výroby v dokladech letadla."
+ },
+ "disclaimer_title": {
+  "de": "Wichtig",
+  "cs": "Důležité"
+ },
+ "disclaimer_text": {
+  "de": "Inoffizielle App, ohne Verbindung zu einem Flugzeughersteller oder BRP-Rotax. Die Daten stammen aus öffentlichen Quellen (EASA TCDS, nationale Gerätekennblätter, Herstellerunterlagen, veröffentlichte Bulletins) und dienen nur zur Erinnerung. Maßgebend sind immer das aktuelle AFM, AMM, die Service Bulletins und Lufttüchtigkeitsanweisungen Ihres Flugzeugs sowie Ihr Instandhaltungsbetrieb. Mit ⚠ markierte Angaben wurden nicht anhand der Handbücher bestätigt.",
+  "cs": "Neoficiální aplikace bez vazby na výrobce letadel či BRP-Rotax. Údaje pocházejí z veřejných zdrojů (EASA TCDS, národní typové listy, dokumenty výrobců, zveřejněné bulletiny) a slouží pouze jako připomínka. Závazné jsou vždy aktuální AFM, AMM, servisní bulletiny a příkazy k zachování letové způsobilosti vašeho letadla a vaše organizace údržby. Položky označené ⚠ nebyly ověřeny v příručkách."
+ },
+ "accept": {
+  "de": "Verstanden",
+  "cs": "Rozumím"
+ },
+ "about": {
+  "de": "Über die App",
+  "cs": "O aplikaci"
+ },
+ "about_text": {
+  "de": "Bulletins und Kontakte werden täglich aus Online-Listen des App-Autors aktualisiert (die TOMARK-Liste wird täglich automatisch geprüft). Erinnerungen an Wartung und Bulletins kommen als Benachrichtigungen.",
+  "cs": "Bulletiny a kontakty se denně obnovují z online seznamů, které spravuje autor aplikace (seznam TOMARK se kontroluje automaticky každý den). Připomínky údržby a bulletinů přicházejí jako oznámení."
+ },
+ "about_sources": {
+  "de": "Sources: EASA TCDS (A.606, A.006, A.583, A.412, A.527, A.065, A.439, A.537, A.644, A.598, A.642); DULV / DAeC / Traficom / BMAA data sheets; manufacturer POH/AFM; BRP-Rotax MML-912; TOMARK technical support list; EASA AD 2026-0170; flyrotax.com distributor pages.",
+  "cs": "Sources: EASA TCDS (A.606, A.006, A.583, A.412, A.527, A.065, A.439, A.537, A.644, A.598, A.642); DULV / DAeC / Traficom / BMAA data sheets; manufacturer POH/AFM; BRP-Rotax MML-912; TOMARK technical support list; EASA AD 2026-0170; flyrotax.com distributor pages."
+ }
+}

@@ -172,6 +172,7 @@
     <string name="kind_dealer">Predajca</string>
     <string name="kind_rotax_distributor">Distribútor Rotax</string>
     <string name="kind_rotax_service">Servis Rotax</string>
+    <string name="kind_maintenance">Organizácia údržby</string>
     <string name="kind_mechanic">Mechanik</string>
     <string name="kind_instructor">Inštruktor</string>
     <string name="kind_examiner">Skúšobný komisár</string>
