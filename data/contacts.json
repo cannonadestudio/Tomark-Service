@@ -1,5 +1,5 @@
 {
- "version": 1,
+ "version": 2,
  "updated": "2026-10-20",
  "contacts": [
   {
@@ -1721,6 +1721,2364 @@
    "phone": "+41 26 411 92 30",
    "web": "https://www.mecanair.ch",
    "source": "https://www.flyrotax.com/dis/franz/p/maintenance-organizations-germany"
+  },
+  {
+   "id": "ulc-exam-andrzejewski-dariusz",
+   "name": "Andrzejewski Dariusz",
+   "kind": "examiner",
+   "brands": [
+    "SFE(A) EMB170"
+   ],
+   "country": "PL",
+   "phone": "695892257",
+   "email": "dar.andrze@outlook.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). SFE(A) EMB170 – TR EMB170, IR, ATPL(A). Ważne do 28.02.2029. PL/SFE/6733",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-augustyniak-igor",
+   "name": "Augustyniak Igor",
+   "kind": "examiner",
+   "brands": [
+    "TRE(A) B777/787"
+   ],
+   "country": "PL",
+   "phone": "607147231",
+   "email": "i.augustyniak@lotcrew.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) B777/787 – FCL.1005.TRE(a)(1,2,3). Ważne do 31.05.2029. PL/TRE/8532",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-bajura-arkadiusz",
+   "name": "Bajura Arkadiusz",
+   "kind": "examiner",
+   "brands": [
+    "TRE(A) A320"
+   ],
+   "country": "PL",
+   "phone": "506055609",
+   "email": "abajura@onet.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) A320 – TR A320, IR, ATPL(A), TRI/SFI. Ważne do 30.06.2028. PL/TRE/15373",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-bałowski-michał",
+   "name": "Bałowski Michał",
+   "kind": "examiner",
+   "brands": [
+    "FE(S)"
+   ],
+   "country": "PL",
+   "city": "śląskie, dolnośląskie, małopolskie …",
+   "lat": 50.26,
+   "lon": 19.02,
+   "phone": "507979107",
+   "email": "michal.balowski@vp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). FE(S) – SPL /bez TMG, FI(S) /szybowce bez TMG. Ważne do 31.12.2026. PL/FE/11329",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-banachowski-kacper",
+   "name": "Banachowski Kacper",
+   "kind": "examiner",
+   "brands": [
+    "FE(A) CRE SEP(Land) CRE MEP(Land)"
+   ],
+   "country": "PL",
+   "phone": "509945645",
+   "email": "kacper.banachowski@icloud.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). FE(A) CRE SEP(Land) CRE MEP(Land) – PPL(A), CPL(A), LAPL(A) SEP(Land), LAPL(A) M. Ważne do 31.03.2029. PL/FE/31388",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-bartczak-dariusz",
+   "name": "Bartczak Dariusz",
+   "kind": "examiner",
+   "brands": [
+    "FE(A)",
+    "CRE SEP(Land)",
+    "CRE MEP(Land)",
+    "IRE(A) SE/ME"
+   ],
+   "country": "PL",
+   "city": "kujawsko-pomorskie, pomorskie",
+   "lat": 53.12,
+   "lon": 18.01,
+   "phone": "795162082",
+   "email": "darekbartczak@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). FE(A) – PPL(A), CPL(A), LAPL(A); CRE SEP(Land) – SEP(Land), IR/BIR, LAPL(A); CRE MEP(Land) – MEP(Land), IR/BIR; IRE(A) SE/ME – IR(A)/BIR SE/ME; SFE(A) Jetstream31/32 – TR Jetstream 31/31/IR, ATPL(A), SFI. Ważne do 31.07.2028. PL/FE/7278",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-batkiewicz-gabriel",
+   "name": "Batkiewicz Gabriel",
+   "kind": "examiner",
+   "brands": [
+    "FE(A)",
+    "CRE SEP(Land)",
+    "CRE TMG",
+    "CRE SET(Land)"
+   ],
+   "country": "PL",
+   "city": "małopolskie, opolskie, śląskie",
+   "lat": 50.06,
+   "lon": 19.94,
+   "phone": "601478255",
+   "email": "gabriel.batkiewicz@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). FE(A) – PPL(A), CPL(A), LAPL(A); CRE SEP(Land) – SEP(Land), LAPL(A); CRE TMG – TMG, LAPL(A); CRE SET(Land) – SET(Land) PAC750XL. Ważne do 28.02.2029. PL/FE/15654",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-bednarek-jacek",
+   "name": "Bednarek Jacek",
+   "kind": "examiner",
+   "brands": [
+    "FE(A)",
+    "CRE SEP(Land)",
+    "FIE(A)"
+   ],
+   "country": "PL",
+   "city": "łódzkie, mazowieckie",
+   "lat": 51.76,
+   "lon": 19.46,
+   "phone": "509434545",
+   "email": "jacek384@op.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). FE(A) – PPL(A), CPL(A), LAPL(A); CRE SEP(Land) – SEP(Land), LAPL(A); FIE(A) – FI(A). Ważne do 31.05.2028. PL/FE/4394",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-bergier-paweł",
+   "name": "Bergier Paweł",
+   "kind": "examiner",
+   "brands": [
+    "TRE(A) B737 300-900",
+    "woj. mazowieckie",
+    "woj. kujawsko-pomorskie",
+    "woj. wielkopolskie"
+   ],
+   "country": "PL",
+   "email": "mardab.fi@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) B737 300-900 – TR B737 300-900, IR, ATPL(A); woj. mazowieckie; woj. kujawsko-pomorskie; woj. wielkopolskie; woj. dolnośląskie; woj. opolskie. Ważne do 28.02.2029. PL/TRE/10219 PL/TRE/17067 PL/TRE/7815",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-filus-witold",
+   "name": "Filus Witold",
+   "kind": "examiner",
+   "brands": [
+    "woj. lubuskie",
+    "woj. zachodniopomorskie",
+    "woj. pomorskie"
+   ],
+   "country": "PL",
+   "phone": "601470601",
+   "email": "witfilus@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. lubuskie; woj. zachodniopomorskie; woj. pomorskie. PL/FE/5890 PL/FE/9257",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-gągol-robert",
+   "name": "Gągol Robert",
+   "kind": "examiner",
+   "brands": [
+    "woj. lubelskie",
+    "woj. mazowieckie"
+   ],
+   "country": "PL",
+   "phone": "602645471",
+   "email": "robert.gagol@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. lubelskie; woj. mazowieckie. PL/SFE/5651 PL/FE/18485",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-glejzer-danuta",
+   "name": "Glejzer Danuta",
+   "kind": "examiner",
+   "brands": [
+    "woj. śląskie",
+    "woj. lubelskie"
+   ],
+   "country": "PL",
+   "phone": "723044345",
+   "email": "danuta-dg@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. śląskie; woj. lubelskie. PL/FE/10220 PL/FE/2230 PL/FE/18587",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-grabowski-szymon",
+   "name": "Grabowski Szymon",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "519687248",
+   "email": "szymekgrabowski@yahoo.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/22722 PL/TRE/11494",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-grączewski-marcin",
+   "name": "Grączewski Marcin",
+   "kind": "examiner",
+   "brands": [
+    "woj. podlaskie"
+   ],
+   "country": "PL",
+   "phone": "604779510",
+   "email": "marcin.graczewski@wizzair.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. podlaskie. PL/TRE/4141 PL/FE/11744",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-gut-jakub",
+   "name": "Gut Jakub",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "734464139",
+   "email": "kubagut1995@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/41739 PL/TRE/17904",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-haławin-artur",
+   "name": "Haławin Artur",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "695442041",
+   "email": "halawin@post.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/1208 PL/FE/11935",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-hlubiński-mirosław",
+   "name": "Hlubiński Mirosław",
+   "kind": "examiner",
+   "brands": [
+    "woj. mazowieckie"
+   ],
+   "country": "PL",
+   "phone": "695887736",
+   "email": "m.hlubinski@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. mazowieckie. PL/SFE/6428 PL/FE/11669",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-inglot-jan",
+   "name": "Inglot Jan",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "604294271",
+   "email": "janek.kap38@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/8881 PL/TRE/8734",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-jakubowski-krzysztof",
+   "name": "Jakubowski Krzysztof",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "531900507",
+   "email": "k.jakubowski@lot.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/22898 PL/TRE/3233",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-janik-michał",
+   "name": "Janik Michał",
+   "kind": "examiner",
+   "brands": [
+    "woj. zachodniopomorskie",
+    "woj. lubuskie",
+    "woj. wielkopolskie"
+   ],
+   "country": "PL",
+   "phone": "606832999",
+   "email": "m.janik@space.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. zachodniopomorskie; woj. lubuskie; woj. wielkopolskie. PL/TRE/8700 PL/TRE/48721 PL/FE/5303",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-jastrzębski-jarosław",
+   "name": "Jastrzębski Jarosław",
+   "kind": "examiner",
+   "brands": [
+    "woj. wielkopolskie"
+   ],
+   "country": "PL",
+   "phone": "606214945",
+   "email": "jarekjastrzebski71@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. wielkopolskie. PL/FE/14822 PL/FE/5235",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-jóźwik-jarosław",
+   "name": "Jóźwik Jarosław",
+   "kind": "examiner",
+   "brands": [
+    "woj. mazowieckie"
+   ],
+   "country": "PL",
+   "phone": "695893015",
+   "email": "jarjozwik@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. mazowieckie. PL/TRE/9027 PL/FE/24394",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-jurek-piotr",
+   "name": "Jurek Piotr",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "608086860",
+   "email": "piotr.jurek@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/CRE/13350 PL/FE/9642",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-juzwa-mateusz",
+   "name": "Juzwa Mateusz",
+   "kind": "examiner",
+   "brands": [
+    "woj. świętokrzyskie",
+    "woj. zachodniopomorskie"
+   ],
+   "country": "PL",
+   "phone": "509917802",
+   "email": "mateusz.juzwa@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. świętokrzyskie; woj. zachodniopomorskie. PLE/TRE/21245 PL/FE/6864",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kałko-artur",
+   "name": "Kałko Artur",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "604178058",
+   "email": "cialek@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/4464 PL/TRE/5636",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kapitan-wiesław",
+   "name": "Kapitan Wiesław",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "506188805",
+   "email": "kapitan@ibex.aero",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/5493 PL/TRE/19000",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kącki-michał",
+   "name": "Kącki Michał",
+   "kind": "examiner",
+   "brands": [
+    "woj. mazowieckie"
+   ],
+   "country": "PL",
+   "phone": "792060235",
+   "email": "mike77w@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. mazowieckie. PL/FE/26773 PL/FE/1261",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kłos-andrzej",
+   "name": "Kłos Andrzej",
+   "kind": "examiner",
+   "brands": [
+    "woj. łódzkie",
+    "woj. śląskie",
+    "woj. mazowieckie",
+    "woj. wielkopolskie"
+   ],
+   "country": "PL",
+   "phone": "505707176",
+   "email": "andre@airwolf.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. łódzkie; woj. śląskie; woj. mazowieckie; woj. wielkopolskie. PL/FE/10523 PL/FE/12022 PL/FE/46440",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kołaszewski-tadeusz",
+   "name": "Kołaszewski Tadeusz",
+   "kind": "examiner",
+   "brands": [
+    "woj. mazowieckie",
+    "woj. lubelskie"
+   ],
+   "country": "PL",
+   "phone": "605630534",
+   "email": "t.kolaszewski@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. mazowieckie; woj. lubelskie. PL/FE/6643 PL/FE/3993",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kondraciuk-piotr",
+   "name": "Kondraciuk Piotr",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "609628238",
+   "email": "p.kondraciuk.eplu@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/16529",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-konieczny-krzysztof",
+   "name": "Konieczny Krzysztof",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "603392666",
+   "email": "k_konieczny@o2.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/10063 PL/TRE/8793 PL/TRE/19282",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kosierkiewicz-mirosław",
+   "name": "Kosierkiewicz Mirosław",
+   "kind": "examiner",
+   "brands": [
+    "woj. świętokrzyskie",
+    "woj. podkarpackie"
+   ],
+   "country": "PL",
+   "phone": "600546035",
+   "email": "kosierkiewiczm@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. świętokrzyskie; woj. podkarpackie. PL/FE/8911 PL/FE/7744",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kozicki-ryszard",
+   "name": "Kozicki Ryszard",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "695881518",
+   "email": "kozrysz@vp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/2358 PL/FE/6546",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kozłowski-bogdan",
+   "name": "Kozłowski Bogdan",
+   "kind": "examiner",
+   "brands": [
+    "woj. zachodniopomorskie",
+    "woj. pomorskie",
+    "woj. wielkopolskie"
+   ],
+   "country": "PL",
+   "phone": "515147264",
+   "email": "bogdanolsztyn@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. zachodniopomorskie; woj. pomorskie; woj. wielkopolskie. PL/FE/15598 PL/FE/10632",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-krupa-robert",
+   "name": "Krupa Robert",
+   "kind": "examiner",
+   "brands": [
+    "woj. lubuskie",
+    "woj. zachodniopomorskie",
+    "woj. wielkopolskie",
+    "woj. dolnośląskie"
+   ],
+   "country": "PL",
+   "phone": "608461584",
+   "email": "krupr1@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. lubuskie; woj. zachodniopomorskie; woj. wielkopolskie; woj. dolnośląskie. PL/TRE/7554 PL/FE/11848",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kubiak-tomasz",
+   "name": "Kubiak Tomasz",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "728541277",
+   "email": "tomaszk30@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/13401 PL/TRE/10223",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kurpas-jakub",
+   "name": "Kurpas Jakub",
+   "kind": "examiner",
+   "brands": [
+    "woj. podkarpackie"
+   ],
+   "country": "PL",
+   "phone": "608616164",
+   "email": "jakub.kurpas@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. podkarpackie. PL/TRE/18371 PL/FE/7011",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-kusz-ireneusz",
+   "name": "Kusz Ireneusz",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "696468782",
+   "email": "irekkusz@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/SFE/14945 PL/FE/26411",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-leń-jerzy",
+   "name": "Leń Jerzy",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "609230997",
+   "email": "jureklen@o2.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/9181 PL/TRE/15795",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-łańcut-wojciech",
+   "name": "Łańcut Wojciech",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "502142322",
+   "email": "w.lancut@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/8930",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-łazarczyk-jacek",
+   "name": "Łazarczyk Jacek",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "519610505",
+   "email": "jaceklaz@vp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/26727 PL/SFE/5240",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-mainda-marek",
+   "name": "Mainda Marek",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "796111716",
+   "email": "m_mainda@tlen.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/13101 PL/TRE/10553",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-makowski-józef",
+   "name": "Makowski Józef",
+   "kind": "examiner",
+   "brands": [
+    "woj. kujawsko-pomorskie",
+    "woj. pomorskie",
+    "woj. mazowieckie",
+    "woj. warmińsko-mazurskie"
+   ],
+   "country": "PL",
+   "phone": "728830243",
+   "email": "jmakowski2012@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. kujawsko-pomorskie; woj. pomorskie; woj. mazowieckie; woj. warmińsko-mazurskie. PL/FE/1523 PL/FE/18960",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-makula-jerzy",
+   "name": "Makula Jerzy",
+   "kind": "examiner",
+   "brands": [
+    "woj. małopolskie",
+    "woj. podkarpackie"
+   ],
+   "country": "PL",
+   "phone": "536364107",
+   "email": "j.makula@lotcrew.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. małopolskie; woj. podkarpackie. PL/FE/490 PL/FE/11589",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-małysa-stanisław",
+   "name": "Małysa Stanisław",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "536364108",
+   "email": "s.malysa@lot.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/975 PL/TRE/4262",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-martyna-piotr",
+   "name": "Martyna Piotr",
+   "kind": "examiner",
+   "brands": [
+    "woj. śląskie"
+   ],
+   "country": "PL",
+   "phone": "606372851",
+   "email": "martyna_piotr@pro.onet.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. śląskie. PL/FE/6318 PL/FE/932",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-młotkowski-zbigniew",
+   "name": "Młotkowski Zbigniew",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "604788290",
+   "email": "zbigniew@mlotkowski.eu",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/7585 PL/FE/34273",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-niżnik-marcin",
+   "name": "Niżnik Marcin",
+   "kind": "examiner",
+   "brands": [
+    "woj. wielkopolskie",
+    "woj. lubuskie",
+    "woj. dolnośląskie",
+    "woj. podkarpackie"
+   ],
+   "country": "PL",
+   "phone": "695662852",
+   "email": "m.niznik@lot.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. wielkopolskie; woj. lubuskie; woj. dolnośląskie; woj. podkarpackie; woj. świętokrzyskie. PL/TRE/7899 PL/FE/11693 PL/FE/9243",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-ochnio-marian",
+   "name": "Ochnio Marian",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "695881490",
+   "email": "manio@onet.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/SFE/6930 PL/FE/16190",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-okoński-piotr",
+   "name": "Okoński Piotr",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "503192552",
+   "email": "fus.okon.sky@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/36859 PL/SFE/10824",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-osip-tomasz",
+   "name": "Osip Tomasz",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "728745000",
+   "email": "osiptomasz@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/21566 PL/FE/5450 PL/TRE/2369",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-pająk-sławomir",
+   "name": "Pająk Sławomir",
+   "kind": "examiner",
+   "brands": [
+    "woj. zachodniopomorskie",
+    "woj. pomorskie",
+    "woj. wielkopolskie"
+   ],
+   "country": "PL",
+   "phone": "667043133",
+   "email": "slawomirpajak87@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. zachodniopomorskie; woj. pomorskie; woj. wielkopolskie. PL/TRE/24054 PL/FE/22358",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-papież-mariusz",
+   "name": "Papież Mariusz",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "600277920",
+   "email": "mariuszlot@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/SFE/6096 PL/TRE/8759",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-piechoczek-eugeniusz",
+   "name": "Piechoczek Eugeniusz",
+   "kind": "examiner",
+   "brands": [
+    "woj. pomorskie",
+    "woj. warmińsko-mazurskie"
+   ],
+   "country": "PL",
+   "phone": "601507320",
+   "email": "eugenius@it.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. pomorskie; woj. warmińsko-mazurskie. PL/FE/4443 PL/FE/3632",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-pieczkin-lisowska-aleksandra",
+   "name": "Pieczkin-Lisowska Aleksandra",
+   "kind": "examiner",
+   "brands": [
+    "woj. opolskie",
+    "woj. śląskie"
+   ],
+   "country": "PL",
+   "phone": "601966026",
+   "email": "ola.pieczkin@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. opolskie; woj. śląskie. PL/TRE/4560 PL/FE/8786",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-piłat-mariusz",
+   "name": "Piłat Mariusz",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "601055925",
+   "email": "mariuszpilat1@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/4500 PL/FE/20098",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-przybyła-ireneusz",
+   "name": "Przybyła Ireneusz",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "604428429",
+   "email": "pilot.iprzybyla@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/5288 PL/TRE/11305",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-rozlach-mariusz",
+   "name": "Rozlach Mariusz",
+   "kind": "examiner",
+   "brands": [
+    "woj. lubelskie"
+   ],
+   "country": "PL",
+   "phone": "698668466",
+   "email": "mrozlach3@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. lubelskie. PL/TRE/8817 PL/FE/1243",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-rożek-wojciech",
+   "name": "Rożek Wojciech",
+   "kind": "examiner",
+   "brands": [
+    "woj. podkarpackie",
+    "TRE(A) B737 300-900",
+    "woj. mazowieckie woj. lubelskie",
+    "woj. dolnośląskie"
+   ],
+   "country": "PL",
+   "phone": "792320340",
+   "email": "wmrozek@op.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. podkarpackie; TRE(A) B737 300-900; woj. mazowieckie woj. lubelskie – FE(S); woj. dolnośląskie – FE(A); woj. opolskie – CRE SEP(Land); FE(S). PL/TRE/9427 PL/FE/7168 PL/TRE/2678",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-solski-józef",
+   "name": "Solski Józef",
+   "kind": "examiner",
+   "brands": [
+    "woj. wielkopolskie"
+   ],
+   "country": "PL",
+   "phone": "662228765",
+   "email": "jjsolski@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. wielkopolskie. PL/SFE/11714 PL/FE/9870 PL/TRE/1265",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-sutkowski-bartosz",
+   "name": "Sutkowski Bartosz",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "515290289",
+   "email": "b.sutkowski@enterair.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/15624 PL/SFE/5314",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-szabłowski-andrzej",
+   "name": "Szabłowski Andrzej",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "510878039",
+   "email": "a.szablowski@onet.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/15625 PL/TRE/19973",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-szostak-marcin",
+   "name": "Szostak Marcin",
+   "kind": "examiner",
+   "brands": [
+    "woj. wielkopolskie",
+    "woj. kujawsko-pomorskie"
+   ],
+   "country": "PL",
+   "phone": "536364436",
+   "email": "m.szostak@lot.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. wielkopolskie; woj. kujawsko-pomorskie. PL/TRE/8579 PL/FE/2446 PL/SFE/5342",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-światłoch-tadeusz",
+   "name": "Światłoch Tadeusz",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "695894583",
+   "email": "tswiatloch@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/SFE/1658 PL/TRE/5230",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-taboła-tomasz",
+   "name": "Taboła Tomasz",
+   "kind": "examiner",
+   "brands": [
+    "woj. kujawsko-pomorskie"
+   ],
+   "country": "PL",
+   "phone": "660764170",
+   "email": "tomtabola@autograf.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. kujawsko-pomorskie. PL/FE/26305 PL/TRE/13029 PL/TRE/9894",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-twardowski-robert",
+   "name": "Twardowski Robert",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "502652100",
+   "email": "twardowskirob@interia.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/24303 PL/TRE/3786",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-urbanowicz-elżbieta",
+   "name": "Urbanowicz Elżbieta",
+   "kind": "examiner",
+   "brands": [
+    "woj. łódzkie"
+   ],
+   "country": "PL",
+   "phone": "504420749",
+   "email": "ela-ajg@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. łódzkie. PL/FE/6195 PL/FE/3496",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-wajda-zenon",
+   "name": "Wajda Zenon",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "692776207",
+   "email": "zewajda1@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/16615 PL/FE/51798",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-walczak-rafał",
+   "name": "Walczak Rafał",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "888238954",
+   "email": "rafal.walczak7@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/CRE/25359 PL/TRE/15641",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-wasiak-jacek",
+   "name": "Wasiak Jacek",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "500029537",
+   "email": "jw526csu@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/2037 PL/TRE/8652",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-wdowiarski-robert",
+   "name": "Wdowiarski Robert",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "663753767",
+   "email": "r.wdowiarski@lot.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/TRE/4570",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-węgorek-jerzy",
+   "name": "Węgorek Jerzy",
+   "kind": "examiner",
+   "brands": [
+    "TRE(A) A320"
+   ],
+   "country": "PL",
+   "phone": "694476705",
+   "email": "keruj34@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) A320 – TR A320, IR, ATPL(A). Ważne do 31.12.2028. PL/TRE/8879",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-wieczorek-kamil",
+   "name": "Wieczorek Kamil",
+   "kind": "examiner",
+   "brands": [
+    "TRE(A) B737 300-900"
+   ],
+   "country": "PL",
+   "phone": "574535316",
+   "email": "kamil.wieczorek04@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) B737 300-900 – TR B737 300-900, IR, ATPL(A). Ważne do 31.01.2028. PL/TRE/39242",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-winiarski-karol",
+   "name": "Winiarski Karol",
+   "kind": "examiner",
+   "brands": [
+    "TRE(A) B737 300-900"
+   ],
+   "country": "PL",
+   "phone": "506195477",
+   "email": "karolwin@op.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) B737 300-900 – TR B737 300-900, IR, ATPL(A). Ważne do 31.05.2029. PL/TRE/21294",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-wiśniewski-piotr",
+   "name": "Wiśniewski Piotr",
+   "kind": "examiner",
+   "brands": [
+    "TRE(A) B737 300-900"
+   ],
+   "country": "PL",
+   "phone": "516123422",
+   "email": "wisniewskipp@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) B737 300-900 – TR B737 300-900, IR, ATPL(A). Ważne do 30.04.2029. PL/TRE/23215",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-wiśniosz-przemysław",
+   "name": "Wiśniosz Przemysław",
+   "kind": "examiner",
+   "brands": [
+    "TRE(A) EMB170"
+   ],
+   "country": "PL",
+   "phone": "536364204",
+   "email": "p.wisniosz@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) EMB170 – TR EMB170, IR, ATPL(A). Ważne do 30.06.2029. PL/TRE/2307",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-witkowski-marcin",
+   "name": "Witkowski Marcin",
+   "kind": "examiner",
+   "brands": [
+    "FE(A) CRE SEP(Land) CRE SET(Land) FIE(A)"
+   ],
+   "country": "PL",
+   "city": "mazowieckie",
+   "lat": 52.23,
+   "lon": 21.01,
+   "phone": "507201297",
+   "email": "marcinwitkowski.epbc@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). FE(A) CRE SEP(Land) CRE SET(Land) FIE(A) – PPL(A), CPL(A), LAPL(A) SEP(Land), LA. Ważne do 28.02.2029. PL/FE/17889",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-wnukowski-marek",
+   "name": "Wnukowski Marek",
+   "kind": "examiner",
+   "brands": [
+    "TRE(A) B737 300-900"
+   ],
+   "country": "PL",
+   "phone": "508167224",
+   "email": "wnukowski.marek@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) B737 300-900 – TR B737 300-900, IR, ATPL(A). Ważne do 31.03.2029. PL/TRE/28525",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-wojtasik-hubert",
+   "name": "Wojtasik Hubert",
+   "kind": "examiner",
+   "brands": [
+    "FE(A) CRE SEP(Land) CRE MEP(Land) IRE(A) SE/ME FIE(A) FE(S)"
+   ],
+   "country": "PL",
+   "city": "łódzkie, mazowieckie",
+   "lat": 51.76,
+   "lon": 19.46,
+   "phone": "502598044",
+   "email": "skymaster@poczta.fm",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). FE(A) CRE SEP(Land) CRE MEP(Land) IRE(A) SE/ME FIE(A) FE(S) – PPL(A), CPL(A), LA. Ważne do 31.03.2029. PL/FE/7640",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-wowra-daniel",
+   "name": "Wowra Daniel",
+   "kind": "examiner",
+   "brands": [
+    "FE(S)"
+   ],
+   "country": "PL",
+   "phone": "515104277",
+   "email": "daniel@wowra.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). FE(S) – SPL /bez TMG. Ważne do 31.05.2028. PL/FE/3731",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-woźniak-piotr",
+   "name": "Woźniak Piotr",
+   "kind": "examiner",
+   "brands": [
+    "woj. pomorskie",
+    "woj. kujawsko-pomorskie"
+   ],
+   "country": "PL",
+   "phone": "600941678",
+   "email": "piotr_wozniak@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). woj. pomorskie; woj. kujawsko-pomorskie. PL/FE/18548 PL/FE/16820",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-yakubov-yunatan",
+   "name": "Yakubov Yunatan",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "19176854430",
+   "email": "yunatan.yakubov@gmail.com",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/SFE/16468 PL/TRE/68625",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-zapiec-wojciech",
+   "name": "Zapiec Wojciech",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "600003444",
+   "email": "wzapiec@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/SFE/5267 PL/TRE/7619",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-zdziarski-tomasz",
+   "name": "Zdziarski Tomasz",
+   "kind": "examiner",
+   "country": "PL",
+   "phone": "500123362",
+   "email": "tomasz.zdziarski@put.poznan.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). . PL/FE/11675 PL/TRE/11730",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-żywocki-czesław",
+   "name": "Żywocki Czesław",
+   "kind": "examiner",
+   "brands": [
+    "TRE(A) PZL-M28"
+   ],
+   "country": "PL",
+   "phone": "604112657",
+   "email": "czywocki@wp.pl",
+   "note": "Egzaminator ULC (samoloty/szybowce/balony). TRE(A) PZL-M28 – TR PZL-M28, IR, ATPL(A), TRI/SFI. Ważne do 30.06.2029. PL/TRE/5300",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_A_FE_TRE_SFE_CRE_IRE__FIE_SB_FE.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-binkowski-andrzej",
+   "name": "Binkowski Andrzej",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "E(HGP)",
+    "HG",
+    "TANDEM",
+    "UL"
+   ],
+   "country": "PL",
+   "city": "dolnośląskie, śląskie",
+   "lat": 51.11,
+   "lon": 17.03,
+   "phone": "601635643",
+   "email": "flyadventure.biuro@gmail.com",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(HGP) – HGP; HG; TANDEM; INS. Ważne do 31.05.2028. PL/13951",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-blezień-stanisław",
+   "name": "Blezień Stanisław",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "E(PJ)",
+    "PJ(B)(C)(D)",
+    "INS",
+    "UL"
+   ],
+   "country": "PL",
+   "city": "pomorskie, warmińsko-mazurskie, podkarpackie",
+   "lat": 54.35,
+   "lon": 18.65,
+   "phone": "609350902",
+   "email": "staziek@gmail.com",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(PJ) – PJ; PJ(B)(C)(D); INS; INS(SL). Ważne do 31.12.2028. PL/11641",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-boczkowski-ireneusz",
+   "name": "Boczkowski Ireneusz",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "E(UACP)",
+    "UAP(L)",
+    "INS(A)",
+    "UL"
+   ],
+   "country": "PL",
+   "phone": "604087715",
+   "email": "irekboczkowski@op.pl",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(UACP) – UACP; UAP(L); INS(A). Ważne do 30.09.2028. PL/FE/5680",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-borek-jacek",
+   "name": "Borek Jacek",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "INS(SL)",
+    "Teoria: MTBiGM Poz. 664/13",
+    "PHGP - ust. 1.3.3. Zał. nr 4",
+    "UL"
+   ],
+   "country": "PL",
+   "email": "jacek@ticada.pl",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; INS(SL); Teoria: MTBiGM Poz. 664/13; PHGP - ust. 1.3.3. Zał. nr 4; Praktyka: MI Poz. 1745/18; PHGP - ust. 9 pkt. 1 Zał. nr 2:. Ważne do 31.05.2029. PL/27882 PL/12438 PL/13377",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-majsterek-marcin",
+   "name": "Majsterek Marcin",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "E(UAGP)",
+    "UL"
+   ],
+   "country": "PL",
+   "phone": "784025692",
+   "email": "majsterekmarcin@wp.pl",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(UAGP). PL/24179",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-mastalerz-marek",
+   "name": "Mastalerz Marek",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "E(PGP)",
+    "UL"
+   ],
+   "country": "PL",
+   "city": "mazowieckie, lubelskie",
+   "lat": 52.23,
+   "lon": 21.01,
+   "phone": "607624487",
+   "email": "marek.mastalerz@gmail.com",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(PGP). PL/12372",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-mieszczak-piotr",
+   "name": "Mieszczak Piotr",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "E(PGP)",
+    "UL"
+   ],
+   "country": "PL",
+   "city": "śląskie, małopolskie, opolskie …",
+   "lat": 50.26,
+   "lon": 19.02,
+   "phone": "604558710",
+   "email": "parakaktus@wp.pl",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(PGP). PL/14302",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-mróz-zbigniew",
+   "name": "Mróz Zbigniew",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "E(PHGP)",
+    "E(PGP)",
+    "UL"
+   ],
+   "country": "PL",
+   "phone": "668674858",
+   "email": "zlin@poczta.onet.pl",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(PHGP); E(PGP). PL/5828 PL/13726 PL/22573",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-siekierski-marcin",
+   "name": "Siekierski Marcin",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "E(PGP)",
+    "UL"
+   ],
+   "country": "PL",
+   "city": "opolskie, wielkopolskie, pomorskie …",
+   "lat": 50.67,
+   "lon": 17.93,
+   "phone": "606760952",
+   "email": "marcin@siekierski.co",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(PGP). PL/13748",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-walczak-andrzej",
+   "name": "Walczak Andrzej",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "E(PGP)",
+    "UL"
+   ],
+   "country": "PL",
+   "city": "opolskie, wielkopolskie, lubuskie …",
+   "lat": 50.67,
+   "lon": 17.93,
+   "phone": "606963233",
+   "email": "andrzej@fly2live.pl",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(PGP). PL/14872",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-exam-ul-witkowski-tomasz",
+   "name": "Witkowski Tomasz",
+   "kind": "examiner",
+   "brands": [
+    "E/T",
+    "E(PJ)",
+    "INS",
+    "INS(SL)",
+    "UL"
+   ],
+   "country": "PL",
+   "phone": "601251308",
+   "email": "tw@topr.pl",
+   "note": "Egzaminator ULC (UL, wiatrakowce, paralotnie). E/T; E(PJ) – PJ(B)(C)(D); INS; INS(SL); INS(AFF); TANDEM. PL/17956",
+   "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_HGP_PGP_PHGP_UACP_PJ_UAGP_MM.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0001",
+   "name": "Navcom Systems Sp. z o.o. Sp. k.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Świdnik\nLegal",
+   "address": "21-040 Świdnik\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0001",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0003",
+   "name": "AEROKLUB PODHALAŃSKI Z SIEDZIBĄ W ŁOSOSINIE DOLNEJ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Łososina Dolna",
+   "address": "33-314 Łososina Dolna",
+   "lat": 49.7537304,
+   "lon": 20.622221,
+   "phone": "184448409",
+   "email": "zarzadzanie.podhalanski@gmail.com",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0003",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0005",
+   "name": "STOWARZYSZENIE AEROKLUB RYBNICKIEGO OKRĘGU",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Rybnik\nLegal",
+   "address": "44-200 Rybnik\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0005",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0008",
+   "name": "AEROKLUB BIELSKO-BIALSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Bielsko-Biała\nLegal",
+   "address": "43-300 Bielsko-Biała\nLegal",
+   "phone": "338151870",
+   "email": "dyrektor@epba.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0008",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0009",
+   "name": "AEROKLUB CZĘSTOCHOWSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kościelec\nLegal",
+   "address": "42-240 Kościelec\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0009",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0010",
+   "name": "AEROKLUB JELENIOGÓRSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "JELENIA GÓRA",
+   "address": "58-500 JELENIA GÓRA",
+   "lat": 50.9088622,
+   "lon": 15.7765641,
+   "phone": "757526020",
+   "email": "aerovip@o2.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0010",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0011",
+   "name": "AEROKLUB BYDGOSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Bydgoszcz\nLegal",
+   "address": "85-157 Bydgoszcz\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0011",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0012",
+   "name": "Aeroklub Pomorski",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Toruń\nLegal",
+   "address": "87-100 Toruń\nLegal",
+   "phone": "566222474",
+   "email": "sekretariat@aeroklub.torun.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0012",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0013",
+   "name": "AEROGRYF AVIATION Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Szczecin\nLegal",
+   "address": "70-800 Szczecin\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0013",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0014",
+   "name": "AEROKLUB GDAŃSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Pruszcz Gdański",
+   "address": "83-000 Pruszcz Gdański",
+   "lat": 54.2592994,
+   "lon": 18.6447915,
+   "phone": "586923437",
+   "email": "amo@aeroklub.gda.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0014",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0015",
+   "name": "ADRIANA - AVIATION\" SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kijewo Królewskie",
+   "address": "86-253 Kijewo Królewskie",
+   "lat": 53.2601294,
+   "lon": 18.4457299,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0015",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0016",
+   "name": "WOJSKOWE ZAKŁADY LOTNICZE NR 2 SPÓŁKA AKCYJNA",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Bydgoszcz\nLegal",
+   "address": "85-915 Bydgoszcz\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0016",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0017",
+   "name": "AEROKLUB ŁÓDZKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Łódź\nLegal",
+   "address": "94-328 Łódź\nLegal",
+   "phone": "426843550",
+   "email": "sekretariat@aeroklub-lodz.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0017",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0018",
+   "name": "Stowarzyszenie Aeroklub Nowy Targ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Nowy Targ",
+   "address": "34-400 Nowy Targ",
+   "lat": 49.4828196,
+   "lon": 20.0325767,
+   "phone": "609153960",
+   "email": "aeroklub@aeroklub.nowytarg.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0018",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0019",
+   "name": "Zonda.Aero Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Białe Błota",
+   "address": "86-005 Białe Błota",
+   "lat": 53.0759361,
+   "lon": 17.9128366,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0019",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0020",
+   "name": "AEROKLUB NADWIŚLAŃSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Lisie Kąty",
+   "address": "86-302 Lisie Kąty",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0020",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0021",
+   "name": "INVESTA SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Piła\nLegal",
+   "address": "Al. Poznańska 28a, 64-920 Piła\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0021",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0022",
+   "name": "Aeroplan S.C.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mirosławice\nLegal",
+   "address": "55-050 Mirosławice\nLegal",
+   "phone": "717816385",
+   "email": "aeroplan1@o2.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0022",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0023",
+   "name": "CENTRUM LOTNICZE - AEROKLUB KAZIMIERZ BISKUPI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kazimierz Biskupi",
+   "address": "62-530 Kazimierz Biskupi",
+   "lat": 52.2928316,
+   "lon": 18.1747275,
+   "email": "aeroklub@o2.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0023",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0024",
+   "name": "WIRKK-SERWIS SZYBOWCÓW Jerzy Biskup",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Międzybrodzie Żywieckie",
+   "address": "ul. Kolejowa 36, 34-312 Międzybrodzie Żywieckie",
+   "phone": "504153758",
+   "email": "office@gliderservice.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0024",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0025",
+   "name": "Zakład Naprawczy Sprzętu Lotniczego Antoni Nowak",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Żywiec\nLegal",
+   "address": "ul. Kolonia Browar 25, 34-300 Żywiec\nLegal",
+   "phone": "338618984",
+   "email": "anteklot@bb.onet.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0025",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0026",
+   "name": "HMJ Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa\nLegal",
+   "address": "03-589 Warszawa\nLegal",
+   "phone": "504079919",
+   "email": "hmj3@hmj.com.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0026",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0027",
+   "name": "SKY ADVENTURE Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Katowice\nLegal",
+   "address": "40-127 Katowice\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0027",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0029",
+   "name": "AIR-PARTNER Robert Kasprzak",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mielec",
+   "address": "39-300 Mielec",
+   "lat": 50.2885008,
+   "lon": 21.4413443,
+   "phone": "175836954",
+   "email": "partner-air@post.home.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0029",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0030",
+   "name": "BIERNAT SPÓŁKA JAWNA",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Gądki\nLegal",
+   "address": "62-023 Gądki\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0030",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0031",
+   "name": "Aeroklub Stalowowolski",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Zaleszany\nLegal",
+   "address": "37-415 Zaleszany\nLegal",
+   "phone": "158440118",
+   "email": "technika@aeroklubstalowowolski.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0031",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0032",
+   "name": "Smart Aviation Aircraft Maintenance Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Poznań\nLegal",
+   "address": "61-102 Poznań\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0032",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0033",
+   "name": "AEROKLUB POZNAŃSKI IM. WANDY MODLIBOWSKIEJ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Poznań\nLegal",
+   "address": "61-139 Poznań\nLegal",
+   "email": "camo@aeroklub.poznan.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0033",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0034",
+   "name": "AEROKLUB BIAŁOSTOCKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Białystok\nLegal",
+   "address": "15-602 Białystok\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0034",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0036",
+   "name": "First European Aviation Company Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa\nLegal",
+   "address": "01-934 Warszawa\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0036",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0037",
+   "name": "UNIFLY Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Białystok\nLegal",
+   "address": "15-312 Białystok\nLegal",
+   "phone": "600359833",
+   "email": "balony@ballooning.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0037",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0041",
+   "name": "Aeroklub \"ORLĄT\" w Dęblinie",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Dęblin\nLegal",
+   "address": "08-521 Dęblin\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0041",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0043",
+   "name": "AEROKLUB RZESZOWSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Jasionka\nLegal",
+   "address": "36-002 Jasionka\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0043",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0044",
+   "name": "AEROKLUB KRAKOWSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kraków\nLegal",
+   "address": "30-552 Kraków\nLegal",
+   "phone": "122873663",
+   "email": "biuro@aeroklubkrakowski.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0044",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0045",
+   "name": "POLITECHNIKA ŚLĄSKA",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "GLIWICE\nLegal",
+   "address": "44-100 GLIWICE\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0045",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0046",
+   "name": "AIRCOM Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Nidzica\nLegal",
+   "address": "13-100 Nidzica\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0046",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0047",
+   "name": "AEROKLUB ŚLĄSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Katowice\nLegal",
+   "address": "40-271 Katowice\nLegal",
+   "phone": "322561053",
+   "email": "biuro@aeroklub.katowice.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0047",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0048",
+   "name": "AEROKLUB OSTROWSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Ostrów Wielkopolski",
+   "address": "63-400 Ostrów Wielkopolski",
+   "lat": 51.6463779,
+   "lon": 17.8121834,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0048",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0049",
+   "name": "NEXBAU Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Wolsztyn\nLegal",
+   "address": "64-200 Wolsztyn\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0049",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0051",
+   "name": "POLINAR SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Kraków\nLegal",
+   "address": "31-567 Kraków\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0051",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0053",
+   "name": "AEROKLUB ZIEMI ZAMOJSKIEJ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "MOKRE\nLegal",
+   "address": "22-400 MOKRE\nLegal",
+   "phone": "846169259",
+   "email": "aerozam@wp.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0053",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0054",
+   "name": "AEROKLUB LUBELSKI W RADAWCU",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Motycz\nLegal",
+   "address": "21-030 Motycz\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0054",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0055",
+   "name": "Aeroklub Ziemi Lubuskiej",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Zielona Góra",
+   "address": "66-015 Zielona Góra",
+   "lat": 51.9707037,
+   "lon": 15.4497684,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0055",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0057",
+   "name": "TARGOR AVIATION Sp.z o.o. Sp.k.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Rzekuń\nLegal",
+   "address": "07-411 Rzekuń\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0057",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0058",
+   "name": "Lotnicza Akademia Wojskowa",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Dęblin\nLegal",
+   "address": "08-521 Dęblin\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0058",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0059",
+   "name": "Air Res Aviation Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Jasionka\nLegal",
+   "address": "36-002 Jasionka\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0059",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0060",
+   "name": "Klub Sportów Balonowych",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Wrocław\nLegal",
+   "address": "54-154 Wrocław\nLegal",
+   "phone": "604462225",
+   "email": "camoksb@gmail.com",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0060",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0061",
+   "name": "AEROKLUB GLIWICKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Gliwice\nLegal",
+   "address": "44-100 Gliwice\nLegal",
+   "phone": "322301592",
+   "email": "dyrektor@aeroklub.gliwice.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0061",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0062",
+   "name": "BW WANICKI SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mogilany\nLegal",
+   "address": "32-031 Mogilany\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0062",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0063",
+   "name": "Zakład Przeglądów i Napraw Statków Powietrznych Maciej",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Krzemieniewo\nLegal",
+   "address": "64-120 Krzemieniewo\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0063",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0064",
+   "name": "AIR-POL\" SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Legionowo\nLegal",
+   "address": "05-120 Legionowo\nLegal",
+   "phone": "227740711",
+   "email": "air-pol@air-pol.com.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0064",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0065",
+   "name": "PROPELLER Sp.z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa\nLegal",
+   "address": "ul. Przydrożna 11a, 00-714 Warszawa\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0065",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0066",
+   "name": "AEROKLUB ZIEMI PIOTRKOWSKIEJ im. Gen. Stanisława",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Piotrków Trybunalski",
+   "address": "97-300 Piotrków Trybunalski",
+   "lat": 51.4113089,
+   "lon": 19.6896888,
+   "phone": "446477473",
+   "email": "prezes@azp.com.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0066",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0068",
+   "name": "AEROKLUB WARSZAWSKI",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa\nLegal",
+   "address": "01-934 Warszawa\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0068",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0069",
+   "name": "Green Aviation Sp. z o. o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mielec\nLegal",
+   "address": "ul. Jadernych 7, 39-300 Mielec\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0069",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0070",
+   "name": "AEROKLUB ŚWIDNIK",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Świdnik\nLegal",
+   "address": "21-040 Świdnik\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0070",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0071",
+   "name": "Serwis Lotniczy Włodzimierz Nowak",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Rybnik\nLegal",
+   "address": "44-200 Rybnik\nLegal",
+   "phone": "324239131",
+   "email": "nowakw@vp.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0071",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0072",
+   "name": "GA SYSTEM Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mielec\nLegal",
+   "address": "39-300 Mielec\nLegal",
+   "phone": "794360600",
+   "email": "camo@gasystem.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0072",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0073",
+   "name": "AERO CLUB\" SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Konstancin Jeziorna",
+   "address": "05-510 Konstancin Jeziorna",
+   "lat": 52.0765305,
+   "lon": 21.0925783,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0073",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0074",
+   "name": "AIR-WAY Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Przedecz\nLegal",
+   "address": "62-635 Przedecz\nLegal",
+   "phone": "605532555",
+   "email": "biuro@air-way.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0074",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0076",
+   "name": "AVIATION SERVICE NS SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "WARSZAWA\nLegal",
+   "address": "ul. GEN. SYLWESTRA KALISKIEGO 57, 01-476 WARSZAWA\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0076",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0078",
+   "name": "STOWARZYSZENIE AEROKLUB ZIEMI MAZOWIECKIEJ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Płock\nLegal",
+   "address": "09-400 Płock\nLegal",
+   "phone": "883433862",
+   "email": "dyrektor@aeroklubplock.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0078",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0080",
+   "name": "Polska Akademia Lotnicza Sp. z o. o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa\nLegal",
+   "address": "02-146 Warszawa\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0080",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0081",
+   "name": "POLITECHNIKA POZNAŃSKA",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Poznań\nLegal",
+   "address": "61-131 Poznań\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0081",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0084",
+   "name": "Air Modlin Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Nowy Dwór",
+   "address": "05-160 Nowy Dwór",
+   "lat": 52.4373525,
+   "lon": 20.6698439,
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0084",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0086",
+   "name": "HELIMOT sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Biskupice\nLegal",
+   "address": "62-007 Biskupice\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0086",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0087",
+   "name": "MGGP Aero Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Tarnów\nLegal",
+   "address": "33-100 Tarnów\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0087",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0088",
+   "name": "EXTEND AERO SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Krosno\nLegal",
+   "address": "38-400 Krosno\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0088",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0089",
+   "name": "MG GLIDERS Polska Grzegorz Malchar",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Ligota\nLegal",
+   "address": "43-518 Ligota\nLegal",
+   "phone": "606812541",
+   "email": "g.malchar@wp.pl",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0089",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0091",
+   "name": "ATC Service Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Rzeszów\nLegal",
+   "address": "35-010 Rzeszów\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0091",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0092",
+   "name": "Skydream Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "KANIÓW\nLegal",
+   "address": "UL. NAD BIAŁKĄ 49, 43-514 KANIÓW\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0092",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0093",
+   "name": "NWT POLSKA SPÓŁKA Z OGRANICZONĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Leszno\nLegal",
+   "address": "64-100 Leszno\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0093",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0094",
+   "name": "Glider TechCare Kamil Gaweł",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa\nLegal",
+   "address": "01-934 Warszawa\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0094",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0095",
+   "name": "IBEX M.S. sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa\nLegal",
+   "address": "01-248 Warszawa\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0095",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0096",
+   "name": "SkyAMS Sp. z o.o.",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Mielec\nLegal",
+   "address": "39-300 Mielec\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0096",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0097",
+   "name": "HELI SUPPORT Przemysław Nowowiejski",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Błonie\nLegal",
+   "address": "05-870 Błonie\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0097",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0098",
+   "name": "Państwowa Akademia Nauk Stosowanych w Chełmie",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Chełm\nLegal",
+   "address": "22-100 Chełm\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0098",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0099",
+   "name": "Zakład Napraw i Budowy Sprzętu Latającego i Pływającego",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "Warszawa\nLegal",
+   "address": "04-083 Warszawa\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0099",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "ulc-pl-pl-cao-0102",
+   "name": "CERTIFLY SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+   "kind": "maintenance",
+   "brands": [
+    "Part-CAO"
+   ],
+   "country": "PL",
+   "city": "ŁÓDŹ\nLegal",
+   "address": "94-328 ŁÓDŹ\nLegal",
+   "note": "Organizacja obsługowa Part-CAO PL.CAO.0102",
+   "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
   }
  ]
 }
