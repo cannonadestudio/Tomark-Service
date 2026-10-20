@@ -101,7 +101,7 @@ def logical(r):
     return (r + [""] * 7)[:7]
 
 
-def parse_examiners(url, label, ul, prefix=None):
+def parse_examiners(url, label, ul, prefix=None, layout=None):
     """Lines of: certificate | name / e-mail / tel. | region | category | scope | description | valid until.
     One examiner spans many lines; a new examiner starts at a line with a name in column 2."""
     rows = pdf_rows(url)
@@ -109,6 +109,9 @@ def parse_examiners(url, label, ul, prefix=None):
     skipped = []
     for raw in rows:
         r = [" ".join((c or "").split()) for c in logical(raw)]
+        if layout == "mech":
+            # certificate | – | name, e-mail, tel. | – | scope (aircraft / engines) | – | Part-66 categories
+            r = [r[0], r[2], "", r[6], "", r[4], ""]
         c0, c1, c2, c3, c4, c5, c6 = r
         if c1.lower().startswith("nazwisko") or c0.lower().startswith("nr"):
             continue
@@ -136,7 +139,7 @@ def parse_examiners(url, label, ul, prefix=None):
             if v in c2.lower() and v not in cur["regions"]:
                 cur["regions"].append(v)
         q = " – ".join(x for x in (c3, c5) if x)
-        if q and q not in cur["quals"] and not q.lower().startswith(("kategoria", "zakres")):
+        if q and q not in cur["quals"] and not q.lower().startswith(("kategoria", "zakres", "teoria", "praktyka", "mml ust")):
             cur["quals"].append(q[:80])
         for m in re.finditer(r"\b(\d{1,2})\.(\d{1,2})\.(\d{4})\b", c6):
             try:
@@ -146,8 +149,7 @@ def parse_examiners(url, label, ul, prefix=None):
 
     if DRY and skipped:
         notice(mask(f"UNMATCHED {label[-25:]} ({len(skipped)}): " + " ## ".join(skipped[:30])))
-    if DRY and "mechanicy" in label:
-        notice(mask("MECH ROWS: " + " ## ".join(" ¦ ".join(" ".join((c or "").split())[:28] for c in logical(r)) for r in rows[:25])))
+
     if DRY:
         pass
     out, seen = [], set()
@@ -161,7 +163,7 @@ def parse_examiners(url, label, ul, prefix=None):
         seen.add(cid)
         reg = p["regions"][0] if p["regions"] else None
         lat, lon, _ = VOIV[reg] if reg else (None, None, "")
-        quals = p["quals"][:6]
+        quals = p["quals"][:12]
         valid = max(p["valid"]).strftime("%d.%m.%Y") if p["valid"] else ""
         cats = []
         for q in quals:
@@ -244,7 +246,7 @@ def main():
         if u:
             collected["ulc-exam-ul-"] = parse_examiners(u, "Egzaminator ULC (UL, wiatrakowce, paralotnie)", True)
         mech = pick(ex, "EGZAMINATOR", "MECHANI") or MECH_FALLBACK
-        collected["ulc-exam-mech-"] = parse_examiners(mech, "Egzaminator ULC – mechanicy lotniczy", False, prefix="ulc-exam-mech-")
+        collected["ulc-exam-mech-"] = parse_examiners(mech, "Egzaminator ULC – mechanicy lotniczy", False, prefix="ulc-exam-mech-", layout="mech")
         for c in collected["ulc-exam-mech-"]:
             c["brands"] = ["Mechanik"] + [b for b in c.get("brands", []) if b != "Mechanik"][:3]
         notice(f"examiner lists: A={a} UL={u} MECH={mech}")
