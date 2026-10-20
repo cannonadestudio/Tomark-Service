@@ -188,6 +188,11 @@
     <string name="backup_restore_warn">Toutes les données de ce téléphone seront remplacées par la sauvegarde. Les PDF joints devront être rejoints.</string>
     <string name="backup_restore_ok">Remplacer</string>
     <string name="backup_restored">Restauré – %1$d avion(s)</string>
+    <string name="copy">Copier</string>
+    <string name="copied">Copié : %1$s</string>
+    <string name="engine_sn">N° moteur : %1$s</string>
+    <string name="engine_sn_missing">N° moteur : touchez pour saisir</string>
+    <string name="engine_sn_hint">Les bulletins Rotax, le TBO 2000 h et le réducteur dépendent du n° de série – il figure sur la plaque du moteur.</string>
     <string name="disclaimer_title">Important</string>
     <string name="disclaimer_text">Application non officielle, sans lien avec les constructeurs ni BRP-Rotax. Les données proviennent de sources publiques (TCDS EASA, fiches nationales, documents constructeurs, bulletins publiés) et servent de rappel. Font toujours foi l\'AFM, l\'AMM, les bulletins et consignes de navigabilité en vigueur de votre avion, ainsi que votre atelier d\'entretien. Les éléments ⚠ n\'ont pas été vérifiés dans les manuels.</string>
     <string name="accept">J\'ai compris</string>

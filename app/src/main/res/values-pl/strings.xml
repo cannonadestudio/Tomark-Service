@@ -188,6 +188,11 @@
     <string name="backup_restore_warn">Wszystkie dane w tym telefonie zostaną zastąpione kopią (samoloty, nalot, wpisy serwisowe, statusy biuletynów, własne kontakty). Dołączone PDF-y instrukcji trzeba będzie dołączyć ponownie.</string>
     <string name="backup_restore_ok">Zastąp i przywróć</string>
     <string name="backup_restored">Przywrócono – samoloty: %1$d</string>
+    <string name="copy">Kopiuj</string>
+    <string name="copied">Skopiowano: %1$s</string>
+    <string name="engine_sn">Nr silnika: %1$s</string>
+    <string name="engine_sn_missing">Nr silnika: dotknij, aby wpisać</string>
+    <string name="engine_sn_hint">Od numeru seryjnego silnika zależą biuletyny Rotax, TBO 2000 h i kontrole reduktora – znajdziesz go na tabliczce silnika i w książce silnika.</string>
     <string name="disclaimer_title">Ważne</string>
     <string name="disclaimer_text">Aplikacja nieoficjalna, niezwiązana z producentami samolotów ani BRP-Rotax. Dane pochodzą ze źródeł publicznych (EASA TCDS, krajowe karty typu, dokumenty producentów, opublikowane biuletyny) i służą jako przypomnienie. Wiążące są zawsze aktualne AFM, AMM, biuletyny i dyrektywy zdatności Twojego samolotu oraz Twoja organizacja obsługowa. Pozycje oznaczone ⚠ nie zostały potwierdzone w instrukcjach.</string>
     <string name="accept">Rozumiem</string>

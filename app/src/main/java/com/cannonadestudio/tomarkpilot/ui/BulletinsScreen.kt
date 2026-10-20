@@ -79,6 +79,7 @@ fun BulletinsScreen(state: AppState, feed: BulletinFeed, aircraft: Aircraft) {
                 Column(Modifier.weight(1f)) {
                     Text(stringResource(R.string.bulletins_for, aircraft.registration), style = MaterialTheme.typography.titleMedium)
                     Text(stringResource(R.string.list_updated, feed.updated), style = MaterialTheme.typography.bodySmall)
+                    EngineSerialLine(aircraft, MaterialTheme.colorScheme.primary)
                 }
                 if (loading) {
                     CircularProgressIndicator(Modifier.size(24.dp))

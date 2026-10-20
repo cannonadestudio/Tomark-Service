@@ -188,6 +188,11 @@
     <string name="backup_restore_warn">Všetky údaje v telefóne sa nahradia zálohou. Priložené PDF príručky bude treba priložiť znova.</string>
     <string name="backup_restore_ok">Nahradiť a obnoviť</string>
     <string name="backup_restored">Obnovené – lietadlá: %1$d</string>
+    <string name="copy">Kopírovať</string>
+    <string name="copied">Skopírované: %1$s</string>
+    <string name="engine_sn">Č. motora: %1$s</string>
+    <string name="engine_sn_missing">Č. motora: ťuknite a zadajte</string>
+    <string name="engine_sn_hint">Od výrobného čísla motora závisia bulletiny Rotax, TBO 2000 h a kontroly reduktora – je na typovom štítku motora.</string>
     <string name="disclaimer_title">Dôležité</string>
     <string name="disclaimer_text">Neoficiálna aplikácia, bez väzby na výrobcov lietadiel ani BRP-Rotax. Údaje sú z verejných zdrojov (EASA TCDS, národné typové listy, dokumenty výrobcov, bulletiny) a slúžia ako pripomienka. Záväzné sú vždy aktuálne AFM, AMM, bulletiny a príkazy na zachovanie letovej spôsobilosti vášho lietadla a vaša organizácia údržby. Položky ⚠ neboli overené v príručkách.</string>
     <string name="accept">Rozumiem</string>

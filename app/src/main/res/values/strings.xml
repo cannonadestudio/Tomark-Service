@@ -189,6 +189,11 @@
     <string name="backup_restore_warn">All data on this phone will be replaced with the backup (aircraft, hours, maintenance entries, bulletin statuses, own contacts). Attached PDF manuals have to be attached again.</string>
     <string name="backup_restore_ok">Replace and restore</string>
     <string name="backup_restored">Restored – %1$d aircraft</string>
+    <string name="copy">Copy</string>
+    <string name="copied">Copied: %1$s</string>
+    <string name="engine_sn">Engine S/N: %1$s</string>
+    <string name="engine_sn_missing">Engine S/N: tap to enter</string>
+    <string name="engine_sn_hint">Rotax bulletins, the 2000 h TBO and gearbox checks depend on the engine serial number – it is on the engine type plate and in the engine logbook.</string>
     <string name="disclaimer_title">Important</string>
     <string name="disclaimer_text">Unofficial app, not affiliated with any aircraft manufacturer or BRP-Rotax. Data come from public sources (EASA TCDS, national data sheets, manufacturer documents, published bulletins) and are a reminder only. The current AFM, AMM, service bulletins and airworthiness directives of your aircraft, and your maintenance organisation, are always binding. Items marked ⚠ have not been confirmed against the manuals.</string>
     <string name="accept">I understand</string>

@@ -6,6 +6,8 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.ContentCopy
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.filled.TravelExplore
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.collectAsState
@@ -101,6 +103,7 @@ fun HomeScreen(
             Column(Modifier.weight(1f)) {
                 Text(aircraft.registration, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, color = Color.White)
                 Text(type.name, style = MaterialTheme.typography.titleSmall, color = Color.White)
+                EngineSerialLine(aircraft, Color.White)
             }
             Chip(if (type.category == "EASA") "EASA ${type.tcds ?: ""}".trim() else "UL / LSA", HbgPink, Color.White)
         }
@@ -346,4 +349,46 @@ fun HoursDialog(a: Aircraft, onDismiss: () -> Unit) {
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
     )
+}
+
+/** Engine serial number, always visible; tap to edit. Rotax bulletins and TBO depend on it. */
+@Composable
+fun EngineSerialLine(a: Aircraft, color: Color) {
+    var edit by remember { mutableStateOf(false) }
+    val ctx = LocalContext.current
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            if (a.engineSerial.isBlank()) stringResource(R.string.engine_sn_missing) else stringResource(R.string.engine_sn, a.engineSerial),
+            color = color,
+            style = MaterialTheme.typography.bodyMedium,
+            fontWeight = if (a.engineSerial.isBlank()) FontWeight.Normal else FontWeight.SemiBold,
+            modifier = Modifier.clickable { edit = true }.padding(vertical = 2.dp),
+        )
+        if (a.engineSerial.isNotBlank()) {
+            IconButton(onClick = {
+                val cm = ctx.getSystemService(android.content.ClipboardManager::class.java)
+                cm?.setPrimaryClip(android.content.ClipData.newPlainText("Engine S/N", a.engineSerial))
+                android.widget.Toast.makeText(ctx, ctx.getString(R.string.copied, a.engineSerial), android.widget.Toast.LENGTH_SHORT).show()
+            }, modifier = Modifier.size(32.dp)) {
+                Icon(Icons.Filled.ContentCopy, stringResource(R.string.copy), tint = color, modifier = Modifier.size(18.dp))
+            }
+        }
+    }
+    if (edit) {
+        var sn by remember { mutableStateOf(a.engineSerial) }
+        AlertDialog(
+            onDismissRequest = { edit = false },
+            title = { Text(stringResource(R.string.engine_serial)) },
+            text = {
+                Column {
+                    androidx.compose.material3.OutlinedTextField(sn, { sn = it.trim() }, singleLine = true, modifier = Modifier.fillMaxWidth())
+                    Text(stringResource(R.string.engine_sn_hint), style = MaterialTheme.typography.bodySmall)
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { Repo.upsertAircraft(a.copy(engineSerial = sn)); edit = false }) { Text(stringResource(R.string.save)) }
+            },
+            dismissButton = { TextButton(onClick = { edit = false }) { Text(stringResource(R.string.cancel)) } },
+        )
+    }
 }
