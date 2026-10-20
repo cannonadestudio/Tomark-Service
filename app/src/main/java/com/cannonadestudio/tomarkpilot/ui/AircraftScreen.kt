@@ -89,6 +89,8 @@ fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
     var reg by remember { mutableStateOf(existing?.registration ?: "") }
     var serial by remember { mutableStateOf(existing?.serial ?: "") }
     var engine by remember { mutableStateOf(existing?.engineSerial ?: "") }
+    var gearbox by remember { mutableStateOf(existing?.gearboxSerial ?: "") }
+    var year by remember { mutableStateOf(existing?.yearBuilt?.toString() ?: "") }
     var hours by remember { mutableStateOf(existing?.hours?.let { fmtH(it) } ?: "") }
     var ref by remember { mutableStateOf(existing?.referenceEpochDay?.let { fmtEpochDay(it) } ?: "") }
     var confirmDelete by remember { mutableStateOf(false) }
@@ -136,6 +138,8 @@ fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
         )
         OutlinedTextField(serial, { serial = it }, label = { Text(stringResource(R.string.serial_number)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
         OutlinedTextField(engine, { engine = it }, label = { Text(stringResource(R.string.engine_serial)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
+        OutlinedTextField(gearbox, { gearbox = it }, label = { Text(stringResource(R.string.gearbox_serial)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
+        NumberField(year, { year = it.filter(Char::isDigit).take(4) }, stringResource(R.string.year_built), Modifier.fillMaxWidth())
         NumberField(hours, { hours = it }, stringResource(R.string.total_hours), Modifier.fillMaxWidth())
         DateField(ref, { ref = it }, stringResource(R.string.reference_date), Modifier.fillMaxWidth())
         Text(stringResource(R.string.reference_date_hint), style = MaterialTheme.typography.bodySmall)
@@ -165,6 +169,7 @@ fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
                     Repo.upsertAircraft(
                         base.copy(
                             typeId = typeId, registration = reg.trim(), serial = serial.trim(), engineSerial = engine.trim(),
+                            gearboxSerial = gearbox.trim(), yearBuilt = year.toIntOrNull()?.takeIf { it in 1950..2100 },
                             hours = h,
                             hoursUpdatedEpochDay = if (existing?.hours == h) existing.hoursUpdatedEpochDay else LocalDate.now().toEpochDay(),
                             referenceEpochDay = parseDate(ref)?.toEpochDay(),

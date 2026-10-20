@@ -191,9 +191,14 @@
     <string name="backup_restored">Restored – %1$d aircraft</string>
     <string name="copy">Copy</string>
     <string name="copied">Copied: %1$s</string>
+    <string name="tap_to_enter">tap to enter</string>
+    <string name="engine_sn_label">Engine S/N</string>
+    <string name="gearbox_sn_label">Gearbox S/N</string>
+    <string name="gearbox_serial">Gearbox serial number (optional)</string>
+    <string name="year_built">Year of manufacture</string>
     <string name="engine_sn">Engine S/N: %1$s</string>
     <string name="engine_sn_missing">Engine S/N: tap to enter</string>
-    <string name="engine_sn_hint">Rotax bulletins, the 2000 h TBO and gearbox checks depend on the engine serial number – it is on the engine type plate and in the engine logbook.</string>
+    <string name="engine_sn_hint">Bulletins often apply to given engine or gearbox serial numbers or aircraft production years. Serials are on the type plates and in the engine logbook; the year is in the aircraft documents.</string>
     <string name="disclaimer_title">Important</string>
     <string name="disclaimer_text">Unofficial app, not affiliated with any aircraft manufacturer or BRP-Rotax. Data come from public sources (EASA TCDS, national data sheets, manufacturer documents, published bulletins) and are a reminder only. The current AFM, AMM, service bulletins and airworthiness directives of your aircraft, and your maintenance organisation, are always binding. Items marked ⚠ have not been confirmed against the manuals.</string>
     <string name="accept">I understand</string>

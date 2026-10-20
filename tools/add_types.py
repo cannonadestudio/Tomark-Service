@@ -18,7 +18,8 @@ for s in src:
     cat = "EASA" if str(s.get("category", "")).upper().startswith("EASA") else "UL"
     vals = {k: v for k, v in (s.get("speeds") or {}).items() if isinstance(v, (int, float))}
     unit = "kmh" if s.get("unit") in ("kmh", "km/h") else "kt"
-    group = re.sub(r"[^A-Z0-9]", "", s["manufacturer"].upper())[:12] or "OTHER"
+    CANON = {"BRM Aero": "BRISTELL", "Comco Ikarus": "IKARUS", "FK Lightplanes": "FK", "Zlin Aviation": "ZLIN", "Shark.Aero": "SHARK"}
+    group = CANON.get(s["manufacturer"]) or re.sub(r"[^A-Z0-9]", "", s["manufacturer"].upper())[:12] or "OTHER"
     t = bd.gtype(tid, s["name"], s["manufacturer"], cat, s.get("tcds"), unit, vals,
                  s.get("source") or "—", bool(s.get("verified")), [group],
                  s.get("mtow") or "—", s.get("fuel") or "—", s.get("engine") or "Rotax",

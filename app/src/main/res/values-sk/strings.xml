@@ -190,6 +190,11 @@
     <string name="backup_restored">Obnovené – lietadlá: %1$d</string>
     <string name="copy">Kopírovať</string>
     <string name="copied">Skopírované: %1$s</string>
+    <string name="tap_to_enter">ťuknite a zadajte</string>
+    <string name="engine_sn_label">Č. motora</string>
+    <string name="gearbox_sn_label">Č. reduktora</string>
+    <string name="gearbox_serial">Výrobné číslo reduktora (voliteľné)</string>
+    <string name="year_built">Rok výroby</string>
     <string name="engine_sn">Č. motora: %1$s</string>
     <string name="engine_sn_missing">Č. motora: ťuknite a zadajte</string>
     <string name="engine_sn_hint">Od výrobného čísla motora závisia bulletiny Rotax, TBO 2000 h a kontroly reduktora – je na typovom štítku motora.</string>

@@ -138,6 +138,10 @@ data class Aircraft(
     val registration: String,
     val serial: String = "",
     val engineSerial: String = "",
+    /** Gearbox (propeller reduction) serial – optional; some Rotax bulletins list gearbox S/N. */
+    val gearboxSerial: String = "",
+    /** Year of manufacture – bulletins often apply to given production years / S/N ranges. */
+    val yearBuilt: Int? = null,
     val hours: Double = 0.0,
     val hoursUpdatedEpochDay: Long? = null,
     /** Reference date for calendar items never done yet (delivery / last overhaul). */

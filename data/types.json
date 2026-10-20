@@ -9468,7 +9468,7 @@
   "category": "UL",
   "tcds": null,
   "bulletinGroups": [
-   "BRMAERO",
+   "BRISTELL",
    "ROTAX_912"
   ],
   "speeds": [
@@ -12402,7 +12402,7 @@
   "category": "UL",
   "tcds": null,
   "bulletinGroups": [
-   "COMCOIKARUS",
+   "IKARUS",
    "ROTAX_912"
   ],
   "speeds": [
@@ -19872,7 +19872,7 @@
   "category": "UL",
   "tcds": null,
   "bulletinGroups": [
-   "FKLIGHTPLANE",
+   "FK",
    "ROTAX_912"
   ],
   "speeds": [
@@ -20850,7 +20850,7 @@
   "category": "UL",
   "tcds": null,
   "bulletinGroups": [
-   "FKLIGHTPLANE",
+   "FK",
    "ROTAX_912"
   ],
   "speeds": [
@@ -36279,7 +36279,7 @@
   "category": "UL",
   "tcds": null,
   "bulletinGroups": [
-   "ZLINAVIATION",
+   "ZLIN",
    "ROTAX_912"
   ],
   "speeds": [
@@ -36783,7 +36783,7 @@
   "category": "UL",
   "tcds": null,
   "bulletinGroups": [
-   "ZLINAVIATION",
+   "ZLIN",
    "ROTAX_912"
   ],
   "speeds": [
@@ -37287,7 +37287,7 @@
   "category": "UL",
   "tcds": null,
   "bulletinGroups": [
-   "ZLINAVIATION",
+   "ZLIN",
    "ROTAX_912"
   ],
   "speeds": [
@@ -38280,7 +38280,7 @@
   "category": "UL",
   "tcds": null,
   "bulletinGroups": [
-   "ZLINAVIATION",
+   "ZLIN",
    "ROTAX_912"
   ],
   "speeds": [

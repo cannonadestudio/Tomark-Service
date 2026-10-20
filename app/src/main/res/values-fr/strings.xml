@@ -190,6 +190,11 @@
     <string name="backup_restored">Restauré – %1$d avion(s)</string>
     <string name="copy">Copier</string>
     <string name="copied">Copié : %1$s</string>
+    <string name="tap_to_enter">touchez pour saisir</string>
+    <string name="engine_sn_label">N° moteur</string>
+    <string name="gearbox_sn_label">N° réducteur</string>
+    <string name="gearbox_serial">N° de série du réducteur (optionnel)</string>
+    <string name="year_built">Année de construction</string>
     <string name="engine_sn">N° moteur : %1$s</string>
     <string name="engine_sn_missing">N° moteur : touchez pour saisir</string>
     <string name="engine_sn_hint">Les bulletins Rotax, le TBO 2000 h et le réducteur dépendent du n° de série – il figure sur la plaque du moteur.</string>

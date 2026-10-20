@@ -118,6 +118,34 @@ switch ($action) {
         }
         out(200, ['users' => ah_list_users()]);
 
+    case 'import':
+        // Bulletins collected by the GitHub bot (EASA ADs, manufacturers' pages). Adds only unknown ids.
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
+        if (!hash_equals((string)(ah_config()['cronKey'] ?? 'x'), (string)($_GET['key'] ?? ''))) out(403, ['error' => 'bad key']);
+        $incoming = $body['bulletins'] ?? null;
+        if (!is_array($incoming)) out(400, ['error' => 'no bulletins']);
+        $path = ah_data_path('bulletins');
+        $raw = is_file($path) ? (string)file_get_contents($path) : '';
+        $feed = $raw ? json_decode($raw, true) : ['version' => 0, 'updated' => '', 'bulletins' => []];
+        $have = array_flip(array_column($feed['bulletins'], 'id'));
+        $added = 0;
+        foreach ($incoming as $b) {
+            if (!is_array($b) || empty($b['id']) || isset($have[$b['id']])) continue;
+            if (empty($b['title']) || empty($b['groups']) || empty($b['kind']) || !preg_match('/^\d{4}-\d{2}-\d{2}$/', (string)($b['date'] ?? ''))) continue;
+            $feed['bulletins'][] = $b;
+            $have[$b['id']] = 1;
+            $added++;
+        }
+        if ($added) {
+            usort($feed['bulletins'], fn($a, $b) => strcmp($b['date'], $a['date']));
+            $feed['version'] = ($feed['version'] ?? 0) + 1;
+            $feed['updated'] = date('Y-m-d');
+            ah_backup('bulletins', $raw);
+            ah_write_atomic($path, json_encode($feed, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n");
+            ah_log('bot', "import: $added new bulletins");
+        }
+        out(200, ['added' => $added]);
+
     default:
         out(404, ['error' => 'unknown action']);
 }

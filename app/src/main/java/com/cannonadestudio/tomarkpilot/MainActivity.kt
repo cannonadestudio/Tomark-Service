@@ -279,7 +279,7 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
                 Text(stringResource(R.string.backup_hint), style = MaterialTheme.typography.bodySmall)
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    state.backupUri?.let { android.net.Uri.parse(it).lastPathSegment } ?: stringResource(R.string.backup_off),
+                    state.backupUri?.let { displayName(ctx, it) } ?: stringResource(R.string.backup_off),
                     fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
                 )
                 state.lastBackupMillis?.let {
@@ -322,7 +322,7 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
                 Text(stringResource(R.string.logbook_hint), style = MaterialTheme.typography.bodySmall)
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    state.logbookUri?.let { android.net.Uri.parse(it).lastPathSegment } ?: stringResource(R.string.logbook_none),
+                    state.logbookUri?.let { displayName(ctx, it) } ?: stringResource(R.string.logbook_none),
                     fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
                 )
                 state.logbookSyncedEpochDay?.let {
@@ -352,11 +352,7 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
             }
         }
         Spacer(Modifier.height(16.dp))
-        Text(stringResource(R.string.data_source, Repo.dataBase), style = MaterialTheme.typography.bodySmall)
-        Spacer(Modifier.height(12.dp))
         Text(stringResource(R.string.disclaimer_text))
-        Spacer(Modifier.height(12.dp))
-        Text(stringResource(R.string.about_text))
         Spacer(Modifier.height(12.dp))
         Text(stringResource(R.string.about_sources), style = MaterialTheme.typography.bodySmall)
     }
@@ -382,6 +378,13 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
         )
     }
 }
+
+/** Human file name of a content:// link (Drive shows document ids otherwise). */
+private fun displayName(ctx: android.content.Context, uri: String): String = runCatching {
+    ctx.contentResolver.query(android.net.Uri.parse(uri), arrayOf(android.provider.OpenableColumns.DISPLAY_NAME), null, null, null)?.use { c ->
+        if (c.moveToFirst()) c.getString(0) else null
+    }
+}.getOrNull() ?: "…"
 
 private object BuildConfigCompat {
     @Composable

@@ -351,42 +351,59 @@ fun HoursDialog(a: Aircraft, onDismiss: () -> Unit) {
     )
 }
 
-/** Engine serial number, always visible; tap to edit. Rotax bulletins and TBO depend on it. */
+/** Engine S/N, gearbox S/N and year of manufacture – always visible, copyable; tap to edit. */
 @Composable
 fun EngineSerialLine(a: Aircraft, color: Color) {
     var edit by remember { mutableStateOf(false) }
     val ctx = LocalContext.current
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Text(
-            if (a.engineSerial.isBlank()) stringResource(R.string.engine_sn_missing) else stringResource(R.string.engine_sn, a.engineSerial),
-            color = color,
-            style = MaterialTheme.typography.bodyMedium,
-            fontWeight = if (a.engineSerial.isBlank()) FontWeight.Normal else FontWeight.SemiBold,
-            modifier = Modifier.clickable { edit = true }.padding(vertical = 2.dp),
-        )
-        if (a.engineSerial.isNotBlank()) {
-            IconButton(onClick = {
-                val cm = ctx.getSystemService(android.content.ClipboardManager::class.java)
-                cm?.setPrimaryClip(android.content.ClipData.newPlainText("Engine S/N", a.engineSerial))
-                android.widget.Toast.makeText(ctx, ctx.getString(R.string.copied, a.engineSerial), android.widget.Toast.LENGTH_SHORT).show()
-            }, modifier = Modifier.size(32.dp)) {
-                Icon(Icons.Filled.ContentCopy, stringResource(R.string.copy), tint = color, modifier = Modifier.size(18.dp))
+    @Composable
+    fun line(label: String, value: String?, copyable: Boolean) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                if (value.isNullOrBlank()) label + ": " + stringResource(R.string.tap_to_enter) else "$label: $value",
+                color = color, style = MaterialTheme.typography.bodyMedium,
+                fontWeight = if (value.isNullOrBlank()) FontWeight.Normal else FontWeight.SemiBold,
+                modifier = Modifier.clickable { edit = true }.padding(vertical = 1.dp),
+            )
+            if (copyable && !value.isNullOrBlank()) {
+                IconButton(onClick = {
+                    val cm = ctx.getSystemService(android.content.ClipboardManager::class.java)
+                    cm?.setPrimaryClip(android.content.ClipData.newPlainText(label, value))
+                    android.widget.Toast.makeText(ctx, ctx.getString(R.string.copied, value), android.widget.Toast.LENGTH_SHORT).show()
+                }, modifier = Modifier.size(30.dp)) {
+                    Icon(Icons.Filled.ContentCopy, stringResource(R.string.copy), tint = color, modifier = Modifier.size(17.dp))
+                }
             }
         }
     }
+    line(stringResource(R.string.engine_sn_label), a.engineSerial, true)
+    if (a.gearboxSerial.isNotBlank()) line(stringResource(R.string.gearbox_sn_label), a.gearboxSerial, true)
+    line(stringResource(R.string.year_built), a.yearBuilt?.toString(), false)
     if (edit) {
         var sn by remember { mutableStateOf(a.engineSerial) }
+        var gb by remember { mutableStateOf(a.gearboxSerial) }
+        var yr by remember { mutableStateOf(a.yearBuilt?.toString() ?: "") }
+        val yrOk = yr.isBlank() || yr.toIntOrNull()?.let { it in 1950..2100 } == true
         AlertDialog(
             onDismissRequest = { edit = false },
-            title = { Text(stringResource(R.string.engine_serial)) },
+            title = { Text(a.registration) },
             text = {
                 Column {
-                    androidx.compose.material3.OutlinedTextField(sn, { sn = it.trim() }, singleLine = true, modifier = Modifier.fillMaxWidth())
+                    androidx.compose.material3.OutlinedTextField(sn, { sn = it.trim() }, singleLine = true, label = { Text(stringResource(R.string.engine_serial)) }, modifier = Modifier.fillMaxWidth())
+                    androidx.compose.material3.OutlinedTextField(gb, { gb = it.trim() }, singleLine = true, label = { Text(stringResource(R.string.gearbox_serial)) }, modifier = Modifier.fillMaxWidth())
+                    androidx.compose.material3.OutlinedTextField(
+                        yr, { yr = it.filter(Char::isDigit).take(4) }, singleLine = true, isError = !yrOk,
+                        label = { Text(stringResource(R.string.year_built)) }, modifier = Modifier.fillMaxWidth(),
+                        keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number),
+                    )
                     Text(stringResource(R.string.engine_sn_hint), style = MaterialTheme.typography.bodySmall)
                 }
             },
             confirmButton = {
-                TextButton(onClick = { Repo.upsertAircraft(a.copy(engineSerial = sn)); edit = false }) { Text(stringResource(R.string.save)) }
+                TextButton(enabled = yrOk, onClick = {
+                    Repo.upsertAircraft(a.copy(engineSerial = sn, gearboxSerial = gb, yearBuilt = yr.toIntOrNull()))
+                    edit = false
+                }) { Text(stringResource(R.string.save)) }
             },
             dismissButton = { TextButton(onClick = { edit = false }) { Text(stringResource(R.string.cancel)) } },
         )
