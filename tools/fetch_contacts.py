@@ -115,7 +115,7 @@ def parse_examiners(url, label, ul, prefix=None, layout=None):
         c0, c1, c2, c3, c4, c5, c6 = r
         if c1.lower().startswith("nazwisko") or c0.lower().startswith("nr"):
             continue
-        cert = re.search(r"PLE?/(?:[A-Z]+/)?\d+|\b\d{2,5}/\d{2,4}\b", c0)
+        cert = re.search(r"PLE?/[\w./-]*\d\w*|\b\d{2,5}/\d{2,4}\b", c0)
         # Name = text of column 2 before the first e-mail / "tel."
         head = re.split(r"\S+@\S+|\btel\.?", c1, maxsplit=1, flags=re.I)[0].strip(" ,;/")
         if cert and head and cur is not None and head == cur["name"]:
