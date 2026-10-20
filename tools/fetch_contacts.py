@@ -51,10 +51,17 @@ def links(page_url):
     return [urllib.parse.urljoin(page_url, html.unescape(h)) for h in re.findall(r'href="([^"]+\.pdf)"', page, re.I)]
 
 
-def pick(urls, *needles):
-    """Newest link whose decoded file name contains all needles (case-insensitive)."""
-    hits = [u for u in urls if all(n.lower() in urllib.parse.unquote(u).lower() for n in needles)]
+def pick(urls, *needles, exclude=()):
+    """Newest link whose decoded file name contains all needles and none of exclude (case-insensitive)."""
+    def name(u):
+        return urllib.parse.unquote(u).rsplit("/", 1)[-1].lower()
+    hits = [u for u in urls if all(n.lower() in name(u) for n in needles) and not any(x.lower() in name(u) for x in exclude)]
     return hits[0] if hits else None
+
+
+def debug_rows(label, rows, n=8):
+    if DRY:
+        notice(f"RAW {label}: " + " ## ".join(" | ".join(c.replace(chr(10), " / ")[:60] for c in r) for r in rows[:n]))
 
 
 def pdf_rows(url):
@@ -80,6 +87,7 @@ def parse_examiners(url, label, ul):
     """Columns: certificate | name, e-mail, phone | region | category | scope ref | description | valid until.
     Continuation rows (same examiner, more categories) have an empty name cell."""
     rows = pdf_rows(url)
+    debug_rows("exam " + label[:20], rows[:2] + rows[2:40:6])
     people, cur = {}, None
     for r in rows:
         if len(r) < 4:
@@ -108,9 +116,12 @@ def parse_examiners(url, label, ul):
             q = (cat + (" – " + desc if desc else "")).strip(" –")
             if q and q not in cur["quals"]:
                 cur["quals"].append(q)
-        m = re.search(r"\b(\d{2})\.(\d{2})\.(\d{4})\b", r[-1] if r else "")
+        m = re.search(r"\b(\d{1,2})\.(\d{1,2})\.(\d{4})\b", r[-1] if r else "")
         if m:
-            cur["valid"].append(datetime.date(int(m.group(3)), int(m.group(2)), int(m.group(1))))
+            try:
+                cur["valid"].append(datetime.date(int(m.group(3)), int(m.group(2)), int(m.group(1))))
+            except ValueError:
+                pass
 
     out = []
     for key, p in people.items():
@@ -147,6 +158,7 @@ def geocode(query, cache):
 
 def parse_orgs(url, label, approval_rx, cache):
     rows = pdf_rows(url)
+    debug_rows("org " + label[-8:], rows[:2] + rows[2:40:6])
     orgs = {}
     for r in rows:
         joined = "\n".join(r)
@@ -192,8 +204,8 @@ def main():
         notice(f"examiners: ERROR {type(e).__name__}: {e}")
     try:
         org = links(ORG_PAGE)
-        cao = pick(org, "CAO")
-        p145 = pick(org, "145")
+        cao = pick(org, "CAO", exclude=("NCAO", "145", "CAMO"))
+        p145 = pick(org, "145", exclude=("NCAO", "dodatk"))
         found = []
         if cao:
             found += parse_orgs(cao, "Organizacja obsługowa Part-CAO", r"PL\.CAO\.\d{3,4}", cache)
