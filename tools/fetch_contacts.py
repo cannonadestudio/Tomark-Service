@@ -83,59 +83,83 @@ def norm_phone(s):
 
 # ---------------------------------------------------------------- examiners
 
+NAME_RX = re.compile(r"^[A-ZŁŚŻŹĆŃÓĄĘ][a-ząćęłńóśźż'-]+(?:-[A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+)?\s+[A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+(?:\s+[A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+)?$")
+TEL_RX = re.compile(r"tel\.?\s*:?\s*((?:\+?48)?[\d\s-]{9,15})", re.I)
+
+
+def logical(r):
+    """pdfplumber gives 13 columns with empty spacers; keep the 7 real ones."""
+    if len(r) >= 13:
+        return [r[i] for i in (0, 2, 4, 6, 8, 10, 12)]
+    return (r + [""] * 7)[:7]
+
+
 def parse_examiners(url, label, ul):
-    """Columns: certificate | name, e-mail, phone | region | category | scope ref | description | valid until.
-    Continuation rows (same examiner, more categories) have an empty name cell."""
+    """Lines of: certificate | name / e-mail / tel. | region | category | scope | description | valid until.
+    One examiner spans many lines; a new examiner starts at a line with a name in column 2."""
     rows = pdf_rows(url)
     debug_rows("exam " + label[:20], rows[:2] + rows[2:40:6])
-    people, cur = {}, None
-    for r in rows:
-        if len(r) < 4:
+    people, cur, pending = [], None, []
+    for raw in rows:
+        r = [" ".join((c or "").split()) for c in logical(raw)]
+        c0, c1, c2, c3, c4, c5, c6 = r
+        if c1.lower().startswith("nazwisko") or c0.lower().startswith("nr"):
             continue
-        joined = " ".join(r)
-        cert = CERT.search(r[0] or "")
-        namecell = r[1] if len(r) > 1 else ""
-        if cert and namecell and not namecell.lower().startswith("nazwisko"):
-            lines = [x.strip() for x in namecell.split("\n") if x.strip()]
-            name = next((x for x in lines if not EMAIL.search(x) and not re.search(r"\d{3}", x)), lines[0] if lines else "")
-            email = (EMAIL.search(namecell) or [None])[0] if EMAIL.search(namecell) else ""
-            phone = norm_phone(PHONE.search(namecell).group(0)) if PHONE.search(namecell) else ""
-            key = re.sub(r"\W+", "-", name.lower()).strip("-")
-            cur = people.setdefault(key, {"name": " ".join(name.split()), "email": email, "phone": phone,
-                                          "regions": [], "quals": [], "valid": [], "certs": []})
-            cur["certs"].append(cert.group(0))
+        certs = CERT.findall(c0) + re.findall(r"PL/[A-Z]+/\d+|\b\d{3,5}/\d{2}\b", c0) if c0 else []
+        for part in [x.strip() for x in re.split(r" / |;", c1) if x.strip()]:
+            if EMAIL.search(part):
+                if cur is not None and not cur["email"]:
+                    cur["email"] = EMAIL.search(part).group(0)
+            elif TEL_RX.search(part) or re.fullmatch(r"[\d\s+-]{9,15}", part):
+                if cur is not None and not cur["phone"]:
+                    m = TEL_RX.search(part)
+                    cur["phone"] = norm_phone(m.group(1) if m else part)
+            elif NAME_RX.match(part):
+                cur = {"name": part, "email": "", "phone": "", "regions": [], "quals": [], "valid": [], "certs": pending}
+                pending = []
+                people.append(cur)
+        for c in certs:
+            if cur is None:
+                pending.append(c)
+            elif c not in cur["certs"]:
+                cur["certs"].append(c)
         if cur is None:
             continue
-        region = r[2] if len(r) > 2 else ""
         for v in VOIV:
-            if v in region.lower() and v not in cur["regions"]:
+            if v in c2.lower() and v not in cur["regions"]:
                 cur["regions"].append(v)
-        cat = " ".join((r[3] if len(r) > 3 else "").split())
-        desc = " ".join((r[5] if len(r) > 5 else "").split())
-        if cat or desc:
-            q = (cat + (" – " + desc if desc else "")).strip(" –")
-            if q and q not in cur["quals"]:
-                cur["quals"].append(q)
-        m = re.search(r"\b(\d{1,2})\.(\d{1,2})\.(\d{4})\b", r[-1] if r else "")
-        if m:
+        q = " – ".join(x for x in (c3, c5) if x)
+        if q and q not in cur["quals"] and not q.lower().startswith(("kategoria", "zakres")):
+            cur["quals"].append(q[:80])
+        for m in re.finditer(r"\b(\d{1,2})\.(\d{1,2})\.(\d{4})\b", c6):
             try:
                 cur["valid"].append(datetime.date(int(m.group(3)), int(m.group(2)), int(m.group(1))))
             except ValueError:
                 pass
 
-    out = []
-    for key, p in people.items():
+    out, seen = [], set()
+    for p in people:
         if p["valid"] and max(p["valid"]) < TODAY:
             continue  # all authorisations expired
+        key = re.sub(r"\W+", "-", p["name"].lower()).strip("-")
+        cid = f"ulc-exam-{'ul-' if ul else ''}{key}"[:80]
+        if cid in seen:
+            continue
+        seen.add(cid)
         reg = p["regions"][0] if p["regions"] else None
-        lat, lon, city = VOIV[reg] if reg else (None, None, "")
+        lat, lon, _ = VOIV[reg] if reg else (None, None, "")
         quals = p["quals"][:6]
         valid = max(p["valid"]).strftime("%d.%m.%Y") if p["valid"] else ""
-        c = {"id": f"ulc-exam-{'ul-' if ul else ''}{key}"[:80], "name": p["name"], "kind": "examiner",
-             "brands": [q.split(" – ")[0] for q in quals][:4] + (["UL"] if ul else []),
-             "country": "PL", "city": ", ".join(p["regions"]) or "",
+        cats = []
+        for q in quals:
+            cat = q.split(" – ")[0]
+            if cat and cat not in cats:
+                cats.append(cat)
+        c = {"id": cid, "name": p["name"], "kind": "examiner",
+             "brands": cats[:4] + (["UL"] if ul else []),
+             "country": "PL", "city": ", ".join(p["regions"][:3]) + (" …" if len(p["regions"]) > 3 else ""),
              "lat": lat, "lon": lon, "phone": p["phone"], "email": p["email"],
-             "note": (label + ". " + "; ".join(quals) + (f". Ważne do {valid}" if valid else "") + ". " + " ".join(p["certs"][:3])).strip(),
+             "note": (label + ". " + "; ".join(quals) + (f". Ważne do {valid}" if valid else "") + (". " + " ".join(p["certs"][:3]) if p["certs"] else "")).strip(),
              "source": url}
         out.append({k: v for k, v in c.items() if v not in (None, "", [])})
     return out
@@ -157,33 +181,30 @@ def geocode(query, cache):
 
 
 def parse_orgs(url, label, approval_rx, cache):
+    """Name, number, issue date and 'Siedziba organizacji' (seat) share one cell; contacts may follow."""
     rows = pdf_rows(url)
     debug_rows("org " + label[-8:], rows[:2] + rows[2:40:6])
+    text = "\n".join(" ".join(c for c in r if c) for r in rows)
     orgs = {}
-    for r in rows:
-        joined = "\n".join(r)
-        m = re.search(approval_rx, joined)
-        if not m:
-            continue
+    matches = list(re.finditer(approval_rx, text))
+    for i, m in enumerate(matches):
         no = m.group(0)
-        email = EMAIL.search(joined)
-        phone = PHONE.search(re.sub(EMAIL, "", joined))
-        post = re.search(r"\b(\d{2}-\d{3})\s+([A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ .-]+)", joined)
-        # name = first cell that is not the number and has letters
-        name = next((" ".join(c.split()) for c in r if c and not re.search(approval_rx, c) and re.search(r"[A-Za-zĄĆĘŁŃÓŚŹŻ]{3}", c)
-                     and not EMAIL.search(c) and not re.match(r"^\d", c)), no)
-        addr_cell = next((" ".join(c.split()) for c in r if post and post.group(1) in c), "")
-        city = " ".join(post.group(2).split()) if post else ""
-        city = re.split(r"\s{2,}|,|\btel\b|\bul\b", city)[0].strip() if city else ""
-        prev = orgs.get(no)
-        if prev:  # multi-row organisation: keep first name/address, add missing contact
-            prev.setdefault("email", email.group(0) if email else None)
+        if no in orgs:
             continue
+        line_start = text.rfind("\n", 0, m.start()) + 1
+        name = " ".join(text[line_start:m.start()].split()).strip(' "„”/') or no
+        chunk = text[m.end(): matches[i + 1].start() if i + 1 < len(matches) else m.end() + 800]
+        email = EMAIL.search(chunk)
+        tel = TEL_RX.search(chunk)
+        post = re.search(r"\b(\d{2}-\d{3})\s+([A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ-]+(?:\s+[A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźż-]+)?)", chunk)
+        street = re.search(r"(?:ul\.|al\.|ulica)\s*[^,\n/]{3,40}", chunk, re.I)
+        city = post.group(2) if post else ""
+        addr = ", ".join(x for x in ((street.group(0).strip() if street else ""), (post.group(0) if post else "")) if x)
         ll = geocode(f"{post.group(1)} {city}, Polska", cache) if post else None
-        orgs[no] = {"id": "ulc-" + re.sub(r"\W+", "-", no.lower()).strip("-"), "name": name[:120], "kind": "maintenance",
-                    "brands": [label], "country": "PL", "city": city, "address": addr_cell[:160],
+        orgs[no] = {"id": "ulc-pl-" + re.sub(r"\W+", "-", no.lower()).strip("-"), "name": name[:120], "kind": "maintenance",
+                    "brands": [label.replace("Organizacja obsługowa ", "")], "country": "PL", "city": city, "address": addr,
                     "lat": ll[0] if ll else None, "lon": ll[1] if ll else None,
-                    "phone": norm_phone(phone.group(0)) if phone else "", "email": email.group(0) if email else "",
+                    "phone": norm_phone(tel.group(1)) if tel else "", "email": email.group(0) if email else "",
                     "note": f"{label} {no}", "source": url}
     return [{k: v for k, v in o.items() if v not in (None, "", [])} for o in orgs.values()]
 
