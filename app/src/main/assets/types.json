@@ -1,0 +1,2829 @@
+[
+ {
+  "id": "sd4_rtc",
+  "name": "Viper SD-4 RTC",
+  "family": "viper",
+  "category": "EASA",
+  "tcds": "EASA.A.606",
+  "bulletinGroups": [
+   "SD4_RTC"
+  ],
+  "speeds": [
+   {
+    "key": "VS0",
+    "label": {
+     "pl": "VS0 przeciągnięcie, klapy do lądowania",
+     "en": "VS0 stall, landing flaps",
+     "sk": "VS0 pád, pristávacie klapky",
+     "fr": "VS0 décrochage, volets atterrissage"
+    },
+    "value": 43,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "white"
+   },
+   {
+    "key": "VS1",
+    "label": {
+     "pl": "VS1 przeciągnięcie, bez klap",
+     "en": "VS1 stall, clean",
+     "sk": "VS1 pád, bez kláp",
+     "fr": "VS1 décrochage, lisse"
+    },
+    "value": 49,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "green"
+   },
+   {
+    "key": "VAPP",
+    "label": {
+     "pl": "Podejście (1,3×VS0)",
+     "en": "Approach (1.3×VS0)",
+     "sk": "Priblíženie (1,3×VS0)",
+     "fr": "Approche (1,3×VS0)"
+    },
+    "value": 56,
+    "unit": "kt",
+    "source": "obliczone / computed 1.3×VS0",
+    "verified": false,
+    "zone": "approach"
+   },
+   {
+    "key": "VFE",
+    "label": {
+     "pl": "VFE maks. z klapami",
+     "en": "VFE max flaps extended",
+     "sk": "VFE max. s klapkami",
+     "fr": "VFE max volets sortis"
+    },
+    "value": 79,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "white"
+   },
+   {
+    "key": "VA",
+    "label": {
+     "pl": "VA prędkość manewrowa",
+     "en": "VA manoeuvring speed",
+     "sk": "VA obratová rýchlosť",
+     "fr": "VA vitesse de manœuvre"
+    },
+    "value": 88,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "normal"
+   },
+   {
+    "key": "VC",
+    "label": {
+     "pl": "VC prędkość przelotowa",
+     "en": "VC cruise speed",
+     "sk": "VC cestovná rýchlosť",
+     "fr": "VC vitesse de croisière"
+    },
+    "value": 102,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "normal"
+   },
+   {
+    "key": "VNE",
+    "label": {
+     "pl": "VNE nieprzekraczalna",
+     "en": "VNE never exceed",
+     "sk": "VNE nikdy neprekročiteľná",
+     "fr": "VNE à ne jamais dépasser"
+    },
+    "value": 126,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "red"
+   },
+   {
+    "key": "VR",
+    "label": {
+     "pl": "VR rotacja / start",
+     "en": "VR rotation / take-off",
+     "sk": "VR rotácia / vzlet",
+     "fr": "VR rotation / décollage"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "approach"
+   },
+   {
+    "key": "VX",
+    "label": {
+     "pl": "VX najlepszy kąt wznoszenia",
+     "en": "VX best angle of climb",
+     "sk": "VX najlepší uhol stúpania",
+     "fr": "VX meilleur angle de montée"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VY",
+    "label": {
+     "pl": "VY najlepsza prędkość wznoszenia",
+     "en": "VY best rate of climb",
+     "sk": "VY najlepšia stúpavosť",
+     "fr": "VY meilleur taux de montée"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VBG",
+    "label": {
+     "pl": "Najlepszy szybowanie",
+     "en": "Best glide",
+     "sk": "Najlepšie kĺzanie",
+     "fr": "Finesse max"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   }
+  ],
+  "manual": [
+   {
+    "id": "mass",
+    "title": {
+     "pl": "Masy",
+     "en": "Masses",
+     "sk": "Hmotnosti",
+     "fr": "Masses"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "MTOW",
+       "en": "MTOW",
+       "sk": "MTOW",
+       "fr": "MTOW"
+      },
+      "value": {
+       "pl": "600 kg",
+       "en": "600 kg",
+       "sk": "600 kg",
+       "fr": "600 kg"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Maks. masa pustego",
+       "en": "Max empty mass",
+       "sk": "Max. prázdna hmotnosť",
+       "fr": "Masse à vide max"
+      },
+      "value": {
+       "pl": "405 kg",
+       "en": "405 kg",
+       "sk": "405 kg",
+       "fr": "405 kg"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Bagaż (za fotelami)",
+       "en": "Baggage (behind seats)",
+       "sk": "Batožina (za sedadlami)",
+       "fr": "Bagages (derrière sièges)"
+      },
+      "value": {
+       "pl": "15 kg (2 × 7,5 kg)",
+       "en": "15 kg (2 × 7,5 kg)",
+       "sk": "15 kg (2 × 7,5 kg)",
+       "fr": "15 kg (2 × 7,5 kg)"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Załoga / pasażerowie",
+       "en": "Crew / passengers",
+       "sk": "Posádka / cestujúci",
+       "fr": "Équipage / passagers"
+      },
+      "value": {
+       "pl": "1 pilot (lewy fotel) + 1",
+       "en": "1 pilot (left seat) + 1",
+       "sk": "1 pilot (ľavé sedadlo) + 1",
+       "fr": "1 pilote (siège gauche) + 1"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "cg",
+    "title": {
+     "pl": "Środek ciężkości",
+     "en": "Centre of gravity",
+     "sk": "Ťažisko",
+     "fr": "Centrage"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Przedni limit",
+       "en": "Forward limit",
+       "sk": "Predná hranica",
+       "fr": "Limite avant"
+      },
+      "value": {
+       "pl": "310 mm (24 % MAC)",
+       "en": "310 mm (24 % MAC)",
+       "sk": "310 mm (24 % MAC)",
+       "fr": "310 mm (24 % MAC)"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Tylny limit",
+       "en": "Aft limit",
+       "sk": "Zadná hranica",
+       "fr": "Limite arrière"
+      },
+      "value": {
+       "pl": "413 mm (32 % MAC)",
+       "en": "413 mm (32 % MAC)",
+       "sk": "413 mm (32 % MAC)",
+       "fr": "413 mm (32 % MAC)"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Baza",
+       "en": "Datum",
+       "sk": "Základňa",
+       "fr": "Référence"
+      },
+      "value": {
+       "pl": "krawędź natarcia skrzydła",
+       "en": "wing leading edge",
+       "sk": "nábežná hrana krídla",
+       "fr": "bord d'attaque de l'aile"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "load",
+    "title": {
+     "pl": "Obciążenia i klapy",
+     "en": "Load factors & flaps",
+     "sk": "Násobky a klapky",
+     "fr": "Facteurs de charge et volets"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Bez klap",
+       "en": "Clean",
+       "sk": "Bez kláp",
+       "fr": "Lisse"
+      },
+      "value": {
+       "pl": "+4 g / −2 g",
+       "en": "+4 g / −2 g",
+       "sk": "+4 g / −2 g",
+       "fr": "+4 g / −2 g"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Z klapami",
+       "en": "Flaps extended",
+       "sk": "S klapkami",
+       "fr": "Volets sortis"
+      },
+      "value": {
+       "pl": "+2 g / 0 g",
+       "en": "+2 g / 0 g",
+       "sk": "+2 g / 0 g",
+       "fr": "+2 g / 0 g"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Położenia klap",
+       "en": "Flap positions",
+       "sk": "Polohy kláp",
+       "fr": "Positions volets"
+      },
+      "value": {
+       "pl": "0° / 15° / 30° / (40° III: AFM)",
+       "en": "0° / 15° / 30° / (40° III: AFM)",
+       "sk": "0° / 15° / 30° / (40° III: AFM)",
+       "fr": "0° / 15° / 30° / (40° III: AFM)"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "pwr",
+    "title": {
+     "pl": "Zespół napędowy",
+     "en": "Power plant",
+     "sk": "Pohonná jednotka",
+     "fr": "Groupe motopropulseur"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Silnik",
+       "en": "Engine",
+       "sk": "Motor",
+       "fr": "Moteur"
+      },
+      "value": {
+       "pl": "Rotax 912 ULS2 / 912 S2",
+       "en": "Rotax 912 ULS2 / 912 S2",
+       "sk": "Rotax 912 ULS2 / 912 S2",
+       "fr": "Rotax 912 ULS2 / 912 S2"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Śmigło",
+       "en": "Propeller",
+       "sk": "Vrtuľa",
+       "fr": "Hélice"
+      },
+      "value": {
+       "pl": "Neuform CR3-65-(IP)-47-101.6, 3-blade, Ø 1.65 m",
+       "en": "Neuform CR3-65-(IP)-47-101.6, 3-blade, Ø 1.65 m",
+       "sk": "Neuform CR3-65-(IP)-47-101.6, 3-blade, Ø 1.65 m",
+       "fr": "Neuform CR3-65-(IP)-47-101.6, 3-blade, Ø 1.65 m"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "fluids",
+    "title": {
+     "pl": "Płyny i paliwo",
+     "en": "Fluids & fuel",
+     "sk": "Kvapaliny a palivo",
+     "fr": "Fluides et carburant"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Paliwo użyteczne",
+       "en": "Usable fuel",
+       "sk": "Využiteľné palivo",
+       "fr": "Carburant utilisable"
+      },
+      "value": {
+       "pl": "90 L",
+       "en": "90 L",
+       "sk": "90 L",
+       "fr": "90 L"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Olej",
+       "en": "Oil",
+       "sk": "Olej",
+       "fr": "Huile"
+      },
+      "value": {
+       "pl": "3 L",
+       "en": "3 L",
+       "sk": "3 L",
+       "fr": "3 L"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Płyn chłodzący",
+       "en": "Coolant",
+       "sk": "Chladiaca kvapalina",
+       "fr": "Liquide de refroidissement"
+      },
+      "value": {
+       "pl": "≈ 1,5 L",
+       "en": "≈ 1,5 L",
+       "sk": "≈ 1,5 L",
+       "fr": "≈ 1,5 L"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Gatunki paliwa/oleju",
+       "en": "Fuel/oil grades",
+       "sk": "Druhy paliva/oleja",
+       "fr": "Types carburant/huile"
+      },
+      "value": {
+       "pl": "wg AFM",
+       "en": "see AFM",
+       "sk": "podľa AFM",
+       "fr": "voir AFM"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "ops",
+    "title": {
+     "pl": "Ograniczenia eksploatacyjne",
+     "en": "Operating limitations",
+     "sk": "Prevádzkové obmedzenia",
+     "fr": "Limitations d'utilisation"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Pułap maks.",
+       "en": "Max altitude",
+       "sk": "Max. výška",
+       "fr": "Altitude max"
+      },
+      "value": {
+       "pl": "15 500 ft",
+       "en": "15 500 ft",
+       "sk": "15 500 ft",
+       "fr": "15 500 ft"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Rodzaj lotów",
+       "en": "Approved operations",
+       "sk": "Schválená prevádzka",
+       "fr": "Opérations approuvées"
+      },
+      "value": {
+       "pl": "Day VFR",
+       "en": "Day VFR",
+       "sk": "Day VFR",
+       "fr": "Day VFR"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Opony",
+       "en": "Tyres",
+       "sk": "Pneumatiky",
+       "fr": "Pneus"
+      },
+      "value": {
+       "pl": "4.00-6 Kaspar",
+       "en": "4.00-6 Kaspar",
+       "sk": "4.00-6 Kaspar",
+       "fr": "4.00-6 Kaspar"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Uwaga – korkociąg",
+       "en": "Note – spin recovery",
+       "sk": "Pozn. – vývrtka",
+       "fr": "Note – vrille"
+      },
+      "value": {
+       "pl": "Przy wyprowadzaniu z korkociągu mogą zostać przekroczone VFE i współczynniki – samolot to wytrzymuje, wg AFM",
+       "en": "During spin recovery VFE and load factors may be exceeded – proven, see AFM",
+       "sk": "Pri vybratí vývrtky môžu byť prekročené VFE a násobky – lietadlo to vydrží, podľa AFM",
+       "fr": "Lors de la sortie de vrille, VFE et facteurs de charge peuvent être dépassés – démontré, voir AFM"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "docs",
+    "title": {
+     "pl": "Dokumentacja obowiązująca",
+     "en": "Applicable documents",
+     "sk": "Platná dokumentácia",
+     "fr": "Documents applicables"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "AFM",
+       "en": "AFM",
+       "sk": "AFM",
+       "fr": "AFM"
+      },
+      "value": {
+       "pl": "TOM-TC-01-AFM",
+       "en": "TOM-TC-01-AFM",
+       "sk": "TOM-TC-01-AFM",
+       "fr": "TOM-TC-01-AFM"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "AMM",
+       "en": "AMM",
+       "sk": "AMM",
+       "fr": "AMM"
+      },
+      "value": {
+       "pl": "TOM-TC-01-AMM Issue H (04/2026)",
+       "en": "TOM-TC-01-AMM Issue H (04/2026)",
+       "sk": "TOM-TC-01-AMM Issue H (04/2026)",
+       "fr": "TOM-TC-01-AMM Issue H (04/2026)"
+      },
+      "source": "tomarkaero.com – Technical support"
+     },
+     {
+      "label": {
+       "pl": "Lista ważnych publikacji",
+       "en": "Valid publications list",
+       "sk": "Zoznam platných publikácií",
+       "fr": "Liste des publications"
+      },
+      "value": {
+       "pl": "TOM-TC-606-VTP Rev H (04/2026)",
+       "en": "TOM-TC-606-VTP Rev H (04/2026)",
+       "sk": "TOM-TC-606-VTP Rev H (04/2026)",
+       "fr": "TOM-TC-606-VTP Rev H (04/2026)"
+      },
+      "source": "tomarkaero.com – Technical support"
+     }
+    ]
+   }
+  ],
+  "tasks": [
+   {
+    "id": "insp_25h",
+    "title": {
+     "pl": "Przegląd po 25 h (nowy samolot / nowy silnik)",
+     "en": "25 h inspection (new aircraft / engine)",
+     "sk": "Prehliadka po 25 h (nové lietadlo / motor)",
+     "fr": "Inspection 25 h (avion / moteur neuf)"
+    },
+    "category": "airframe",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": 25,
+    "toleranceHours": 1.25,
+    "mandatory": true,
+    "source": "SB_SD4-03-2023 / TOM-TC-01-AMM",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "insp_50h",
+    "title": {
+     "pl": "Przegląd 50 h (zalecany)",
+     "en": "50 h inspection (recommended)",
+     "sk": "Prehliadka 50 h (odporúčaná)",
+     "fr": "Inspection 50 h (recommandée)"
+    },
+    "category": "airframe",
+    "intervalHours": 50,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": 2.5,
+    "mandatory": false,
+    "source": "SB_SD4-03-2023 / TOM-TC-01-AMM",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "insp_100h",
+    "title": {
+     "pl": "Przegląd 100 h (obowiązkowy)",
+     "en": "100 h inspection (mandatory)",
+     "sk": "Prehliadka 100 h (povinná)",
+     "fr": "Inspection 100 h (obligatoire)"
+    },
+    "category": "airframe",
+    "intervalHours": 100,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": 5,
+    "mandatory": true,
+    "source": "SB_SD4-03-2023 / TOM-TC-01-AMM",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "insp_annual",
+    "title": {
+     "pl": "Przegląd roczny",
+     "en": "Annual inspection",
+     "sk": "Ročná prehliadka",
+     "fr": "Visite annuelle"
+    },
+    "category": "airframe",
+    "intervalHours": null,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "TOM-TC-01-AMM – sprawdź / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "insp_2000h",
+    "title": {
+     "pl": "Duży przegląd płatowca 2000 h",
+     "en": "2000 h major airframe inspection",
+     "sk": "Veľká prehliadka draku 2000 h",
+     "fr": "Grande visite cellule 2000 h"
+    },
+    "category": "airframe",
+    "intervalHours": 2000,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": 100,
+    "mandatory": true,
+    "source": "SB-SD4-01-2024 / SB_SD4-03-2023 / AMM 04-30-10",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "arc",
+    "title": {
+     "pl": "Przegląd zdatności (ARC)",
+     "en": "Airworthiness review (ARC)",
+     "sk": "Kontrola letovej spôsobilosti (ARC)",
+     "fr": "Examen de navigabilité (ARC)"
+    },
+    "category": "regulatory",
+    "intervalHours": null,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Part-ML, ML.A.901 (Rozp. UE 1321/2014)",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "rotax_oil",
+    "title": {
+     "pl": "Wymiana oleju i filtra (Rotax)",
+     "en": "Oil & filter change (Rotax)",
+     "sk": "Výmena oleja a filtra (Rotax)",
+     "fr": "Vidange huile et filtre (Rotax)"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": {
+     "pl": "Przy częstym użyciu AVGAS Rotax zaleca krótszy interwał.",
+     "en": "With frequent AVGAS use Rotax recommends a shorter interval.",
+     "sk": "With frequent AVGAS use Rotax recommends a shorter interval.",
+     "fr": "With frequent AVGAS use Rotax recommends a shorter interval."
+    }
+   },
+   {
+    "id": "rotax_plugs",
+    "title": {
+     "pl": "Świece zapłonowe",
+     "en": "Spark plugs",
+     "sk": "Zapaľovacie sviečky",
+     "fr": "Bougies"
+    },
+    "category": "engine",
+    "intervalHours": 200,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_gearbox",
+    "title": {
+     "pl": "Przegląd reduktora",
+     "en": "Gearbox inspection",
+     "sk": "Prehliadka reduktora",
+     "fr": "Inspection réducteur"
+    },
+    "category": "engine",
+    "intervalHours": 1000,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_rubber",
+    "title": {
+     "pl": "Wymiana elementów gumowych silnika",
+     "en": "Engine rubber parts replacement",
+     "sk": "Výmena gumových dielov motora",
+     "fr": "Remplacement pièces caoutchouc moteur"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 60,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_tbo",
+    "title": {
+     "pl": "Remont główny silnika (TBO)",
+     "en": "Engine overhaul (TBO)",
+     "sk": "Generálna oprava motora (TBO)",
+     "fr": "Révision générale moteur (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 180,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": {
+     "pl": "TBO zależy od numeru seryjnego silnika i biuletynów Rotax.",
+     "en": "TBO depends on engine S/N and Rotax bulletins.",
+     "sk": "TBO depends on engine S/N and Rotax bulletins.",
+     "fr": "TBO depends on engine S/N and Rotax bulletins."
+    }
+   },
+   {
+    "id": "prop",
+    "title": {
+     "pl": "Przegląd śmigła",
+     "en": "Propeller inspection",
+     "sk": "Prehliadka vrtule",
+     "fr": "Inspection hélice"
+    },
+    "category": "propeller",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta śmigła / propeller manual – ustaw interwał",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "brs_repack",
+    "title": {
+     "pl": "Spadochron ratowniczy – przepakowanie",
+     "en": "Rescue parachute – repack",
+     "sk": "Záchranný padák – prebalenie",
+     "fr": "Parachute – repliage"
+    },
+    "category": "rescue",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta BRS / Galaxy / Stratos – ustaw interwał",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "brs_rocket",
+    "title": {
+     "pl": "Spadochron ratowniczy – rakieta / żywotność",
+     "en": "Rescue parachute – rocket / service life",
+     "sk": "Záchranný padák – raketa / životnosť",
+     "fr": "Parachute – fusée / durée de vie"
+    },
+    "category": "rescue",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta BRS – ustaw interwał",
+    "verified": false,
+    "note": null
+   }
+  ]
+ },
+ {
+  "id": "sd4_nvfr",
+  "name": "Viper SD-4 Night-VFR",
+  "family": "viper",
+  "category": "EASA",
+  "tcds": "EASA.A.606",
+  "bulletinGroups": [
+   "SD4_NVFR"
+  ],
+  "speeds": [
+   {
+    "key": "VS0",
+    "label": {
+     "pl": "VS0 przeciągnięcie, klapy do lądowania",
+     "en": "VS0 stall, landing flaps",
+     "sk": "VS0 pád, pristávacie klapky",
+     "fr": "VS0 décrochage, volets atterrissage"
+    },
+    "value": 43,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "white"
+   },
+   {
+    "key": "VS1",
+    "label": {
+     "pl": "VS1 przeciągnięcie, bez klap",
+     "en": "VS1 stall, clean",
+     "sk": "VS1 pád, bez kláp",
+     "fr": "VS1 décrochage, lisse"
+    },
+    "value": 49,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "green"
+   },
+   {
+    "key": "VAPP",
+    "label": {
+     "pl": "Podejście (1,3×VS0)",
+     "en": "Approach (1.3×VS0)",
+     "sk": "Priblíženie (1,3×VS0)",
+     "fr": "Approche (1,3×VS0)"
+    },
+    "value": 56,
+    "unit": "kt",
+    "source": "obliczone / computed 1.3×VS0",
+    "verified": false,
+    "zone": "approach"
+   },
+   {
+    "key": "VFE",
+    "label": {
+     "pl": "VFE maks. z klapami",
+     "en": "VFE max flaps extended",
+     "sk": "VFE max. s klapkami",
+     "fr": "VFE max volets sortis"
+    },
+    "value": 79,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "white"
+   },
+   {
+    "key": "VA",
+    "label": {
+     "pl": "VA prędkość manewrowa",
+     "en": "VA manoeuvring speed",
+     "sk": "VA obratová rýchlosť",
+     "fr": "VA vitesse de manœuvre"
+    },
+    "value": 88,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "normal"
+   },
+   {
+    "key": "VC",
+    "label": {
+     "pl": "VC prędkość przelotowa",
+     "en": "VC cruise speed",
+     "sk": "VC cestovná rýchlosť",
+     "fr": "VC vitesse de croisière"
+    },
+    "value": 102,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "normal"
+   },
+   {
+    "key": "VNE",
+    "label": {
+     "pl": "VNE nieprzekraczalna",
+     "en": "VNE never exceed",
+     "sk": "VNE nikdy neprekročiteľná",
+     "fr": "VNE à ne jamais dépasser"
+    },
+    "value": 126,
+    "unit": "kt",
+    "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)",
+    "verified": true,
+    "zone": "red"
+   },
+   {
+    "key": "VR",
+    "label": {
+     "pl": "VR rotacja / start",
+     "en": "VR rotation / take-off",
+     "sk": "VR rotácia / vzlet",
+     "fr": "VR rotation / décollage"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "approach"
+   },
+   {
+    "key": "VX",
+    "label": {
+     "pl": "VX najlepszy kąt wznoszenia",
+     "en": "VX best angle of climb",
+     "sk": "VX najlepší uhol stúpania",
+     "fr": "VX meilleur angle de montée"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VY",
+    "label": {
+     "pl": "VY najlepsza prędkość wznoszenia",
+     "en": "VY best rate of climb",
+     "sk": "VY najlepšia stúpavosť",
+     "fr": "VY meilleur taux de montée"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VBG",
+    "label": {
+     "pl": "Najlepszy szybowanie",
+     "en": "Best glide",
+     "sk": "Najlepšie kĺzanie",
+     "fr": "Finesse max"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   }
+  ],
+  "manual": [
+   {
+    "id": "mass",
+    "title": {
+     "pl": "Masy",
+     "en": "Masses",
+     "sk": "Hmotnosti",
+     "fr": "Masses"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "MTOW",
+       "en": "MTOW",
+       "sk": "MTOW",
+       "fr": "MTOW"
+      },
+      "value": {
+       "pl": "600 kg",
+       "en": "600 kg",
+       "sk": "600 kg",
+       "fr": "600 kg"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Maks. masa pustego",
+       "en": "Max empty mass",
+       "sk": "Max. prázdna hmotnosť",
+       "fr": "Masse à vide max"
+      },
+      "value": {
+       "pl": "405 kg",
+       "en": "405 kg",
+       "sk": "405 kg",
+       "fr": "405 kg"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Bagaż (za fotelami)",
+       "en": "Baggage (behind seats)",
+       "sk": "Batožina (za sedadlami)",
+       "fr": "Bagages (derrière sièges)"
+      },
+      "value": {
+       "pl": "15 kg (2 × 7,5 kg)",
+       "en": "15 kg (2 × 7,5 kg)",
+       "sk": "15 kg (2 × 7,5 kg)",
+       "fr": "15 kg (2 × 7,5 kg)"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Załoga / pasażerowie",
+       "en": "Crew / passengers",
+       "sk": "Posádka / cestujúci",
+       "fr": "Équipage / passagers"
+      },
+      "value": {
+       "pl": "1 pilot (lewy fotel) + 1",
+       "en": "1 pilot (left seat) + 1",
+       "sk": "1 pilot (ľavé sedadlo) + 1",
+       "fr": "1 pilote (siège gauche) + 1"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "cg",
+    "title": {
+     "pl": "Środek ciężkości",
+     "en": "Centre of gravity",
+     "sk": "Ťažisko",
+     "fr": "Centrage"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Przedni limit",
+       "en": "Forward limit",
+       "sk": "Predná hranica",
+       "fr": "Limite avant"
+      },
+      "value": {
+       "pl": "310 mm (24 % MAC)",
+       "en": "310 mm (24 % MAC)",
+       "sk": "310 mm (24 % MAC)",
+       "fr": "310 mm (24 % MAC)"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Tylny limit",
+       "en": "Aft limit",
+       "sk": "Zadná hranica",
+       "fr": "Limite arrière"
+      },
+      "value": {
+       "pl": "413 mm (32 % MAC)",
+       "en": "413 mm (32 % MAC)",
+       "sk": "413 mm (32 % MAC)",
+       "fr": "413 mm (32 % MAC)"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Baza",
+       "en": "Datum",
+       "sk": "Základňa",
+       "fr": "Référence"
+      },
+      "value": {
+       "pl": "krawędź natarcia skrzydła",
+       "en": "wing leading edge",
+       "sk": "nábežná hrana krídla",
+       "fr": "bord d'attaque de l'aile"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "load",
+    "title": {
+     "pl": "Obciążenia i klapy",
+     "en": "Load factors & flaps",
+     "sk": "Násobky a klapky",
+     "fr": "Facteurs de charge et volets"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Bez klap",
+       "en": "Clean",
+       "sk": "Bez kláp",
+       "fr": "Lisse"
+      },
+      "value": {
+       "pl": "+4 g / −2 g",
+       "en": "+4 g / −2 g",
+       "sk": "+4 g / −2 g",
+       "fr": "+4 g / −2 g"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Z klapami",
+       "en": "Flaps extended",
+       "sk": "S klapkami",
+       "fr": "Volets sortis"
+      },
+      "value": {
+       "pl": "+2 g / 0 g",
+       "en": "+2 g / 0 g",
+       "sk": "+2 g / 0 g",
+       "fr": "+2 g / 0 g"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Położenia klap",
+       "en": "Flap positions",
+       "sk": "Polohy kláp",
+       "fr": "Positions volets"
+      },
+      "value": {
+       "pl": "0° / 15° / 30° / 35° (III: AFM)",
+       "en": "0° / 15° / 30° / 35° (III: AFM)",
+       "sk": "0° / 15° / 30° / 35° (III: AFM)",
+       "fr": "0° / 15° / 30° / 35° (III: AFM)"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "pwr",
+    "title": {
+     "pl": "Zespół napędowy",
+     "en": "Power plant",
+     "sk": "Pohonná jednotka",
+     "fr": "Groupe motopropulseur"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Silnik",
+       "en": "Engine",
+       "sk": "Motor",
+       "fr": "Moteur"
+      },
+      "value": {
+       "pl": "Rotax 912 S2",
+       "en": "Rotax 912 S2",
+       "sk": "Rotax 912 S2",
+       "fr": "Rotax 912 S2"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Śmigło",
+       "en": "Propeller",
+       "sk": "Vrtuľa",
+       "fr": "Hélice"
+      },
+      "value": {
+       "pl": "DUC Hélices FLASH-R H-FSH_3-D-R_I, 3-blade, Ø 1.73 m, 23.5°",
+       "en": "DUC Hélices FLASH-R H-FSH_3-D-R_I, 3-blade, Ø 1.73 m, 23.5°",
+       "sk": "DUC Hélices FLASH-R H-FSH_3-D-R_I, 3-blade, Ø 1.73 m, 23.5°",
+       "fr": "DUC Hélices FLASH-R H-FSH_3-D-R_I, 3-blade, Ø 1.73 m, 23.5°"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "fluids",
+    "title": {
+     "pl": "Płyny i paliwo",
+     "en": "Fluids & fuel",
+     "sk": "Kvapaliny a palivo",
+     "fr": "Fluides et carburant"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Paliwo użyteczne",
+       "en": "Usable fuel",
+       "sk": "Využiteľné palivo",
+       "fr": "Carburant utilisable"
+      },
+      "value": {
+       "pl": "90 L",
+       "en": "90 L",
+       "sk": "90 L",
+       "fr": "90 L"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Olej",
+       "en": "Oil",
+       "sk": "Olej",
+       "fr": "Huile"
+      },
+      "value": {
+       "pl": "3 L",
+       "en": "3 L",
+       "sk": "3 L",
+       "fr": "3 L"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Płyn chłodzący",
+       "en": "Coolant",
+       "sk": "Chladiaca kvapalina",
+       "fr": "Liquide de refroidissement"
+      },
+      "value": {
+       "pl": "≈ 1,5 L",
+       "en": "≈ 1,5 L",
+       "sk": "≈ 1,5 L",
+       "fr": "≈ 1,5 L"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Gatunki paliwa/oleju",
+       "en": "Fuel/oil grades",
+       "sk": "Druhy paliva/oleja",
+       "fr": "Types carburant/huile"
+      },
+      "value": {
+       "pl": "wg AFM",
+       "en": "see AFM",
+       "sk": "podľa AFM",
+       "fr": "voir AFM"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "ops",
+    "title": {
+     "pl": "Ograniczenia eksploatacyjne",
+     "en": "Operating limitations",
+     "sk": "Prevádzkové obmedzenia",
+     "fr": "Limitations d'utilisation"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Pułap maks.",
+       "en": "Max altitude",
+       "sk": "Max. výška",
+       "fr": "Altitude max"
+      },
+      "value": {
+       "pl": "15 500 ft",
+       "en": "15 500 ft",
+       "sk": "15 500 ft",
+       "fr": "15 500 ft"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Rodzaj lotów",
+       "en": "Approved operations",
+       "sk": "Schválená prevádzka",
+       "fr": "Opérations approuvées"
+      },
+      "value": {
+       "pl": "Day VFR + Night VFR",
+       "en": "Day VFR + Night VFR",
+       "sk": "Day VFR + Night VFR",
+       "fr": "Day VFR + Night VFR"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Opony",
+       "en": "Tyres",
+       "sk": "Pneumatiky",
+       "fr": "Pneus"
+      },
+      "value": {
+       "pl": "4.00-6 Kaspar",
+       "en": "4.00-6 Kaspar",
+       "sk": "4.00-6 Kaspar",
+       "fr": "4.00-6 Kaspar"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "Uwaga – korkociąg",
+       "en": "Note – spin recovery",
+       "sk": "Pozn. – vývrtka",
+       "fr": "Note – vrille"
+      },
+      "value": {
+       "pl": "Przy wyprowadzaniu z korkociągu mogą zostać przekroczone VFE i współczynniki – samolot to wytrzymuje, wg AFM",
+       "en": "During spin recovery VFE and load factors may be exceeded – proven, see AFM",
+       "sk": "Pri vybratí vývrtky môžu byť prekročené VFE a násobky – lietadlo to vydrží, podľa AFM",
+       "fr": "Lors de la sortie de vrille, VFE et facteurs de charge peuvent être dépassés – démontré, voir AFM"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     }
+    ]
+   },
+   {
+    "id": "docs",
+    "title": {
+     "pl": "Dokumentacja obowiązująca",
+     "en": "Applicable documents",
+     "sk": "Platná dokumentácia",
+     "fr": "Documents applicables"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "AFM",
+       "en": "AFM",
+       "sk": "AFM",
+       "fr": "AFM"
+      },
+      "value": {
+       "pl": "TOM-TC-15-AFM",
+       "en": "TOM-TC-15-AFM",
+       "sk": "TOM-TC-15-AFM",
+       "fr": "TOM-TC-15-AFM"
+      },
+      "source": "EASA TCDS A.606 Iss.4 (18-MAR-2025)"
+     },
+     {
+      "label": {
+       "pl": "AMM",
+       "en": "AMM",
+       "sk": "AMM",
+       "fr": "AMM"
+      },
+      "value": {
+       "pl": "TOM-TC-15-AMM Issue D rev.1 (02/2026)",
+       "en": "TOM-TC-15-AMM Issue D rev.1 (02/2026)",
+       "sk": "TOM-TC-15-AMM Issue D rev.1 (02/2026)",
+       "fr": "TOM-TC-15-AMM Issue D rev.1 (02/2026)"
+      },
+      "source": "tomarkaero.com – Technical support"
+     },
+     {
+      "label": {
+       "pl": "Lista ważnych publikacji",
+       "en": "Valid publications list",
+       "sk": "Zoznam platných publikácií",
+       "fr": "Liste des publications"
+      },
+      "value": {
+       "pl": "TOM-TC-606-VTP Rev H (04/2026)",
+       "en": "TOM-TC-606-VTP Rev H (04/2026)",
+       "sk": "TOM-TC-606-VTP Rev H (04/2026)",
+       "fr": "TOM-TC-606-VTP Rev H (04/2026)"
+      },
+      "source": "tomarkaero.com – Technical support"
+     }
+    ]
+   }
+  ],
+  "tasks": [
+   {
+    "id": "insp_25h",
+    "title": {
+     "pl": "Przegląd po 25 h (nowy samolot / nowy silnik)",
+     "en": "25 h inspection (new aircraft / engine)",
+     "sk": "Prehliadka po 25 h (nové lietadlo / motor)",
+     "fr": "Inspection 25 h (avion / moteur neuf)"
+    },
+    "category": "airframe",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": 25,
+    "toleranceHours": 1.25,
+    "mandatory": true,
+    "source": "SB_SD4-03-2023 / TOM-TC-15-AMM",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "insp_50h",
+    "title": {
+     "pl": "Przegląd 50 h (zalecany)",
+     "en": "50 h inspection (recommended)",
+     "sk": "Prehliadka 50 h (odporúčaná)",
+     "fr": "Inspection 50 h (recommandée)"
+    },
+    "category": "airframe",
+    "intervalHours": 50,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": 2.5,
+    "mandatory": false,
+    "source": "SB_SD4-03-2023 / TOM-TC-15-AMM",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "insp_100h",
+    "title": {
+     "pl": "Przegląd 100 h (obowiązkowy)",
+     "en": "100 h inspection (mandatory)",
+     "sk": "Prehliadka 100 h (povinná)",
+     "fr": "Inspection 100 h (obligatoire)"
+    },
+    "category": "airframe",
+    "intervalHours": 100,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": 5,
+    "mandatory": true,
+    "source": "SB_SD4-03-2023 / TOM-TC-15-AMM",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "insp_annual",
+    "title": {
+     "pl": "Przegląd roczny",
+     "en": "Annual inspection",
+     "sk": "Ročná prehliadka",
+     "fr": "Visite annuelle"
+    },
+    "category": "airframe",
+    "intervalHours": null,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "TOM-TC-15-AMM – sprawdź / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "insp_2000h",
+    "title": {
+     "pl": "Duży przegląd płatowca 2000 h",
+     "en": "2000 h major airframe inspection",
+     "sk": "Veľká prehliadka draku 2000 h",
+     "fr": "Grande visite cellule 2000 h"
+    },
+    "category": "airframe",
+    "intervalHours": 2000,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": 100,
+    "mandatory": true,
+    "source": "SB-SD4-01-2024 / SB_SD4-03-2023 / AMM 04-30-10",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "arc",
+    "title": {
+     "pl": "Przegląd zdatności (ARC)",
+     "en": "Airworthiness review (ARC)",
+     "sk": "Kontrola letovej spôsobilosti (ARC)",
+     "fr": "Examen de navigabilité (ARC)"
+    },
+    "category": "regulatory",
+    "intervalHours": null,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Part-ML, ML.A.901 (Rozp. UE 1321/2014)",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "rotax_oil",
+    "title": {
+     "pl": "Wymiana oleju i filtra (Rotax)",
+     "en": "Oil & filter change (Rotax)",
+     "sk": "Výmena oleja a filtra (Rotax)",
+     "fr": "Vidange huile et filtre (Rotax)"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": {
+     "pl": "Przy częstym użyciu AVGAS Rotax zaleca krótszy interwał.",
+     "en": "With frequent AVGAS use Rotax recommends a shorter interval.",
+     "sk": "With frequent AVGAS use Rotax recommends a shorter interval.",
+     "fr": "With frequent AVGAS use Rotax recommends a shorter interval."
+    }
+   },
+   {
+    "id": "rotax_plugs",
+    "title": {
+     "pl": "Świece zapłonowe",
+     "en": "Spark plugs",
+     "sk": "Zapaľovacie sviečky",
+     "fr": "Bougies"
+    },
+    "category": "engine",
+    "intervalHours": 200,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_gearbox",
+    "title": {
+     "pl": "Przegląd reduktora",
+     "en": "Gearbox inspection",
+     "sk": "Prehliadka reduktora",
+     "fr": "Inspection réducteur"
+    },
+    "category": "engine",
+    "intervalHours": 1000,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_rubber",
+    "title": {
+     "pl": "Wymiana elementów gumowych silnika",
+     "en": "Engine rubber parts replacement",
+     "sk": "Výmena gumových dielov motora",
+     "fr": "Remplacement pièces caoutchouc moteur"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 60,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_tbo",
+    "title": {
+     "pl": "Remont główny silnika (TBO)",
+     "en": "Engine overhaul (TBO)",
+     "sk": "Generálna oprava motora (TBO)",
+     "fr": "Révision générale moteur (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 180,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": {
+     "pl": "TBO zależy od numeru seryjnego silnika i biuletynów Rotax.",
+     "en": "TBO depends on engine S/N and Rotax bulletins.",
+     "sk": "TBO depends on engine S/N and Rotax bulletins.",
+     "fr": "TBO depends on engine S/N and Rotax bulletins."
+    }
+   },
+   {
+    "id": "prop",
+    "title": {
+     "pl": "Przegląd śmigła",
+     "en": "Propeller inspection",
+     "sk": "Prehliadka vrtule",
+     "fr": "Inspection hélice"
+    },
+    "category": "propeller",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta śmigła / propeller manual – ustaw interwał",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "brs_repack",
+    "title": {
+     "pl": "Spadochron ratowniczy – przepakowanie",
+     "en": "Rescue parachute – repack",
+     "sk": "Záchranný padák – prebalenie",
+     "fr": "Parachute – repliage"
+    },
+    "category": "rescue",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta BRS / Galaxy / Stratos – ustaw interwał",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "brs_rocket",
+    "title": {
+     "pl": "Spadochron ratowniczy – rakieta / żywotność",
+     "en": "Rescue parachute – rocket / service life",
+     "sk": "Záchranný padák – raketa / životnosť",
+     "fr": "Parachute – fusée / durée de vie"
+    },
+    "category": "rescue",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta BRS – ustaw interwał",
+    "verified": false,
+    "note": null
+   }
+  ]
+ },
+ {
+  "id": "sd4_ul",
+  "name": "Viper SD-4 UL / LSA",
+  "family": "viper",
+  "category": "UL",
+  "tcds": null,
+  "bulletinGroups": [
+   "SD4_UL"
+  ],
+  "speeds": [
+   {
+    "key": "VS0",
+    "label": {
+     "pl": "VS0 przeciągnięcie, klapy do lądowania",
+     "en": "VS0 stall, landing flaps",
+     "sk": "VS0 pád, pristávacie klapky",
+     "fr": "VS0 décrochage, volets atterrissage"
+    },
+    "value": 82,
+    "unit": "kmh",
+    "source": "tomarkaero.com – Viper SD4 LSA-UL (specyfikacja)",
+    "verified": false,
+    "zone": "white"
+   },
+   {
+    "key": "VS1",
+    "label": {
+     "pl": "VS1 przeciągnięcie, bez klap",
+     "en": "VS1 stall, clean",
+     "sk": "VS1 pád, bez kláp",
+     "fr": "VS1 décrochage, lisse"
+    },
+    "value": 93,
+    "unit": "kmh",
+    "source": "tomarkaero.com – Viper SD4 LSA-UL (specyfikacja)",
+    "verified": false,
+    "zone": "green"
+   },
+   {
+    "key": "VAPP",
+    "label": {
+     "pl": "Podejście (1,3×VS0)",
+     "en": "Approach (1.3×VS0)",
+     "sk": "Priblíženie (1,3×VS0)",
+     "fr": "Approche (1,3×VS0)"
+    },
+    "value": 107,
+    "unit": "kmh",
+    "source": "obliczone / computed 1.3×VS0",
+    "verified": false,
+    "zone": "approach"
+   },
+   {
+    "key": "VC",
+    "label": {
+     "pl": "VC prędkość przelotowa",
+     "en": "VC cruise speed",
+     "sk": "VC cestovná rýchlosť",
+     "fr": "VC vitesse de croisière"
+    },
+    "value": 200,
+    "unit": "kmh",
+    "source": "tomarkaero.com – Viper SD4 LSA-UL (specyfikacja)",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VNE",
+    "label": {
+     "pl": "VNE nieprzekraczalna",
+     "en": "VNE never exceed",
+     "sk": "VNE nikdy neprekročiteľná",
+     "fr": "VNE à ne jamais dépasser"
+    },
+    "value": 240,
+    "unit": "kmh",
+    "source": "airport-technology.com",
+    "verified": false,
+    "zone": "red"
+   },
+   {
+    "key": "VFE",
+    "label": {
+     "pl": "VFE maks. z klapami",
+     "en": "VFE max flaps extended",
+     "sk": "VFE max. s klapkami",
+     "fr": "VFE max volets sortis"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VA",
+    "label": {
+     "pl": "VA prędkość manewrowa",
+     "en": "VA manoeuvring speed",
+     "sk": "VA obratová rýchlosť",
+     "fr": "VA vitesse de manœuvre"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VR",
+    "label": {
+     "pl": "VR rotacja / start",
+     "en": "VR rotation / take-off",
+     "sk": "VR rotácia / vzlet",
+     "fr": "VR rotation / décollage"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "approach"
+   },
+   {
+    "key": "VX",
+    "label": {
+     "pl": "VX najlepszy kąt wznoszenia",
+     "en": "VX best angle of climb",
+     "sk": "VX najlepší uhol stúpania",
+     "fr": "VX meilleur angle de montée"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VY",
+    "label": {
+     "pl": "VY najlepsza prędkość wznoszenia",
+     "en": "VY best rate of climb",
+     "sk": "VY najlepšia stúpavosť",
+     "fr": "VY meilleur taux de montée"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VBG",
+    "label": {
+     "pl": "Najlepszy szybowanie",
+     "en": "Best glide",
+     "sk": "Najlepšie kĺzanie",
+     "fr": "Finesse max"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   }
+  ],
+  "manual": [
+   {
+    "id": "mass",
+    "title": {
+     "pl": "Masy",
+     "en": "Masses",
+     "sk": "Hmotnosti",
+     "fr": "Masses"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "MTOW (UL)",
+       "en": "MTOW (UL)",
+       "sk": "MTOW (UL)",
+       "fr": "MTOW (UL)"
+      },
+      "value": {
+       "pl": "472,5 kg",
+       "en": "472,5 kg",
+       "sk": "472,5 kg",
+       "fr": "472,5 kg"
+      },
+      "source": "Wikipedia – Tomark Viper SD4"
+     },
+     {
+      "label": {
+       "pl": "MTOW (LSA / SD4-600)",
+       "en": "MTOW (LSA / SD4-600)",
+       "sk": "MTOW (LSA / SD4-600)",
+       "fr": "MTOW (LSA / SD4-600)"
+      },
+      "value": {
+       "pl": "600 kg",
+       "en": "600 kg",
+       "sk": "600 kg",
+       "fr": "600 kg"
+      },
+      "source": "tomarkaero.com – Viper SD4 LSA-UL (specyfikacja)"
+     }
+    ]
+   },
+   {
+    "id": "pwr",
+    "title": {
+     "pl": "Zespół napędowy",
+     "en": "Power plant",
+     "sk": "Pohonná jednotka",
+     "fr": "Groupe motopropulseur"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Silnik",
+       "en": "Engine",
+       "sk": "Motor",
+       "fr": "Moteur"
+      },
+      "value": {
+       "pl": "Rotax 912 UL 80 KM / 912 ULS 100 KM",
+       "en": "Rotax 912 UL 80 KM / 912 ULS 100 KM",
+       "sk": "Rotax 912 UL 80 KM / 912 ULS 100 KM",
+       "fr": "Rotax 912 UL 80 KM / 912 ULS 100 KM"
+      },
+      "source": "Wikipedia – Tomark Viper SD4"
+     }
+    ]
+   },
+   {
+    "id": "perf",
+    "title": {
+     "pl": "Osiągi (orientacyjne)",
+     "en": "Performance (indicative)",
+     "sk": "Výkony (orientačné)",
+     "fr": "Performances (indicatives)"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Prędkość przelotowa",
+       "en": "Cruise speed",
+       "sk": "Cestovná rýchlosť",
+       "fr": "Vitesse de croisière"
+      },
+      "value": {
+       "pl": "200 km/h",
+       "en": "200 km/h",
+       "sk": "200 km/h",
+       "fr": "200 km/h"
+      },
+      "source": "tomarkaero.com – Viper SD4 LSA-UL (specyfikacja)"
+     },
+     {
+      "label": {
+       "pl": "Wznoszenie",
+       "en": "Climb rate",
+       "sk": "Stúpavosť",
+       "fr": "Taux de montée"
+      },
+      "value": {
+       "pl": "5–6 m/s",
+       "en": "5–6 m/s",
+       "sk": "5–6 m/s",
+       "fr": "5–6 m/s"
+      },
+      "source": "airport-technology.com / Wikipedia"
+     },
+     {
+      "label": {
+       "pl": "Doskonałość",
+       "en": "Glide",
+       "sk": "Kĺzavosť",
+       "fr": "Finesse"
+      },
+      "value": {
+       "pl": "≈ 10 km z 1 km",
+       "en": "≈ 10 km from 1 km",
+       "sk": "≈ 10 km z 1 km",
+       "fr": "≈ 10 km depuis 1 km"
+      },
+      "source": "tomarkaero.com – Viper SD4 LSA-UL (specyfikacja)"
+     }
+    ]
+   },
+   {
+    "id": "docs",
+    "title": {
+     "pl": "Dokumentacja obowiązująca",
+     "en": "Applicable documents",
+     "sk": "Platná dokumentácia",
+     "fr": "Documents applicables"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Instrukcja",
+       "en": "Manual",
+       "sk": "Príručka",
+       "fr": "Manuel"
+      },
+      "value": {
+       "pl": "AFM/POH dostarczony z samolotem – załącz PDF w aplikacji",
+       "en": "AFM/POH supplied with the aircraft – attach the PDF in the app",
+       "sk": "AFM/POH dodaný s lietadlom – priložte PDF v aplikácii",
+       "fr": "AFM/POH fourni avec l'avion – joignez le PDF dans l'app"
+      },
+      "source": "—"
+     }
+    ]
+   }
+  ],
+  "tasks": [
+   {
+    "id": "ul_100h",
+    "title": {
+     "pl": "Przegląd okresowy 100 h / 12 mies.",
+     "en": "Periodic inspection 100 h / 12 months",
+     "sk": "Periodická údržba 100 h / 12 mes.",
+     "fr": "Visite périodique 100 h / 12 mois"
+    },
+    "category": "airframe",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "SB_LŠZ_SD4-03-2017 (100 h / 1 rok)",
+    "verified": true,
+    "note": null
+   },
+   {
+    "id": "ul_national",
+    "title": {
+     "pl": "Przegląd / dokument zdatności wg przepisów krajowych UL",
+     "en": "National UL airworthiness renewal",
+     "sk": "Obnova spôsobilosti podľa národných predpisov UL",
+     "fr": "Renouvellement navigabilité ULM national"
+    },
+    "category": "regulatory",
+    "intervalHours": null,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Przepisy krajowe (np. ULC, LAA) – ustaw / set",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_oil",
+    "title": {
+     "pl": "Wymiana oleju i filtra (Rotax)",
+     "en": "Oil & filter change (Rotax)",
+     "sk": "Výmena oleja a filtra (Rotax)",
+     "fr": "Vidange huile et filtre (Rotax)"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": {
+     "pl": "Przy częstym użyciu AVGAS Rotax zaleca krótszy interwał.",
+     "en": "With frequent AVGAS use Rotax recommends a shorter interval.",
+     "sk": "With frequent AVGAS use Rotax recommends a shorter interval.",
+     "fr": "With frequent AVGAS use Rotax recommends a shorter interval."
+    }
+   },
+   {
+    "id": "rotax_plugs",
+    "title": {
+     "pl": "Świece zapłonowe",
+     "en": "Spark plugs",
+     "sk": "Zapaľovacie sviečky",
+     "fr": "Bougies"
+    },
+    "category": "engine",
+    "intervalHours": 200,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_gearbox",
+    "title": {
+     "pl": "Przegląd reduktora",
+     "en": "Gearbox inspection",
+     "sk": "Prehliadka reduktora",
+     "fr": "Inspection réducteur"
+    },
+    "category": "engine",
+    "intervalHours": 1000,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_rubber",
+    "title": {
+     "pl": "Wymiana elementów gumowych silnika",
+     "en": "Engine rubber parts replacement",
+     "sk": "Výmena gumových dielov motora",
+     "fr": "Remplacement pièces caoutchouc moteur"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 60,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_tbo",
+    "title": {
+     "pl": "Remont główny silnika (TBO)",
+     "en": "Engine overhaul (TBO)",
+     "sk": "Generálna oprava motora (TBO)",
+     "fr": "Révision générale moteur (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 180,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": {
+     "pl": "TBO zależy od numeru seryjnego silnika i biuletynów Rotax.",
+     "en": "TBO depends on engine S/N and Rotax bulletins.",
+     "sk": "TBO depends on engine S/N and Rotax bulletins.",
+     "fr": "TBO depends on engine S/N and Rotax bulletins."
+    }
+   },
+   {
+    "id": "prop",
+    "title": {
+     "pl": "Przegląd śmigła",
+     "en": "Propeller inspection",
+     "sk": "Prehliadka vrtule",
+     "fr": "Inspection hélice"
+    },
+    "category": "propeller",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta śmigła / propeller manual – ustaw interwał",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "brs_repack",
+    "title": {
+     "pl": "Spadochron ratowniczy – przepakowanie",
+     "en": "Rescue parachute – repack",
+     "sk": "Záchranný padák – prebalenie",
+     "fr": "Parachute – repliage"
+    },
+    "category": "rescue",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta BRS / Galaxy / Stratos – ustaw interwał",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "brs_rocket",
+    "title": {
+     "pl": "Spadochron ratowniczy – rakieta / żywotność",
+     "en": "Rescue parachute – rocket / service life",
+     "sk": "Záchranný padák – raketa / životnosť",
+     "fr": "Parachute – fusée / durée de vie"
+    },
+    "category": "rescue",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta BRS – ustaw interwał",
+    "verified": false,
+    "note": null
+   }
+  ]
+ },
+ {
+  "id": "gt9",
+  "name": "Skyper GT9",
+  "family": "skyper",
+  "category": "UL",
+  "tcds": null,
+  "bulletinGroups": [
+   "GT9"
+  ],
+  "speeds": [
+   {
+    "key": "VS0",
+    "label": {
+     "pl": "VS0 przeciągnięcie, klapy do lądowania",
+     "en": "VS0 stall, landing flaps",
+     "sk": "VS0 pád, pristávacie klapky",
+     "fr": "VS0 décrochage, volets atterrissage"
+    },
+    "value": 78,
+    "unit": "kmh",
+    "source": "tomarkaero.com – Skyper GT9 (specyfikacja)",
+    "verified": false,
+    "zone": "white"
+   },
+   {
+    "key": "VS1",
+    "label": {
+     "pl": "VS1 przeciągnięcie, bez klap",
+     "en": "VS1 stall, clean",
+     "sk": "VS1 pád, bez kláp",
+     "fr": "VS1 décrochage, lisse"
+    },
+    "value": 93,
+    "unit": "kmh",
+    "source": "tomarkaero.com – Skyper GT9 (specyfikacja)",
+    "verified": false,
+    "zone": "green"
+   },
+   {
+    "key": "VAPP",
+    "label": {
+     "pl": "Podejście (1,3×VS0)",
+     "en": "Approach (1.3×VS0)",
+     "sk": "Priblíženie (1,3×VS0)",
+     "fr": "Approche (1,3×VS0)"
+    },
+    "value": 101,
+    "unit": "kmh",
+    "source": "obliczone / computed 1.3×VS0",
+    "verified": false,
+    "zone": "approach"
+   },
+   {
+    "key": "VC",
+    "label": {
+     "pl": "VC prędkość przelotowa",
+     "en": "VC cruise speed",
+     "sk": "VC cestovná rýchlosť",
+     "fr": "VC vitesse de croisière"
+    },
+    "value": 205,
+    "unit": "kmh",
+    "source": "tomarkaero.com – Skyper GT9 (specyfikacja)",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VNE",
+    "label": {
+     "pl": "VNE nieprzekraczalna",
+     "en": "VNE never exceed",
+     "sk": "VNE nikdy neprekročiteľná",
+     "fr": "VNE à ne jamais dépasser"
+    },
+    "value": 250,
+    "unit": "kmh",
+    "source": "Wikipedia – Tomark Skyper GT9",
+    "verified": false,
+    "zone": "red"
+   },
+   {
+    "key": "VFE",
+    "label": {
+     "pl": "VFE maks. z klapami",
+     "en": "VFE max flaps extended",
+     "sk": "VFE max. s klapkami",
+     "fr": "VFE max volets sortis"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VA",
+    "label": {
+     "pl": "VA prędkość manewrowa",
+     "en": "VA manoeuvring speed",
+     "sk": "VA obratová rýchlosť",
+     "fr": "VA vitesse de manœuvre"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VR",
+    "label": {
+     "pl": "VR rotacja / start",
+     "en": "VR rotation / take-off",
+     "sk": "VR rotácia / vzlet",
+     "fr": "VR rotation / décollage"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "approach"
+   },
+   {
+    "key": "VX",
+    "label": {
+     "pl": "VX najlepszy kąt wznoszenia",
+     "en": "VX best angle of climb",
+     "sk": "VX najlepší uhol stúpania",
+     "fr": "VX meilleur angle de montée"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VY",
+    "label": {
+     "pl": "VY najlepsza prędkość wznoszenia",
+     "en": "VY best rate of climb",
+     "sk": "VY najlepšia stúpavosť",
+     "fr": "VY meilleur taux de montée"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   },
+   {
+    "key": "VBG",
+    "label": {
+     "pl": "Najlepszy szybowanie",
+     "en": "Best glide",
+     "sk": "Najlepšie kĺzanie",
+     "fr": "Finesse max"
+    },
+    "value": null,
+    "unit": "kt",
+    "source": "AFM – uzupełnij / fill in",
+    "verified": false,
+    "zone": "normal"
+   }
+  ],
+  "manual": [
+   {
+    "id": "mass",
+    "title": {
+     "pl": "Masy",
+     "en": "Masses",
+     "sk": "Hmotnosti",
+     "fr": "Masses"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "MTOW (UL)",
+       "en": "MTOW (UL)",
+       "sk": "MTOW (UL)",
+       "fr": "MTOW (UL)"
+      },
+      "value": {
+       "pl": "472,5 kg",
+       "en": "472,5 kg",
+       "sk": "472,5 kg",
+       "fr": "472,5 kg"
+      },
+      "source": "Altair.com.pl / Wikipedia"
+     },
+     {
+      "label": {
+       "pl": "MTOW (LSA / GT9-600)",
+       "en": "MTOW (LSA / GT9-600)",
+       "sk": "MTOW (LSA / GT9-600)",
+       "fr": "MTOW (LSA / GT9-600)"
+      },
+      "value": {
+       "pl": "600 kg",
+       "en": "600 kg",
+       "sk": "600 kg",
+       "fr": "600 kg"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     }
+    ]
+   },
+   {
+    "id": "pwr",
+    "title": {
+     "pl": "Zespół napędowy",
+     "en": "Power plant",
+     "sk": "Pohonná jednotka",
+     "fr": "Groupe motopropulseur"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Silnik",
+       "en": "Engine",
+       "sk": "Motor",
+       "fr": "Moteur"
+      },
+      "value": {
+       "pl": "Rotax 912 ULS 100 KM",
+       "en": "Rotax 912 ULS 100 KM",
+       "sk": "Rotax 912 ULS 100 KM",
+       "fr": "Rotax 912 ULS 100 KM"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     },
+     {
+      "label": {
+       "pl": "Śmigło",
+       "en": "Propeller",
+       "sk": "Vrtuľa",
+       "fr": "Hélice"
+      },
+      "value": {
+       "pl": "3-łopatowe nastawialne DUC lub Neuform",
+       "en": "3-blade ground-adjustable DUC or Neuform",
+       "sk": "3-listá nastaviteľná DUC alebo Neuform",
+       "fr": "tripale réglable au sol DUC ou Neuform"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     },
+     {
+      "label": {
+       "pl": "Klapy",
+       "en": "Flaps",
+       "sk": "Klapky",
+       "fr": "Volets"
+      },
+      "value": {
+       "pl": "szczelinowe, elektryczne, 3 położenia",
+       "en": "slotted, electric, 3 positions",
+       "sk": "štrbinové, elektrické, 3 polohy",
+       "fr": "à fente, électriques, 3 positions"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     }
+    ]
+   },
+   {
+    "id": "fluids",
+    "title": {
+     "pl": "Płyny i paliwo",
+     "en": "Fluids & fuel",
+     "sk": "Kvapaliny a palivo",
+     "fr": "Fluides et carburant"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Zbiorniki paliwa",
+       "en": "Fuel tanks",
+       "sk": "Palivové nádrže",
+       "fr": "Réservoirs"
+      },
+      "value": {
+       "pl": "88 L",
+       "en": "88 L",
+       "sk": "88 L",
+       "fr": "88 L"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     },
+     {
+      "label": {
+       "pl": "Zużycie",
+       "en": "Consumption",
+       "sk": "Spotreba",
+       "fr": "Consommation"
+      },
+      "value": {
+       "pl": "≈ 17 L/h",
+       "en": "≈ 17 L/h",
+       "sk": "≈ 17 L/h",
+       "fr": "≈ 17 L/h"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     }
+    ]
+   },
+   {
+    "id": "perf",
+    "title": {
+     "pl": "Osiągi (orientacyjne)",
+     "en": "Performance (indicative)",
+     "sk": "Výkony (orientačné)",
+     "fr": "Performances (indicatives)"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Prędkość przelotowa",
+       "en": "Cruise speed",
+       "sk": "Cestovná rýchlosť",
+       "fr": "Vitesse de croisière"
+      },
+      "value": {
+       "pl": "205 km/h (111 kt)",
+       "en": "205 km/h (111 kt)",
+       "sk": "205 km/h (111 kt)",
+       "fr": "205 km/h (111 kt)"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     },
+     {
+      "label": {
+       "pl": "Wznoszenie",
+       "en": "Climb rate",
+       "sk": "Stúpavosť",
+       "fr": "Taux de montée"
+      },
+      "value": {
+       "pl": "5,5 m/s",
+       "en": "5,5 m/s",
+       "sk": "5,5 m/s",
+       "fr": "5,5 m/s"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     },
+     {
+      "label": {
+       "pl": "Rozbieg startowy",
+       "en": "Take-off distance",
+       "sk": "Vzletová dráha",
+       "fr": "Distance décollage"
+      },
+      "value": {
+       "pl": "175 m",
+       "en": "175 m",
+       "sk": "175 m",
+       "fr": "175 m"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     },
+     {
+      "label": {
+       "pl": "Dobieg",
+       "en": "Landing distance",
+       "sk": "Pristávacia dráha",
+       "fr": "Distance atterrissage"
+      },
+      "value": {
+       "pl": "150 m",
+       "en": "150 m",
+       "sk": "150 m",
+       "fr": "150 m"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     },
+     {
+      "label": {
+       "pl": "Długotrwałość / zasięg",
+       "en": "Endurance / range",
+       "sk": "Vytrvalosť / dolet",
+       "fr": "Autonomie / distance"
+      },
+      "value": {
+       "pl": "4,5 h / 1000 km",
+       "en": "4,5 h / 1000 km",
+       "sk": "4,5 h / 1000 km",
+       "fr": "4,5 h / 1000 km"
+      },
+      "source": "tomarkaero.com – Skyper GT9 (specyfikacja)"
+     }
+    ]
+   },
+   {
+    "id": "docs",
+    "title": {
+     "pl": "Dokumentacja obowiązująca",
+     "en": "Applicable documents",
+     "sk": "Platná dokumentácia",
+     "fr": "Documents applicables"
+    },
+    "items": [
+     {
+      "label": {
+       "pl": "Instrukcja",
+       "en": "Manual",
+       "sk": "Príručka",
+       "fr": "Manuel"
+      },
+      "value": {
+       "pl": "AFM/POH dostarczony z samolotem – załącz PDF w aplikacji",
+       "en": "AFM/POH supplied with the aircraft – attach the PDF in the app",
+       "sk": "AFM/POH dodaný s lietadlom – priložte PDF v aplikácii",
+       "fr": "AFM/POH fourni avec l'avion – joignez le PDF dans l'app"
+      },
+      "source": "—"
+     }
+    ]
+   }
+  ],
+  "tasks": [
+   {
+    "id": "ul_100h",
+    "title": {
+     "pl": "Przegląd okresowy 100 h / 12 mies.",
+     "en": "Periodic inspection 100 h / 12 months",
+     "sk": "Periodická údržba 100 h / 12 mes.",
+     "fr": "Visite périodique 100 h / 12 mois"
+    },
+    "category": "airframe",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja obsługi technicznej GT9 – sprawdź / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "ul_national",
+    "title": {
+     "pl": "Przegląd / dokument zdatności wg przepisów krajowych UL",
+     "en": "National UL airworthiness renewal",
+     "sk": "Obnova spôsobilosti podľa národných predpisov UL",
+     "fr": "Renouvellement navigabilité ULM national"
+    },
+    "category": "regulatory",
+    "intervalHours": null,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Przepisy krajowe (np. ULC, LAA) – ustaw / set",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_oil",
+    "title": {
+     "pl": "Wymiana oleju i filtra (Rotax)",
+     "en": "Oil & filter change (Rotax)",
+     "sk": "Výmena oleja a filtra (Rotax)",
+     "fr": "Vidange huile et filtre (Rotax)"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": {
+     "pl": "Przy częstym użyciu AVGAS Rotax zaleca krótszy interwał.",
+     "en": "With frequent AVGAS use Rotax recommends a shorter interval.",
+     "sk": "With frequent AVGAS use Rotax recommends a shorter interval.",
+     "fr": "With frequent AVGAS use Rotax recommends a shorter interval."
+    }
+   },
+   {
+    "id": "rotax_plugs",
+    "title": {
+     "pl": "Świece zapłonowe",
+     "en": "Spark plugs",
+     "sk": "Zapaľovacie sviečky",
+     "fr": "Bougies"
+    },
+    "category": "engine",
+    "intervalHours": 200,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_gearbox",
+    "title": {
+     "pl": "Przegląd reduktora",
+     "en": "Gearbox inspection",
+     "sk": "Prehliadka reduktora",
+     "fr": "Inspection réducteur"
+    },
+    "category": "engine",
+    "intervalHours": 1000,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_rubber",
+    "title": {
+     "pl": "Wymiana elementów gumowych silnika",
+     "en": "Engine rubber parts replacement",
+     "sk": "Výmena gumových dielov motora",
+     "fr": "Remplacement pièces caoutchouc moteur"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 60,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "rotax_tbo",
+    "title": {
+     "pl": "Remont główny silnika (TBO)",
+     "en": "Engine overhaul (TBO)",
+     "sk": "Generálna oprava motora (TBO)",
+     "fr": "Révision générale moteur (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 180,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Rotax MML-912 – sprawdź aktualną rewizję / verify",
+    "verified": false,
+    "note": {
+     "pl": "TBO zależy od numeru seryjnego silnika i biuletynów Rotax.",
+     "en": "TBO depends on engine S/N and Rotax bulletins.",
+     "sk": "TBO depends on engine S/N and Rotax bulletins.",
+     "fr": "TBO depends on engine S/N and Rotax bulletins."
+    }
+   },
+   {
+    "id": "prop",
+    "title": {
+     "pl": "Przegląd śmigła",
+     "en": "Propeller inspection",
+     "sk": "Prehliadka vrtule",
+     "fr": "Inspection hélice"
+    },
+    "category": "propeller",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta śmigła / propeller manual – ustaw interwał",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "brs_repack",
+    "title": {
+     "pl": "Spadochron ratowniczy – przepakowanie",
+     "en": "Rescue parachute – repack",
+     "sk": "Záchranný padák – prebalenie",
+     "fr": "Parachute – repliage"
+    },
+    "category": "rescue",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta BRS / Galaxy / Stratos – ustaw interwał",
+    "verified": false,
+    "note": null
+   },
+   {
+    "id": "brs_rocket",
+    "title": {
+     "pl": "Spadochron ratowniczy – rakieta / żywotność",
+     "en": "Rescue parachute – rocket / service life",
+     "sk": "Záchranný padák – raketa / životnosť",
+     "fr": "Parachute – fusée / durée de vie"
+    },
+    "category": "rescue",
+    "intervalHours": null,
+    "intervalMonths": null,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Instrukcja producenta BRS – ustaw interwał",
+    "verified": false,
+    "note": null
+   }
+  ]
+ }
+]

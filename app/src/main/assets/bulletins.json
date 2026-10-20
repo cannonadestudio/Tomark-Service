@@ -1,0 +1,482 @@
+{
+ "version": 1,
+ "updated": "2026-10-20",
+ "bulletins": [
+  {
+   "id": "EASA-AD-2026-0170",
+   "date": "2026-09-03",
+   "title": "ATA 72 – Engine – Propeller Gearbox – Inspection (Rotax 912 ULS2/S2)",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0170.pdf/AD_2026-0170_1"
+  },
+  {
+   "id": "ASB_SD4UL-01-2026",
+   "date": "2026-07-01",
+   "title": "Inspection of the propeller gearbox for ROTAX 912, 912 i (Series) Aircraft Engines",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ASB_SD4-04-2026",
+   "date": "2026-06-30",
+   "title": "Inspection of the propeller gearbox for ROTAX 912 ULS2 Aircraft Engines",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ROTAX-ASB-2026-001",
+   "date": "2026-06-22",
+   "title": "Rotax ASB: Inspection of the propeller gearbox for 912 / 912 i / 914 (S/N listed) – also UL/ULS engines",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR",
+    "SD4_UL",
+    "GT9"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://www.flyrotax.com/services/technical-documentation.html"
+  },
+  {
+   "id": "TOM-TC-606-VTP-H",
+   "date": "2026-04-13",
+   "title": "List of Valid Technical Publications, Revision H",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "TOM-TC-01-AMM-H",
+   "date": "2026-04-08",
+   "title": "Aircraft Maintenance Manual Viper SD-4 RTC Issue H",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB_SD4-02-2026",
+   "date": "2026-02-19",
+   "title": "Update of an error in the AMM Issue D, for Viper SD-4 Night-VFR",
+   "groups": [
+    "SD4_NVFR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "TOM-TC-15-AMM-D1",
+   "date": "2026-02-19",
+   "title": "Viper SD-4 Night-VFR Aircraft Maintenance Manual, Issue D, revision 1",
+   "groups": [
+    "SD4_NVFR"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB_SD4-04-2025",
+   "date": "2025-12-18",
+   "title": "Optional engine intake air filter GREEN FILTER EUROPE",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB_SD4-03-2025",
+   "date": "2025-12-18",
+   "title": "Optional Battery EXIDE",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB_SD4UL-02-2025",
+   "date": "2025-11-03",
+   "title": "Replacement of fuel hoses",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB_SD4-02-2025",
+   "date": "2025-10-02",
+   "title": "Replacement of fuel hoses",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB_SD4-01-2025",
+   "date": "2025-01-10",
+   "title": "Inspection and/or replacement of expansion tank assembly for ROTAX 912 ULS engines",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB_SD4UL-01-2025",
+   "date": "2025-01-10",
+   "title": "Inspection and/or replacement of expansion tank assembly for ROTAX 912 ULS / 912 iS SPORT",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB_GT9-01-2025",
+   "date": "2025-01-10",
+   "title": "Inspection and/or replacement of expansion tank assembly for ROTAX 912 ULS engines",
+   "groups": [
+    "GT9"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-SD4-01-2024",
+   "date": "2024-12-12",
+   "title": "2000-hour Major Airframe Inspection",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-SD4-03-2023",
+   "date": "2023-09-15",
+   "title": "Specification of aircraft inspection tolerances",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://www.tomarkaero.com/wp-content/uploads/technical_support/bulletins/2023/SB_SD4-03-2023_Specification%20of%20Aircraft%20Inspection%20Tolerances.pdf"
+  },
+  {
+   "id": "SB-SD4-04-2023",
+   "date": "2023-09-14",
+   "title": "Exchange of stator assembly / propeller shaft on Rotax 912ULS (Rotax SB-912-077UL, -078UL)",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.tomarkaero.com/wp-content/uploads/technical_support/bulletins/2023/SB_SD4-04-2023_IR-Exchange-of-stator-assy--and-propeller-shaft-on-ROTAX-912ULS.pdf"
+  },
+  {
+   "id": "SB-SD4-02-2023",
+   "date": "2023-03-30",
+   "title": "Installation of two DYNON SkyView HDX displays (SV-HDX1100)",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://www.tomarkaero.com/wp-content/uploads/SB_SD4-02-2023_IR.pdf"
+  },
+  {
+   "id": "SB-SD4-01-2023",
+   "date": "2023-01-20",
+   "title": "Replacement of fuel pump nipple fittings on ROTAX 912 (Series)",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.tomarkaero.com/wp-content/uploads/technical_support/bulletins/2023/SB_SD4-01-2023_Replacement%20of%20fuel%20pump%20nipple%20fittings%20on%20ROTAX%20Engine%20Type%20912%20(Series)%20Aircraft%20Engines.pdf"
+  },
+  {
+   "id": "SB-SD4-03-2022",
+   "date": "2022-07-15",
+   "title": "Installation of SilentHektik F1209v Coolant Thermostat",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-SD4-02-2022",
+   "date": "2022-06-30",
+   "title": "SD4-A-1-509-L-7 / R-7 Engine mount bottom bracket outer stiffeners inspection",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-SD4-01-2022",
+   "date": "2022-04-28",
+   "title": "Installation of DUC Hélices FLASH-R propeller H-FSH_3-D-R_I",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-SD4-01-2021",
+   "date": "2021-09-21",
+   "title": "Exchange of STROBE and NAV LIGHTS automatic circuit breakers [OPTIONAL]",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-SD4-02-2020",
+   "date": "2020-12-15",
+   "title": "Exchange of carburettor floats on ROTAX 912 ULS (P/N 861185 / 861188)",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-SD4-01-2020",
+   "date": "2020-01-09",
+   "title": "Introduction of Oil Hoses CONTI OLN M4M-2 for Rotax 912 S2/ULS2",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-SD4-01-2019",
+   "date": "2019-08-09",
+   "title": "Replacement of circlip Rotax P/N 945785 in both carburettors (912 ULS)",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "TOM-TC-01-ICA",
+   "date": "2019-01-11",
+   "title": "Instructions for Continued Airworthiness – Viper SD-4 RTC / Night-VFR",
+   "groups": [
+    "SD4_RTC",
+    "SD4_NVFR"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-SD4-06-2017-R2",
+   "date": "2018-02-12",
+   "title": "Valve push-rod assy / rocker arms inspection or replacement – ROTAX 912/914",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-SD4-01-2017-R1",
+   "date": "2017-12-12",
+   "title": "Additional exhaust silencer installation",
+   "groups": [
+    "SD4_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB-B-SD4-04-2017",
+   "date": "2017-07-03",
+   "title": "Cabin canopy glass maintenance update",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SB_LSZ_SD4-03-2017",
+   "date": "2017-06-19",
+   "title": "Connection of central fuselage rear cross-beam with vertical stiffener (all Viper SD-4)",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.tomarkaero.com/wp-content/uploads/technical_support/bulletins/2017/SB_LSZ_SD4-03-2017_SVK.pdf"
+  },
+  {
+   "id": "SB_SD4-01-2016",
+   "date": "2016-08-16",
+   "title": "Inspection / replacement of Rotax 912/914 carburettor floats",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SIB-SD4-02-2015",
+   "date": "2015-12-11",
+   "title": "Use of ACF-50 anti-corrosion compound",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "SIB-SD4-01-2015",
+   "date": "2015-09-16",
+   "title": "Visual inspection of rudder pedals (SK)",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ZB-SD4-03-2014",
+   "date": "2014-07-11",
+   "title": "Autopilot servo slipping (SK)",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ZB-SD4-02-2014",
+   "date": "2014-06-19",
+   "title": "Replacement of tow-hook lock (SK)",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ZB-SD4-01-2014",
+   "date": "2014-03-06",
+   "title": "Tightening of rescue system carabiner (SK)",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ZB-SD4-04-2013",
+   "date": "2013-08-05",
+   "title": "Static pressure port relocated to rear fuselage (SK)",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ZB-SD4-03-2013",
+   "date": "2013-05-10",
+   "title": "Nose gear leg flange without reinforcing ribs – inspection/replacement (SK)",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ZB-SD4-02-2013",
+   "date": "2013-05-07",
+   "title": "Nose gear leg connecting flange – inspection/replacement (SK)",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ZB-SD4-01-2012",
+   "date": "2012-09-28",
+   "title": "Nose gear steering rod installation change (SK)",
+   "groups": [
+    "SD4_UL"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.tomarkaero.com/en/technical-support/"
+  }
+ ]
+}

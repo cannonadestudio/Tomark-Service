@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Low-wing aircraft seen from above, inside the 66dp safe zone, plus a small wrench. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- fuselage -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M54,26 C56.5,26 57.5,29 57.5,33 L57.5,72 L56,80 L52,80 L50.5,72 L50.5,33 C50.5,29 51.5,26 54,26 Z" />
+    <!-- wing -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M24,46 L50.5,43 L57.5,43 L84,46 L84,52 L57.5,52 L50.5,52 L24,52 Z" />
+    <!-- tailplane -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M42,72 L66,72 L66,77 L42,77 Z" />
+    <!-- amber spinner -->
+    <path android:fillColor="#F2A541"
+        android:pathData="M54,22 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" />
+</vector>
