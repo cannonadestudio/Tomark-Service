@@ -125,6 +125,7 @@ S = {
  "refresh_fail": ("No connection – showing saved list", "Brak połączenia – pokazuję zapisaną listę", "Bez pripojenia – zobrazujem uložený zoznam", "Pas de connexion – liste enregistrée"),
  "filter_open": ("Without status", "Bez statusu", "Bez stavu", "Sans statut"),
  "filter_hide_docs": ("Hide documents", "Ukryj dokumenty", "Skryť dokumenty", "Masquer documents"),
+ "bl_before_build": ("Issued before the aircraft was built (%1$d) – usually done at the factory, check", "Wydany przed rokiem produkcji samolotu (%1$d) – zwykle wykonany fabrycznie, sprawdź", "Vydaný pred rokom výroby (%1$d) – zvyčajne vykonaný vo výrobe, overte", "Publié avant la construction (%1$d) – souvent fait en usine, vérifier"),
  "bl_new": ("NEW", "NOWY", "NOVÝ", "NOUVEAU"),
  "bl_done": ("Complied", "Wykonany", "Vykonaný", "Appliqué"),
  "bl_na": ("Not applicable", "Nie dotyczy", "Netýka sa", "Non applicable"),

@@ -174,7 +174,7 @@ private fun Root(tab: Int, setTab: (Int) -> Unit) {
         bottomBar = {
             if (overlay == null && aircraft != null) {
                 val serviceBadge = Maintenance.compute(aircraft, state.completions).count { Maintenance.needsAttention(it) }
-                val bulletinBadge = Repo.openBulletins(aircraft, state, feed).size
+                val bulletinBadge = Repo.openBulletins(aircraft, state, feed).count { it.mandatory == true }
                 NavigationBar {
                     NavItem(tab == MainActivity.TAB_HOME, { setTab(MainActivity.TAB_HOME) }, R.string.tab_home, 0) { Icon(Icons.Filled.Dashboard, null) }
                     NavItem(tab == MainActivity.TAB_MANUAL, { setTab(MainActivity.TAB_MANUAL) }, R.string.tab_manual, 0) { Icon(Icons.AutoMirrored.Filled.MenuBook, null) }

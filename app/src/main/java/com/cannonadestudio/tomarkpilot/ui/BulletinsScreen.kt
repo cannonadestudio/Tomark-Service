@@ -106,7 +106,7 @@ fun BulletinsScreen(state: AppState, feed: BulletinFeed, aircraft: Aircraft) {
             Spacer(Modifier.height(8.dp))
         }
         items(list, key = { it.id }) { b ->
-            BulletinCard(b, statusMap[b.id], b.id !in seenAtOpen) { open = b }
+            BulletinCard(b, statusMap[b.id], b.id !in seenAtOpen, aircraft.yearBuilt) { open = b }
             Spacer(Modifier.height(8.dp))
         }
         item { Spacer(Modifier.height(24.dp)) }
@@ -116,7 +116,7 @@ fun BulletinsScreen(state: AppState, feed: BulletinFeed, aircraft: Aircraft) {
 }
 
 @Composable
-private fun BulletinCard(b: Bulletin, st: BulletinStatus?, isNew: Boolean, onClick: () -> Unit) {
+private fun BulletinCard(b: Bulletin, st: BulletinStatus?, isNew: Boolean, yearBuilt: Int?, onClick: () -> Unit) {
     Card(Modifier.fillMaxWidth().clickable(onClick = onClick)) {
         Column(Modifier.padding(14.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -128,6 +128,10 @@ private fun BulletinCard(b: Bulletin, st: BulletinStatus?, isNew: Boolean, onCli
             Spacer(Modifier.height(4.dp))
             Text(b.title, style = MaterialTheme.typography.bodyMedium)
             Spacer(Modifier.height(6.dp))
+            val bYear = b.date.take(4).toIntOrNull()
+            if (yearBuilt != null && bYear != null && bYear < yearBuilt) {
+                Text(stringResource(R.string.bl_before_build, yearBuilt), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondary)
+            }
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 if (b.kind != "DOC") MandatoryChip(b)
                 when (st?.status) {

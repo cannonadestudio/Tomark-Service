@@ -106,6 +106,7 @@
     <string name="refresh_fail">Brak połączenia – pokazuję zapisaną listę</string>
     <string name="filter_open">Bez statusu</string>
     <string name="filter_hide_docs">Ukryj dokumenty</string>
+    <string name="bl_before_build">Wydany przed rokiem produkcji samolotu (%1$d) – zwykle wykonany fabrycznie, sprawdź</string>
     <string name="bl_new">NOWY</string>
     <string name="bl_done">Wykonany</string>
     <string name="bl_na">Nie dotyczy</string>

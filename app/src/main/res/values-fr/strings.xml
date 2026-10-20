@@ -106,6 +106,7 @@
     <string name="refresh_fail">Pas de connexion – liste enregistrée</string>
     <string name="filter_open">Sans statut</string>
     <string name="filter_hide_docs">Masquer documents</string>
+    <string name="bl_before_build">Publié avant la construction (%1$d) – souvent fait en usine, vérifier</string>
     <string name="bl_new">NOUVEAU</string>
     <string name="bl_done">Appliqué</string>
     <string name="bl_na">Non applicable</string>

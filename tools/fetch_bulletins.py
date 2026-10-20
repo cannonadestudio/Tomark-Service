@@ -44,7 +44,7 @@ def find_date(text, fmt="dmy"):
     m = re.search(r"\b(\d{4})-(\d{2})-(\d{2})\b", t)
     if m:
         return f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
-    m = re.search(r"\b(\d{1,2})[./-](\d{1,2})[./-](\d{4})\b", t)
+    m = re.search(r"\b(\d{1,2})\.?\s?[./-]\s?(\d{1,2})\.?\s?[./-]?\s?(\d{4})\b", t)
     if m:
         a, b, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
         d, mo = (b, a) if fmt == "mdy" else (a, b)
@@ -89,20 +89,22 @@ class Blocks(html.parser.HTMLParser):
     def __init__(self):
         super().__init__()
         self.stack = []        # text buffers of open blocks
-        self.links = []        # [href, anchor_text, block_index]
+        self.links = []        # [href, anchor_text, block_index, position in self.flat]
         self.blocks = []       # finished block texts by index
         self.cur_a = None
+        self.flat = ""         # whole page text – used to look next to a link for its date / title
 
     def handle_starttag(self, tag, attrs):
-        if tag in ("td", "th", "br", "span", "div"):
+        if tag in ("td", "th", "br", "span", "div", "p", "li", "tr", "h2", "h3", "h4"):
             for i in self.stack:              # keep table cells apart: "a | b | c"
                 self.blocks[i] += " | "
+            self.flat += " | "
         if tag in ("tr", "li", "p", "article"):
             self.stack.append(len(self.blocks))
             self.blocks.append("")
         if tag == "a":
             href = dict(attrs).get("href") or ""
-            self.cur_a = [href, "", self.stack[-1] if self.stack else None]
+            self.cur_a = [href, "", self.stack[-1] if self.stack else None, len(self.flat)]
 
     def handle_endtag(self, tag):
         if tag == "a" and self.cur_a:
@@ -112,6 +114,7 @@ class Blocks(html.parser.HTMLParser):
             self.stack.pop()
 
     def handle_data(self, d):
+        self.flat += d
         for i in self.stack:
             self.blocks[i] += d
         if self.cur_a is not None:
@@ -124,13 +127,13 @@ def clean(s):
     return s.strip(" |")
 
 
-DATE_RX = re.compile(r"\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}[./-]\d{1,2}[./-]\d{4}\b|\b[A-Za-z]{3,9}\.? \d{1,2},? \d{4}\b|\b\d{1,2}\.? [^\W\d_]{3,9} \d{4}\b")
+DATE_RX = re.compile(r"\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}\.?\s?[./-]\s?\d{1,2}\.?\s?[./-]?\s?\d{4}\b|\b[A-Za-z]{3,9}\.? \d{1,2},? \d{4}\b|\b\d{1,2}\.? [^\W\d_]{3,9} \d{4}\b")
 
 
 def title_of(text, num):
     t = re.sub(re.escape(num), "", text, flags=re.I)
     t = DATE_RX.sub("", t)
-    t = re.sub(r"\b(mandatory|optional|informative|recommended|bulletin|download|pdf)\b", "", t, flags=re.I)
+    t = re.sub(r"\b(mandatory|optional|informative|recommended|bulletin|download|pdf|show detail|detail|EN|CZ|DE|en|cz|de)\b", "", t, flags=re.I)
     t = re.sub(r"(\s*\|\s*)+", " | ", t)
     return t.strip(" |:–-_").strip()[:220]
 
@@ -143,7 +146,7 @@ def from_links(src):
     p.feed(page)
     rx = re.compile(src["id_re"], re.I)
     out = {}
-    for href, text, bi in p.links:
+    for href, text, bi, pos in p.links:
         text = clean(text)
         full = urllib.parse.urljoin(src["url"], href)
         fname = urllib.parse.unquote(full.rsplit("/", 1)[-1])
@@ -153,7 +156,16 @@ def from_links(src):
         num = m.group(0).replace("_", "-").strip(" -")
         key = norm(src["id"] + "-" + m.group(0))
         block = clean(p.blocks[bi]) if bi is not None else text
-        title = title_of(block or text, m.group(0)) or title_of(text, m.group(0)) or fname
+        # Card layouts keep title/date beside the link, not in the same row: look at the text right after it,
+        # up to the next document number.
+        after = p.flat[pos:pos + 400]
+        nxt = rx.search(after, len(text) + 1)
+        window = clean(after[: nxt.start()] if nxt else after)
+        title = title_of(block or text, m.group(0))
+        if len(re.sub(r"[^A-Za-z]", "", title)) < 6:
+            title = title_of(window, m.group(0)) or title
+        block = block + " | " + window
+        title = title or fname
         prev = out.get(key)
         if prev and len(prev["title"]) >= len(title):
             continue
@@ -166,29 +178,25 @@ def from_links(src):
 
 def from_easa():
     cfg = CFG["easa"]
+    rules = [(re.compile(r), g) for r, g in cfg["rules"]]
     items = []
     for page_no in range(1, cfg.get("pages", 3) + 1):
         page = get(f"https://ad.easa.europa.eu/home/?page={page_no}")
         p = Blocks()
         p.feed(page)
-        for href, text, bi in p.links:
+        for href, text, bi, pos in p.links:
             m = re.search(r"/ad/(\d{4}-\d{4}(?:R\d+)?(?:-E)?)$", href)
             if not m or bi is None:
                 continue
             row = clean(p.blocks[bi])
-            row_u = row.upper()
-            groups = sorted({g for key, gs in cfg["holders"].items() if key in row_u for g in gs})
+            groups = sorted({g for rx, gs in rules if rx.search(row.upper()) for g in gs})
             if not groups:
                 continue
             no = m.group(1)
-            cells = [c.strip() for c in row.split("|") if c.strip()]
-            # Number | Issued by | Issue date | Subject | Approval holder / type | Effective date | …
-            subject = cells[3] if len(cells) > 3 else title_of(row, no)
-            holder = cells[4] if len(cells) > 4 else ""
+            rest = re.sub(r"(^|\|)\s*(EU|EASA)\s*(?=\||$)", "|", title_of(row, no)).strip(" |")
             items.append({"id": "EASA-AD-" + no, "date": find_date(row) or TODAY,
-                          "title": f"EASA AD {no}: {subject}" + (f" ({holder})" if holder else ""), "groups": groups, "kind": "AD",
+                          "title": f"EASA AD {no}: {rest}"[:260], "groups": groups, "kind": "AD",
                           "mandatory": True, "url": "https://ad.easa.europa.eu/ad/" + no})
-    # one row may list the same AD twice (links to detail and PDF)
     return list({i["id"]: i for i in items}.values())
 
 

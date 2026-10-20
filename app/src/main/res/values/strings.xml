@@ -107,6 +107,7 @@
     <string name="refresh_fail">No connection – showing saved list</string>
     <string name="filter_open">Without status</string>
     <string name="filter_hide_docs">Hide documents</string>
+    <string name="bl_before_build">Issued before the aircraft was built (%1$d) – usually done at the factory, check</string>
     <string name="bl_new">NEW</string>
     <string name="bl_done">Complied</string>
     <string name="bl_na">Not applicable</string>

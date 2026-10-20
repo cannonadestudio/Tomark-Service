@@ -2,42 +2,210 @@
  "_info": "Sources for tools/fetch_bulletins.py. kind=links: every <a> whose text or href matches 'id' becomes a bulletin. groups = bulletinGroups from data/types.json. Add or fix a source here – no code change needed.",
  "easa": {
   "pages": 4,
-  "holders": {
-   "BRP-ROTAX": ["ROTAX_912"],
-   "ROTAX": ["ROTAX_912"],
-   "TOMARK": ["SD4_RTC", "SD4_NVFR"],
-   "TECNAM": ["TECNAM"],
-   "AQUILA": ["AQUILA"],
-   "DIAMOND AIRCRAFT": ["DIAMOND"],
-   "FLIGHT DESIGN": ["FLIGHTDESIGN"],
-   "AEROSPOOL": ["AEROSPOOL"],
-   "BREEZER": ["BREEZER"],
-   "BRM AERO": ["BRISTELL"],
-   "EVEKTOR": ["EVEKTOR"],
-   "ELIXIR": ["ELIXIRAIRCRA"],
-   "PIPISTREL": ["PIPISTREL"],
-   "DUC H": ["ROTAX_912"],
-   "NEUFORM": ["ROTAX_912"],
-   "WOODCOMP": ["ROTAX_912"],
-   "BRS": ["ROTAX_912"],
-   "GALAXY": ["ROTAX_912"]
-  }
+  "_info": "rules: regex on the AD row text (upper case) -> groups. Only rows matching a rule are kept.",
+  "rules": [
+   [
+    "\\bROTAX\\b.*\\b91[2-6]",
+    [
+     "ROTAX_912"
+    ]
+   ],
+   [
+    "\\bTOMARK\\b",
+    [
+     "SD4_RTC",
+     "SD4_NVFR"
+    ]
+   ],
+   [
+    "\\bTECNAM\\b.*\\b(P2002|P2008|P92|P-MENTOR|P MENTOR|ASTORE)",
+    [
+     "TECNAM"
+    ]
+   ],
+   [
+    "\\bAQUILA\\b",
+    [
+     "AQUILA"
+    ]
+   ],
+   [
+    "\\bDIAMOND\\b.*\\b(HK ?36|H ?36|DV ?20)\\b",
+    [
+     "DIAMOND"
+    ]
+   ],
+   [
+    "\\bFLIGHT DESIGN\\b",
+    [
+     "FLIGHTDESIGN"
+    ]
+   ],
+   [
+    "\\bAEROSPOOL\\b|\\bWT9\\b",
+    [
+     "AEROSPOOL"
+    ]
+   ],
+   [
+    "\\bBREEZER\\b",
+    [
+     "BREEZER"
+    ]
+   ],
+   [
+    "\\bBRM AERO\\b|\\bBRISTELL\\b",
+    [
+     "BRISTELL"
+    ]
+   ],
+   [
+    "\\bEVEKTOR\\b.*\\b(EV-97|EV97|SPORTSTAR|HARMONY)",
+    [
+     "EVEKTOR"
+    ]
+   ],
+   [
+    "\\bELIXIR AIRCRAFT\\b",
+    [
+     "ELIXIRAIRCRA"
+    ]
+   ],
+   [
+    "\\bPIPISTREL\\b.*\\b(VIRUS|ALPHA|SINUS)",
+    [
+     "PIPISTREL"
+    ]
+   ],
+   [
+    "\\bDUC H[EÉ]LICES\\b|\\bNEUFORM\\b|\\bWOODCOMP\\b",
+    [
+     "ROTAX_912"
+    ]
+   ]
+  ]
  },
  "sources": [
-  {"id": "aquila", "url": "https://aquila-aviation.de/en/service-2/downloads/service-bulletins/", "groups": ["AQUILA"], "id_re": "SB_AT01_\\d{3}_[A-Z]?\\d{2}", "date_fmt": "mdy"},
-  {"id": "evektor_ev97", "url": "https://www.evektor.com/documentation/ev-97-eurostar", "groups": ["EVEKTOR"], "id_re": "EV97[-_]\\d{3}[a-z](?:[-_]R\\d+)?"},
-  {"id": "evektor_rtc", "url": "https://www.evektor.com/documentation/sportstar-rtc", "groups": ["EVEKTOR"], "id_re": "(?:SB|MB|IB)-RTC-\\d{3}[a-z](?:[-_]R\\d+)?"},
-  {"id": "evektor_sportstar", "url": "https://www.evektor.com/documentation/sportstar-plus-sl-max", "groups": ["EVEKTOR"], "id_re": "SportStar(?:_MAX)?[-_]\\d{3}[a-z](?:[-_]R\\d+)?"},
-  {"id": "evektor_harmony", "url": "https://www.evektor.com/documentation/harmony-lsa", "groups": ["EVEKTOR"], "id_re": "Harmony[ _]LSA[-_]\\d{3}[a-z]"},
-  {"id": "aerospool_ul", "url": "https://www.aerospool.sk/index.php/ull-dynamic-wt9-bulletins/", "groups": ["AEROSPOOL"], "id_re": "(?:ZB|SB)\\s?WT9[ _]\\d{2}A(?:[/_]\\d{4})?(?:_R\\d+)?"},
-  {"id": "aerospool_rtc", "url": "https://lsa.aerospool.sk/publications/", "groups": ["AEROSPOOL"], "id_re": "SB(?:RTC|TC)-\\d{4}-\\d+(?:_R\\d+)?"},
-  {"id": "bristell", "url": "https://www.bristell.com/support/bulletins/", "groups": ["BRISTELL"], "id_re": "[A-Z0-9]+-S[ABMRIO]{1,2}-\\d-\\d-\\d-[A-Z]+-\\d{4}-\\d{4}"},
-  {"id": "flightdesign", "url": "https://flightdesign.com/service-documents", "groups": ["FLIGHTDESIGN"], "id_re": "S[ABN]-(?:ASTM-|LTF-?UL-|SECS-)?CT[A-Z0-9]*[-_]+\\d{2}"},
-  {"id": "shark", "url": "https://www.shark.aero/support", "groups": ["SHARK"], "id_re": "shark-aero-a?sb-\\d{3}"},
-  {"id": "aeroprakt_a22", "url": "https://www.aeroprakt.de/index.php/pl/jestem-wlascicielem-lub-uzytkownikiem-a-22/dokumenty-techniczne/a-22-a-22l-a-22l2", "groups": ["AEROPRAKT"], "id_re": "(?:SB|IB)[_ -]*A-?22(?:LS|L2|L)?[-_ ]?\\d{1,2}"},
-  {"id": "aeroprakt_a32", "url": "https://www.aeroprakt.de/index.php/pl/jestem-wlascicielem-lub-uzytkownikiem-a-22/dokumenty-techniczne/a-32l-a32", "groups": ["AEROPRAKT"], "id_re": "SB[_ ]A-?32L?-\\d{2}"},
-  {"id": "ikarus", "url": "https://www.comco-ikarus.de/downloads/", "groups": ["IKARUS"], "id_re": "SB[-_]42[-_]\\d{2,3}[-_]\\d{2,4}(?:[-_]?(?:R|Rev\\.?)\\d+)?"},
-  {"id": "remos", "url": "https://remos.com/service-support/service-bulletins", "groups": ["REMOS"], "id_re": "SB-\\d{3}"},
-  {"id": "tl", "url": "https://www.tl-ultralight.cz/cs/bulletin", "groups": ["TLULTRALIGHT"], "id_re": "\\d+\\.S\\.[A-Z_]+\\.\\d{4}"}
+  {
+   "id": "aquila",
+   "url": "https://aquila-aviation.de/en/service-2/downloads/service-bulletins/",
+   "groups": [
+    "AQUILA"
+   ],
+   "id_re": "SB_AT01_\\d{3}_[A-Z]?\\d{2}",
+   "date_fmt": "mdy"
+  },
+  {
+   "id": "evektor_ev97",
+   "url": "https://www.evektor.com/documentation/ev-97-eurostar",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "id_re": "EV97[-_]\\d{3}[a-z](?:[-_]R\\d+)?"
+  },
+  {
+   "id": "evektor_rtc",
+   "url": "https://www.evektor.com/documentation/sportstar-rtc",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "id_re": "(?:SB|MB|IB)-RTC-\\d{3}[a-z](?:[-_]R\\d+)?"
+  },
+  {
+   "id": "evektor_sportstar",
+   "url": "https://www.evektor.com/documentation/sportstar-plus-sl-max",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "id_re": "SportStar(?:_MAX)?[-_]\\d{3}[a-z](?:[-_]R\\d+)?"
+  },
+  {
+   "id": "evektor_harmony",
+   "url": "https://www.evektor.com/documentation/harmony-lsa",
+   "groups": [
+    "EVEKTOR"
+   ],
+   "id_re": "Harmony[ _]LSA[-_]\\d{3}[a-z]"
+  },
+  {
+   "id": "aerospool_ul",
+   "url": "https://www.aerospool.sk/index.php/ull-dynamic-wt9-bulletins/",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "id_re": "(?:ZB|SB)\\s?WT9[ _]\\d{2}A(?:[/_]\\d{4})?(?:_R\\d+)?"
+  },
+  {
+   "id": "aerospool_rtc",
+   "url": "https://lsa.aerospool.sk/publications/",
+   "groups": [
+    "AEROSPOOL"
+   ],
+   "id_re": "SB(?:RTC|TC)-\\d{4}-\\d+(?:_R\\d+)?"
+  },
+  {
+   "id": "bristell",
+   "url": "https://www.bristell.com/support/bulletins/",
+   "groups": [
+    "BRISTELL"
+   ],
+   "id_re": "[A-Z0-9]+-S[ABMRIO]{1,2}-\\d-\\d-\\d-[A-Z]+-\\d{4}-\\d{4}"
+  },
+  {
+   "id": "flightdesign",
+   "url": "https://flightdesign.com/service-documents",
+   "groups": [
+    "FLIGHTDESIGN"
+   ],
+   "id_re": "S[ABN]-(?:ASTM-|LTF-?UL-|SECS-)?CT[A-Z0-9]*[-_]+\\d{2}"
+  },
+  {
+   "id": "shark",
+   "url": "https://www.shark.aero/support",
+   "groups": [
+    "SHARK"
+   ],
+   "id_re": "shark-aero-a?sb-\\d{3}"
+  },
+  {
+   "id": "aeroprakt_a22",
+   "url": "https://www.aeroprakt.de/index.php/pl/jestem-wlascicielem-lub-uzytkownikiem-a-22/dokumenty-techniczne/a-22-a-22l-a-22l2",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "id_re": "(?:SB|IB)[_ -]*A-?22(?:LS|L2|L)?[-_ ]?\\d{1,2}"
+  },
+  {
+   "id": "aeroprakt_a32",
+   "url": "https://www.aeroprakt.de/index.php/pl/jestem-wlascicielem-lub-uzytkownikiem-a-22/dokumenty-techniczne/a-32l-a32",
+   "groups": [
+    "AEROPRAKT"
+   ],
+   "id_re": "SB[_ ]A-?32L?-\\d{2}"
+  },
+  {
+   "id": "ikarus",
+   "url": "https://www.comco-ikarus.de/downloads/",
+   "groups": [
+    "IKARUS"
+   ],
+   "id_re": "SB[-_]42[-_]\\d{2,3}[-_]\\d{2,4}(?:[-_]?(?:R|Rev\\.?)\\d+)?"
+  },
+  {
+   "id": "remos",
+   "url": "https://remos.com/service-support/service-bulletins",
+   "groups": [
+    "REMOS"
+   ],
+   "id_re": "SB-\\d{3}"
+  },
+  {
+   "id": "tl",
+   "url": "https://www.tl-ultralight.cz/cs/bulletin",
+   "groups": [
+    "TLULTRALIGHT"
+   ],
+   "id_re": "\\d+\\.S\\.[A-Z_]+\\.\\d{4}"
+  }
  ]
 }

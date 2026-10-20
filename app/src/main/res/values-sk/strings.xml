@@ -106,6 +106,7 @@
     <string name="refresh_fail">Bez pripojenia – zobrazujem uložený zoznam</string>
     <string name="filter_open">Bez stavu</string>
     <string name="filter_hide_docs">Skryť dokumenty</string>
+    <string name="bl_before_build">Vydaný pred rokom výroby (%1$d) – zvyčajne vykonaný vo výrobe, overte</string>
     <string name="bl_new">NOVÝ</string>
     <string name="bl_done">Vykonaný</string>
     <string name="bl_na">Netýka sa</string>
