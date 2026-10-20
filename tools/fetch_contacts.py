@@ -98,7 +98,9 @@ def parse_examiners(url, label, ul):
     """Lines of: certificate | name / e-mail / tel. | region | category | scope | description | valid until.
     One examiner spans many lines; a new examiner starts at a line with a name in column 2."""
     rows = pdf_rows(url)
-    debug_rows("exam " + label[:20], rows[:2] + rows[2:40:6])
+    if DRY:
+        for i, raw in enumerate(rows[3:45]):
+            notice(f"EX{i:02d} " + " ¦ ".join(" ".join((c or "").split())[:45] for c in logical(raw)))
     people, cur, pending = [], None, []
     for raw in rows:
         r = [" ".join((c or "").split()) for c in logical(raw)]
