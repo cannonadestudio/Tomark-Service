@@ -6,7 +6,7 @@
 The newest PDF is always taken from the ULC page that links it. Entries are replaced as a whole
 (prefix ulc-…), so the app always shows the current lists. Coordinates: region (voivodeship) centre for
 examiners, OpenStreetMap geocoding of the postcode/city for organisations (cached in tools/geocache.json).
-DRY_RUN=1 prints a summary only.  Needs: pip install pdfplumber
+DRY_RUN=1 prints a summary only (personal data masked).  Needs: pip install pdfplumber
 """
 import datetime, html, json, os, re, sys, time, urllib.parse, urllib.request
 
