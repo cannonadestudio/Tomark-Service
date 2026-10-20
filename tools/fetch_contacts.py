@@ -103,6 +103,7 @@ def parse_examiners(url, label, ul):
     One examiner spans many lines; a new examiner starts at a line with a name in column 2."""
     rows = pdf_rows(url)
     people, cur = [], None
+    skipped = []
     for raw in rows:
         r = [" ".join((c or "").split()) for c in logical(raw)]
         c0, c1, c2, c3, c4, c5, c6 = r
@@ -116,6 +117,8 @@ def parse_examiners(url, label, ul):
             people.append(cur)
         elif cert and cur is not None and cert.group(0) not in cur["certs"]:
             cur["certs"].append(cert.group(0))
+        elif not cert and re.match(r"^[A-ZŁŚŻŹĆŃÓĄĘ][a-ząćęłńóśźż]+ [A-ZŁŚŻŹĆŃÓĄĘ]", c1):
+            skipped.append(" ¦ ".join(x[:30] for x in r))
         if cur is None:
             continue
         em = EMAIL.search(c1)
@@ -136,6 +139,10 @@ def parse_examiners(url, label, ul):
             except ValueError:
                 pass
 
+    if DRY and skipped:
+        notice(mask(f"UNMATCHED {label[:25]} ({len(skipped)}): " + " ## ".join(skipped[:30])))
+    if DRY:
+        notice(mask(f"FIRST ROWS {label[:25]}: " + " ## ".join(" ¦ ".join(" ".join((c or "").split())[:28] for c in logical(r)) for r in rows[3:30])))
     out, seen = [], set()
     for p in people:
         if p["valid"] and max(p["valid"]) < TODAY:
