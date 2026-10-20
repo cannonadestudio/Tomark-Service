@@ -1,7 +1,12 @@
 package com.cannonadestudio.tomarkpilot.data
 
 import android.content.Context
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -249,16 +254,80 @@ object Repo {
         }.getOrNull()
     }
 
-    // ---------------------------------------------------------------- state helpers
+    // ---------------------------------------------------------------- backup (Google Drive or any file the user picks)
 
-    fun update(transform: (AppState) -> AppState) {
+    private val ioScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private var backupJob: Job? = null
+
+    /** Fields that belong to this phone and must not travel with a backup. */
+    private fun withoutDeviceFields(s: AppState) = s.copy(
+        backupUri = null, lastBackupMillis = null, backupError = null,
+        logbookUri = null, logbookError = null, logbookSyncedEpochDay = null,
+        aircraft = s.aircraft.map { it.copy(pohUri = null) },
+    )
+
+    /** Writes the backup a few seconds after the last change, so a burst of edits makes one upload. */
+    private fun scheduleBackup() {
+        if (_state.value.backupUri == null) return
+        backupJob?.cancel()
+        backupJob = ioScope.launch {
+            delay(4_000)
+            backupNow()
+        }
+    }
+
+    suspend fun backupNow(): Result<Unit> = withContext(Dispatchers.IO) {
+        val uri = _state.value.backupUri ?: return@withContext Result.success(Unit)
+        runCatching {
+            val text = json.encodeToString(AppState.serializer(), withoutDeviceFields(_state.value))
+            val u = android.net.Uri.parse(uri)
+            val out = runCatching { app.contentResolver.openOutputStream(u, "wt") }.getOrNull()
+                ?: app.contentResolver.openOutputStream(u, "w")
+                ?: error("cannot open backup file")
+            out.use { it.write(text.toByteArray()) }
+        }.onSuccess {
+            setStateNoBackup { it.copy(lastBackupMillis = System.currentTimeMillis(), backupError = null) }
+        }.onFailure { e ->
+            setStateNoBackup { it.copy(backupError = e.message ?: e.javaClass.simpleName) }
+        }
+    }
+
+    /** Reads a backup; keeps this phone's own links (backup file, logbook file). Returns aircraft count. */
+    suspend fun restoreBackup(uri: android.net.Uri): Result<Int> = withContext(Dispatchers.IO) {
+        runCatching {
+            val text = app.contentResolver.openInputStream(uri)!!.bufferedReader().use { it.readText() }
+            val restored = json.decodeFromString<AppState>(text)
+            val cur = _state.value
+            update {
+                restored.copy(
+                    backupUri = cur.backupUri, lastBackupMillis = cur.lastBackupMillis, backupError = null,
+                    logbookUri = cur.logbookUri, logbookSyncedEpochDay = cur.logbookSyncedEpochDay,
+                    disclaimerAccepted = true,
+                )
+            }
+            restored.aircraft.size
+        }
+    }
+
+    private fun setStateNoBackup(transform: (AppState) -> AppState) {
         synchronized(lock) {
             val next = transform(_state.value)
             _state.value = next
-            val tmp = File(app.filesDir, "state.json.tmp")
-            tmp.writeText(json.encodeToString(AppState.serializer(), next))
-            tmp.renameTo(stateFile)
+            persist(next)
         }
+    }
+
+    private fun persist(next: AppState) {
+        val tmp = File(app.filesDir, "state.json.tmp")
+        tmp.writeText(json.encodeToString(AppState.serializer(), next))
+        tmp.renameTo(stateFile)
+    }
+
+    // ---------------------------------------------------------------- state helpers
+
+    fun update(transform: (AppState) -> AppState) {
+        setStateNoBackup(transform)
+        scheduleBackup()
     }
 
     fun type(id: String): AircraftType? = types.firstOrNull { it.id == id }

@@ -252,9 +252,68 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
             scope.launch { Repo.syncLogbook() }
         }
     }
+    var confirmRestore by remember { mutableStateOf<android.net.Uri?>(null) }
+    val backupCreator = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri: android.net.Uri? ->
+        if (uri != null) {
+            runCatching {
+                ctx.contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+            }
+            Repo.update { it.copy(backupUri = uri.toString(), backupError = null) }
+            scope.launch {
+                val r = Repo.backupNow()
+                android.widget.Toast.makeText(ctx, if (r.isSuccess) ctx.getString(R.string.backup_done) else ctx.getString(R.string.backup_error, r.exceptionOrNull()?.message ?: ""), android.widget.Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+    val backupPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri: android.net.Uri? ->
+        if (uri != null) confirmRestore = uri
+    }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         Text(stringResource(R.string.app_name), style = MaterialTheme.typography.headlineSmall)
         Text("v" + BuildConfigCompat.versionName(), style = MaterialTheme.typography.bodySmall)
+        Spacer(Modifier.height(16.dp))
+
+        Card(Modifier.fillMaxWidth()) {
+            Column(Modifier.padding(16.dp)) {
+                Text(stringResource(R.string.backup_title), style = MaterialTheme.typography.titleMedium)
+                Text(stringResource(R.string.backup_hint), style = MaterialTheme.typography.bodySmall)
+                Spacer(Modifier.height(6.dp))
+                Text(
+                    state.backupUri?.let { android.net.Uri.parse(it).lastPathSegment } ?: stringResource(R.string.backup_off),
+                    fontWeight = androidx.compose.ui.text.font.FontWeight.SemiBold,
+                )
+                state.lastBackupMillis?.let {
+                    Text(
+                        stringResource(R.string.backup_last, java.text.DateFormat.getDateTimeInstance(java.text.DateFormat.SHORT, java.text.DateFormat.SHORT).format(java.util.Date(it))),
+                        style = MaterialTheme.typography.bodySmall,
+                    )
+                }
+                state.backupError?.let { Text(stringResource(R.string.backup_error, it), color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall) }
+                Row(Modifier.fillMaxWidth()) {
+                    TextButton(onClick = { backupCreator.launch("AeroHangar-kopia.json") }) {
+                        Text(stringResource(if (state.backupUri == null) R.string.backup_choose else R.string.backup_change))
+                    }
+                    if (state.backupUri != null) {
+                        TextButton(onClick = {
+                            scope.launch {
+                                val r = Repo.backupNow()
+                                android.widget.Toast.makeText(ctx, if (r.isSuccess) ctx.getString(R.string.backup_done) else ctx.getString(R.string.backup_error, r.exceptionOrNull()?.message ?: ""), android.widget.Toast.LENGTH_SHORT).show()
+                            }
+                        }) { Text(stringResource(R.string.backup_now)) }
+                    }
+                }
+                Row {
+                    TextButton(onClick = { backupPicker.launch(arrayOf("application/json", "text/plain", "*/*")) }) {
+                        Text(stringResource(R.string.backup_restore))
+                    }
+                    if (state.backupUri != null) {
+                        TextButton(onClick = { Repo.update { it.copy(backupUri = null, backupError = null) } }) {
+                            Text(stringResource(R.string.backup_disable))
+                        }
+                    }
+                }
+            }
+        }
         Spacer(Modifier.height(16.dp))
 
         Card(Modifier.fillMaxWidth()) {
@@ -300,6 +359,27 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
         Text(stringResource(R.string.about_text))
         Spacer(Modifier.height(12.dp))
         Text(stringResource(R.string.about_sources), style = MaterialTheme.typography.bodySmall)
+    }
+    confirmRestore?.let { uri ->
+        AlertDialog(
+            onDismissRequest = { confirmRestore = null },
+            title = { Text(stringResource(R.string.backup_restore)) },
+            text = { Text(stringResource(R.string.backup_restore_warn)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    confirmRestore = null
+                    scope.launch {
+                        val r = Repo.restoreBackup(uri)
+                        android.widget.Toast.makeText(
+                            ctx,
+                            r.fold({ ctx.getString(R.string.backup_restored, it) }, { ctx.getString(R.string.backup_error, it.message ?: "") }),
+                            android.widget.Toast.LENGTH_LONG,
+                        ).show()
+                    }
+                }) { Text(stringResource(R.string.backup_restore_ok)) }
+            },
+            dismissButton = { TextButton(onClick = { confirmRestore = null }) { Text(stringResource(R.string.cancel)) } },
+        )
     }
 }
 

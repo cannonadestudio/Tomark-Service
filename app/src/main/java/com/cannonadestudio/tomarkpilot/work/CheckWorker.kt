@@ -31,6 +31,7 @@ class CheckWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx,
         Repo.init(applicationContext)
         // Failures are fine – we still check maintenance with what we have.
         Repo.refreshAll()
+        Repo.backupNow()
         Repo.syncLogbook()
 
         val s = Repo.state.value

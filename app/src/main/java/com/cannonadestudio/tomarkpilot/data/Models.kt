@@ -191,4 +191,8 @@ data class AppState(
     val logbookSyncedEpochDay: Long? = null,
     val logbookError: String? = null,
     val dismissedNewsIds: Set<String> = emptySet(),
+    /** Backup file chosen by the user (e.g. on Google Drive). Device-specific, never restored from a backup. */
+    val backupUri: String? = null,
+    val lastBackupMillis: Long? = null,
+    val backupError: String? = null,
 )
