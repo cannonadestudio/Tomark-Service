@@ -101,7 +101,8 @@
    "groups": [
     "EVEKTOR"
    ],
-   "id_re": "EV97[-_]\\d{3}[a-z](?:[-_]R\\d+)?"
+   "id_re": "EV97[-_]\\d{3}[a-z](?:[-_]R\\d+)?",
+   "title_pos": "before"
   },
   {
    "id": "evektor_rtc",
@@ -109,7 +110,8 @@
    "groups": [
     "EVEKTOR"
    ],
-   "id_re": "(?:SB|MB|IB)-RTC-\\d{3}[a-z](?:[-_]R\\d+)?"
+   "id_re": "(?:SB|MB|IB)-RTC-\\d{3}[a-z](?:[-_]R\\d+)?",
+   "title_pos": "before"
   },
   {
    "id": "evektor_sportstar",
@@ -117,7 +119,8 @@
    "groups": [
     "EVEKTOR"
    ],
-   "id_re": "SportStar(?:_MAX)?[-_]\\d{3}[a-z](?:[-_]R\\d+)?"
+   "id_re": "SportStar(?:_MAX)?[-_]\\d{3}[a-z](?:[-_]R\\d+)?",
+   "title_pos": "before"
   },
   {
    "id": "evektor_harmony",
@@ -125,7 +128,8 @@
    "groups": [
     "EVEKTOR"
    ],
-   "id_re": "Harmony[ _]LSA[-_]\\d{3}[a-z]"
+   "id_re": "Harmony[ _]LSA[-_]\\d{3}[a-z]",
+   "title_pos": "before"
   },
   {
    "id": "aerospool_ul",

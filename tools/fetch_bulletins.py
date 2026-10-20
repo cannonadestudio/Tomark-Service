@@ -160,17 +160,27 @@ def from_links(src):
         # up to the next document number.
         after = p.flat[pos:pos + 400]
         nxt = rx.search(after, len(text) + 1)
-        window = clean(after[: nxt.start()] if nxt else after)
+        win_after = clean(after[: nxt.start()] if nxt else after)
+        before = p.flat[max(0, pos - 400):pos]
+        prev_ids = list(rx.finditer(before))
+        win_before = clean(before[prev_ids[-1].end():] if prev_ids else before)
+        windows = [win_before, win_after] if src.get("title_pos") == "before" else [win_after, win_before]
         title = title_of(block or text, m.group(0))
-        if len(re.sub(r"[^A-Za-z]", "", title)) < 6:
-            title = title_of(window, m.group(0)) or title
-        block = block + " | " + window
+        if len(re.sub(r"[^A-Za-z]", "", title)) < 6 or title.lower().endswith(".pdf"):
+            for w in windows:
+                t2 = title_of(w, m.group(0))
+                if len(re.sub(r"[^A-Za-z]", "", t2)) >= 6:
+                    title = t2
+                    break
+        date = find_date(block, src.get("date_fmt", "dmy")) or next(
+            (d for d in (find_date(w, src.get("date_fmt", "dmy")) for w in windows) if d), None)
+        block = block + " | " + windows[0]
         title = title or fname
         prev = out.get(key)
         if prev and len(prev["title"]) >= len(title):
             continue
         k = kind_of(num, block)
-        out[key] = {"id": key, "date": find_date(block, src.get("date_fmt", "dmy")) or TODAY,
+        out[key] = {"id": key, "date": date or TODAY,
                     "title": f"{num}: {title}" if title and title.upper() != num.upper() else num,
                     "groups": src["groups"], "kind": k, "mandatory": mandatory_of(block, k), "url": full}
     return list(out.values())
@@ -189,9 +199,12 @@ def from_easa():
             if not m or bi is None:
                 continue
             row = clean(p.blocks[bi])
-            groups = sorted({g for rx, gs in rules if rx.search(row.upper()) for g in gs})
+            hits = [(rx.pattern, gs) for rx, gs in rules if rx.search(row.upper())]
+            groups = sorted({g for _, gs in hits for g in gs})
             if not groups:
                 continue
+            if DRY:
+                notice(f"easa match {m.group(1)} by {[h[0] for h in hits]} :: {row[:300]}")
             no = m.group(1)
             rest = re.sub(r"(^|\|)\s*(EU|EASA)\s*(?=\||$)", "|", title_of(row, no)).strip(" |")
             items.append({"id": "EASA-AD-" + no, "date": find_date(row) or TODAY,
