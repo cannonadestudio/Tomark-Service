@@ -29,7 +29,12 @@ jobs:
         run: |
           echo "sdk.dir=$ANDROID_HOME" > local.properties
           chmod +x gradlew
-          ./gradlew --no-daemon testDebugUnitTest assembleDebug assembleRelease
+          set -o pipefail
+          ./gradlew --no-daemon testDebugUnitTest assembleDebug assembleRelease 2>&1 | tee build.log || {
+            # Surface compiler / resource / test errors as annotations (readable without opening the log).
+            grep -E "^e: |error:|ERROR:|FAILED|AAPT|Exception|expected:<" build.log | grep -v "^> Task" | head -40 | while IFS= read -r l; do echo "::error::$l"; done
+            exit 1
+          }
 
       - uses: actions/upload-artifact@v4
         with:
