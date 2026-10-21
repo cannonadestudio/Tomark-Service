@@ -2,7 +2,9 @@
 /** Shared helpers for the AeroHangar management system. This folder must not be web-readable. */
 declare(strict_types=1);
 
-const AH_FILES = ['bulletins', 'contacts', 'types', 'news', 'examiners'];
+const AH_FILES = ['bulletins', 'contacts', 'types', 'news', 'examiners', 'sponsor'];
+/** Paid-listing fields set in the panel – kept when official lists (ULC) are re-imported. */
+const AH_PARTNER_FIELDS = ['partnerUntil', 'promo', 'logo', 'requests'];
 const AH_KEEP_BACKUPS = 40;
 
 define('AH_PRIVATE', __DIR__);
@@ -188,6 +190,13 @@ function ah_validate(string $f, $d): ?string
                 $ids[$c['id']] = 1;
             }
             return null;
+        case 'sponsor':
+            if (!isset($d['banners']) || !is_array($d['banners'])) return 'missing "banners"';
+            foreach ($d['banners'] as $b) {
+                if (empty($b['id']) || (empty($b['title']) && empty($b['image']))) return 'banner without id and title/image';
+                foreach (['url', 'image'] as $k) if (!empty($b[$k]) && !preg_match('~^https://~', (string)$b[$k])) return "banner {$b['id']}: $k must start with https://";
+            }
+            return null;
         case 'types':
             if (!array_is_list($d) || count($d) < 2) return 'types must be a list';
             $ids = [];
@@ -274,6 +283,7 @@ function ah_merge_official(string $target, array $prefixes, array $incoming, str
     foreach ($incoming as $c) {
         if (isset($ids[$c['id']])) continue;
         $c['publish'] = isset($old[$c['id']]) ? ($old[$c['id']]['publish'] ?? true) : $default;
+        if (isset($old[$c['id']])) foreach (AH_PARTNER_FIELDS as $k) if (isset($old[$c['id']][$k])) $c[$k] = $old[$c['id']][$k];
         if (!isset($old[$c['id']])) $added++;
         $keep[] = $c;
         $ids[$c['id']] = 1;
@@ -327,4 +337,38 @@ function ah_rate_ok(string $bucket, int $n, int $sec): bool
 function ah_clean_str($v, int $max): string
 {
     return mb_substr(trim(preg_replace('/[\x00-\x1F\x7F]+/u', ' ', (string)$v)), 0, $max);
+}
+
+
+// ---------------------------------------------------------------- partners, service requests, e-mail
+
+/** Panel settings kept in private/state/settings.json (notification address, sender). */
+function ah_settings(): array
+{
+    return ah_store_read('settings') + ['notifyEmail' => '', 'mailFrom' => ''];
+}
+
+function ah_partner_active(array $c): bool
+{
+    $u = (string)($c['partnerUntil'] ?? '');
+    return $u !== '' && $u >= date('Y-m-d');
+}
+
+/** Published contact by id (what the apps see). */
+function ah_public_contact(string $id): ?array
+{
+    $raw = @file_get_contents(ah_data_path('contacts'));
+    $d = $raw ? json_decode($raw, true) : null;
+    foreach (($d['contacts'] ?? []) as $c) if (($c['id'] ?? '') === $id) return $c;
+    return null;
+}
+
+/** Plain-text UTF-8 e-mail via PHP mail(). Returns true when handed to the mail system. */
+function ah_mail(string $to, string $subject, string $body, string $replyTo = ''): bool
+{
+    if (!filter_var($to, FILTER_VALIDATE_EMAIL) || !function_exists('mail')) return false;
+    $from = ah_settings()['mailFrom'] ?: ('noreply@' . preg_replace('/^www\./', '', (string)($_SERVER['HTTP_HOST'] ?? 'localhost')));
+    $h = ["From: AeroHangar <$from>", 'MIME-Version: 1.0', 'Content-Type: text/plain; charset=UTF-8', 'Content-Transfer-Encoding: 8bit'];
+    if ($replyTo !== '' && filter_var($replyTo, FILTER_VALIDATE_EMAIL)) $h[] = "Reply-To: $replyTo";
+    return @mail($to, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, implode("\r\n", $h));
 }

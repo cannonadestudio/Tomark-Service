@@ -258,6 +258,109 @@ switch ($action) {
         if ($count < 0) out(503, ['error' => 'queue full']);
         out(200, ['ok' => true]);
 
+    case 'event':
+        // Anonymous counters for partners and sponsors (views and taps) – the numbers you show them.
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
+        if (!ah_rate_ok('event', 120, 3600)) out(429, ['error' => 'slow down']);
+        $allowed = ['view', 'call', 'email', 'web', 'map', 'request', 'sponsor_view', 'sponsor_click'];
+        $evs = array_slice((array)($body['events'] ?? []), 0, 50);
+        $month = date('Y-m');
+        ah_store_update('events', function (&$d) use ($evs, $allowed, $month) {
+            foreach ($evs as $e) {
+                $t = (string)($e['t'] ?? '');
+                $c = ah_clean_str($e['c'] ?? '', 80);
+                if (!in_array($t, $allowed, true) || $c === '') continue;
+                if (!isset($d[$month][$c]) && count($d[$month] ?? []) > 5000) continue;
+                $d[$month][$c][$t] = ($d[$month][$c][$t] ?? 0) + 1;
+            }
+            // keep two years
+            foreach (array_keys($d) as $m) if ($m < date('Y-m', strtotime('-24 months'))) unset($d[$m]);
+        });
+        out(200, ['ok' => true]);
+
+    case 'request':
+        // "Book an inspection" from the app – forwarded by e-mail to a partner service that accepts requests.
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
+        if (!ah_rate_ok('request', 6, 86400)) out(429, ['error' => 'too many requests today']);
+        if (empty($body['consent'])) out(400, ['error' => 'consent required']);
+        $c = ah_public_contact((string)($body['contactId'] ?? ''));
+        if (!$c || empty($c['requests']) || empty($c['email']) || !ah_partner_active($c)) out(404, ['error' => 'service does not take requests']);
+        $a = (array)($body['aircraft'] ?? []);
+        $r = ['id' => bin2hex(random_bytes(6)), 'date' => date('c'), 'status' => 'new', 'contactId' => $c['id'], 'contactName' => $c['name'],
+            'aircraft' => [], 'work' => ah_clean_str($body['work'] ?? '', 300), 'preferredDate' => ah_clean_str($body['preferredDate'] ?? '', 10),
+            'name' => ah_clean_str($body['name'] ?? '', 120), 'phone' => ah_clean_str($body['phone'] ?? '', 40),
+            'email' => ah_clean_str($body['email'] ?? '', 120), 'message' => ah_clean_str($body['message'] ?? '', 2000)];
+        foreach (['registration' => 20, 'type' => 80, 'hours' => 12, 'engineSerial' => 40, 'year' => 4] as $k => $max) {
+            $v = ah_clean_str($a[$k] ?? '', $max);
+            if ($v !== '') $r['aircraft'][$k] = $v;
+        }
+        if ($r['name'] === '' || ($r['phone'] === '' && !filter_var($r['email'], FILTER_VALIDATE_EMAIL))) out(400, ['error' => 'name and phone or e-mail required']);
+        $ac = $r['aircraft'];
+        $txt = "Zapytanie o przegląd z aplikacji AeroHangar\n\n"
+            . "Samolot: " . ($ac['registration'] ?? '') . "  " . ($ac['type'] ?? '') . "\n"
+            . "Nalot: " . ($ac['hours'] ?? '') . " h" . (!empty($ac['year']) ? "   Rok produkcji: {$ac['year']}" : '') . (!empty($ac['engineSerial']) ? "\nS/N silnika: {$ac['engineSerial']}" : '') . "\n"
+            . "Zakres prac: {$r['work']}\n"
+            . ($r['preferredDate'] ? "Preferowany termin: {$r['preferredDate']}\n" : '')
+            . "\nWłaściciel: {$r['name']}\nTelefon: {$r['phone']}\nE-mail: {$r['email']}\n"
+            . ($r['message'] ? "\nWiadomość:\n{$r['message']}\n" : '')
+            . "\n--\nWłaściciel wyraził zgodę na przekazanie tych danych Państwa firmie. Odpowiedz bezpośrednio na ten e-mail lub zadzwoń.\n";
+        $subject = 'Zapytanie o przegląd: ' . ($ac['registration'] ?? '') . ' – ' . ($r['work'] ?: 'serwis');
+        $r['mailed'] = ah_mail($c['email'], $subject, $txt, $r['email']);
+        $notify = ah_settings()['notifyEmail'];
+        if ($notify) ah_mail($notify, '[AeroHangar] ' . $subject . ' → ' . $c['name'], $txt);
+        $n = ah_store_update('requests', function (&$d) use ($r) {
+            $d = array_values(array_filter($d, fn($x) => strtotime($x['date']) > time() - 400 * 86400));
+            if (count($d) >= 5000) return -1;
+            $d[] = $r;
+            return count($d);
+        });
+        if ($n < 0) out(503, ['error' => 'queue full']);
+        ah_store_update('events', function (&$d) use ($c) { $m = date('Y-m'); $d[$m][$c['id']]['request'] = ($d[$m][$c['id']]['request'] ?? 0) + 1; });
+        out(200, ['ok' => true, 'mailed' => $r['mailed']]);
+
+    // ------------------------------------------------------------ panel: partners, requests, settings
+
+    case 'requests':
+        $u = require_login();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_csrf();
+            if ($u['role'] === 'viewer') out(403, ['error' => 'read-only account']);
+            $rid = (string)($body['id'] ?? '');
+            $act = (string)($body['action'] ?? '');
+            ah_store_update('requests', function (&$d) use ($rid, $act) {
+                foreach ($d as $i => $x) if ($x['id'] === $rid) {
+                    if ($act === 'delete') array_splice($d, $i, 1); else $d[$i]['status'] = $act === 'done' ? 'done' : 'new';
+                    return;
+                }
+            });
+            ah_log($u['login'], "request $rid: $act");
+        }
+        out(200, ['requests' => array_reverse(ah_store_read('requests'))]);
+
+    case 'events':
+        require_login();
+        out(200, ['events' => ah_store_read('events')]);
+
+    case 'settings':
+        $u = require_login();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_csrf();
+            if ($u['role'] !== 'admin') out(403, ['error' => 'admin only']);
+            $new = [];
+            foreach (['notifyEmail', 'mailFrom'] as $k) {
+                $v = ah_clean_str($body[$k] ?? '', 120);
+                if ($v !== '' && !filter_var($v, FILTER_VALIDATE_EMAIL)) out(400, ['error' => "$k: niepoprawny adres e-mail"]);
+                $new[$k] = $v;
+            }
+            ah_store_update('settings', function (&$d) use ($new) { $d = array_merge($d, $new); });
+            ah_log($u['login'], 'settings changed');
+        }
+        if (($_GET['test'] ?? '') === '1' && $u['role'] === 'admin') {
+            $to = ah_settings()['notifyEmail'];
+            out(200, ['settings' => ah_settings(), 'test' => $to ? ah_mail($to, 'AeroHangar – test poczty', "Poczta z serwera działa.\n") : false]);
+        }
+        out(200, ['settings' => ah_settings()]);
+
     // ------------------------------------------------------------ panel: statistics and submissions
 
     case 'stats':

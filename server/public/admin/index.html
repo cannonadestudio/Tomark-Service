@@ -73,6 +73,9 @@ button.pub.on{background:var(--teal)}
 button.pub.off{background:#b9b3c4}
 .small input{width:100%}
 @media (max-width:600px){.hide-sm{display:none}}
+.chip.p{background:linear-gradient(90deg,#7b3fa0,#e2457a);color:#fff}
+fieldset.partner{border:1px solid var(--line);border-radius:12px;margin-top:12px;padding:10px 12px}
+fieldset.partner legend{color:var(--pink);font-weight:600;padding:0 6px}
 </style>
 </head>
 <body>
@@ -100,7 +103,7 @@ button.pub.off{background:#b9b3c4}
 <dialog id="dlg"><form method="dialog" id="dlgForm"></form></dialog>
 
 <script>
-const FILES = { bulletins: 1, contacts: 1, types: 1, news: 1, examiners: 1 };
+const FILES = { bulletins: 1, contacts: 1, types: 1, news: 1, examiners: 1, sponsor: 1 };
 const KINDS_B = ["AD", "ASB", "SB", "SIB", "DOC"];
 const KINDS_C = { dealer: "Dealer", manufacturer: "Producent", rotax_service: "Serwis Rotax", rotax_distributor: "Dystrybutor Rotax", maintenance: "Organizacja obsługowa", mechanic: "Mechanik", instructor: "Instruktor", school: "Szkoła lotnicza", examiner: "Egzaminator" };
 const LANGS = ["pl", "en", "sk", "fr"];
@@ -142,12 +145,12 @@ async function api(action, opts = {}) {
 async function readFile(key) {
   const j = await api("get", { q: "&f=" + key });
   state.sha[key] = j.rev;
-  state.data[key] = j.data ?? (key === "news" ? { version: 0, updated: "", messages: [] } : key === "examiners" ? { version: 0, updated: "", contacts: [] } : null);
+  state.data[key] = j.data ?? (key === "news" ? { version: 0, updated: "", messages: [] } : key === "examiners" ? { version: 0, updated: "", contacts: [] } : key === "sponsor" ? { version: 0, updated: "", banners: [] } : null);
 }
 async function writeFile(key, message) {
   const d = state.data[key];
   if (key === "bulletins") { d.bulletins.sort((a, b) => b.date.localeCompare(a.date)); d.updated = d.bulletins[0]?.date || d.updated; d.version = (d.version || 0) + 1 }
-  if (key === "contacts" || key === "news" || key === "examiners") { d.updated = new Date().toISOString().slice(0, 10); d.version = (d.version || 0) + 1 }
+  if (key === "contacts" || key === "news" || key === "examiners" || key === "sponsor") { d.updated = new Date().toISOString().slice(0, 10); d.version = (d.version || 0) + 1 }
   try {
     const j = await api("save", { body: { f: key, data: d, rev: state.sha[key], message } });
     state.sha[key] = j.rev;
@@ -166,9 +169,13 @@ async function start() {
   // Optional files (e.g. examiners on an older server) must not block the login.
   const missing = [];
   await Promise.all(Object.keys(FILES).map(f => readFile(f).catch(e => {
-    if (f === "examiners" || f === "news") { missing.push(f); state.data[f] = f === "news" ? { version: 0, updated: "", messages: [] } : { version: 0, updated: "", contacts: [] }; state.sha[f] = "" }
+    if (f === "examiners" || f === "news" || f === "sponsor") { missing.push(f); state.data[f] = f === "news" ? { version: 0, updated: "", messages: [] } : f === "sponsor" ? { version: 0, updated: "", banners: [] } : { version: 0, updated: "", contacts: [] }; state.sha[f] = "" }
     else throw e;
   })));
+  if (missing.includes("sponsor")) {
+    status("Serwer nie obsługuje jeszcze partnerów i sponsora – podmień private/bootstrap.php i admin/api.php z nowej paczki.", false);
+    state.noSponsor = true;
+  }
   if (missing.includes("examiners")) {
     status("Serwer nie obsługuje jeszcze listy egzaminatorów – podmień plik private/bootstrap.php i admin/api.php z nowej paczki. Pozostałe dane działają.", false);
     state.noExaminers = true;
@@ -177,7 +184,7 @@ async function start() {
   $("#who").style.display = "flex";
   $("#who").innerHTML = `<span>${esc(me.user.login)} (${esc(me.user.role)})</span><button class="ghost" style="color:#fff;border-color:rgba(255,255,255,.5);padding:5px 12px" id="logout">Wyloguj</button>`;
   $("#logout").onclick = async () => { await api("logout", { body: {} }); location.reload() };
-  renderTabs(); render(); loadSubCount();
+  renderTabs(); render(); loadSubCount(); loadReqCount();
 }
 $("#loginForm").onsubmit = async e => {
   e.preventDefault();
@@ -192,8 +199,9 @@ function renderTabs() {
     ["", [["home", "Pulpit"]]],
     ["Dane w aplikacji", [["bulletins", "Biuletyny", state.data.bulletins?.bulletins?.length], ["types", "Typy samolotów", state.data.types?.length], ["news", "Komunikaty", state.data.news?.messages?.length]]],
     ["Kontakty", Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => [g, CGROUPS[g].name, count(g)])],
+    ["Zarabianie", [["partners", "Partnerzy", partners().filter(isActive).length], ["requests", "Zapytania serwisowe", state.reqCount, state.reqCount > 0], ["sponsor", "Sponsor / baner", (state.data.sponsor?.banners || []).length]]],
     ["Użytkownicy aplikacji", [["subs", "Zgłoszenia", state.subCount, state.subCount > 0], ["stats", "Statystyki"]]],
-    ["System", [["history", "Historia i kopie"], ...(state.user?.role === "admin" ? [["users", "Konta panelu"]] : [])]],
+    ["System", [["history", "Historia i kopie"], ...(state.user?.role === "admin" ? [["users", "Konta panelu"], ["settings", "Ustawienia poczty"]] : [])]],
   ];
   const nav = $("#tabs");
   nav.classList.add("shown");
@@ -300,7 +308,7 @@ function renderContacts(g) {
     <table class="contacts"><tr><th></th><th>Nazwa</th>${G.kinds.length > 1 ? "<th>Rodzaj</th>" : ""}<th>Miejscowość</th><th class="hide-sm">Telefon</th><th class="hide-sm">E-mail</th><th>W aplikacji</th></tr>
     ${list.map(c => `<tr class="item" data-id="${esc(c.id)}">
       <td class="nosel"><input type="checkbox" class="sel" value="${esc(c.id)}"></td>
-      <td><b>${esc(c.name)}</b> ${auto(c)}<div class="muted ell">${esc((c.brands || []).join(", "))}</div></td>
+      <td><b>${esc(c.name)}</b> ${auto(c)} ${partnerChip(c)}<div class="muted ell">${esc((c.brands || []).join(", "))}</div></td>
       ${G.kinds.length > 1 ? `<td><span class="chip">${esc(KINDS_C[c.kind] || c.kind)}</span></td>` : ""}
       <td>${esc(c.city || "")}${c.country && c.country !== "PL" ? ` <span class="muted">${esc(c.country)}</span>` : ""}${c.lat == null ? ' <span class="muted" title="brak współrzędnych">⌖?</span>' : ""}</td>
       <td class="hide-sm nowrap">${esc(c.phone || "")}</td><td class="hide-sm">${esc(c.email || "")}</td>
@@ -321,6 +329,11 @@ function editContact(c, g) {
     ${field("source", "Źródło", c.source)}</div>
     <label>Uwagi<textarea name="note">${esc(c.note || "")}</textarea></label>
     <label class="inl"><input type="checkbox" name="publish" ${c.publish === false ? "" : "checked"}> pokazuj w aplikacji (publiczny)</label>
+    ${fileOfKind(c.kind) === "contacts" ? `<fieldset class="partner"><legend>Partner – płatne wyróżnienie</legend>
+      <div class="grid2">${field("partnerUntil", "Partner do (puste = brak)", c.partnerUntil || "", "date")}${field("logo", "Logo – adres https obrazka (np. z biblioteki mediów WordPress)", c.logo || "", "url")}</div>
+      <label>Tekst promocyjny w aplikacji (do 200 znaków)<textarea name="promo" maxlength="200">${esc(c.promo || "")}</textarea></label>
+      <label class="inl"><input type="checkbox" name="requests" ${c.requests ? "checked" : ""}> przyjmuje zapytania „Umów przegląd” z aplikacji (wysyłane na e-mail powyżej)</label>
+      <p class="muted">Aktywny partner jest na górze listy w promieniu ~250 km, z wyróżnieniem i logo. Po dacie końca wraca automatycznie do zwykłego wpisu.</p></fieldset>` : ""}
     <p class="muted">Współrzędne: w Mapach Google kliknij prawym przyciskiem na miejsce i skopiuj liczby. Osoby prywatne publikuj tylko za ich zgodą (RODO).</p>`,
     async fd => {
       const name = fd.get("name").trim(); if (!name) throw new Error("Podaj nazwę.");
@@ -332,6 +345,12 @@ function editContact(c, g) {
       const nc = { id, name, kind, brands: fd.get("brands").split(",").map(s => s.trim()).filter(Boolean), country: fd.get("country").toUpperCase(), city: fd.get("city"), address: fd.get("address"), lat: num("lat"), lon: num("lon"), phone: fd.get("phone"), email: fd.get("email"), web: fd.get("web"), source: fd.get("source"), note: fd.get("note") };
       Object.keys(nc).forEach(k => (nc[k] === "" || nc[k] === undefined || (Array.isArray(nc[k]) && !nc[k].length)) && delete nc[k]);
       if (!fd.get("publish")) nc.publish = false;
+      if (fd.has("partnerUntil")) {
+        const pu = fd.get("partnerUntil"); if (pu) nc.partnerUntil = pu;
+        const promo = (fd.get("promo") || "").trim().slice(0, 200); if (promo) nc.promo = promo;
+        const logo = (fd.get("logo") || "").trim(); if (logo) { if (!/^https:\/\//.test(logo)) throw new Error("Logo musi być adresem https://"); nc.logo = logo }
+        if (fd.get("requests")) { if (!nc.email) throw new Error("Do przyjmowania zapytań potrzebny jest e-mail."); nc.requests = true }
+      }
       if (!state.data[file]) state.data[file] = { version: 0, updated: "", contacts: [] };
       const list = state.data[file].contacts; const i = list.findIndex(x => x.id === id);
       if (i >= 0) list[i] = nc; else list.push(nc);
@@ -540,6 +559,116 @@ async function renderStats() {
 }
 
 
+// ---------------------------------------------------------------- earning: partners, service requests, sponsor
+const today = () => new Date().toISOString().slice(0, 10);
+const partners = () => (state.data.contacts?.contacts || []).filter(c => c.partnerUntil);
+const isActive = c => !!c.partnerUntil && c.partnerUntil >= today();
+const daysLeft = c => Math.ceil((new Date(c.partnerUntil) - new Date(today())) / 86400e3);
+const bannerLive = b => b.active !== false && (!b.from || b.from <= today()) && (!b.until || b.until >= today());
+function partnerChip(c) {
+  if (!c.partnerUntil) return "";
+  return isActive(c) ? `<span class="chip p" title="Partner do ${esc(c.partnerUntil)}">★ Partner</span>` : `<span class="chip" title="Wygasło ${esc(c.partnerUntil)}">partner wygasł</span>`;
+}
+async function loadReqCount() {
+  try { state.reqCount = (await api("requests")).requests.filter(r => r.status === "new").length; renderTabs(); if (state.tab === "home") renderHome() } catch (e) { }
+}
+const EV = { view: "wyświetlenia", call: "telefon", email: "e-mail", web: "strona", map: "mapa", request: "zapytania" };
+function sumEvents(ev, id, months) {
+  const out = {}; months.forEach(m => Object.entries((ev[m] || {})[id] || {}).forEach(([k, n]) => out[k] = (out[k] || 0) + n)); return out;
+}
+const lastMonths = n => Array.from({ length: n }, (_, i) => { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - i); return d.toISOString().slice(0, 7) });
+async function renderPartners() {
+  const v = $("#view");
+  const ev = (await api("events").catch(() => ({ events: {} }))).events || {};
+  const m1 = lastMonths(1), m12 = lastMonths(12);
+  const fmt = o => Object.keys(EV).filter(k => o[k]).map(k => `${EV[k]}: <b>${o[k]}</b>`).join(" · ") || '<span class="muted">brak</span>';
+  const list = partners().sort((a, b) => (b.partnerUntil || "").localeCompare(a.partnerUntil || ""));
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Partnerzy – płatne wyróżnienia</h3>
+    <p class="muted">Partner to zwykły wpis kontaktu z datą „Partner do”. Otwórz serwis, dealera lub szkołę w zakładce kontaktów i wypełnij sekcję „Partner”. W aplikacji partner jest na górze listy w swoim regionie, z logo, tekstem promocyjnym i przyciskiem „Umów przegląd”. Statystyki poniżej (anonimowe) to Twój raport dla partnera.</p>
+    <table><tr><th>Firma</th><th>Do</th><th>Ten miesiąc</th><th class="hide-sm">Ostatnie 12 mies.</th><th></th></tr>
+    ${list.map(c => `<tr class="item" data-id="${esc(c.id)}"><td><b>${esc(c.name)}</b> <span class="chip">${esc(KINDS_C[c.kind] || c.kind)}</span>${c.requests ? ' <span class="chip g">zapytania</span>' : ""}<div class="muted">${esc(c.city || "")}</div></td>
+      <td class="nowrap">${isActive(c) ? (daysLeft(c) <= 30 ? `<b style="color:var(--pink)">${esc(c.partnerUntil)}</b><div class="muted">zostało ${daysLeft(c)} dni</div>` : esc(c.partnerUntil)) : `<span class="muted">wygasł ${esc(c.partnerUntil)}</span>`}</td>
+      <td>${fmt(sumEvents(ev, c.id, m1))}</td><td class="hide-sm">${fmt(sumEvents(ev, c.id, m12))}</td>
+      <td class="nosel"><button class="ghost" data-rep="${esc(c.id)}">Raport</button></td></tr>`).join("") || '<tr><td class="muted">Brak partnerów – dodaj datę „Partner do” w dowolnym wpisie kontaktu.</td></tr>'}</table></div>`;
+  v.querySelectorAll("tr.item").forEach(r => r.onclick = e => {
+    if (e.target.closest(".nosel")) return;
+    const c = state.data.contacts.contacts.find(x => x.id === r.dataset.id);
+    const g = Object.keys(CGROUPS).find(k => CGROUPS[k].kinds.includes(c.kind)) || "c_service";
+    editContact(c, g);
+  });
+  v.querySelectorAll("button[data-rep]").forEach(b => b.onclick = () => {
+    const c = state.data.contacts.contacts.find(x => x.id === b.dataset.rep);
+    const rows = lastMonths(12).reverse().map(m => { const o = sumEvents(ev, c.id, [m]); return `${m}: ` + (Object.keys(EV).filter(k => o[k]).map(k => `${EV[k]} ${o[k]}`).join(", ") || "—") }).join("\n");
+    const t = `Raport AeroHangar – ${c.name}\nPartner do: ${c.partnerUntil}\n\nAktywność użytkowników aplikacji (anonimowo):\n${rows}\n\nWyświetlenia = pokazanie wyróżnionego wpisu na liście; telefon/e-mail/strona/mapa = kliknięcia; zapytania = wysłane „Umów przegląd”.`;
+    openDialog(`<h3>Raport dla partnera</h3><textarea style="min-height:320px;font-family:monospace" id="repTxt">${esc(t)}</textarea><p class="muted">Skopiuj i wyślij partnerowi.</p>`, async () => { await navigator.clipboard?.writeText($("#repTxt").value).catch(() => { }); status("Skopiowano raport.") });
+  });
+}
+async function renderRequests() {
+  const v = $("#view");
+  const j = await api("requests");
+  state.reqCount = j.requests.filter(r => r.status === "new").length; renderTabs();
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Zapytania serwisowe („Umów przegląd”)</h3>
+    <p class="muted">Właściciel samolotu wybiera w aplikacji serwis partnerski – zapytanie idzie e-mailem do serwisu i zapisuje się tutaj. Kopię dostajesz na adres z „Ustawienia poczty”. Zapytania starsze niż 400 dni są usuwane automatycznie (RODO).</p>
+    ${j.requests.map(r => `<div class="card" style="box-shadow:none;border:1px solid var(--line);${r.status === "done" ? "opacity:.6" : ""}">
+      <div class="row"><b style="flex:1">${esc(r.aircraft?.registration || "")} ${esc(r.aircraft?.type || "")} → ${esc(r.contactName)}</b><span class="muted">${esc(r.date.slice(0, 16).replace("T", " "))}</span>
+        ${r.mailed ? '<span class="chip g">wysłano e-mail</span>' : '<span class="chip" style="background:#fde2e8">e-mail nie wyszedł</span>'}</div>
+      <div>${esc(r.work)} · nalot ${esc(r.aircraft?.hours || "?")} h${r.preferredDate ? " · termin: " + esc(r.preferredDate) : ""}</div>
+      <div class="muted">${esc(r.name)} · ${esc(r.phone)} ${esc(r.email)}</div>
+      ${r.message ? `<div><i>${esc(r.message)}</i></div>` : ""}
+      <div class="row" style="margin-top:8px">${r.status === "done" ? `<button class="ghost" data-act="new" data-id="${esc(r.id)}">Przywróć</button>` : `<button data-act="done" data-id="${esc(r.id)}">Załatwione</button>`}<button class="ghost" data-act="delete" data-id="${esc(r.id)}">Usuń</button></div>
+    </div>`).join("") || '<p class="muted">Brak zapytań.</p>'}</div>`;
+  v.querySelectorAll("button[data-act]").forEach(b => b.onclick = async () => {
+    if (b.dataset.act === "delete" && !confirm("Usunąć zapytanie?")) return;
+    try { await api("requests", { body: { id: b.dataset.id, action: b.dataset.act } }); renderRequests() } catch (e) { status(e.message, false) }
+  });
+}
+async function renderSponsor() {
+  const v = $("#view");
+  const ev = (await api("events").catch(() => ({ events: {} }))).events || {};
+  const list = state.data.sponsor.banners;
+  v.innerHTML = `<div class="card">${searchBox("Szukaj banera…")}
+    <p class="muted">Jeden baner sponsora na karcie głównej aplikacji (pokazywany jest pierwszy aktywny w zakresie dat). Obrazek: adres https, najlepiej poziomy ok. 1200×300 px. Licznik: wyświetlenia (raz na uruchomienie aplikacji) i kliknięcia.</p>
+    <table><tr><th>Baner</th><th>Okres</th><th>Ten miesiąc</th><th class="hide-sm">12 mies.</th></tr>
+    ${list.map(b => { const id = "sponsor:" + b.id, a = sumEvents(ev, id, lastMonths(1)), y = sumEvents(ev, id, lastMonths(12));
+      return `<tr class="item" data-id="${esc(b.id)}"><td><b>${esc(b.title || "(obrazek)")}</b> ${bannerLive(b) ? '<span class="chip g">w aplikacji</span>' : '<span class="chip">nieaktywny</span>'}<div class="muted ell">${esc(b.url || "")}</div></td>
+      <td class="nowrap">${esc(b.from || "…")} – ${esc(b.until || "…")}</td><td>${a.sponsor_view || 0} / ${a.sponsor_click || 0} klik.</td><td class="hide-sm">${y.sponsor_view || 0} / ${y.sponsor_click || 0} klik.</td></tr>` }).join("") || '<tr><td class="muted">Brak banerów.</td></tr>'}</table></div>`;
+  hookSearch(() => editBanner(null));
+  v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editBanner(list.find(b => b.id === r.dataset.id)));
+}
+function editBanner(b) {
+  const isNew = !b; b = b || { id: "b" + Date.now().toString(36), title: "", text: "", image: "", url: "", from: today(), until: "", active: true };
+  openDialog(`<h3>${isNew ? "Nowy baner" : "Baner"}</h3>
+    <div class="grid2">${field("title", "Nazwa sponsora / tytuł", b.title)}${field("url", "Link po kliknięciu (https)", b.url, "url")}
+    ${field("from", "Od", b.from || "", "date")}${field("until", "Do", b.until || "", "date")}</div>
+    ${field("image", "Obrazek (https, poziomy) – opcjonalnie", b.image, "url")}
+    <label>Krótki tekst (gdy bez obrazka lub pod nim)<textarea name="text" maxlength="160">${esc(b.text || "")}</textarea></label>
+    <label class="inl"><input type="checkbox" name="active" ${b.active === false ? "" : "checked"}> aktywny</label>`,
+    async fd => {
+      const nb = { id: b.id, title: fd.get("title").trim(), text: fd.get("text").trim(), image: fd.get("image").trim(), url: fd.get("url").trim(), from: fd.get("from"), until: fd.get("until"), active: !!fd.get("active") };
+      if (!nb.title && !nb.image) throw new Error("Podaj nazwę lub obrazek.");
+      for (const k of ["url", "image"]) if (nb[k] && !/^https:\/\//.test(nb[k])) throw new Error("Adresy muszą zaczynać się od https://");
+      Object.keys(nb).forEach(k => nb[k] === "" && delete nb[k]);
+      const list = state.data.sponsor.banners; const i = list.findIndex(x => x.id === b.id);
+      if (i >= 0) list[i] = nb; else list.unshift(nb);
+      await writeFile("sponsor", (isNew ? "Add banner " : "Edit banner ") + (nb.title || nb.id)); renderTabs();
+    },
+    isNew ? null : async () => { state.data.sponsor.banners = state.data.sponsor.banners.filter(x => x.id !== b.id); await writeFile("sponsor", "Delete banner " + (b.title || b.id)); renderTabs() });
+}
+async function renderSettings() {
+  const v = $("#view");
+  const j = await api("settings");
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Ustawienia poczty</h3>
+    <form id="setF"><div class="grid2">${field("notifyEmail", "Twój e-mail – kopia każdego zapytania serwisowego", j.settings.notifyEmail, "email")}
+    ${field("mailFrom", "Nadawca e-maili (adres w Twojej domenie, np. aerohangar@horyzontbezgranic.pl)", j.settings.mailFrom, "email")}</div>
+    <div class="row" style="margin-top:10px"><button type="submit">Zapisz</button><button type="button" class="ghost" id="testMail">Wyślij e-mail testowy</button></div></form>
+    <p class="muted">Serwer wysyła pocztę funkcją PHP mail(). Na większości hostingów działa od razu; adres nadawcy powinien być w Twojej domenie, żeby e-maile nie trafiały do spamu.</p></div>`;
+  $("#setF").onsubmit = async e => {
+    e.preventDefault(); const fd = new FormData(e.target);
+    try { await api("settings", { body: { notifyEmail: fd.get("notifyEmail").trim(), mailFrom: fd.get("mailFrom").trim() } }); status("Zapisano ustawienia poczty.") } catch (err) { status(err.message, false) }
+  };
+  $("#testMail").onclick = async () => { try { const r = await api("settings", { q: "&test=1" }); status(r.test ? "Wysłano e-mail testowy na " + r.settings.notifyEmail : "Nie udało się wysłać – sprawdź adres lub poczty na hostingu.", !!r.test) } catch (e) { status(e.message, false) } };
+}
+
 // ---------------------------------------------------------------- dashboard
 async function renderHome() {
   const v = $("#view");
@@ -558,6 +687,12 @@ async function renderHome() {
       ${tile("subs", state.subCount ?? 0, "Zgłoszenia do zatwierdzenia", state.subCount ? "kliknij, aby przejrzeć" : "brak nowych", state.subCount ? "accent" : "")}
       ${tile("news", (state.data.news?.messages || []).length, "Komunikaty", "na karcie głównej aplikacji")}
     </div>
+    ${state.noSponsor ? "" : `<div class="sec">Zarabianie</div>
+    <div class="tiles">
+      ${tile("partners", partners().filter(isActive).length, "Aktywni partnerzy", (() => { const s = partners().filter(c => isActive(c) && daysLeft(c) <= 30).length; return s ? `kończy się w 30 dni: ${s}` : "wyróżnione wpisy w aplikacji" })(), partners().some(c => isActive(c) && daysLeft(c) <= 30) ? "accent" : "")}
+      ${tile("requests", state.reqCount ?? 0, "Nowe zapytania serwisowe", "„Umów przegląd” z aplikacji", state.reqCount ? "accent" : "")}
+      ${tile("sponsor", (state.data.sponsor?.banners || []).filter(bannerLive).length, "Banery sponsora", "aktywne teraz w aplikacji")}
+    </div>`}
     <div class="sec">Dane</div>
     <div class="tiles">
       ${tile("bulletins", b.length, "Biuletyny", `nowe w 30 dni: ${b.filter(x => x.date >= since).length} · obowiązkowe: ${b.filter(x => x.mandatory === true).length}`)}
@@ -595,6 +730,10 @@ function render(keepFocus) {
   }
   if (state.tab === "home") { renderHome().catch(e => status(e.message, false)); return }
   if (state.tab === "subs") { renderSubs().catch(e => status(e.message, false)); return }
+  if (state.tab === "partners") { renderPartners().catch(e => status(e.message, false)); return }
+  if (state.tab === "requests") { renderRequests().catch(e => status(e.message, false)); return }
+  if (state.tab === "sponsor") { renderSponsor().catch(e => status(e.message, false)); return }
+  if (state.tab === "settings") { renderSettings().catch(e => status(e.message, false)); return }
   if (state.tab === "stats") { renderStats().catch(e => status(e.message, false)); return }
   if (state.tab === "news") { v.innerHTML = renderNews(); hookSearch(() => editNews(null)); v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editNews(state.data.news.messages.find(n => n.id === r.dataset.id))) }
   if (state.tab === "history") { renderHistory().catch(e => status(e.message, false)); return }

@@ -986,5 +986,93 @@
  "date_clear": {
   "de": "Löschen",
   "cs": "Vymazat"
+ },
+ "partner": {
+  "de": "Partner",
+  "cs": "Partner"
+ },
+ "req_book": {
+  "de": "Prüfung anfragen",
+  "cs": "Objednat prohlídku"
+ },
+ "req_title": {
+  "de": "Anfrage zur Prüfung",
+  "cs": "Žádost o prohlídku"
+ },
+ "req_service": {
+  "de": "Werkstatt",
+  "cs": "Servis"
+ },
+ "req_via_app": {
+  "de": "Anfrage geht direkt an die Werkstatt",
+  "cs": "žádost jde přímo do servisu"
+ },
+ "req_via_mail": {
+  "de": "öffnet Ihre E-Mail-App",
+  "cs": "otevře váš e-mail"
+ },
+ "req_no_services": {
+  "de": "Keine Werkstatt mit E-Mail in den Kontakten. Bitte unter Kontakte hinzufügen.",
+  "cs": "V kontaktech není servis s e-mailem. Přidejte ho v Kontaktech."
+ },
+ "req_more": {
+  "de": "Weitere Werkstätten",
+  "cs": "Další servisy"
+ },
+ "req_work": {
+  "de": "Arbeitsumfang",
+  "cs": "Rozsah prací"
+ },
+ "req_date": {
+  "de": "Wunschtermin (optional)",
+  "cs": "Preferovaný termín (volitelné)"
+ },
+ "req_name": {
+  "de": "Ihr Name",
+  "cs": "Jméno a příjmení"
+ },
+ "req_phone": {
+  "de": "Telefon",
+  "cs": "Telefon"
+ },
+ "req_message": {
+  "de": "Nachricht (optional)",
+  "cs": "Zpráva (volitelné)"
+ },
+ "req_consent": {
+  "de": "Ich bin einverstanden, dass mein Name, meine Kontaktdaten und die obigen Flugzeugdaten zur Beantwortung an die gewählte Werkstatt weitergegeben werden.",
+  "cs": "Souhlasím s předáním mého jména, kontaktu a výše uvedených údajů letadla vybranému servisu za účelem odpovědi."
+ },
+ "req_send": {
+  "de": "Senden",
+  "cs": "Odeslat"
+ },
+ "req_sent": {
+  "de": "Gesendet – die Werkstatt meldet sich.",
+  "cs": "Odesláno – servis vás bude kontaktovat."
+ },
+ "req_sent_nomail": {
+  "de": "Auf dem Server gespeichert – der Betreiber leitet sie weiter.",
+  "cs": "Uloženo na serveru – správce ji předá servisu."
+ },
+ "req_fail": {
+  "de": "Senden fehlgeschlagen (%1$s). E-Mail wird geöffnet.",
+  "cs": "Odeslání se nezdařilo (%1$s). Otevírám e-mail."
+ },
+ "req_need_contact": {
+  "de": "Name und Telefon oder E-Mail angeben.",
+  "cs": "Zadejte jméno a telefon nebo e-mail."
+ },
+ "req_mail_subject": {
+  "de": "Anfrage zur Prüfung %1$s",
+  "cs": "Žádost o prohlídku %1$s"
+ },
+ "req_default_work": {
+  "de": "Regelmäßige Prüfung",
+  "cs": "Periodická prohlídka"
+ },
+ "sponsor": {
+  "de": "Sponsor",
+  "cs": "Sponzor"
  }
 }

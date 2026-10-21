@@ -107,6 +107,12 @@ private fun lastLocation(ctx: Context): Location? {
         .maxByOrNull { it.time }
 }
 
+fun lastLocationOrNull(ctx: Context): Location? = lastLocation(ctx)
+fun distanceKmOrNull(loc: Location?, c: Contact): Double? = distanceKm(loc, c)
+
+/** Active partners within this distance (or with unknown distance) are listed first. */
+private const val PARTNER_RADIUS_KM = 250.0
+
 private fun distanceKm(loc: Location?, c: Contact): Double? {
     if (loc == null || c.lat == null || c.lon == null) return null
     val r = FloatArray(1)
@@ -163,7 +169,12 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
         .filter {
             query.isBlank() || listOf(it.name, it.city, it.country, it.brands.joinToString(" ")).any { f -> f.contains(query.trim(), ignoreCase = true) }
         }
-        .sortedWith(compareBy({ distanceKm(loc, it) ?: Double.MAX_VALUE }, { it.country }, { it.name }))
+        .sortedWith(compareBy(
+            { if (it.isPartner() && (distanceKm(loc, it) ?: 0.0) <= PARTNER_RADIUS_KM) 0 else 1 },
+            { distanceKm(loc, it) ?: Double.MAX_VALUE }, { it.country }, { it.name },
+        ))
+    var requestFor by remember { mutableStateOf<Contact?>(null) }
+    val selectedAircraft = Repo.selected(state)
 
     Box(Modifier.fillMaxSize()) {
         LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
@@ -264,7 +275,7 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
                 Spacer(Modifier.height(8.dp))
             }
             items(list, key = { it.id }) { c ->
-                ContactCard(c, distanceKm(loc, c), c.id in localIds) { editing = c }
+                ContactCard(c, distanceKm(loc, c), c.id in localIds, onRequest = if (selectedAircraft != null && c.kind in SERVICE_KINDS && c.email.isNotBlank() && c.isPartner()) ({ requestFor = c }) else null) { editing = c }
                 Spacer(Modifier.height(8.dp))
             }
             item {
@@ -285,39 +296,59 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
     }
 
     editing?.let { c -> ContactDialog(c, loc, isNew = false) { editing = null } }
+    requestFor?.let { c -> selectedAircraft?.let { a -> ServiceRequestDialog(a, nextWorkText(a, state), c) { requestFor = null } } }
     if (creating) ContactDialog(null, loc, isNew = true) { creating = false }
 }
 
 @Composable
-private fun ContactCard(c: Contact, km: Double?, mine: Boolean, onEdit: () -> Unit) {
+private fun ContactCard(c: Contact, km: Double?, mine: Boolean, onRequest: (() -> Unit)? = null, onEdit: () -> Unit) {
     val ctx = LocalContext.current
-    Card(Modifier.fillMaxWidth().clickable(onClick = onEdit)) {
+    val partner = c.isPartner()
+    if (partner) androidx.compose.runtime.LaunchedEffect(c.id) { Repo.track("view", c.id) }
+    val tap = { what: String -> if (partner) Repo.track(what, c.id) }
+    Card(
+        Modifier.fillMaxWidth().clickable(onClick = onEdit),
+        border = if (partner) androidx.compose.foundation.BorderStroke(2.dp, HbgPink) else null,
+    ) {
         Column(Modifier.padding(14.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
+                if (partner && c.logo.startsWith("https://")) {
+                    coil.compose.AsyncImage(
+                        model = c.logo, contentDescription = c.name,
+                        modifier = Modifier.size(44.dp).padding(end = 8.dp),
+                        contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                    )
+                }
                 Text(c.name, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
                 km?.let { Text(if (it < 10) "%.1f km".format(it) else "${it.roundToInt()} km", style = MaterialTheme.typography.labelMedium) }
             }
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(vertical = 4.dp)) {
+                if (partner) Chip("★ " + stringResource(R.string.partner), Color(0xFF7A3E9D), Color.White)
                 Chip(kindName(c.kind), HbgPink, Color.White)
                 if (mine) Chip(stringResource(R.string.contact_mine), MaterialTheme.colorScheme.secondaryContainer, MaterialTheme.colorScheme.onSecondaryContainer)
             }
+            if (partner && c.promo.isNotBlank()) Text(c.promo, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(bottom = 2.dp))
             val place = listOf(c.address, c.city, c.country).filter { it.isNotBlank() }.distinct().joinToString(", ")
             if (place.isNotBlank()) Text(place, style = MaterialTheme.typography.bodySmall)
             if (c.brands.isNotEmpty()) Text(c.brands.joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
             if (c.note.isNotBlank()) Text(c.note, style = MaterialTheme.typography.bodySmall)
-            Row {
-                if (c.phone.isNotBlank()) IconButton(onClick = { open(ctx, Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + c.phone.filter { it.isDigit() || it == '+' }))) }) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (c.phone.isNotBlank()) IconButton(onClick = { tap("call"); open(ctx, Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + c.phone.filter { it.isDigit() || it == '+' }))) }) {
                     Icon(Icons.Filled.Call, c.phone)
                 }
-                if (c.email.isNotBlank()) IconButton(onClick = { open(ctx, Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + c.email))) }) {
+                if (c.email.isNotBlank()) IconButton(onClick = { tap("email"); open(ctx, Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + c.email))) }) {
                     Icon(Icons.Filled.Email, c.email)
                 }
                 if (c.web.isNotBlank()) IconButton(onClick = {
-                    open(ctx, Intent(Intent.ACTION_VIEW, Uri.parse(if (c.web.startsWith("http")) c.web else "https://" + c.web)))
+                    tap("web"); open(ctx, Intent(Intent.ACTION_VIEW, Uri.parse(if (c.web.startsWith("http")) c.web else "https://" + c.web)))
                 }) { Icon(Icons.Filled.Language, c.web) }
                 if (c.lat != null && c.lon != null) IconButton(onClick = {
-                    open(ctx, Intent(Intent.ACTION_VIEW, Uri.parse("geo:${c.lat},${c.lon}?q=${c.lat},${c.lon}(${Uri.encode(c.name)})")))
+                    tap("map"); open(ctx, Intent(Intent.ACTION_VIEW, Uri.parse("geo:${c.lat},${c.lon}?q=${c.lat},${c.lon}(${Uri.encode(c.name)})")))
                 }) { Icon(Icons.Filled.Map, null) }
+                if (onRequest != null) {
+                    Spacer(Modifier.weight(1f))
+                    androidx.compose.material3.FilledTonalButton(onClick = onRequest) { Text(stringResource(R.string.req_book)) }
+                }
             }
         }
     }
@@ -441,4 +472,15 @@ private fun SubmitDialog(c: Contact, onDismiss: () -> Unit) {
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
     )
+}
+
+
+/** Default "scope of work" for a request: the next due inspection of the aircraft. */
+@Composable
+fun nextWorkText(a: com.cannonadestudio.tomarkpilot.data.Aircraft, state: AppState): String {
+    val lg = lang()
+    val next = com.cannonadestudio.tomarkpilot.data.Maintenance.compute(a, state.completions)
+        .filter { it.status != com.cannonadestudio.tomarkpilot.data.DueStatus.DONE && (it.remainingHours != null || it.remainingDays != null) }
+        .minByOrNull { it.remainingHours ?: ((it.remainingDays ?: 9999L) / 3.0) }
+    return next?.task?.title?.get(lg) ?: stringResource(R.string.req_default_work)
 }

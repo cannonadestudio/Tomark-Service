@@ -93,6 +93,7 @@ fun HomeScreen(
 ) {
     val lg = lang()
     var hoursDialog by remember { mutableStateOf(false) }
+    var bookWork by remember { mutableStateOf<String?>(null) }
     val due = Maintenance.compute(aircraft, state.completions)
     val attention = due.filter { Maintenance.needsAttention(it) }
     val openBulletins = Repo.openBulletins(aircraft, state, feed)
@@ -109,7 +110,10 @@ fun HomeScreen(
         }
         // Hours left to the next hour-based inspection (hours follow the logbook when linked)
         due.filter { it.remainingHours != null && it.status != com.cannonadestudio.tomarkpilot.data.DueStatus.DONE }
-            .minByOrNull { it.remainingHours!! }?.let { NextInspectionCard(it, aircraft, state, lg) { onTab(MainActivity.TAB_SERVICE) } }
+            .minByOrNull { it.remainingHours!! }?.let { d ->
+                NextInspectionCard(d, aircraft, state, lg, onBook = { bookWork = d.task.title.get(lg) }) { onTab(MainActivity.TAB_SERVICE) }
+            }
+        SponsorCard()
         // Flightradar24 – last flights of this registration
         val ctx = LocalContext.current
         Row(
@@ -259,6 +263,7 @@ fun HomeScreen(
     }
 
     if (hoursDialog) HoursDialog(aircraft) { hoursDialog = false }
+    bookWork?.let { w -> ServiceRequestDialog(aircraft, w) { bookWork = null } }
 }
 
 @Composable
@@ -415,7 +420,7 @@ fun EngineSerialLine(a: Aircraft, color: Color) {
 
 
 @Composable
-private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, a: Aircraft, state: AppState, lg: String, onClick: () -> Unit) {
+private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, a: Aircraft, state: AppState, lg: String, onBook: () -> Unit, onClick: () -> Unit) {
     val rem = d.remainingHours ?: return
     val look = statusLook(d.status)
     val numColor = when (d.status) {
@@ -443,8 +448,44 @@ private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, 
                     else stringResource(R.string.next_insp_manual),
                     style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
+                androidx.compose.material3.FilledTonalButton(onClick = onBook, modifier = Modifier.padding(top = 6.dp)) {
+                    Text(stringResource(R.string.req_book))
+                }
             }
             StatusChip(d.status)
+        }
+    }
+}
+
+
+/** Sponsor banner from the owner's server (first active one); views and taps are counted for the sponsor. */
+@Composable
+private fun SponsorCard() {
+    val feed by Repo.sponsor.collectAsState()
+    val b = feed.banners.firstOrNull { it.live() } ?: return
+    val ctx = LocalContext.current
+    androidx.compose.runtime.LaunchedEffect(b.id) { Repo.track("sponsor_view", "sponsor:" + b.id) }
+    Card(
+        Modifier.fillMaxWidth().padding(top = 10.dp).clickable(enabled = b.url.isNotBlank()) {
+            Repo.track("sponsor_click", "sponsor:" + b.id)
+            openUrl(ctx, b.url)
+        },
+    ) {
+        Column {
+            if (b.image.startsWith("https://")) {
+                coil.compose.AsyncImage(
+                    model = b.image, contentDescription = b.title,
+                    modifier = Modifier.fillMaxWidth().height(96.dp),
+                    contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                )
+            }
+            Row(Modifier.padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    if (b.title.isNotBlank()) Text(b.title, fontWeight = FontWeight.SemiBold)
+                    if (b.text.isNotBlank()) Text(b.text, style = MaterialTheme.typography.bodySmall)
+                }
+                Text(stringResource(R.string.sponsor), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
         }
     }
 }

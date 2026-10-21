@@ -57,6 +57,10 @@ object Repo {
     /** Examiner lists (public ULC data) – empty until the user downloads them. */
     val examiners: StateFlow<ContactFeed> = _examiners.asStateFlow()
 
+    private val sponsorCache get() = File(app.filesDir, "sponsor_cache.json")
+    private val _sponsor = MutableStateFlow(SponsorFeed())
+    val sponsor: StateFlow<SponsorFeed> = _sponsor.asStateFlow()
+
     private val _news = MutableStateFlow(NewsFeed())
     val news: StateFlow<NewsFeed> = _news.asStateFlow()
     private val feedCache get() = File(app.filesDir, "bulletins_cache.json")
@@ -71,6 +75,7 @@ object Repo {
             runCatching { baseCache.readText().trim() }.getOrNull()?.takeIf { it.startsWith("https://") }?.let { dataBase = it }
             _examiners.value = runCatching { json.decodeFromString<ContactFeed>(examinersCache.readText()) }.getOrNull() ?: ContactFeed()
             _news.value = runCatching { json.decodeFromString<NewsFeed>(newsCache.readText()) }.getOrNull() ?: NewsFeed()
+            _sponsor.value = runCatching { json.decodeFromString<SponsorFeed>(sponsorCache.readText()) }.getOrNull() ?: SponsorFeed()
             _contacts.value = runCatching { json.decodeFromString<ContactFeed>(contactsCache.readText()) }.getOrNull()
                 ?: json.decodeFromString(readAsset("contacts.json"))
             val loaded = runCatching { json.decodeFromString<AppState>(stateFile.readText()) }.getOrNull()
@@ -152,6 +157,7 @@ object Repo {
         refreshContacts()
         refreshTypes()
         refreshNews()
+        refreshSponsor()
         if (_state.value.examinersEnabled) refreshExaminers()
         pingIfDue()
     }
@@ -208,6 +214,78 @@ object Repo {
             }.toString()
             val code = post(apiUrl("submit"), body)
             if (code != 200) error("HTTP $code")
+        }
+    }
+
+    suspend fun refreshSponsor(): Result<Int> = withContext(Dispatchers.IO) {
+        runCatching {
+            val text = downloadData("sponsor")
+            val remote = json.decodeFromString<SponsorFeed>(text)
+            sponsorCache.writeText(text)
+            _sponsor.value = remote
+            remote.banners.size
+        }
+    }
+
+    // ---------------------------------------------------------------- partner / sponsor counters and service requests
+
+    private val viewedThisRun = java.util.Collections.synchronizedSet(HashSet<String>())
+    private val trackScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
+    /**
+     * Anonymous counter for partners and sponsors on the owner's server: [type] is view, call, email, web, map,
+     * sponsor_view or sponsor_click; [target] the contact id (or "sponsor:<id>"). Views count once per app run.
+     */
+    fun track(type: String, target: String) {
+        if (!serverConnected) return
+        if ((type == "view" || type == "sponsor_view") && !viewedThisRun.add("$type|$target")) return
+        trackScope.launch {
+            val body = kotlinx.serialization.json.buildJsonObject {
+                put("events", kotlinx.serialization.json.buildJsonArray {
+                    add(kotlinx.serialization.json.buildJsonObject {
+                        put("t", kotlinx.serialization.json.JsonPrimitive(type))
+                        put("c", kotlinx.serialization.json.JsonPrimitive(target))
+                    })
+                })
+            }.toString()
+            runCatching { post(apiUrl("event"), body) }
+        }
+    }
+
+    /** Can this contact receive an inspection request through the server (otherwise the app opens an e-mail)? */
+    fun takesRequests(c: Contact) = serverConnected && c.requests && c.email.isNotBlank() && c.isPartner()
+
+    /** Sends "Book an inspection" to a partner service via the owner's server. Result: true = e-mail sent to the service. */
+    suspend fun sendServiceRequest(
+        c: Contact, a: Aircraft, work: String, preferredDate: String,
+        name: String, phone: String, email: String, message: String,
+    ): Result<Boolean> = withContext(Dispatchers.IO) {
+        runCatching {
+            val P = { v: String -> kotlinx.serialization.json.JsonPrimitive(v) }
+            val body = kotlinx.serialization.json.buildJsonObject {
+                put("contactId", P(c.id))
+                put("aircraft", kotlinx.serialization.json.buildJsonObject {
+                    put("registration", P(a.registration))
+                    put("type", P(type(a.typeId)?.name ?: a.typeId))
+                    put("hours", P(String.format(java.util.Locale.US, "%.1f", a.hours)))
+                    put("engineSerial", P(a.engineSerial))
+                    put("year", P(a.yearBuilt?.toString() ?: ""))
+                })
+                put("work", P(work)); put("preferredDate", P(preferredDate))
+                put("name", P(name)); put("phone", P(phone)); put("email", P(email)); put("message", P(message))
+                put("consent", kotlinx.serialization.json.JsonPrimitive(true))
+            }.toString()
+            val conn = URL(apiUrl("request")).openConnection() as HttpURLConnection
+            conn.connectTimeout = 10_000; conn.readTimeout = 20_000
+            conn.requestMethod = "POST"; conn.doOutput = true
+            conn.setRequestProperty("Content-Type", "application/json; charset=utf-8")
+            try {
+                conn.outputStream.use { it.write(body.toByteArray()) }
+                if (conn.responseCode != 200) error("HTTP ${conn.responseCode}")
+                conn.inputStream.bufferedReader().use { it.readText() }.contains("\"mailed\":true")
+            } finally {
+                conn.disconnect()
+            }
         }
     }
 
@@ -281,7 +359,12 @@ object Repo {
     fun contacts(s: AppState = _state.value, feed: ContactFeed = _contacts.value, exams: ContactFeed = _examiners.value): List<Contact> {
         val local = s.localContacts.associateBy { it.id }
         val online = feed.contacts + (if (s.examinersEnabled) exams.contacts.filter { e -> feed.contacts.none { it.id == e.id } } else emptyList())
-        return (online.filter { it.id !in local } + s.localContacts).filter { it.id !in s.hiddenContactIds }
+        val byId = online.associateBy { it.id }
+        // A contact edited on the phone keeps the partner status that the server sets.
+        val mine = s.localContacts.map { l ->
+            byId[l.id]?.let { o -> l.copy(partnerUntil = o.partnerUntil, promo = o.promo, logo = o.logo, requests = o.requests) } ?: l
+        }
+        return (online.filter { it.id !in local } + mine).filter { it.id !in s.hiddenContactIds }
     }
 
     fun saveContact(c: Contact) = update { s ->

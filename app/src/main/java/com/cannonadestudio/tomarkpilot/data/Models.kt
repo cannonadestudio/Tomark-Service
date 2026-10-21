@@ -109,7 +109,35 @@ data class Contact(
     val web: String = "",
     val source: String = "",
     val note: String = "",
-)
+    /** Paid listing (set by the app owner on the server): highlighted until this date (yyyy-MM-dd). */
+    val partnerUntil: String? = null,
+    val promo: String = "",
+    /** https address of the partner's logo. */
+    val logo: String = "",
+    /** Partner accepts "Book an inspection" requests sent through the server. */
+    val requests: Boolean = false,
+) {
+    fun isPartner(today: String = java.time.LocalDate.now().toString()): Boolean = partnerUntil != null && partnerUntil >= today
+}
+
+/** Sponsor banner on the home screen (data/sponsor.json, managed in the panel). */
+@Serializable
+data class SponsorBanner(
+    val id: String,
+    val title: String = "",
+    val text: String = "",
+    val image: String = "",
+    val url: String = "",
+    val from: String = "",
+    val until: String = "",
+    val active: Boolean = true,
+) {
+    fun live(today: String = java.time.LocalDate.now().toString()) =
+        active && (from.isBlank() || from <= today) && (until.isBlank() || until >= today)
+}
+
+@Serializable
+data class SponsorFeed(val version: Int = 0, val updated: String = "", val banners: List<SponsorBanner> = emptyList())
 
 @Serializable
 data class ContactFeed(val version: Int = 0, val updated: String = "", val contacts: List<Contact> = emptyList())
@@ -208,4 +236,8 @@ data class AppState(
     val backupUri: String? = null,
     val lastBackupMillis: Long? = null,
     val backupError: String? = null,
+    /** Owner's contact details remembered for "Book an inspection" (stay on the phone and in the backup). */
+    val reqName: String = "",
+    val reqPhone: String = "",
+    val reqEmail: String = "",
 )
