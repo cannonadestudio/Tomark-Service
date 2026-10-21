@@ -553,7 +553,8 @@ async function renderStats() {
   v.innerHTML = `<div class="card"><h3 style="margin-top:0">Instalacje aplikacji</h3>
     <div class="row" style="gap:24px;font-size:18px"><div><b style="font-size:30px">${j.total}</b><br><span class="muted">wszystkich instalacji</span></div>
     <div><b style="font-size:30px">${j.active30}</b><br><span class="muted">aktywnych w 30 dni</span></div>
-    <div><b style="font-size:30px">${j.active7}</b><br><span class="muted">aktywnych w 7 dni</span></div></div>
+    <div><b style="font-size:30px">${j.active7}</b><br><span class="muted">aktywnych w 7 dni</span></div>
+    <div><b style="font-size:30px;color:var(--pink)">${j.pro ?? 0}</b><br><span class="muted">z wersją Pro</span></div></div>
     <p class="muted">Aplikacja raz dziennie wysyła anonimowy, losowy identyfikator instalacji, wersję, język, wersję Androida i typy samolotów. Bez nazwisk, znaków rejestracyjnych i lokalizacji. Liczone są tylko telefony, które pobierają dane z tego serwera.</p>
     <div class="row" style="align-items:stretch">${tbl("Nowe instalacje / miesiąc", j.newPerMonth)}${tbl("Wersje", j.versions)}${tbl("Języki", j.langs)}${tbl("Typy samolotów", j.types)}</div></div>`;
 }
@@ -692,6 +693,7 @@ async function renderHome() {
       ${tile("partners", partners().filter(isActive).length, "Aktywni partnerzy", (() => { const s = partners().filter(c => isActive(c) && daysLeft(c) <= 30).length; return s ? `kończy się w 30 dni: ${s}` : "wyróżnione wpisy w aplikacji" })(), partners().some(c => isActive(c) && daysLeft(c) <= 30) ? "accent" : "")}
       ${tile("requests", state.reqCount ?? 0, "Nowe zapytania serwisowe", "„Umów przegląd” z aplikacji", state.reqCount ? "accent" : "")}
       ${tile("sponsor", (state.data.sponsor?.banners || []).filter(bannerLive).length, "Banery sponsora", "aktywne teraz w aplikacji")}
+      ${tile("stats", st ? (st.pro ?? 0) : "–", "Użytkownicy Pro", "zakup w aplikacji (więcej niż 1 samolot)")}
     </div>`}
     <div class="sec">Dane</div>
     <div class="tiles">

@@ -240,4 +240,6 @@ data class AppState(
     val reqName: String = "",
     val reqPhone: String = "",
     val reqEmail: String = "",
+    /** Last Pro state reported by Google Play on this phone (never taken from a backup file). */
+    val proCached: Boolean = false,
 )

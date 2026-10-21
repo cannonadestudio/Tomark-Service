@@ -223,7 +223,7 @@ switch ($action) {
         if (!ah_rate_ok('ping', 30, 3600)) out(429, ['error' => 'slow down']);
         $id = (string)($body['id'] ?? '');
         if (!preg_match('/^[0-9a-f-]{36}$/', $id)) out(400, ['error' => 'bad id']);
-        $info = ['v' => ah_clean_str($body['v'] ?? '', 20), 'lang' => ah_clean_str($body['lang'] ?? '', 5), 'sdk' => (int)($body['sdk'] ?? 0), 'types' => array_slice(array_map(fn($t) => ah_clean_str($t, 40), (array)($body['types'] ?? [])), 0, 5)];
+        $info = ['v' => ah_clean_str($body['v'] ?? '', 20), 'lang' => ah_clean_str($body['lang'] ?? '', 5), 'sdk' => (int)($body['sdk'] ?? 0), 'types' => array_slice(array_map(fn($t) => ah_clean_str($t, 40), (array)($body['types'] ?? [])), 0, 5), 'pro' => !empty($body['pro']), 'ac' => max(0, min(99, (int)($body['ac'] ?? 0)))];
         ah_store_update('installs', function (&$d) use ($id, $info) {
             if (!isset($d[$id]) && count($d) > 200000) return;
             $today = date('Y-m-d');
@@ -375,7 +375,9 @@ switch ($action) {
         $months = [];
         foreach ($d as $i) { $m = substr($i['first'] ?? '', 0, 7); if ($m) $months[$m] = ($months[$m] ?? 0) + 1; }
         ksort($months);
-        out(200, ['total' => count($d), 'active7' => $active(7), 'active30' => $active(30),
+        $pro = count(array_filter($d, fn($i) => !empty($i['pro'])));
+        $multi = count(array_filter($d, fn($i) => empty($i['pro']) && ($i['ac'] ?? 0) >= 1 && strtotime($i['last'] ?? '1970-01-01') >= $now - 30 * 86400));
+        out(200, ['total' => count($d), 'active7' => $active(7), 'active30' => $active(30), 'pro' => $pro, 'freeActiveWithAircraft' => $multi,
             'versions' => $by('v'), 'langs' => $by('lang'), 'types' => array_slice($types, 0, 15, true), 'newPerMonth' => $months]);
 
     case 'submissions':

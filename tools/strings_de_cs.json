@@ -1074,5 +1074,53 @@
  "sponsor": {
   "de": "Sponsor",
   "cs": "Sponzor"
+ },
+ "pro_free": {
+  "de": "Kostenlos: %1$d Flugzeug mit allen Funktionen.",
+  "cs": "Zdarma: %1$d letadlo se všemi funkcemi."
+ },
+ "pro_paid": {
+  "de": "Pro: beliebig viele Flugzeuge.",
+  "cs": "Pro: libovolný počet letadel."
+ },
+ "pro_once": {
+  "de": "Einmalzahlung über Google Play, kein Abo. Gilt für Ihr Google-Konto – auch auf einem neuen Telefon.",
+  "cs": "Jednorázová platba přes Google Play, bez předplatného. Platí i na novém telefonu."
+ },
+ "pro_buy": {
+  "de": "Pro kaufen",
+  "cs": "Koupit Pro"
+ },
+ "pro_buy_price": {
+  "de": "Pro kaufen – %1$s",
+  "cs": "Koupit Pro – %1$s"
+ },
+ "pro_restore": {
+  "de": "Kauf wiederherstellen",
+  "cs": "Obnovit nákup"
+ },
+ "pro_restored": {
+  "de": "Pro wiederhergestellt",
+  "cs": "Pro obnoveno"
+ },
+ "pro_not_found": {
+  "de": "Kein Kauf gefunden",
+  "cs": "Nákup nenalezen"
+ },
+ "pro_active": {
+  "de": "Pro aktiv – unbegrenzt Flugzeuge",
+  "cs": "Pro aktivní – bez limitu letadel"
+ },
+ "pro_thanks": {
+  "de": "Danke für Ihre Unterstützung!",
+  "cs": "Děkuji za podporu aplikace!"
+ },
+ "pro_pending": {
+  "de": "Zahlung läuft – Pro wird nach Bestätigung aktiviert.",
+  "cs": "Platba probíhá – Pro se zapne po potvrzení."
+ },
+ "pro_unavailable": {
+  "de": "Der Kauf ist in der Version aus Google Play verfügbar.",
+  "cs": "Nákup je dostupný ve verzi z Google Play."
  }
 }

@@ -88,6 +88,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Repo.init(this)
+        com.cannonadestudio.tomarkpilot.data.Billing.init(this)
         enableEdgeToEdge()
         startTab.intValue = intent.getIntExtra(EXTRA_TAB, TAB_HOME)
         if (Build.VERSION.SDK_INT >= 33) notifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
@@ -100,6 +101,7 @@ class MainActivity : ComponentActivity() {
         lifecycleScope.launch { Repo.syncLogbook() }
         // Fresh bulletins, contacts and types whenever the app is opened (the daily job covers the rest).
         lifecycleScope.launch { Repo.refreshAll() }
+        lifecycleScope.launch { com.cannonadestudio.tomarkpilot.data.Billing.refresh() }
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -273,6 +275,8 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
         Text(stringResource(R.string.app_name), style = MaterialTheme.typography.headlineSmall)
         Text("v" + BuildConfigCompat.versionName(), style = MaterialTheme.typography.bodySmall)
         Spacer(Modifier.height(16.dp))
+        com.cannonadestudio.tomarkpilot.ui.ProCard()
+        Spacer(Modifier.height(12.dp))
 
         Card(Modifier.fillMaxWidth()) {
             Column(Modifier.padding(16.dp)) {

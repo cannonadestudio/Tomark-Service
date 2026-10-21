@@ -82,7 +82,9 @@ fun AircraftListScreen(state: AppState, onEdit: (Aircraft?) -> Unit, onSelected:
             }
         }
         Spacer(Modifier.height(8.dp))
-        Button(onClick = { onEdit(null) }) {
+        var proAsk by remember { mutableStateOf(false) }
+        if (proAsk) ProDialog { proAsk = false }
+        Button(onClick = { if (com.cannonadestudio.tomarkpilot.data.Billing.canAddAircraft(state)) onEdit(null) else proAsk = true }) {
             Icon(Icons.Filled.Add, null)
             Spacer(Modifier.width(6.dp))
             Text(stringResource(R.string.add_aircraft))

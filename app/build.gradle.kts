@@ -13,8 +13,8 @@ android {
         applicationId = "com.cannonadestudio.tomarkpilot"
         minSdk = 23
         targetSdk = 35
-        versionCode = 15
-        versionName = "2.8.0"
+        versionCode = 16
+        versionName = "2.9.0"
     }
 
     // Release signing: the key comes from GitHub secrets (see README "Podpis aplikacji").
@@ -55,6 +55,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material-icons-extended")
     implementation("io.coil-kt:coil-compose:2.7.0")
+    implementation("com.android.billingclient:billing-ktx:7.1.1")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")

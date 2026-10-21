@@ -195,6 +195,8 @@ object Repo {
             put("v", kotlinx.serialization.json.JsonPrimitive(version))
             put("lang", kotlinx.serialization.json.JsonPrimitive(java.util.Locale.getDefault().language))
             put("sdk", kotlinx.serialization.json.JsonPrimitive(android.os.Build.VERSION.SDK_INT))
+            put("pro", kotlinx.serialization.json.JsonPrimitive(Billing.pro.value.owned))
+            put("ac", kotlinx.serialization.json.JsonPrimitive(s.aircraft.size))
             put("types", kotlinx.serialization.json.JsonArray(s.aircraft.mapNotNull { type(it.typeId)?.name }.distinct().take(5).map { kotlinx.serialization.json.JsonPrimitive(it) }))
         }.toString()
         val code = runCatching { post(apiUrl("ping"), body) }.getOrDefault(0)
@@ -432,7 +434,7 @@ object Repo {
     /** Fields that belong to this phone and must not travel with a backup. */
     private fun withoutDeviceFields(s: AppState) = s.copy(
         backupUri = null, lastBackupMillis = null, backupError = null,
-        logbookUri = null, logbookError = null, logbookSyncedEpochDay = null,
+        logbookUri = null, logbookError = null, logbookSyncedEpochDay = null, proCached = false,
         aircraft = s.aircraft.map { it.copy(pohUri = null) },
     )
 
@@ -472,11 +474,15 @@ object Repo {
                 restored.copy(
                     backupUri = cur.backupUri, lastBackupMillis = cur.lastBackupMillis, backupError = null,
                     logbookUri = cur.logbookUri, logbookSyncedEpochDay = cur.logbookSyncedEpochDay,
-                    disclaimerAccepted = true,
+                    disclaimerAccepted = true, proCached = cur.proCached,
                 )
             }
             restored.aircraft.size
         }
+    }
+
+    fun setProCached(owned: Boolean) {
+        if (_state.value.proCached != owned) setStateNoBackup { it.copy(proCached = owned) }
     }
 
     private fun setStateNoBackup(transform: (AppState) -> AppState) {
