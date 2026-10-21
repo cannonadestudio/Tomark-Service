@@ -27,7 +27,7 @@ Panel na porcie 8080 – postaw przed nim HTTPS (Caddy, Traefik albo nginx + Let
 
 ## Automatyczne dane z GitHuba
 Biuletyny (EASA, producenci, TOMARK – codziennie) i listy ULC (egzaminatorzy, organizacje obsługowe – co tydzień) zbiera automat na GitHubie. Żeby trafiały też na serwer, dodaj w repozytorium (Settings → Secrets and variables → Actions) dwa sekrety:
-- `AH_SERVER` = `https://twoja-domena.pl/aerohangar`
+- `AH_SERVER` = `https://twoja-domena.pl/aerohangar/public` (adres folderu, w którym leżą `admin/` i `data/`)
 - `AH_CRON_KEY` = wartość `cronKey` z `private/state/config.php`
 
 Serwer dopisuje tylko nowe biuletyny, a listy ULC podmienia w całości – wpisy dodane w panelu zostają nietknięte.
@@ -35,7 +35,7 @@ Serwer dopisuje tylko nowe biuletyny, a listy ULC podmienia w całości – wpis
 ## Przełączenie aplikacji na serwer
 W repozytorium GitHub zmień `data/config.json`:
 ```json
-{ "dataBaseUrl": "https://twoja-domena.pl/aerohangar/data" }
+{ "dataBaseUrl": "https://twoja-domena.pl/aerohangar/public/data" }
 ```
 Każda zainstalowana aplikacja przy następnym otwarciu odczyta ten adres i od tej pory pobiera wszystko z Twojego serwera. Powrót: `"dataBaseUrl": null`.
 

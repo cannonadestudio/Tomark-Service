@@ -250,7 +250,7 @@ function ah_write_editable(string $f, array $d): string
     if (in_array($f, AH_MASTERED, true)) {
         ah_write_atomic(ah_master_path($f), $json);
         $pub = $d;
-        unset($pub['publishNew']);
+        unset($pub['publishNew'], $pub['deletedIds']);
         $pub['contacts'] = array_values(array_map(function ($c) { unset($c['publish']); return $c; },
             array_filter($d['contacts'] ?? [], fn($c) => ($c['publish'] ?? true) !== false)));
         ah_write_atomic(ah_data_path($f), ah_json($pub));

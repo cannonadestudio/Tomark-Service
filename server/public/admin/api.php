@@ -169,6 +169,25 @@ switch ($action) {
             if (!is_array($d['contacts'] ?? null)) { $res[$f] = ['error' => 'download failed']; continue; }
             $inc = array_values(array_filter($d['contacts'], fn($c) => !empty($c['id']) && array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));
             $res[$f] = $inc ? ah_merge_official($f, $prefixes, $inc, $u['login']) : ['imported' => 0];
+            // Other shared entries (manufacturers, Rotax service, dealers…): add only ones the server has never had.
+            // Entries edited here are not overwritten; entries deleted here are not brought back.
+            $raw2 = ah_read_editable($f);
+            $feed = $raw2 ? json_decode($raw2, true) : ['version' => 0, 'updated' => '', 'contacts' => []];
+            $have = array_flip(array_column($feed['contacts'], 'id'));
+            $deleted = array_flip($feed['deletedIds'] ?? []);
+            $extra = 0;
+            foreach ($d['contacts'] as $c) {
+                if (empty($c['id']) || empty($c['name']) || str_starts_with($c['id'], 'ulc-') || isset($have[$c['id']]) || isset($deleted[$c['id']])) continue;
+                $feed['contacts'][] = $c; $have[$c['id']] = 1; $extra++;
+            }
+            if ($extra) {
+                $feed['version'] = ($feed['version'] ?? 0) + 1;
+                $feed['updated'] = date('Y-m-d');
+                ah_backup($f, $raw2);
+                ah_write_editable($f, $feed);
+                ah_log($u['login'], "pull $f: $extra other entries added");
+            }
+            $res[$f]['added_other'] = $extra;
         }
         // Bulletins (TOMARK, EASA ADs, manufacturers): add the ones the server does not have yet.
         $raw = @file_get_contents("$base/bulletins.json", false, $ctx);

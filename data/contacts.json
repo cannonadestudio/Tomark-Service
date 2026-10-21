@@ -1,6 +1,6 @@
 {
- "version": 4,
- "updated": "2026-10-20",
+ "version": 5,
+ "updated": "2026-10-21",
  "contacts": [
   {
    "id": "sk-tomark-s-r-o-factory-sales-spare-parts",
@@ -2954,6 +2954,691 @@
    "lon": 19.4065374,
    "note": "Organizacja obsługowa Part-CAO PL.CAO.0102",
    "source": "https://ulc.gov.pl/_download/2026/5_Wykaz_certyfikat%C3%B3w_organizacji_kompleksowej_zdatno%C5%9Bci_do_lotu_CAO.pdf"
+  },
+  {
+   "id": "mfr-aero-at",
+   "name": "Aero AT sp. z o.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "Aero AT",
+    "AT-3",
+    "AT-3 R100",
+    "AT-4"
+   ],
+   "country": "PL",
+   "city": "Mielec",
+   "address": "ul. COP-u 2, 39-300 Mielec",
+   "lat": 50.322,
+   "lon": 21.462,
+   "phone": "+48 17 774 57 00",
+   "email": "info@at-3.com",
+   "web": "https://www.aero.com.pl",
+   "source": "https://www.aero.com.pl/our-company",
+   "note": "Airframer reports Aero AT ceased operations in 2021 with assets acquired by Extend Aero Sp. z o.o.; the company website still lists the Mielec contact. Verify before relying on it."
+  },
+  {
+   "id": "mfr-aeropilot",
+   "name": "AEROPILOT s.r.o. (Aeropilot Ltd.)",
+   "kind": "manufacturer",
+   "brands": [
+    "Aeropilot",
+    "Legend 540",
+    "Legend 600"
+   ],
+   "country": "CZ",
+   "city": "Čáslav",
+   "address": "Jeníkovská 1815, 286 01 Čáslav",
+   "lat": 49.94,
+   "lon": 15.39,
+   "phone": "+420 605 296 563",
+   "email": "info@aeropilotcz.com",
+   "web": "https://aeropilotcz.com",
+   "source": "https://aeropilotcz.com/en/contact"
+  },
+  {
+   "id": "mfr-aeroprakt",
+   "name": "Aeroprakt Ltd (TOV Aeroprakt)",
+   "kind": "manufacturer",
+   "brands": [
+    "Aeroprakt",
+    "A-22",
+    "A-22LS",
+    "Foxbat",
+    "Vixxen",
+    "A-32",
+    "A-36"
+   ],
+   "country": "UA",
+   "city": "Kyiv",
+   "address": "24 Polyova str., 03056 Kyiv",
+   "lat": 50.449,
+   "lon": 30.452,
+   "phone": "+380 44 496 77 21",
+   "email": "aeroprakt.kiev@gmail.com",
+   "web": "https://aeroprakt.kiev.ua",
+   "source": "https://aeropraktusa.com/wp-content/uploads/sb-a-22-18-fuselage-reinforcement-1.pdf",
+   "note": "Factory site aeroprakt.kiev.ua could not be fetched; address/phone/email taken from an Aeroprakt factory service bulletin header (phone and email also confirmed on qnhfly.com). Aeroprakt Polska not included."
+  },
+  {
+   "id": "mfr-aerospool",
+   "name": "Aerospool, spol. s r.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "Aerospool",
+    "WT9 Dynamic",
+    "WT10 Advantic"
+   ],
+   "country": "SK",
+   "city": "Prievidza",
+   "address": "Letisková 10, 971 01 Prievidza",
+   "lat": 48.766,
+   "lon": 18.587,
+   "phone": "+421 46 5183 200",
+   "email": "office@aerospool.sk",
+   "web": "https://www.aerospool.sk",
+   "source": "https://www.aerospool.sk/"
+  },
+  {
+   "id": "mfr-alpi-aviation",
+   "name": "Alpi Aviation S.r.l.",
+   "kind": "manufacturer",
+   "brands": [
+    "Alpi",
+    "Pioneer 200",
+    "Pioneer 300",
+    "Pioneer 400"
+   ],
+   "country": "IT",
+   "city": "San Quirino",
+   "address": "Via dei Templari 24, 33080 San Quirino (PN)",
+   "lat": 46.033,
+   "lon": 12.678,
+   "phone": "+39 0434 370496",
+   "email": "info@alpiaviation.com",
+   "web": "https://www.alpiaviation.com",
+   "source": "https://www.army-technology.com/contractors/armoured/alpi-aviation/",
+   "note": "alpiaviation.com contact page could not be fetched; contact data from Army Technology contractor profile. Acquired by RedFish LongTerm Capital in Oct 2025 (per Wikipedia)."
+  },
+  {
+   "id": "mfr-aquila",
+   "name": "AQUILA Aviation International GmbH",
+   "kind": "manufacturer",
+   "brands": [
+    "Aquila",
+    "A210",
+    "A211"
+   ],
+   "country": "DE",
+   "city": "Trebbin",
+   "address": "Flugplatz Schönhagen, 14959 Trebbin",
+   "lat": 52.204,
+   "lon": 13.159,
+   "phone": "+49 33731 707-0",
+   "email": "kontakt@aquila-aviation.de",
+   "web": "https://www.aquila-aviation.de",
+   "source": "https://www.aquila-aviation.de/impressum"
+  },
+  {
+   "id": "mfr-atec",
+   "name": "ATEC v.o.s.",
+   "kind": "manufacturer",
+   "brands": [
+    "ATEC",
+    "Zephyr",
+    "Faeta",
+    "Faeta NG",
+    "Solo"
+   ],
+   "country": "CZ",
+   "city": "Libice nad Cidlinou",
+   "address": "Opolanská 350, 289 07 Libice nad Cidlinou",
+   "lat": 50.128,
+   "lon": 15.178,
+   "phone": "+420 731 440 144",
+   "email": "sales@atecaircraft.eu",
+   "web": "https://www.atecaircraft.eu",
+   "source": "https://www.atecaircraft.eu/en"
+  },
+  {
+   "id": "mfr-blackshape",
+   "name": "BLACKSHAPE S.p.A.",
+   "kind": "manufacturer",
+   "brands": [
+    "Blackshape",
+    "Prime",
+    "Gabriél"
+   ],
+   "country": "IT",
+   "city": "Monopoli",
+   "address": "Strada Statale 16 km 841+900 Z.I., 70043 Monopoli (BA)",
+   "lat": 40.95,
+   "lon": 17.3,
+   "web": "https://blackshapeaircraft.com",
+   "source": "https://blackshapeaircraft.com/contact/",
+   "note": "No public phone/email; contact via web form."
+  },
+  {
+   "id": "mfr-blackwing",
+   "name": "BLACKWING Sweden AB",
+   "kind": "manufacturer",
+   "brands": [
+    "Blackwing",
+    "BW600",
+    "BW635RG",
+    "BW650"
+   ],
+   "country": "SE",
+   "city": "Landskrona",
+   "lat": 55.87,
+   "lon": 12.83,
+   "phone": "+46 727 072 600",
+   "email": "info@blackwing.aero",
+   "web": "https://www.blackwing.aero",
+   "source": "https://www.blackwing.aero/contact",
+   "note": "Website gives no street address; city is the production site per Wikipedia (Landskrona) - verify."
+  },
+  {
+   "id": "mfr-breezer",
+   "name": "Breezer Aircraft GmbH & Co. KG",
+   "kind": "manufacturer",
+   "brands": [
+    "Breezer",
+    "Breezer B600",
+    "Breezer Sport"
+   ],
+   "country": "DE",
+   "city": "Bredstedt",
+   "address": "Jens-Patent-Weg 4-6, 25821 Bredstedt",
+   "lat": 54.62,
+   "lon": 8.97,
+   "phone": "+49 4671 79 79 120",
+   "email": "info@breezeraircraft.de",
+   "web": "https://www.breezeraircraft.de",
+   "source": "https://www.breezeraircraft.de/en/impressum"
+  },
+  {
+   "id": "mfr-corvus",
+   "name": "Corvus Aircraft Kft. (Corvus Hungary)",
+   "kind": "manufacturer",
+   "brands": [
+    "Corvus",
+    "Phantom",
+    "Fusion",
+    "Racer 540"
+   ],
+   "country": "HU",
+   "city": "Ballószög",
+   "lat": 46.86,
+   "lon": 19.57,
+   "note": "Likely defunct: corvus-aircraft.com redirects to an unrelated site and corvus-hungary.com could not be read; no current contact data verified."
+  },
+  {
+   "id": "mfr-czech-aircraft-group",
+   "name": "Czech Aircraft Group s.r.o. (Cruiser Aircraft)",
+   "kind": "manufacturer",
+   "brands": [
+    "Cruiser Aircraft",
+    "PS-28 Cruiser",
+    "SportCruiser",
+    "Czech Sport Aircraft"
+   ],
+   "country": "CZ",
+   "city": "Kunovice",
+   "address": "Na Záhonech 212, 686 04 Kunovice",
+   "lat": 49.04,
+   "lon": 17.47,
+   "email": "info@cruiseraircraft.cz",
+   "web": "https://www.cruiseraircraft.cz",
+   "source": "https://cruiseraircraft.cz/contact/",
+   "note": "Successor of Czech Sport Aircraft (CSA). No phone listed."
+  },
+  {
+   "id": "mfr-diamond",
+   "name": "Diamond Aircraft Industries GmbH",
+   "kind": "manufacturer",
+   "brands": [
+    "Diamond",
+    "DA20",
+    "DA40",
+    "DA42",
+    "DA50",
+    "DA62"
+   ],
+   "country": "AT",
+   "city": "Wiener Neustadt",
+   "address": "N. A. Otto-Strasse 5, 2700 Wiener Neustadt",
+   "lat": 47.843,
+   "lon": 16.26,
+   "phone": "+43 2622 26700",
+   "email": "office@diamondaircraft.com",
+   "web": "https://www.diamondaircraft.com",
+   "source": "https://www.diamondaircraft.com/en/about-diamond/contact/"
+  },
+  {
+   "id": "mfr-direct-fly",
+   "name": "Direct Fly s.r.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "Direct Fly",
+    "Alto",
+    "Alto NG",
+    "Alto TG"
+   ],
+   "country": "CZ",
+   "city": "Brno",
+   "address": "Turistická 667/77, 621 00 Brno-Medlánky",
+   "lat": 49.237,
+   "lon": 16.555,
+   "email": "info@directfly.cz",
+   "web": "https://directfly.cz",
+   "source": "https://directfly.cz/kontakt-3/",
+   "note": "Billing address: Špitálka 49/8, 602 00 Brno. No main phone listed."
+  },
+  {
+   "id": "mfr-dova",
+   "name": "Dova Aircraft s.r.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "Dova",
+    "DV-1 Skylark",
+    "Skylark"
+   ],
+   "country": "CZ",
+   "city": "Paskov",
+   "address": "Kirilovova 115, 739 21 Paskov",
+   "lat": 49.73,
+   "lon": 18.29,
+   "phone": "+420 777 765 601",
+   "email": "info@dovaaircraft.cz",
+   "web": "https://www.dova-aircraft.cz",
+   "source": "https://www.dova-aircraft.cz/kontakt/"
+  },
+  {
+   "id": "mfr-ekolot",
+   "name": "P.P.H.U. EKOLOT Małgorzata Słowik",
+   "kind": "manufacturer",
+   "brands": [
+    "Ekolot",
+    "Topaz",
+    "JK-05 Junior",
+    "KR-030 Topaz",
+    "Elf"
+   ],
+   "country": "PL",
+   "city": "Szczepańcowa",
+   "address": "ul. Przemysłowa 3A, 38-457 Szczepańcowa",
+   "lat": 49.66,
+   "lon": 21.72,
+   "phone": "+48 13 436 88 97",
+   "email": "biuro@ekolot.pl",
+   "web": "https://ekolot.pl",
+   "source": "https://ekolot.pl/kontakt"
+  },
+  {
+   "id": "mfr-elixir",
+   "name": "Elixir Aircraft",
+   "kind": "manufacturer",
+   "brands": [
+    "Elixir"
+   ],
+   "country": "FR",
+   "city": "La Rochelle",
+   "address": "Rue du Jura, 17000 La Rochelle",
+   "lat": 46.18,
+   "lon": -1.19,
+   "email": "info@elixir-aircraft.com",
+   "web": "https://www.elixir-aircraft.com",
+   "source": "https://www.elixir-aircraft.com/legal-notices/",
+   "note": "No phone published; contact form on site."
+  },
+  {
+   "id": "mfr-ellipse-aero",
+   "name": "Ellipse Aero s.r.o. (A2 CZ)",
+   "kind": "manufacturer",
+   "brands": [
+    "Ellipse",
+    "Ellipse Spirit",
+    "Ellipse Luna",
+    "Ellipse Hype",
+    "A2 CZ"
+   ],
+   "country": "CZ",
+   "city": "Praha",
+   "address": "U Hellady 697/4, Praha 4",
+   "lat": 50.03,
+   "lon": 14.45,
+   "phone": "+420 608 662 312",
+   "email": "info@ellipse.aero",
+   "web": "https://www.ellipse.aero",
+   "source": "https://www.ellipse.aero/",
+   "note": "Czech, not French. Phone from qnhfly.com manufacturer listing."
+  },
+  {
+   "id": "mfr-evektor",
+   "name": "EVEKTOR, spol. s r.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "Evektor",
+    "SportStar",
+    "Harmony",
+    "EV-97",
+    "EuroStar",
+    "Cobra"
+   ],
+   "country": "CZ",
+   "city": "Kunovice",
+   "address": "Letecká 1008, 686 04 Kunovice",
+   "lat": 49.029,
+   "lon": 17.44,
+   "phone": "+420 572 777 111",
+   "email": "evektor@evektor.com",
+   "web": "https://www.evektor.cz",
+   "source": "https://evektor.com/company/contact",
+   "note": "Aircraft sales: sales@evektor.com, +420 724 167 071."
+  },
+  {
+   "id": "mfr-fk-lightplanes",
+   "name": "B&F Technik Vertriebs GmbH (FK-Lightplanes)",
+   "kind": "manufacturer",
+   "brands": [
+    "FK-Lightplanes",
+    "FK9",
+    "FK12 Comet",
+    "FK14 Polaris",
+    "FK51",
+    "FK131 Jungmann"
+   ],
+   "country": "DE",
+   "city": "Speyer",
+   "address": "Anton-Dengler-Str. 8, 67346 Speyer",
+   "lat": 49.31,
+   "lon": 8.45,
+   "phone": "+49 6232 72076",
+   "web": "http://www.fk-lightplanes.com",
+   "source": "https://www.dasoertliche.de/Themen/B-F-Technik-Vertriebs-GmbH-Speyer-Anton-Dengler-Str",
+   "note": "fk-lightplanes.com could not be read (robots). Polish production company FK-Lightplanes Sp. z o.o. (ul. Lotników 20B, 38-400 Krosno) is struck off the KRS register per imsig.pl."
+  },
+  {
+   "id": "mfr-flight-design",
+   "name": "Flight Design general aviation GmbH",
+   "kind": "manufacturer",
+   "brands": [
+    "Flight Design",
+    "CTLS",
+    "CTLSi",
+    "F2",
+    "CT"
+   ],
+   "country": "DE",
+   "city": "Bensheim",
+   "address": "Bertha-Benz-Straße 4, 64625 Bensheim",
+   "lat": 49.68,
+   "lon": 8.62,
+   "phone": "+49 172 6642491",
+   "email": "customer.care@flightdesign.com",
+   "web": "https://flightdesign.com",
+   "source": "https://flightdesign.com/contact/",
+   "note": "Phone/email are the customer-care contacts listed on the contact page."
+  },
+  {
+   "id": "mfr-icp",
+   "name": "I.C.P. S.r.l.",
+   "kind": "manufacturer",
+   "brands": [
+    "ICP",
+    "Savannah",
+    "Savannah S",
+    "Bingo",
+    "Ventura"
+   ],
+   "country": "IT",
+   "city": "Castelnuovo Don Bosco",
+   "address": "Strada Provinciale 16 km 15,150, 14022 Castelnuovo Don Bosco (AT)",
+   "lat": 45.04,
+   "lon": 7.96,
+   "phone": "+39 011 9927503",
+   "email": "info@icp.it",
+   "web": "https://www.icp.it",
+   "source": "https://www.icp.it/"
+  },
+  {
+   "id": "mfr-jmb",
+   "name": "JMB Aircraft, s.r.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "JMB",
+    "VL3",
+    "VL3 Evolution",
+    "EVO",
+    "Phoenix NG",
+    "SV4-RS"
+   ],
+   "country": "CZ",
+   "city": "Choceň",
+   "address": "Nádražní 635, 565 01 Choceň",
+   "lat": 49.99,
+   "lon": 16.22,
+   "phone": "+420 773 715 472",
+   "email": "sales@jmbaircraft.com",
+   "web": "https://www.jmbaircraft.com",
+   "source": "https://www.jmbaircraft.com/contact",
+   "note": "Phone/email are the sales contacts; no general number listed."
+  },
+  {
+   "id": "mfr-magnaghi",
+   "name": "Magnaghi Aeronautica S.p.A.",
+   "kind": "manufacturer",
+   "brands": [
+    "Magnaghi",
+    "Sky Arrow",
+    "Sky Arrow 600 Sport",
+    "Sky Arrow 710"
+   ],
+   "country": "IT",
+   "city": "Napoli",
+   "address": "Via Galileo Ferraris 76, 80142 Napoli",
+   "lat": 40.85,
+   "lon": 14.28,
+   "phone": "+39 081 5977111",
+   "web": "https://www.skyarrow.it",
+   "source": "https://www.magroup.net/contatti/",
+   "note": "Headquarters of Magnaghi Aeronautica (MA Group); skyarrow.it contact page could not be read."
+  },
+  {
+   "id": "mfr-groppo",
+   "name": "Groppo Aviazione (Nando Groppo)",
+   "kind": "manufacturer",
+   "brands": [
+    "Nando Groppo",
+    "Groppo",
+    "Trail",
+    "Enduro",
+    "G70"
+   ],
+   "country": "IT",
+   "city": "Mezzana Bigli",
+   "address": "Strada Provinciale 4, 27030 Mezzana Bigli (PV)",
+   "lat": 45.06,
+   "lon": 8.85,
+   "phone": "+39 0384 88097",
+   "email": "info@groppo.it",
+   "web": "https://www.groppoaviazione.com",
+   "source": "https://www.groppoaviazione.com/en/contatti/"
+  },
+  {
+   "id": "mfr-pipistrel",
+   "name": "PIPISTREL d.o.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "Pipistrel",
+    "Virus",
+    "Sinus",
+    "Alpha Trainer",
+    "Velis Electro",
+    "Panthera",
+    "Explorer"
+   ],
+   "country": "SI",
+   "city": "Ajdovščina",
+   "address": "Goriška cesta 50a, 5270 Ajdovščina",
+   "lat": 45.889,
+   "lon": 13.888,
+   "phone": "+386 5 36 63 873",
+   "email": "info@pipistrel-aircraft.com",
+   "web": "https://www.pipistrel-aircraft.com",
+   "source": "https://www.pipistrel-aircraft.com/contact/",
+   "note": "Part of Textron eAviation."
+  },
+  {
+   "id": "mfr-remos",
+   "name": "REMOS (Stemme GmbH)",
+   "kind": "manufacturer",
+   "brands": [
+    "Remos",
+    "GX",
+    "GXiS",
+    "GXNXT",
+    "GXClub"
+   ],
+   "country": "DE",
+   "city": "Pasewalk",
+   "address": "Franzfelde 31, 17309 Pasewalk",
+   "lat": 53.505,
+   "lon": 13.946,
+   "phone": "+49 3341 3612-0",
+   "email": "info@stemme.com",
+   "web": "https://www.remos.com",
+   "source": "https://www.remos.com/impressum",
+   "note": "REMOS is part of Stemme; legal seat in imprint: Stemme GmbH, Flugplatzstraße F2 Nr. 7, 15344 Strausberg. Pasewalk address from remos.com directions page."
+  },
+  {
+   "id": "mfr-tl-ultralight",
+   "name": "TL-ULTRALIGHT s.r.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "TL-Ultralight",
+    "TL-2000 Sting",
+    "TL-3000 Sirius",
+    "Sparker",
+    "Stream",
+    "BackCountry Sirius"
+   ],
+   "country": "CZ",
+   "city": "Hradec Králové",
+   "address": "Letiště 515, Pouchov, 503 41 Hradec Králové",
+   "lat": 50.25,
+   "lon": 15.85,
+   "phone": "+420 495 211 753",
+   "email": "info@tl-ultralight.cz",
+   "web": "https://www.tl-ultralight.cz",
+   "source": "https://www.tl-ultralight.cz/cs/kontaktni-udaje"
+  },
+  {
+   "id": "mfr-skyleader",
+   "name": "AIR OPERATION TECHNOLOGIES, a.s. (Skyleader)",
+   "kind": "manufacturer",
+   "brands": [
+    "Skyleader",
+    "Skyleader 400",
+    "Skyleader 600",
+    "Jihlavan",
+    "Zall Jihlavan"
+   ],
+   "country": "CZ",
+   "city": "Jihlava",
+   "address": "Hruškové Dvory 139, 586 01 Jihlava",
+   "lat": 49.42,
+   "lon": 15.63,
+   "phone": "+420 734 750 206",
+   "email": "market@skyleader.aero",
+   "web": "https://www.skyleader.aero",
+   "source": "https://www.skyleader.cz/kontakt",
+   "note": "Successor of Jihlavan Airplanes / Skyleader a.s. Registered office: Křížová 96/18, 603 00 Brno. Phone is the sales director's."
+  },
+  {
+   "id": "mfr-zlin-aviation",
+   "name": "Zlin Aviation s.r.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "Zlin Aviation",
+    "Savage",
+    "Savage Cub",
+    "Savage Norden",
+    "Shock Cub",
+    "Bobber",
+    "Cruiser"
+   ],
+   "country": "CZ",
+   "city": "Napajedla",
+   "address": "2. května 685, 763 61 Napajedla",
+   "lat": 49.17,
+   "lon": 17.51,
+   "phone": "+420 731 690 492",
+   "email": "sales@zlinaero.com",
+   "web": "https://www.zlinaero.com",
+   "source": "https://www.zlinaero.com/contact/",
+   "note": "Operative base: Slušovice airport, Bílá Hlína 607. Not related to Zlin Aircraft (Zlín Z-242 etc.)."
+  },
+  {
+   "id": "mfr-brm-aero",
+   "name": "BRM AERO s.r.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "BRM Aero",
+    "Bristell",
+    "Bristell NG5",
+    "Bristell B23"
+   ],
+   "country": "CZ",
+   "city": "Kunovice",
+   "address": "Letecká 255, 686 04 Kunovice",
+   "lat": 49.03,
+   "lon": 17.44,
+   "phone": "+420 608 306 338",
+   "email": "info@bristell.com",
+   "web": "https://www.bristell.com",
+   "source": "https://www.bristell.com/contact/"
+  },
+  {
+   "id": "mfr-shark-aero",
+   "name": "SHARK.AERO s.r.o.",
+   "kind": "manufacturer",
+   "brands": [
+    "Shark.Aero",
+    "Shark",
+    "Shark UL"
+   ],
+   "country": "SK",
+   "city": "Hlboké",
+   "address": "Senica Airport, Hlboké 406, 906 31 Hlboké",
+   "lat": 48.66,
+   "lon": 17.33,
+   "phone": "+421 903 655 977",
+   "email": "shark@shark.aero",
+   "web": "https://www.shark.aero",
+   "source": "https://www.shark.aero/contact",
+   "note": "Czech HQ/R&D: SHARK.AERO Innovation Center s.r.o., Thunovská 183/18, 118 00 Praha 1, +420 604 266 764, sales@shark.aero."
+  },
+  {
+   "id": "mfr-comco-ikarus",
+   "name": "Comco Ikarus GmbH",
+   "kind": "manufacturer",
+   "brands": [
+    "Comco Ikarus",
+    "Ikarus",
+    "C42",
+    "C42 C",
+    "C52"
+   ],
+   "country": "DE",
+   "city": "Hohentengen",
+   "address": "Am Flugplatz 11, 88367 Hohentengen",
+   "lat": 48.05,
+   "lon": 9.37,
+   "phone": "+49 7572 60080",
+   "email": "post@comco-ikarus.de",
+   "web": "https://www.comco-ikarus.de",
+   "source": "https://www.comco-ikarus.de/impressum/"
   }
  ]
 }
