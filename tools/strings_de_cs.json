@@ -966,5 +966,25 @@
  "next_insp_manual": {
   "de": "Stunden manuell eingetragen – Flugbuch in den Flugzeugeinstellungen verknüpfen",
   "cs": "Nálet zadán ručně – propojte logbook v nastavení letadla"
+ },
+ "logbook_err_backup": {
+  "de": "Das ist die AeroHangar-Sicherungsdatei, kein Flugbuch. Bitte den Export Ihrer Flugbuch-App wählen (CSV oder JSON mit Flügen).",
+  "cs": "Toto je záložní soubor AeroHangar, ne logbook. Vyberte export z aplikace logbooku (CSV nebo JSON s lety)."
+ },
+ "logbook_err_fields": {
+  "de": "Keine Spalte für Kennzeichen oder Flugzeit gefunden.",
+  "cs": "V souboru nebyl nalezen sloupec s poznávací značkou nebo dobou letu."
+ },
+ "logbook_err_empty": {
+  "de": "Die Datei enthält keine Flüge.",
+  "cs": "Soubor neobsahuje žádné lety."
+ },
+ "date_pick": {
+  "de": "Datum wählen",
+  "cs": "Vybrat datum"
+ },
+ "date_clear": {
+  "de": "Löschen",
+  "cs": "Vymazat"
  }
 }

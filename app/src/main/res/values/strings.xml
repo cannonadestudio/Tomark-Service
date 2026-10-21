@@ -159,6 +159,11 @@
     <string name="link_logbook_hint">Today\'s total stays; flights logged later for this registration are added automatically. Choose the logbook file in Settings (ⓘ).</string>
     <string name="logbook_linked">Hours synced from the logbook</string>
     <string name="logbook_error">Logbook: %1$s</string>
+    <string name="logbook_err_backup">This is the AeroHangar backup file, not a logbook. Choose the export from your logbook app (CSV or JSON with flights).</string>
+    <string name="logbook_err_fields">No registration or flight time column found in the file.</string>
+    <string name="logbook_err_empty">The file contains no flights.</string>
+    <string name="date_pick">Choose date</string>
+    <string name="date_clear">Clear</string>
     <string name="logbook_title">Logbook link</string>
     <string name="logbook_hint">Point the app at your own logbook export (CSV or JSON, e.g. from Pilot Logbook, saved on the phone or in Drive). It needs a registration column and a flight-time column. The file is re-read every time you open the app and once a day.</string>
     <string name="logbook_none">No file chosen</string>

@@ -13,10 +13,17 @@ import kotlinx.serialization.json.contentOrNull
  * each user points the app at their own export file.
  */
 object Logbook {
-    private val REG_HEADERS = listOf("registration", "aircraft reg", "reg", "znaki", "rejestracja", "znak rejestracyjny",
-        "immatriculation", "kennzeichen", "aircraft", "samolot", "statek powietrzny")
-    private val TIME_HEADERS = listOf("total time", "total flight time", "flight time", "czas lotu", "czas całkowity", "czas",
-        "total", "duration", "block time", "flighttime", "totaltime", "time", "temps de vol", "flugzeit")
+    private val REG_HEADERS = listOf("registration", "aircraftregistration", "aircraftreg", "acreg", "reg", "tail", "tailnumber",
+        "znaki", "znakirejestracyjne", "rejestracja", "znakrejestracyjny", "immatriculation", "kennzeichen",
+        "imatrikulace", "registracia", "aircraft", "samolot", "statekpowietrzny", "plane")
+    private val TIME_HEADERS = listOf("totaltime", "totalflighttime", "flighttime", "czaslotu", "czascalkowity", "czascałkowity",
+        "blocktime", "duration", "durationminutes", "minutes", "total", "czas", "time", "tempsdevol", "flugzeit", "doba", "cas")
+
+    /** Error codes stored in AppState.logbookError (translated in the UI). */
+    const val ERR_BACKUP = "@backup"
+    const val ERR_FIELDS = "@fields"
+    const val ERR_EMPTY = "@empty"
+    class LogbookException(val code: String) : Exception(code)
 
     data class Result(val hoursByReg: Map<String, Double>, val flights: Int)
 
@@ -41,14 +48,18 @@ object Logbook {
         return if (t.startsWith("[") || t.startsWith("{")) parseJson(t) else parseCsv(t)
     }
 
+    private fun norm(k: String) = k.trim().trim('"').lowercase().filter { it.isLetterOrDigit() }
+
     private fun pick(headers: List<String>, wanted: List<String>): Int {
-        val h = headers.map { it.trim().trim('"').lowercase() }
+        val h = headers.map(::norm)
         for (w in wanted) {
             val i = h.indexOfFirst { it == w }
             if (i >= 0) return i
         }
+        // Partial match, but never clock times or dates ("departureTime" is not the flight time).
+        val skip = listOf("dep", "arr", "start", "end", "takeoff", "landing", "offblock", "onblock", "date", "utc", "local", "night", "ifr", "pic", "dual", "instr", "type", "model")
         for (w in wanted) {
-            val i = h.indexOfFirst { it.contains(w) }
+            val i = h.indexOfFirst { it.contains(w) && skip.none { x -> it.contains(x) && !w.contains(x) } }
             if (i >= 0) return i
         }
         return -1
@@ -71,13 +82,13 @@ object Logbook {
 
     fun parseCsv(text: String): Result {
         val lines = text.lines().filter { it.isNotBlank() }
-        if (lines.isEmpty()) return Result(emptyMap(), 0)
+        if (lines.isEmpty()) throw LogbookException(ERR_EMPTY)
         val first = lines.first()
         val sep = listOf(';', '\t', ',').maxByOrNull { c -> first.count { it == c } } ?: ','
         val head = splitLine(first, sep)
         val ri = pick(head, REG_HEADERS)
         val ti = pick(head, TIME_HEADERS)
-        if (ri < 0 || ti < 0) error("no registration/time column")
+        if (ri < 0 || ti < 0) throw LogbookException(ERR_FIELDS)
         val minutes = head[ti].lowercase().contains("min")
         val map = HashMap<String, Double>()
         var n = 0
@@ -93,28 +104,56 @@ object Logbook {
         return Result(map, n)
     }
 
-    private fun parseJson(text: String): Result {
-        val root = Json.parseToJsonElement(text)
-        val arr: List<JsonElement> = when (root) {
-            is JsonArray -> root
-            is JsonObject -> root.values.firstOrNull { it is JsonArray } as? JsonArray ?: JsonArray(emptyList())
-            else -> emptyList()
-        }
-        val map = HashMap<String, Double>()
-        var n = 0
-        arr.filterIsInstance<JsonObject>().forEach { o ->
-            val keys = o.keys.toList()
-            val rk = keys.getOrNull(pick(keys, REG_HEADERS))
-            val tk = keys.getOrNull(pick(keys, TIME_HEADERS))
-            if (rk == null || tk == null) return@forEach
-            val reg = (o[rk] as? JsonPrimitive)?.contentOrNull?.let(::normReg).orEmpty()
-            val h = (o[tk] as? JsonPrimitive)?.contentOrNull?.let { parseTime(it, tk.lowercase().contains("min")) }
-            if (reg.isNotEmpty() && h != null) {
-                map[reg] = (map[reg] ?: 0.0) + h
-                n++
+    /** Flattens nested objects: {"aircraft":{"registration":"SP-X"}} → "aircraft.registration". */
+    private fun flatten(o: JsonObject, prefix: String = "", out: MutableMap<String, JsonPrimitive> = LinkedHashMap()): Map<String, JsonPrimitive> {
+        for ((k, v) in o) {
+            val key = if (prefix.isEmpty()) k else "$prefix.$k"
+            when (v) {
+                is JsonPrimitive -> out[key] = v
+                is JsonObject -> flatten(v, key, out)
+                else -> Unit
             }
         }
-        if (n == 0 && arr.isNotEmpty()) error("no registration/time fields")
-        return Result(map, n)
+        return out
+    }
+
+    /** All arrays of objects anywhere in the file (the flights list may be nested, e.g. {"data":{"flights":[…]}}). */
+    private fun objectArrays(e: JsonElement, out: MutableList<List<JsonObject>> = mutableListOf()): List<List<JsonObject>> {
+        when (e) {
+            is JsonArray -> {
+                val objs = e.filterIsInstance<JsonObject>()
+                if (objs.isNotEmpty()) out += objs
+                e.forEach { objectArrays(it, out) }
+            }
+            is JsonObject -> e.values.forEach { objectArrays(it, out) }
+            else -> Unit
+        }
+        return out
+    }
+
+    private fun parseJson(text: String): Result {
+        val root = Json.parseToJsonElement(text)
+        // The AeroHangar backup is not a logbook – a common mix-up when both files sit in the same folder.
+        if (root is JsonObject && "aircraft" in root && ("completions" in root || "bulletinStatus" in root)) throw LogbookException(ERR_BACKUP)
+        var best: Result? = null
+        for (arr in objectArrays(root)) {
+            val map = HashMap<String, Double>()
+            var n = 0
+            arr.forEach { o ->
+                val f = flatten(o)
+                val keys = f.keys.toList()
+                val rk = keys.getOrNull(pick(keys.map { it.substringAfterLast('.') }, REG_HEADERS).takeIf { it >= 0 } ?: pick(keys, REG_HEADERS))
+                val tk = keys.getOrNull(pick(keys.map { it.substringAfterLast('.') }, TIME_HEADERS).takeIf { it >= 0 } ?: pick(keys, TIME_HEADERS))
+                if (rk == null || tk == null) return@forEach
+                val reg = f[rk]?.contentOrNull?.let(::normReg).orEmpty()
+                val h = f[tk]?.contentOrNull?.let { parseTime(it, norm(tk).contains("min")) }
+                if (reg.isNotEmpty() && h != null) {
+                    map[reg] = (map[reg] ?: 0.0) + h
+                    n++
+                }
+            }
+            if (n > (best?.flights ?: 0)) best = Result(map, n)
+        }
+        return best ?: throw LogbookException(if (objectArrays(root).isEmpty()) ERR_EMPTY else ERR_FIELDS)
     }
 }

@@ -75,6 +75,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.lifecycleScope
 import com.cannonadestudio.tomarkpilot.ui.ContactsScreen
 import com.cannonadestudio.tomarkpilot.ui.hbgGradient
+import com.cannonadestudio.tomarkpilot.ui.logbookErrorMsg
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -328,7 +329,7 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
                 state.logbookSyncedEpochDay?.let {
                     Text(stringResource(R.string.logbook_synced, com.cannonadestudio.tomarkpilot.ui.fmtEpochDay(it)), style = MaterialTheme.typography.bodySmall)
                 }
-                state.logbookError?.let { Text(stringResource(R.string.logbook_error, it), color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall) }
+                state.logbookError?.let { Text(logbookErrorMsg(ctx, it), color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall) }
                 Row {
                     TextButton(onClick = { picker.launch(arrayOf("text/*", "application/json", "text/csv", "*/*")) }) {
                         Text(stringResource(R.string.logbook_choose))
@@ -339,7 +340,7 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
                                 val r = Repo.syncLogbook()
                                 android.widget.Toast.makeText(
                                     ctx,
-                                    r.fold({ ctx.getString(R.string.logbook_sync_ok, it) }, { ctx.getString(R.string.logbook_error, it.message ?: "") }),
+                                    r.fold({ ctx.getString(R.string.logbook_sync_ok, it) }, { logbookErrorMsg(ctx, (it as? com.cannonadestudio.tomarkpilot.data.Logbook.LogbookException)?.code ?: it.message ?: "") }),
                                     android.widget.Toast.LENGTH_SHORT,
                                 ).show()
                             }

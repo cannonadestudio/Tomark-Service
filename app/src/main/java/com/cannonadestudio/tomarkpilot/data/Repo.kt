@@ -324,7 +324,7 @@ object Repo {
                 )
             }
             changed
-        }.onFailure { e -> update { it.copy(logbookError = e.message ?: e.javaClass.simpleName) } }
+        }.onFailure { e -> update { it.copy(logbookError = (e as? Logbook.LogbookException)?.code ?: e.message ?: e.javaClass.simpleName) } }
     }
 
     /** Hours the logbook currently holds for [reg] (used to compute the base when linking). */

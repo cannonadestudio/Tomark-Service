@@ -158,6 +158,11 @@
     <string name="link_logbook_hint">Le total actuel est conservé ; les vols suivants du carnet pour cette immatriculation s\'ajoutent. Choisissez le fichier dans Réglages (ⓘ).</string>
     <string name="logbook_linked">Heures synchronisées avec le carnet</string>
     <string name="logbook_error">Carnet : %1$s</string>
+    <string name="logbook_err_backup">C\'est le fichier de sauvegarde AeroHangar, pas un carnet. Choisissez l\'export de votre carnet de vol (CSV ou JSON avec les vols).</string>
+    <string name="logbook_err_fields">Aucune colonne immatriculation ou temps de vol trouvée.</string>
+    <string name="logbook_err_empty">Le fichier ne contient aucun vol.</string>
+    <string name="date_pick">Choisir la date</string>
+    <string name="date_clear">Effacer</string>
     <string name="logbook_title">Liaison carnet de vol</string>
     <string name="logbook_hint">Indiquez votre export de carnet (CSV ou JSON, ex. Pilot Logbook). Il faut une colonne immatriculation et une colonne temps de vol. Relu à chaque ouverture et une fois par jour.</string>
     <string name="logbook_none">Aucun fichier</string>

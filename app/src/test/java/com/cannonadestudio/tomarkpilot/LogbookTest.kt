@@ -28,6 +28,26 @@ class LogbookTest {
         assertEquals(2.0, Logbook.parse(js).hoursByReg["SPABC"]!!, 0.001)
     }
 
+    @Test fun backupFileIsRecognised() {
+        val js = """{"aircraft":[{"id":"1","registration":"SP-ABC","hours":12.0}],"completions":[],"bulletinStatus":[]}"""
+        val e = runCatching { Logbook.parse(js) }.exceptionOrNull()
+        assertEquals(Logbook.ERR_BACKUP, (e as Logbook.LogbookException).code)
+    }
+
+    @Test fun nestedJsonWithClockTimes() {
+        val js = """{"version":2,"data":{"pilot":{"name":"X"},"flights":[
+            {"date":"2026-05-01","departureTime":"10:00","arrivalTime":"11:30","aircraft":{"registration":"SP-ABC","type":"Viper"},"totalTime":"1:30"},
+            {"date":"2026-05-02","departureTime":"09:00","arrivalTime":"09:45","aircraft":{"registration":"SP-ABC","type":"Viper"},"totalTime":"0:45"}]}}"""
+        val r = Logbook.parse(js)
+        assertEquals(2.25, r.hoursByReg["SPABC"]!!, 0.001)
+        assertEquals(2, r.flights)
+    }
+
+    @Test fun jsonMinutesNumber() {
+        val js = """[{"tail_number":"OM-M123","duration_minutes":75}]"""
+        assertEquals(1.25, Logbook.parse(js).hoursByReg["OMM123"]!!, 0.001)
+    }
+
     @Test fun parseTimeVariants() {
         assertEquals(1.25, Logbook.parseTime("1:15")!!, 0.001)
         assertEquals(1.5, Logbook.parseTime("1,5")!!, 0.001)

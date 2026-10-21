@@ -158,6 +158,11 @@
     <string name="link_logbook_hint">Obecny nalot zostaje, a kolejne loty z logbooka dla tych znaków będą doliczane automatycznie. Plik logbooka wybierasz w Ustawieniach (ⓘ).</string>
     <string name="logbook_linked">Nalot synchronizowany z logbookiem</string>
     <string name="logbook_error">Logbook: %1$s</string>
+    <string name="logbook_err_backup">To jest plik kopii zapasowej AeroHangar, a nie logbook. Wskaż eksport z aplikacji logbooka (CSV lub JSON z lotami).</string>
+    <string name="logbook_err_fields">W pliku nie znaleziono kolumny ze znakami rejestracyjnymi lub czasem lotu.</string>
+    <string name="logbook_err_empty">Plik nie zawiera lotów.</string>
+    <string name="date_pick">Wybierz datę</string>
+    <string name="date_clear">Wyczyść</string>
     <string name="logbook_title">Połączenie z logbookiem</string>
     <string name="logbook_hint">Wskaż własny eksport logbooka (CSV lub JSON, np. z Pilot Logbook, zapisany w telefonie lub na Dysku). Plik musi mieć kolumnę ze znakami i kolumnę z czasem lotu. Aplikacja czyta go przy każdym otwarciu i raz dziennie.</string>
     <string name="logbook_none">Nie wybrano pliku</string>

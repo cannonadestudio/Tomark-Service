@@ -12,6 +12,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -99,13 +102,57 @@ fun NumberField(value: String, onChange: (String) -> Unit, label: String, modifi
     )
 }
 
+/**
+ * Date field with a calendar picker. The value stays ISO (yyyy-MM-dd); tapping the field or the
+ * calendar icon opens the Material date picker, the cross clears an optional date.
+ */
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
 fun DateField(value: String, onChange: (String) -> Unit, label: String, modifier: Modifier = Modifier) {
+    var show by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
+    val src = androidx.compose.runtime.remember { androidx.compose.foundation.interaction.MutableInteractionSource() }
+    val pressed by src.collectIsPressedAsState()
+    androidx.compose.runtime.LaunchedEffect(pressed) { if (pressed) show = true }
+    val d = parseDate(value)
     OutlinedTextField(
-        value = value, onValueChange = onChange, label = { Text(label) }, singleLine = true,
-        placeholder = { Text("2026-05-31") },
-        isError = value.isNotBlank() && parseDate(value) == null, modifier = modifier,
+        value = d?.format(DISPLAY) ?: value, onValueChange = {}, readOnly = true, singleLine = true,
+        label = { Text(label) }, interactionSource = src, modifier = modifier,
+        trailingIcon = {
+            androidx.compose.foundation.layout.Row {
+                if (value.isNotBlank()) androidx.compose.material3.IconButton(onClick = { onChange("") }) {
+                    androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Filled.Clear, stringResource(R.string.date_clear))
+                }
+                androidx.compose.material3.IconButton(onClick = { show = true }) {
+                    androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Filled.CalendarMonth, stringResource(R.string.date_pick))
+                }
+            }
+        },
     )
+    if (show) {
+        val st = androidx.compose.material3.rememberDatePickerState(
+            initialSelectedDateMillis = (d ?: LocalDate.now()).toEpochDay() * 86_400_000L,
+        )
+        androidx.compose.material3.DatePickerDialog(
+            onDismissRequest = { show = false },
+            confirmButton = {
+                androidx.compose.material3.TextButton(onClick = {
+                    st.selectedDateMillis?.let { onChange(fmtDate(LocalDate.ofEpochDay(Math.floorDiv(it, 86_400_000L)))) }
+                    show = false
+                }) { Text("OK") }
+            },
+            dismissButton = { androidx.compose.material3.TextButton(onClick = { show = false }) { Text(stringResource(R.string.cancel)) } },
+        ) { androidx.compose.material3.DatePicker(st) }
+    }
+}
+
+private val DISPLAY: DateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+
+/** Logbook error code (see Logbook.ERR_*) or raw message → text for the user. */
+fun logbookErrorMsg(ctx: android.content.Context, err: String): String = when (err) {
+    com.cannonadestudio.tomarkpilot.data.Logbook.ERR_BACKUP -> ctx.getString(R.string.logbook_err_backup)
+    com.cannonadestudio.tomarkpilot.data.Logbook.ERR_FIELDS -> ctx.getString(R.string.logbook_err_fields)
+    com.cannonadestudio.tomarkpilot.data.Logbook.ERR_EMPTY -> ctx.getString(R.string.logbook_err_empty)
+    else -> ctx.getString(R.string.logbook_error, err)
 }
 
 data class StatusLook(val bg: Color, val fg: Color, val label: Int)

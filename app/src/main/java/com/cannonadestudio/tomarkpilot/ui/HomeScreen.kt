@@ -209,7 +209,7 @@ fun HomeScreen(
                     if (aircraft.logbookBaseHours != null) {
                         val err = state.logbookError
                         Text(
-                            if (err != null) stringResource(R.string.logbook_error, err) else stringResource(R.string.logbook_linked),
+                            if (err != null) logbookErrorMsg(LocalContext.current, err) else stringResource(R.string.logbook_linked),
                             style = MaterialTheme.typography.bodySmall,
                             color = if (err != null) Color(0xFFC62828) else MaterialTheme.colorScheme.secondary,
                         )

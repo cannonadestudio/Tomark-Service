@@ -158,6 +158,11 @@
     <string name="link_logbook_hint">Současný nálet zůstane, další lety z logbooku pro tuto značku se připočítají automaticky. Soubor logbooku vyberete v Nastavení (ⓘ).</string>
     <string name="logbook_linked">Nálet synchronizován s logbookem</string>
     <string name="logbook_error">Logbook: %1$s</string>
+    <string name="logbook_err_backup">Toto je záložní soubor AeroHangar, ne logbook. Vyberte export z aplikace logbooku (CSV nebo JSON s lety).</string>
+    <string name="logbook_err_fields">V souboru nebyl nalezen sloupec s poznávací značkou nebo dobou letu.</string>
+    <string name="logbook_err_empty">Soubor neobsahuje žádné lety.</string>
+    <string name="date_pick">Vybrat datum</string>
+    <string name="date_clear">Vymazat</string>
     <string name="logbook_title">Propojení s logbookem</string>
     <string name="logbook_hint">Vyberte vlastní export logbooku (CSV nebo JSON, např. z Pilot Logbook, uložený v telefonu nebo na Disku). Soubor musí mít sloupec se značkou a sloupec s časem letu. Načítá se při každém otevření aplikace a jednou denně.</string>
     <string name="logbook_none">Soubor nevybrán</string>

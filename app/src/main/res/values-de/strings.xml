@@ -158,6 +158,11 @@
     <string name="link_logbook_hint">Die aktuelle Gesamtzeit bleibt; später im Flugbuch erfasste Flüge mit diesem Kennzeichen werden automatisch addiert. Die Flugbuch-Datei in den Einstellungen wählen (ⓘ).</string>
     <string name="logbook_linked">Stunden mit dem Flugbuch synchronisiert</string>
     <string name="logbook_error">Flugbuch: %1$s</string>
+    <string name="logbook_err_backup">Das ist die AeroHangar-Sicherungsdatei, kein Flugbuch. Bitte den Export Ihrer Flugbuch-App wählen (CSV oder JSON mit Flügen).</string>
+    <string name="logbook_err_fields">Keine Spalte für Kennzeichen oder Flugzeit gefunden.</string>
+    <string name="logbook_err_empty">Die Datei enthält keine Flüge.</string>
+    <string name="date_pick">Datum wählen</string>
+    <string name="date_clear">Löschen</string>
     <string name="logbook_title">Flugbuch-Verknüpfung</string>
     <string name="logbook_hint">Eigenen Flugbuch-Export auswählen (CSV oder JSON, z. B. aus Pilot Logbook, auf dem Telefon oder in Drive gespeichert). Erforderlich sind eine Spalte für das Kennzeichen und eine für die Flugzeit. Die Datei wird bei jedem App-Start und einmal täglich neu eingelesen.</string>
     <string name="logbook_none">Keine Datei gewählt</string>
