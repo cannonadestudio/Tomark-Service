@@ -470,9 +470,9 @@ private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, 
 @Composable
 private fun SponsorCard() {
     val feed by Repo.sponsor.collectAsState()
-    val failed = remember { androidx.compose.runtime.mutableStateListOf<String>() }
-    val live = feed.banners.filter { it.live() && (it.id !in failed || (it.image.isBlank() && (it.text.isNotBlank() || it.title.isNotBlank()))) }
-        .filter { it.image.startsWith("https://") || it.text.isNotBlank() || it.title.isNotBlank() }
+    // An image that failed to load (no network at start, Drive hiccup) is retried, never dropped for good.
+    val failed = remember { androidx.compose.runtime.mutableStateMapOf<String, Int>() }
+    val live = feed.banners.filter { it.live() && (it.image.startsWith("https://") || it.text.isNotBlank() || it.title.isNotBlank()) }
     if (live.isEmpty()) return
     val start = remember(live.size) { if (live.size > 1) kotlin.random.Random.nextInt(live.size) else 0 }
     var step by remember(live.size) { mutableStateOf(0) }
@@ -482,6 +482,11 @@ private fun SponsorCard() {
         }
     }
     val b = live[(start + step) % live.size]
+    val attempts = failed[b.id] ?: 0
+    if (attempts > 0) androidx.compose.runtime.LaunchedEffect(b.id, attempts) {
+        kotlinx.coroutines.delay(if (attempts < 3) 5_000L else 60_000L)
+        failed[b.id] = -attempts   // negative = retry now, remembers the count
+    }
     val ctx = LocalContext.current
     androidx.compose.runtime.LaunchedEffect(b.id) { Repo.track("sponsor_view", "sponsor:" + b.id) }
     Card(
@@ -492,12 +497,14 @@ private fun SponsorCard() {
     ) {
         androidx.compose.foundation.layout.Box {
             androidx.compose.animation.Crossfade(targetState = b, label = "sponsor") { cur ->
-                if (cur.image.startsWith("https://") && cur.id !in failed) {
+                val n = failed[cur.id] ?: 0
+                if (cur.image.startsWith("https://") && n <= 0) {
                     coil.compose.AsyncImage(
-                        model = directImageUrl(cur.image), contentDescription = cur.title.ifBlank { null },
+                        // the fragment only makes a retry a new request; it is not sent to the server
+                        model = directImageUrl(cur.image) + (if (n < 0) "#r$n" else ""), contentDescription = cur.title.ifBlank { null },
                         modifier = Modifier.fillMaxWidth(),
                         contentScale = androidx.compose.ui.layout.ContentScale.FillWidth,
-                        onError = { failed.add(cur.id) },
+                        onError = { failed[cur.id] = -(failed[cur.id] ?: 0) + 1 },
                     )
                 } else {
                     Text(cur.text.ifBlank { cur.title }, modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 70.dp, top = 12.dp, bottom = 12.dp))
