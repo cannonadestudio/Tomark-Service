@@ -104,23 +104,22 @@ object Repo {
     /** Downloads the online list. Returns the number of bulletins that were not known before. */
     suspend fun refreshBulletins(): Result<Int> = withContext(Dispatchers.IO) {
         runCatching {
-            val conn = URL(url("bulletins")).openConnection() as HttpURLConnection
-            conn.connectTimeout = 10_000
-            conn.readTimeout = 15_000
-            conn.setRequestProperty("Cache-Control", "no-cache")
-            try {
-                if (conn.responseCode != 200) error("HTTP ${conn.responseCode}")
-                val text = conn.inputStream.bufferedReader().use { it.readText() }
-                val remote = json.decodeFromString<BulletinFeed>(text)
-                val before = _feed.value.bulletins.map { it.id }.toSet()
-                val merged = merge(_feed.value, remote)
-                feedCache.writeText(json.encodeToString(BulletinFeed.serializer(), remote))
-                _feed.value = merged
-                merged.bulletins.count { it.id !in before }
-            } finally {
-                conn.disconnect()
-            }
+            val text = downloadData("bulletins")
+            val remote = json.decodeFromString<BulletinFeed>(text)
+            val before = _feed.value.bulletins.map { it.id }.toSet()
+            val merged = merge(_feed.value, remote)
+            feedCache.writeText(json.encodeToString(BulletinFeed.serializer(), remote))
+            _feed.value = merged
+            merged.bulletins.count { it.id !in before }
         }
+    }
+
+    /** Data file from the configured source; if the owner's server fails, the GitHub copy is used. */
+    private fun downloadData(name: String): String = try {
+        download(url(name)).also { if (it.trimStart().firstOrNull() !in listOf('{', '[')) error("not JSON") }
+    } catch (e: Exception) {
+        if (dataBase == GITHUB_DATA) throw e
+        download("$GITHUB_DATA/$name.json")
     }
 
     private fun download(url: String): String {
@@ -215,7 +214,7 @@ object Repo {
     /** Downloads the public ULC examiner lists (button in Contacts). */
     suspend fun refreshExaminers(): Result<Int> = withContext(Dispatchers.IO) {
         runCatching {
-            val text = download(url("examiners"))
+            val text = downloadData("examiners")
             val remote = json.decodeFromString<ContactFeed>(text)
             examinersCache.writeText(text)
             _examiners.value = remote
@@ -233,7 +232,7 @@ object Repo {
 
     suspend fun refreshNews(): Result<Int> = withContext(Dispatchers.IO) {
         runCatching {
-            val text = download(url("news"))
+            val text = downloadData("news")
             val remote = json.decodeFromString<NewsFeed>(text)
             newsCache.writeText(text)
             _news.value = remote
@@ -244,7 +243,7 @@ object Repo {
     /** Downloads the online contacts list (replaces the previous online list; local edits stay). */
     suspend fun refreshContacts(): Result<Int> = withContext(Dispatchers.IO) {
         runCatching {
-            val text = download(url("contacts"))
+            val text = downloadData("contacts")
             val remote = json.decodeFromString<ContactFeed>(text)
             if (remote.contacts.isEmpty()) error("empty list")
             contactsCache.writeText(text)
@@ -256,7 +255,7 @@ object Repo {
     /** Downloads aircraft types from the web panel. Types removed online but still used by an aircraft are kept. */
     suspend fun refreshTypes(): Result<Int> = withContext(Dispatchers.IO) {
         runCatching {
-            val text = download(url("types"))
+            val text = downloadData("types")
             val remote = json.decodeFromString<List<AircraftType>>(text)
             if (remote.size < 2 || remote.any { it.speeds.isEmpty() }) error("suspicious types list")
             val used = _state.value.aircraft.map { it.typeId }.toSet()

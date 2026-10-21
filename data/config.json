@@ -1,4 +1,4 @@
 {
- "dataBaseUrl": null,
+ "dataBaseUrl": "https://horyzontbezgranic.pl/aerohangar/public/data",
  "_info": "Set dataBaseUrl to https://your-server/.../data to move all apps to your own AeroHangar server. null = use this GitHub repo."
 }
