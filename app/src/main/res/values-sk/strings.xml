@@ -58,6 +58,12 @@
     <string name="hours_updated">aktualizované %1$s</string>
     <string name="hours_hint">Počítame čas od vzletu po pristátie (SB_SD4-03-2023). Položky Rotax sa počítajú v motohodinách.</string>
     <string name="hours_decrease_warning">Nová hodnota je nižšia ako súčasná.</string>
+    <string name="next_insp_title">Do ďalšej prehliadky</string>
+    <string name="next_insp_over">Prekročené o %1$s h</string>
+    <string name="next_insp_at">%1$s – pri %2$s h</string>
+    <string name="next_insp_date">alebo do %1$s, čo nastane skôr</string>
+    <string name="next_insp_logbook">Nálet z logbooku, synchronizácia %1$s</string>
+    <string name="next_insp_manual">Nálet zadaný ručne – prepojte logbook v nastaveniach lietadla</string>
     <string name="next_work">Najbližšia údržba</string>
     <string name="all_ok">Žiadna údržba v najbližšom čase.</string>
     <string name="open_bulletins_n">%1$d bulletin(ov) bez stavu</string>

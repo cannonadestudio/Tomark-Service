@@ -58,6 +58,12 @@
     <string name="hours_updated">aktualisiert %1$s</string>
     <string name="hours_hint">Flugzeit vom Start bis zur Landung zählen (SB_SD4-03-2023). Rotax-Positionen zählen Motorstunden – beide abgleichen.</string>
     <string name="hours_decrease_warning">Der neue Wert ist niedriger als der aktuelle.</string>
+    <string name="next_insp_title">Nächste Prüfung in</string>
+    <string name="next_insp_over">Überschritten um %1$s h</string>
+    <string name="next_insp_at">%1$s – bei %2$s h</string>
+    <string name="next_insp_date">oder bis %1$s, je nachdem, was früher eintritt</string>
+    <string name="next_insp_logbook">Stunden aus dem Flugbuch, synchronisiert %1$s</string>
+    <string name="next_insp_manual">Stunden manuell eingetragen – Flugbuch in den Flugzeugeinstellungen verknüpfen</string>
     <string name="next_work">Anstehende Wartung</string>
     <string name="all_ok">Keine Wartung in nächster Zeit fällig.</string>
     <string name="open_bulletins_n">%1$d Bulletin(s) ohne Status</string>

@@ -942,5 +942,29 @@
  "open_document": {
   "de": "Dokument öffnen",
   "cs": "Otevřít dokument"
+ },
+ "next_insp_title": {
+  "de": "Nächste Prüfung in",
+  "cs": "Do další prohlídky"
+ },
+ "next_insp_over": {
+  "de": "Überschritten um %1$s h",
+  "cs": "Překročeno o %1$s h"
+ },
+ "next_insp_at": {
+  "de": "%1$s – bei %2$s h",
+  "cs": "%1$s – při %2$s h"
+ },
+ "next_insp_date": {
+  "de": "oder bis %1$s, je nachdem, was früher eintritt",
+  "cs": "nebo do %1$s, co nastane dříve"
+ },
+ "next_insp_logbook": {
+  "de": "Stunden aus dem Flugbuch, synchronisiert %1$s",
+  "cs": "Nálet z logbooku, synchronizace %1$s"
+ },
+ "next_insp_manual": {
+  "de": "Stunden manuell eingetragen – Flugbuch in den Flugzeugeinstellungen verknüpfen",
+  "cs": "Nálet zadán ručně – propojte logbook v nastavení letadla"
  }
 }

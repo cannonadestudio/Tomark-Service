@@ -59,6 +59,12 @@
     <string name="hours_updated">updated %1$s</string>
     <string name="hours_hint">Count flight time take-off to landing (SB_SD4-03-2023). Rotax items use engine hours – keep them in step.</string>
     <string name="hours_decrease_warning">The new value is lower than the current one.</string>
+    <string name="next_insp_title">Next inspection in</string>
+    <string name="next_insp_over">Overdue by %1$s h</string>
+    <string name="next_insp_at">%1$s – at %2$s h</string>
+    <string name="next_insp_date">or by %1$s, whichever comes first</string>
+    <string name="next_insp_logbook">Hours from the logbook, synced %1$s</string>
+    <string name="next_insp_manual">Hours entered manually – link the logbook in aircraft settings</string>
     <string name="next_work">Upcoming maintenance</string>
     <string name="all_ok">No maintenance due soon.</string>
     <string name="open_bulletins_n">%1$d bulletin(s) without status</string>

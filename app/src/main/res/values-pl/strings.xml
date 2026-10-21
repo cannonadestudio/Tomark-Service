@@ -58,6 +58,12 @@
     <string name="hours_updated">aktualizacja %1$s</string>
     <string name="hours_hint">Liczymy czas od startu do lądowania (SB_SD4-03-2023). Pozycje Rotax liczone są w godzinach silnika – pilnuj zgodności.</string>
     <string name="hours_decrease_warning">Nowa wartość jest mniejsza od obecnej.</string>
+    <string name="next_insp_title">Do kolejnego przeglądu</string>
+    <string name="next_insp_over">Przekroczono o %1$s h</string>
+    <string name="next_insp_at">%1$s – przy %2$s h</string>
+    <string name="next_insp_date">lub do %1$s, co nastąpi wcześniej</string>
+    <string name="next_insp_logbook">Nalot z logbooka, synchronizacja %1$s</string>
+    <string name="next_insp_manual">Nalot wpisany ręcznie – połącz logbook w ustawieniach samolotu</string>
     <string name="next_work">Najbliższe prace serwisowe</string>
     <string name="all_ok">Brak prac w najbliższym czasie.</string>
     <string name="open_bulletins_n">%1$d biuletyn(ów) bez statusu</string>

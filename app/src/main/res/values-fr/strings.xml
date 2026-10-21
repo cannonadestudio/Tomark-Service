@@ -58,6 +58,12 @@
     <string name="hours_updated">mis à jour %1$s</string>
     <string name="hours_hint">Temps compté du décollage à l\'atterrissage (SB_SD4-03-2023). Les éléments Rotax suivent les heures moteur.</string>
     <string name="hours_decrease_warning">La nouvelle valeur est inférieure à l\'actuelle.</string>
+    <string name="next_insp_title">Prochaine visite dans</string>
+    <string name="next_insp_over">Dépassé de %1$s h</string>
+    <string name="next_insp_at">%1$s – à %2$s h</string>
+    <string name="next_insp_date">ou avant le %1$s, au premier atteint</string>
+    <string name="next_insp_logbook">Heures du carnet, synchro %1$s</string>
+    <string name="next_insp_manual">Heures saisies à la main – liez le carnet dans les réglages de l\'avion</string>
     <string name="next_work">Prochains travaux</string>
     <string name="all_ok">Aucun entretien proche.</string>
     <string name="open_bulletins_n">%1$d bulletin(s) sans statut</string>

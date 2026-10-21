@@ -107,6 +107,9 @@ fun HomeScreen(
             }
             Chip(if (type.category == "EASA") "EASA ${type.tcds ?: ""}".trim() else "UL / LSA", HbgPink, Color.White)
         }
+        // Hours left to the next hour-based inspection (hours follow the logbook when linked)
+        due.filter { it.remainingHours != null && it.status != com.cannonadestudio.tomarkpilot.data.DueStatus.DONE }
+            .minByOrNull { it.remainingHours!! }?.let { NextInspectionCard(it, aircraft, state, lg) { onTab(MainActivity.TAB_SERVICE) } }
         // Flightradar24 – last flights of this registration
         val ctx = LocalContext.current
         Row(
@@ -407,5 +410,41 @@ fun EngineSerialLine(a: Aircraft, color: Color) {
             },
             dismissButton = { TextButton(onClick = { edit = false }) { Text(stringResource(R.string.cancel)) } },
         )
+    }
+}
+
+
+@Composable
+private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, a: Aircraft, state: AppState, lg: String, onClick: () -> Unit) {
+    val rem = d.remainingHours ?: return
+    val look = statusLook(d.status)
+    val numColor = when (d.status) {
+        com.cannonadestudio.tomarkpilot.data.DueStatus.OK -> Color(0xFF2E7D32)
+        com.cannonadestudio.tomarkpilot.data.DueStatus.SOON -> Color(0xFFB26A00)
+        else -> look.bg
+    }
+    Card(Modifier.fillMaxWidth().padding(top = 10.dp).clickable(onClick = onClick)) {
+        Row(Modifier.padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(stringResource(R.string.next_insp_title), style = MaterialTheme.typography.labelLarge, color = HbgPink)
+                if (rem >= 0) {
+                    Row(verticalAlignment = Alignment.Bottom) {
+                        Text(fmtH(rem), fontSize = 34.sp, fontWeight = FontWeight.Bold, color = numColor)
+                        Text(" h", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = numColor, modifier = Modifier.padding(bottom = 5.dp))
+                    }
+                } else {
+                    Text(stringResource(R.string.next_insp_over, fmtH(-rem)), fontSize = 22.sp, fontWeight = FontWeight.Bold, color = numColor)
+                }
+                Text(stringResource(R.string.next_insp_at, d.task.title.get(lg), fmtH(d.dueHours ?: 0.0)), style = MaterialTheme.typography.bodyMedium)
+                d.dueDate?.let { Text(stringResource(R.string.next_insp_date, fmtDate(it)), style = MaterialTheme.typography.bodySmall) }
+                val synced = state.logbookSyncedEpochDay
+                Text(
+                    if (a.logbookBaseHours != null && synced != null && state.logbookError == null) stringResource(R.string.next_insp_logbook, fmtEpochDay(synced))
+                    else stringResource(R.string.next_insp_manual),
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            StatusChip(d.status)
+        }
     }
 }
