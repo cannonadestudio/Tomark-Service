@@ -688,6 +688,7 @@ object Repo {
     /** Bulletins (not plain documents) without DONE/NA status for this aircraft. */
     fun openBulletins(a: Aircraft, s: AppState = _state.value, feed: BulletinFeed = _feed.value): List<Bulletin> {
         val handled = s.bulletinStatus.filter { it.aircraftId == a.id }.map { it.bulletinId }.toSet()
-        return bulletinsFor(a, feed, s).filter { it.kind != "DOC" && it.id !in handled }
+        // Service Instructions / Letters marked not mandatory are information only – listed, not counted as open.
+        return bulletinsFor(a, feed, s).filter { it.kind != "DOC" && !(it.kind == "SIB" && it.mandatory == false) && it.id !in handled }
     }
 }
