@@ -13,8 +13,8 @@ android {
         applicationId = "com.cannonadestudio.tomarkpilot"
         minSdk = 23
         targetSdk = 35
-        versionCode = 9
-        versionName = "2.5.1"
+        versionCode = 10
+        versionName = "2.6.0"
     }
 
     // Release signing: the key comes from GitHub secrets (see README "Podpis aplikacji").

@@ -886,5 +886,53 @@
  "submit_fail": {
   "de": "Senden fehlgeschlagen – später erneut versuchen",
   "cs": "Odeslání selhalo – zkuste později"
+ },
+ "prev_service_title": {
+  "de": "Zuletzt durchgeführte Prüfungen (optional)",
+  "cs": "Naposledy provedené prohlídky (volitelné)"
+ },
+ "prev_service_hint": {
+  "de": "Datum und Gesamtstunden der letzten Durchführung eintragen. Leer lassen, wenn unbekannt – später unter Wartung ergänzen.",
+  "cs": "Zadejte datum a nálet, kdy byla položka naposledy provedena. Pokud nevíte, nechte prázdné – doplníte později v Údržbě."
+ },
+ "prev_bulletins_title": {
+  "de": "Bereits durchgeführte Bulletins (optional)",
+  "cs": "Provedené bulletiny (volitelné)"
+ },
+ "prev_bulletins_hint": {
+  "de": "Bereits an diesem Flugzeug durchgeführte Bulletins und LTAs ankreuzen. Verbindliche stehen oben.",
+  "cs": "Označte bulletiny a příkazy již provedené na tomto letadle. Povinné jsou nahoře."
+ },
+ "prev_done_date": {
+  "de": "Datum",
+  "cs": "Datum"
+ },
+ "prev_done_hours": {
+  "de": "Bei Stunden",
+  "cs": "Při náletu (h)"
+ },
+ "prev_hours_needed": {
+  "de": "Bitte auch Stunden eintragen",
+  "cs": "Zadejte i nálet"
+ },
+ "prev_added_note": {
+  "de": "beim Hinzufügen des Flugzeugs eingetragen",
+  "cs": "zapsáno při přidání letadla"
+ },
+ "prev_count": {
+  "de": "eingetragen: %1$d",
+  "cs": "zapsáno: %1$d"
+ },
+ "prev_more": {
+  "de": "Mehr anzeigen",
+  "cs": "Zobrazit více"
+ },
+ "prev_search": {
+  "de": "Bulletin suchen",
+  "cs": "Hledat bulletin"
+ },
+ "prev_bulletin_date": {
+  "de": "Datum für angekreuzte Bulletins",
+  "cs": "Datum pro označené bulletiny"
  }
 }
