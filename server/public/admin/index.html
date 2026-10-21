@@ -133,7 +133,16 @@ async function start() {
   const me = await api("me");
   if (!me.user) return showLogin();
   state.csrf = me.csrf; state.user = me.user; state.publicBase = me.publicBase;
-  await Promise.all(Object.keys(FILES).map(readFile));
+  // Optional files (e.g. examiners on an older server) must not block the login.
+  const missing = [];
+  await Promise.all(Object.keys(FILES).map(f => readFile(f).catch(e => {
+    if (f === "examiners" || f === "news") { missing.push(f); state.data[f] = f === "news" ? { version: 0, updated: "", messages: [] } : { version: 0, updated: "", contacts: [] }; state.sha[f] = "" }
+    else throw e;
+  })));
+  if (missing.includes("examiners")) {
+    status("Serwer nie obsługuje jeszcze listy egzaminatorów – podmień plik private/bootstrap.php i admin/api.php z nowej paczki. Pozostałe dane działają.", false);
+    state.noExaminers = true;
+  }
   $("#login").style.display = "none";
   $("#who").style.display = "flex";
   $("#who").innerHTML = `<span>${esc(me.user.login)} (${esc(me.user.role)})</span><button class="ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" id="logout">Wyloguj</button>`;
@@ -149,7 +158,7 @@ $("#loginForm").onsubmit = async e => {
 // ---------------------------------------------------------------- UI helpers
 function renderTabs() {
   const count = g => (state.data[CGROUPS[g].file]?.contacts || []).filter(c => CGROUPS[g].kinds.includes(c.kind)).length;
-  const tabs = [["bulletins", "Biuletyny"], ...Object.keys(CGROUPS).map(g => [g, `${CGROUPS[g].name} <small>(${count(g)})</small>`]), ["types", "Typy samolotów"], ["news", "Komunikaty"], ["history", "Historia"]];
+  const tabs = [["bulletins", "Biuletyny"], ...Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => [g, `${CGROUPS[g].name} <small>(${count(g)})</small>`]), ["types", "Typy samolotów"], ["news", "Komunikaty"], ["history", "Historia"]];
   if (state.user?.role === "admin") tabs.push(["users", "Użytkownicy"]);
   $("#tabs").innerHTML = tabs.map(([k, n]) => `<button class="tab ${state.tab === k ? "on" : ""}" data-tab="${k}">${n}</button>`).join("");
   $("#tabs").querySelectorAll("button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; state.filter = ""; renderTabs(); render() });
