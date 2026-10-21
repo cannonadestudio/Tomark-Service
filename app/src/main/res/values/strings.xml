@@ -31,6 +31,8 @@
     <string name="prev_more">Show more</string>
     <string name="prev_search">Search bulletin (number or text)</string>
     <string name="prev_bulletin_date">Date for ticked bulletins</string>
+    <string name="change_type">Change type</string>
+    <string name="open_document">Open document</string>
     <string name="type_change_warning">Changing the type changes the maintenance programme and bulletins.</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>

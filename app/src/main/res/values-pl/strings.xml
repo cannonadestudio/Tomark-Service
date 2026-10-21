@@ -30,6 +30,8 @@
     <string name="prev_more">Pokaż więcej</string>
     <string name="prev_search">Szukaj biuletynu (numer lub tekst)</string>
     <string name="prev_bulletin_date">Data wykonania zaznaczonych biuletynów</string>
+    <string name="change_type">Zmień typ</string>
+    <string name="open_document">Otwórz dokument</string>
     <string name="type_change_warning">Zmiana typu zmienia program obsługi i listę biuletynów.</string>
     <string name="save">Zapisz</string>
     <string name="cancel">Anuluj</string>

@@ -163,3 +163,13 @@ fun categoryName(c: String): String = stringResource(
         else -> R.string.cat_other
     }
 )
+
+
+/** Opens a bulletin / document link in the browser (or shows the address if no browser is installed). */
+fun openUrl(ctx: android.content.Context, url: String) {
+    try {
+        ctx.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url)))
+    } catch (_: android.content.ActivityNotFoundException) {
+        android.widget.Toast.makeText(ctx, url, android.widget.Toast.LENGTH_LONG).show()
+    }
+}

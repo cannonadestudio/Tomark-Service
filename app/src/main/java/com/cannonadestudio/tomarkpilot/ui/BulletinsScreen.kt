@@ -22,6 +22,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
@@ -117,12 +118,18 @@ fun BulletinsScreen(state: AppState, feed: BulletinFeed, aircraft: Aircraft) {
 
 @Composable
 private fun BulletinCard(b: Bulletin, st: BulletinStatus?, isNew: Boolean, yearBuilt: Int?, onClick: () -> Unit) {
+    val ctx = LocalContext.current
     Card(Modifier.fillMaxWidth().clickable(onClick = onClick)) {
         Column(Modifier.padding(14.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 Text(b.id, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
                 if (isNew) Chip(stringResource(R.string.bl_new), Color(0xFF1565C0), Color.White)
                 KindChip(b)
+                b.url?.let { u ->
+                    IconButton(onClick = { openUrl(ctx, u) }, modifier = Modifier.size(32.dp)) {
+                        Icon(androidx.compose.material.icons.Icons.AutoMirrored.Filled.OpenInNew, stringResource(R.string.open_document), tint = MaterialTheme.colorScheme.primary)
+                    }
+                }
             }
             Text(b.date, style = MaterialTheme.typography.bodySmall)
             Spacer(Modifier.height(4.dp))

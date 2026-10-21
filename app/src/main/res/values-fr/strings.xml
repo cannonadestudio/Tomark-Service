@@ -30,6 +30,8 @@
     <string name="prev_more">Afficher plus</string>
     <string name="prev_search">Rechercher un bulletin</string>
     <string name="prev_bulletin_date">Date des bulletins cochés</string>
+    <string name="change_type">Changer de type</string>
+    <string name="open_document">Ouvrir le document</string>
     <string name="type_change_warning">Changer de type modifie le programme d\'entretien et les bulletins.</string>
     <string name="save">Enregistrer</string>
     <string name="cancel">Annuler</string>

@@ -30,6 +30,8 @@
     <string name="prev_more">Mehr anzeigen</string>
     <string name="prev_search">Bulletin suchen</string>
     <string name="prev_bulletin_date">Datum für angekreuzte Bulletins</string>
+    <string name="change_type">Typ ändern</string>
+    <string name="open_document">Dokument öffnen</string>
     <string name="type_change_warning">Eine Änderung des Musters ändert das Instandhaltungsprogramm und die Bulletins.</string>
     <string name="save">Speichern</string>
     <string name="cancel">Abbrechen</string>

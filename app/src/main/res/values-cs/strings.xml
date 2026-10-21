@@ -30,6 +30,8 @@
     <string name="prev_more">Zobrazit více</string>
     <string name="prev_search">Hledat bulletin</string>
     <string name="prev_bulletin_date">Datum pro označené bulletiny</string>
+    <string name="change_type">Změnit typ</string>
+    <string name="open_document">Otevřít dokument</string>
     <string name="type_change_warning">Změna typu mění program údržby a seznam bulletinů.</string>
     <string name="save">Uložit</string>
     <string name="cancel">Zrušit</string>

@@ -40,6 +40,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.ExpandMore
 import com.cannonadestudio.tomarkpilot.data.BulletinStatus
 import com.cannonadestudio.tomarkpilot.data.CompletionRecord
@@ -104,6 +105,8 @@ fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
     var ref by remember { mutableStateOf(existing?.referenceEpochDay?.let { fmtEpochDay(it) } ?: "") }
     var confirmDelete by remember { mutableStateOf(false) }
     var typeQuery by remember { mutableStateOf("") }
+    // The full type list only when adding; when editing it opens on "Change type".
+    var pickType by remember { mutableStateOf(existing == null) }
     var linkLogbook by remember { mutableStateOf(existing?.logbookBaseHours != null) }
     // Previously done work entered right in the form: taskId -> (date, hours); ticked bulletin ids.
     val prevTasks = remember { mutableStateMapOf<String, Pair<String, String>>() }
@@ -130,7 +133,11 @@ fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         Text(stringResource(R.string.aircraft_type), style = MaterialTheme.typography.titleMedium)
-        Text(Repo.type(typeId)?.name ?: "", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(Repo.type(typeId)?.name ?: "", fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary, modifier = Modifier.weight(1f))
+            if (existing != null && !pickType) TextButton(onClick = { pickType = true }) { Text(stringResource(R.string.change_type)) }
+        }
+        if (pickType) {
         OutlinedTextField(
             typeQuery, { typeQuery = it }, Modifier.fillMaxWidth(), singleLine = true,
             placeholder = { Text(stringResource(R.string.type_search)) },
@@ -156,6 +163,7 @@ fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
                     }
                 }
             }
+        }
         }
         if (existing != null && existing.typeId != typeId) {
             Text(stringResource(R.string.type_change_warning), color = Color(0xFFEF6C00), style = MaterialTheme.typography.bodySmall)
@@ -308,6 +316,7 @@ private fun PrevBulletinsSection(
     var open by remember { mutableStateOf(true) }
     var q by remember { mutableStateOf("") }
     var limit by remember { mutableStateOf(25) }
+    val ctx = androidx.compose.ui.platform.LocalContext.current
     Spacer(Modifier.height(16.dp))
     Row(Modifier.fillMaxWidth().clickable { open = !open }, verticalAlignment = Alignment.CenterVertically) {
         Column(Modifier.weight(1f)) {
@@ -335,6 +344,11 @@ private fun PrevBulletinsSection(
                     color = if (b.mandatory == true) Color(0xFFC62828) else Color.Unspecified,
                 )
                 Text("${b.date} · ${b.title}", style = MaterialTheme.typography.bodySmall, maxLines = 2)
+            }
+            b.url?.let { u ->
+                IconButton(onClick = { openUrl(ctx, u) }) {
+                    Icon(Icons.AutoMirrored.Filled.OpenInNew, stringResource(R.string.open_document), tint = MaterialTheme.colorScheme.primary)
+                }
             }
         }
     }

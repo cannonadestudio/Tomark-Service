@@ -934,5 +934,13 @@
  "prev_bulletin_date": {
   "de": "Datum für angekreuzte Bulletins",
   "cs": "Datum pro označené bulletiny"
+ },
+ "change_type": {
+  "de": "Typ ändern",
+  "cs": "Změnit typ"
+ },
+ "open_document": {
+  "de": "Dokument öffnen",
+  "cs": "Otevřít dokument"
  }
 }

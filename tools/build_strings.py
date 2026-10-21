@@ -49,6 +49,8 @@ S = {
  "prev_more": ("Show more", "Pokaż więcej", "Zobraziť viac", "Afficher plus"),
  "prev_search": ("Search bulletin (number or text)", "Szukaj biuletynu (numer lub tekst)", "Hľadať bulletin", "Rechercher un bulletin"),
  "prev_bulletin_date": ("Date for ticked bulletins", "Data wykonania zaznaczonych biuletynów", "Dátum pre označené bulletiny", "Date des bulletins cochés"),
+ "change_type": ("Change type", "Zmień typ", "Zmeniť typ", "Changer de type"),
+ "open_document": ("Open document", "Otwórz dokument", "Otvoriť dokument", "Ouvrir le document"),
  "type_change_warning": ("Changing the type changes the maintenance programme and bulletins.", "Zmiana typu zmienia program obsługi i listę biuletynów.", "Zmena typu mení program údržby a zoznam bulletinov.", "Changer de type modifie le programme d'entretien et les bulletins."),
  "save": ("Save", "Zapisz", "Uložiť", "Enregistrer"),
  "cancel": ("Cancel", "Anuluj", "Zrušiť", "Annuler"),
