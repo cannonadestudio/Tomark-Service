@@ -57,24 +57,23 @@ private val DarkColors = darkColorScheme(
     secondary = Color(0xFF6FDCD1), onSecondary = Color(0xFF00382F),
     secondaryContainer = Color(0xFF005048), onSecondaryContainer = Color(0xFFD5F3F0),
     tertiary = Color(0xFFFF8DB6),
-    // Black / near-black cards (OLED, battery saving) instead of the tinted grey-pink Material defaults.
-    background = Color(0xFF000000), surface = Color(0xFF0B0B0D), onSurface = Color(0xFFECEAF0),
-    surfaceVariant = Color(0xFF17171A), onSurfaceVariant = Color(0xFFC9C6CF),
-    surfaceContainerLowest = Color(0xFF000000), surfaceContainerLow = Color(0xFF060607),
-    surfaceContainer = Color(0xFF0B0B0D), surfaceContainerHigh = Color(0xFF111114),
-    surfaceContainerHighest = Color(0xFF141417), surfaceBright = Color(0xFF1C1C20), surfaceDim = Color(0xFF000000),
+    // Dark graphite cards on the bright HBG gradient (not the tinted grey-pink Material defaults).
+    background = Color(0xFF1A1A1F), surface = Color(0xFF222228), onSurface = Color(0xFFEEECF2),
+    surfaceVariant = Color(0xFF2E2D35), onSurfaceVariant = Color(0xFFCBC8D2),
+    surfaceContainerLowest = Color(0xFF1A1A1F), surfaceContainerLow = Color(0xFF1E1E23),
+    surfaceContainer = Color(0xFF222228), surfaceContainerHigh = Color(0xFF26262C),
+    surfaceContainerHighest = Color(0xFF29282F), surfaceBright = Color(0xFF33323A), surfaceDim = Color(0xFF1A1A1F),
     surfaceTint = Color(0xFF000000),
 )
 
 /** The site's diagonal violet → blue → teal gradient. */
-fun hbgGradient(dark: Boolean): Brush = Brush.linearGradient(
-    if (dark) listOf(Color(0xFF3A1D4C), Color(0xFF15405A), Color(0xFF07544E))
-    else listOf(HbgViolet, HbgBlue, HbgTeal)
-)
+@Suppress("UNUSED_PARAMETER")
+fun hbgGradient(dark: Boolean = false): Brush = Brush.linearGradient(listOf(HbgViolet, HbgBlue, HbgTeal))
 
 @Composable
 fun AppTheme(content: @Composable () -> Unit) {
-    MaterialTheme(colorScheme = if (isSystemInDarkTheme()) DarkColors else LightColors, content = content)
+    // Always dark cards (as requested); the background keeps the bright HBG gradient in both modes.
+    MaterialTheme(colorScheme = DarkColors, content = content)
 }
 
 // ---------------------------------------------------------------- helpers

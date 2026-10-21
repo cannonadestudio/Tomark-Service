@@ -274,8 +274,8 @@ private fun SpeedTile(s: SpeedDef, a: Aircraft, kmh: Boolean, lg: String, modifi
     val overridden = a.speedOverrides.containsKey(s.key)
     val main = toDisplay(raw, s.unit, kmh).roundToInt()
     val other = toDisplay(raw, s.unit, !kmh).roundToInt()
-    val dark = androidx.compose.foundation.isSystemInDarkTheme()
-    val tile = Color(0xFF141417)
+    val dark = true   // cards are always dark now
+    val tile = Color(0xFF34333B)
     val (bg, fg) = when (s.zone) {
         "red" -> Color(0xFFC62828) to Color.White
         "green" -> Color(0xFF2E7D32) to Color.White
