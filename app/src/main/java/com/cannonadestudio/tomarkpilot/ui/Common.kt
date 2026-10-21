@@ -57,8 +57,13 @@ private val DarkColors = darkColorScheme(
     secondary = Color(0xFF6FDCD1), onSecondary = Color(0xFF00382F),
     secondaryContainer = Color(0xFF005048), onSecondaryContainer = Color(0xFFD5F3F0),
     tertiary = Color(0xFFFF8DB6),
-    background = Color(0xFF15121A), surface = Color(0xFF1F1B25),
-    surfaceVariant = Color(0xFF2A2531), onSurfaceVariant = Color(0xFFCBC4D2),
+    // Black / near-black cards (OLED, battery saving) instead of the tinted grey-pink Material defaults.
+    background = Color(0xFF000000), surface = Color(0xFF0B0B0D), onSurface = Color(0xFFECEAF0),
+    surfaceVariant = Color(0xFF17171A), onSurfaceVariant = Color(0xFFC9C6CF),
+    surfaceContainerLowest = Color(0xFF000000), surfaceContainerLow = Color(0xFF060607),
+    surfaceContainer = Color(0xFF0B0B0D), surfaceContainerHigh = Color(0xFF111114),
+    surfaceContainerHighest = Color(0xFF141417), surfaceBright = Color(0xFF1C1C20), surfaceDim = Color(0xFF000000),
+    surfaceTint = Color(0xFF000000),
 )
 
 /** The site's diagonal violet → blue → teal gradient. */

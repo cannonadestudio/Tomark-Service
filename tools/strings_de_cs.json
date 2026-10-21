@@ -1134,5 +1134,81 @@
  "ad_label": {
   "de": "ANZEIGE",
   "cs": "REKLAMA"
+ },
+ "export_share": {
+  "de": "Flugzeugdaten exportieren",
+  "cs": "Exportovat údaje letadla"
+ },
+ "export_share_hint": {
+  "de": "Alle Daten des Flugzeugs – für eine Verkaufsanzeige, den Käufer oder den Mechaniker.",
+  "cs": "Všechny údaje letadla – pro inzerát, kupujícího nebo mechanika."
+ },
+ "export_pdf": {
+  "de": "PDF-Dokument",
+  "cs": "Dokument PDF"
+ },
+ "export_text": {
+  "de": "Text zum Einfügen",
+  "cs": "Text k vložení"
+ },
+ "export_doc_title": {
+  "de": "Flugzeugakte %1$s",
+  "cs": "Dokumentace letadla %1$s"
+ },
+ "export_generated": {
+  "de": "Erstellt am %1$s in der App AeroHangar",
+  "cs": "Vytvořeno %1$s v aplikaci AeroHangar"
+ },
+ "export_aircraft": {
+  "de": "Flugzeug",
+  "cs": "Letadlo"
+ },
+ "export_category": {
+  "de": "Kategorie",
+  "cs": "Kategorie"
+ },
+ "export_notes": {
+  "de": "Notizen",
+  "cs": "Poznámky"
+ },
+ "export_next": {
+  "de": "Nächste fällige Wartung",
+  "cs": "Nejbližší termíny údržby"
+ },
+ "export_at_h": {
+  "de": "bei %1$s h",
+  "cs": "při %1$s h"
+ },
+ "export_left_h": {
+  "de": "noch %1$s h",
+  "cs": "zbývá %1$s h"
+ },
+ "export_by_date": {
+  "de": "bis %1$s",
+  "cs": "do %1$s"
+ },
+ "export_history": {
+  "de": "Wartungshistorie",
+  "cs": "Historie údržby"
+ },
+ "export_bulletins_done": {
+  "de": "Durchgeführte Bulletins und LTAs",
+  "cs": "Provedené bulletiny a příkazy"
+ },
+ "export_bulletins_na": {
+  "de": "Nicht zutreffend",
+  "cs": "Netýká se"
+ },
+ "export_bulletins_open": {
+  "de": "Offene verbindliche Bulletins",
+  "cs": "Otevřené povinné bulletiny"
+ },
+ "export_none": {
+  "de": "keine Einträge",
+  "cs": "žádné záznamy"
+ },
+ "export_disclaimer": {
+  "de": "Zusammenfassung der Einträge des Halters in der App AeroHangar. Ersetzt nicht die Bordbücher und die Wartungsdokumentation.",
+  "cs": "Přehled záznamů majitele z aplikace AeroHangar. Nenahrazuje knihy draku, motoru a vrtule ani dokumentaci údržby."
  }
 }

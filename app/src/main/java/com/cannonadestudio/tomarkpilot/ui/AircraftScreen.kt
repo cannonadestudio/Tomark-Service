@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -62,6 +63,8 @@ import java.time.LocalDate
 /** List of the owner's aircraft. */
 @Composable
 fun AircraftListScreen(state: AppState, onEdit: (Aircraft?) -> Unit, onSelected: () -> Unit) {
+    var exportFor by remember { mutableStateOf<Aircraft?>(null) }
+    exportFor?.let { a -> ExportDialog(a, state) { exportFor = null } }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
         state.aircraft.forEach { a ->
             val t = Repo.type(a.typeId)
@@ -77,6 +80,7 @@ fun AircraftListScreen(state: AppState, onEdit: (Aircraft?) -> Unit, onSelected:
                         Text(a.registration, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
                         Text("${t?.name ?: a.typeId} · ${fmtH(a.hours)} h", style = MaterialTheme.typography.bodySmall)
                     }
+                    IconButton(onClick = { exportFor = a }) { Icon(Icons.Filled.Share, stringResource(R.string.export_share)) }
                     IconButton(onClick = { onEdit(a) }) { Icon(Icons.Filled.Edit, stringResource(R.string.edit)) }
                 }
             }
@@ -355,4 +359,25 @@ private fun PrevBulletinsSection(
         }
     }
     if (shown.size > limit) TextButton(onClick = { limit += 50 }) { Text(stringResource(R.string.prev_more) + " (${shown.size - limit})") }
+}
+
+
+@Composable
+private fun ExportDialog(a: Aircraft, state: AppState, onDismiss: () -> Unit) {
+    val ctx = androidx.compose.ui.platform.LocalContext.current
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.export_share) + " – " + a.registration) },
+        text = { Text(stringResource(R.string.export_share_hint)) },
+        confirmButton = {
+            Button(onClick = {
+                runCatching { AircraftExport.sharePdf(ctx, a, state) }
+                    .onFailure { android.widget.Toast.makeText(ctx, it.message ?: "PDF", android.widget.Toast.LENGTH_LONG).show() }
+                onDismiss()
+            }) { Text(stringResource(R.string.export_pdf)) }
+        },
+        dismissButton = {
+            TextButton(onClick = { AircraftExport.shareText(ctx, a, state); onDismiss() }) { Text(stringResource(R.string.export_text)) }
+        },
+    )
 }

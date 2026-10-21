@@ -222,7 +222,19 @@ object Repo {
     }
 
     /** Asks the server now whether Pro was granted to this install. */
-    suspend fun checkProGrant() = withContext(Dispatchers.IO) { pingIfDue(force = true) }
+    suspend fun checkProGrant() = withContext(Dispatchers.IO) {
+        if (!serverConnected) resolveBase()
+        lastGrantCheck = System.currentTimeMillis()
+        pingIfDue(force = true)
+    }
+
+    @Volatile private var lastGrantCheck = 0L
+
+    /** On every app start / resume without Pro: check the manual grant (at most every 10 minutes). */
+    suspend fun checkProGrantIfStale() {
+        if (_state.value.proGranted || System.currentTimeMillis() - lastGrantCheck < 10 * 60_000L) return
+        checkProGrant()
+    }
 
     /** POST that returns the body of a 200 answer (null otherwise). */
     private fun postRead(url: String, body: String): String? {
@@ -473,6 +485,7 @@ object Repo {
     private fun withoutDeviceFields(s: AppState) = s.copy(
         backupUri = null, lastBackupMillis = null, backupError = null,
         logbookUri = null, logbookError = null, logbookSyncedEpochDay = null, proCached = false, proGranted = false,
+        installId = null, lastPingEpochDay = null,
         aircraft = s.aircraft.map { it.copy(pohUri = null) },
     )
 
@@ -513,6 +526,7 @@ object Repo {
                     backupUri = cur.backupUri, lastBackupMillis = cur.lastBackupMillis, backupError = null,
                     logbookUri = cur.logbookUri, logbookSyncedEpochDay = cur.logbookSyncedEpochDay,
                     disclaimerAccepted = true, proCached = cur.proCached, proGranted = cur.proGranted, lastPingEpochDay = null,
+                    installId = cur.installId,
                 )
             }
             restored.aircraft.size

@@ -192,6 +192,7 @@ function ah_validate(string $f, $d): ?string
             return null;
         case 'sponsor':
             if (!isset($d['banners']) || !is_array($d['banners'])) return 'missing "banners"';
+            if (isset($d['rotateSeconds']) && (!is_int($d['rotateSeconds']) || $d['rotateSeconds'] < 0 || $d['rotateSeconds'] > 600)) return 'rotateSeconds must be 0–600';
             foreach ($d['banners'] as $b) {
                 if (empty($b['id']) || (empty($b['title']) && empty($b['image']))) return 'banner without id and title/image';
                 foreach (['url', 'image'] as $k) if (!empty($b[$k]) && !preg_match('~^https://~', (string)$b[$k])) return "banner {$b['id']}: $k must start with https://";

@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AeroHangar – panel</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -628,13 +631,20 @@ async function renderSponsor() {
   const ev = (await api("events").catch(() => ({ events: {} }))).events || {};
   const list = state.data.sponsor.banners;
   v.innerHTML = `<div class="card">${searchBox("Szukaj banera…")}
-    <p class="muted">Jeden baner sponsora na karcie głównej aplikacji (pokazywany jest pierwszy aktywny w zakresie dat). Obrazek: adres https, najlepiej poziomy ok. 1200×300 px. Licznik: wyświetlenia (raz na uruchomienie aplikacji) i kliknięcia.</p>
+    <div class="row" style="margin-bottom:8px"><label class="inl">Zmiana reklamy co <input id="rotSec" type="number" min="0" max="600" step="1" style="width:80px" value="${state.data.sponsor.rotateSeconds ?? 8}"> s</label><button class="ghost" id="rotSave">Zapisz</button>
+      <span class="muted">0 = bez zmiany (losowa reklama przy każdym otwarciu aplikacji)</span></div>
+    <p class="muted">Banery na karcie głównej aplikacji – aktywne w zakresie dat zmieniają się po kolei co ustawioną liczbę sekund. Obrazek: adres https lub link z Dysku Google, najlepiej poziomy ok. 1200×300 px. Licznik: wyświetlenia (raz na uruchomienie aplikacji) i kliknięcia.</p>
     <table><tr><th>Baner</th><th>Okres</th><th>Ten miesiąc</th><th class="hide-sm">12 mies.</th></tr>
     ${list.map(b => { const id = "sponsor:" + b.id, a = sumEvents(ev, id, lastMonths(1)), y = sumEvents(ev, id, lastMonths(12));
       return `<tr class="item" data-id="${esc(b.id)}"><td>${b.image ? `<img src="${esc(directImageUrl(b.image))}" alt="" style="height:38px;max-width:150px;object-fit:cover;border-radius:6px;vertical-align:middle;margin-right:8px">` : ""}<b>${esc(b.title || "(obrazek)")}</b> ${bannerLive(b) ? '<span class="chip g">w aplikacji</span>' : '<span class="chip">nieaktywny</span>'}<div class="muted ell">${esc(b.url || "")}</div></td>
       <td class="nowrap">${esc(b.from || "…")} – ${esc(b.until || "…")}</td><td>${a.sponsor_view || 0} / ${a.sponsor_click || 0} klik.</td><td class="hide-sm">${y.sponsor_view || 0} / ${y.sponsor_click || 0} klik.</td></tr>` }).join("") || '<tr><td class="muted">Brak banerów.</td></tr>'}</table></div>`;
   hookSearch(() => editBanner(null));
   v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editBanner(list.find(b => b.id === r.dataset.id)));
+  $("#rotSave").onclick = async () => {
+    const n = Math.max(0, Math.min(600, parseInt($("#rotSec").value, 10) || 0));
+    state.data.sponsor.rotateSeconds = n;
+    try { await writeFile("sponsor", "Banner rotation " + n + " s") } catch (e) { }
+  };
 }
 function directImageUrl(u) {
   u = (u || "").trim();

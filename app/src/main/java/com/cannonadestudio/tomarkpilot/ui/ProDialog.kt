@@ -105,7 +105,7 @@ fun ProCard() {
                 }
             }
             // Install code – the owner finds this phone by it in the panel (e.g. to grant Pro by hand).
-            val code = remember { com.cannonadestudio.tomarkpilot.data.Repo.installCode() }
+            val code = st.installId?.replace("-", "")?.take(8)?.uppercase() ?: remember { com.cannonadestudio.tomarkpilot.data.Repo.installCode() }
             Row(Modifier.padding(top = 8.dp), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
                 Text(stringResource(R.string.install_code, code), style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
                 TextButton(onClick = {

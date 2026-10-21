@@ -102,6 +102,7 @@ class MainActivity : ComponentActivity() {
         // Fresh bulletins, contacts and types whenever the app is opened (the daily job covers the rest).
         lifecycleScope.launch { Repo.refreshAll() }
         lifecycleScope.launch { com.cannonadestudio.tomarkpilot.data.Billing.refresh() }
+        lifecycleScope.launch { Repo.checkProGrantIfStale() }
     }
 
     override fun onNewIntent(intent: Intent) {

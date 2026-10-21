@@ -43,7 +43,7 @@ if (ah_configured()) {
 }
 ?><!doctype html>
 <html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AeroHangar – instalacja</title>
+<title>AeroHangar – instalacja</title><link rel="icon" href="admin/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="admin/apple-touch-icon.png">
 <style>
 body{margin:0;font-family:system-ui,sans-serif;background:linear-gradient(135deg,#7A3E9D,#2E8FC4 55%,#0FB3A6);min-height:100vh;color:#2B2A33}
 .card{max-width:520px;margin:40px auto;background:#fff;border-radius:14px;padding:22px;box-shadow:0 6px 20px rgba(0,0,0,.15)}

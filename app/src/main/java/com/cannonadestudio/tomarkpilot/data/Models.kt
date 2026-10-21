@@ -137,7 +137,11 @@ data class SponsorBanner(
 }
 
 @Serializable
-data class SponsorFeed(val version: Int = 0, val updated: String = "", val banners: List<SponsorBanner> = emptyList())
+data class SponsorFeed(
+    val version: Int = 0, val updated: String = "", val banners: List<SponsorBanner> = emptyList(),
+    /** Active banners take turns every N seconds; 0 = one random banner per app start. */
+    val rotateSeconds: Int = 8,
+)
 
 @Serializable
 data class ContactFeed(val version: Int = 0, val updated: String = "", val contacts: List<Contact> = emptyList())

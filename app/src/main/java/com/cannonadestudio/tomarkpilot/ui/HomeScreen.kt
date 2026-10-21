@@ -50,6 +50,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.background
+import androidx.compose.ui.zIndex
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -273,12 +274,15 @@ private fun SpeedTile(s: SpeedDef, a: Aircraft, kmh: Boolean, lg: String, modifi
     val overridden = a.speedOverrides.containsKey(s.key)
     val main = toDisplay(raw, s.unit, kmh).roundToInt()
     val other = toDisplay(raw, s.unit, !kmh).roundToInt()
+    val dark = androidx.compose.foundation.isSystemInDarkTheme()
+    val tile = Color(0xFF141417)
     val (bg, fg) = when (s.zone) {
         "red" -> Color(0xFFC62828) to Color.White
         "green" -> Color(0xFF2E7D32) to Color.White
-        "white" -> Color(0xFFE3F2FD) to Color(0xFF0B2545)
-        "approach" -> HbgPink to Color.White
-        else -> MaterialTheme.colorScheme.primaryContainer to MaterialTheme.colorScheme.onPrimaryContainer
+        // Dark mode: black tiles, the zone shows in the text colour (battery saving on OLED).
+        "white" -> if (dark) tile to Color(0xFFBFE0FF) else Color(0xFFE3F2FD) to Color(0xFF0B2545)
+        "approach" -> if (dark) tile to Color(0xFFFF8DB6) else HbgPink to Color.White
+        else -> if (dark) tile to Color.White else MaterialTheme.colorScheme.primaryContainer to MaterialTheme.colorScheme.onPrimaryContainer
     }
     Card(modifier, colors = CardDefaults.cardColors(containerColor = bg, contentColor = fg)) {
         Column(Modifier.fillMaxSize().padding(horizontal = 8.dp, vertical = 8.dp)) {
@@ -459,16 +463,27 @@ private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, 
 }
 
 
-/** Sponsor banner from the owner's server (first active one): just the picture with a small "AD" label. */
+/**
+ * Sponsor banners from the owner's server: just the picture with a small "AD" label on top.
+ * Active banners take turns every [com.cannonadestudio.tomarkpilot.data.SponsorFeed.rotateSeconds].
+ */
 @Composable
 private fun SponsorCard() {
     val feed by Repo.sponsor.collectAsState()
-    val b = feed.banners.firstOrNull { it.live() } ?: return
+    val failed = remember { androidx.compose.runtime.mutableStateListOf<String>() }
+    val live = feed.banners.filter { it.live() && (it.id !in failed || (it.image.isBlank() && (it.text.isNotBlank() || it.title.isNotBlank()))) }
+        .filter { it.image.startsWith("https://") || it.text.isNotBlank() || it.title.isNotBlank() }
+    if (live.isEmpty()) return
+    val start = remember(live.size) { if (live.size > 1) kotlin.random.Random.nextInt(live.size) else 0 }
+    var step by remember(live.size) { mutableStateOf(0) }
+    if (feed.rotateSeconds > 0 && live.size > 1) {
+        androidx.compose.runtime.LaunchedEffect(live.size, feed.rotateSeconds) {
+            while (true) { kotlinx.coroutines.delay(feed.rotateSeconds * 1000L); step++ }
+        }
+    }
+    val b = live[(start + step) % live.size]
     val ctx = LocalContext.current
-    var failed by remember(b.id, b.image) { mutableStateOf(false) }
     androidx.compose.runtime.LaunchedEffect(b.id) { Repo.track("sponsor_view", "sponsor:" + b.id) }
-    val showImage = b.image.startsWith("https://") && !failed
-    if (!showImage && b.text.isBlank() && b.title.isBlank()) return
     Card(
         Modifier.fillMaxWidth().padding(top = 10.dp).clickable(enabled = b.url.isNotBlank()) {
             Repo.track("sponsor_click", "sponsor:" + b.id)
@@ -476,19 +491,22 @@ private fun SponsorCard() {
         },
     ) {
         androidx.compose.foundation.layout.Box {
-            if (showImage) {
-                coil.compose.AsyncImage(
-                    model = directImageUrl(b.image), contentDescription = b.title.ifBlank { null },
-                    modifier = Modifier.fillMaxWidth(),
-                    contentScale = androidx.compose.ui.layout.ContentScale.FillWidth,
-                    onError = { failed = true },
-                )
-            } else {
-                Text(b.text.ifBlank { b.title }, modifier = Modifier.padding(start = 12.dp, end = 70.dp, top = 12.dp, bottom = 12.dp))
+            androidx.compose.animation.Crossfade(targetState = b, label = "sponsor") { cur ->
+                if (cur.image.startsWith("https://") && cur.id !in failed) {
+                    coil.compose.AsyncImage(
+                        model = directImageUrl(cur.image), contentDescription = cur.title.ifBlank { null },
+                        modifier = Modifier.fillMaxWidth(),
+                        contentScale = androidx.compose.ui.layout.ContentScale.FillWidth,
+                        onError = { failed.add(cur.id) },
+                    )
+                } else {
+                    Text(cur.text.ifBlank { cur.title }, modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 70.dp, top = 12.dp, bottom = 12.dp))
+                }
             }
+            // Always above the picture.
             Text(
                 stringResource(R.string.ad_label), fontSize = 9.sp, color = Color.White, fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.align(Alignment.TopEnd).padding(6.dp)
+                modifier = Modifier.align(Alignment.TopEnd).zIndex(1f).padding(6.dp)
                     .background(Color.Black.copy(alpha = 0.45f), androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
                     .padding(horizontal = 5.dp, vertical = 1.dp),
             )
