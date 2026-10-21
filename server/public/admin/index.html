@@ -294,7 +294,7 @@ function renderContacts(g) {
       <button class="ghost" data-bulk="pub">Publikuj zaznaczone</button>
       <button class="ghost" data-bulk="hide">Ukryj zaznaczone</button>
       ${official ? `<span style="flex:1"></span>
-        <label class="inl" title="Dotyczy wpisów, które przyjdą z list ULC po raz pierwszy"><input type="checkbox" id="pubNew" ${(feed.publishNew ?? (G.file === "contacts")) ? "checked" : ""}> nowe wpisy z ULC od razu publiczne</label>
+        <label class="inl" title="Dotyczy wpisów, które przyjdą z list ULC po raz pierwszy"><input type="checkbox" id="pubNew" ${(feed.publishNew ?? true) ? "checked" : ""}> nowe wpisy z ULC od razu publiczne</label>
         <button class="ghost" id="pullGh">Pobierz teraz listy ULC i biuletyny</button>` : ""}
     </div>
     <table class="contacts"><tr><th></th><th>Nazwa</th>${G.kinds.length > 1 ? "<th>Rodzaj</th>" : ""}<th>Miejscowość</th><th class="hide-sm">Telefon</th><th class="hide-sm">E-mail</th><th>W aplikacji</th></tr>

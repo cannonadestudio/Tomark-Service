@@ -248,7 +248,7 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
                                     scope.launch {
                                         val r = Repo.refreshExaminers()
                                         examLoading = false
-                                        Toast.makeText(ctx, r.fold({ ctx.getString(R.string.examiners_done, it) }, { ctx.getString(R.string.refresh_fail) }), Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(ctx, r.fold({ ctx.getString(R.string.examiners_done, it) }, { ctx.getString(R.string.refresh_fail) + " (" + (it.message ?: it.javaClass.simpleName) + ")" }), Toast.LENGTH_LONG).show()
                                     }
                                 }) { Text(stringResource(if (state.examinersEnabled) R.string.examiners_refresh else R.string.examiners_download)) }
                             }

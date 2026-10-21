@@ -265,7 +265,7 @@ function ah_merge_official(string $target, array $prefixes, array $incoming, str
 {
     $raw = ah_read_editable($target);
     $feed = $raw ? json_decode($raw, true) : ['version' => 0, 'updated' => '', 'contacts' => []];
-    $default = $feed['publishNew'] ?? ($target === 'contacts');
+    $default = $feed['publishNew'] ?? true;   // ULC lists are public documents
     $old = [];
     foreach ($feed['contacts'] as $c) $old[$c['id']] = $c;
     $keep = array_values(array_filter($feed['contacts'], fn($c) => !array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));

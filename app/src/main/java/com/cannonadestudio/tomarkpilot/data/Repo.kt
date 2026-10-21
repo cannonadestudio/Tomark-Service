@@ -214,8 +214,13 @@ object Repo {
     /** Downloads the public ULC examiner lists (button in Contacts). */
     suspend fun refreshExaminers(): Result<Int> = withContext(Dispatchers.IO) {
         runCatching {
-            val text = downloadData("examiners")
-            val remote = json.decodeFromString<ContactFeed>(text)
+            var text = downloadData("examiners")
+            var remote = json.decodeFromString<ContactFeed>(text)
+            // Server copy with nothing published yet → the public ULC list kept on GitHub.
+            if (remote.contacts.isEmpty() && dataBase != GITHUB_DATA) {
+                text = download("$GITHUB_DATA/examiners.json")
+                remote = json.decodeFromString<ContactFeed>(text)
+            }
             examinersCache.writeText(text)
             _examiners.value = remote
             if (!_state.value.examinersEnabled) update { it.copy(examinersEnabled = true) }
