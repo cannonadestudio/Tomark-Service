@@ -42,8 +42,8 @@ for path in ("data/bulletins.json",):
                 errors.append(f"{path}/{bl['id']}: unknown group {g}")
 
 ef = load("data/examiners.json")
-if any(not c["id"].startswith("ulc-exam-") for c in ef["contacts"]):
-    errors.append("examiners.json: only ulc-exam-* entries allowed")
+if any(c.get("kind") != "examiner" for c in ef["contacts"]):
+    errors.append("examiners.json: only kind=examiner entries allowed")
 cf0 = load("data/contacts.json")
 if any(c["id"].startswith("ulc-exam-") for c in cf0["contacts"]):
     errors.append("contacts.json must not contain examiners (they are downloaded on request)")

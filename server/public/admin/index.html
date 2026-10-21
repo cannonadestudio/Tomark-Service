@@ -39,6 +39,11 @@ dialog{border:0;border-radius:14px;max-width:820px;width:calc(100% - 24px);paddi
 dialog::backdrop{background:rgba(30,10,40,.5)}
 .grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
 .small td,.small th{padding:4px}
+.tab small{opacity:.75}
+table.contacts td{font-size:14px}
+.ell{max-width:420px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nowrap{white-space:nowrap}
+.chip{white-space:nowrap}
 .small input{width:100%}
 @media (max-width:600px){.hide-sm{display:none}}
 </style>
@@ -66,10 +71,20 @@ dialog::backdrop{background:rgba(30,10,40,.5)}
 <dialog id="dlg"><form method="dialog" id="dlgForm"></form></dialog>
 
 <script>
-const FILES = { bulletins: 1, contacts: 1, types: 1, news: 1 };
+const FILES = { bulletins: 1, contacts: 1, types: 1, news: 1, examiners: 1 };
 const KINDS_B = ["AD", "ASB", "SB", "SIB", "DOC"];
 const KINDS_C = { dealer: "Dealer", manufacturer: "Producent", rotax_service: "Serwis Rotax", rotax_distributor: "Dystrybutor Rotax", maintenance: "Organizacja obsługowa", mechanic: "Mechanik", instructor: "Instruktor", examiner: "Egzaminator" };
 const LANGS = ["pl", "en", "sk", "fr"];
+// Contact tabs: which kinds each shows, and which data file holds them (examiners are a separate on-demand file).
+const CGROUPS = {
+  c_service: { name: "Serwisy", kinds: ["rotax_service", "rotax_distributor", "maintenance"], file: "contacts", newKind: "maintenance" },
+  c_maker: { name: "Producenci", kinds: ["manufacturer"], file: "contacts", newKind: "manufacturer" },
+  c_dealer: { name: "Dealerzy", kinds: ["dealer"], file: "contacts", newKind: "dealer" },
+  c_mech: { name: "Mechanicy", kinds: ["mechanic"], file: "contacts", newKind: "mechanic" },
+  c_instr: { name: "Instruktorzy", kinds: ["instructor"], file: "contacts", newKind: "instructor" },
+  c_exam: { name: "Egzaminatorzy", kinds: ["examiner"], file: "examiners", newKind: "examiner" },
+};
+const fileOfKind = k => k === "examiner" ? "examiners" : "contacts";
 const state = { tab: "bulletins", data: {}, sha: {}, filter: "" };
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -97,12 +112,12 @@ async function api(action, opts = {}) {
 async function readFile(key) {
   const j = await api("get", { q: "&f=" + key });
   state.sha[key] = j.rev;
-  state.data[key] = j.data ?? (key === "news" ? { version: 0, updated: "", messages: [] } : null);
+  state.data[key] = j.data ?? (key === "news" ? { version: 0, updated: "", messages: [] } : key === "examiners" ? { version: 0, updated: "", contacts: [] } : null);
 }
 async function writeFile(key, message) {
   const d = state.data[key];
   if (key === "bulletins") { d.bulletins.sort((a, b) => b.date.localeCompare(a.date)); d.updated = d.bulletins[0]?.date || d.updated; d.version = (d.version || 0) + 1 }
-  if (key === "contacts" || key === "news") { d.updated = new Date().toISOString().slice(0, 10); d.version = (d.version || 0) + 1 }
+  if (key === "contacts" || key === "news" || key === "examiners") { d.updated = new Date().toISOString().slice(0, 10); d.version = (d.version || 0) + 1 }
   try {
     const j = await api("save", { body: { f: key, data: d, rev: state.sha[key], message } });
     state.sha[key] = j.rev;
@@ -133,7 +148,8 @@ $("#loginForm").onsubmit = async e => {
 
 // ---------------------------------------------------------------- UI helpers
 function renderTabs() {
-  const tabs = [["bulletins", "Biuletyny"], ["contacts", "Kontakty i osoby"], ["types", "Typy samolotów"], ["news", "Komunikaty"], ["history", "Historia"]];
+  const count = g => (state.data[CGROUPS[g].file]?.contacts || []).filter(c => CGROUPS[g].kinds.includes(c.kind)).length;
+  const tabs = [["bulletins", "Biuletyny"], ...Object.keys(CGROUPS).map(g => [g, `${CGROUPS[g].name} <small>(${count(g)})</small>`]), ["types", "Typy samolotów"], ["news", "Komunikaty"], ["history", "Historia"]];
   if (state.user?.role === "admin") tabs.push(["users", "Użytkownicy"]);
   $("#tabs").innerHTML = tabs.map(([k, n]) => `<button class="tab ${state.tab === k ? "on" : ""}" data-tab="${k}">${n}</button>`).join("");
   $("#tabs").querySelectorAll("button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; state.filter = ""; renderTabs(); render() });
@@ -202,41 +218,68 @@ function editBulletin(b) {
     });
 }
 
-// ---------------------------------------------------------------- contacts
-function renderContacts() {
-  const list = state.data.contacts.contacts.filter(c => !state.filter || [c.name, c.city, c.country, c.kind, (c.brands || []).join(" ")].join(" ").toLowerCase().includes(state.filter.toLowerCase()))
-    .sort((a, b) => (a.country || "").localeCompare(b.country || "") || a.name.localeCompare(b.name));
-  return `<div class="card">${searchBox("Szukaj nazwy, miasta, kraju, marki, rodzaju…")}
-    <p class="muted">Dealerzy, serwisy Rotax, mechanicy, instruktorzy i egzaminatorzy. Współrzędne służą do sortowania „najbliżsi” w aplikacji. Dane osób prywatnych publikuj tylko za ich zgodą.</p>
-    <table><tr><th>Nazwa</th><th>Rodzaj</th><th class="hide-sm">Miejsce</th><th class="hide-sm">Kontakt</th></tr>
-    ${list.map(c => `<tr class="item" data-id="${esc(c.id)}"><td><b>${esc(c.name)}</b><br><span class="muted">${esc((c.brands || []).join(", "))}</span></td><td><span class="chip">${esc(KINDS_C[c.kind] || c.kind)}</span></td><td class="hide-sm">${esc([c.city, c.country].filter(Boolean).join(", "))}</td><td class="hide-sm">${esc(c.phone || "")}<br>${esc(c.email || "")}</td></tr>`).join("")}
+// ---------------------------------------------------------------- contacts (one tab per group)
+function groupList(g) {
+  const G = CGROUPS[g];
+  const q = state.filter.toLowerCase();
+  return (state.data[G.file]?.contacts || []).filter(c => G.kinds.includes(c.kind))
+    .filter(c => !q || [c.name, c.city, c.country, c.address, c.note, (c.brands || []).join(" ")].join(" ").toLowerCase().includes(q))
+    .sort((a, b) => ((a.country || "PL") !== "PL") - ((b.country || "PL") !== "PL") || (a.country || "").localeCompare(b.country || "") || (a.city || "").localeCompare(b.city || "", "pl") || a.name.localeCompare(b.name, "pl"));
+}
+function renderContacts(g) {
+  const G = CGROUPS[g];
+  const list = groupList(g);
+  const auto = c => /^ulc-/.test(c.id) ? '<span class="chip g" title="Odświeżane automatycznie z listy ULC">ULC</span>' : "";
+  const hint = {
+    c_service: "Serwisy Rotax, dystrybutorzy i organizacje obsługowe (Part-CAO / Part-145 z listy ULC – odświeżane co tydzień).",
+    c_exam: "Listy ULC (samoloty, UL, mechanicy) – odświeżane co tydzień. Aplikacja pobiera je tylko na żądanie użytkownika. Ręcznie dodani egzaminatorzy zostają.",
+    c_mech: "Mechanicy dodani ręcznie. Dane osób prywatnych publikuj tylko za ich zgodą.",
+    c_instr: "Instruktorzy dodani ręcznie. Dane osób prywatnych publikuj tylko za ich zgodą.",
+  }[g] || "Współrzędne służą do sortowania „najbliżsi” w aplikacji.";
+  return `<div class="card">${searchBox("Szukaj nazwy, miasta, marki, uprawnień…")}
+    <p class="muted">${hint} Pokazano: <b>${list.length}</b>.</p>
+    <table class="contacts"><tr><th>Nazwa</th>${G.kinds.length > 1 ? "<th>Rodzaj</th>" : ""}<th>Miejscowość</th><th class="hide-sm">Telefon</th><th class="hide-sm">E-mail</th></tr>
+    ${list.map(c => `<tr class="item" data-id="${esc(c.id)}">
+      <td><b>${esc(c.name)}</b> ${auto(c)}<div class="muted ell">${esc((c.brands || []).join(", "))}</div></td>
+      ${G.kinds.length > 1 ? `<td><span class="chip">${esc(KINDS_C[c.kind] || c.kind)}</span></td>` : ""}
+      <td>${esc(c.city || "")}${c.country && c.country !== "PL" ? ` <span class="muted">${esc(c.country)}</span>` : ""}${c.lat == null ? ' <span class="muted" title="brak współrzędnych">⌖?</span>' : ""}</td>
+      <td class="hide-sm nowrap">${esc(c.phone || "")}</td><td class="hide-sm">${esc(c.email || "")}</td></tr>`).join("") || `<tr><td class="muted">Brak wpisów</td></tr>`}
     </table></div>`;
 }
-function editContact(c) {
-  const isNew = !c; c = c || { id: "", name: "", kind: "mechanic", brands: [], country: "PL" };
-  openDialog(`<h3>${isNew ? "Nowy kontakt" : esc(c.name)}</h3>
+function editContact(c, g) {
+  const isNew = !c; c = c || { id: "", name: "", kind: CGROUPS[g].newKind, brands: [], country: "PL" };
+  const kinds = Object.entries(KINDS_C).filter(([k]) => fileOfKind(k) === fileOfKind(c.kind));
+  openDialog(`<h3>${isNew ? "Nowy wpis – " + esc(CGROUPS[g].name) : esc(c.name)}</h3>
+    ${/^ulc-/.test(c.id) ? '<p class="muted">Wpis z listy ULC – przy najbliższym odświeżeniu zostanie nadpisany danymi z ULC.</p>' : ""}
     <div class="grid2">${field("name", "Nazwa / imię i nazwisko", c.name, "text", "required")}
-    ${select("kind", "Rodzaj", Object.entries(KINDS_C), c.kind)}
-    ${field("brands", "Typy / marki (po przecinku)", (c.brands || []).join(", "))}
+    ${select("kind", "Rodzaj", kinds, c.kind)}
+    ${field("brands", "Typy / marki / uprawnienia (po przecinku)", (c.brands || []).join(", "))}
     ${field("phone", "Telefon", c.phone)}${field("email", "E-mail", c.email, "email")}${field("web", "WWW", c.web)}
-    ${field("address", "Adres / lotnisko", c.address)}${field("city", "Miasto", c.city)}${field("country", "Kraj (2 litery)", c.country, "text", 'maxlength="2"')}
+    ${field("address", "Adres / lotnisko", c.address)}${field("city", "Miejscowość", c.city)}${field("country", "Kraj (2 litery)", c.country, "text", 'maxlength="2"')}
     ${field("lat", "Szerokość (lat)", c.lat ?? "", "number", 'step="any"')}${field("lon", "Długość (lon)", c.lon ?? "", "number", 'step="any"')}
     ${field("source", "Źródło", c.source)}</div>
     <label>Uwagi<textarea name="note">${esc(c.note || "")}</textarea></label>
-    <p class="muted">Współrzędne: w Mapach Google kliknij prawym na miejsce i skopiuj liczby.</p>`,
+    <p class="muted">Współrzędne: w Mapach Google kliknij prawym przyciskiem na miejsce i skopiuj liczby.</p>`,
     async fd => {
       const name = fd.get("name").trim(); if (!name) throw new Error("Podaj nazwę.");
       const num = k => { const v = parseFloat(String(fd.get(k)).replace(",", ".")); return isNaN(v) ? undefined : v };
-      const id = c.id || (fd.get("country").toLowerCase() + "-" + name.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")).slice(0, 60) + "-" + Date.now().toString(36);
-      const nc = { id, name, kind: fd.get("kind"), brands: fd.get("brands").split(",").map(s => s.trim()).filter(Boolean), country: fd.get("country").toUpperCase(), city: fd.get("city"), address: fd.get("address"), lat: num("lat"), lon: num("lon"), phone: fd.get("phone"), email: fd.get("email"), web: fd.get("web"), source: fd.get("source"), note: fd.get("note") };
+      const kind = fd.get("kind");
+      const file = fileOfKind(kind);
+      const slug = name.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const id = c.id || ((file === "examiners" ? "my-exam-" : (fd.get("country") || "xx").toLowerCase() + "-") + slug).slice(0, 60) + "-" + Date.now().toString(36);
+      const nc = { id, name, kind, brands: fd.get("brands").split(",").map(s => s.trim()).filter(Boolean), country: fd.get("country").toUpperCase(), city: fd.get("city"), address: fd.get("address"), lat: num("lat"), lon: num("lon"), phone: fd.get("phone"), email: fd.get("email"), web: fd.get("web"), source: fd.get("source"), note: fd.get("note") };
       Object.keys(nc).forEach(k => (nc[k] === "" || nc[k] === undefined || (Array.isArray(nc[k]) && !nc[k].length)) && delete nc[k]);
-      const list = state.data.contacts.contacts; const i = list.findIndex(x => x.id === id);
+      if (!state.data[file]) state.data[file] = { version: 0, updated: "", contacts: [] };
+      const list = state.data[file].contacts; const i = list.findIndex(x => x.id === id);
       if (i >= 0) list[i] = nc; else list.push(nc);
-      await writeFile("contacts", (isNew ? "Add contact " : "Edit contact ") + name);
+      await writeFile(file, (isNew ? "Add " : "Edit ") + kind + " " + name);
+      renderTabs();
     },
     isNew ? null : async () => {
-      state.data.contacts.contacts = state.data.contacts.contacts.filter(x => x.id !== c.id);
-      await writeFile("contacts", "Delete contact " + c.name);
+      const file = fileOfKind(c.kind);
+      state.data[file].contacts = state.data[file].contacts.filter(x => x.id !== c.id);
+      await writeFile(file, "Delete " + c.kind + " " + c.name);
+      renderTabs();
     });
 }
 
@@ -356,7 +399,11 @@ function render(keepFocus) {
   const v = $("#view");
   const sel = keepFocus ? $("#q")?.selectionStart : null;
   if (state.tab === "bulletins") { v.innerHTML = renderBulletins(); hookSearch(() => editBulletin(null)); v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editBulletin(state.data.bulletins.bulletins.find(b => b.id === r.dataset.id))) }
-  if (state.tab === "contacts") { v.innerHTML = renderContacts(); hookSearch(() => editContact(null)); v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editContact(state.data.contacts.contacts.find(c => c.id === r.dataset.id))) }
+  if (CGROUPS[state.tab]) {
+    const g = state.tab, file = CGROUPS[g].file;
+    v.innerHTML = renderContacts(g); hookSearch(() => editContact(null, g));
+    v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editContact(state.data[file].contacts.find(c => c.id === r.dataset.id), g));
+  }
   if (state.tab === "news") { v.innerHTML = renderNews(); hookSearch(() => editNews(null)); v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editNews(state.data.news.messages.find(n => n.id === r.dataset.id))) }
   if (state.tab === "history") { renderHistory().catch(e => status(e.message, false)); return }
   if (state.tab === "users") { renderUsers().catch(e => status(e.message, false)); return }
