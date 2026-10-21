@@ -23,7 +23,7 @@ jobs:
         run: python3 tools/validate_data.py
 
       - name: Bundle current data into the app
-        run: cp data/bulletins.json data/contacts.json data/types.json app/src/main/assets/
+        run: cp data/bulletins.json data/contacts.json data/types.json data/engines.json app/src/main/assets/
 
       - name: Release key (if the secret is set)
         env:

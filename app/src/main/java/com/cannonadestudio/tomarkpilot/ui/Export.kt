@@ -35,6 +35,7 @@ object AircraftExport {
             g(R.string.export_category) to (if (t?.category == "EASA") "EASA" + (t.tcds?.let { " · TCDS $it" } ?: "") else "UL / LSA"),
             a.serial.takeIf { it.isNotBlank() }?.let { g(R.string.serial_number) to it },
             a.yearBuilt?.let { g(R.string.year_built) to it.toString() },
+            g(R.string.engine_type) to Repo.engineOf(a).name,
             a.engineSerial.takeIf { it.isNotBlank() }?.let { g(R.string.engine_serial) to it },
             a.gearboxSerial.takeIf { it.isNotBlank() }?.let { g(R.string.gearbox_serial).substringBefore(" (") to it },
             g(R.string.total_hours).substringBefore(" (") to (fmtH(a.hours) + " h" + (a.hoursUpdatedEpochDay?.let { " (" + fmtEpochDay(it) + ")" } ?: "")),
@@ -54,9 +55,15 @@ object AircraftExport {
 
         val titles = Maintenance.tasks(a).associate { it.first.id to it.first.title.get(lg) }
         val hist = s.completions.filter { it.aircraftId == a.id }.sortedWith(compareByDescending<com.cannonadestudio.tomarkpilot.data.CompletionRecord> { it.epochDay }.thenByDescending { it.hours })
-        out += Section(g(R.string.export_history), hist.map { r ->
-            "${fmtEpochDay(r.epochDay)} · ${fmtH(r.hours)} h" to ((titles[r.taskId] ?: r.taskId) + (r.note.takeIf { it.isNotBlank() }?.let { " – $it" } ?: ""))
-        })
+        val all = Maintenance.tasks(a).map { it.first }
+        fun titleOf(id: String) = titles[id] ?: all.firstOrNull { id == it.id || id in it.aliases }?.title?.get(lg) ?: id
+        val logLines = s.logEntries.filter { it.aircraftId == a.id }.map { e ->
+            Triple(e.epochDay, e.hours ?: 0.0, ("${fmtEpochDay(e.epochDay)}" + (e.hours?.let { " · ${fmtH(it)} h" } ?: "")) to (e.title + (e.note.takeIf { it.isNotBlank() }?.let { " – $it" } ?: "")))
+        }
+        val recLines = hist.map { r ->
+            Triple(r.epochDay, r.hours, "${fmtEpochDay(r.epochDay)} · ${fmtH(r.hours)} h" to (titleOf(r.taskId) + (r.note.takeIf { it.isNotBlank() }?.let { " – $it" } ?: "")))
+        }
+        out += Section(g(R.string.export_history), (recLines + logLines).sortedWith(compareByDescending<Triple<Long, Double, Pair<String, String>>> { it.first }.thenByDescending { it.second }).map { it.third })
 
         val feed = Repo.feed.value.bulletins.associateBy { it.id }
         val st = s.bulletinStatus.filter { it.aircraftId == a.id }

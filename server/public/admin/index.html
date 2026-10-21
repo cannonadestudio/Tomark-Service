@@ -762,15 +762,15 @@ async function renderHome() {
     <div class="tiles">
       ${Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => { const l = cnt(g); return tile(g, l.length, CGROUPS[g].name, `w aplikacji: ${pub(l)}${l.length - pub(l) ? ` · ukryte: ${l.length - pub(l)}` : ""}`) }).join("")}
     </div>
-    <div class="card"><div class="row"><b style="flex:1">Aktualizacja danych z GitHuba</b><button id="pullHome">Pobierz teraz listy ULC, producentów i biuletyny</button></div>
+    <div class="card"><div class="row"><b style="flex:1">Aktualizacja danych z GitHuba</b><button id="pullHome">Pobierz teraz listy ULC, producentów, biuletyny i typy</button></div>
     <p class="muted" style="margin-bottom:0">Dodaje tylko brakujące wpisy – Twoich zmian i usuniętych wpisów nie przywraca. Listy ULC podmienia, zachowując Twoje ustawienia publikacji.</p></div>`;
   v.querySelectorAll(".tile[data-go]").forEach(t => t.onclick = () => { state.tab = t.dataset.go; renderTabs(); render() });
   $("#pullHome").onclick = async () => {
     const btn = $("#pullHome"); btn.disabled = true; btn.textContent = "Pobieranie…";
     try {
       const r = await api("pull_github", { body: {} });
-      await Promise.all(["examiners", "contacts", "bulletins"].map(readFile));
-      status(`Pobrano – kontakty: +${(r.contacts?.added_other || 0) + (r.contacts?.new || 0)}, egzaminatorzy: +${(r.examiners?.added_other || 0) + (r.examiners?.new || 0)}, biuletyny: +${r.bulletins?.new ?? 0}.` + (r.contacts?.error || r.bulletins?.error ? " Część plików nie została pobrana – sprawdź połączenie serwera z internetem." : ""));
+      await Promise.all(["examiners", "contacts", "bulletins", "types"].map(readFile));
+      status(`Pobrano – kontakty: +${(r.contacts?.added_other || 0) + (r.contacts?.new || 0)}, egzaminatorzy: +${(r.examiners?.added_other || 0) + (r.examiners?.new || 0)}, biuletyny: +${r.bulletins?.new ?? 0}, typy: +${r.types?.new ?? 0}${r.types?.upgraded ? ` (zaktualizowane ${r.types.upgraded})` : ""}.` + (r.contacts?.error || r.bulletins?.error ? " Część plików nie została pobrana – sprawdź połączenie serwera z internetem." : ""));
       renderTabs(); renderHome();
     } catch (e) { status(e.message, false); btn.disabled = false }
   };

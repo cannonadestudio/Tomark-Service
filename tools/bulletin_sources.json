@@ -5,9 +5,27 @@
   "_info": "rules: regex on the AD row text (upper case) -> groups. Only rows matching a rule are kept.",
   "rules": [
    [
-    "\\bROTAX\\b.*\\b91[24]\\b",
+    "\\bROTAX\\b.*\\b912\\b",
     [
      "ROTAX_912"
+    ]
+   ],
+   [
+    "\\bROTAX\\b.*\\b914\\b",
+    [
+     "ROTAX_914"
+    ]
+   ],
+   [
+    "\\bROTAX\\b.*\\b915\\b",
+    [
+     "ROTAX_915"
+    ]
+   ],
+   [
+    "\\bROTAX\\b.*\\b916\\b",
+    [
+     "ROTAX_916"
     ]
    ],
    [
@@ -60,9 +78,21 @@
     ]
    ],
    [
-    "\\bEVEKTOR\\b.*\\b(EV-97|EV97|SPORTSTAR|HARMONY)",
+    "\\bEVEKTOR\\b.*\\b(EV-97|EV97)",
     [
-     "EVEKTOR"
+     "EVEKTOR_EV97"
+    ]
+   ],
+   [
+    "\\bEVEKTOR\\b.*\\bSPORTSTAR RTC",
+    [
+     "EVEKTOR_RTC"
+    ]
+   ],
+   [
+    "\\bEVEKTOR\\b.*\\bHARMONY",
+    [
+     "EVEKTOR_HARMONY"
     ]
    ],
    [
@@ -82,6 +112,18 @@
     [
      "ROTAX_912"
     ]
+   ],
+   [
+    "\\bJABIRU\\b",
+    [
+     "JABIRU"
+    ]
+   ],
+   [
+    "\\bUL ?POWER\\b",
+    [
+     "ULPOWER"
+    ]
    ]
   ]
  },
@@ -99,7 +141,7 @@
    "id": "evektor_ev97",
    "url": "https://www.evektor.com/documentation/ev-97-eurostar",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "id_re": "EV97[-_]\\d{3}[a-z](?:[-_]R\\d+)?",
    "title_pos": "before"
@@ -108,7 +150,7 @@
    "id": "evektor_rtc",
    "url": "https://www.evektor.com/documentation/sportstar-rtc",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "id_re": "(?:SB|MB|IB)-RTC-\\d{3}[a-z](?:[-_]R\\d+)?",
    "title_pos": "before"
@@ -117,7 +159,7 @@
    "id": "evektor_sportstar",
    "url": "https://www.evektor.com/documentation/sportstar-plus-sl-max",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_SPORTSTAR"
    ],
    "id_re": "SportStar(?:_MAX)?[-_]\\d{3}[a-z](?:[-_]R\\d+)?",
    "title_pos": "before"
@@ -126,7 +168,7 @@
    "id": "evektor_harmony",
    "url": "https://www.evektor.com/documentation/harmony-lsa",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_HARMONY"
    ],
    "id_re": "Harmony[ _]LSA[-_]\\d{3}[a-z]",
    "title_pos": "before"

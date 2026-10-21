@@ -1,5 +1,5 @@
 {
- "version": 3,
+ "version": 4,
  "updated": "2026-10-20",
  "bulletins": [
   {
@@ -7,7 +7,11 @@
    "date": "2026-10-20",
    "title": "Rotax technical documentation – current SB/SI/SL and manuals (check your engine S/N)",
    "groups": [
-    "ROTAX_912"
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916",
+    "ROTAX_582"
    ],
    "kind": "DOC",
    "mandatory": null,
@@ -1257,6 +1261,18 @@
    "url": "https://remos.com/wp-content/uploads/2017/03/SB-001-landing-gear_01.pdf"
   },
   {
+   "id": "ROTAX-SI-912-037",
+   "date": "2026-10-14",
+   "title": "Rotax SI-912-037 / SI-914-042 / SI-912 i-034: Propeller installation with round-neck nut set",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "EASA-AD-2026-0191-E",
    "date": "2026-10-02",
    "title": "EASA AD 2026-0191-E: SUSPENSION OF FLIGHT OPERATIONS | ELIXIR AIRCRAFT | Elixir | 287 kb",
@@ -1272,7 +1288,7 @@
    "date": "2026-09-18",
    "title": "sb-rtc-085a: Service | 1. Inspect the trailing edge ribs visually. 2. If you find a crack on any trailing edge rib, install the OPRTC133 stiffener as specified in the work procedure.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -1301,6 +1317,21 @@
    "url": "https://ad.easa.europa.eu/ad/2026-0137R1"
   },
   {
+   "id": "ROTAX-SL-912-022",
+   "date": "2026-09-14",
+   "title": "Rotax SL-912-022 / SL-914-020 / SL-912 i-011 / SL-915 i-003 / SL-916 i-003 / SL-2ST-014: Storage conditions for genuine spare parts",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
    "id": "EASA-AD-2026-0170",
    "date": "2026-09-03",
    "title": "ATA 72 – Engine – Propeller Gearbox – Inspection (Rotax 912 ULS2/S2)",
@@ -1313,11 +1344,23 @@
    "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0170.pdf/AD_2026-0170_1"
   },
   {
+   "id": "ROTAX-ASB-2026-002",
+   "date": "2026-09-03",
+   "title": "Rotax ASB-2026-002 / ASB_A-2026-002: Replacement of turbocharger valve housing P/N 956492 (cracks) - before next flight",
+   "groups": [
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000dA2ByIAK?asPdf=false"
+  },
+  {
    "id": "EVEKTORRTCIBRTC042B",
    "date": "2026-09-01",
    "title": "ib-rtc-042b: Show detailSee all SportStar bulletins | Airworthiness Directives | EASA AD No.: 2026-0170 | Airworthiness Directive | ATA 72 – Engine – Propeller Gearbox – Inspection | EASA AD No.: 2025-0145-E | Airworthiness Directive",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
@@ -1328,7 +1371,7 @@
    "date": "2026-07-17",
    "title": "ib-rtc-038b-r8: ib-rtc-038b-r8-cz",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
@@ -1339,7 +1382,7 @@
    "date": "2026-07-17",
    "title": "Harmony-LSA-045a: R1 | Removing the oil cooler strut.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_HARMONY"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1350,7 +1393,7 @@
    "date": "2026-07-03",
    "title": "SportStar-MAX-046a-R1: Service | Issue of Revision 1 of Supplement No. 21, Doc. No. SSM2008AOIUSS21, which includes added compliance with CFR Title 14 Part 91.205 and Part 91.411 requirements for IFR under VMC operation.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_SPORTSTAR"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -1361,7 +1404,7 @@
    "date": "2026-07-03",
    "title": "SPORTSTAR-045a: SR | Cracks were found on some propeller spinners during regular examinations.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_SPORTSTAR"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1390,6 +1433,18 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "EASA-AD-2026-0121-E",
+   "date": "2026-06-26",
+   "title": "Rotax EASA AD 2026-0121-E: Propeller gearbox inspection (oil spray nozzle, M7x16 screws) - ref. ASB-2026-001R00",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2026-0121-E"
+  },
+  {
    "id": "ROTAX-ASB-2026-001",
    "date": "2026-06-22",
    "title": "Rotax ASB-2026-001 / ASB_A-2026-001: Inspection of the propeller gearbox – 912 / 912 i / 914 incl. UL/ULS (affected S/N listed)",
@@ -1405,7 +1460,7 @@
    "date": "2026-06-18",
    "title": "mb-rtc-083a: SR- | Perform the inspection and actions according to ASB_2026-001R01 and ASB_A-2026-001R01 Rotax.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1416,18 +1471,40 @@
    "date": "2026-06-12",
    "title": "Harmony-LSA-049a: Perform the inspection and actions according to ASB_A 2026-001R01 Rotax.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_HARMONY"
    ],
    "kind": "SB",
    "mandatory": true,
    "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/6a58ca325acbe8a53826f706_Harmony_LSA-049a_EN.pdf"
   },
   {
+   "id": "ROTAX-SB-2026-002",
+   "date": "2026-06-05",
+   "title": "Rotax SB-2026-002R00: Optional TBO extension 1200 h to 2000 h for 916 iSc3 B",
+   "groups": [
+    "ROTAX_916"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000Y5iTCIAZ?asPdf=false"
+  },
+  {
+   "id": "ULPOWER-SBULP2026001",
+   "date": "2026-06-01",
+   "title": "UL Power SB-ULP-2026-001: Rectifier/regulator 30A connector – replace 3-pin with 4-pin connector (engines sold Apr 2021–Nov 2023; 'before next flight')",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2026-001.pdf"
+  },
+  {
    "id": "EVEKTOREV97EV97041A",
    "date": "2026-04-29",
    "title": "EV97-041a: Increasing the safety of the oil system of THE ROTAX 912 ULS2 / S2 series engines by installing the PYROJACKET PJA 14 protective sleeves on the oil system hoses.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1438,7 +1515,7 @@
    "date": "2026-04-29",
    "title": "Harmony-LSA-048b: Information | Notice of release of Flight Manual for Harmony LSA without vortex.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_HARMONY"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -1449,7 +1526,7 @@
    "date": "2026-04-20",
    "title": "Harmony-LSA-046a: Inspection of the bearing swaging of the adjustable rod eyes ONL 3779.1",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_HARMONY"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1460,7 +1537,7 @@
    "date": "2026-04-20",
    "title": "Harmony-LSA-047b: Inspection of the bearing swaging of the adjustable rod eyes ONL 3779.1 | Harmony LSA-47b | Information | Installation of the MATCO brake system S3243001S.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_HARMONY"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1471,7 +1548,7 @@
    "date": "2026-04-17",
    "title": "sb-rtc-040a-r11: Service | Revision of Chapter 02 and 07, and inclusion of Supplement No. 44 into the List of Supplemnts in Chapter 09 of the Pilot´s Operating Handbook, doc. No. ERTC019-10-AS /ERTC020-10-AS for the SportStar RTC aircraf",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -1505,7 +1582,7 @@
    "date": "2026-04-07",
    "title": "ib-rtc-038b-r7: Information | Issue of Revision 7 of Airplane Maintenance Manual for SportStar RTC, Issue 02, Doc No. ERTC021-10-AS / ERTC022-10-AS.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
@@ -1516,18 +1593,46 @@
    "date": "2026-04-07",
    "title": "mb-rtc-082a-r1: SR- | In the operation of another type of aircraft which has identical pull rod end with adjustable eye installed, cases of bearing clearance were detected. The clearance occurs due to inadequate securing (swaging) of th",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
    "url": "https://www.evektor.com/documents/mb-rtc-082a-r1-en"
   },
   {
+   "id": "ROTAX-SI-2026-002R00",
+   "date": "2026-04-07",
+   "title": "Rotax SI-2026-002R00: New dog hub",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SI-912-016",
+   "date": "2026-04-07",
+   "title": "Rotax SI-912-016 / SI-914-019 / SI-912 i-001 / SI-915 i-001 / SI-916 i-001: Selection of suitable operating fluids (oil, fuel, coolant)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "EVEKTORRTCMBRTC080AR2",
    "date": "2026-04-01",
    "title": "mb-rtc-080a-r2: SR- | Consistently performing a pre-flight inspection in the engine compartment can eliminate the recurring occurrence of cracks in the exhaust system of SportStar RTC aircraft in service.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1567,6 +1672,17 @@
    "url": "https://aquila-aviation.de/wp-content/uploads/2026/03/SB_AT01_047_A01_Exhaust_pipe_clamps_914.pdf"
   },
   {
+   "id": "ROTAX-SI-912-040",
+   "date": "2026-02-20",
+   "title": "Rotax SI-912-040 / SI-912 i-036: New exhaust system components",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "SB_SD4-02-2026",
    "date": "2026-02-19",
    "title": "Update of an error in the AMM Issue D, for Viper SD-4 Night-VFR",
@@ -1587,6 +1703,49 @@
    "kind": "DOC",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ROTAX-SI-2026-001R00",
+   "date": "2026-02-05",
+   "title": "Rotax SI-2026-001R00: New ignition coil, cable set and spark plug connector",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SB-2026-001",
+   "date": "2026-01-27",
+   "title": "Rotax SB-2026-001R00: Installation limitation for certified aircraft engines",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000SD7gHIAT?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SL-2026-001R00",
+   "date": "2026-01-27",
+   "title": "Rotax SL-2026-001R00: Change of designation of service documents (new year-based numbering, e.g. ASB-2026-001)",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
   },
   {
    "id": "SB_SD4-04-2025",
@@ -1616,18 +1775,64 @@
    "date": "2025-12-17",
    "title": "ib-rtc-081b: Information | Installation of the MATCO brake system S3243001S. (Replacement of the brake system RTC-S5 00-51 01 or S3245001S).",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ib-rtc-081b-en"
   },
   {
+   "id": "ROTAX-SI-912-i-041",
+   "date": "2025-12-17",
+   "title": "Rotax SI-912 i-041: Engine operation on crank bias indication",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "EASA-AD-2025-0267-E",
+   "date": "2025-12-02",
+   "title": "Rotax EASA AD 2025-0267-E: Propeller gearbox inspection, missing collar nut - ref. ASB-915 i-021 / ASB-916 i-009 R1",
+   "groups": [
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2025-0267-E"
+  },
+  {
+   "id": "ROTAX-SI-915-i-022",
+   "date": "2025-11-24",
+   "title": "Rotax SI-915 i-022: New EGT connector brackets",
+   "groups": [
+    "ROTAX_915"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-ASB-915i-021",
+   "date": "2025-11-18",
+   "title": "Rotax ASB-915 i-021 / ASB-916 i-009: Propeller gearbox inspection for missing M40x1.5 collar nut (also iS versions)",
+   "groups": [
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000QNeHAIA1?asPdf=false"
+  },
+  {
    "id": "EVEKTORRTCMBRTC082A",
    "date": "2025-11-14",
    "title": "mb-rtc-082a: EN | In the operation of another type of aircraft which has identical pull rod end with adjustable eye installed, cases of bearing clearance were detected. The clearance occurs due to inadequate securing (swaging) of the",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1638,7 +1843,7 @@
    "date": "2025-11-12",
    "title": "mb-rtc-080a-r1: SR- | Consistently performing a pre-flight inspection in the engine compartment can eliminate the recurring occurrence of cracks in the exhaust system of SportStar RTC aircraft in service.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1677,6 +1882,93 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://aquila-aviation.de/wp-content/uploads/2025/09/SB_AT01_045_A01_KS-Ruecklauf.pdf"
+  },
+  {
+   "id": "ROTAX-SI-912-039R1",
+   "date": "2025-09-23",
+   "title": "Rotax SI-912-039R1: Fuel distribution block installation and maintenance",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SI-912-028R1",
+   "date": "2025-09-08",
+   "title": "Rotax SI-912-028R1: Advanced Start System",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SI-912-044",
+   "date": "2025-08-29",
+   "title": "Rotax SI-912-044 / SI-914-046 / SI-912 i-040 / SI-915 i-021 / SI-916 i-017: Excessive silicone heat-conducting compound on spark plugs",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SB-915i-014",
+   "date": "2025-08-28",
+   "title": "Rotax SB-915 i-014 / SB-916 i-003: Inspection/maintenance after overload clutch slipping (also iS versions)",
+   "groups": [
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000MMz1lIAD?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SI-912-i-032",
+   "date": "2025-08-25",
+   "title": "Rotax SI-912 i-032: Fuel pump, 912 iSc/iS Sport",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SI-912-043",
+   "date": "2025-08-25",
+   "title": "Rotax SI-912-043 / SI-914-045 / SI-912 i-039 / SI-915 i-020 / SI-916 i-016: Pre-Delivery Inspection (PDI)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SL-912-031",
+   "date": "2025-08-12",
+   "title": "Rotax SL-912-031 / SL-914-029 / SL-912 i-023 / SL-915 i-020 / SL-916 i-019: Measuring exhaust back pressure",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
   },
   {
    "id": "BRISTELLALLSA000ALL00042025",
@@ -1727,7 +2019,7 @@
    "date": "2025-07-09",
    "title": "mb-rtc-080a: SR- | Consistently performing a pre-flight inspection in the engine compartment can eliminate the recurring occurrence of cracks in the exhaust system of SportStar RTC aircraft in service.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1738,7 +2030,7 @@
    "date": "2025-07-09",
    "title": "ib-rtc-075b-r2: Information | Výrobce umožňuje vybavit letouny řady SportStar RTC brzdovou soustavou BERINGER S3240101S (RETROFIT).",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
@@ -1749,7 +2041,7 @@
    "date": "2025-07-09",
    "title": "mb-rtc-079a-r1: SR- | Foot control pedal assembly without a weld reinforcement on countershaft may have been installed in some of the SportStar RTC aircraft.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1760,18 +2052,88 @@
    "date": "2025-07-09",
    "title": "ib-rtc-075b-r3: Information | The manufacturer allows the SportStar RTC series aircraft to be equipped with the Beringer S3240101S (RETROFIT) brake system.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ib-rtc-075b-r3-en"
   },
   {
+   "id": "ROTAX-ASB-915i-020iS",
+   "date": "2025-07-02",
+   "title": "Rotax ASB-915 i-020iS / ASB-916 i-008iS: Replacement of check valve housing (turbo oil leakage), non-certified 915 iS/916 iS A/C24",
+   "groups": [
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000KeuCrIAJ?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SI-912-042",
+   "date": "2025-05-27",
+   "title": "Rotax SI-912-042 / SI-914-044 / SI-912 i-038 / SI-915 i-019 / SI-916 i-015: Cylinder hardness test",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SI-912-041",
+   "date": "2025-05-21",
+   "title": "Rotax SI-912-041 / SI-914-043 / SI-912 i-037 / SI-915 i-017 / SI-916 i-013: Safety wiring",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SL-912-029",
+   "date": "2025-05-13",
+   "title": "Rotax SL-912-029 / SL-914-027 / SL-912 i-021 / SL-915 i-018 / SL-916 i-017 / SL-2ST-019: Occurrence reporting",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
+   "id": "ROTAX-SL-912-020",
+   "date": "2025-04-09",
+   "title": "Rotax SL-912-020 / SL-914-018 / SL-912 i-009 / SL-915 i-017 / SL-916 i-016 / SL-2ST-012: Engine registration via the ROTAX website",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
    "id": "EVEKTORRTCMBRTC079A",
    "date": "2025-04-01",
    "title": "mb-rtc-079a: SR- | Foot control pedal assembly without a weld reinforcement on countershaft was installed in some of the SportStar RTC aircraft.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1782,18 +2144,29 @@
    "date": "2025-04-01",
    "title": "ib-rtc-075b-r1: Information | Výrobce umožňuje vybavit letouny řady SportStar RTC brzdovou soustavou BERINGER S3240101S (RETROFIT).",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ib-rtc-075b-r1-en"
   },
   {
+   "id": "ROTAX-SI-912-038",
+   "date": "2025-03-17",
+   "title": "Rotax SI-912-038 / SI-912 i-035: Sodium-filled exhaust valves and new cylinder heads",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "EVEKTORRTCSBRTC040AR10",
    "date": "2025-03-06",
    "title": "sb-rtc-040a-r10: Service | Added Supplement No. 45 into the List of Supplements.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -1833,11 +2206,24 @@
    "url": "https://flightdesign.com/wp-content/uploads/2025/02/PZ01006002_16.pdf"
   },
   {
+   "id": "ROTAX-SB-912i-017",
+   "date": "2025-02-03",
+   "title": "Rotax SB-912 i-017 / SB-915 i-017 / SB-916 i-007: Inspection and/or replacement of crankcase and/or gearbox housing (also iS versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000Fdc9eIAB?asPdf=false"
+  },
+  {
    "id": "EVEKTORRTCMBRTC077AR4",
    "date": "2025-01-23",
    "title": "mb-rtc-077a-r4: SR- | Deformation defects were found on some of the inner pipes of the exhaust muffler as part of regular inspections.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1848,18 +2234,31 @@
    "date": "2025-01-23",
    "title": "sb-rtc-040a-r9: Service | Added Note concerning limitation placards, added other variant of placard located on the instrument panel in the POH, Section 2. In Supplement No. 23 and 31, added Note concerning limitation placards. In Supple",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/sb-rtc-040a-r9-en"
   },
   {
+   "id": "EASA-AD-2025-0019-E",
+   "date": "2025-01-20",
+   "title": "Rotax EASA AD 2025-0019-E: Internal generator oil spray nozzle inspection/replacement - ref. ASB-912 i-016 R1",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2025-0019-E"
+  },
+  {
    "id": "EVEKTORRTCMBRTC077AR3",
    "date": "2025-01-16",
    "title": "mb-rtc-077a-r3: SR- | Deformation defects were found on some of the inner pipes of the exhaust muffler as part of regular inspections.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1870,7 +2269,7 @@
    "date": "2025-01-16",
    "title": "ib-rtc-078b: r pipes of the exhaust muffler as part of regular inspections. | NB-RTC-078b_CZ | NB-RTC-078b_EN | Notification | The Rotax engine manufacturer has issued  Service Bulletins SB-912-080UL and SB-912 i-015iS ordering inspe",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": true,
@@ -1910,6 +2309,48 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "ROTAX-SL-912-015",
+   "date": "2024-12-20",
+   "title": "Rotax SL-912-015 / SL-914-013 / SL-912 i-001 / SL-915 i-008 / SL-916 i-006 / SL-2ST-009: Definition of propeller strike / accidental engine stoppage",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
+   "id": "ROTAX-SB-912-080",
+   "date": "2024-12-19",
+   "title": "Rotax SB-912-080 / SB-914-060 / SB-912 i-015 / SB-915 i-015 / SB-916 i-005: Inspection and/or replacement of coolant expansion tank assy. (P/N 922666/922668)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000FhjSuIAJ?asPdf=false"
+  },
+  {
+   "id": "ROTAX-ASB-912i-016",
+   "date": "2024-12-16",
+   "title": "Rotax ASB-912 i-016 / ASB-915 i-016 / ASB-916 i-006: Inspection/replacement of oil spray nozzle (internal generator) - 912 i, 915 i, 916 i",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000EdG3GIAV?asPdf=false"
+  },
+  {
    "id": "SB-SD4-01-2024",
    "date": "2024-12-12",
    "title": "2000-hour Major Airframe Inspection",
@@ -1926,7 +2367,7 @@
    "date": "2024-12-11",
    "title": "mb-rtc-077a-r2: SR- | Deformation defects were found on some of the inner pipes of the exhaust muffler as part of regular inspections.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1937,7 +2378,7 @@
    "date": "2024-12-09",
    "title": "ib-rtc-074b-r1: EN | Information | The aircraft manufacturer allows the aircraft to be equipped with the Rotax 912 S engine.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
@@ -1948,29 +2389,52 @@
    "date": "2024-12-09",
    "title": "ib-rtc-075b: EN | Information | Výrobce umožňuje vybavit letouny řady SportStar RTC brzdovou soustavou BERINGER S3240101S (RETROFIT).",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ib-rtc-075b-en"
   },
   {
+   "id": "ROTAX-SI-912-027",
+   "date": "2024-11-26",
+   "title": "Rotax SI-912-027 / SI-914-028 / SI-912 i-013: New spark plug and spark plug connector",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "EVEKTORRTCMBRTC077AR1",
    "date": "2024-11-15",
    "title": "mb-rtc-077a-r1: SR- | Deformation defects were found on some of the inner pipes of the exhaust muffler as part of regular inspections.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
    "url": "https://www.evektor.com/documents/mb-rtc-077a-r1-sr-en"
   },
   {
+   "id": "ROTAX-SB-912-079",
+   "date": "2024-11-11",
+   "title": "Rotax SB-912-079: Essential information on installation, operation and maintenance of 912 series (power loss, piston damage)",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000GWyphIAD?asPdf=false"
+  },
+  {
    "id": "EVEKTORRTCMBRTC077A",
    "date": "2024-11-05",
    "title": "mb-rtc-077a: SR- | Deformation defects were found on some of the inner pipes of the exhaust muffler as part of regular inspections.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -1981,7 +2445,7 @@
    "date": "2024-11-05",
    "title": "sb-rtc-038b-r6: Service | Issue of Revision 6 of Airplane Maintenance Manual for SportStar RTC Issue 02, Doc. No. ERTC022-10-AS.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -1992,7 +2456,7 @@
    "date": "2024-09-01",
    "title": "ev97-019a: Show detailSee all EuroStar Bulletins | Airworthiness Directives | No actual documents for downloading. For more informations please use the form bellow | Occurance Reporting | Occurence Reporting | Occurence Reporting |",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2036,18 +2500,33 @@
    "date": "2024-06-13",
    "title": "sb-rtc-040a-r8: Service | Consolidated procedure for coolant check, adapted the procedure of use parking brake due to the installation of brake system with Beringer components, updated heating/ventilating system, added supplement No. 42",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/sb-rtc-040a-r8-en"
   },
   {
+   "id": "ROTAX-SI-912-036",
+   "date": "2024-06-13",
+   "title": "Rotax SI-912-036 / SI-914-041 / SI-912 i-033 / SI-915 i-016 / SI-916 i-012 / SI-2ST-013: Propeller shaft corrosion protection",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "EVEKTORSPORTSTARSPORTSTAR047B",
    "date": "2024-05-16",
    "title": "SportStar-047b: Information | Performance of the activity according to the definition document No. Z-SP-01/2026.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_SPORTSTAR"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2065,11 +2544,97 @@
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_30A_2024_R0_EN_Signed.zip"
   },
   {
+   "id": "ROTAX-SL-912-026",
+   "date": "2024-04-09",
+   "title": "Rotax SL-912-026 / SL-914-024 / SL-912 i-018 / SL-915 i-013 / SL-916 i-013 / SL-2ST-016: Maintenance and spare parts planning",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
+   "id": "ROTAX-SI-912-031",
+   "date": "2024-03-05",
+   "title": "Rotax SI-912-031 / SI-914-032 / SI-912 i-023 / SI-915 i-009 / SI-916 i-009: Gearbox configuration change",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SI-912-035",
+   "date": "2024-03-05",
+   "title": "Rotax SI-912-035 / SI-914-040 / SI-912 i-030 / SI-915 i-013 / SI-916 i-008: Engine preservation",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SL-912-023",
+   "date": "2024-03-05",
+   "title": "Rotax SL-912-023 / SL-914-021 / SL-912 i-013 / SL-915 i-005 / SL-916 i-005 / SL-2ST-015: Layout and classification of ASB, SB, SI and SI-PAC documents",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
+   "id": "ROTAX-SI-912-i-018",
+   "date": "2024-02-21",
+   "title": "Rotax SI-912 i-018 / SI-915 i-004 / SI-916 i-004: Approved ECU software/hardware configurations",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SL-912-004",
+   "date": "2024-02-21",
+   "title": "Rotax SL-912-004 / SL-914-004 / SL-912 i-012 / SL-915 i-004 / SL-916 i-004 / SL-2ST-018: Documentation for ROTAX aircraft engines",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
    "id": "EVEKTOREV97EV97045A",
    "date": "2024-02-14",
    "title": "EV97-045a: SR | Inspection of the bearing swaging of the adjustable rod eyes ONL 3779.1.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -2080,7 +2645,7 @@
    "date": "2024-02-14",
    "title": "SportStar-MAX-046a: Service | Issue of Revision 1 of Supplement No. 21, Doc. No.SSM2008AOIUSS21, which includes added compliance with CFR Title 14 Part 91.205 and Part 91.411 requirements for IFR under VMC operation.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_SPORTSTAR"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2109,15 +2674,57 @@
    "url": "https://www.bristell.com/downloads/bulletins/all-sa-5-0-0-all-0001-2024-signed.pdf"
   },
   {
+   "id": "ROTAX-SI-912-i-029",
+   "date": "2024-02-08",
+   "title": "Rotax SI-912 i-029 / SI-915 i-012 / SI-916 i-007: Double ignition coils and wiring harnesses",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "EVEKTORRTCSBRTC076B",
    "date": "2024-01-22",
    "title": "sb-rtc-076b: Service | Performance of the activity according to Doc. no. OPRTC104.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/sb-rtc-076b-en"
+  },
+  {
+   "id": "ROTAX-SI-912-034",
+   "date": "2024-01-19",
+   "title": "Rotax SI-912-034 / SI-914-037 / SI-912 i-026 / SI-915 i-010 / SI-916 i-005: Engine suspension frame maintenance add-on",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SI-912-i-027",
+   "date": "2024-01-19",
+   "title": "Rotax SI-912 i-027 / SI-915 i-011 / SI-916 i-006 / SI-2ST-012: Propeller mass moment of inertia",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
   },
   {
    "id": "AQUILASBAT01043A01",
@@ -2157,7 +2764,7 @@
    "date": "2023-11-29",
    "title": "sb-rtc-038b-r5: Service | Issue of Revision 5 of Airplane Maintenance Manual for SportStar RTC Issue 02, Doc. No. ERTC022-10-AS.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2241,11 +2848,26 @@
    "url": "https://flightdesign.com/wp-content/uploads/2023/11/PZ27400700_00.pdf"
   },
   {
+   "id": "ROTAX-SL-912-021",
+   "date": "2023-10-20",
+   "title": "Rotax SL-912-021 / SL-914-019 / SL-912 i-010 / SL-915 i-002 / SL-916 i-002 / SL-2ST-013: List of applicable publications",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
    "id": "EVEKTORRTCIBRTC074B",
    "date": "2023-10-10",
    "title": "ib-rtc-074b: Information | Required installation of the Rotax 912 S engine in SportStar RTC airplane, S/N 2016 1910.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
@@ -2274,11 +2896,23 @@
    "url": "https://aquila-aviation.de/wp-content/uploads/2023/10/SB_AT01_037_A02_verstaerkte_BFW-Schwinge.pdf"
   },
   {
+   "id": "ROTAX-ASB-915i-013",
+   "date": "2023-10-06",
+   "title": "Rotax ASB-915 i-013 / ASB-916 i-003: Exchange of turbocharger/exhaust clamps (also iS versions)",
+   "groups": [
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000NqX8RAAV?asPdf=false"
+  },
+  {
    "id": "EVEKTORRTCSBRTC040AR7",
    "date": "2023-10-02",
    "title": "sb-rtc-040a-r7: Service | Addition of Supplement No. 39, 40, 41 into List of Supplements in Section 9 of the Pilot’s Operating Handbook doc. No. ERTC020-10-AS for SPORTSTAR RTC.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2334,7 +2968,7 @@
    "date": "2023-09-01",
    "title": "EV97-028a-R1: SR | Insufficient insertion of the wing flap drive pins into the guides in flaps can cause wear of the guides and subsequent problems in operation. In the extreme case the loss of flaps controllability can occur.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -2345,7 +2979,7 @@
    "date": "2023-09-01",
    "title": "sb-rtc-073a: SR- | Service | Issue of Revision 3 of Supplement No. 31 to the ERTC020-10-AS.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2356,7 +2990,7 @@
    "date": "2023-08-07",
    "title": "EV97-044a: Service | The ROTAX engine manufacturer has issued Service Bulletins SB-SB-912-078UL / SB-914-059UL / SB-912 i-014iS ordering the replacement of the propeller shaft and its accessories.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2367,29 +3001,65 @@
    "date": "2023-08-07",
    "title": "sb-rtc-072a: SR- | Service | The ROTAX engine manufacturer has issued Service  SB-912-078UL ordering the replacement of the propeller shaft and its accessories.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/sb-rtc-072a-sr-en"
   },
   {
+   "id": "EASA-AD-2023-0156-E",
+   "date": "2023-08-04",
+   "title": "Rotax EASA AD 2023-0156-E: Propeller gearbox magnetic plug inspection / shaft replacement - ref. SB-912-078 / SB-914-059 / SB-912 i-014",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2023-0156-E"
+  },
+  {
+   "id": "ROTAX-SB-912-078",
+   "date": "2023-07-25",
+   "title": "Rotax SB-912-078 / SB-914-059 / SB-912 i-014: Gearbox magnetic plug inspection / exchange of propeller shaft (also UL/iS versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000M1CmTAAV?asPdf=false"
+  },
+  {
    "id": "EVEKTORRTCMBRTC068A",
    "date": "2023-07-18",
    "title": "mb-rtc-068a: SR_R1- | Unification of the strength class of the fastening bolts in the joint of the engine and the engine mount hinges and the resulting minimization of the possibility that these bolts will be accidentally interchange",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
    "url": "https://www.evektor.com/documents/mb-rtc-068a-sr-r1-en"
   },
   {
+   "id": "ROTAX-SB-912-077",
+   "date": "2023-07-12",
+   "title": "Rotax SB-912-077 / SB-914-058: Exchange of stator assembly (also UL versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000LVgOCAA1?asPdf=false"
+  },
+  {
    "id": "EVEKTORSPORTSTARSPORTSTAR043A",
    "date": "2023-06-28",
    "title": "sportstar-043a: SR_R2- | Unification of the strength class of the fastening bolts in the joint of the engine and the engine mount hinges and the resulting minimization of the possibility that these bolts will be accidentally interchange",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_SPORTSTAR"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -2400,7 +3070,7 @@
    "date": "2023-06-09",
    "title": "EV97-042a-R1: SR_R1 | Unification of the strength class of the fastening bolts in the joint of the engine and the engine mount hinges and the resulting minimization of the possibility that these bolts will be accidentally interchanged",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -2411,7 +3081,7 @@
    "date": "2023-06-09",
    "title": "ev97-042a: SR_R1- | Unification of the strength class of the fastening bolts in the joint of the engine and the engine mount hinges and the resulting minimization of the possibility that these bolts will be accidentally interchange",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -2422,7 +3092,7 @@
    "date": "2023-05-19",
    "title": "mb-rtc-069a-r1: SR- | When installing, replacing or repairing the brake caliper bodies, the brake caliper cuff may be fitted incorrectly, which may cause the brake system to malfunction.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -2433,7 +3103,7 @@
    "date": "2023-05-19",
    "title": "sb-rtc-038b-r4: Service | Issue of Revision 4 of Airplane Maintenance Manual for SportStar RTC Issue 02, Doc. No. ERTC022-10-AS.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2444,7 +3114,7 @@
    "date": "2023-04-24",
    "title": "sb-rtc-070b: EN | Service | Issue of Revision No. 1 of Supplement No. 37 of POH, doc. no. ERTC020-10-AS-037, which contains a clarification of the propeller blade pitch setting value",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2555,7 +3225,7 @@
    "date": "2023-03-16",
    "title": "mb-rtc-069a: SR- | When installing, replacing or repairing the brake caliper bodies, the brake caliper cuff may be fitted incorrectly, which may cause the brake system to malfunction.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": true,
@@ -2566,7 +3236,7 @@
    "date": "2023-03-16",
    "title": "sb-rtc-067a: SR_R1- | Service | Increasing the safety of the oil system of THE ROTAX 912 ULS2 / S2 series engines by installing the PYROJACKET PJA 14 protective sleeves on the oil system hoses.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2617,6 +3287,17 @@
    "url": "https://aquila-aviation.de/wp-content/uploads/2023/02/SB_AT01_041_A01_exhaust_912_O44mm.pdf"
   },
   {
+   "id": "ROTAX-SI-914-039",
+   "date": "2023-02-20",
+   "title": "Rotax SI-914-039: New oil sump assembly, 914",
+   "groups": [
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "SB-SD4-01-2023",
    "date": "2023-01-20",
    "title": "Replacement of fuel pump nipple fittings on ROTAX 912 (Series)",
@@ -2626,6 +3307,67 @@
    "kind": "SB",
    "mandatory": true,
    "url": "https://www.tomarkaero.com/wp-content/uploads/technical_support/bulletins/2023/SB_SD4-01-2023_Replacement%20of%20fuel%20pump%20nipple%20fittings%20on%20ROTAX%20Engine%20Type%20912%20(Series)%20Aircraft%20Engines.pdf"
+  },
+  {
+   "id": "JABIRU-JSB0129",
+   "date": "2022-11-30",
+   "title": "Jabiru JSB012-9: Jabiru engine flywheel attachment",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://jabiru.net.au/?p=164"
+  },
+  {
+   "id": "ULPOWER-202201",
+   "date": "2022-11-16",
+   "title": "UL Power 2022-01: Throttle position sensor signal error",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2022_01.pdf"
+  },
+  {
+   "id": "ROTAX-SI-912-032",
+   "date": "2022-10-28",
+   "title": "Rotax SI-912-032 / SI-914-033 / SI-2ST-011: Running modifications of BING carburettors",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SB-912-076UL",
+   "date": "2022-10-18",
+   "title": "Rotax SB-912-076UL: Replacement of fuel pump nipple fittings (912 UL/ULS)",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000F14DqAAJ?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SL-912-027",
+   "date": "2022-10-12",
+   "title": "Rotax SL-912-027 / SL-914-025 / SL-912 i-019 / SL-915 i-014 / SL-916 i-010 / SL-2ST-017: ASTM-compliant engines in EASA CS-LSA aircraft",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
   },
   {
    "id": "SB-SD4-03-2022",
@@ -2663,6 +3405,21 @@
    "url": "https://www.aerospool.sk/downloads/RTC/SBTC-2022-1_R1_Signed.zip"
   },
   {
+   "id": "ROTAX-SL-912-014",
+   "date": "2022-05-13",
+   "title": "Rotax SL-912-014 / SL-914-012 / SL-912 i-005 / SL-915 i-011 / SL-916 i-009 / SL-2ST-008: Non-approved modifications and unapproved components",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
    "id": "SB-SD4-01-2022",
    "date": "2022-04-28",
    "title": "Installation of DUC Hélices FLASH-R propeller H-FSH_3-D-R_I",
@@ -2678,7 +3435,7 @@
    "date": "2022-04-28",
    "title": "sb-rtc-066a-r1: Service | The engine manufacturer (ROTAX) has issued Service  SB-912-076UL ordering the replacement of the fuel pump nipple fittings. The reason for the replacement is the fact that a certain number of fuel pump nipple f",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2696,11 +3453,37 @@
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_27A_2022_R1_EN_Signed.zip"
   },
   {
+   "id": "ROTAX-SB-912i-013",
+   "date": "2022-04-11",
+   "title": "Rotax SB-912 i-013 / SB-915 i-012: Replacement of electrical fuel pump(s) (also iS versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000CwiTaAAJ?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SI-912-i-002",
+   "date": "2022-03-23",
+   "title": "Rotax SI-912 i-002 / SI-914-038 / SI-915 i-002 / SI-916 i-002: B.U.D.S. installation instructions and update",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "EVEKTORRTCIBRTC063B",
    "date": "2022-03-16",
    "title": "ib-rtc-063b: Information | It concerns SportStar RTC aircraft equipped with WOODCOMP KW31-033 propeller.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
@@ -2751,6 +3534,29 @@
    "url": "https://aquila-aviation.de/wp-content/uploads/2022/01/SB_AT01_035_A01_MTOM_800kg.pdf"
   },
   {
+   "id": "ROTAX-SB-2ST-005",
+   "date": "2021-12-22",
+   "title": "Rotax SB-2ST-005: Inspection of crankcase halves matching, 582 UL",
+   "groups": [
+    "ROTAX_582"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000BKyqQAAT?asPdf=false"
+  },
+  {
+   "id": "ROTAX-ASB-915i-011",
+   "date": "2021-12-01",
+   "title": "Rotax ASB-915 i-011 / ASB-916 i-002: Inspection and re-torquing of oil spray nozzle",
+   "groups": [
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000BKZIaAAP?asPdf=false"
+  },
+  {
    "id": "BRISTELLALLSA000ALL00022021",
    "date": "2021-11-11",
    "title": "all-sa-0-0-0-all-0002-2021: Safety directive/Safety alert | Seat attachment | Seat attachment brackets replacement. Výměna konzol uchycení sedačky. | All UL and LSA models of BRISTELL | Stáhnout",
@@ -2762,6 +3568,32 @@
    "url": "https://www.bristell.com/downloads/bulletins/bulletin-seat-attachment-all-sa-0-0-0-all-0002-2021-signed.pdf"
   },
   {
+   "id": "ROTAX-SI-912-i-028",
+   "date": "2021-10-27",
+   "title": "Rotax SI-912 i-028 / SI-915 i-008: Change of stator oil cooling",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SL-912-025",
+   "date": "2021-09-30",
+   "title": "Rotax SL-912-025 / SL-914-023 / SL-912 i-016 / SL-915 i-010 / SL-916 i-008: Exhaust insulation materials",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
    "id": "SB-SD4-01-2021",
    "date": "2021-09-21",
    "title": "Exchange of STROBE and NAV LIGHTS automatic circuit breakers [OPTIONAL]",
@@ -2771,6 +3603,30 @@
    "kind": "SB",
    "mandatory": false,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ROTAX-SB-912-075",
+   "date": "2021-09-10",
+   "title": "Rotax SB-912-075 / SB-914-057: Exchange of carburettor support springs (also UL versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000AXiNmAAL?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SB-915i-010",
+   "date": "2021-09-09",
+   "title": "Rotax SB-915 i-010 / SB-916 i-001: Change of fuel pressure limits",
+   "groups": [
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000AXqVPAA1?asPdf=false"
   },
   {
    "id": "FLIGHTDESIGNSBASTMCTSW16",
@@ -2817,11 +3673,37 @@
    "url": "https://www.aerospool.sk/downloads/RTC/SBTC-2021-2_R0_Signed.zip"
   },
   {
+   "id": "ROTAX-SB-912i-012",
+   "date": "2021-07-12",
+   "title": "Rotax SB-912 i-012 / SB-915 i-009: Inspection/installation of lock washer A6 (also iS versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000AVSgxAAH?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SI-912-018",
+   "date": "2021-07-02",
+   "title": "Rotax SI-912-018 / SI-914-020 / SI-912 i-004 / SI-915 i-003 / SI-916 i-003: Purging of lubrication system",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914",
+    "ROTAX_915",
+    "ROTAX_916"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "EVEKTOREV97EV97039A",
    "date": "2021-07-01",
    "title": "ev97-039a: Service | Due to a deviation in the manufacturing process some tailpipe of muffler may have anomalies in the welded joint. In some cases, there is possibility that cracks may occur on a limited number of muffler tailpipe",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -2832,11 +3714,67 @@
    "date": "2021-07-01",
    "title": "ev97-038b: nload | EV97 038b | Information | Based on an agreement between the French Microlight Association (FFPLUM) and the French Civil Aviation Authority (DGAC), a 2019 New French Microlight Regulation has been issued, where tw",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ev97-038b"
+  },
+  {
+   "id": "ULPOWER-202102",
+   "date": "2021-05-21",
+   "title": "UL Power 2021-02: Selection of correct channel on TPS sender",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2021_02.pdf"
+  },
+  {
+   "id": "ULPOWER-202002RECTIFIED",
+   "date": "2021-05-17",
+   "title": "UL Power 2020-02 RECTIFIED: Service bulletin 2020-02 rectified",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2020_02-rectified.pdf"
+  },
+  {
+   "id": "ROTAX-SI-912-024",
+   "date": "2021-04-21",
+   "title": "Rotax SI-912-024 / SI-914-025 / SI-912 i-008: New oil radiators / oil radiator sets",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ULPOWER-202101",
+   "date": "2021-04-19",
+   "title": "UL Power 2021-01: Possible interference oil pick-up tube and adaptor (UL260iSA, UL350iSA only)",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2021_01.pdf"
+  },
+  {
+   "id": "ROTAX-SI-915-i-007",
+   "date": "2021-04-05",
+   "title": "Rotax SI-915 i-007: New turbocharger assembly",
+   "groups": [
+    "ROTAX_915"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
   },
   {
    "id": "AEROSPOOLULZBWT926A2021",
@@ -2949,6 +3887,19 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "ROTAX-SB-912-074",
+   "date": "2020-12-03",
+   "title": "Rotax SB-912-074 / SB-914-056 / SB-2ST-004: Exchange of carburettor floats (pair) (also UL versions and 2-stroke)",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H00000FTOhkQAH?asPdf=false"
+  },
+  {
    "id": "FLIGHTDESIGNSBASTMCTLS18",
    "date": "2020-10-30",
    "title": "SB-ASTM-CTLS-18: Inspection of Float Mount Brackets | S/N 07-11-13 through current production | latest within 3 months following the issue date of the SB | n/a",
@@ -2958,6 +3909,29 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://flightdesign.com/wp-content/uploads/2020/11/PF04206000_00.pdf"
+  },
+  {
+   "id": "ROTAX-SL-912-024",
+   "date": "2020-10-27",
+   "title": "Rotax SL-912-024 / SL-914-022: No flight operations with maintenance equipment installed",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
+   "id": "JABIRU-JSL0241",
+   "date": "2020-09-11",
+   "title": "Jabiru JSL024-1: Service letter: Cylinder barrel head bolts",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://jabiru.net.au/?p=164"
   },
   {
    "id": "AEROSPOOLULZBWT924A2020",
@@ -3026,6 +4000,17 @@
    "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2020-3_R0_Signed.zip"
   },
   {
+   "id": "ULPOWER-202001",
+   "date": "2020-01-17",
+   "title": "UL Power 2020-01: Springs inside the oil thermostat",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2020_01.pdf"
+  },
+  {
    "id": "SB-SD4-01-2020",
    "date": "2020-01-09",
    "title": "Introduction of Oil Hoses CONTI OLN M4M-2 for Rotax 912 S2/ULS2",
@@ -3060,6 +4045,17 @@
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-LTUL-CTLS-15-and-SB-ASTM-CTLS-17.pdf"
   },
   {
+   "id": "ROTAX-SI-914-035",
+   "date": "2019-11-29",
+   "title": "Rotax SI-914-035: New fuel pump assembly, 914",
+   "groups": [
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "FLIGHTDESIGNSBASTMCTLS16",
    "date": "2019-11-22",
    "title": "SB-ASTM-CTLS-16: Installation of Starter Solenoid on CTLS with Large SLA Battery | F-10-01-01, F-10-01-02, F-10-01-03, F-10-02-07, F-10-02-08, F-10-06-04, F-10-07-05, F-10-07-06, F-10-07-07; F-10-08-05, F-10-08-06, F-10-08-11, F-10-08-12",
@@ -3069,6 +4065,30 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-16.pdf"
+  },
+  {
+   "id": "EASA-AD-2019-0253-E",
+   "date": "2019-10-15",
+   "title": "Rotax EASA AD 2019-0253-E: Fuel pump assembly replacement (912 iSc, 915 iSc3 A) - ref. ASB-912 i-011 / ASB-915 i A-008",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2019-0253-E"
+  },
+  {
+   "id": "ROTAX-ASB-912i-011",
+   "date": "2019-10-10",
+   "title": "Rotax ASB-912 i-011 / ASB-915 i A-008: Replacement of fuel pump assembly (P/N 889696/889698, listed S/N) - supersedes ASB-912 i-010",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000009TjgpQAC?asPdf=false"
   },
   {
    "id": "FLIGHTDESIGNSBASTMCTSW14",
@@ -3115,6 +4135,18 @@
    "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2019-2_R0_Signed.pdf"
   },
   {
+   "id": "ROTAX-SB-912-073",
+   "date": "2019-07-27",
+   "title": "Rotax SB-912-073 / SB-914-055: Replacement of carburettor circlip (also UL versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000006CjAIQA0?asPdf=false"
+  },
+  {
    "id": "IKARUSSB420222019REV1",
    "date": "2019-07-01",
    "title": "SB-42-022-2019-Rev.1:  A-Säulenriss",
@@ -3148,6 +4180,28 @@
    "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2019_06_SB-42-021-2019-Silikonschlauch-Ladedruckabnahme.pdf"
   },
   {
+   "id": "ULPOWER-201902",
+   "date": "2019-05-23",
+   "title": "UL Power 2019-02: Integrated by-pass solution",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2019_02.pdf"
+  },
+  {
+   "id": "ROTAX-SI-914-034",
+   "date": "2019-05-09",
+   "title": "Rotax SI-914-034: Ignition check, 914",
+   "groups": [
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "TL5SST2019",
    "date": "2019-05-03",
    "title": "5.S.ST.2019: Kontrola svazků el. vedení za přístrojovou deskou.",
@@ -3163,7 +4217,7 @@
    "date": "2019-04-18",
    "title": "ib-rtc-035b-r1: Information | Issue of Illustrated Parts Catalogue on SportStar RTC airplane, Doc. No. SPORTSTAR-0396G-02712-00, Issue No: 002.00",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
@@ -3174,7 +4228,7 @@
    "date": "2019-04-18",
    "title": "ib-rtc-045b-r1: Information | The engine manufacturer issued SB-912-063R1 and SB-912- 063ULR2 service bulletins regarding the replacement of fuel pumps. After replacement of the original fuel pumps p/n 892542 and 892546 for the pump p/n",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
@@ -3192,6 +4246,28 @@
    "url": "https://www.aerospool.sk/downloads/RTC/SBRTC-2019-1_R0_Signed.pdf"
   },
   {
+   "id": "ROTAX-SL-2ST-002",
+   "date": "2019-04-16",
+   "title": "Rotax SL-2ST-002: Documentation for ASTM-compliant 2-stroke UL engines",
+   "groups": [
+    "ROTAX_582"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
+   "id": "ROTAX-SB-915iA-007",
+   "date": "2019-04-09",
+   "title": "Rotax SB-915 i A-007: Inspection/correction of turbocharger heat shield orientation (also iS)",
+   "groups": [
+    "ROTAX_915"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000005UV18QAG?asPdf=false"
+  },
+  {
    "id": "FLIGHTDESIGNSBASTMCTLS14",
    "date": "2019-03-20",
    "title": "SB-ASTM-CTLS-14: Installation of Reinforcement Plates on 4 Point Harnesses for CTLS Series | not limited | latest within 6 months following the issue date of this , or at the next annual inspection of the aircraft, whichever comes first.",
@@ -3203,11 +4279,57 @@
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-14.pdf"
   },
   {
+   "id": "ROTAX-ASB-912i-010",
+   "date": "2019-03-13",
+   "title": "Rotax ASB-912 i-010 / ASB-915 i A-006: Inspection/replacement of fuel pump assembly",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H0000052iSuQAI?asPdf=false"
+  },
+  {
+   "id": "JABIRU-JSB0143",
+   "date": "2019-02-12",
+   "title": "Jabiru JSB014-3: Propeller installation maintenance",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://jabiru.net.au/?p=164"
+  },
+  {
+   "id": "ULPOWER-201901",
+   "date": "2019-02-04",
+   "title": "UL Power 2019-01: Update on SB2016-02 bolts/washers securing the valve cover/rocker cover",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2019_01.pdf"
+  },
+  {
+   "id": "EASA-AD-2018-0265R1",
+   "date": "2019-01-31",
+   "title": "Rotax EASA AD 2018-0265R1: Exhaust valve replacement, 914 F and 915 iSc3 A/B",
+   "groups": [
+    "ROTAX_914",
+    "ROTAX_915"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2018-0265R1"
+  },
+  {
    "id": "EVEKTORRTCIBRTC046B",
    "date": "2019-01-22",
    "title": "ib-rtc-046b: Information | Inspection of passage of cables of the external power source through the fire wall. In case of insufficient inspection of cables of the external power source in the area of passage through the fire wall, th",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
@@ -3226,6 +4348,87 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "ROTAX-ASB-914-054",
+   "date": "2018-12-21",
+   "title": "Rotax ASB-914-054 / ASB-915 i A-003: Exchange of exhaust valves (914 F/UL, 915 i A)",
+   "groups": [
+    "ROTAX_914",
+    "ROTAX_915"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000004dACiQAM?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SB-915iA-005",
+   "date": "2018-12-21",
+   "title": "Rotax SB-915 i A-005: Inspection of turbocharger assembly (also iS)",
+   "groups": [
+    "ROTAX_915"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000004d99LQAQ?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SB-915iA-004",
+   "date": "2018-12-21",
+   "title": "Rotax SB-915 i A-004: Replacement of oil pump housing (also iS)",
+   "groups": [
+    "ROTAX_915"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000004d999QAA?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SI-912-020",
+   "date": "2018-11-20",
+   "title": "Rotax SI-912-020 / SI-914-022: Running modifications, 912/914",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SI-912-030",
+   "date": "2018-11-20",
+   "title": "Rotax SI-912-030 / SI-914-031: Oil pressure sensors",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ULPOWER-201803",
+   "date": "2018-11-15",
+   "title": "UL Power 2018-03: Throttle position sensor",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2018_03.pdf"
+  },
+  {
+   "id": "ROTAX-SI-912-i-019",
+   "date": "2018-10-18",
+   "title": "Rotax SI-912 i-019 / SI-915 i-005: Revised fuel pump assembly",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_915"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
    "id": "AEROSPOOLULZBWT922A2018",
    "date": "2018-08-15",
    "title": "ZBWT9 22A/2018: Inspection of nose fixed landing gear | WT-9 Dynamic.",
@@ -3241,22 +4444,77 @@
    "date": "2018-07-12",
    "title": "ib-rtc-043b: Information | Based on operational experience, the airplane manufacturer has decided to refresh general procedures during taxiing, takeoff and landing with crosswind.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ib-rtc-043b-en"
   },
   {
+   "id": "ULPOWER-201802",
+   "date": "2018-07-09",
+   "title": "UL Power 2018-02: Updated maintenance manuals – alternator flange bolt torque check – CANCELLED",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2018_02.pdf"
+  },
+  {
+   "id": "ROTAX-SB-915iA-002",
+   "date": "2018-06-27",
+   "title": "Rotax SB-915 i A-002: ECU software update, 915 i (also iS)",
+   "groups": [
+    "ROTAX_915"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000003lXTbQAM?asPdf=false"
+  },
+  {
    "id": "EVEKTORRTCIBRTC041B",
    "date": "2018-06-13",
    "title": "ib-rtc-041b: Information | Variant of the throttle control instead of the original throttle control No. E6 04-06 01.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_RTC"
    ],
    "kind": "SIB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ib-rtc-041b-en"
+  },
+  {
+   "id": "ROTAX-SB-912-072UL",
+   "date": "2018-04-25",
+   "title": "Rotax SB-912-072UL: Checking of correct engine type plate, 912 ULS",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000002yP0jQAE?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SB-915iA-001",
+   "date": "2018-03-22",
+   "title": "Rotax SB-915 i A-001: Checking axial clearance of wastegate shaft (also iS)",
+   "groups": [
+    "ROTAX_915"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000002wWQRQA2?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SI-914-030",
+   "date": "2018-03-05",
+   "title": "Rotax SI-914-030: Sodium-filled exhaust valves, 914",
+   "groups": [
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
   },
   {
    "id": "SB-SD4-06-2017-R2",
@@ -3274,11 +4532,55 @@
    "date": "2018-01-31",
    "title": "ev97-018a-r1: R1 | Service | Based on the experience of operation, the airplane manufacturer specified the Canopy Opening in Flight Emergency Procedure.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ev97-018a-r1"
+  },
+  {
+   "id": "JABIRU-JSB0402",
+   "date": "2017-12-19",
+   "title": "Jabiru JSB040-2: Mechanical fuel pump (engines up to S/N 22A3811 & 33A2768)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://jabiru.net.au/?p=164"
+  },
+  {
+   "id": "JABIRU-JSB0044",
+   "date": "2017-12-19",
+   "title": "Jabiru JSB004-4: Jabiru engine oil pump / cooler (engines up to S/N 22A1958 & 33A795)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://jabiru.net.au/?p=164"
+  },
+  {
+   "id": "JABIRU-JSL0145",
+   "date": "2017-12-19",
+   "title": "Jabiru JSL014-5: Service letter: Cylinder head inspection (engines up to S/N 22A3811 & 33A2768)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://jabiru.net.au/?p=164"
+  },
+  {
+   "id": "JABIRU-JSL0082",
+   "date": "2017-12-19",
+   "title": "Jabiru JSL008-2: Service letter: Valve spring washer adverse wear",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://jabiru.net.au/?p=164"
   },
   {
    "id": "SB-SD4-01-2017-R1",
@@ -3296,22 +4598,69 @@
    "date": "2017-11-30",
    "title": "ev97-035a: SR | Information | Inspection of the Magnum emergency system due to the repeated non-compliance with service instructions of the emergency system manufacturer on aircraft in the operation.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ev97-035a-sr"
   },
   {
+   "id": "ROTAX-SB-912-071",
+   "date": "2017-11-01",
+   "title": "Rotax SB-912-071 / SB-914-053 / SB-912 i-009: Replacement of oil filter (also UL/iS versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000002Ye0BQAS?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SI-2ST-010",
+   "date": "2017-11-01",
+   "title": "Rotax SI-2ST-010: New spark plug, connector and cylinder head, 582 UL",
+   "groups": [
+    "ROTAX_582"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "EASA-AD-2017-0208",
+   "date": "2017-10-27",
+   "title": "Rotax EASA AD 2017-0208: Valve push-rod assembly inspection (912 A/F/S/iSc, 914 F) - ref. SB-912-070 / SB-914-052 / SB-912 i-008",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2017-0208"
+  },
+  {
    "id": "EVEKTOREV97EV97036B",
    "date": "2017-10-20",
    "title": "ev97-036b: Information | Due to repeated non-compliance with service instructions of the emergency system manufacturer and in order to increase the emergency system safety the airplane manufacturer points out on the compliance with",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ev97-036b"
+  },
+  {
+   "id": "ROTAX-SB-912-070",
+   "date": "2017-10-12",
+   "title": "Rotax SB-912-070 / SB-914-052 / SB-912 i-008: Inspection/replacement of valve push-rod assy. and rocker arms (also UL/iS versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.flyrotax.com/assets/filesDistributors/dis0002/d/SB-912-i-008_SB-912-070_SB-914-052.pdf"
   },
   {
    "id": "SB-B-SD4-04-2017",
@@ -3334,6 +4683,40 @@
    "kind": "SB",
    "mandatory": true,
    "url": "https://www.tomarkaero.com/wp-content/uploads/technical_support/bulletins/2017/SB_LSZ_SD4-03-2017_SVK.pdf"
+  },
+  {
+   "id": "EASA-AD-2017-0101-E",
+   "date": "2017-06-13",
+   "title": "Rotax EASA AD 2017-0101-E: Ignition housing sealing plug inspection, 912 iSc Sport - ref. ASB-912 i-007",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2017-0101-E"
+  },
+  {
+   "id": "ROTAX-ASB-912i-007",
+   "date": "2017-06-06",
+   "title": "Rotax ASB-912 i-007: Checking correct positioning of sealing plug in ignition housing (912 iS/iSc)",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000002s0wvAAA?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SI-912-029",
+   "date": "2017-05-15",
+   "title": "Rotax SI-912-029 / SI-914-029: New carburettor floats",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
   },
   {
    "id": "FLIGHTDESIGNSNASTMCTLS06",
@@ -3367,6 +4750,52 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2017_04_SB-42-019-2015-Kraftstoffpumpe-Ergänzung.pdf"
+  },
+  {
+   "id": "ROTAX-SI-912-026",
+   "date": "2017-02-21",
+   "title": "Rotax SI-912-026 / SI-914-027 / SI-912 i-012: Ball bearing installation in propeller gearbox",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ULPOWER-201701",
+   "date": "2017-01-13",
+   "title": "UL Power 2017-01: Shock absorbers",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2017_01.pdf"
+  },
+  {
+   "id": "ROTAX-SI-912-025",
+   "date": "2016-12-30",
+   "title": "Rotax SI-912-025 / SI-914-026 / SI-912 i-010: Cylinder head tightening torque procedure",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ULPOWER-201602",
+   "date": "2016-08-25",
+   "title": "UL Power 2016-02: Bolts valve cover plate + bolts inlet manifold",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2016_02.pdf"
   },
   {
    "id": "SB_SD4-01-2016",
@@ -3417,11 +4846,58 @@
    "date": "2016-07-26",
    "title": "ev97-033a: SR | Information | The installation of mechanical catch against the opening of the canopy.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ev97-033a-sr"
+  },
+  {
+   "id": "EASA-AD-2016-0144",
+   "date": "2016-07-26",
+   "title": "Rotax EASA AD 2016-0144: Carburettor float inspection (912 A/F/S, 914 F)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2016-0144"
+  },
+  {
+   "id": "ROTAX-ASB-912-069",
+   "date": "2016-07-22",
+   "title": "Rotax ASB-912-069 / ASB-914-051 / ASB-2ST-003: Exchange of carburettor floats (incl. UL versions and 2-stroke engines)",
+   "groups": [
+    "ROTAX_582",
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000002SBVgAAO?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SB-912i-006",
+   "date": "2016-05-26",
+   "title": "Rotax SB-912 i-006: Exchange of stator assembly, 912 i (also iS)",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000001kmB0AAI?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SB-912-057",
+   "date": "2016-05-24",
+   "title": "Rotax SB-912-057: Extension of TBO, 912 series",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000002NWhxAAG?asPdf=false"
   },
   {
    "id": "FLIGHTDESIGNSNASTMCT2K09",
@@ -3479,6 +4955,29 @@
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTLS-05.pdf"
   },
   {
+   "id": "ULPOWER-201601201601BIS",
+   "date": "2016-03-09",
+   "title": "UL Power 2016-01 / 2016-01 bis: Fuel lines from fuel connection kit K020001 / K020007 / K020008",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/service-bulletin-2016_01bis.doc"
+  },
+  {
+   "id": "EASA-AD-2015-0240",
+   "date": "2016-01-04",
+   "title": "Rotax EASA AD 2015-0240: Cylinder head inspection (912 A/F/S, 914 F up to listed S/N)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2015-0240"
+  },
+  {
    "id": "SIB-SD4-02-2015",
    "date": "2015-12-11",
    "title": "Use of ACF-50 anti-corrosion compound",
@@ -3505,11 +5004,34 @@
    "date": "2015-11-23",
    "title": "ev97-034a: SR | Information | The manufacturer of ROTAX engines orders exchange of carburetors floats on engines.",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.evektor.com/documents/ev97-034a-sr"
+  },
+  {
+   "id": "ULPOWER-008",
+   "date": "2015-11-10",
+   "title": "UL Power 008: Alternator fan",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/008.pdf"
+  },
+  {
+   "id": "ROTAX-SI-912-023",
+   "date": "2015-11-04",
+   "title": "Rotax SI-912-023 / SI-914-024 / SI-912 i-007: Radiator retrofit kit",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
   },
   {
    "id": "FLIGHTDESIGNSBASTMCTSW13",
@@ -3556,6 +5078,17 @@
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-11.pdf"
   },
   {
+   "id": "JABIRU-JSL0181",
+   "date": "2015-10-01",
+   "title": "Jabiru JSL018-1: Service letter: Oil cooler hose (all engines)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://jabiru.net.au/?p=164"
+  },
+  {
    "id": "SIB-SD4-01-2015",
    "date": "2015-09-16",
    "title": "Visual inspection of rudder pedals (SK)",
@@ -3567,11 +5100,34 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "ROTAX-SB-912-068",
+   "date": "2015-09-09",
+   "title": "Rotax SB-912-068 / SB-914-049: Specification/change of engine configuration and/or type plate (also UL versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068120000028lYiAAI?asPdf=false"
+  },
+  {
+   "id": "ROTAX-ASB-912i-005",
+   "date": "2015-05-29",
+   "title": "Rotax ASB-912 i-005iS: Use of lithium-ion batteries with 912 iS engines",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068120000026IS6AAM?asPdf=false"
+  },
+  {
    "id": "EVEKTOREV97EV97032A",
    "date": "2015-05-18",
    "title": "ev97-032a: SR | Information | Defective production lot of Semperit FUB 386 DN6 fuel hoses. Replacement of the fuel hoses as defined in the .",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -3589,6 +5145,29 @@
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTLS-04.pdf"
   },
   {
+   "id": "ROTAX-SB-914-050",
+   "date": "2015-05-13",
+   "title": "Rotax SB-914-050: Replacement of overload clutch, 914 (also UL)",
+   "groups": [
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000001xVmCAAU?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SB-912-066",
+   "date": "2015-04-23",
+   "title": "Rotax SB-912-066 / SB-914-047: Change of temperature measurement from cylinder head to coolant temperature (also UL)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000001wxBXAAY?asPdf=false"
+  },
+  {
    "id": "AEROSPOOLULZBWT919A2015",
    "date": "2015-04-21",
    "title": "ZBWT9 19A/2015: Rev. 1 | Modification or replacement of water | thermostat. | 1",
@@ -3598,6 +5177,30 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_19A-2015_R1_EN.zip"
+  },
+  {
+   "id": "ROTAX-SB-912-065",
+   "date": "2015-03-26",
+   "title": "Rotax SB-912-065 / SB-914-046: Periodic inspection of carburettor float buoyancy (also UL)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000001wBWxAAM?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SB-912-067",
+   "date": "2015-03-26",
+   "title": "Rotax SB-912-067 / SB-914-048: Exchange of carburettor floats (also UL)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000001wBKwAAM?asPdf=false"
   },
   {
    "id": "TL2SSIST2015",
@@ -3611,6 +5214,17 @@
    "url": "https://www.tl-ultralight.cz/cs/bulletin/bulletin-2.s.si_st.2015-11162"
   },
   {
+   "id": "JABIRU-JSB0313",
+   "date": "2015-01-15",
+   "title": "Jabiru JSB031-3: Engine through bolt replacement and upgrade (training-use engines, listed S/N; eff. 2015-01-31; 'equivalent to a Manufacturer's Safety Direction', mandatory for LSA)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://www.atsb.gov.au/sites/default/files/2025-06/JSB031-3_Through_Bolt_Replacement_and_Upgrade.pdf"
+  },
+  {
    "id": "FLIGHTDESIGNSAASTMCTLS04",
    "date": "2014-11-25",
    "title": "SA-ASTM-CTLS-04: CTLSi Engine Installation Redundancy Diagnosis / ASB-914-044R1. | All CT type aircrafts with aircraft serial number earlier than x 12 05-02 (excluded, with (x) being the identifier of the relevant model, when applicable)",
@@ -3620,6 +5234,17 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTLS-04.pdf"
+  },
+  {
+   "id": "JABIRU-JSL0101",
+   "date": "2014-11-21",
+   "title": "Jabiru JSL010-1: Service letter: Service time intervals (all engines)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": false,
+   "url": "https://jabiru.net.au/?p=164"
   },
   {
    "id": "FLIGHTDESIGNSBASTMCTSW12",
@@ -3644,6 +5269,17 @@
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTHL-03.pdf"
   },
   {
+   "id": "JABIRU-JSB0183",
+   "date": "2014-10-15",
+   "title": "Jabiru JSB018-3: Jabiru engine tuning (all engines)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://jabiru.net.au/?p=164"
+  },
+  {
    "id": "FLIGHTDESIGNSBASTMCTLS08",
    "date": "2014-09-09",
    "title": "SB-ASTM-CTLS-08: SB-ASTM-CTLS -08 | Replacement of regulator A and regulator B for ROTAX engine type 912iS. | Aircraft that have fuse boxes installed, as identified in concurrent Rotax SB-912 i-004iS. As minimum, the following aircraft S",
@@ -3653,6 +5289,29 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-08.pdf"
+  },
+  {
+   "id": "ROTAX-SB-912i-004iS",
+   "date": "2014-09-03",
+   "title": "Rotax SB-912 i-004iS: Replacement of Regulator A and Regulator B, 912 iS",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A0000001tgmlIAA?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SL-912-006",
+   "date": "2014-07-23",
+   "title": "Rotax SL-912-006 / SL-914-006 / SL-912 i-006: Use of third-party aftermarket piston kits",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
   },
   {
    "id": "ZB-SD4-03-2014",
@@ -3677,6 +5336,17 @@
    "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2014_07_SB-42-018-2014-Fahrtmesser.pdf"
   },
   {
+   "id": "JABIRU-JSB0222",
+   "date": "2014-06-20",
+   "title": "Jabiru JSB022-2: Propeller flange attachment (all engines)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://jabiru.net.au/?p=164"
+  },
+  {
    "id": "ZB-SD4-02-2014",
    "date": "2014-06-19",
    "title": "Replacement of tow-hook lock (SK)",
@@ -3686,6 +5356,63 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ROTAX-SB-912i-001",
+   "date": "2014-06-13",
+   "title": "Rotax SB-912 i-001 / SB-912-052 / SB-914-035: Installation and use of propeller governors (also UL/iS)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068120000027jrlAAA?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SI-912-019",
+   "date": "2014-06-13",
+   "title": "Rotax SI-912-019 / SI-914-021 / SI-912 i-006: Oil leakage at cylinder barrel",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SB-912i-003iS",
+   "date": "2014-06-03",
+   "title": "Rotax SB-912 i-003iS: Installation of 912 iS Sport upgrade kit",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068120000028KjZAAU?asPdf=false"
+  },
+  {
+   "id": "ULPOWER-007",
+   "date": "2014-06-03",
+   "title": "UL Power 007: Oil pickup tube (UL260i/iS/iF)",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/007.pdf"
+  },
+  {
+   "id": "JABIRU-JSB0332",
+   "date": "2014-04-24",
+   "title": "Jabiru JSB033-2: Piston circlips (listed S/N)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://jabiru.net.au/?p=164"
   },
   {
    "id": "AEROSPOOLULZBWT918A2013",
@@ -3710,6 +5437,28 @@
    "url": "https://www.tomarkaero.com/en/technical-support/"
   },
   {
+   "id": "ROTAX-SI-912-022",
+   "date": "2014-01-20",
+   "title": "Rotax SI-912-022: Cancellation of 5-year replacement interval for (Teflon) fuel hoses",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SB-912i-002iS",
+   "date": "2013-12-18",
+   "title": "Rotax SB-912 i-002iS: Flashing of new ECU software, 912 iS",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018rz1IAA?asPdf=false"
+  },
+  {
    "id": "IKARUSSB420172013",
    "date": "2013-12-01",
    "title": "SB-42-017-2013:  Kraftstoffsystem",
@@ -3721,6 +5470,51 @@
    "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/03/2013_12_SB-42-017-2013-Kraftstoffsystem.pdf"
   },
   {
+   "id": "ULPOWER-006",
+   "date": "2013-11-29",
+   "title": "UL Power 006: Locking plate M4 bolt cylinder head",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/006.pdf"
+  },
+  {
+   "id": "ROTAX-SB-912-064",
+   "date": "2013-11-11",
+   "title": "Rotax SB-912-064 / SB-914-045: Periodic checking of crankshaft journal (PTO side) (also UL)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018rxTIAQ?asPdf=false"
+  },
+  {
+   "id": "ULPOWER-005",
+   "date": "2013-11-08",
+   "title": "UL Power 005: Alternator fan",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/005.pdf"
+  },
+  {
+   "id": "ULPOWER-004",
+   "date": "2013-08-19",
+   "title": "UL Power 004: Fuel selector",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/004.pdf"
+  },
+  {
    "id": "ZB-SD4-04-2013",
    "date": "2013-08-05",
    "title": "Static pressure port relocated to rear fuselage (SK)",
@@ -3730,6 +5524,41 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.tomarkaero.com/en/technical-support/"
+  },
+  {
+   "id": "ROTAX-SB-912-063",
+   "date": "2013-06-24",
+   "title": "Rotax SB-912-063: Replacement of mechanical fuel pumps, 912 (UL version SB-912-063UL R2 21 Aug 2013)",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018rxPIAQ?asPdf=false"
+  },
+  {
+   "id": "EASA-AD-2013-0117-E",
+   "date": "2013-05-31",
+   "title": "Rotax EASA AD 2013-0117-E: Cylinder head inspection (912 A/F/S, 914 F) - related to ASB-912-062 / ASB-914-044",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "AD",
+   "mandatory": true,
+   "url": "https://ad.easa.europa.eu/ad/2013-0117-E"
+  },
+  {
+   "id": "ROTAX-ASB-912-062",
+   "date": "2013-05-29",
+   "title": "Rotax ASB-912-062 / ASB-914-044: Checking of cylinder head assy. 2/3 (cracks) - also UL versions",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s1WIAQ?asPdf=false"
   },
   {
    "id": "ZB-SD4-03-2013",
@@ -3842,6 +5671,30 @@
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_17A.zip"
   },
   {
+   "id": "ROTAX-SI-912-010",
+   "date": "2012-10-02",
+   "title": "Rotax SI-912-010 / SI-914-011 / SI-912 i-005: Engine oil change procedure",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SI"
+  },
+  {
+   "id": "ROTAX-SL-912-011",
+   "date": "2012-10-02",
+   "title": "Rotax SL-912-011 / SL-914-009 / SL-912 i-002: Use of an oil thermostat",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SIB",
+   "mandatory": false,
+   "url": "https://rotaxirmt.com/mobile/documentation/SL"
+  },
+  {
    "id": "ZB-SD4-01-2012",
    "date": "2012-09-28",
    "title": "Nose gear steering rod installation change (SK)",
@@ -3862,6 +5715,17 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_16A.zip"
+  },
+  {
+   "id": "ULPOWER-003",
+   "date": "2012-08-01",
+   "title": "UL Power 003: Alternator fan",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/003.pdf"
   },
   {
    "id": "FLIGHTDESIGNSBASTMCTSW10",
@@ -3930,11 +5794,46 @@
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTLS-02.pdf"
   },
   {
+   "id": "ROTAX-ASB-912-061",
+   "date": "2012-05-26",
+   "title": "Rotax ASB-912-061: Replacement of pressure-side fuel hose at fuel pump (also 912-061UL)",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s1oIAA?asPdf=false"
+  },
+  {
+   "id": "ROTAX-ASB-912-060",
+   "date": "2012-01-26",
+   "title": "Rotax ASB-912-060 / ASB-914-043: Checking oil pump fixing bolts for correct torque (also UL versions)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s0QIAQ?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SB-912-059",
+   "date": "2012-01-01",
+   "title": "Rotax SB-912-059 / SB-914-042: Checking of crankshaft journal (PTO side) - replaces ASB-912-059/914-042 (also UL)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s1gIAA?asPdf=false"
+  },
+  {
    "id": "EVEKTOREV97EV97031A",
    "date": "2011-12-01",
    "title": "ev97-031a: Information | The manufacturer of Rotax 914 F a Rotax 914 UL engines informs about a possibility of clutch slipping during the engine operation, which can lead to an undesirable increase of engine speed above the set lim",
    "groups": [
-    "EVEKTOR"
+    "EVEKTOR_EV97"
    ],
    "kind": "SB",
    "mandatory": null,
@@ -4029,6 +5928,18 @@
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SA-ASTM-CTLS-01.pdf"
   },
   {
+   "id": "ROTAX-ASB-912-059",
+   "date": "2011-11-15",
+   "title": "Rotax ASB-912-059 / ASB-914-042: Crankshaft journal (PTO side) inspection, crankshaft P/N 888164 - later cancelled, replaced by SB-912-059",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "ASB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s2RIAQ?asPdf=false"
+  },
+  {
    "id": "AEROSPOOLULZBWT914A2011",
    "date": "2011-09-12",
    "title": "ZBWT9 14A/2011: Change in WT- 9 Dynamic Flight | Manual and Operating, | Maintenance and repair manual",
@@ -4062,6 +5973,18 @@
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_13A.zip"
   },
   {
+   "id": "ROTAX-SB-912-058",
+   "date": "2011-04-15",
+   "title": "Rotax SB-912-058 / SB-914-041: Replacement of magneto flywheel hub washer P/N 944072 (also UL)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s1bIAA?asPdf=false"
+  },
+  {
    "id": "FLIGHTDESIGNSNASTMCTLS02",
    "date": "2011-03-28",
    "title": "SN-ASTM-CTLS-02: Elimination of Noise in Radio from Dynon SkyView SV-D1000 | F-09-10-14; F-10-02-06; F-10-02-07; F-10-02-08; F-10-05-11; F-10-06-02; F-10-06-03; F-10-07-05; F-10-07-06; F-10-07-07; F-10-08-06; F-10-08-11; F-10-08-12; F-10",
@@ -4071,6 +5994,17 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SN-ASTM-CTLS-02.pdf"
+  },
+  {
+   "id": "ROTAX-SB-914-040",
+   "date": "2011-03-10",
+   "title": "Rotax SB-914-040: Replacement of fuel pressure regulator, 914 (also UL)",
+   "groups": [
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": true,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s1SIAQ?asPdf=false"
   },
   {
    "id": "FLIGHTDESIGNSBASTMCTSW09",
@@ -4093,6 +6027,17 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_12A.zip"
+  },
+  {
+   "id": "ULPOWER-002",
+   "date": "2010-10-27",
+   "title": "UL Power 002: Installation ECU",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/002.pdf"
   },
   {
    "id": "FLIGHTDESIGNSBASTMCT03",
@@ -4172,6 +6117,28 @@
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-05.pdf"
   },
   {
+   "id": "ULPOWER-001",
+   "date": "2010-09-24",
+   "title": "UL Power 001: Propeller flange bolt locking",
+   "groups": [
+    "ULPOWER"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://ulpower.com/content/1-engines/6-service-bulletins/001.pdf"
+  },
+  {
+   "id": "ROTAX-SB-912-044",
+   "date": "2010-05-28",
+   "title": "Rotax SB-912-044: Use of Rotax-supplied airbox, 912 A/F/UL",
+   "groups": [
+    "ROTAX_912"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018rq4IAA?asPdf=false"
+  },
+  {
    "id": "FLIGHTDESIGNSBSECSCT02",
    "date": "2010-05-06",
    "title": "SB-SECS-CT---02: Fuel Filter Exchange | All serial numbers prior to D-09-02-10 or F-09-02-01 (usage of letters at beginning of S/N started in 2008, therefore all S/N beginning without a letter are affected) | n/a | CT Parts and Maintenan",
@@ -4236,6 +6203,29 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://flightdesign.com/wp-content/uploads/2020/09/SB-ASTM-CTLS-01.pdf"
+  },
+  {
+   "id": "ROTAX-SB-912-041",
+   "date": "2010-03-25",
+   "title": "Rotax SB-912-041 / SB-914-027: Extension of TBO, 912 and 914 (also UL)",
+   "groups": [
+    "ROTAX_912",
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s10IAA?asPdf=false"
+  },
+  {
+   "id": "ROTAX-SB-914-039",
+   "date": "2010-03-25",
+   "title": "Rotax SB-914-039: Extension of TBO, 914 F/UL",
+   "groups": [
+    "ROTAX_914"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018rucIAA?asPdf=false"
   },
   {
    "id": "FLIGHTDESIGNSBASTMCTSW07",
@@ -5074,6 +7064,17 @@
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_06A.zip"
   },
   {
+   "id": "JABIRU-JSB0103",
+   "date": "2008-02-20",
+   "title": "Jabiru JSB010-3: Statement of compliance to ASTM LSA",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://jabiru.net.au/?p=164"
+  },
+  {
    "id": "AEROSPOOLULZBWT905A2007",
    "date": "2007-10-17",
    "title": "ZB WT9 05A/2007: Replacement of planetary gearbox | gear wheels of propeller adjustment | mechanism and inspection of | mechanical stops of minimal angle | of attack of propeller blades.",
@@ -5105,6 +7106,17 @@
    "kind": "SB",
    "mandatory": true,
    "url": "https://www.aerospool.sk/downloads/publications/ULL/mandatory_bulletins/ZBWT9_02A.zip"
+  },
+  {
+   "id": "JABIRU-JSB0131",
+   "date": "2006-08-08",
+   "title": "Jabiru JSB013-1: Engine rocker chamber vent (2200 S/N 22A2068–22A2439, 22B002–22B028)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://jabiru.net.au/?p=164"
   },
   {
    "id": "IKARUSSB421301",
@@ -5149,6 +7161,17 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://www.comco-ikarus.de/wp-content/uploads/2019/11/2004_09_SB-42-09-09-04-BIG-wheel-axle_EN.pdf"
+  },
+  {
+   "id": "JABIRU-JSB0011",
+   "date": "2004-05-11",
+   "title": "Jabiru JSB001-1: Revised Jabiru engine TBOs (2200 and 3300)",
+   "groups": [
+    "JABIRU"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://jabiru.net.au/?p=164"
   },
   {
    "id": "AEROSPOOLULZBWT901A2003",

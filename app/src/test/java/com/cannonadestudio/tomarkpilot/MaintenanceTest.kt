@@ -69,4 +69,31 @@ class MaintenanceTest {
         val t = TaskDef("brs", L10n.same("brs"), "rescue")
         assertEquals(DueStatus.NO_INTERVAL, Maintenance.compute(t, ac(1.0), emptyList(), today, false).status)
     }
+
+    @Test fun neverLoggedOnUsedAircraftIsNoDataNotOverdue() {
+        // aircraft added at 1022 h with no inspection records: no false "overdue by 922 h"
+        val d = Maintenance.compute(t100, ac(1022.0), emptyList(), today, false)
+        assertEquals(DueStatus.NO_DATA, d.status)
+    }
+
+    @Test fun neverLoggedOnNewAircraftCountsFromZero() {
+        val d = Maintenance.compute(t100, ac(40.0), emptyList(), today, false)
+        assertEquals(100.0, d.dueHours!!, 0.001)
+        assertEquals(DueStatus.OK, d.status)
+    }
+
+    @Test fun firstCheckLongPastIsTreatedAsDone() {
+        assertEquals(DueStatus.DONE, Maintenance.compute(once25, ac(800.0), emptyList(), today, false).status)
+    }
+
+    @Test fun itemsDueFollowTheirOwnHourStep() {
+        val oil = com.cannonadestudio.tomarkpilot.data.TaskItem(L10n.same("oil"))
+        val plugs = com.cannonadestudio.tomarkpilot.data.TaskItem(L10n.same("plugs"), everyHours = 200.0)
+        val gear = com.cannonadestudio.tomarkpilot.data.TaskItem(L10n.same("gearbox"), everyHours = 1000.0)
+        val t = t100.copy(items = listOf(oil, plugs, gear))
+        assertEquals(listOf(oil), Maintenance.itemsDue(t, 1100.0))
+        assertEquals(listOf(oil, plugs), Maintenance.itemsDue(t, 1200.0))
+        // drifted schedule: 1088 h covers the 1000 h step (988 → 1088)
+        assertEquals(listOf(oil, plugs, gear), Maintenance.itemsDue(t, 1088.0))
+    }
 }

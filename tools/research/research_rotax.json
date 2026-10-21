@@ -1,0 +1,2039 @@
+{
+ "bulletins": [
+  {
+   "id": "ROTAX-ASB-2026-002",
+   "number": "ASB-2026-002 / ASB_A-2026-002",
+   "date": "2026-09-03",
+   "dateNote": "Initial issue 03 Sep 2026; Revision 01 dated 11 Sep 2026. ASB_A = ASTM/non-certified version.",
+   "kind": "ASB",
+   "engines": [
+    "915",
+    "916"
+   ],
+   "mandatory": true,
+   "title": "Replacement of turbocharger valve housing P/N 956492 (cracks) - before next flight",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000dA2ByIAK?asPdf=false",
+   "source": "Rotax ASB_A-2026-002 PDF (aerovfr.com mirror); UK CAA MPD 2026-005-E; rotaxirmt.com index"
+  },
+  {
+   "id": "ROTAX-ASB-2026-001",
+   "number": "ASB-2026-001 / ASB_A-2026-001",
+   "date": "2026-06-22",
+   "dateNote": "ASB-2026-001R00 (certified) 22 Jun 2026; ASB_A-2026-001 (ASTM/non-certified) listed 02 Jul 2026.",
+   "kind": "ASB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Propeller gearbox inspection: missing oil spray nozzle / M7x16 bearing screws (912, 914, 912 i)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000ZhNbkIAF?asPdf=false",
+   "source": "Rotax ASB PDF (aerovfr.com mirror); EASA EAD 2026-0121-E and AD 2026-0170; rotax-owner.com"
+  },
+  {
+   "id": "ROTAX-ASB-915i-021",
+   "number": "ASB-915 i-021 / ASB-916 i-009",
+   "date": "2025-11-18",
+   "dateNote": "Rev 0 18 Nov 2025; Rev 1 27 Nov 2025 (referenced by EASA AD).",
+   "kind": "ASB",
+   "engines": [
+    "915",
+    "916"
+   ],
+   "mandatory": true,
+   "title": "Propeller gearbox inspection for missing M40x1.5 collar nut (also iS versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000QNeHAIA1?asPdf=false",
+   "source": "EASA EAD 2025-0267-E; rotax-owner.com forum; rotaxirmt.com index"
+  },
+  {
+   "id": "ROTAX-ASB-915i-020iS",
+   "number": "ASB-915 i-020iS / ASB-916 i-008iS",
+   "date": "2025-07-02",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "ASB",
+   "engines": [
+    "915",
+    "916"
+   ],
+   "mandatory": true,
+   "title": "Replacement of check valve housing (turbo oil leakage), non-certified 915 iS/916 iS A/C24",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000KeuCrIAJ?asPdf=false",
+   "source": "rotaxirmt.com index; rotax-owner.com forum (Rotax classes it 'Obligatory', no unsafe condition)"
+  },
+  {
+   "id": "ROTAX-ASB-912i-016",
+   "number": "ASB-912 i-016 / ASB-915 i-016 / ASB-916 i-006",
+   "date": "2024-12-16",
+   "dateNote": "Issued 16 Dec 2024 as mandatory SB-912 i-016/915 i-016/916 i-006; upgraded to ASB in R1 dated 20 Dec 2024.",
+   "kind": "ASB",
+   "engines": [
+    "912",
+    "915",
+    "916"
+   ],
+   "mandatory": true,
+   "title": "Inspection/replacement of oil spray nozzle (internal generator) - 912 i, 915 i, 916 i",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000EdG3GIAV?asPdf=false",
+   "source": "Rotax SB/ASB PDFs (legacy.rotaxowner.com); EASA EAD 2025-0019-E; rotaxirmt.com index"
+  },
+  {
+   "id": "ROTAX-ASB-915i-013",
+   "number": "ASB-915 i-013 / ASB-916 i-003",
+   "date": "2023-10-06",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "ASB",
+   "engines": [
+    "915",
+    "916"
+   ],
+   "mandatory": true,
+   "title": "Exchange of turbocharger/exhaust clamps (also iS versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000NqX8RAAV?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-ASB-915i-011",
+   "number": "ASB-915 i-011 / ASB-916 i-002",
+   "date": "2021-12-01",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "ASB",
+   "engines": [
+    "915",
+    "916"
+   ],
+   "mandatory": true,
+   "title": "Inspection and re-torquing of oil spray nozzle",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000BKZIaAAP?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server; Polish distributor translation on flyrotax.com"
+  },
+  {
+   "id": "ROTAX-ASB-912i-011",
+   "number": "ASB-912 i-011 / ASB-915 i A-008",
+   "date": "2019-10-10",
+   "dateNote": "Original issue 10 Oct 2019 per EASA AD; index lists 27 Nov 2019 (revision).",
+   "kind": "ASB",
+   "engines": [
+    "912",
+    "915"
+   ],
+   "mandatory": true,
+   "title": "Replacement of fuel pump assembly (P/N 889696/889698, listed S/N) - supersedes ASB-912 i-010",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000009TjgpQAC?asPdf=false",
+   "source": "EASA EAD 2019-0253-E; rotaxirmt.com index"
+  },
+  {
+   "id": "ROTAX-ASB-912i-010",
+   "number": "ASB-912 i-010 / ASB-915 i A-006",
+   "date": "2019-03-13",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "ASB",
+   "engines": [
+    "912",
+    "915"
+   ],
+   "mandatory": true,
+   "title": "Inspection/replacement of fuel pump assembly",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H0000052iSuQAI?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server; NZ CAA AD schedule (EASA EAD 2019-0055-E, later superseded)"
+  },
+  {
+   "id": "ROTAX-ASB-914-054",
+   "number": "ASB-914-054 / ASB-915 i A-003",
+   "date": "2018-12-21",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "ASB",
+   "engines": [
+    "914",
+    "915"
+   ],
+   "mandatory": true,
+   "title": "Exchange of exhaust valves (914 F/UL, 915 i A)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000004dACiQAM?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server; NZ CAA AD schedule (EASA AD 2018-0265)"
+  },
+  {
+   "id": "ROTAX-ASB-912i-007",
+   "number": "ASB-912 i-007",
+   "date": "2017-06-06",
+   "dateNote": "",
+   "kind": "ASB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": true,
+   "title": "Checking correct positioning of sealing plug in ignition housing (912 iS/iSc)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000002s0wvAAA?asPdf=false",
+   "source": "EASA EAD 2017-0101-E; rotaxirmt.com index"
+  },
+  {
+   "id": "ROTAX-ASB-912-069",
+   "number": "ASB-912-069 / ASB-914-051 / ASB-2ST-003",
+   "date": "2016-07-22",
+   "dateNote": "Date of Revision 1 per index; initial issue date not confirmed.",
+   "kind": "ASB",
+   "engines": [
+    "912",
+    "914",
+    "582"
+   ],
+   "mandatory": true,
+   "title": "Exchange of carburettor floats (incl. UL versions and 2-stroke engines)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000002SBVgAAO?asPdf=false",
+   "source": "Rotax publication index SB-912-000UL R2 (legacy.rotaxowner.com); rotaxirmt.com index"
+  },
+  {
+   "id": "ROTAX-ASB-912i-005",
+   "number": "ASB-912 i-005iS",
+   "date": "2015-05-29",
+   "dateNote": "",
+   "kind": "ASB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": true,
+   "title": "Use of lithium-ion batteries with 912 iS engines",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068120000026IS6AAM?asPdf=false",
+   "source": "Rotax publication index SB-912-000 (legacy.rotaxowner.com); rotaxirmt.com index"
+  },
+  {
+   "id": "ROTAX-ASB-912-062",
+   "number": "ASB-912-062 / ASB-914-044",
+   "date": "2013-05-29",
+   "dateNote": "Date of Revision 2 per Rotax index; initial issue earlier in 2013.",
+   "kind": "ASB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Checking of cylinder head assy. 2/3 (cracks) - also UL versions",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s1WIAQ?asPdf=false",
+   "source": "Rotax publication index (legacy.rotaxowner.com); rotaxirmt.com; NZ CAA AD schedule (EASA EAD 2013-0117-E)"
+  },
+  {
+   "id": "ROTAX-ASB-912-061",
+   "number": "ASB-912-061",
+   "date": "2012-05-26",
+   "dateNote": "Initial 26 May 2012; Revision 1 31 May 2012.",
+   "kind": "ASB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": true,
+   "title": "Replacement of pressure-side fuel hose at fuel pump (also 912-061UL)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s1oIAA?asPdf=false",
+   "source": "NZ CAA AD schedule DCA/ROTAX/28-29; Rotax publication index"
+  },
+  {
+   "id": "ROTAX-ASB-912-060",
+   "number": "ASB-912-060 / ASB-914-043",
+   "date": "2012-01-26",
+   "dateNote": "",
+   "kind": "ASB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Checking oil pump fixing bolts for correct torque (also UL versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s0QIAQ?asPdf=false",
+   "source": "Rotax publication index; NZ CAA AD DCA/ROTAX/27A; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-ASB-912-059",
+   "number": "ASB-912-059 / ASB-914-042",
+   "date": "2011-11-15",
+   "dateNote": "",
+   "kind": "ASB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Crankshaft journal (PTO side) inspection, crankshaft P/N 888164 - later cancelled, replaced by SB-912-059",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s2RIAQ?asPdf=false",
+   "source": "NZ CAA AD DCA/ROTAX/26; rotaxirmt.com index (marked CANCELLED)"
+  },
+  {
+   "id": "ROTAX-SB-2026-002",
+   "number": "SB-2026-002R00",
+   "date": "2026-06-05",
+   "dateNote": "",
+   "kind": "SB",
+   "engines": [
+    "916"
+   ],
+   "mandatory": null,
+   "title": "Optional TBO extension 1200 h to 2000 h for 916 iSc3 B",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000Y5iTCIAZ?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-2026-001",
+   "number": "SB-2026-001R00",
+   "date": "2026-01-27",
+   "dateNote": "Engine applicability not confirmed in detail (certified engines).",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": null,
+   "title": "Installation limitation for certified aircraft engines",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000SD7gHIAT?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-915i-014",
+   "number": "SB-915 i-014 / SB-916 i-003",
+   "date": "2025-08-28",
+   "dateNote": "Index lists R1 dated 28 Aug 2025; initial issue date not confirmed.",
+   "kind": "SB",
+   "engines": [
+    "915",
+    "916"
+   ],
+   "mandatory": null,
+   "title": "Inspection/maintenance after overload clutch slipping (also iS versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000MMz1lIAD?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-912i-017",
+   "number": "SB-912 i-017 / SB-915 i-017 / SB-916 i-007",
+   "date": "2025-02-03",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "915",
+    "916"
+   ],
+   "mandatory": true,
+   "title": "Inspection and/or replacement of crankcase and/or gearbox housing (also iS versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000Fdc9eIAB?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server; rotax-owner.com forum (described as mandatory)"
+  },
+  {
+   "id": "ROTAX-SB-912-080",
+   "number": "SB-912-080 / SB-914-060 / SB-912 i-015 / SB-915 i-015 / SB-916 i-005",
+   "date": "2024-12-19",
+   "dateNote": "Initial issue 19 Dec 2024; index lists certified version 31 Jan 2025 (revision).",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": true,
+   "title": "Inspection and/or replacement of coolant expansion tank assy. (P/N 922666/922668)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000FhjSuIAJ?asPdf=false",
+   "source": "Rotax SB PDF (skyleader.cz mirror, marked MANDATORY); rotaxirmt.com index"
+  },
+  {
+   "id": "ROTAX-SB-912-079",
+   "number": "SB-912-079",
+   "date": "2024-11-11",
+   "dateNote": "Initial 11 Nov 2024; R1 22 Nov 2024; certified version listed 26 Feb 2025. Classified 'highly recommended'.",
+   "kind": "SB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": null,
+   "title": "Essential information on installation, operation and maintenance of 912 series (power loss, piston damage)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068Mm00000GWyphIAD?asPdf=false",
+   "source": "SB-912-079R1 PDF (lzs-zveza.si, BWLV mirrors); rotaxirmt.com index"
+  },
+  {
+   "id": "ROTAX-SB-912-078",
+   "number": "SB-912-078 / SB-914-059 / SB-912 i-014",
+   "date": "2023-07-25",
+   "dateNote": "Mandated by EASA EAD 2023-0156-E.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Gearbox magnetic plug inspection / exchange of propeller shaft (also UL/iS versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000M1CmTAAV?asPdf=false",
+   "source": "EASA EAD 2023-0156-E; rotaxirmt.com index"
+  },
+  {
+   "id": "ROTAX-SB-912-077",
+   "number": "SB-912-077 / SB-914-058",
+   "date": "2023-07-12",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Exchange of stator assembly (also UL versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000LVgOCAA1?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-912-076UL",
+   "number": "SB-912-076UL",
+   "date": "2022-10-18",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": null,
+   "title": "Replacement of fuel pump nipple fittings (912 UL/ULS)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000F14DqAAJ?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-912i-013",
+   "number": "SB-912 i-013 / SB-915 i-012",
+   "date": "2022-04-11",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "915"
+   ],
+   "mandatory": null,
+   "title": "Replacement of electrical fuel pump(s) (also iS versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000CwiTaAAJ?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-2ST-005",
+   "number": "SB-2ST-005",
+   "date": "2021-12-22",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "582"
+   ],
+   "mandatory": null,
+   "title": "Inspection of crankcase halves matching, 582 UL",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000BKyqQAAT?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-912-075",
+   "number": "SB-912-075 / SB-914-057",
+   "date": "2021-09-10",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Exchange of carburettor support springs (also UL versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000AXiNmAAL?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-915i-010",
+   "number": "SB-915 i-010 / SB-916 i-001",
+   "date": "2021-09-09",
+   "dateNote": "",
+   "kind": "SB",
+   "engines": [
+    "915",
+    "916"
+   ],
+   "mandatory": null,
+   "title": "Change of fuel pressure limits",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000AXqVPAA1?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server; Polish translation on flyrotax.com (dated 09 Sep 2021)"
+  },
+  {
+   "id": "ROTAX-SB-912i-012",
+   "number": "SB-912 i-012 / SB-915 i-009",
+   "date": "2021-07-12",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "915"
+   ],
+   "mandatory": null,
+   "title": "Inspection/installation of lock washer A6 (also iS versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0685c00000AVSgxAAH?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-912-074",
+   "number": "SB-912-074 / SB-914-056 / SB-2ST-004",
+   "date": "2020-12-03",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914",
+    "582"
+   ],
+   "mandatory": null,
+   "title": "Exchange of carburettor floats (pair) (also UL versions and 2-stroke)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H00000FTOhkQAH?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-912-073",
+   "number": "SB-912-073 / SB-914-055",
+   "date": "2019-07-27",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Replacement of carburettor circlip (also UL versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000006CjAIQA0?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-915iA-007",
+   "number": "SB-915 i A-007",
+   "date": "2019-04-09",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "915"
+   ],
+   "mandatory": null,
+   "title": "Inspection/correction of turbocharger heat shield orientation (also iS)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000005UV18QAG?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-915iA-005",
+   "number": "SB-915 i A-005",
+   "date": "2018-12-21",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "915"
+   ],
+   "mandatory": null,
+   "title": "Inspection of turbocharger assembly (also iS)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000004d99LQAQ?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-915iA-004",
+   "number": "SB-915 i A-004",
+   "date": "2018-12-21",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "915"
+   ],
+   "mandatory": null,
+   "title": "Replacement of oil pump housing (also iS)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000004d999QAA?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-915iA-002",
+   "number": "SB-915 i A-002",
+   "date": "2018-06-27",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "915"
+   ],
+   "mandatory": null,
+   "title": "ECU software update, 915 i (also iS)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000003lXTbQAM?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-912-072UL",
+   "number": "SB-912-072UL",
+   "date": "2018-04-25",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": null,
+   "title": "Checking of correct engine type plate, 912 ULS",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000002yP0jQAE?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-915iA-001",
+   "number": "SB-915 i A-001",
+   "date": "2018-03-22",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "915"
+   ],
+   "mandatory": null,
+   "title": "Checking axial clearance of wastegate shaft (also iS)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000002wWQRQA2?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-912-071",
+   "number": "SB-912-071 / SB-914-053 / SB-912 i-009",
+   "date": "2017-11-01",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Replacement of oil filter (also UL/iS versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/0681H000002Ye0BQAS?asPdf=false",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SB-912-070",
+   "number": "SB-912-070 / SB-914-052 / SB-912 i-008",
+   "date": "2017-10-12",
+   "dateNote": "Initial issue 12 Oct 2017; Revision 2 listed 16 Apr 2021.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Inspection/replacement of valve push-rod assy. and rocker arms (also UL/iS versions)",
+   "url": "https://www.flyrotax.com/assets/filesDistributors/dis0002/d/SB-912-i-008_SB-912-070_SB-914-052.pdf",
+   "source": "Rotax SB PDF on flyrotax.com (marked MANDATORY); EASA AD 2017-0208; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912i-006",
+   "number": "SB-912 i-006",
+   "date": "2016-05-26",
+   "dateNote": "",
+   "kind": "SB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": null,
+   "title": "Exchange of stator assembly, 912 i (also iS)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000001kmB0AAI?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-057",
+   "number": "SB-912-057",
+   "date": "2016-05-24",
+   "dateNote": "Date of Revision 1.",
+   "kind": "SB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": null,
+   "title": "Extension of TBO, 912 series",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000002NWhxAAG?asPdf=false",
+   "source": "Rotax publication index (R1 date); rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-068",
+   "number": "SB-912-068 / SB-914-049",
+   "date": "2015-09-09",
+   "dateNote": "Date of latest revision per index.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Specification/change of engine configuration and/or type plate (also UL versions)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068120000028lYiAAI?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-914-050",
+   "number": "SB-914-050",
+   "date": "2015-05-13",
+   "dateNote": "",
+   "kind": "SB",
+   "engines": [
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Replacement of overload clutch, 914 (also UL)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000001xVmCAAU?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-066",
+   "number": "SB-912-066 / SB-914-047",
+   "date": "2015-04-23",
+   "dateNote": "Date of Revision 1.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Change of temperature measurement from cylinder head to coolant temperature (also UL)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000001wxBXAAY?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-065",
+   "number": "SB-912-065 / SB-914-046",
+   "date": "2015-03-26",
+   "dateNote": "Date of Revision 3.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Periodic inspection of carburettor float buoyancy (also UL)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000001wBWxAAM?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-067",
+   "number": "SB-912-067 / SB-914-048",
+   "date": "2015-03-26",
+   "dateNote": "Date of Revision 1.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Exchange of carburettor floats (also UL)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/06812000001wBKwAAM?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912i-004iS",
+   "number": "SB-912 i-004iS",
+   "date": "2014-09-03",
+   "dateNote": "",
+   "kind": "SB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": null,
+   "title": "Replacement of Regulator A and Regulator B, 912 iS",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A0000001tgmlIAA?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912i-001",
+   "number": "SB-912 i-001 / SB-912-052 / SB-914-035",
+   "date": "2014-06-13",
+   "dateNote": "",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Installation and use of propeller governors (also UL/iS)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068120000027jrlAAA?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912i-003iS",
+   "number": "SB-912 i-003iS",
+   "date": "2014-06-03",
+   "dateNote": "Date of Revision 1.",
+   "kind": "SB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": null,
+   "title": "Installation of 912 iS Sport upgrade kit",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068120000028KjZAAU?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912i-002iS",
+   "number": "SB-912 i-002iS",
+   "date": "2013-12-18",
+   "dateNote": "",
+   "kind": "SB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": null,
+   "title": "Flashing of new ECU software, 912 iS",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018rz1IAA?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-064",
+   "number": "SB-912-064 / SB-914-045",
+   "date": "2013-11-11",
+   "dateNote": "Date of Revision 1.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Periodic checking of crankshaft journal (PTO side) (also UL)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018rxTIAQ?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-063",
+   "number": "SB-912-063",
+   "date": "2013-06-24",
+   "dateNote": "Date of Revision 1.",
+   "kind": "SB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": null,
+   "title": "Replacement of mechanical fuel pumps, 912 (UL version SB-912-063UL R2 21 Aug 2013)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018rxPIAQ?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-059",
+   "number": "SB-912-059 / SB-914-042",
+   "date": "2012-01-01",
+   "dateNote": "",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Checking of crankshaft journal (PTO side) - replaces ASB-912-059/914-042 (also UL)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s1gIAA?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-058",
+   "number": "SB-912-058 / SB-914-041",
+   "date": "2011-04-15",
+   "dateNote": "Mandated by AD (DCA/ROTAX/22, Austro Control/EASA basis).",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Replacement of magneto flywheel hub washer P/N 944072 (also UL)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s1bIAA?asPdf=false",
+   "source": "NZ CAA AD DCA/ROTAX/22 & 24; Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-914-040",
+   "number": "SB-914-040",
+   "date": "2011-03-10",
+   "dateNote": "Mandated by AD (DCA/ROTAX/23).",
+   "kind": "SB",
+   "engines": [
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Replacement of fuel pressure regulator, 914 (also UL)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s1SIAQ?asPdf=false",
+   "source": "NZ CAA AD DCA/ROTAX/23; Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-044",
+   "number": "SB-912-044",
+   "date": "2010-05-28",
+   "dateNote": "Date of Revision 1.",
+   "kind": "SB",
+   "engines": [
+    "912"
+   ],
+   "mandatory": null,
+   "title": "Use of Rotax-supplied airbox, 912 A/F/UL",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018rq4IAA?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-912-041",
+   "number": "SB-912-041 / SB-914-027",
+   "date": "2010-03-25",
+   "dateNote": "Date of Revision 2.",
+   "kind": "SB",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Extension of TBO, 912 and 914 (also UL)",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018s10IAA?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SB-914-039",
+   "number": "SB-914-039",
+   "date": "2010-03-25",
+   "dateNote": "",
+   "kind": "SB",
+   "engines": [
+    "914"
+   ],
+   "mandatory": null,
+   "title": "Extension of TBO, 914 F/UL",
+   "url": "https://rotax.my.salesforce-sites.com/DocumentsSearch/sfc/servlet.shepherd/version/download/068A00000018rucIAA?asPdf=false",
+   "source": "Rotax publication index; rotaxirmt.com"
+  },
+  {
+   "id": "ROTAX-SI-2026-002R00",
+   "number": "SI-2026-002R00",
+   "date": "2026-04-07",
+   "dateNote": "Engine applicability not confirmed.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "New dog hub",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-2026-001R00",
+   "number": "SI-2026-001R00",
+   "date": "2026-02-05",
+   "dateNote": "Engine applicability not confirmed.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "New ignition coil, cable set and spark plug connector",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-037",
+   "number": "SI-912-037 / SI-914-042 / SI-912 i-034",
+   "date": "2026-10-14",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Propeller installation with round-neck nut set",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-016",
+   "number": "SI-912-016 / SI-914-019 / SI-912 i-001 / SI-915 i-001 / SI-916 i-001",
+   "date": "2026-04-07",
+   "dateNote": "Long-running SI, frequently revised; date is latest revision per index.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Selection of suitable operating fluids (oil, fuel, coolant)",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-040",
+   "number": "SI-912-040 / SI-912 i-036",
+   "date": "2026-02-20",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912"
+   ],
+   "mandatory": false,
+   "title": "New exhaust system components",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-i-041",
+   "number": "SI-912 i-041",
+   "date": "2025-12-17",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912"
+   ],
+   "mandatory": false,
+   "title": "Engine operation on crank bias indication",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-915-i-022",
+   "number": "SI-915 i-022",
+   "date": "2025-11-24",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "915"
+   ],
+   "mandatory": false,
+   "title": "New EGT connector brackets",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-039R1",
+   "number": "SI-912-039R1",
+   "date": "2025-09-23",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912"
+   ],
+   "mandatory": false,
+   "title": "Fuel distribution block installation and maintenance",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-028R1",
+   "number": "SI-912-028R1",
+   "date": "2025-09-08",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912"
+   ],
+   "mandatory": false,
+   "title": "Advanced Start System",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-044",
+   "number": "SI-912-044 / SI-914-046 / SI-912 i-040 / SI-915 i-021 / SI-916 i-017",
+   "date": "2025-08-29",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Excessive silicone heat-conducting compound on spark plugs",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-i-032",
+   "number": "SI-912 i-032",
+   "date": "2025-08-25",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912"
+   ],
+   "mandatory": false,
+   "title": "Fuel pump, 912 iSc/iS Sport",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-043",
+   "number": "SI-912-043 / SI-914-045 / SI-912 i-039 / SI-915 i-020 / SI-916 i-016",
+   "date": "2025-08-25",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Pre-Delivery Inspection (PDI)",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-042",
+   "number": "SI-912-042 / SI-914-044 / SI-912 i-038 / SI-915 i-019 / SI-916 i-015",
+   "date": "2025-05-27",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Cylinder hardness test",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-041",
+   "number": "SI-912-041 / SI-914-043 / SI-912 i-037 / SI-915 i-017 / SI-916 i-013",
+   "date": "2025-05-21",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Safety wiring",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-038",
+   "number": "SI-912-038 / SI-912 i-035",
+   "date": "2025-03-17",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912"
+   ],
+   "mandatory": false,
+   "title": "Sodium-filled exhaust valves and new cylinder heads",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-027",
+   "number": "SI-912-027 / SI-914-028 / SI-912 i-013",
+   "date": "2024-11-26",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "New spark plug and spark plug connector",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-036",
+   "number": "SI-912-036 / SI-914-041 / SI-912 i-033 / SI-915 i-016 / SI-916 i-012 / SI-2ST-013",
+   "date": "2024-06-13",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Propeller shaft corrosion protection",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-031",
+   "number": "SI-912-031 / SI-914-032 / SI-912 i-023 / SI-915 i-009 / SI-916 i-009",
+   "date": "2024-03-05",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Gearbox configuration change",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-035",
+   "number": "SI-912-035 / SI-914-040 / SI-912 i-030 / SI-915 i-013 / SI-916 i-008",
+   "date": "2024-03-05",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Engine preservation",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-i-018",
+   "number": "SI-912 i-018 / SI-915 i-004 / SI-916 i-004",
+   "date": "2024-02-21",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Approved ECU software/hardware configurations",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-i-029",
+   "number": "SI-912 i-029 / SI-915 i-012 / SI-916 i-007",
+   "date": "2024-02-08",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Double ignition coils and wiring harnesses",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-034",
+   "number": "SI-912-034 / SI-914-037 / SI-912 i-026 / SI-915 i-010 / SI-916 i-005",
+   "date": "2024-01-19",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Engine suspension frame maintenance add-on",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-i-027",
+   "number": "SI-912 i-027 / SI-915 i-011 / SI-916 i-006 / SI-2ST-012",
+   "date": "2024-01-19",
+   "dateNote": "Index also lists SI-914-037/SI-912-034 numbers in this entry. Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Propeller mass moment of inertia",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-914-039",
+   "number": "SI-914-039",
+   "date": "2023-02-20",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "914"
+   ],
+   "mandatory": false,
+   "title": "New oil sump assembly, 914",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-032",
+   "number": "SI-912-032 / SI-914-033 / SI-2ST-011",
+   "date": "2022-10-28",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Running modifications of BING carburettors",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-i-002",
+   "number": "SI-912 i-002 / SI-914-038 / SI-915 i-002 / SI-916 i-002",
+   "date": "2022-03-23",
+   "dateNote": "SI-912 i-002 R4 dated 23 Mar 2022 (legacy.rotaxowner.com PDF).",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "B.U.D.S. installation instructions and update",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-i-028",
+   "number": "SI-912 i-028 / SI-915 i-008",
+   "date": "2021-10-27",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "915"
+   ],
+   "mandatory": false,
+   "title": "Change of stator oil cooling",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-018",
+   "number": "SI-912-018 / SI-914-020 / SI-912 i-004 / SI-915 i-003 / SI-916 i-003",
+   "date": "2021-07-02",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Purging of lubrication system",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-024",
+   "number": "SI-912-024 / SI-914-025 / SI-912 i-008",
+   "date": "2021-04-21",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "New oil radiators / oil radiator sets",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-915-i-007",
+   "number": "SI-915 i-007",
+   "date": "2021-04-05",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "915"
+   ],
+   "mandatory": false,
+   "title": "New turbocharger assembly",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-914-035",
+   "number": "SI-914-035",
+   "date": "2019-11-29",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "914"
+   ],
+   "mandatory": false,
+   "title": "New fuel pump assembly, 914",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-914-034",
+   "number": "SI-914-034",
+   "date": "2019-05-09",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Ignition check, 914",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-020",
+   "number": "SI-912-020 / SI-914-022",
+   "date": "2018-11-20",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Running modifications, 912/914",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-030",
+   "number": "SI-912-030 / SI-914-031",
+   "date": "2018-11-20",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Oil pressure sensors",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-i-019",
+   "number": "SI-912 i-019 / SI-915 i-005",
+   "date": "2018-10-18",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "915"
+   ],
+   "mandatory": false,
+   "title": "Revised fuel pump assembly",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-914-030",
+   "number": "SI-914-030",
+   "date": "2018-03-05",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Sodium-filled exhaust valves, 914",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-2ST-010",
+   "number": "SI-2ST-010",
+   "date": "2017-11-01",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "582"
+   ],
+   "mandatory": false,
+   "title": "New spark plug, connector and cylinder head, 582 UL",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-029",
+   "number": "SI-912-029 / SI-914-029",
+   "date": "2017-05-15",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "New carburettor floats",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-026",
+   "number": "SI-912-026 / SI-914-027 / SI-912 i-012",
+   "date": "2017-02-21",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Ball bearing installation in propeller gearbox",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-025",
+   "number": "SI-912-025 / SI-914-026 / SI-912 i-010",
+   "date": "2016-12-30",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Cylinder head tightening torque procedure",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-023",
+   "number": "SI-912-023 / SI-914-024 / SI-912 i-007",
+   "date": "2015-11-04",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Radiator retrofit kit",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-019",
+   "number": "SI-912-019 / SI-914-021 / SI-912 i-006",
+   "date": "2014-06-13",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Oil leakage at cylinder barrel",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-022",
+   "number": "SI-912-022",
+   "date": "2014-01-20",
+   "dateNote": "",
+   "kind": "SI",
+   "engines": [
+    "912"
+   ],
+   "mandatory": false,
+   "title": "Cancellation of 5-year replacement interval for (Teflon) fuel hoses",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SI-912-010",
+   "number": "SI-912-010 / SI-914-011 / SI-912 i-005",
+   "date": "2012-10-02",
+   "dateNote": "Date per 2017 Rotax publication index; may have later revisions.",
+   "kind": "SI",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Engine oil change procedure",
+   "url": "https://rotaxirmt.com/mobile/documentation/SI",
+   "source": "Rotax publication index SB-912-000 R22 (legacy.rotaxowner.com)"
+  },
+  {
+   "id": "ROTAX-SL-2026-001R00",
+   "number": "SL-2026-001R00",
+   "date": "2026-01-27",
+   "dateNote": "",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Change of designation of service documents (new year-based numbering, e.g. ASB-2026-001)",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-022",
+   "number": "SL-912-022 / SL-914-020 / SL-912 i-011 / SL-915 i-003 / SL-916 i-003 / SL-2ST-014",
+   "date": "2026-09-14",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Storage conditions for genuine spare parts",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-031",
+   "number": "SL-912-031 / SL-914-029 / SL-912 i-023 / SL-915 i-020 / SL-916 i-019",
+   "date": "2025-08-12",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Measuring exhaust back pressure",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-029",
+   "number": "SL-912-029 / SL-914-027 / SL-912 i-021 / SL-915 i-018 / SL-916 i-017 / SL-2ST-019",
+   "date": "2025-05-13",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Occurrence reporting",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-020",
+   "number": "SL-912-020 / SL-914-018 / SL-912 i-009 / SL-915 i-017 / SL-916 i-016 / SL-2ST-012",
+   "date": "2025-04-09",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Engine registration via the ROTAX website",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-015",
+   "number": "SL-912-015 / SL-914-013 / SL-912 i-001 / SL-915 i-008 / SL-916 i-006 / SL-2ST-009",
+   "date": "2024-12-20",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Definition of propeller strike / accidental engine stoppage",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-026",
+   "number": "SL-912-026 / SL-914-024 / SL-912 i-018 / SL-915 i-013 / SL-916 i-013 / SL-2ST-016",
+   "date": "2024-04-09",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Maintenance and spare parts planning",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-023",
+   "number": "SL-912-023 / SL-914-021 / SL-912 i-013 / SL-915 i-005 / SL-916 i-005 / SL-2ST-015",
+   "date": "2024-03-05",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Layout and classification of ASB, SB, SI and SI-PAC documents",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-004",
+   "number": "SL-912-004 / SL-914-004 / SL-912 i-012 / SL-915 i-004 / SL-916 i-004 / SL-2ST-018",
+   "date": "2024-02-21",
+   "dateNote": "SL-912-004 R7 / SL-914-004 R7 (aquila-aviation.de mirror). Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Documentation for ROTAX aircraft engines",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-021",
+   "number": "SL-912-021 / SL-914-019 / SL-912 i-010 / SL-915 i-002 / SL-916 i-002 / SL-2ST-013",
+   "date": "2023-10-20",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "List of applicable publications",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-027",
+   "number": "SL-912-027 / SL-914-025 / SL-912 i-019 / SL-915 i-014 / SL-916 i-010 / SL-2ST-017",
+   "date": "2022-10-12",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "ASTM-compliant engines in EASA CS-LSA aircraft",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-014",
+   "number": "SL-912-014 / SL-914-012 / SL-912 i-005 / SL-915 i-011 / SL-916 i-009 / SL-2ST-008",
+   "date": "2022-05-13",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916",
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Non-approved modifications and unapproved components",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-025",
+   "number": "SL-912-025 / SL-914-023 / SL-912 i-016 / SL-915 i-010 / SL-916 i-008",
+   "date": "2021-09-30",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914",
+    "915",
+    "916"
+   ],
+   "mandatory": false,
+   "title": "Exhaust insulation materials",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-024",
+   "number": "SL-912-024 / SL-914-022",
+   "date": "2020-10-27",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "No flight operations with maintenance equipment installed",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-2ST-002",
+   "number": "SL-2ST-002",
+   "date": "2019-04-16",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "582"
+   ],
+   "mandatory": false,
+   "title": "Documentation for ASTM-compliant 2-stroke UL engines",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-006",
+   "number": "SL-912-006 / SL-914-006 / SL-912 i-006",
+   "date": "2014-07-23",
+   "dateNote": "",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Use of third-party aftermarket piston kits",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "ROTAX-SL-912-011",
+   "number": "SL-912-011 / SL-914-009 / SL-912 i-002",
+   "date": "2012-10-02",
+   "dateNote": "Date from distributor index; may be date of latest revision.",
+   "kind": "SL",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": false,
+   "title": "Use of an oil thermostat",
+   "url": "https://rotaxirmt.com/mobile/documentation/SL",
+   "source": "Rotax iRMT distributor documentation index (rotaxirmt.com), links to official BRP-Rotax document server"
+  },
+  {
+   "id": "EASA-AD-2026-0170",
+   "number": "EASA AD 2026-0170",
+   "date": "2026-09-08",
+   "dateNote": "Issued 01 Sep 2026; date is effective date.",
+   "kind": "AD",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Propeller gearbox one-time inspection (912 ULS2 etc. on listed aircraft) - ref. ASB-2026-001 / ASB_A-2026-001",
+   "url": "https://ad.easa.europa.eu/ad/2026-0170",
+   "source": "EASA AD PDF (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2026-0121-E",
+   "number": "EASA AD 2026-0121-E",
+   "date": "2026-06-26",
+   "dateNote": "Issued 24 Jun 2026; date is effective date.",
+   "kind": "AD",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Propeller gearbox inspection (oil spray nozzle, M7x16 screws) - ref. ASB-2026-001R00",
+   "url": "https://ad.easa.europa.eu/ad/2026-0121-E",
+   "source": "EASA EAD PDF (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2025-0267-E",
+   "number": "EASA AD 2025-0267-E",
+   "date": "2025-12-02",
+   "dateNote": "Issued 28 Nov 2025; date is effective date.",
+   "kind": "AD",
+   "engines": [
+    "915",
+    "916"
+   ],
+   "mandatory": true,
+   "title": "Propeller gearbox inspection, missing collar nut - ref. ASB-915 i-021 / ASB-916 i-009 R1",
+   "url": "https://ad.easa.europa.eu/ad/2025-0267-E",
+   "source": "EASA EAD PDF (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2025-0019-E",
+   "number": "EASA AD 2025-0019-E",
+   "date": "2025-01-20",
+   "dateNote": "Issued 16 Jan 2025; date is effective date.",
+   "kind": "AD",
+   "engines": [
+    "912",
+    "915",
+    "916"
+   ],
+   "mandatory": true,
+   "title": "Internal generator oil spray nozzle inspection/replacement - ref. ASB-912 i-016 R1",
+   "url": "https://ad.easa.europa.eu/ad/2025-0019-E",
+   "source": "EASA EAD PDF (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2023-0156-E",
+   "number": "EASA AD 2023-0156-E",
+   "date": "2023-08-04",
+   "dateNote": "Issued 02 Aug 2023; date is effective date.",
+   "kind": "AD",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Propeller gearbox magnetic plug inspection / shaft replacement - ref. SB-912-078 / SB-914-059 / SB-912 i-014",
+   "url": "https://ad.easa.europa.eu/ad/2023-0156-E",
+   "source": "EASA EAD PDF (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2019-0253-E",
+   "number": "EASA AD 2019-0253-E",
+   "date": "2019-10-15",
+   "dateNote": "Issued 11 Oct 2019; supersedes EAD 2019-0055-E. Date is effective date.",
+   "kind": "AD",
+   "engines": [
+    "912",
+    "915"
+   ],
+   "mandatory": true,
+   "title": "Fuel pump assembly replacement (912 iSc, 915 iSc3 A) - ref. ASB-912 i-011 / ASB-915 i A-008",
+   "url": "https://ad.easa.europa.eu/ad/2019-0253-E",
+   "source": "EASA AD page (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2018-0265R1",
+   "number": "EASA AD 2018-0265R1",
+   "date": "2019-01-31",
+   "dateNote": "Effective date per NZ CAA AD schedule (R1/correction).",
+   "kind": "AD",
+   "engines": [
+    "914",
+    "915"
+   ],
+   "mandatory": true,
+   "title": "Exhaust valve replacement, 914 F and 915 iSc3 A/B",
+   "url": "https://ad.easa.europa.eu/ad/2018-0265R1",
+   "source": "NZ CAA Rotax AD schedule (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2017-0208",
+   "number": "EASA AD 2017-0208",
+   "date": "2017-10-27",
+   "dateNote": "Effective date per NZ CAA AD schedule (correction).",
+   "kind": "AD",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Valve push-rod assembly inspection (912 A/F/S/iSc, 914 F) - ref. SB-912-070 / SB-914-052 / SB-912 i-008",
+   "url": "https://ad.easa.europa.eu/ad/2017-0208",
+   "source": "NZ CAA Rotax AD schedule; UK MPD 2018-001 (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2017-0101-E",
+   "number": "EASA AD 2017-0101-E",
+   "date": "2017-06-13",
+   "dateNote": "Issued 09 Jun 2017; date is effective date.",
+   "kind": "AD",
+   "engines": [
+    "912"
+   ],
+   "mandatory": true,
+   "title": "Ignition housing sealing plug inspection, 912 iSc Sport - ref. ASB-912 i-007",
+   "url": "https://ad.easa.europa.eu/ad/2017-0101-E",
+   "source": "EASA EAD PDF (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2016-0144",
+   "number": "EASA AD 2016-0144",
+   "date": "2016-07-26",
+   "dateNote": "Effective date per NZ CAA AD schedule (correction).",
+   "kind": "AD",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Carburettor float inspection (912 A/F/S, 914 F)",
+   "url": "https://ad.easa.europa.eu/ad/2016-0144",
+   "source": "NZ CAA Rotax AD schedule (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2015-0240",
+   "number": "EASA AD 2015-0240",
+   "date": "2016-01-04",
+   "dateNote": "Effective date per NZ CAA AD schedule.",
+   "kind": "AD",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Cylinder head inspection (912 A/F/S, 914 F up to listed S/N)",
+   "url": "https://ad.easa.europa.eu/ad/2015-0240",
+   "source": "NZ CAA Rotax AD schedule (ad.easa.europa.eu / aviation.govt.nz)"
+  },
+  {
+   "id": "EASA-AD-2013-0117-E",
+   "number": "EASA AD 2013-0117-E",
+   "date": "2013-05-31",
+   "dateNote": "Effective date per NZ CAA AD schedule.",
+   "kind": "AD",
+   "engines": [
+    "912",
+    "914"
+   ],
+   "mandatory": true,
+   "title": "Cylinder head inspection (912 A/F/S, 914 F) - related to ASB-912-062 / ASB-914-044",
+   "url": "https://ad.easa.europa.eu/ad/2013-0117-E",
+   "source": "NZ CAA Rotax AD schedule (ad.easa.europa.eu / aviation.govt.nz)"
+  }
+ ]
+}

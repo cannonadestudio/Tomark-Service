@@ -58,6 +58,36 @@ data class TaskDef(
     val source: String = "",
     val verified: Boolean = false,
     val note: L10n? = null,
+    /** What is done during this inspection; items with [TaskItem.everyHours] only at those hours. */
+    val items: List<TaskItem> = emptyList(),
+    /** Older task ids whose records count for this one (e.g. oil change merged into the 100 h inspection). */
+    val aliases: List<String> = emptyList(),
+    /** Off unless the owner switches it on (e.g. 50 h oil change only with leaded AVGAS). */
+    val defaultHidden: Boolean = false,
+)
+
+@Serializable
+data class TaskItem(
+    val title: L10n,
+    /** null = at every occurrence of the inspection; 200 = only when the inspection falls on a 200 h step. */
+    val everyHours: Double? = null,
+    val verified: Boolean = true,
+)
+
+/** Engine catalogue (assets/engines.json): inspections and bulletin groups of an engine family. */
+@Serializable
+data class EngineType(
+    val id: String,
+    val name: String,
+    val fullName: String = "",
+    val manufacturer: String = "",
+    val bulletinGroups: List<String> = emptyList(),
+    val tboHours: Double? = null,
+    val tboYears: Int? = null,
+    val fuel: String = "",
+    val notes: String = "",
+    val bulletinsPage: String? = null,
+    val tasks: List<TaskDef> = emptyList(),
 )
 
 @Serializable
@@ -72,6 +102,12 @@ data class AircraftType(
     val speeds: List<SpeedDef>,
     val manual: List<ManualSection>,
     val tasks: List<TaskDef>,
+    /** airplane | trike (weight-shift) | gyro */
+    val kind: String = "airplane",
+    /** Default engine id from engines.json; empty in old data (taken from the bundled list). */
+    val engine: String = "",
+    /** Created by the owner on this phone. */
+    val custom: Boolean = false,
 )
 
 // ---------------------------------------------------------------- bulletins feed
@@ -189,7 +225,32 @@ data class Aircraft(
     val notes: String = "",
     /** Hours before the logbook started; null = not linked to the logbook. hours = base + logbook sum. */
     val logbookBaseHours: Double? = null,
+    /** Engine from engines.json; null = the type's default engine. */
+    val engineId: String? = null,
+    /** fixed | ground (ground adjustable) | inflight (in-flight adjustable / constant speed) */
+    val propeller: String = "fixed",
+    /** Propeller inspection on/off; null = on only for in-flight adjustable propellers. */
+    val propInspection: Boolean? = null,
+    /** Ballistic rescue system fitted. */
+    val rescueSystem: Boolean = false,
+    /** Rescue system service life / repack interval in months (6 years by default). */
+    val rescueMonths: Int = 72,
 )
+
+/** Own maintenance log entry (anything not in the programme: tyres, battery, repairs…). */
+@Serializable
+data class LogEntry(
+    val id: String,
+    val aircraftId: String,
+    val epochDay: Long,
+    val hours: Double? = null,
+    val title: String,
+    val note: String = "",
+)
+
+/** Bulletin added by the owner for one aircraft (missing from the online list). */
+@Serializable
+data class OwnBulletin(val aircraftId: String, val bulletin: Bulletin)
 
 @Serializable
 data class CompletionRecord(
@@ -248,4 +309,8 @@ data class AppState(
     val proCached: Boolean = false,
     /** Pro granted by hand by the app owner in the server panel (checked with the daily ping). */
     val proGranted: Boolean = false,
+    /** Aircraft types created by the owner. */
+    val customTypes: List<AircraftType> = emptyList(),
+    val logEntries: List<LogEntry> = emptyList(),
+    val ownBulletins: List<OwnBulletin> = emptyList(),
 )

@@ -66,7 +66,9 @@ fun BulletinsScreen(state: AppState, feed: BulletinFeed, aircraft: Aircraft) {
     var loading by remember { mutableStateOf(false) }
     var open by remember { mutableStateOf<Bulletin?>(null) }
     val seenAtOpen = remember(aircraft.id) { state.seenBulletinIds }
-    val all = Repo.bulletinsFor(aircraft, feed)
+    val all = Repo.bulletinsFor(aircraft, feed, state)
+    var ownEdit by remember { mutableStateOf<Bulletin?>(null) }
+    var ownNew by remember { mutableStateOf(false) }
     val statusMap = state.bulletinStatus.filter { it.aircraftId == aircraft.id }.associateBy { it.bulletinId }
     val list = all.filter { (!onlyOpen || (it.kind != "DOC" && it.id !in statusMap)) && (!hideDocs || it.kind != "DOC") }
 
@@ -81,6 +83,9 @@ fun BulletinsScreen(state: AppState, feed: BulletinFeed, aircraft: Aircraft) {
                     Text(stringResource(R.string.bulletins_for, aircraft.registration), style = MaterialTheme.typography.titleMedium)
                     Text(stringResource(R.string.list_updated, feed.updated), style = MaterialTheme.typography.bodySmall)
                     EngineSerialLine(aircraft, MaterialTheme.colorScheme.primary)
+                }
+                IconButton(onClick = { ownNew = true }) {
+                    Icon(androidx.compose.material.icons.Icons.Filled.Add, stringResource(R.string.own_bulletin_add))
                 }
                 if (loading) {
                     CircularProgressIndicator(Modifier.size(24.dp))
@@ -113,7 +118,11 @@ fun BulletinsScreen(state: AppState, feed: BulletinFeed, aircraft: Aircraft) {
         item { Spacer(Modifier.height(24.dp)) }
     }
 
-    open?.let { b -> BulletinDialog(b, aircraft, statusMap[b.id]) { open = null } }
+    open?.let { b ->
+        BulletinDialog(b, aircraft, statusMap[b.id], own = Repo.isOwnBulletin(aircraft, b.id, state), onEditOwn = { ownEdit = b; open = null }) { open = null }
+    }
+    if (ownNew) OwnBulletinDialog(aircraft, null) { ownNew = false }
+    ownEdit?.let { b -> OwnBulletinDialog(aircraft, b) { ownEdit = null } }
 }
 
 @Composable
@@ -170,7 +179,7 @@ private fun MandatoryChip(b: Bulletin) = when (b.mandatory) {
 }
 
 @Composable
-private fun BulletinDialog(b: Bulletin, a: Aircraft, st: BulletinStatus?, onDismiss: () -> Unit) {
+private fun BulletinDialog(b: Bulletin, a: Aircraft, st: BulletinStatus?, own: Boolean = false, onEditOwn: () -> Unit = {}, onDismiss: () -> Unit) {
     val ctx = LocalContext.current
     var date by remember { mutableStateOf(st?.let { fmtEpochDay(it.epochDay) } ?: fmtDate(LocalDate.now())) }
     var hours by remember { mutableStateOf(st?.hours?.let { fmtH(it) } ?: fmtH(a.hours)) }
@@ -196,6 +205,10 @@ private fun BulletinDialog(b: Bulletin, a: Aircraft, st: BulletinStatus?, onDism
                 Text(b.title, style = MaterialTheme.typography.bodyMedium)
                 Spacer(Modifier.height(6.dp))
                 Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) { KindChip(b); if (b.kind != "DOC") MandatoryChip(b) }
+                if (own) Row {
+                    TextButton(onClick = onEditOwn) { Text(stringResource(R.string.edit)) }
+                    TextButton(onClick = { Repo.deleteOwnBulletin(a.id, b.id); onDismiss() }) { Text(stringResource(R.string.delete), color = Color(0xFFC62828)) }
+                }
                 if (b.url != null) {
                     TextButton(onClick = {
                         try {
@@ -222,6 +235,50 @@ private fun BulletinDialog(b: Bulletin, a: Aircraft, st: BulletinStatus?, onDism
             } else {
                 TextButton(onClick = onDismiss) { Text(stringResource(R.string.close)) }
             }
+        },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
+    )
+}
+
+
+/** Bulletin missing from the online list, added by the owner for this aircraft. */
+@Composable
+private fun OwnBulletinDialog(a: Aircraft, b: Bulletin?, onDismiss: () -> Unit) {
+    var number by remember { mutableStateOf(b?.id ?: "") }
+    var title by remember { mutableStateOf(b?.title ?: "") }
+    var date by remember { mutableStateOf(b?.date ?: fmtDate(LocalDate.now())) }
+    var kind by remember { mutableStateOf(b?.kind ?: "SB") }
+    var mandatory by remember { mutableStateOf(b?.mandatory ?: true) }
+    var url by remember { mutableStateOf(b?.url ?: "") }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(if (b == null) R.string.own_bulletin_add else R.string.edit)) },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                Text(stringResource(R.string.own_bulletin_hint), style = MaterialTheme.typography.bodySmall)
+                OutlinedTextField(number, { number = it }, label = { Text(stringResource(R.string.own_bulletin_number)) }, singleLine = true,
+                    enabled = b == null, modifier = Modifier.fillMaxWidth())
+                OutlinedTextField(title, { title = it }, label = { Text(stringResource(R.string.own_bulletin_title)) }, modifier = Modifier.fillMaxWidth())
+                DateField(date, { date = it }, stringResource(R.string.own_bulletin_date), Modifier.fillMaxWidth())
+                Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    listOf("AD", "ASB", "SB", "SIB").forEach { k -> FilterChip(kind == k, { kind = k }, label = { Text(k) }) }
+                }
+                Row(Modifier.clickable { mandatory = !mandatory }, verticalAlignment = Alignment.CenterVertically) {
+                    androidx.compose.material3.Checkbox(mandatory, { mandatory = it })
+                    Text(stringResource(R.string.bl_mandatory))
+                }
+                OutlinedTextField(url, { url = it }, label = { Text(stringResource(R.string.own_bulletin_url)) }, singleLine = true, modifier = Modifier.fillMaxWidth())
+            }
+        },
+        confirmButton = {
+            TextButton(enabled = number.isNotBlank() && title.isNotBlank() && parseDate(date) != null, onClick = {
+                Repo.saveOwnBulletin(a.id, Bulletin(
+                    id = b?.id ?: number.trim(), date = parseDate(date)!!.toString(), title = title.trim(),
+                    groups = listOf("OWN"), kind = kind, mandatory = mandatory,
+                    url = url.trim().takeIf { it.startsWith("http") },
+                ))
+                onDismiss()
+            }) { Text(stringResource(R.string.save)) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
     )

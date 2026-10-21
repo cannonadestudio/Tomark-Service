@@ -1,0 +1,386 @@
+{
+  "generated": "2026-10-21",
+  "notes": [
+    "Values are copied from the source named in each entry. Nothing was estimated. A value of null means no official figure was found.",
+    "verified:false means the figure was published but is ambiguous: a range, a marketing page marked 'illustrative', a speed-scale arc used as a stand-in for minimum level-flight speed, or a conflict between sources.",
+    "Where the source gives a range, 'value' is the lower bound and 'valueMax' is the upper bound.",
+    "Gyroplanes do not stall. AutoGyro POHs give VMIN only as the yellow arc on the airspeed indicator (from 0 up to X); X is stored as VS with verified:false. Magni and Trendak publish a true minimum level-flight speed.",
+    "UK CAA gyro data sheets (TADS BG0x) often have lower VNE values than the manufacturer POH, because of UK-specific rotor-head modifications. Example: Cavalon is 100 mph in the UK and 195 km/h in the POH. Each UK value is kept in 'ukCaa' for reference; the app should use the POH value for EU aircraft.",
+    "Air Creation trikes: the trike manuals (Tanarg, Skypper) give no speeds and refer to the wing manual. The speeds therefore depend on the trike + wing combination, and there is one entry per combination.",
+    "Air Creation 'VY' is the 'Vitesse recommandée en montée initiale' (recommended initial climb), not a measured best-rate-of-climb speed. Air Creation 'VA' is the 'V. man.', the speed not to exceed in very turbulent air.",
+    "All Air Creation speeds are CAS at maximum take-off mass (MTOM)."
+  ],
+  "types": [
+    {
+      "kind": "gyro",
+      "manufacturer": "AutoGyro",
+      "name": "AutoGyro MTOsport 2017 (912 ULS / 914 UL)",
+      "engine": "Rotax 914 UL",
+      "engineOptions": ["912 ULS", "914 UL"],
+      "speeds": [
+        {"key": "VNE", "value": 195, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VB", "value": 120, "unit": "kmh", "label_en": "Max speed in strong gusts/turbulence (top of green arc)", "label_pl": "Maks. prędkość w silnej turbulencji (koniec łuku zielonego)", "verified": true},
+        {"key": "VS", "value": 50, "unit": "kmh", "label_en": "Minimum speed (top of yellow VMIN arc 0-50)", "label_pl": "Prędkość minimalna (koniec łuku żółtego VMIN 0-50)", "verified": false},
+        {"key": "VY", "value": 90, "valueMax": 110, "unit": "kmh", "label_en": "Best rate of climb", "label_pl": "Prędkość najlepszego wznoszenia", "verified": true},
+        {"key": "VAPP", "value": 100, "unit": "kmh", "label_en": "Approach", "label_pl": "Prędkość podejścia", "verified": true}
+      ],
+      "extra": {"VX_kmh": [80, 90], "bestRange_kmh": 110, "bestGlideEngineOff_kmh": 100},
+      "ukCaa": {"tads": "BG-008 Issue 04", "VNE": "120 mph (104 KIAS / 195 km/h)", "url": "https://caa.co.uk/Documents/Download/3932/6ba9877d-8084-4283-9ebc-e497bf8088f7/3633"},
+      "bulletinsPage": "https://www.auto-gyro.com/downloads-and-documents/",
+      "source": "https://auto-gyro.com/wp-content/uploads/2023/downloads/POH/MTO2017/POH%20MTOsport%202017%20912%20914%20Version%201.1%20english.pdf"
+    },
+    {
+      "kind": "gyro",
+      "manufacturer": "AutoGyro",
+      "name": "AutoGyro MTOsport 2017 (915 iS / 916 iS)",
+      "engine": "Rotax 915 iS",
+      "engineOptions": ["915 iS", "916 iS"],
+      "speeds": [
+        {"key": "VNE", "value": 195, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VB", "value": 120, "unit": "kmh", "label_en": "Max speed in strong gusts/turbulence (start of yellow arc 120-195)", "label_pl": "Maks. prędkość w silnej turbulencji (początek łuku żółtego 120-195)", "verified": true},
+        {"key": "VS", "value": 40, "unit": "kmh", "label_en": "Minimum speed (top of yellow VMIN arc 0->40)", "label_pl": "Prędkość minimalna (koniec łuku żółtego VMIN 0->40)", "verified": false},
+        {"key": "VY", "value": 110, "unit": "kmh", "label_en": "Best rate of climb / best endurance", "label_pl": "Prędkość najlepszego wznoszenia", "verified": true},
+        {"key": "VAPP", "value": 100, "valueMax": 120, "unit": "kmh", "label_en": "Approach", "label_pl": "Prędkość podejścia", "verified": true}
+      ],
+      "extra": {"climb_kmh": 115, "bestRange_kmh": 115, "bestGlideEngineOff_kmh": [90, 100]},
+      "ukCaa": {"tads": "BG-008 Issue 04", "VNE": "120 mph (104 KIAS / 195 km/h)", "url": "https://caa.co.uk/Documents/Download/3932/6ba9877d-8084-4283-9ebc-e497bf8088f7/3633"},
+      "bulletinsPage": "https://www.auto-gyro.com/downloads-and-documents/",
+      "source": "https://www.auto-gyro.com/wp-content/uploads/2023/downloads/POH/MTO2017/POH%20MTOsport%202017%20915%20916%20Version%202.3%20English.pdf"
+    },
+    {
+      "kind": "gyro",
+      "manufacturer": "AutoGyro",
+      "name": "AutoGyro Calidus (915 iS / 916 iS)",
+      "engine": "Rotax 915 iS",
+      "engineOptions": ["912 ULS", "914 UL", "915 iS", "916 iS"],
+      "speeds": [
+        {"key": "VNE", "value": 225, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VB", "value": 130, "unit": "kmh", "label_en": "Max speed in strong gusts/turbulence (start of yellow arc 130-225)", "label_pl": "Maks. prędkość w silnej turbulencji (początek łuku żółtego 130-225)", "verified": true},
+        {"key": "VS", "value": 30, "unit": "kmh", "label_en": "Minimum speed (top of yellow VMIN arc 0-30)", "label_pl": "Prędkość minimalna (koniec łuku żółtego VMIN 0-30)", "verified": false},
+        {"key": "VY", "value": null, "unit": "kmh", "label_en": "Best rate of climb", "label_pl": "Prędkość najlepszego wznoszenia", "verified": false},
+        {"key": "VAPP", "value": null, "unit": "kmh", "label_en": "Approach", "label_pl": "Prędkość podejścia", "verified": false}
+      ],
+      "comment": "The speeds are from the 915/916 POH v1.3. Section 4/5 speeds (VY, approach) could not be extracted. The 912/914 Calidus has a separate POH. The website lists VNE 225 km/h (140 mph) at 500 kg.",
+      "ukCaa": {"tads": "BG04 Issue 12", "VNE": "90 mph IAS base; 120 mph (Add.1); 140 mph (Add.5)", "VB": "70 mph IAS", "url": "https://www.caa.co.uk/Documents/Download/3932/6ba9877d-8084-4283-9ebc-e497bf8088f7/3899"},
+      "bulletinsPage": "https://www.auto-gyro.com/downloads-and-documents/",
+      "source": "https://www.auto-gyro.com/wp-content/uploads/2023/downloads/POH/Calidus/POH%20Calidus%20915%20916%20Version%201.3%20english.pdf"
+    },
+    {
+      "kind": "gyro",
+      "manufacturer": "AutoGyro",
+      "name": "AutoGyro Cavalon (915 iS / 916 iS)",
+      "engine": "Rotax 915 iS",
+      "engineOptions": ["914 UL", "915 iS", "916 iS"],
+      "speeds": [
+        {"key": "VNE", "value": 195, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VB", "value": 130, "unit": "kmh", "label_en": "Max speed in strong gusts/turbulence (top of green arc 30-130)", "label_pl": "Maks. prędkość w silnej turbulencji (koniec łuku zielonego 30-130)", "verified": true},
+        {"key": "VS", "value": 30, "unit": "kmh", "label_en": "Minimum speed (top of yellow VMIN arc 0-30)", "label_pl": "Prędkość minimalna (koniec łuku żółtego VMIN 0-30)", "verified": false},
+        {"key": "VY", "value": null, "unit": "kmh", "label_en": "Best rate of climb", "label_pl": "Prędkość najlepszego wznoszenia", "verified": false},
+        {"key": "VAPP", "value": null, "unit": "kmh", "label_en": "Approach", "label_pl": "Prędkość podejścia", "verified": false}
+      ],
+      "comment": "The website lists 914 UL (special order only), 915 iS and 916 iS, with VNE 195 km/h (120 mph). The UK TADS also covers the 912 ULS. VY and approach speeds are not in the extracted part of the POH.",
+      "ukCaa": {"tads": "BG06 Issue 11", "VNE": "100 mph IAS; 120 mph with Rotorkopf III", "VB": "80 mph IAS", "url": "https://www.caa.co.uk/Documents/Download/3932/6ba9877d-8084-4283-9ebc-e497bf8088f7/3900"},
+      "bulletinsPage": "https://www.auto-gyro.com/downloads-and-documents/",
+      "source": "https://auto-gyro.com/wp-content/uploads/2023/downloads/POH/Cavalon/POH%20Cavalon%20915%20916%20Version%202.2%20english.pdf"
+    },
+    {
+      "kind": "gyro",
+      "manufacturer": "Magni Gyro",
+      "name": "Magni M16C Tandem Trainer",
+      "engine": "Rotax 914 UL",
+      "engineOptions": ["912 ULS", "914 UL"],
+      "speeds": [
+        {"key": "VNE", "value": 100, "unit": "mph", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VS", "value": 40, "unit": "mph", "label_en": "Minimum speed", "label_pl": "Prędkość minimalna", "verified": true},
+        {"key": "VY", "value": null, "unit": "mph", "label_en": "Best rate of climb", "label_pl": "Prędkość najlepszego wznoszenia", "verified": false},
+        {"key": "VAPP", "value": null, "unit": "mph", "label_en": "Approach", "label_pl": "Prędkość podejścia", "verified": false}
+      ],
+      "comment": "The speeds are from UK CAA TADS BG03 Issue 14, which covers the 914 UL. The manufacturer site gives only engine options (Rotax 912 100 hp or 914 Turbo 115 hp) and a cruise speed of 120-150 km/h. No Magni flight manual for the M16 was found publicly.",
+      "bulletinsPage": null,
+      "bulletinsNote": "Magni distributes manuals and service bulletins through its Magnipedia owner portal (login required; request access at contact@magnigyro.it). No public URL found.",
+      "source": "https://caa.co.uk/Documents/Download/3932/6ba9877d-8084-4283-9ebc-e497bf8088f7/1275"
+    },
+    {
+      "kind": "gyro",
+      "manufacturer": "Magni Gyro",
+      "name": "Magni M24C Orion",
+      "engine": "Rotax 914 UL",
+      "engineOptions": ["914 UL", "915 iS"],
+      "speeds": [
+        {"key": "VNE", "value": 105, "unit": "mph", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VB", "value": 90, "unit": "mph", "label_en": "Max speed in turbulence (VNO, top of green arc)", "label_pl": "Maks. prędkość w turbulencji (VNO)", "verified": true},
+        {"key": "VS", "value": 30, "unit": "mph", "label_en": "Minimum level flight speed", "label_pl": "Minimalna prędkość lotu poziomego", "verified": true},
+        {"key": "VY", "value": 65, "unit": "mph", "label_en": "Best rate of climb", "label_pl": "Prędkość najlepszego wznoszenia", "verified": true},
+        {"key": "VAPP", "value": 65, "unit": "mph", "label_en": "Final approach", "label_pl": "Prędkość podejścia końcowego", "verified": true}
+      ],
+      "extra": {"VX_mph": 55},
+      "comment": "The flight manual (Issue B, Australia, from the Magni distributor) gives speeds in mph and kt: VNE 90 kt, VNO 78 kt, VY 55 kt, minimum level flight 25 kt. The UK CAA TADS BG05 Issue 15 gives VNE 100 mph and minimum 30 mph. The 915 iS engine is fitted to the M24C Plus.",
+      "ukCaa": {"tads": "BG05 Issue 15", "VNE": "100 mph IAS", "VS": "30 mph", "url": "https://www.caa.co.uk/Documents/Download/3932/6ba9877d-8084-4283-9ebc-e497bf8088f7/3852"},
+      "bulletinsPage": null,
+      "bulletinsNote": "Magnipedia owner portal (login required).",
+      "source": "https://www.airborne.com.au/images_new_site/gyroplanes/manuals/M24C_FLIGHT_MANUAL_ISSUE-B_AUSTRALIA.pdf"
+    },
+    {
+      "kind": "gyro",
+      "manufacturer": "Aviation Artur Trendak",
+      "name": "Trendak Tercel (Carbon RSTi)",
+      "engine": "CA 912 ULT (AAT 912 RSTi, turbo)",
+      "engineOptions": ["AAT 912 RSTi", "AAT 140 RSTi"],
+      "speeds": [
+        {"key": "VNE", "value": 182, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 130, "unit": "kmh", "label_en": "Manoeuvring speed (VNO 130 km/h in AFM)", "label_pl": "Prędkość manewrowa", "verified": true},
+        {"key": "VS", "value": 60, "unit": "kmh", "label_en": "Minimum level flight speed", "label_pl": "Minimalna prędkość lotu poziomego", "verified": true},
+        {"key": "VY", "value": 105, "unit": "kmh", "label_en": "Best rate of climb", "label_pl": "Prędkość najlepszego wznoszenia", "verified": false},
+        {"key": "VAPP", "value": 90, "unit": "kmh", "label_en": "Approach", "label_pl": "Prędkość podejścia", "verified": true}
+      ],
+      "comment": "The AFM gives VNE 182 km/h (98 kt), VNO 130 km/h, Vmin 60 km/h, VY 105 km/h and VAPP 90 km/h. It also gives VY as 100 km/h in chapter 2 and approach as about 95 km/h in chapter 4. The Polish ULC recognition UL.AG.00-001/2023 (DULV data sheet 959-21) gives Vne 182, Va 130, Vso 65 and Vd 200 km/h. The website gives VNE 210 km/h and minimum 40 km/h, which do not match the AFM; the AFM values are used here.",
+      "bulletinsPage": "https://trendak.eu/do-pobrania/",
+      "source": "https://trendak.eu/wp-content/uploads/2024/08/TERCEL-AFM-001-EN.pdf"
+    },
+    {
+      "kind": "gyro",
+      "manufacturer": "Aviation Artur Trendak",
+      "name": "Trendak Taurus",
+      "engine": "AAT 912 RSTi",
+      "engineOptions": ["AAT 912 RSTi"],
+      "speeds": [
+        {"key": "VNE", "value": 210, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": false},
+        {"key": "VS", "value": 50, "unit": "kmh", "label_en": "Minimum speed", "label_pl": "Prędkość minimalna", "verified": false}
+      ],
+      "comment": "The figures are from the manufacturer website only, and the site says they are illustrative. No Taurus AFM was found.",
+      "bulletinsPage": "https://trendak.eu/do-pobrania/",
+      "source": "https://trendak.eu/modele/taurus/"
+    },
+    {
+      "kind": "gyro",
+      "manufacturer": "Aviation Artur Trendak",
+      "name": "Trendak Taifun",
+      "engine": "Rotax 916 iS",
+      "engineOptions": ["916 iS"],
+      "speeds": [
+        {"key": "VNE", "value": 210, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": false},
+        {"key": "VS", "value": 68, "unit": "kmh", "label_en": "Minimum speed", "label_pl": "Prędkość minimalna", "verified": false}
+      ],
+      "comment": "The figures are from the manufacturer website only, and the site says they are illustrative.",
+      "bulletinsPage": "https://trendak.eu/do-pobrania/",
+      "source": "https://trendak.eu/modele/taifun/"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "Air Création",
+      "name": "Air Création Tanarg neo / Skypper evo + BioniX 15",
+      "engine": "Rotax 912 ULS",
+      "engineOptions": ["912 UL", "912 ULS", "912 iS"],
+      "speeds": [
+        {"key": "VNE", "value": 184, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 124, "unit": "kmh", "label_en": "Manoeuvring / max in very turbulent air", "label_pl": "Prędkość manewrowa / maks. w silnej turbulencji", "verified": true},
+        {"key": "VS", "value": 62, "unit": "kmh", "label_en": "Stall speed", "label_pl": "Prędkość przeciągnięcia", "verified": true},
+        {"key": "VY", "value": 80, "unit": "kmh", "label_en": "Recommended initial climb", "label_pl": "Zalecana prędkość wznoszenia początkowego", "verified": true},
+        {"key": "VAPP", "value": 85, "unit": "kmh", "label_en": "Final approach", "label_pl": "Prędkość podejścia końcowego", "verified": true}
+      ],
+      "extra": {"minLevelFlight_kmh": 65, "mtom_kg": 450, "mtomWithRescue_kg": 472.5},
+      "bulletinsPage": "https://aircreation.com/fr/documentation-en-ligne",
+      "source": "https://aircreation.com/uploads/documentation/manuel-d-utilisation-bionix-15.pdf"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "Air Création",
+      "name": "Air Création Tanarg neo / Skypper evo + BioniX² 15",
+      "engine": "Rotax 912 ULS",
+      "engineOptions": ["912 UL", "912 ULS", "912 iS"],
+      "speeds": [
+        {"key": "VNE", "value": 184, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 126, "unit": "kmh", "label_en": "Manoeuvring / max in very turbulent air", "label_pl": "Prędkość manewrowa / maks. w silnej turbulencji", "verified": true},
+        {"key": "VS", "value": 63, "unit": "kmh", "label_en": "Stall speed", "label_pl": "Prędkość przeciągnięcia", "verified": true},
+        {"key": "VY", "value": 80, "unit": "kmh", "label_en": "Recommended initial climb", "label_pl": "Zalecana prędkość wznoszenia początkowego", "verified": true},
+        {"key": "VAPP", "value": 85, "unit": "kmh", "label_en": "Final approach", "label_pl": "Prędkość podejścia końcowego", "verified": true}
+      ],
+      "extra": {"mtom_kg": 475},
+      "bulletinsPage": "https://aircreation.com/fr/documentation-en-ligne",
+      "source": "https://aircreation.com/uploads/documentation/manuel-d-utilisation-bionix2-15.pdf"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "Air Création",
+      "name": "Air Création Tanarg neo / Skypper evo + NuviX",
+      "engine": "Rotax 912 ULS",
+      "engineOptions": ["912 UL", "912 ULS", "912 iS"],
+      "speeds": [
+        {"key": "VNE", "value": 163, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 122, "unit": "kmh", "label_en": "Manoeuvring / max in very turbulent air", "label_pl": "Prędkość manewrowa / maks. w silnej turbulencji", "verified": true},
+        {"key": "VS", "value": 61, "unit": "kmh", "label_en": "Stall speed", "label_pl": "Prędkość przeciągnięcia", "verified": true},
+        {"key": "VY", "value": 80, "unit": "kmh", "label_en": "Recommended initial climb", "label_pl": "Zalecana prędkość wznoszenia początkowego", "verified": true},
+        {"key": "VAPP", "value": 85, "unit": "kmh", "label_en": "Final approach", "label_pl": "Prędkość podejścia końcowego", "verified": true}
+      ],
+      "extra": {"minLevelFlight_kmh": 64, "mtom_kg": 450, "mtomWithRescue_kg": 462},
+      "bulletinsPage": "https://aircreation.com/fr/documentation-en-ligne",
+      "source": "https://aircreation.com/uploads/documentation/manuel-d-utilisation-nuvix.pdf"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "Air Création",
+      "name": "Air Création Tanarg / Skypper + iXess 15",
+      "engine": "Rotax 912 ULS",
+      "engineOptions": ["582", "700E (Skypper)", "912 UL", "912 ULS"],
+      "speeds": [
+        {"key": "VNE", "value": 155, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 100, "unit": "kmh", "label_en": "Manoeuvring / max in very turbulent air", "label_pl": "Prędkość manewrowa / maks. w silnej turbulencji", "verified": true},
+        {"key": "VS", "value": 62, "unit": "kmh", "label_en": "Stall speed", "label_pl": "Prędkość przeciągnięcia", "verified": true},
+        {"key": "VY", "value": 80, "unit": "kmh", "label_en": "Recommended initial climb", "label_pl": "Zalecana prędkość wznoszenia początkowego", "verified": true},
+        {"key": "VAPP", "value": 85, "unit": "kmh", "label_en": "Final approach", "label_pl": "Prędkość podejścia końcowego", "verified": true}
+      ],
+      "extra": {"minLevelFlight_kmh": 63, "mtom_kg": 450},
+      "comment": "The UK BMAA HADS HM16 gives different figures for iXess 15 on a Tanarg 912ULS: VNE 89 kt CAS, VA 72 kt, stall 32 kt. These are UK-specific; the manufacturer manual values are used here.",
+      "bulletinsPage": "https://aircreation.com/fr/documentation-en-ligne",
+      "source": "https://aircreation.com/uploads/documentation/manuel-d-utilisation-ixess-15.pdf"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "Air Création",
+      "name": "Air Création Tanarg / Skypper + iXess 13",
+      "engine": "Rotax 912 ULS",
+      "engineOptions": ["582", "700E (Skypper)", "912 UL", "912 ULS"],
+      "speeds": [
+        {"key": "VNE", "value": 165, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 130, "unit": "kmh", "label_en": "Manoeuvring / max in very turbulent air", "label_pl": "Prędkość manewrowa / maks. w silnej turbulencji", "verified": true},
+        {"key": "VS", "value": 62, "unit": "kmh", "label_en": "Stall speed", "label_pl": "Prędkość przeciągnięcia", "verified": true},
+        {"key": "VY", "value": 90, "unit": "kmh", "label_en": "Recommended initial climb", "label_pl": "Zalecana prędkość wznoszenia początkowego", "verified": true},
+        {"key": "VAPP", "value": 90, "unit": "kmh", "label_en": "Final approach", "label_pl": "Prędkość podejścia końcowego", "verified": true}
+      ],
+      "extra": {"minLevelFlight_kmh": 65, "mtom_kg": 450},
+      "bulletinsPage": "https://aircreation.com/fr/documentation-en-ligne",
+      "source": "https://aircreation.com/uploads/documentation/manuel-d-utilisation-ixess-13.pdf"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "Air Création",
+      "name": "Air Création Pixel + iFun 13 (single-seat)",
+      "engine": null,
+      "engineOptions": [],
+      "speeds": [
+        {"key": "VNE", "value": 120, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 88, "unit": "kmh", "label_en": "Max in very turbulent air", "label_pl": "Maks. prędkość w silnej turbulencji", "verified": true},
+        {"key": "VS", "value": 44, "unit": "kmh", "label_en": "Stall speed at 230 kg", "label_pl": "Prędkość przeciągnięcia (230 kg)", "verified": true},
+        {"key": "VY", "value": 55, "valueMax": 60, "unit": "kmh", "label_en": "Climb after short take-off", "label_pl": "Prędkość wznoszenia po krótkim starcie", "verified": false},
+        {"key": "VAPP", "value": null, "unit": "kmh", "label_en": "Approach", "label_pl": "Prędkość podejścia", "verified": false}
+      ],
+      "comment": "The iFun 13 manual covers the Pixel 250, Pixel 303 XC and Pixel Aero 1000 (MTOM 230 kg with Pixel). It gives stall 41 km/h at 180 kg. The manual names no engine; the Pixel 303 XC manual gives 8400 rpm max, and a service note references the Polini Thor 250, but this was not confirmed as the standard engine. The manual gives no normal approach speed; it gives about 60 km/h for a short landing.",
+      "bulletinsPage": "https://aircreation.com/fr/documentation-en-ligne",
+      "source": "https://aircreation.com/uploads/documentation/manuel-d-utilisation-ifun-13.pdf"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "P&M Aviation",
+      "name": "P&M QuikR",
+      "engine": "Rotax 912 ULS",
+      "engineOptions": ["912 UL", "912 ULS"],
+      "speeds": [
+        {"key": "VNE", "value": 120, "unit": "mph", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VS", "value": 40, "unit": "mph", "label_en": "Stall speed", "label_pl": "Prędkość przeciągnięcia", "verified": true},
+        {"key": "VA", "value": null, "unit": "mph", "label_en": "Manoeuvring", "label_pl": "Prędkość manewrowa", "verified": false}
+      ],
+      "comment": "Values are from the manufacturer spec page. The BMAA TADS BM77 PDF was not machine-readable.",
+      "bulletinsPage": "https://www.pmaviation.co.uk/downloads_new.php",
+      "source": "https://www.pmaviation.co.uk/quikr-ouraircraftdetails.html"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "P&M Aviation",
+      "name": "P&M Quik GTR",
+      "engine": "Rotax 912 ULS",
+      "engineOptions": ["912 UL", "912 ULS"],
+      "speeds": [
+        {"key": "VNE", "value": 120, "unit": "mph", "label_en": "Never exceed (IAS)", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 90, "unit": "mph", "label_en": "Manoeuvring (IAS)", "label_pl": "Prędkość manewrowa", "verified": true},
+        {"key": "VS", "value": 39, "unit": "mph", "label_en": "Stall / min flying speed at MTOW, idle (IAS)", "label_pl": "Prędkość przeciągnięcia / minimalna (MTOW)", "verified": true}
+      ],
+      "comment": "From BMAA TADS BM80 Issue 3 (15/08/2023). The minimum full-power climb speed is 40 mph. Climb-rate figures are given at 55 mph IAS.",
+      "bulletinsPage": "https://www.pmaviation.co.uk/downloads_new.php",
+      "source": "https://www.bmaa.org/files/tads_bm80_quik_gtr.pdf"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "P&M Aviation",
+      "name": "P&M PulsR",
+      "engine": "Rotax 912 ULS",
+      "engineOptions": ["912 ULS"],
+      "speeds": [
+        {"key": "VNE", "value": 120, "unit": "mph", "label_en": "Never exceed (IAS)", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 90, "unit": "mph", "label_en": "Manoeuvring (IAS)", "label_pl": "Prędkość manewrowa", "verified": true},
+        {"key": "VS", "value": 39, "unit": "mph", "label_en": "Stall / min flying speed at MTOW, idle (IAS)", "label_pl": "Prędkość przeciągnięcia / minimalna (MTOW)", "verified": true}
+      ],
+      "comment": "From BMAA TADS BM81 Issue 2; the PulsR uses the GTR wing. The manufacturer page gives the same VNE and stall speed.",
+      "bulletinsPage": "https://www.pmaviation.co.uk/downloads_new.php",
+      "source": "https://www.bmaa.org/files/tads_bm81_pulsr.pdf"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "P&M Aviation",
+      "name": "P&M Quik GT450",
+      "engine": "Rotax 912 ULS",
+      "engineOptions": ["912 UL", "912 ULS", "582 (GT450 Lite)"],
+      "speeds": [
+        {"key": "VNE", "value": 110, "unit": "mph", "label_en": "Never exceed (IAS)", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 80, "unit": "mph", "label_en": "Manoeuvring (IAS)", "label_pl": "Prędkość manewrowa", "verified": true},
+        {"key": "VS", "value": 38, "unit": "mph", "label_en": "Stall / min flying speed at MTOW, idle (IAS)", "label_pl": "Prędkość przeciągnięcia / minimalna (MTOW)", "verified": true}
+      ],
+      "comment": "From BMAA TADS BM70 Issue 4 (03/06/15). The minimum full-power climb speed is 40 mph.",
+      "bulletinsPage": "https://www.pmaviation.co.uk/downloads_new.php",
+      "source": "https://www.bmaa.org/files/tads_bm70_quik_gt450.pdf"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "P&M Aviation",
+      "name": "Pegasus / P&M Quik",
+      "engine": "Rotax 912 ULS",
+      "engineOptions": ["912 UL", "912 ULS"],
+      "speeds": [
+        {"key": "VNE", "value": 115, "unit": "mph", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VS", "value": 40, "unit": "mph", "label_en": "Stall speed", "label_pl": "Prędkość przeciągnięcia", "verified": true}
+      ],
+      "comment": "Values are from the manufacturer spec page. The BMAA TADS BM66 PDF was not machine-readable.",
+      "bulletinsPage": "https://www.pmaviation.co.uk/downloads_new.php",
+      "source": "https://www.pmaviation.co.uk/quik-ouraircraftdetails.html"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "Aeros",
+      "name": "Aeros-2 + Profi 14.5 TL (BMW 1200)",
+      "engine": "BMW Air 1200",
+      "engineOptions": ["BMW 1200"],
+      "speeds": [
+        {"key": "VNE", "value": 120, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": true},
+        {"key": "VA", "value": 80, "unit": "kmh", "label_en": "Manoeuvring", "label_pl": "Prędkość manewrowa", "verified": true},
+        {"key": "VS", "value": 65, "unit": "kmh", "label_en": "Minimum steady flight speed (Vso)", "label_pl": "Minimalna prędkość lotu ustalonego (Vso)", "verified": true}
+      ],
+      "comment": "From the DULV certificate (airworthiness 19/02/2013), MTOW 450 kg.",
+      "bulletinsPage": "https://aeros.com.ua/support",
+      "source": "https://aeros.com.ua/files/certificates/DULV-A2-B1200_Profi-TL.pdf"
+    },
+    {
+      "kind": "trike",
+      "manufacturer": "Aeros",
+      "name": "Aeros-2 (Rotax 912) + Profi / Profi TL",
+      "engine": "Rotax 912 UL",
+      "engineOptions": ["582", "912 UL", "912 ULS"],
+      "speeds": [
+        {"key": "VNE", "value": 130, "unit": "kmh", "label_en": "Never exceed", "label_pl": "Prędkość nieprzekraczalna", "verified": false},
+        {"key": "VS", "value": 52, "unit": "kmh", "label_en": "Stall / minimum speed at max load", "label_pl": "Prędkość minimalna (maks. obciążenie)", "verified": false},
+        {"key": "VA", "value": null, "unit": "kmh", "label_en": "Manoeuvring", "label_pl": "Prędkość manewrowa", "verified": false}
+      ],
+      "comment": "From the Aeros-2 website spec table (14.5 m² wing). The Profi page gives 130 km/h as 'maximum speed', and the Profi TL page gives 140-160 km/h. The DULV certificates for the Rotax 912 with Profi and Profi TL are scanned and could not be read. They should be checked: the BMW-engined DULV sheet has much lower values (VNE 120, Vso 65).",
+      "bulletinsPage": "https://aeros.com.ua/support",
+      "source": "https://aeros.com.ua/aeros_2"
+    }
+  ],
+  "unresolved": [
+    {"kind": "gyro", "name": "ELA 07 (Cougar/Scorpion) / ELA 08 / ELA 10 Eclipse", "manufacturer": "ELA Aviación", "reason": "The manufacturer site gives no speeds; the Cougar page shows only '100 cv'. The customer-service page says manuals are 'available soon'. No UK TADS. Only Wikipedia/aggregator data found.", "url": "https://elaaviacion.com/customer-service/"},
+    {"kind": "gyro", "name": "Trixy G 4-2 R", "manufacturer": "Trixy Aviation Products", "reason": "trixy.at blocks automated fetching (robots). Only Wikipedia/aggregators found.", "url": null},
+    {"kind": "gyro", "name": "Celier Xenon 2 / Xenon IV", "manufacturer": "Celier Aviation (now Trendak builds Xenon 2 RST; Flyargo builds Xenon IV)", "reason": "Listed in the Polish ULC approved-types list (UL-AG.00.012.001 Xenon 2 RST, UL-AG.01.009.001 Xenon IV), but no flight manual or data sheet with speeds was found.", "url": "https://ulc.gov.pl/_download/ltt/ciagla_zdolnosc/Lista_typow_zatwierdzonych_8.06.2021.pdf"},
+    {"kind": "gyro", "name": "Trendak Twistair 2.0", "manufacturer": "Aviation Artur Trendak", "reason": "The model page has no technical data.", "url": "https://trendak.eu/modele/twistair-2-0/"},
+    {"kind": "gyro", "name": "Aviomania Genesis", "manufacturer": "Aviomania (Cyprus)", "reason": "No official specs found; uncommon in Poland.", "url": null},
+    {"kind": "trike", "name": "Cosmos Phase III", "manufacturer": "Cosmos ULM", "reason": "No manufacturer manual or data sheet found online.", "url": null},
+    {"kind": "trike", "name": "Apollo Monsoon / Delta Jet", "manufacturer": "Apollo Ultralight Aircraft (HU)", "reason": "No official data found. The Apollo Fox is a three-axis aircraft with flaps, not a trike (Traficom data sheet: VNE 220, VA 124, VS0 60 km/h), so it was excluded.", "url": "https://static.traficom.fi/sites/default/files/media/file/Tekniset%20tiedot%20FIN-U053%20Apollo%20Fox.pdf"},
+    {"kind": "trike", "name": "Kompol Jazz 2000", "manufacturer": "KOMPOL (PL)", "reason": "The only Polish trike found in the ULC approved-types list (UL-PHG.00.002.001), but no speeds were found. Other Polish trike makers in the brief (Air-Bike, Ekolot, AirStar, Pegaz) were not found as trike producers.", "url": "https://ulc.gov.pl/_download/ltt/ciagla_zdolnosc/Lista_typow_zatwierdzonych_8.06.2021.pdf"}
+  ]
+}

@@ -114,6 +114,16 @@ fun HomeScreen(
         due.filter { it.remainingHours != null && it.status != com.cannonadestudio.tomarkpilot.data.DueStatus.DONE }
             .minByOrNull { it.remainingHours!! }?.let { d ->
                 NextInspectionCard(d, aircraft, state, lg, onBook = { bookWork = d.task.title.get(lg) }) { onTab(MainActivity.TAB_SERVICE) }
+            } ?: run {
+                // Nothing to count from yet (aircraft added with gaps in the records) – a hint instead of alarms.
+                if (due.any { it.status == com.cannonadestudio.tomarkpilot.data.DueStatus.NO_DATA }) {
+                    Card(Modifier.fillMaxWidth().padding(top = 10.dp).clickable { onTab(MainActivity.TAB_SERVICE) }) {
+                        Column(Modifier.padding(14.dp)) {
+                            Text(stringResource(R.string.next_insp_title), style = MaterialTheme.typography.labelLarge, color = HbgPink)
+                            Text(stringResource(R.string.no_data_card), style = MaterialTheme.typography.bodyMedium)
+                        }
+                    }
+                }
             }
         SponsorCard()
         // Flightradar24 – last flights of this registration
@@ -324,7 +334,8 @@ fun remainingText(d: com.cannonadestudio.tomarkpilot.data.DueInfo): String {
     }
     d.dueHours?.let { parts += stringResource(R.string.due_at, fmtH(it)) }
     d.dueDate?.let { parts += stringResource(R.string.due_on, fmtDate(it)) }
-    if (d.task.intervalMonths != null && d.dueDate == null && d.last == null) parts += stringResource(R.string.need_reference_date)
+    if (d.status == com.cannonadestudio.tomarkpilot.data.DueStatus.NO_DATA) parts += stringResource(R.string.no_data_hint)
+    else if (d.task.intervalMonths != null && d.dueDate == null && d.last == null) parts += stringResource(R.string.need_reference_date)
     return parts.joinToString(" · ")
 }
 
@@ -446,6 +457,11 @@ private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, 
                     Text(stringResource(R.string.next_insp_over, fmtH(-rem)), fontSize = 22.sp, fontWeight = FontWeight.Bold, color = numColor)
                 }
                 Text(stringResource(R.string.next_insp_at, d.task.title.get(lg), fmtH(d.dueHours ?: 0.0)), style = MaterialTheme.typography.bodyMedium)
+                val todo = com.cannonadestudio.tomarkpilot.data.Maintenance.itemsDue(d.task, d.dueHours)
+                if (todo.isNotEmpty()) {
+                    todo.take(6).forEach { Text("• " + it.title.get(lg), style = MaterialTheme.typography.bodySmall) }
+                    if (todo.size > 6) Text(stringResource(R.string.items_more, todo.size - 6), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
                 d.dueDate?.let { Text(stringResource(R.string.next_insp_date, fmtDate(it)), style = MaterialTheme.typography.bodySmall) }
                 val synced = state.logbookSyncedEpochDay
                 Text(

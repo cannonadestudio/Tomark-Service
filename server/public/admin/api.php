@@ -213,6 +213,46 @@ switch ($action) {
         } else {
             $res['bulletins'] = ['error' => 'download failed'];
         }
+        // Bulletin groups are maintained on GitHub (e.g. Evektor split per model, Rotax per engine family).
+        if (is_array($d['bulletins'] ?? null)) {
+            $cur = ah_read_editable('bulletins');
+            $feed = $cur ? json_decode($cur, true) : null;
+            if ($feed) {
+                $gh = []; foreach ($d['bulletins'] as $b) if (!empty($b['id'])) $gh[$b['id']] = $b['groups'] ?? null;
+                $changed = 0;
+                foreach ($feed['bulletins'] as &$b) if (isset($gh[$b['id']]) && $gh[$b['id']] && $gh[$b['id']] !== ($b['groups'] ?? null)) { $b['groups'] = $gh[$b['id']]; $changed++; }
+                unset($b);
+                if ($changed) { ah_backup('bulletins', $cur); ah_write_editable('bulletins', $feed); ah_log($u['login'], "pull bulletins: groups updated on $changed"); }
+                $res['bulletins']['groupsUpdated'] = $changed;
+            }
+        }
+        // Aircraft types: add new ones (trikes, gyroplanes…); old-format entries get engine / kind / groups
+        // and lose the engine tasks that now come from the engine catalogue. Speeds and texts you edited stay.
+        $raw = @file_get_contents("$base/types.json", false, $ctx);
+        $gt = $raw ? json_decode($raw, true) : null;
+        if (is_array($gt) && array_is_list($gt)) {
+            $cur = ah_read_editable('types');
+            $types = $cur ? json_decode($cur, true) : [];
+            $byId = []; foreach ($gt as $t) $byId[$t['id']] = $t;
+            $added = 0; $upgraded = 0; $have = [];
+            foreach ($types as &$t) {
+                $have[$t['id']] = 1;
+                $g = $byId[$t['id']] ?? null;
+                if ($g && empty($t['engine'])) {
+                    $t['engine'] = $g['engine'] ?? 'rotax_912';
+                    $t['kind'] = $g['kind'] ?? 'airplane';
+                    $t['bulletinGroups'] = $g['bulletinGroups'];
+                    $t['tasks'] = array_values(array_filter($t['tasks'], fn($k) => !preg_match('/^(rotax_|prop$|brs_)/', $k['id'])));
+                    $upgraded++;
+                }
+            }
+            unset($t);
+            foreach ($gt as $t) if (!isset($have[$t['id']])) { $types[] = $t; $added++; }
+            if ($added || $upgraded) { ah_backup('types', $cur); ah_write_editable('types', $types); ah_log($u['login'], "pull types: $added new, $upgraded upgraded"); }
+            $res['types'] = ['new' => $added, 'upgraded' => $upgraded, 'total' => count($types)];
+        } else {
+            $res['types'] = ['error' => 'download failed'];
+        }
         out(200, $res);
 
     // ------------------------------------------------------------ public endpoints used by the app

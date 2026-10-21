@@ -57,6 +57,12 @@ object Repo {
     /** Examiner lists (public ULC data) – empty until the user downloads them. */
     val examiners: StateFlow<ContactFeed> = _examiners.asStateFlow()
 
+    private val enginesCache get() = File(app.filesDir, "engines_cache.json")
+    /** Engine catalogue (inspections + bulletin groups per engine family). */
+    lateinit var engines: List<EngineType>
+        private set
+    private lateinit var bundledTypes: List<AircraftType>
+
     private val sponsorCache get() = File(app.filesDir, "sponsor_cache.json")
     private val _sponsor = MutableStateFlow(SponsorFeed())
     val sponsor: StateFlow<SponsorFeed> = _sponsor.asStateFlow()
@@ -69,8 +75,12 @@ object Repo {
         synchronized(lock) {
             if (::app.isInitialized) return
             app = context.applicationContext
-            types = runCatching { json.decodeFromString<List<AircraftType>>(typesCache.readText()) }.getOrNull()
-                ?.takeIf { it.isNotEmpty() } ?: json.decodeFromString(readAsset("types.json"))
+            bundledTypes = json.decodeFromString(readAsset("types.json"))
+            types = withBundled(runCatching { json.decodeFromString<List<AircraftType>>(typesCache.readText()) }.getOrNull()
+                ?.takeIf { it.isNotEmpty() } ?: bundledTypes)
+            val bundledEngines = json.decodeFromString<List<EngineType>>(readAsset("engines.json"))
+            engines = runCatching { json.decodeFromString<List<EngineType>>(enginesCache.readText()) }.getOrNull()
+                ?.takeIf { it.isNotEmpty() }?.let { c -> c + bundledEngines.filter { b -> c.none { it.id == b.id } } } ?: bundledEngines
             _feed.value = loadFeed()
             runCatching { baseCache.readText().trim() }.getOrNull()?.takeIf { it.startsWith("https://") }?.let { dataBase = it }
             _examiners.value = runCatching { json.decodeFromString<ContactFeed>(examinersCache.readText()) }.getOrNull() ?: ContactFeed()
@@ -156,6 +166,7 @@ object Repo {
         refreshBulletins()
         refreshContacts()
         refreshTypes()
+        refreshEngines()
         refreshNews()
         refreshSponsor()
         if (_state.value.examinersEnabled) refreshExaminers()
@@ -395,11 +406,36 @@ object Repo {
             if (remote.size < 2 || remote.any { it.speeds.isEmpty() }) error("suspicious types list")
             val used = _state.value.aircraft.map { it.typeId }.toSet()
             val kept = types.filter { it.id in used && remote.none { r -> r.id == it.id } }
-            val merged = remote + kept
+            val merged = withBundled(remote + kept)
             typesCache.writeText(json.encodeToString(kotlinx.serialization.builtins.ListSerializer(AircraftType.serializer()), merged))
             types = merged
             _typesVersion.value++
             merged.size
+        }
+    }
+
+    /**
+     * Types from the server/cache plus every bundled type the list lacks (new trikes, gyroplanes…).
+     * Old-format entries (no engine field) take engine, kind and bulletin groups from the bundled copy.
+     */
+    private fun withBundled(list: List<AircraftType>): List<AircraftType> {
+        val byId = bundledTypes.associateBy { it.id }
+        val fixed = list.map { t ->
+            val b = byId[t.id]
+            if (t.engine.isBlank() && b != null) t.copy(engine = b.engine, kind = b.kind, bulletinGroups = b.bulletinGroups) else t
+        }
+        return fixed + bundledTypes.filter { b -> fixed.none { it.id == b.id } }
+    }
+
+    suspend fun refreshEngines(): Result<Int> = withContext(Dispatchers.IO) {
+        runCatching {
+            val text = downloadData("engines")
+            val remote = json.decodeFromString<List<EngineType>>(text)
+            if (remote.isEmpty() || remote.none { it.id == "rotax_912" }) error("suspicious engines list")
+            enginesCache.writeText(text)
+            engines = remote + engines.filter { e -> remote.none { it.id == e.id } }
+            _typesVersion.value++
+            remote.size
         }
     }
 
@@ -558,7 +594,65 @@ object Repo {
         scheduleBackup()
     }
 
-    fun type(id: String): AircraftType? = types.firstOrNull { it.id == id }
+    fun type(id: String): AircraftType? = types.firstOrNull { it.id == id } ?: _state.value.customTypes.firstOrNull { it.id == id }
+
+    /** Catalogue types followed by the owner's own types. */
+    fun allTypes(s: AppState = _state.value): List<AircraftType> = types + s.customTypes
+
+    fun engine(id: String?): EngineType? = engines.firstOrNull { it.id == id }
+
+    /** The engine of this aircraft: the owner's choice, else the type's default, else Rotax 912. */
+    fun engineOf(a: Aircraft): EngineType =
+        engine(a.engineId) ?: engine(type(a.typeId)?.engine) ?: engine("rotax_912") ?: engines.first()
+
+    fun saveCustomType(t: AircraftType) = update { s -> s.copy(customTypes = s.customTypes.filterNot { it.id == t.id } + t) }
+
+    fun deleteCustomType(id: String) = update { s -> s.copy(customTypes = s.customTypes.filterNot { it.id == id }) }
+
+    /** Bulletin groups of this aircraft: airframe groups of the type + the engine's groups. */
+    fun bulletinGroups(a: Aircraft): Set<String> {
+        val t = type(a.typeId)
+        val airframe = (t?.bulletinGroups ?: emptyList()).filterNot { it.startsWith("ROTAX_") }.flatMap { g ->
+            // old server data: one EVEKTOR group for all models
+            if (g == "EVEKTOR") listOf(evektorGroup(t?.name ?: "")) else listOf(g)
+        }
+        return (airframe + engineOf(a).bulletinGroups).toSet()
+    }
+
+    private fun evektorGroup(name: String) = name.lowercase().let {
+        when { "harmony" in it -> "EVEKTOR_HARMONY"; "rtc" in it -> "EVEKTOR_RTC"; "sportstar" in it -> "EVEKTOR_SPORTSTAR"; else -> "EVEKTOR_EV97" }
+    }
+
+    /** Groups of a bulletin; old server copies still carry one EVEKTOR group – split by the document number. */
+    private fun groupsOf(b: Bulletin): List<String> {
+        if ("EVEKTOR" !in b.groups) return b.groups
+        val id = b.id.uppercase()
+        val spec = when {
+            id.startsWith("EVEKTOREV97") -> listOf("EVEKTOR_EV97")
+            id.startsWith("EVEKTORSPORTSTAR") -> listOf("EVEKTOR_SPORTSTAR")
+            id.startsWith("EVEKTORRTC") -> listOf("EVEKTOR_RTC")
+            id.startsWith("EVEKTORHARMONY") -> listOf("EVEKTOR_HARMONY")
+            else -> listOf("EVEKTOR_EV97", "EVEKTOR_SPORTSTAR", "EVEKTOR_RTC", "EVEKTOR_HARMONY")
+        }
+        return b.groups - "EVEKTOR" + spec
+    }
+
+    fun saveOwnBulletin(aircraftId: String, b: Bulletin) = update { s ->
+        s.copy(ownBulletins = s.ownBulletins.filterNot { it.aircraftId == aircraftId && it.bulletin.id == b.id } + OwnBulletin(aircraftId, b))
+    }
+
+    fun deleteOwnBulletin(aircraftId: String, id: String) = update { s ->
+        s.copy(
+            ownBulletins = s.ownBulletins.filterNot { it.aircraftId == aircraftId && it.bulletin.id == id },
+            bulletinStatus = s.bulletinStatus.filterNot { it.aircraftId == aircraftId && it.bulletinId == id },
+        )
+    }
+
+    fun isOwnBulletin(a: Aircraft, id: String, s: AppState = _state.value) = s.ownBulletins.any { it.aircraftId == a.id && it.bulletin.id == id }
+
+    fun saveLogEntry(e: LogEntry) = update { s -> s.copy(logEntries = s.logEntries.filterNot { it.id == e.id } + e) }
+
+    fun deleteLogEntry(id: String) = update { s -> s.copy(logEntries = s.logEntries.filterNot { it.id == id }) }
 
     fun selected(s: AppState = _state.value): Aircraft? =
         s.aircraft.firstOrNull { it.id == s.selectedId } ?: s.aircraft.firstOrNull()
@@ -578,18 +672,22 @@ object Repo {
             aircraft = s.aircraft.filterNot { it.id == id },
             completions = s.completions.filterNot { it.aircraftId == id },
             bulletinStatus = s.bulletinStatus.filterNot { it.aircraftId == id },
+            logEntries = s.logEntries.filterNot { it.aircraftId == id },
+            ownBulletins = s.ownBulletins.filterNot { it.aircraftId == id },
             selectedId = if (s.selectedId == id) s.aircraft.firstOrNull { it.id != id }?.id else s.selectedId,
         )
     }
 
-    fun bulletinsFor(a: Aircraft, feed: BulletinFeed = _feed.value): List<Bulletin> {
-        val groups = type(a.typeId)?.bulletinGroups ?: return emptyList()
-        return feed.bulletins.filter { b -> b.groups.any { it in groups } }
+    fun bulletinsFor(a: Aircraft, feed: BulletinFeed = _feed.value, s: AppState = _state.value): List<Bulletin> {
+        val groups = bulletinGroups(a)
+        val own = s.ownBulletins.filter { it.aircraftId == a.id }.map { it.bulletin }
+        return (own + feed.bulletins.filter { b -> groupsOf(b).any { it in groups } && own.none { o -> o.id == b.id } })
+            .sortedByDescending { it.date }
     }
 
     /** Bulletins (not plain documents) without DONE/NA status for this aircraft. */
     fun openBulletins(a: Aircraft, s: AppState = _state.value, feed: BulletinFeed = _feed.value): List<Bulletin> {
         val handled = s.bulletinStatus.filter { it.aircraftId == a.id }.map { it.bulletinId }.toSet()
-        return bulletinsFor(a, feed).filter { it.kind != "DOC" && it.id !in handled }
+        return bulletinsFor(a, feed, s).filter { it.kind != "DOC" && it.id !in handled }
     }
 }

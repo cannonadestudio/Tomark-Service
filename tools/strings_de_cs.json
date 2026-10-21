@@ -1210,5 +1210,189 @@
  "export_disclaimer": {
   "de": "Zusammenfassung der Einträge des Halters in der App AeroHangar. Ersetzt nicht die Bordbücher und die Wartungsdokumentation.",
   "cs": "Přehled záznamů majitele z aplikace AeroHangar. Nenahrazuje knihy draku, motoru a vrtule ani dokumentaci údržby."
+ },
+ "status_nodata": {
+  "de": "Kein Eintrag",
+  "cs": "Bez záznamu"
+ },
+ "cat_periodic": {
+  "de": "Regelinspektion",
+  "cs": "Periodická prohlídka"
+ },
+ "no_data_hint": {
+  "de": "letzte Durchführung eintragen",
+  "cs": "zadejte poslední provedení"
+ },
+ "no_data_card": {
+  "de": "Letzte Inspektionen unter Wartung eintragen.",
+  "cs": "Zadejte poslední prohlídky v Údržbě."
+ },
+ "items_more": {
+  "de": "…und %1$d weitere",
+  "cs": "…a dalších %1$d"
+ },
+ "items_at": {
+  "de": "Bei %1$s h zu tun:",
+  "cs": "Provést při %1$s h:"
+ },
+ "items_scope": {
+  "de": "Umfang",
+  "cs": "Rozsah prací"
+ },
+ "engine_label": {
+  "de": "Motor: %1$s",
+  "cs": "Motor: %1$s"
+ },
+ "log_title": {
+  "de": "Eigene Einträge",
+  "cs": "Vlastní záznamy"
+ },
+ "log_hint": {
+  "de": "Reifen, Batterie, Reparaturen, Änderungen…",
+  "cs": "Pneumatiky, baterie, opravy, úpravy…"
+ },
+ "log_add": {
+  "de": "Eintrag hinzufügen",
+  "cs": "Přidat záznam"
+ },
+ "log_what": {
+  "de": "Was wurde gemacht",
+  "cs": "Co bylo provedeno"
+ },
+ "own_bulletin_add": {
+  "de": "Bulletin hinzufügen",
+  "cs": "Přidat bulletin"
+ },
+ "own_bulletin_hint": {
+  "de": "Für ein fehlendes Bulletin; nur für dieses Flugzeug.",
+  "cs": "Pro bulletin, který v seznamu chybí. Uloží se jen pro toto letadlo."
+ },
+ "own_bulletin_number": {
+  "de": "Nummer (z. B. SB-912-081)",
+  "cs": "Číslo (např. SB-912-081)"
+ },
+ "own_bulletin_title": {
+  "de": "Betreff",
+  "cs": "Předmět"
+ },
+ "own_bulletin_date": {
+  "de": "Ausgabedatum",
+  "cs": "Datum vydání"
+ },
+ "own_bulletin_url": {
+  "de": "Link (optional)",
+  "cs": "Odkaz (volitelné)"
+ },
+ "kind_airplanes": {
+  "de": "Flugzeuge",
+  "cs": "Letadla"
+ },
+ "kind_trikes": {
+  "de": "Trikes",
+  "cs": "Motorová rogala"
+ },
+ "kind_gyros": {
+  "de": "Tragschrauber",
+  "cs": "Vírníky"
+ },
+ "kind_custom": {
+  "de": "Eigene Typen",
+  "cs": "Moje typy"
+ },
+ "kind_airplane": {
+  "de": "Flugzeug",
+  "cs": "Letadlo"
+ },
+ "kind_trike": {
+  "de": "Trike",
+  "cs": "Motorové rogalo"
+ },
+ "kind_gyro": {
+  "de": "Tragschrauber",
+  "cs": "Vírník"
+ },
+ "custom_type_add": {
+  "de": "Eigenen Typ hinzufügen",
+  "cs": "Přidat vlastní typ"
+ },
+ "custom_type_hint": {
+  "de": "Typ fehlt? Selbst hinzufügen.",
+  "cs": "Váš typ chybí? Přidejte ho."
+ },
+ "custom_type_name": {
+  "de": "Typbezeichnung",
+  "cs": "Název typu"
+ },
+ "custom_type_maker": {
+  "de": "Hersteller",
+  "cs": "Výrobce"
+ },
+ "custom_type_airframe": {
+  "de": "Regelinspektion Zelle",
+  "cs": "Periodická prohlídka draku"
+ },
+ "custom_type_in_use": {
+  "de": "Ein Flugzeug nutzt diesen Typ.",
+  "cs": "Typ používá letadlo."
+ },
+ "custom_type_delete_q": {
+  "de": "Typ löschen?",
+  "cs": "Smazat typ?"
+ },
+ "engine_type": {
+  "de": "Motor",
+  "cs": "Motor"
+ },
+ "engine_default": {
+  "de": "Standard für diesen Typ",
+  "cs": "výchozí pro typ"
+ },
+ "change_engine": {
+  "de": "Motor ändern",
+  "cs": "Změnit motor"
+ },
+ "engine_hint": {
+  "de": "Der Motor bestimmt Inspektionen und Bulletins.",
+  "cs": "Motor určuje prohlídky a bulletiny motoru."
+ },
+ "propeller_type": {
+  "de": "Propeller",
+  "cs": "Vrtule"
+ },
+ "prop_fixed": {
+  "de": "Fest",
+  "cs": "Pevná"
+ },
+ "prop_ground": {
+  "de": "Am Boden verstellbar",
+  "cs": "Stavitelná na zemi"
+ },
+ "prop_inflight": {
+  "de": "Im Flug verstellbar",
+  "cs": "Stavitelná za letu"
+ },
+ "prop_inspections": {
+  "de": "Propellerinspektionen führen",
+  "cs": "Sledovat prohlídky vrtule"
+ },
+ "prop_inspections_hint": {
+  "de": "Pflicht bei im Flug verstellbaren Propellern.",
+  "cs": "Povinné pro vrtule stavitelné za letu."
+ },
+ "rescue_system": {
+  "de": "Rettungssystem",
+  "cs": "Záchranný systém (padák)"
+ },
+ "years_n": {
+  "de": "%1$s Jahre",
+  "cs": "%1$s let"
+ },
+ "rescue_years": {
+  "de": "Packintervall (Jahre)",
+  "cs": "Přebalení každých (let)"
+ },
+ "rescue_hint": {
+  "de": "Standard 6 Jahre – laut Handbuch.",
+  "cs": "Výchozí 6 let – dle příručky systému."
  }
 }

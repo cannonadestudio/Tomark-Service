@@ -29,6 +29,30 @@ for t in types:
             if not task["title"].get(lang):
                 errors.append(f"{t['id']}/{task['id']}: missing title {lang}")
 
+# Engine catalogue: inspections with items; engine bulletin groups count as known groups.
+engines = load("data/engines.json")
+eids = [e["id"] for e in engines]
+if len(eids) != len(set(eids)):
+    errors.append("engines: duplicate ids")
+for e in engines:
+    groups.update(e["bulletinGroups"])
+    tids = [x["id"] for x in e["tasks"]]
+    if len(tids) != len(set(tids)):
+        errors.append(f"engine {e['id']}: duplicate task ids")
+    for task in e["tasks"]:
+        if not task["title"].get("pl") or not task["title"].get("en"):
+            errors.append(f"engine {e['id']}/{task['id']}: missing title")
+        for it in task.get("items", []):
+            if not it["title"].get("pl") or not it["title"].get("en"):
+                errors.append(f"engine {e['id']}/{task['id']}: item without title")
+for t in types:
+    if t.get("engine") not in eids:
+        errors.append(f"type {t['id']}: unknown engine {t.get('engine')}")
+    if t.get("kind", "airplane") not in ("airplane", "trike", "gyro"):
+        errors.append(f"type {t['id']}: bad kind")
+# Model families without an own type yet (bulletins kept for owners who add their type themselves).
+groups.update({"EVEKTOR_SPORTSTAR"})
+
 for path in ("data/bulletins.json",):
     feed = load(path)
     ids = [b["id"] for b in feed["bulletins"]]

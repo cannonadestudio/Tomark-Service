@@ -65,13 +65,17 @@ fun ServiceScreen(state: AppState, aircraft: Aircraft) {
     var open by remember { mutableStateOf<String?>(null) }
     var adding by remember { mutableStateOf(false) }
     val all = Maintenance.compute(aircraft, state.completions, includeHidden = true)
-    val list = all.filter { showHidden || aircraft.taskOverrides[it.task.id]?.hidden != true }
+    val list = all.filter { showHidden || !Maintenance.isHidden(it.task, aircraft) }
+    var logEdit by remember { mutableStateOf<com.cannonadestudio.tomarkpilot.data.LogEntry?>(null) }
+    var logNew by remember { mutableStateOf(false) }
+    val log = state.logEntries.filter { it.aircraftId == aircraft.id }.sortedWith(compareByDescending<com.cannonadestudio.tomarkpilot.data.LogEntry> { it.epochDay }.thenByDescending { it.hours ?: 0.0 })
 
     Box(Modifier.fillMaxSize()) {
         LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
             item {
                 Spacer(Modifier.height(12.dp))
                 EngineSerialLine(aircraft, MaterialTheme.colorScheme.primary)
+                Text(stringResource(R.string.engine_label, Repo.engineOf(aircraft).name), style = MaterialTheme.typography.bodySmall, color = Color.White)
                 Text(
                     stringResource(R.string.service_intro, fmtH(aircraft.hours)),
                     style = MaterialTheme.typography.bodySmall,
@@ -83,6 +87,32 @@ fun ServiceScreen(state: AppState, aircraft: Aircraft) {
             items(list, key = { it.task.id }) { d ->
                 TaskCard(d, aircraft, lg) { open = d.task.id }
                 Spacer(Modifier.height(8.dp))
+            }
+            // Own log entries: anything outside the programme (tyres, battery, repairs, modifications…)
+            item {
+                Card(Modifier.fillMaxWidth()) {
+                    Column(Modifier.padding(14.dp)) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Column(Modifier.weight(1f)) {
+                                Text(stringResource(R.string.log_title), style = MaterialTheme.typography.titleSmall)
+                                Text(stringResource(R.string.log_hint), style = MaterialTheme.typography.bodySmall)
+                            }
+                            TextButton(onClick = { logNew = true }) { Text(stringResource(R.string.log_add)) }
+                        }
+                        if (log.isEmpty()) Text(stringResource(R.string.no_history), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        log.forEach { e ->
+                            HorizontalDivider(Modifier.padding(vertical = 4.dp))
+                            Row(Modifier.fillMaxWidth().clickable { logEdit = e }, verticalAlignment = Alignment.CenterVertically) {
+                                Column(Modifier.weight(1f)) {
+                                    Text(e.title, fontWeight = FontWeight.SemiBold)
+                                    Text(fmtEpochDay(e.epochDay) + (e.hours?.let { " · ${fmtH(it)} h" } ?: ""), style = MaterialTheme.typography.bodySmall)
+                                    if (e.note.isNotBlank()) Text(e.note, style = MaterialTheme.typography.bodySmall)
+                                }
+                                Icon(Icons.Filled.Edit, stringResource(R.string.edit))
+                            }
+                        }
+                    }
+                }
             }
             item { Spacer(Modifier.height(88.dp)) }
         }
@@ -96,11 +126,13 @@ fun ServiceScreen(state: AppState, aircraft: Aircraft) {
 
     open?.let { id -> all.firstOrNull { it.task.id == id }?.let { TaskDialog(it, aircraft, state, lg) { open = null } } }
     if (adding) AddTaskDialog(aircraft) { adding = false }
+    if (logNew) LogEntryDialog(aircraft, null) { logNew = false }
+    logEdit?.let { e -> LogEntryDialog(aircraft, e) { logEdit = null } }
 }
 
 @Composable
 private fun TaskCard(d: DueInfo, a: Aircraft, lg: String, onClick: () -> Unit) {
-    val hidden = a.taskOverrides[d.task.id]?.hidden == true
+    val hidden = Maintenance.isHidden(d.task, a)
     Card(Modifier.fillMaxWidth().clickable(onClick = onClick)) {
         Column(Modifier.padding(14.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -120,6 +152,16 @@ private fun TaskCard(d: DueInfo, a: Aircraft, lg: String, onClick: () -> Unit) {
             Text(intervalText(d.task), style = MaterialTheme.typography.bodySmall)
             val rem = remainingText(d)
             if (rem.isNotBlank()) Text(rem, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold)
+            // What to do at the next one (e.g. at 1100 h: oil + filter…, at 1200 h also plugs)
+            val todo = Maintenance.itemsDue(d.task, d.dueHours)
+            if (todo.isNotEmpty()) {
+                Text(
+                    d.dueHours?.let { stringResource(R.string.items_at, fmtH(it)) } ?: stringResource(R.string.items_scope),
+                    style = MaterialTheme.typography.labelMedium, color = HbgPink, modifier = Modifier.padding(top = 4.dp),
+                )
+                todo.take(5).forEach { Text("• " + it.title.get(lg) + (if (!it.verified) " ⚠" else ""), style = MaterialTheme.typography.bodySmall) }
+                if (todo.size > 5) Text(stringResource(R.string.items_more, todo.size - 5), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
             d.last?.let {
                 Text(
                     stringResource(R.string.last_done, fmtEpochDay(it.epochDay), fmtH(it.hours)),
@@ -157,7 +199,8 @@ private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onD
     val ov = a.taskOverrides[d.task.id] ?: TaskOverride()
     var ih by remember { mutableStateOf(d.task.intervalHours?.let { fmtH(it) } ?: "") }
     var im by remember { mutableStateOf(d.task.intervalMonths?.toString() ?: "") }
-    val history = state.completions.filter { it.aircraftId == a.id && it.taskId == d.task.id }.sortedByDescending { it.hours }
+    val history = Maintenance.recordsFor(d.task, a, state.completions).sortedByDescending { it.hours }
+    val hiddenNow = Maintenance.isHidden(d.task, a)
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -181,6 +224,19 @@ private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onD
                         OutlinedTextField(note, { note = it }, label = { Text(stringResource(R.string.note)) }, modifier = Modifier.fillMaxWidth())
                         Spacer(Modifier.height(8.dp))
                         d.task.note?.let { Text(it.get(lg), style = MaterialTheme.typography.bodySmall) }
+                        // Full scope: every item, with its own hour step
+                        if (d.task.items.isNotEmpty()) {
+                            Text(stringResource(R.string.items_scope), style = MaterialTheme.typography.labelLarge, color = HbgPink, modifier = Modifier.padding(top = 6.dp))
+                            val now = Maintenance.itemsDue(d.task, d.dueHours).toSet()
+                            d.task.items.forEach { it ->
+                                Text(
+                                    (if (it in now) "• " else "◦ ") + it.title.get(lg) +
+                                        (it.everyHours?.let { h -> " — " + stringResource(R.string.every_h, fmtH(h)) } ?: "") + (if (!it.verified) " ⚠" else ""),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = if (it in now) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            }
+                        }
                         SourceLine(d.task.source, d.task.verified)
                     }
                     1 -> {
@@ -213,7 +269,7 @@ private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onD
                             }) { Text(stringResource(R.string.save_interval)) }
                         }
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Checkbox(ov.hidden, { saveOverride(a, d.task.id, ov.copy(hidden = it), false) })
+                            Checkbox(hiddenNow, { saveOverride(a, d.task.id, ov.copy(hidden = it), false) })
                             Text(stringResource(R.string.hide_task))
                         }
                         if (d.isCustom) {
@@ -300,6 +356,46 @@ private fun AddTaskDialog(a: Aircraft, onDismiss: () -> Unit) {
                     mandatory = mandatory, source = "—", verified = true,
                 )
                 Repo.upsertAircraft(a.copy(customTasks = a.customTasks + t))
+                onDismiss()
+            }) { Text(stringResource(R.string.save)) }
+        },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
+    )
+}
+
+
+/** Own maintenance log entry: date, optional hours, what was done. */
+@Composable
+private fun LogEntryDialog(a: Aircraft, e: com.cannonadestudio.tomarkpilot.data.LogEntry?, onDismiss: () -> Unit) {
+    var title by remember { mutableStateOf(e?.title ?: "") }
+    var date by remember { mutableStateOf(e?.let { fmtEpochDay(it.epochDay) } ?: fmtDate(LocalDate.now())) }
+    var hours by remember { mutableStateOf(e?.hours?.let { fmtH(it) } ?: fmtH(a.hours)) }
+    var note by remember { mutableStateOf(e?.note ?: "") }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(if (e == null) R.string.log_add else R.string.edit)) },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                OutlinedTextField(title, { title = it }, label = { Text(stringResource(R.string.log_what)) }, modifier = Modifier.fillMaxWidth())
+                Row {
+                    DateField(date, { date = it }, stringResource(R.string.prev_done_date), Modifier.weight(1.15f))
+                    Spacer(Modifier.width(6.dp))
+                    NumberField(hours, { hours = it }, stringResource(R.string.prev_done_hours), Modifier.weight(0.85f))
+                }
+                OutlinedTextField(note, { note = it }, label = { Text(stringResource(R.string.note)) }, modifier = Modifier.fillMaxWidth())
+                if (e != null) TextButton(onClick = { Repo.deleteLogEntry(e.id); onDismiss() }) {
+                    Text(stringResource(R.string.delete), color = Color(0xFFC62828))
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(enabled = title.isNotBlank() && parseDate(date) != null && (hours.isBlank() || parseNum(hours) != null), onClick = {
+                Repo.saveLogEntry(
+                    com.cannonadestudio.tomarkpilot.data.LogEntry(
+                        id = e?.id ?: Repo.newId(), aircraftId = a.id, epochDay = parseDate(date)!!.toEpochDay(),
+                        hours = parseNum(hours), title = title.trim(), note = note.trim(),
+                    )
+                )
                 onDismiss()
             }) { Text(stringResource(R.string.save)) }
         },

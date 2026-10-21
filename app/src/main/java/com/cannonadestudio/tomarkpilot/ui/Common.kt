@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
@@ -122,16 +123,14 @@ fun DateField(value: String, onChange: (String) -> Unit, label: String, modifier
     val d = parseDate(value)
     OutlinedTextField(
         value = d?.format(DISPLAY) ?: value, onValueChange = {}, readOnly = true, singleLine = true,
-        label = { Text(label) }, interactionSource = src, modifier = modifier,
+        label = { Text(label, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis) },
+        interactionSource = src, modifier = modifier,
+        textStyle = MaterialTheme.typography.bodyMedium,
+        // Tapping the field opens the calendar; the cross (only when filled) clears it.
         trailingIcon = {
-            androidx.compose.foundation.layout.Row {
-                if (value.isNotBlank()) androidx.compose.material3.IconButton(onClick = { onChange("") }) {
-                    androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Filled.Clear, stringResource(R.string.date_clear))
-                }
-                androidx.compose.material3.IconButton(onClick = { show = true }) {
-                    androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Filled.CalendarMonth, stringResource(R.string.date_pick))
-                }
-            }
+            if (value.isNotBlank()) androidx.compose.material3.IconButton(onClick = { onChange("") }, modifier = Modifier.size(32.dp)) {
+                androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Filled.Clear, stringResource(R.string.date_clear), Modifier.size(18.dp))
+            } else androidx.compose.material3.Icon(androidx.compose.material.icons.Icons.Filled.CalendarMonth, stringResource(R.string.date_pick), Modifier.size(20.dp))
         },
     )
     if (show) {
@@ -169,6 +168,7 @@ fun statusLook(s: DueStatus): StatusLook = when (s) {
     DueStatus.SOON -> StatusLook(Color(0xFFF9A825), Color.Black, R.string.status_soon)
     DueStatus.OK -> StatusLook(Color(0xFF2E7D32), Color.White, R.string.status_ok)
     DueStatus.DONE -> StatusLook(Color(0xFF607D8B), Color.White, R.string.status_done)
+    DueStatus.NO_DATA -> StatusLook(Color(0xFF78909C), Color.White, R.string.status_nodata)
     DueStatus.NO_INTERVAL -> StatusLook(Color(0xFF9E9E9E), Color.White, R.string.status_noint)
 }
 
@@ -208,6 +208,7 @@ fun SourceLine(source: String, verified: Boolean) {
 fun categoryName(c: String): String = stringResource(
     when (c) {
         "airframe" -> R.string.cat_airframe
+        "periodic" -> R.string.cat_periodic
         "engine" -> R.string.cat_engine
         "propeller" -> R.string.cat_propeller
         "rescue" -> R.string.cat_rescue
