@@ -52,3 +52,9 @@ Kopia zapasowa = skopiowanie folderów `data/` i `private/state/`.
 - Blokada po 8 nieudanych logowaniach z jednego adresu na 15 minut.
 - Zapis jest walidowany (zła struktura nie trafi do aplikacji) i atomowy; poprzednia wersja idzie do kopii (40 na plik).
 - Rób kopię folderu `private/state/` i `data/` razem z kopią strony.
+
+## Zarabianie (partnerzy, zapytania, sponsor)
+- **Partnerzy** – w dowolnym wpisie serwisu/dealera/szkoły wypełnij sekcję „Partner” (data „Partner do”, logo https, tekst promocyjny, „przyjmuje zapytania”). Aktywny partner jest w aplikacji na górze listy (do ~250 km), z wyróżnieniem. Zakładka „Partnerzy” pokazuje anonimowe statystyki (wyświetlenia, kliknięcia telefon/e-mail/strona/mapa, zapytania) i gotowy raport dla partnera.
+- **Zapytania serwisowe** – przycisk „Umów przegląd” w aplikacji. Do partnera z zaznaczonym „przyjmuje zapytania” zapytanie idzie przez serwer e-mailem (PHP `mail()`), kopia na adres z „Ustawienia poczty”. Do pozostałych serwisów aplikacja otwiera gotowy e-mail w telefonie. Zapytania starsze niż 400 dni są usuwane.
+- **Sponsor / baner** – jeden baner na karcie głównej (pierwszy aktywny w zakresie dat), z licznikiem wyświetleń i kliknięć.
+- Pliki: `data/sponsor.json` (publiczny), `private/state/requests.json`, `events.json`, `settings.json`.

@@ -611,7 +611,7 @@ async function renderRequests() {
     <p class="muted">Właściciel samolotu wybiera w aplikacji serwis partnerski – zapytanie idzie e-mailem do serwisu i zapisuje się tutaj. Kopię dostajesz na adres z „Ustawienia poczty”. Zapytania starsze niż 400 dni są usuwane automatycznie (RODO).</p>
     ${j.requests.map(r => `<div class="card" style="box-shadow:none;border:1px solid var(--line);${r.status === "done" ? "opacity:.6" : ""}">
       <div class="row"><b style="flex:1">${esc(r.aircraft?.registration || "")} ${esc(r.aircraft?.type || "")} → ${esc(r.contactName)}</b><span class="muted">${esc(r.date.slice(0, 16).replace("T", " "))}</span>
-        ${r.mailed ? '<span class="chip g">wysłano e-mail</span>' : '<span class="chip" style="background:#fde2e8">e-mail nie wyszedł</span>'}</div>
+        ${r.mailed ? '<span class="chip g">wysłano e-mail</span>' : '<span class="chip" style="background:#fde2e8;color:#a3123f" title="Sprawdź Ustawienia poczty – serwis nie dostał e-maila, przekaż zapytanie ręcznie">e-mail nie wyszedł</span>'}</div>
       <div>${esc(r.work)} · nalot ${esc(r.aircraft?.hours || "?")} h${r.preferredDate ? " · termin: " + esc(r.preferredDate) : ""}</div>
       <div class="muted">${esc(r.name)} · ${esc(r.phone)} ${esc(r.email)}</div>
       ${r.message ? `<div><i>${esc(r.message)}</i></div>` : ""}
