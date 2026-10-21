@@ -26,7 +26,7 @@ object AircraftExport {
     private fun sections(ctx: Context, a: Aircraft, s: AppState): List<Section> {
         val lg = java.util.Locale.getDefault().language
         val t = Repo.type(a.typeId)
-        val g = ctx::getString
+        fun g(id: Int, vararg args: Any): String = if (args.isEmpty()) ctx.getString(id) else ctx.getString(id, *args)
         val out = mutableListOf<Section>()
 
         out += Section(g(R.string.export_aircraft), listOfNotNull(
