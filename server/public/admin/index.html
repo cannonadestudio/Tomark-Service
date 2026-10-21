@@ -44,6 +44,11 @@ table.contacts td{font-size:14px}
 .ell{max-width:420px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nowrap{white-space:nowrap}
 .chip{white-space:nowrap}
+.inl{flex-direction:row;align-items:center;gap:6px;flex:0 0 auto;font-size:13px;color:var(--ink)}
+.bulk{margin:4px 0 10px}
+button.pub{padding:3px 10px;font-size:12px;border-radius:999px}
+button.pub.on{background:var(--teal)}
+button.pub.off{background:#b9b3c4}
 .small input{width:100%}
 @media (max-width:600px){.hide-sm{display:none}}
 </style>
@@ -73,7 +78,7 @@ table.contacts td{font-size:14px}
 <script>
 const FILES = { bulletins: 1, contacts: 1, types: 1, news: 1, examiners: 1 };
 const KINDS_B = ["AD", "ASB", "SB", "SIB", "DOC"];
-const KINDS_C = { dealer: "Dealer", manufacturer: "Producent", rotax_service: "Serwis Rotax", rotax_distributor: "Dystrybutor Rotax", maintenance: "Organizacja obsługowa", mechanic: "Mechanik", instructor: "Instruktor", examiner: "Egzaminator" };
+const KINDS_C = { dealer: "Dealer", manufacturer: "Producent", rotax_service: "Serwis Rotax", rotax_distributor: "Dystrybutor Rotax", maintenance: "Organizacja obsługowa", mechanic: "Mechanik", instructor: "Instruktor", school: "Szkoła lotnicza", examiner: "Egzaminator" };
 const LANGS = ["pl", "en", "sk", "fr"];
 // Contact tabs: which kinds each shows, and which data file holds them (examiners are a separate on-demand file).
 const CGROUPS = {
@@ -82,6 +87,7 @@ const CGROUPS = {
   c_dealer: { name: "Dealerzy", kinds: ["dealer"], file: "contacts", newKind: "dealer" },
   c_mech: { name: "Mechanicy", kinds: ["mechanic"], file: "contacts", newKind: "mechanic" },
   c_instr: { name: "Instruktorzy", kinds: ["instructor"], file: "contacts", newKind: "instructor" },
+  c_school: { name: "Szkoły", kinds: ["school"], file: "contacts", newKind: "school" },
   c_exam: { name: "Egzaminatorzy", kinds: ["examiner"], file: "examiners", newKind: "examiner" },
 };
 const fileOfKind = k => k === "examiner" ? "examiners" : "contacts";
@@ -147,7 +153,7 @@ async function start() {
   $("#who").style.display = "flex";
   $("#who").innerHTML = `<span>${esc(me.user.login)} (${esc(me.user.role)})</span><button class="ghost" style="color:#fff;border-color:rgba(255,255,255,.5)" id="logout">Wyloguj</button>`;
   $("#logout").onclick = async () => { await api("logout", { body: {} }); location.reload() };
-  renderTabs(); render();
+  renderTabs(); render(); loadSubCount();
 }
 $("#loginForm").onsubmit = async e => {
   e.preventDefault();
@@ -158,7 +164,7 @@ $("#loginForm").onsubmit = async e => {
 // ---------------------------------------------------------------- UI helpers
 function renderTabs() {
   const count = g => (state.data[CGROUPS[g].file]?.contacts || []).filter(c => CGROUPS[g].kinds.includes(c.kind)).length;
-  const tabs = [["bulletins", "Biuletyny"], ...Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => [g, `${CGROUPS[g].name} <small>(${count(g)})</small>`]), ["types", "Typy samolotów"], ["news", "Komunikaty"], ["history", "Historia"]];
+  const tabs = [["bulletins", "Biuletyny"], ...Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => [g, `${CGROUPS[g].name} <small>(${count(g)})</small>`]), ["types", "Typy samolotów"], ["news", "Komunikaty"], ["subs", `Zgłoszenia${state.subCount ? ` <small>(${state.subCount})</small>` : ""}`], ["stats", "Statystyki"], ["history", "Historia"]];
   if (state.user?.role === "admin") tabs.push(["users", "Użytkownicy"]);
   $("#tabs").innerHTML = tabs.map(([k, n]) => `<button class="tab ${state.tab === k ? "on" : ""}" data-tab="${k}">${n}</button>`).join("");
   $("#tabs").querySelectorAll("button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; state.filter = ""; renderTabs(); render() });
@@ -245,14 +251,27 @@ function renderContacts(g) {
     c_mech: "Mechanicy dodani ręcznie. Dane osób prywatnych publikuj tylko za ich zgodą.",
     c_instr: "Instruktorzy dodani ręcznie. Dane osób prywatnych publikuj tylko za ich zgodą.",
   }[g] || "Współrzędne służą do sortowania „najbliżsi” w aplikacji.";
+  const feed = state.data[G.file] || {};
+  const pubCount = list.filter(c => c.publish !== false).length;
+  const official = g === "c_exam" || g === "c_service";
   return `<div class="card">${searchBox("Szukaj nazwy, miasta, marki, uprawnień…")}
-    <p class="muted">${hint} Pokazano: <b>${list.length}</b>.</p>
-    <table class="contacts"><tr><th>Nazwa</th>${G.kinds.length > 1 ? "<th>Rodzaj</th>" : ""}<th>Miejscowość</th><th class="hide-sm">Telefon</th><th class="hide-sm">E-mail</th></tr>
+    <p class="muted">${hint} Pokazano: <b>${list.length}</b>, w aplikacji: <b>${pubCount}</b>.</p>
+    <div class="row bulk">
+      <label class="inl"><input type="checkbox" id="selAll"> zaznacz wszystkie widoczne</label>
+      <button class="ghost" data-bulk="pub">Publikuj zaznaczone</button>
+      <button class="ghost" data-bulk="hide">Ukryj zaznaczone</button>
+      ${official ? `<span style="flex:1"></span>
+        <label class="inl" title="Dotyczy wpisów, które przyjdą z list ULC po raz pierwszy"><input type="checkbox" id="pubNew" ${(feed.publishNew ?? (G.file === "contacts")) ? "checked" : ""}> nowe wpisy z ULC od razu publiczne</label>
+        <button class="ghost" id="pullGh">Pobierz teraz listy ULC i biuletyny</button>` : ""}
+    </div>
+    <table class="contacts"><tr><th></th><th>Nazwa</th>${G.kinds.length > 1 ? "<th>Rodzaj</th>" : ""}<th>Miejscowość</th><th class="hide-sm">Telefon</th><th class="hide-sm">E-mail</th><th>W aplikacji</th></tr>
     ${list.map(c => `<tr class="item" data-id="${esc(c.id)}">
+      <td class="nosel"><input type="checkbox" class="sel" value="${esc(c.id)}"></td>
       <td><b>${esc(c.name)}</b> ${auto(c)}<div class="muted ell">${esc((c.brands || []).join(", "))}</div></td>
       ${G.kinds.length > 1 ? `<td><span class="chip">${esc(KINDS_C[c.kind] || c.kind)}</span></td>` : ""}
       <td>${esc(c.city || "")}${c.country && c.country !== "PL" ? ` <span class="muted">${esc(c.country)}</span>` : ""}${c.lat == null ? ' <span class="muted" title="brak współrzędnych">⌖?</span>' : ""}</td>
-      <td class="hide-sm nowrap">${esc(c.phone || "")}</td><td class="hide-sm">${esc(c.email || "")}</td></tr>`).join("") || `<tr><td class="muted">Brak wpisów</td></tr>`}
+      <td class="hide-sm nowrap">${esc(c.phone || "")}</td><td class="hide-sm">${esc(c.email || "")}</td>
+      <td class="nosel"><button class="pub ${c.publish === false ? "off" : "on"}" data-pub="${esc(c.id)}">${c.publish === false ? "ukryty" : "publiczny"}</button></td></tr>`).join("") || `<tr><td class="muted">Brak wpisów</td></tr>`}
     </table></div>`;
 }
 function editContact(c, g) {
@@ -268,7 +287,8 @@ function editContact(c, g) {
     ${field("lat", "Szerokość (lat)", c.lat ?? "", "number", 'step="any"')}${field("lon", "Długość (lon)", c.lon ?? "", "number", 'step="any"')}
     ${field("source", "Źródło", c.source)}</div>
     <label>Uwagi<textarea name="note">${esc(c.note || "")}</textarea></label>
-    <p class="muted">Współrzędne: w Mapach Google kliknij prawym przyciskiem na miejsce i skopiuj liczby.</p>`,
+    <label class="inl"><input type="checkbox" name="publish" ${c.publish === false ? "" : "checked"}> pokazuj w aplikacji (publiczny)</label>
+    <p class="muted">Współrzędne: w Mapach Google kliknij prawym przyciskiem na miejsce i skopiuj liczby. Osoby prywatne publikuj tylko za ich zgodą (RODO).</p>`,
     async fd => {
       const name = fd.get("name").trim(); if (!name) throw new Error("Podaj nazwę.");
       const num = k => { const v = parseFloat(String(fd.get(k)).replace(",", ".")); return isNaN(v) ? undefined : v };
@@ -278,6 +298,7 @@ function editContact(c, g) {
       const id = c.id || ((file === "examiners" ? "my-exam-" : (fd.get("country") || "xx").toLowerCase() + "-") + slug).slice(0, 60) + "-" + Date.now().toString(36);
       const nc = { id, name, kind, brands: fd.get("brands").split(",").map(s => s.trim()).filter(Boolean), country: fd.get("country").toUpperCase(), city: fd.get("city"), address: fd.get("address"), lat: num("lat"), lon: num("lon"), phone: fd.get("phone"), email: fd.get("email"), web: fd.get("web"), source: fd.get("source"), note: fd.get("note") };
       Object.keys(nc).forEach(k => (nc[k] === "" || nc[k] === undefined || (Array.isArray(nc[k]) && !nc[k].length)) && delete nc[k]);
+      if (!fd.get("publish")) nc.publish = false;
       if (!state.data[file]) state.data[file] = { version: 0, updated: "", contacts: [] };
       const list = state.data[file].contacts; const i = list.findIndex(x => x.id === id);
       if (i >= 0) list[i] = nc; else list.push(nc);
@@ -402,6 +423,88 @@ async function renderUsers() {
   $("#addUser").onclick = () => edit(null, null);
 }
 
+
+// ---------------------------------------------------------------- publish toggles, bulk actions, GitHub pull
+async function setPublish(file, ids, on, label) {
+  const set = new Set(ids);
+  state.data[file].contacts.forEach(c => { if (set.has(c.id)) { if (on) delete c.publish; else c.publish = false } });
+  await writeFile(file, `${on ? "Publish" : "Hide"} ${ids.length} ${label}`);
+  render();
+}
+function hookContactTools(g) {
+  const G = CGROUPS[g], v = $("#view");
+  v.querySelectorAll("button[data-pub]").forEach(b => b.onclick = e => {
+    e.stopPropagation();
+    const c = state.data[G.file].contacts.find(x => x.id === b.dataset.pub);
+    setPublish(G.file, [c.id], c.publish === false, c.name).catch(() => { });
+  });
+  v.querySelectorAll(".nosel").forEach(td => td.onclick = e => e.stopPropagation());
+  $("#selAll").onchange = e => v.querySelectorAll("input.sel").forEach(x => x.checked = e.target.checked);
+  v.querySelectorAll("button[data-bulk]").forEach(b => b.onclick = () => {
+    const ids = [...v.querySelectorAll("input.sel:checked")].map(x => x.value);
+    if (!ids.length) return status("Zaznacz wpisy w pierwszej kolumnie.", false);
+    setPublish(G.file, ids, b.dataset.bulk === "pub", G.name.toLowerCase()).catch(() => { });
+  });
+  const pn = $("#pubNew");
+  if (pn) pn.onchange = async () => { state.data[G.file].publishNew = pn.checked; await writeFile(G.file, "Default for new ULC entries: " + (pn.checked ? "public" : "hidden")).catch(() => { }) };
+  const pg = $("#pullGh");
+  if (pg) pg.onclick = async () => {
+    pg.disabled = true; pg.textContent = "Pobieranie…";
+    try {
+      const r = await api("pull_github", { body: {} });
+      await Promise.all(["examiners", "contacts", "bulletins"].map(readFile));
+      const fmt = x => x?.error ? "błąd" : `${x?.imported ?? x?.total ?? 0}${x?.new != null ? ` (nowe: ${x.new})` : ""}`;
+      status(`Pobrano z GitHuba – egzaminatorzy: ${fmt(r.examiners)}, organizacje: ${fmt(r.contacts)}, biuletyny – nowe: ${r.bulletins?.new ?? "błąd"}.`);
+      renderTabs(); render();
+    } catch (e) { status(e.message, false); pg.disabled = false }
+  };
+}
+
+// ---------------------------------------------------------------- submissions from the app
+async function loadSubCount() {
+  try { state.subCount = (await api("submissions")).submissions.length; renderTabs() } catch (e) { }
+}
+async function renderSubs() {
+  const v = $("#view");
+  const j = await api("submissions");
+  state.subCount = j.submissions.length; renderTabs();
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Zgłoszenia z aplikacji</h3>
+    <p class="muted">Użytkownicy proponują wpisy (mechanik, szkoła, serwis…). „Przyjmij” dodaje wpis do bazy jako <b>ukryty</b> – opublikujesz go w zakładce kategorii, gdy osoba wyrazi zgodę (RODO).</p>
+    ${j.submissions.map(s => `<div class="card" style="box-shadow:none;border:1px solid var(--line)">
+      <div class="row"><b style="flex:1">${esc(s.contact.name)}</b><span class="chip">${esc(KINDS_C[s.contact.kind] || s.contact.kind)}</span><span class="muted">${esc(s.date.slice(0, 16).replace("T", " "))}</span></div>
+      <div class="muted">${esc([s.contact.address, s.contact.city, s.contact.country].filter(Boolean).join(", "))} · ${esc(s.contact.phone || "")} ${esc(s.contact.email || "")} ${esc(s.contact.web || "")}</div>
+      ${(s.contact.brands || []).length ? `<div class="muted">${esc(s.contact.brands.join(", "))}</div>` : ""}
+      ${s.contact.note ? `<div>${esc(s.contact.note)}</div>` : ""}
+      ${s.message ? `<div><i>Wiadomość: ${esc(s.message)}</i></div>` : ""}
+      <div class="muted">Zgłaszający: ${esc(s.from || "—")} · zgoda osoby zadeklarowana: <b>${s.consent ? "tak" : "nie"}</b></div>
+      <div class="row" style="margin-top:8px"><button data-acc="${esc(s.id)}">Przyjmij (ukryty)</button><button class="ghost" data-rej="${esc(s.id)}">Odrzuć</button></div>
+    </div>`).join("") || '<p class="muted">Brak nowych zgłoszeń.</p>'}</div>`;
+  const act = async (id, action) => {
+    try {
+      await api("submissions", { body: { id, action } });
+      if (action === "accept") await Promise.all(["contacts", "examiners"].map(readFile));
+      status(action === "accept" ? "Przyjęto – wpis jest ukryty, opublikuj go w zakładce kategorii." : "Odrzucono zgłoszenie.");
+      renderSubs();
+    } catch (e) { status(e.message, false) }
+  };
+  v.querySelectorAll("button[data-acc]").forEach(b => b.onclick = () => act(b.dataset.acc, "accept"));
+  v.querySelectorAll("button[data-rej]").forEach(b => b.onclick = () => confirm("Odrzucić zgłoszenie?") && act(b.dataset.rej, "reject"));
+}
+
+// ---------------------------------------------------------------- installation statistics
+async function renderStats() {
+  const v = $("#view");
+  const j = await api("stats");
+  const tbl = (title, obj) => `<div class="card" style="box-shadow:none;border:1px solid var(--line);flex:1 1 220px"><b>${title}</b>
+    <table class="small">${Object.entries(obj).map(([k, n]) => `<tr><td>${esc(k || "?")}</td><td style="text-align:right">${n}</td></tr>`).join("") || "<tr><td class='muted'>brak danych</td></tr>"}</table></div>`;
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Instalacje aplikacji</h3>
+    <div class="row" style="gap:24px;font-size:18px"><div><b style="font-size:30px">${j.total}</b><br><span class="muted">wszystkich instalacji</span></div>
+    <div><b style="font-size:30px">${j.active30}</b><br><span class="muted">aktywnych w 30 dni</span></div>
+    <div><b style="font-size:30px">${j.active7}</b><br><span class="muted">aktywnych w 7 dni</span></div></div>
+    <p class="muted">Aplikacja raz dziennie wysyła anonimowy, losowy identyfikator instalacji, wersję, język, wersję Androida i typy samolotów. Bez nazwisk, znaków rejestracyjnych i lokalizacji. Liczone są tylko telefony, które pobierają dane z tego serwera.</p>
+    <div class="row" style="align-items:stretch">${tbl("Nowe instalacje / miesiąc", j.newPerMonth)}${tbl("Wersje", j.versions)}${tbl("Języki", j.langs)}${tbl("Typy samolotów", j.types)}</div></div>`;
+}
+
 // ---------------------------------------------------------------- render
 function render(keepFocus) {
   if (!state.data.types) return;
@@ -412,7 +515,10 @@ function render(keepFocus) {
     const g = state.tab, file = CGROUPS[g].file;
     v.innerHTML = renderContacts(g); hookSearch(() => editContact(null, g));
     v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editContact(state.data[file].contacts.find(c => c.id === r.dataset.id), g));
+    hookContactTools(g);
   }
+  if (state.tab === "subs") { renderSubs().catch(e => status(e.message, false)); return }
+  if (state.tab === "stats") { renderStats().catch(e => status(e.message, false)); return }
   if (state.tab === "news") { v.innerHTML = renderNews(); hookSearch(() => editNews(null)); v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editNews(state.data.news.messages.find(n => n.id === r.dataset.id))) }
   if (state.tab === "history") { renderHistory().catch(e => status(e.message, false)); return }
   if (state.tab === "users") { renderUsers().catch(e => status(e.message, false)); return }

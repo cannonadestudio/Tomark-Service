@@ -79,7 +79,7 @@ import com.cannonadestudio.tomarkpilot.data.Repo
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
-val CONTACT_KINDS = listOf("dealer", "manufacturer", "rotax_service", "rotax_distributor", "maintenance", "mechanic", "instructor", "examiner")
+val CONTACT_KINDS = listOf("dealer", "manufacturer", "rotax_service", "rotax_distributor", "maintenance", "mechanic", "instructor", "school", "examiner")
 
 @Composable
 fun kindName(k: String): String = stringResource(
@@ -91,6 +91,7 @@ fun kindName(k: String): String = stringResource(
         "mechanic" -> R.string.kind_mechanic
         "maintenance" -> R.string.kind_maintenance
         "instructor" -> R.string.kind_instructor
+        "school" -> R.string.kind_school
         else -> R.string.kind_examiner
     }
 )
@@ -336,6 +337,10 @@ private fun ContactDialog(c: Contact?, loc: Location?, isNew: Boolean, onDismiss
     var note by remember { mutableStateOf(c?.note ?: "") }
     var lat by remember { mutableStateOf(c?.lat?.toString() ?: "") }
     var lon by remember { mutableStateOf(c?.lon?.toString() ?: "") }
+    var submitting by remember { mutableStateOf(false) }
+    if (submitting && c != null) {
+        SubmitDialog(c) { submitting = false }
+    }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -372,6 +377,9 @@ private fun ContactDialog(c: Contact?, loc: Location?, isNew: Boolean, onDismiss
                     Text(stringResource(R.string.source_label, c.source), style = MaterialTheme.typography.bodySmall)
                 }
                 if (!isNew && c != null) {
+                    if (c.id.startsWith("my_") && Repo.serverConnected) {
+                        TextButton(onClick = { submitting = true }) { Text(stringResource(R.string.submit_to_base)) }
+                    }
                     TextButton(onClick = { Repo.deleteContact(c.id); onDismiss() }) {
                         Text(stringResource(R.string.delete), color = Color(0xFFC62828))
                     }
@@ -391,6 +399,45 @@ private fun ContactDialog(c: Contact?, loc: Location?, isNew: Boolean, onDismiss
                 )
                 onDismiss()
             }) { Text(stringResource(R.string.save)) }
+        },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
+    )
+}
+
+/** Proposal of an own contact for the shared base – the app owner approves it on the server. */
+@Composable
+private fun SubmitDialog(c: Contact, onDismiss: () -> Unit) {
+    val ctx = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var message by remember { mutableStateOf("") }
+    var from by remember { mutableStateOf("") }
+    var consent by remember { mutableStateOf(false) }
+    var sending by remember { mutableStateOf(false) }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.submit_to_base)) },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                Text(stringResource(R.string.submit_hint), style = MaterialTheme.typography.bodySmall)
+                Text(c.name, fontWeight = FontWeight.Bold, modifier = Modifier.padding(vertical = 6.dp))
+                OutlinedTextField(from, { from = it }, label = { Text(stringResource(R.string.submit_from)) }, modifier = Modifier.fillMaxWidth())
+                OutlinedTextField(message, { message = it }, label = { Text(stringResource(R.string.submit_message)) }, modifier = Modifier.fillMaxWidth())
+                Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.clickable { consent = !consent }) {
+                    androidx.compose.material3.Checkbox(consent, { consent = it })
+                    Text(stringResource(R.string.submit_consent), style = MaterialTheme.typography.bodySmall)
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(enabled = !sending, onClick = {
+                sending = true
+                scope.launch {
+                    val r = Repo.submitContact(c, message.trim(), from.trim(), consent)
+                    sending = false
+                    Toast.makeText(ctx, if (r.isSuccess) ctx.getString(R.string.submit_ok) else ctx.getString(R.string.submit_fail), Toast.LENGTH_LONG).show()
+                    if (r.isSuccess) onDismiss()
+                }
+            }) { Text(stringResource(R.string.submit_send)) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
     )

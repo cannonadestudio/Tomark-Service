@@ -154,6 +154,62 @@ object Repo {
         refreshTypes()
         refreshNews()
         if (_state.value.examinersEnabled) refreshExaminers()
+        pingIfDue()
+    }
+
+    /** True when apps read from the owner's server (not GitHub) – needed for submissions and the install counter. */
+    val serverConnected: Boolean get() = dataBase != GITHUB_DATA
+
+    private fun apiUrl(action: String) = dataBase.trimEnd('/').removeSuffix("/data") + "/admin/api.php?a=" + action
+
+    private fun post(url: String, body: String): Int {
+        val conn = URL(url).openConnection() as HttpURLConnection
+        conn.connectTimeout = 10_000
+        conn.readTimeout = 15_000
+        conn.requestMethod = "POST"
+        conn.doOutput = true
+        conn.setRequestProperty("Content-Type", "application/json; charset=utf-8")
+        try {
+            conn.outputStream.use { it.write(body.toByteArray()) }
+            return conn.responseCode
+        } finally {
+            conn.disconnect()
+        }
+    }
+
+    /** Once a day: anonymous random install id, app version, language, Android version, aircraft types. */
+    private fun pingIfDue() {
+        if (!serverConnected) return
+        val s = _state.value
+        val today = java.time.LocalDate.now().toEpochDay()
+        if (s.lastPingEpochDay == today) return
+        val id = s.installId ?: UUID.randomUUID().toString()
+        val version = runCatching { app.packageManager.getPackageInfo(app.packageName, 0).versionName }.getOrNull() ?: ""
+        val body = kotlinx.serialization.json.buildJsonObject {
+            put("id", kotlinx.serialization.json.JsonPrimitive(id))
+            put("v", kotlinx.serialization.json.JsonPrimitive(version))
+            put("lang", kotlinx.serialization.json.JsonPrimitive(java.util.Locale.getDefault().language))
+            put("sdk", kotlinx.serialization.json.JsonPrimitive(android.os.Build.VERSION.SDK_INT))
+            put("types", kotlinx.serialization.json.JsonArray(s.aircraft.mapNotNull { type(it.typeId)?.name }.distinct().take(5).map { kotlinx.serialization.json.JsonPrimitive(it) }))
+        }.toString()
+        val code = runCatching { post(apiUrl("ping"), body) }.getOrDefault(0)
+        if (code == 200) setStateNoBackup { it.copy(installId = id, lastPingEpochDay = today) }
+    }
+
+    /** Sends a contact proposal to the owner's server; it appears there as a submission to approve. */
+    suspend fun submitContact(c: Contact, message: String, from: String, consent: Boolean): Result<Unit> = withContext(Dispatchers.IO) {
+        runCatching {
+            if (!serverConnected) error("no server")
+            val contact = json.encodeToJsonElement(Contact.serializer(), c)
+            val body = kotlinx.serialization.json.buildJsonObject {
+                put("contact", contact)
+                put("message", kotlinx.serialization.json.JsonPrimitive(message))
+                put("from", kotlinx.serialization.json.JsonPrimitive(from))
+                put("consent", kotlinx.serialization.json.JsonPrimitive(consent))
+            }.toString()
+            val code = post(apiUrl("submit"), body)
+            if (code != 200) error("HTTP $code")
+        }
     }
 
     /** Downloads the public ULC examiner lists (button in Contacts). */

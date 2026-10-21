@@ -179,6 +179,15 @@
     <string name="examiners_refresh">Odśwież</string>
     <string name="examiners_remove">Usuń z telefonu</string>
     <string name="examiners_done">Pobrano %1$d egzaminatorów</string>
+    <string name="kind_school">Szkoła lotnicza</string>
+    <string name="submit_to_base">Wyślij do wspólnej bazy</string>
+    <string name="submit_hint">Wpis trafi do autora aplikacji do zatwierdzenia. Będzie widoczny dla wszystkich dopiero po zgodzie tej osoby na publikację.</string>
+    <string name="submit_from">Twoje imię / e-mail (opcjonalnie)</string>
+    <string name="submit_message">Wiadomość (opcjonalnie)</string>
+    <string name="submit_consent">Ta osoba / firma zgadza się na kontakt w sprawie publikacji w bazie</string>
+    <string name="submit_send">Wyślij</string>
+    <string name="submit_ok">Wysłano – dziękujemy! Wpis pojawi się po zatwierdzeniu.</string>
+    <string name="submit_fail">Nie udało się wysłać – spróbuj później</string>
     <string name="kind_maintenance">Organizacja obsługowa</string>
     <string name="kind_mechanic">Mechanik</string>
     <string name="kind_instructor">Instruktor</string>
@@ -211,5 +220,5 @@
     <string name="disclaimer_text">Aplikacja nieoficjalna, niezwiązana z producentami samolotów ani BRP-Rotax. Dane pochodzą ze źródeł publicznych (EASA TCDS, krajowe karty typu, dokumenty producentów, opublikowane biuletyny) i służą jako przypomnienie. Wiążące są zawsze aktualne AFM, AMM, biuletyny i dyrektywy zdatności Twojego samolotu oraz Twoja organizacja obsługowa. Pozycje oznaczone ⚠ nie zostały potwierdzone w instrukcjach.</string>
     <string name="accept">Rozumiem</string>
     <string name="about">O aplikacji</string>
-    <string name="about_text">Biuletyny i kontakty są odświeżane codziennie z list online prowadzonych przez autora aplikacji (listę TOMARK sprawdza automat codziennie). Przypomnienia o serwisie i biuletynach przychodzą jako powiadomienia.</string>
+    <string name="about_text">Biuletyny i kontakty są odświeżane codziennie z list online prowadzonych przez autora aplikacji (listę TOMARK sprawdza automat codziennie). Przypomnienia o serwisie i biuletynach przychodzą jako powiadomienia. Po połączeniu z serwerem autora aplikacja raz dziennie wysyła anonimowy, losowy numer instalacji, wersję aplikacji i Androida, język oraz typy samolotów – bez nazwisk, znaków rejestracyjnych i lokalizacji.</string>
 </resources>

@@ -39,6 +39,14 @@ W repozytorium GitHub zmień `data/config.json`:
 ```
 Każda zainstalowana aplikacja przy następnym otwarciu odczyta ten adres i od tej pory pobiera wszystko z Twojego serwera. Powrót: `"dataBaseUrl": null`.
 
+## Jak przechowywane są dane
+Bez bazy SQL – zwykłe pliki JSON (wystarczą przy tysiącach wpisów i nie wymagają konfiguracji):
+- `data/*.json` – to, co pobierają aplikacje (tylko wpisy publiczne),
+- `private/state/master_contacts.json`, `master_examiners.json` – pełna baza z wpisami ukrytymi,
+- `private/state/submissions.json` – zgłoszenia z aplikacji, `installs.json` – anonimowy licznik instalacji,
+- `private/state/backups/` – kopie przed każdą zmianą, `audit.log` – kto co zmienił.
+Kopia zapasowa = skopiowanie folderów `data/` i `private/state/`.
+
 ## Bezpieczeństwo
 - Hasła zapisane jako hash (`password_hash`), sesja tylko HTTPS/HttpOnly/SameSite, token CSRF przy każdym zapisie.
 - Blokada po 8 nieudanych logowaniach z jednego adresu na 15 minut.

@@ -179,6 +179,15 @@
     <string name="examiners_refresh">Obnovit</string>
     <string name="examiners_remove">Smazat z telefonu</string>
     <string name="examiners_done">Staženo %1$d examinátorů</string>
+    <string name="kind_school">Letecká škola</string>
+    <string name="submit_to_base">Odeslat do společné databáze</string>
+    <string name="submit_hint">Záznam půjde autorovi aplikace ke schválení. Viditelný bude až po souhlasu dané osoby.</string>
+    <string name="submit_from">Vaše jméno / e-mail (nepovinné)</string>
+    <string name="submit_message">Zpráva (nepovinné)</string>
+    <string name="submit_consent">Osoba / firma souhlasí s kontaktem ohledně zveřejnění</string>
+    <string name="submit_send">Odeslat</string>
+    <string name="submit_ok">Odesláno – děkujeme! Záznam se objeví po schválení.</string>
+    <string name="submit_fail">Odeslání selhalo – zkuste později</string>
     <string name="kind_maintenance">Organizace údržby</string>
     <string name="kind_mechanic">Mechanik</string>
     <string name="kind_instructor">Instruktor</string>

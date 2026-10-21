@@ -201,6 +201,9 @@ data class AppState(
     val dismissedNewsIds: Set<String> = emptySet(),
     /** Public ULC examiner lists are downloaded only after the user asks for them. */
     val examinersEnabled: Boolean = false,
+    /** Random id for the anonymous install counter on the owner's server (no personal data). */
+    val installId: String? = null,
+    val lastPingEpochDay: Long? = null,
     /** Backup file chosen by the user (e.g. on Google Drive). Device-specific, never restored from a backup. */
     val backupUri: String? = null,
     val lastBackupMillis: Long? = null,

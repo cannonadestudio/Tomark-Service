@@ -68,9 +68,8 @@ switch ($action) {
         require_login();
         $f = (string)($_GET['f'] ?? '');
         if (!in_array($f, AH_FILES, true)) out(400, ['error' => 'unknown file']);
-        $path = ah_data_path($f);
-        $raw = is_file($path) ? file_get_contents($path) : null;
-        out(200, ['data' => $raw === null ? null : json_decode($raw, true), 'rev' => $raw === null ? '' : sha1($raw)]);
+        $raw = ah_read_editable($f);
+        out(200, ['data' => $raw === '' ? null : json_decode($raw, true), 'rev' => $raw === '' ? '' : sha1($raw)]);
 
     case 'save':
         $u = require_login();
@@ -80,16 +79,14 @@ switch ($action) {
         if (!in_array($f, AH_FILES, true)) out(400, ['error' => 'unknown file']);
         $err = ah_validate($f, $body['data'] ?? null);
         if ($err) out(422, ['error' => $err]);
-        $path = ah_data_path($f);
-        $current = is_file($path) ? file_get_contents($path) : '';
+        $current = ah_read_editable($f);
         if (($body['rev'] ?? '') !== ($current === '' ? '' : sha1($current))) {
             out(409, ['error' => 'the file was changed by someone else – reload']);
         }
-        $json = json_encode($body['data'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n";
         ah_backup($f, $current);
-        ah_write_atomic($path, $json);
+        $rev = ah_write_editable($f, $body['data']);
         ah_log($u['login'], 'save ' . $f . ': ' . mb_substr((string)($body['message'] ?? ''), 0, 200));
-        out(200, ['rev' => sha1($json)]);
+        out(200, ['rev' => $rev]);
 
     case 'backups':
         require_login();
@@ -156,22 +153,140 @@ switch ($action) {
             && array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));
         if (!$prefixes || !$incoming) out(400, ['error' => 'nothing to import']);
         $target = in_array($body['file'] ?? 'contacts', ['contacts', 'examiners'], true) ? ($body['file'] ?? 'contacts') : 'contacts';
-        $path = ah_data_path($target);
-        $raw = is_file($path) ? (string)file_get_contents($path) : '';
-        $feed = $raw ? json_decode($raw, true) : ['version' => 0, 'updated' => '', 'contacts' => []];
-        $keep = array_values(array_filter($feed['contacts'], fn($c) => !array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));
-        $ids = array_flip(array_column($keep, 'id'));
-        foreach ($incoming as $c) if (!isset($ids[$c['id']])) { $keep[] = $c; $ids[$c['id']] = 1; }
-        $feed['contacts'] = $keep;
-        $feed['version'] = ($feed['version'] ?? 0) + 1;
-        $feed['updated'] = date('Y-m-d');
-        $json = json_encode($feed, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n";
-        if ($json !== $raw) {
-            ah_backup($target, $raw);
-            ah_write_atomic($path, $json);
-            ah_log('bot', "import $target: " . count($incoming) . ' official entries');
+        out(200, ah_merge_official($target, $prefixes, $incoming, 'bot'));
+
+    case 'pull_github':
+        // Panel button: take the newest official ULC lists straight from the GitHub repository.
+        $u = require_login();
+        require_csrf();
+        if ($u['role'] === 'viewer') out(403, ['error' => 'read-only account']);
+        $base = rtrim((string)(ah_config()['githubData'] ?? 'https://raw.githubusercontent.com/cannonadestudio/Tomark-Service/main/data'), '/');
+        $ctx = stream_context_create(['http' => ['timeout' => 30, 'header' => "User-Agent: AeroHangar server\r\n"]]);
+        $res = [];
+        foreach ([['examiners', ['ulc-exam-']], ['contacts', ['ulc-pl-']]] as [$f, $prefixes]) {
+            $raw = @file_get_contents("$base/$f.json", false, $ctx);
+            $d = $raw ? json_decode($raw, true) : null;
+            if (!is_array($d['contacts'] ?? null)) { $res[$f] = ['error' => 'download failed']; continue; }
+            $inc = array_values(array_filter($d['contacts'], fn($c) => !empty($c['id']) && array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));
+            $res[$f] = $inc ? ah_merge_official($f, $prefixes, $inc, $u['login']) : ['imported' => 0];
         }
-        out(200, ['imported' => count($incoming), 'total' => count($keep)]);
+        // Bulletins (TOMARK, EASA ADs, manufacturers): add the ones the server does not have yet.
+        $raw = @file_get_contents("$base/bulletins.json", false, $ctx);
+        $d = $raw ? json_decode($raw, true) : null;
+        if (is_array($d['bulletins'] ?? null)) {
+            $cur = ah_read_editable('bulletins');
+            $feed = $cur ? json_decode($cur, true) : ['version' => 0, 'updated' => '', 'bulletins' => []];
+            $have = array_flip(array_column($feed['bulletins'], 'id'));
+            $added = 0;
+            foreach ($d['bulletins'] as $b) {
+                if (empty($b['id']) || isset($have[$b['id']]) || empty($b['title']) || empty($b['groups'])) continue;
+                $feed['bulletins'][] = $b; $have[$b['id']] = 1; $added++;
+            }
+            if ($added) {
+                usort($feed['bulletins'], fn($a, $b) => strcmp($b['date'], $a['date']));
+                $feed['version'] = ($feed['version'] ?? 0) + 1;
+                $feed['updated'] = date('Y-m-d');
+                ah_backup('bulletins', $cur);
+                ah_write_editable('bulletins', $feed);
+                ah_log($u['login'], "pull bulletins: $added new");
+            }
+            $res['bulletins'] = ['new' => $added, 'total' => count($feed['bulletins'])];
+        } else {
+            $res['bulletins'] = ['error' => 'download failed'];
+        }
+        out(200, $res);
+
+    // ------------------------------------------------------------ public endpoints used by the app
+
+    case 'ping':
+        // Anonymous install counter: random id generated on the phone, app version, language, Android version.
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
+        if (!ah_rate_ok('ping', 30, 3600)) out(429, ['error' => 'slow down']);
+        $id = (string)($body['id'] ?? '');
+        if (!preg_match('/^[0-9a-f-]{36}$/', $id)) out(400, ['error' => 'bad id']);
+        $info = ['v' => ah_clean_str($body['v'] ?? '', 20), 'lang' => ah_clean_str($body['lang'] ?? '', 5), 'sdk' => (int)($body['sdk'] ?? 0), 'types' => array_slice(array_map(fn($t) => ah_clean_str($t, 40), (array)($body['types'] ?? [])), 0, 5)];
+        ah_store_update('installs', function (&$d) use ($id, $info) {
+            if (!isset($d[$id]) && count($d) > 200000) return;
+            $today = date('Y-m-d');
+            $d[$id] = ($d[$id] ?? ['first' => $today]) + [];
+            $d[$id] = array_merge($d[$id], $info, ['last' => $today]);
+        });
+        out(200, ['ok' => true]);
+
+    case 'submit':
+        // Contact proposed from the app – waits in the panel until the owner accepts it.
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
+        if (!ah_rate_ok('submit', 10, 86400)) out(429, ['error' => 'too many submissions today']);
+        $c = (array)($body['contact'] ?? []);
+        $kinds = ['manufacturer', 'dealer', 'rotax_distributor', 'rotax_service', 'maintenance', 'mechanic', 'instructor', 'examiner', 'school'];
+        $name = ah_clean_str($c['name'] ?? '', 120);
+        if ($name === '' || !in_array($c['kind'] ?? '', $kinds, true)) out(400, ['error' => 'name and kind required']);
+        $clean = ['name' => $name, 'kind' => $c['kind']];
+        foreach (['country' => 2, 'city' => 80, 'address' => 160, 'phone' => 40, 'email' => 120, 'web' => 200, 'note' => 1000] as $k => $max) {
+            $v = ah_clean_str($c[$k] ?? '', $max);
+            if ($v !== '') $clean[$k] = $v;
+        }
+        $clean['brands'] = array_slice(array_values(array_filter(array_map(fn($b) => ah_clean_str($b, 60), (array)($c['brands'] ?? [])))), 0, 10);
+        foreach (['lat', 'lon'] as $k) if (is_numeric($c[$k] ?? null)) $clean[$k] = (float)$c[$k];
+        $sub = ['id' => bin2hex(random_bytes(6)), 'date' => date('c'), 'contact' => $clean,
+            'message' => ah_clean_str($body['message'] ?? '', 1000), 'from' => ah_clean_str($body['from'] ?? '', 160),
+            'consent' => (bool)($body['consent'] ?? false)];
+        $count = ah_store_update('submissions', function (&$d) use ($sub) {
+            if (count($d) >= 2000) return -1;
+            $d[] = $sub;
+            return count($d);
+        });
+        if ($count < 0) out(503, ['error' => 'queue full']);
+        out(200, ['ok' => true]);
+
+    // ------------------------------------------------------------ panel: statistics and submissions
+
+    case 'stats':
+        require_login();
+        $d = ah_store_read('installs');
+        $now = time();
+        $active = fn($days) => count(array_filter($d, fn($i) => strtotime($i['last'] ?? '1970-01-01') >= $now - $days * 86400));
+        $by = function ($key) use ($d) { $r = []; foreach ($d as $i) { $k = (string)($i[$key] ?? '?'); $r[$k] = ($r[$k] ?? 0) + 1; } arsort($r); return array_slice($r, 0, 15, true); };
+        $types = [];
+        foreach ($d as $i) foreach (($i['types'] ?? []) as $t) $types[$t] = ($types[$t] ?? 0) + 1;
+        arsort($types);
+        $months = [];
+        foreach ($d as $i) { $m = substr($i['first'] ?? '', 0, 7); if ($m) $months[$m] = ($months[$m] ?? 0) + 1; }
+        ksort($months);
+        out(200, ['total' => count($d), 'active7' => $active(7), 'active30' => $active(30),
+            'versions' => $by('v'), 'langs' => $by('lang'), 'types' => array_slice($types, 0, 15, true), 'newPerMonth' => $months]);
+
+    case 'submissions':
+        $u = require_login();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_csrf();
+            if ($u['role'] === 'viewer') out(403, ['error' => 'read-only account']);
+            $sid = (string)($body['id'] ?? '');
+            $act = (string)($body['action'] ?? '');
+            $sub = ah_store_update('submissions', function (&$d) use ($sid) {
+                foreach ($d as $i => $s) if ($s['id'] === $sid) { array_splice($d, $i, 1); return $s; }
+                return null;
+            });
+            if (!$sub) out(404, ['error' => 'not found']);
+            if ($act === 'accept') {
+                $c = $sub['contact'];
+                $target = $c['kind'] === 'examiner' ? 'examiners' : 'contacts';
+                $c['id'] = 'sub-' . $sub['id'];
+                $c['publish'] = false;   // published only after the owner has the person's consent
+                $c['note'] = trim(($c['note'] ?? '') . ' [zgłoszenie z aplikacji ' . substr($sub['date'], 0, 10) . ']');
+                $raw = ah_read_editable($target);
+                $feed = $raw ? json_decode($raw, true) : ['version' => 0, 'updated' => '', 'contacts' => []];
+                $feed['contacts'][] = $c;
+                $feed['version'] = ($feed['version'] ?? 0) + 1;
+                $feed['updated'] = date('Y-m-d');
+                ah_backup($target, $raw);
+                ah_write_editable($target, $feed);
+                ah_log($u['login'], "accept submission {$sub['id']} → $target (unpublished): " . $c['name']);
+            } else {
+                ah_log($u['login'], "reject submission {$sub['id']}: " . ($sub['contact']['name'] ?? ''));
+            }
+        }
+        out(200, ['submissions' => ah_store_read('submissions')]);
 
     default:
         out(404, ['error' => 'unknown action']);

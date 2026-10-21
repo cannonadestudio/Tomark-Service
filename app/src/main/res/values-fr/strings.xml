@@ -179,6 +179,15 @@
     <string name="examiners_refresh">Actualiser</string>
     <string name="examiners_remove">Supprimer du téléphone</string>
     <string name="examiners_done">%1$d examinateurs téléchargés</string>
+    <string name="kind_school">École de pilotage</string>
+    <string name="submit_to_base">Proposer à la base commune</string>
+    <string name="submit_hint">L\'entrée est envoyée à l\'auteur pour validation. Elle ne sera visible qu\'après accord de la personne.</string>
+    <string name="submit_from">Votre nom / e-mail (optionnel)</string>
+    <string name="submit_message">Message (optionnel)</string>
+    <string name="submit_consent">La personne / société accepte d\'être contactée pour la publication</string>
+    <string name="submit_send">Envoyer</string>
+    <string name="submit_ok">Envoyé – merci !</string>
+    <string name="submit_fail">Échec de l\'envoi</string>
     <string name="kind_maintenance">Atelier agréé</string>
     <string name="kind_mechanic">Mécanicien</string>
     <string name="kind_instructor">Instructeur</string>

@@ -180,6 +180,15 @@
     <string name="examiners_refresh">Refresh</string>
     <string name="examiners_remove">Remove from phone</string>
     <string name="examiners_done">Downloaded %1$d examiners</string>
+    <string name="kind_school">Flight school</string>
+    <string name="submit_to_base">Send to the shared base</string>
+    <string name="submit_hint">The entry goes to the app author for approval. It becomes visible to everyone only after the person agrees to publication.</string>
+    <string name="submit_from">Your name / e-mail (optional)</string>
+    <string name="submit_message">Message (optional)</string>
+    <string name="submit_consent">This person/company agrees to be listed and contacted about publication</string>
+    <string name="submit_send">Send</string>
+    <string name="submit_ok">Sent – thank you! The entry will appear after approval.</string>
+    <string name="submit_fail">Sending failed – try again later</string>
     <string name="kind_maintenance">Maintenance organisation</string>
     <string name="kind_mechanic">Mechanic</string>
     <string name="kind_instructor">Instructor</string>
@@ -212,6 +221,6 @@
     <string name="disclaimer_text">Unofficial app, not affiliated with any aircraft manufacturer or BRP-Rotax. Data come from public sources (EASA TCDS, national data sheets, manufacturer documents, published bulletins) and are a reminder only. The current AFM, AMM, service bulletins and airworthiness directives of your aircraft, and your maintenance organisation, are always binding. Items marked ⚠ have not been confirmed against the manuals.</string>
     <string name="accept">I understand</string>
     <string name="about">About</string>
-    <string name="about_text">Bulletins and contacts are refreshed daily from online lists maintained by the app author (the TOMARK list is checked automatically every day). Maintenance and bulletin reminders arrive as notifications.</string>
+    <string name="about_text">Bulletins and contacts are refreshed daily from online lists maintained by the app author (the TOMARK list is checked automatically every day). Maintenance and bulletin reminders arrive as notifications. When connected to the author\'s server, the app sends once a day an anonymous random install number, app and Android version, language and aircraft types – no names, registrations or location.</string>
     <string name="about_sources" translatable="false">Sources: EASA TCDS (A.606, A.006, A.583, A.412, A.527, A.065, A.439, A.537, A.644, A.598, A.642); DULV / DAeC / Traficom / BMAA data sheets; manufacturer POH/AFM; BRP-Rotax MML-912; TOMARK technical support list; EASA AD 2026-0170; flyrotax.com distributor pages.</string>
 </resources>

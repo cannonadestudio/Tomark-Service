@@ -179,6 +179,15 @@
     <string name="examiners_refresh">Aktualisieren</string>
     <string name="examiners_remove">Vom Telefon löschen</string>
     <string name="examiners_done">%1$d Prüfer geladen</string>
+    <string name="kind_school">Flugschule</string>
+    <string name="submit_to_base">An die gemeinsame Datenbank senden</string>
+    <string name="submit_hint">Der Eintrag geht zur Freigabe an den App-Autor. Sichtbar wird er erst nach Zustimmung der Person.</string>
+    <string name="submit_from">Ihr Name / E-Mail (optional)</string>
+    <string name="submit_message">Nachricht (optional)</string>
+    <string name="submit_consent">Person / Firma ist mit einer Kontaktaufnahme zur Veröffentlichung einverstanden</string>
+    <string name="submit_send">Senden</string>
+    <string name="submit_ok">Gesendet – danke! Der Eintrag erscheint nach der Freigabe.</string>
+    <string name="submit_fail">Senden fehlgeschlagen – später erneut versuchen</string>
     <string name="kind_maintenance">Wartungsbetrieb</string>
     <string name="kind_mechanic">Mechaniker</string>
     <string name="kind_instructor">Fluglehrer</string>

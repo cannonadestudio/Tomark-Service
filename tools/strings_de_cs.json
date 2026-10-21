@@ -850,5 +850,41 @@
  "examiners_done": {
   "de": "%1$d Prüfer geladen",
   "cs": "Staženo %1$d examinátorů"
+ },
+ "kind_school": {
+  "de": "Flugschule",
+  "cs": "Letecká škola"
+ },
+ "submit_to_base": {
+  "de": "An die gemeinsame Datenbank senden",
+  "cs": "Odeslat do společné databáze"
+ },
+ "submit_hint": {
+  "de": "Der Eintrag geht zur Freigabe an den App-Autor. Sichtbar wird er erst nach Zustimmung der Person.",
+  "cs": "Záznam půjde autorovi aplikace ke schválení. Viditelný bude až po souhlasu dané osoby."
+ },
+ "submit_from": {
+  "de": "Ihr Name / E-Mail (optional)",
+  "cs": "Vaše jméno / e-mail (nepovinné)"
+ },
+ "submit_message": {
+  "de": "Nachricht (optional)",
+  "cs": "Zpráva (nepovinné)"
+ },
+ "submit_consent": {
+  "de": "Person / Firma ist mit einer Kontaktaufnahme zur Veröffentlichung einverstanden",
+  "cs": "Osoba / firma souhlasí s kontaktem ohledně zveřejnění"
+ },
+ "submit_send": {
+  "de": "Senden",
+  "cs": "Odeslat"
+ },
+ "submit_ok": {
+  "de": "Gesendet – danke! Der Eintrag erscheint nach der Freigabe.",
+  "cs": "Odesláno – děkujeme! Záznam se objeví po schválení."
+ },
+ "submit_fail": {
+  "de": "Senden fehlgeschlagen – später erneut versuchen",
+  "cs": "Odeslání selhalo – zkuste později"
  }
 }

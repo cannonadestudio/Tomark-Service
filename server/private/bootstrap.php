@@ -155,9 +155,10 @@ function ah_restore(string $name, string $by): bool
     if (!preg_match('/^(' . implode('|', AH_FILES) . ')-\d{8}-\d{6}-[0-9a-f]{6}\.json$/', $name, $m)) return false;
     $src = AH_BACKUPS . '/' . $name;
     if (!is_file($src)) return false;
-    $path = ah_data_path($m[1]);
-    ah_backup($m[1], is_file($path) ? (string)file_get_contents($path) : '');
-    ah_write_atomic($path, (string)file_get_contents($src));
+    ah_backup($m[1], ah_read_editable($m[1]));
+    $restored = json_decode((string)file_get_contents($src), true);
+    if (!is_array($restored)) return false;
+    ah_write_editable($m[1], $restored);
     ah_log($by, "restore $name");
     return true;
 }
@@ -217,4 +218,113 @@ function ah_read_log(int $n): array
     if (!is_file(AH_LOG)) return [];
     $lines = file(AH_LOG, FILE_IGNORE_NEW_LINES) ?: [];
     return array_reverse(array_slice($lines, -$n));
+}
+
+// ---------------------------------------------------------------- working copy vs. published file
+// Contacts and examiners: the panel edits a working copy in private/state (all entries, incl. unpublished);
+// the public file in data/ contains only entries with publish !== false. Other files are edited directly.
+const AH_MASTERED = ['contacts', 'examiners'];
+
+function ah_master_path(string $f): string
+{
+    return AH_STATE . '/master_' . $f . '.json';
+}
+
+/** Raw JSON of what the panel edits. */
+function ah_read_editable(string $f): string
+{
+    if (in_array($f, AH_MASTERED, true) && is_file(ah_master_path($f))) return (string)file_get_contents(ah_master_path($f));
+    $p = ah_data_path($f);
+    return is_file($p) ? (string)file_get_contents($p) : '';
+}
+
+function ah_json(array $d): string
+{
+    return json_encode($d, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n";
+}
+
+/** Writes the editable copy and (for contacts/examiners) regenerates the published file. Returns new rev. */
+function ah_write_editable(string $f, array $d): string
+{
+    $json = ah_json($d);
+    if (in_array($f, AH_MASTERED, true)) {
+        ah_write_atomic(ah_master_path($f), $json);
+        $pub = $d;
+        unset($pub['publishNew']);
+        $pub['contacts'] = array_values(array_map(function ($c) { unset($c['publish']); return $c; },
+            array_filter($d['contacts'] ?? [], fn($c) => ($c['publish'] ?? true) !== false)));
+        ah_write_atomic(ah_data_path($f), ah_json($pub));
+    } else {
+        ah_write_atomic(ah_data_path($f), $json);
+    }
+    return sha1($json);
+}
+
+/** Bot / GitHub import of official ULC entries into a mastered file (keeps the owner's publish choice). */
+function ah_merge_official(string $target, array $prefixes, array $incoming, string $who): array
+{
+    $raw = ah_read_editable($target);
+    $feed = $raw ? json_decode($raw, true) : ['version' => 0, 'updated' => '', 'contacts' => []];
+    $default = $feed['publishNew'] ?? ($target === 'contacts');
+    $old = [];
+    foreach ($feed['contacts'] as $c) $old[$c['id']] = $c;
+    $keep = array_values(array_filter($feed['contacts'], fn($c) => !array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));
+    $ids = array_flip(array_column($keep, 'id'));
+    $added = 0;
+    foreach ($incoming as $c) {
+        if (isset($ids[$c['id']])) continue;
+        $c['publish'] = isset($old[$c['id']]) ? ($old[$c['id']]['publish'] ?? true) : $default;
+        if (!isset($old[$c['id']])) $added++;
+        $keep[] = $c;
+        $ids[$c['id']] = 1;
+    }
+    $feed['contacts'] = $keep;
+    $feed['version'] = ($feed['version'] ?? 0) + 1;
+    $feed['updated'] = date('Y-m-d');
+    ah_backup($target, $raw);
+    ah_write_editable($target, $feed);
+    ah_log($who, "import $target: " . count($incoming) . " official entries ($added new)");
+    return ['imported' => count($incoming), 'new' => $added, 'total' => count($keep)];
+}
+
+// ---------------------------------------------------------------- small JSON stores (installs, submissions)
+
+function ah_store_update(string $name, callable $fn)
+{
+    $path = AH_STATE . '/' . $name . '.json';
+    $fh = fopen($path, 'c+');
+    flock($fh, LOCK_EX);
+    $data = json_decode((string)stream_get_contents($fh), true) ?: [];
+    $res = $fn($data);
+    ftruncate($fh, 0);
+    rewind($fh);
+    fwrite($fh, json_encode($data, JSON_UNESCAPED_UNICODE));
+    flock($fh, LOCK_UN);
+    fclose($fh);
+    return $res;
+}
+
+function ah_store_read(string $name): array
+{
+    $path = AH_STATE . '/' . $name . '.json';
+    return is_file($path) ? (json_decode((string)file_get_contents($path), true) ?: []) : [];
+}
+
+/** Simple per-IP limiter for public endpoints: max $n calls per $sec. */
+function ah_rate_ok(string $bucket, int $n, int $sec): bool
+{
+    $ip = sha1(($_SERVER['REMOTE_ADDR'] ?? '') . 'ah');
+    return ah_store_update('rate_' . $bucket, function (&$d) use ($ip, $n, $sec) {
+        $now = time();
+        foreach ($d as $k => $ts) { $d[$k] = array_values(array_filter($ts, fn($t) => $t > $now - $sec)); if (!$d[$k]) unset($d[$k]); }
+        $d[$ip] = $d[$ip] ?? [];
+        if (count($d[$ip]) >= $n) return false;
+        $d[$ip][] = $now;
+        return true;
+    });
+}
+
+function ah_clean_str($v, int $max): string
+{
+    return mb_substr(trim(preg_replace('/[\x00-\x1F\x7F]+/u', ' ', (string)$v)), 0, $max);
 }

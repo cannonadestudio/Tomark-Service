@@ -52,7 +52,7 @@ cids = [c["id"] for c in cf["contacts"]]
 if len(cids) != len(set(cids)):
     errors.append("contacts: duplicate ids")
 for c in cf["contacts"]:
-    if c["kind"] not in ("manufacturer", "dealer", "rotax_distributor", "rotax_service", "mechanic", "maintenance", "instructor", "examiner"):
+    if c["kind"] not in ("manufacturer", "dealer", "rotax_distributor", "rotax_service", "mechanic", "maintenance", "instructor", "school", "examiner"):
         errors.append(f"contact {c['id']}: bad kind")
     if not (-90 <= (c.get("lat") or 0) <= 90 and -180 <= (c.get("lon") or 0) <= 180):
         errors.append(f"contact {c['id']}: bad coords")
