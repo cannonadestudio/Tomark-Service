@@ -314,7 +314,7 @@ private fun ContactCard(c: Contact, km: Double?, mine: Boolean, onRequest: (() -
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (partner && c.logo.startsWith("https://")) {
                     coil.compose.AsyncImage(
-                        model = c.logo, contentDescription = c.name,
+                        model = directImageUrl(c.logo), contentDescription = c.name,
                         modifier = Modifier.size(44.dp).padding(end = 8.dp),
                         contentScale = androidx.compose.ui.layout.ContentScale.Fit,
                     )

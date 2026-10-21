@@ -242,4 +242,6 @@ data class AppState(
     val reqEmail: String = "",
     /** Last Pro state reported by Google Play on this phone (never taken from a backup file). */
     val proCached: Boolean = false,
+    /** Pro granted by hand by the app owner in the server panel (checked with the daily ping). */
+    val proGranted: Boolean = false,
 )

@@ -49,6 +49,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.foundation.background
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -458,34 +459,39 @@ private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, 
 }
 
 
-/** Sponsor banner from the owner's server (first active one); views and taps are counted for the sponsor. */
+/** Sponsor banner from the owner's server (first active one): just the picture with a small "AD" label. */
 @Composable
 private fun SponsorCard() {
     val feed by Repo.sponsor.collectAsState()
     val b = feed.banners.firstOrNull { it.live() } ?: return
     val ctx = LocalContext.current
+    var failed by remember(b.id, b.image) { mutableStateOf(false) }
     androidx.compose.runtime.LaunchedEffect(b.id) { Repo.track("sponsor_view", "sponsor:" + b.id) }
+    val showImage = b.image.startsWith("https://") && !failed
+    if (!showImage && b.text.isBlank() && b.title.isBlank()) return
     Card(
         Modifier.fillMaxWidth().padding(top = 10.dp).clickable(enabled = b.url.isNotBlank()) {
             Repo.track("sponsor_click", "sponsor:" + b.id)
             openUrl(ctx, b.url)
         },
     ) {
-        Column {
-            if (b.image.startsWith("https://")) {
+        androidx.compose.foundation.layout.Box {
+            if (showImage) {
                 coil.compose.AsyncImage(
-                    model = b.image, contentDescription = b.title,
-                    modifier = Modifier.fillMaxWidth().height(96.dp),
-                    contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                    model = directImageUrl(b.image), contentDescription = b.title.ifBlank { null },
+                    modifier = Modifier.fillMaxWidth(),
+                    contentScale = androidx.compose.ui.layout.ContentScale.FillWidth,
+                    onError = { failed = true },
                 )
+            } else {
+                Text(b.text.ifBlank { b.title }, modifier = Modifier.padding(start = 12.dp, end = 70.dp, top = 12.dp, bottom = 12.dp))
             }
-            Row(Modifier.padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                Column(Modifier.weight(1f)) {
-                    if (b.title.isNotBlank()) Text(b.title, fontWeight = FontWeight.SemiBold)
-                    if (b.text.isNotBlank()) Text(b.text, style = MaterialTheme.typography.bodySmall)
-                }
-                Text(stringResource(R.string.sponsor), style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            }
+            Text(
+                stringResource(R.string.ad_label), fontSize = 9.sp, color = Color.White, fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.align(Alignment.TopEnd).padding(6.dp)
+                    .background(Color.Black.copy(alpha = 0.45f), androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
+                    .padding(horizontal = 5.dp, vertical = 1.dp),
+            )
         }
     }
 }

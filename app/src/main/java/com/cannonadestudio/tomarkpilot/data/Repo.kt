@@ -182,13 +182,27 @@ object Repo {
         }
     }
 
-    /** Once a day: anonymous random install id, app version, language, Android version, aircraft types. */
-    private fun pingIfDue() {
+    /** Random install id (no personal data); shown in "About" so the owner can find this install in the panel. */
+    fun ensureInstallId(): String {
+        _state.value.installId?.let { return it }
+        val id = UUID.randomUUID().toString()
+        setStateNoBackup { it.copy(installId = id) }
+        return id
+    }
+
+    /** Short form shown to the user and searched in the panel. */
+    fun installCode(): String = ensureInstallId().replace("-", "").take(8).uppercase()
+
+    /**
+     * Once a day (or when [force]d, e.g. "Restore purchase"): anonymous random install id, app version, language,
+     * Android version, aircraft types. The answer says whether the owner granted Pro to this install.
+     */
+    private fun pingIfDue(force: Boolean = false) {
         if (!serverConnected) return
         val s = _state.value
         val today = java.time.LocalDate.now().toEpochDay()
-        if (s.lastPingEpochDay == today) return
-        val id = s.installId ?: UUID.randomUUID().toString()
+        if (!force && s.lastPingEpochDay == today) return
+        val id = ensureInstallId()
         val version = runCatching { app.packageManager.getPackageInfo(app.packageName, 0).versionName }.getOrNull() ?: ""
         val body = kotlinx.serialization.json.buildJsonObject {
             put("id", kotlinx.serialization.json.JsonPrimitive(id))
@@ -199,8 +213,32 @@ object Repo {
             put("ac", kotlinx.serialization.json.JsonPrimitive(s.aircraft.size))
             put("types", kotlinx.serialization.json.JsonArray(s.aircraft.mapNotNull { type(it.typeId)?.name }.distinct().take(5).map { kotlinx.serialization.json.JsonPrimitive(it) }))
         }.toString()
-        val code = runCatching { post(apiUrl("ping"), body) }.getOrDefault(0)
-        if (code == 200) setStateNoBackup { it.copy(installId = id, lastPingEpochDay = today) }
+        val answer = runCatching { postRead(apiUrl("ping"), body) }.getOrNull() ?: return
+        val granted = runCatching {
+            (json.parseToJsonElement(answer) as kotlinx.serialization.json.JsonObject)["pro"]
+                ?.let { (it as kotlinx.serialization.json.JsonPrimitive).content == "true" } ?: false
+        }.getOrDefault(false)
+        setStateNoBackup { it.copy(lastPingEpochDay = today, proGranted = granted) }
+    }
+
+    /** Asks the server now whether Pro was granted to this install. */
+    suspend fun checkProGrant() = withContext(Dispatchers.IO) { pingIfDue(force = true) }
+
+    /** POST that returns the body of a 200 answer (null otherwise). */
+    private fun postRead(url: String, body: String): String? {
+        val conn = URL(url).openConnection() as HttpURLConnection
+        conn.connectTimeout = 10_000
+        conn.readTimeout = 15_000
+        conn.requestMethod = "POST"
+        conn.doOutput = true
+        conn.setRequestProperty("Content-Type", "application/json; charset=utf-8")
+        try {
+            conn.outputStream.use { it.write(body.toByteArray()) }
+            if (conn.responseCode != 200) return null
+            return conn.inputStream.bufferedReader().use { it.readText() }
+        } finally {
+            conn.disconnect()
+        }
     }
 
     /** Sends a contact proposal to the owner's server; it appears there as a submission to approve. */
@@ -434,7 +472,7 @@ object Repo {
     /** Fields that belong to this phone and must not travel with a backup. */
     private fun withoutDeviceFields(s: AppState) = s.copy(
         backupUri = null, lastBackupMillis = null, backupError = null,
-        logbookUri = null, logbookError = null, logbookSyncedEpochDay = null, proCached = false,
+        logbookUri = null, logbookError = null, logbookSyncedEpochDay = null, proCached = false, proGranted = false,
         aircraft = s.aircraft.map { it.copy(pohUri = null) },
     )
 
@@ -474,7 +512,7 @@ object Repo {
                 restored.copy(
                     backupUri = cur.backupUri, lastBackupMillis = cur.lastBackupMillis, backupError = null,
                     logbookUri = cur.logbookUri, logbookSyncedEpochDay = cur.logbookSyncedEpochDay,
-                    disclaimerAccepted = true, proCached = cur.proCached,
+                    disclaimerAccepted = true, proCached = cur.proCached, proGranted = cur.proGranted, lastPingEpochDay = null,
                 )
             }
             restored.aircraft.size

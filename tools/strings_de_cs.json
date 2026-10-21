@@ -1122,5 +1122,17 @@
  "pro_unavailable": {
   "de": "Der Kauf ist in der Version aus Google Play verfügbar.",
   "cs": "Nákup je dostupný ve verzi z Google Play."
+ },
+ "pro_granted": {
+  "de": "Pro vom App-Autor freigeschaltet.",
+  "cs": "Pro udělil autor aplikace."
+ },
+ "install_code": {
+  "de": "Installationscode: %1$s",
+  "cs": "Kód instalace: %1$s"
+ },
+ "ad_label": {
+  "de": "ANZEIGE",
+  "cs": "REKLAMA"
  }
 }

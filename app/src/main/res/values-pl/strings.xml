@@ -67,6 +67,9 @@
     <string name="pro_thanks">Dziękuję za wsparcie aplikacji!</string>
     <string name="pro_pending">Płatność w toku – Pro włączy się po potwierdzeniu przez Google Play.</string>
     <string name="pro_unavailable">Zakup jest dostępny w wersji zainstalowanej z Google Play.</string>
+    <string name="pro_granted">Pro przyznane przez autora aplikacji.</string>
+    <string name="install_code">Kod instalacji: %1$s</string>
+    <string name="ad_label">REKLAMA</string>
     <string name="type_change_warning">Zmiana typu zmienia program obsługi i listę biuletynów.</string>
     <string name="save">Zapisz</string>
     <string name="cancel">Anuluj</string>

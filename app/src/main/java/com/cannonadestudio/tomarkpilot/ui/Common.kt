@@ -222,3 +222,19 @@ fun openUrl(ctx: android.content.Context, url: String) {
         android.widget.Toast.makeText(ctx, url, android.widget.Toast.LENGTH_LONG).show()
     }
 }
+
+
+/**
+ * Turns share links into direct image addresses: Google Drive ("…/file/d/ID/view", "open?id=ID", "uc?id=ID")
+ * and Dropbox ("?dl=0"). The Drive file must be shared as "Anyone with the link".
+ */
+fun directImageUrl(u: String): String {
+    val s = u.trim()
+    if (s.contains("drive.google.com") || s.contains("docs.google.com")) {
+        val id = Regex("""/d/([A-Za-z0-9_-]{10,})""").find(s)?.groupValues?.get(1)
+            ?: Regex("""[?&]id=([A-Za-z0-9_-]{10,})""").find(s)?.groupValues?.get(1)
+        if (id != null) return "https://lh3.googleusercontent.com/d/$id"
+    }
+    if (s.contains("dropbox.com")) return s.replace("dl=0", "raw=1").let { if ("raw=1" in it) it else it + (if ('?' in it) "&" else "?") + "raw=1" }
+    return s
+}

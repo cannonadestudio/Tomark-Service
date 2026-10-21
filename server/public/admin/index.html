@@ -200,7 +200,7 @@ function renderTabs() {
     ["Dane w aplikacji", [["bulletins", "Biuletyny", state.data.bulletins?.bulletins?.length], ["types", "Typy samolotów", state.data.types?.length], ["news", "Komunikaty", state.data.news?.messages?.length]]],
     ["Kontakty", Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => [g, CGROUPS[g].name, count(g)])],
     ["Zarabianie", [["partners", "Partnerzy", partners().filter(isActive).length], ["requests", "Zapytania serwisowe", state.reqCount, state.reqCount > 0], ["sponsor", "Sponsor / baner", (state.data.sponsor?.banners || []).length]]],
-    ["Użytkownicy aplikacji", [["subs", "Zgłoszenia", state.subCount, state.subCount > 0], ["stats", "Statystyki"]]],
+    ["Użytkownicy aplikacji", [["subs", "Zgłoszenia", state.subCount, state.subCount > 0], ["stats", "Statystyki"], ["installs", "Instalacje i Pro"]]],
     ["System", [["history", "Historia i kopie"], ...(state.user?.role === "admin" ? [["users", "Konta panelu"], ["settings", "Ustawienia poczty"]] : [])]],
   ];
   const nav = $("#tabs");
@@ -631,22 +631,40 @@ async function renderSponsor() {
     <p class="muted">Jeden baner sponsora na karcie głównej aplikacji (pokazywany jest pierwszy aktywny w zakresie dat). Obrazek: adres https, najlepiej poziomy ok. 1200×300 px. Licznik: wyświetlenia (raz na uruchomienie aplikacji) i kliknięcia.</p>
     <table><tr><th>Baner</th><th>Okres</th><th>Ten miesiąc</th><th class="hide-sm">12 mies.</th></tr>
     ${list.map(b => { const id = "sponsor:" + b.id, a = sumEvents(ev, id, lastMonths(1)), y = sumEvents(ev, id, lastMonths(12));
-      return `<tr class="item" data-id="${esc(b.id)}"><td><b>${esc(b.title || "(obrazek)")}</b> ${bannerLive(b) ? '<span class="chip g">w aplikacji</span>' : '<span class="chip">nieaktywny</span>'}<div class="muted ell">${esc(b.url || "")}</div></td>
+      return `<tr class="item" data-id="${esc(b.id)}"><td>${b.image ? `<img src="${esc(directImageUrl(b.image))}" alt="" style="height:38px;max-width:150px;object-fit:cover;border-radius:6px;vertical-align:middle;margin-right:8px">` : ""}<b>${esc(b.title || "(obrazek)")}</b> ${bannerLive(b) ? '<span class="chip g">w aplikacji</span>' : '<span class="chip">nieaktywny</span>'}<div class="muted ell">${esc(b.url || "")}</div></td>
       <td class="nowrap">${esc(b.from || "…")} – ${esc(b.until || "…")}</td><td>${a.sponsor_view || 0} / ${a.sponsor_click || 0} klik.</td><td class="hide-sm">${y.sponsor_view || 0} / ${y.sponsor_click || 0} klik.</td></tr>` }).join("") || '<tr><td class="muted">Brak banerów.</td></tr>'}</table></div>`;
   hookSearch(() => editBanner(null));
   v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editBanner(list.find(b => b.id === r.dataset.id)));
 }
+function directImageUrl(u) {
+  u = (u || "").trim();
+  const m = u.match(/(?:drive|docs)\.google\.com\/.*?(?:\/d\/|[?&]id=)([A-Za-z0-9_-]{10,})/);
+  if (m) return "https://lh3.googleusercontent.com/d/" + m[1];
+  if (/dropbox\.com/.test(u)) return u.replace("dl=0", "raw=1");
+  return u;
+}
+function hookBannerPreview() {
+  const inp = document.querySelector('#dlgForm input[name=image]'), img = $("#bnPrev");
+  if (!inp || !img) return;
+  const show = () => { const u = directImageUrl(inp.value); if (/^https:\/\//.test(u)) { img.src = u; img.style.display = "" } else img.style.display = "none" };
+  img.onerror = () => { img.style.display = "none"; $("#bnHint").innerHTML = '<b style="color:var(--pink)">Nie da się wczytać obrazka.</b> Sprawdź, czy plik na Dysku jest udostępniony „Każda osoba mająca link”.' };
+  inp.oninput = show; show();
+}
 function editBanner(b) {
+  setTimeout(hookBannerPreview, 0);
   const isNew = !b; b = b || { id: "b" + Date.now().toString(36), title: "", text: "", image: "", url: "", from: today(), until: "", active: true };
   openDialog(`<h3>${isNew ? "Nowy baner" : "Baner"}</h3>
-    <div class="grid2">${field("title", "Nazwa sponsora / tytuł", b.title)}${field("url", "Link po kliknięciu (https)", b.url, "url")}
+    <div class="grid2">${field("title", "Nazwa sponsora (tylko w panelu)", b.title)}${field("url", "Link po kliknięciu (https)", b.url, "url")}
     ${field("from", "Od", b.from || "", "date")}${field("until", "Do", b.until || "", "date")}</div>
-    ${field("image", "Obrazek (https, poziomy) – opcjonalnie", b.image, "url")}
-    <label>Krótki tekst (gdy bez obrazka lub pod nim)<textarea name="text" maxlength="160">${esc(b.text || "")}</textarea></label>
+    ${field("image", "Obrazek (https, poziomy) – może być link „Udostępnij” z Dysku Google", b.image, "url")}
+    <img id="bnPrev" alt="" style="max-width:100%;border-radius:10px;margin-top:6px;display:none">
+    <p class="muted" id="bnHint">Na Dysku Google ustaw udostępnianie: „Każda osoba mająca link”. W aplikacji obrazek ma tylko mały napis REKLAMA.</p>
+    <label>Tekst zastępczy (pokazywany tylko, gdy nie ma obrazka)<textarea name="text" maxlength="160">${esc(b.text || "")}</textarea></label>
     <label class="inl"><input type="checkbox" name="active" ${b.active === false ? "" : "checked"}> aktywny</label>`,
     async fd => {
       const nb = { id: b.id, title: fd.get("title").trim(), text: fd.get("text").trim(), image: fd.get("image").trim(), url: fd.get("url").trim(), from: fd.get("from"), until: fd.get("until"), active: !!fd.get("active") };
       if (!nb.title && !nb.image) throw new Error("Podaj nazwę lub obrazek.");
+      nb.image = directImageUrl(nb.image);
       for (const k of ["url", "image"]) if (nb[k] && !/^https:\/\//.test(nb[k])) throw new Error("Adresy muszą zaczynać się od https://");
       Object.keys(nb).forEach(k => nb[k] === "" && delete nb[k]);
       const list = state.data.sponsor.banners; const i = list.findIndex(x => x.id === b.id);
@@ -668,6 +686,36 @@ async function renderSettings() {
     try { await api("settings", { body: { notifyEmail: fd.get("notifyEmail").trim(), mailFrom: fd.get("mailFrom").trim() } }); status("Zapisano ustawienia poczty.") } catch (err) { status(err.message, false) }
   };
   $("#testMail").onclick = async () => { try { const r = await api("settings", { q: "&test=1" }); status(r.test ? "Wysłano e-mail testowy na " + r.settings.notifyEmail : "Nie udało się wysłać – sprawdź adres lub poczty na hostingu.", !!r.test) } catch (e) { status(e.message, false) } };
+}
+
+// ---------------------------------------------------------------- installations: manual Pro, reset
+async function renderInstalls() {
+  const v = $("#view");
+  const j = await api("installs");
+  const admin = state.user?.role === "admin";
+  const q = (state.filter || "").trim().toUpperCase();
+  const list = j.installs.filter(i => !q || i.code.includes(q) || (i.note || "").toUpperCase().includes(q) || (i.types || []).join(" ").toUpperCase().includes(q));
+  v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Kod instalacji (8 znaków z „O aplikacji”), notatka lub typ samolotu…" value="${esc(state.filter)}" style="flex:1">
+      ${admin ? '<button class="danger" id="resetInst">Resetuj licznik instalacji</button>' : ""}</div>
+    <p class="muted">Użytkownik widzi swój <b>kod instalacji</b> w aplikacji: „O aplikacji” → AeroHangar Pro. Wpisz go tutaj i włącz <b>Pro ręcznie</b> (np. dla testerów, partnerów, instruktorów). Aplikacja odczyta to przy następnym otwarciu albo po „Przywróć zakup”. Pro ręczne jest bezpłatnym przydziałem – w wersji z Google Play nie sprzedawaj go poza sklepem.</p>
+    <p class="muted">Wszystkich: <b>${j.installs.length}</b> · Pro z Google Play: <b>${j.installs.filter(i => i.pro).length}</b> · Pro ręczne: <b>${j.installs.filter(i => i.proGranted).length}</b>. Pokazano ${Math.min(list.length, 300)} z ${list.length}.</p>
+    <table><tr><th>Kod</th><th>Ostatnio</th><th class="hide-sm">Pierwsza</th><th class="hide-sm">Wersja</th><th>Samoloty</th><th>Pro</th><th class="hide-sm">Notatka</th></tr>
+    ${list.slice(0, 300).map(i => `<tr><td class="nowrap"><b style="font-family:monospace">${esc(i.code)}</b></td><td class="nowrap">${esc(i.last || "")}</td><td class="hide-sm nowrap">${esc(i.first || "")}</td>
+      <td class="hide-sm">${esc(i.v || "")} <span class="muted">${esc(i.lang || "")}</span></td><td>${i.ac ?? "?"}<div class="muted ell">${esc((i.types || []).join(", "))}</div></td>
+      <td class="nowrap">${i.pro ? '<span class="chip p">Google Play</span> ' : ""}${admin ? `<button class="pub ${i.proGranted ? "on" : "off"}" data-grant="${esc(i.id)}" data-on="${i.proGranted ? 0 : 1}">${i.proGranted ? "ręczne: tak" : "ręczne: nie"}</button>` : (i.proGranted ? "ręczne" : "")}</td>
+      <td class="hide-sm">${admin ? `<input data-note="${esc(i.id)}" value="${esc(i.note || "")}" placeholder="np. Jan K., tester" style="min-width:140px">` : esc(i.note || "")}</td></tr>`).join("") || '<tr><td class="muted">Brak instalacji.</td></tr>'}</table></div>`;
+  $("#q").oninput = e => { state.filter = e.target.value; clearTimeout(state._qt); state._qt = setTimeout(() => renderInstalls().then(() => { const x = $("#q"); x.focus(); x.setSelectionRange(x.value.length, x.value.length) }), 250) };
+  v.querySelectorAll("button[data-grant]").forEach(b => b.onclick = async () => {
+    try { await api("installs", { body: { action: "grant", id: b.dataset.grant, on: b.dataset.on === "1" } }); status(b.dataset.on === "1" ? "Włączono Pro dla tej instalacji." : "Wyłączono ręczne Pro."); renderInstalls() } catch (e) { status(e.message, false) }
+  });
+  v.querySelectorAll("input[data-note]").forEach(inp => inp.onchange = async () => {
+    try { await api("installs", { body: { action: "note", id: inp.dataset.note, note: inp.value } }); status("Zapisano notatkę.") } catch (e) { status(e.message, false) }
+  });
+  const r = $("#resetInst");
+  if (r) r.onclick = async () => {
+    if (!confirm("Wyzerować licznik instalacji? Instalacje z ręcznie przyznanym Pro zostaną. Kopia poprzedniej listy zostaje w private/state.")) return;
+    try { await api("installs", { body: { action: "reset" } }); status("Licznik instalacji wyzerowany."); renderInstalls() } catch (e) { status(e.message, false) }
+  };
 }
 
 // ---------------------------------------------------------------- dashboard
@@ -737,6 +785,7 @@ function render(keepFocus) {
   if (state.tab === "sponsor") { renderSponsor().catch(e => status(e.message, false)); return }
   if (state.tab === "settings") { renderSettings().catch(e => status(e.message, false)); return }
   if (state.tab === "stats") { renderStats().catch(e => status(e.message, false)); return }
+  if (state.tab === "installs") { renderInstalls().catch(e => status(e.message, false)); return }
   if (state.tab === "news") { v.innerHTML = renderNews(); hookSearch(() => editNews(null)); v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editNews(state.data.news.messages.find(n => n.id === r.dataset.id))) }
   if (state.tab === "history") { renderHistory().catch(e => status(e.message, false)); return }
   if (state.tab === "users") { renderUsers().catch(e => status(e.message, false)); return }

@@ -67,6 +67,9 @@
     <string name="pro_thanks">Ďakujem za podporu aplikácie!</string>
     <string name="pro_pending">Platba prebieha – Pro sa zapne po potvrdení.</string>
     <string name="pro_unavailable">Nákup je dostupný vo verzii z Google Play.</string>
+    <string name="pro_granted">Pro udelené autorom aplikácie.</string>
+    <string name="install_code">Kód inštalácie: %1$s</string>
+    <string name="ad_label">REKLAMA</string>
     <string name="type_change_warning">Zmena typu mení program údržby a zoznam bulletinov.</string>
     <string name="save">Uložiť</string>
     <string name="cancel">Zrušiť</string>

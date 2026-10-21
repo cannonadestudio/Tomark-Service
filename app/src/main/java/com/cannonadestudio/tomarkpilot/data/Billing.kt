@@ -130,5 +130,8 @@ object Billing : PurchasesUpdatedListener {
     }
 
     /** Free plan: one aircraft; Pro: unlimited. Aircraft added before the limit existed stay. */
-    fun canAddAircraft(s: AppState = Repo.state.value) = s.aircraft.size < FREE_AIRCRAFT || _pro.value.owned
+    fun canAddAircraft(s: AppState = Repo.state.value) = s.aircraft.size < FREE_AIRCRAFT || isPro(s)
+
+    /** Bought in Google Play or granted by the app owner in the server panel. */
+    fun isPro(s: AppState = Repo.state.value) = _pro.value.owned || s.proGranted
 }

@@ -224,13 +224,14 @@ switch ($action) {
         $id = (string)($body['id'] ?? '');
         if (!preg_match('/^[0-9a-f-]{36}$/', $id)) out(400, ['error' => 'bad id']);
         $info = ['v' => ah_clean_str($body['v'] ?? '', 20), 'lang' => ah_clean_str($body['lang'] ?? '', 5), 'sdk' => (int)($body['sdk'] ?? 0), 'types' => array_slice(array_map(fn($t) => ah_clean_str($t, 40), (array)($body['types'] ?? [])), 0, 5), 'pro' => !empty($body['pro']), 'ac' => max(0, min(99, (int)($body['ac'] ?? 0)))];
-        ah_store_update('installs', function (&$d) use ($id, $info) {
-            if (!isset($d[$id]) && count($d) > 200000) return;
+        $granted = ah_store_update('installs', function (&$d) use ($id, $info) {
+            if (!isset($d[$id]) && count($d) > 200000) return false;
             $today = date('Y-m-d');
             $d[$id] = ($d[$id] ?? ['first' => $today]) + [];
             $d[$id] = array_merge($d[$id], $info, ['last' => $today]);
+            return !empty($d[$id]['proGranted']);
         });
-        out(200, ['ok' => true]);
+        out(200, ['ok' => true, 'pro' => (bool)$granted]);
 
     case 'submit':
         // Contact proposed from the app – waits in the panel until the owner accepts it.
@@ -341,6 +342,38 @@ switch ($action) {
         require_login();
         out(200, ['events' => ah_store_read('events')]);
 
+    case 'installs':
+        // Panel: list of installations, manual Pro, counter reset.
+        $u = require_login();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_csrf();
+            if ($u['role'] !== 'admin') out(403, ['error' => 'admin only']);
+            $act = (string)($body['action'] ?? '');
+            if ($act === 'reset') {
+                // Copy kept in private/state; installs with Pro granted by hand stay (their grant must not vanish).
+                $cur = ah_store_read('installs');
+                @file_put_contents(AH_STATE . '/installs-before-reset-' . date('Ymd-His') . '.json', json_encode($cur));
+                $kept = ah_store_update('installs', function (&$d) {
+                    $d = array_filter($d, fn($i) => !empty($i['proGranted']));
+                    return count($d);
+                });
+                ah_log($u['login'], 'installs counter reset (' . count($cur) . ' removed, ' . $kept . ' with manual Pro kept)');
+            } elseif ($act === 'grant' || $act === 'note') {
+                $id = (string)($body['id'] ?? '');
+                $ok = ah_store_update('installs', function (&$d) use ($id, $act, $body) {
+                    if (!isset($d[$id])) return false;
+                    if ($act === 'grant') $d[$id]['proGranted'] = !empty($body['on']); else $d[$id]['note'] = ah_clean_str($body['note'] ?? '', 200);
+                    return true;
+                });
+                if (!$ok) out(404, ['error' => 'install not found']);
+                ah_log($u['login'], "install " . substr($id, 0, 8) . ": " . ($act === 'grant' ? ('manual Pro ' . (!empty($body['on']) ? 'ON' : 'OFF')) : 'note'));
+            }
+        }
+        $list = [];
+        foreach (ah_store_read('installs') as $id => $i) $list[] = ['id' => $id, 'code' => strtoupper(substr(str_replace('-', '', $id), 0, 8))] + $i;
+        usort($list, fn($a, $b) => strcmp($b['last'] ?? '', $a['last'] ?? ''));
+        out(200, ['installs' => $list]);
+
     case 'settings':
         $u = require_login();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -375,7 +408,7 @@ switch ($action) {
         $months = [];
         foreach ($d as $i) { $m = substr($i['first'] ?? '', 0, 7); if ($m) $months[$m] = ($months[$m] ?? 0) + 1; }
         ksort($months);
-        $pro = count(array_filter($d, fn($i) => !empty($i['pro'])));
+        $pro = count(array_filter($d, fn($i) => !empty($i['pro']) || !empty($i['proGranted'])));
         $multi = count(array_filter($d, fn($i) => empty($i['pro']) && ($i['ac'] ?? 0) >= 1 && strtotime($i['last'] ?? '1970-01-01') >= $now - 30 * 86400));
         out(200, ['total' => count($d), 'active7' => $active(7), 'active30' => $active(30), 'pro' => $pro, 'freeActiveWithAircraft' => $multi,
             'versions' => $by('v'), 'langs' => $by('lang'), 'types' => array_slice($types, 0, 15, true), 'newPerMonth' => $months]);

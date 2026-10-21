@@ -40,7 +40,8 @@ private tailrec fun Context.activity(): Activity? = when (this) {
 @Composable
 fun ProDialog(onDismiss: () -> Unit) {
     val pro by Billing.pro.collectAsState()
-    if (pro.owned) { onDismiss(); return }
+    val st by com.cannonadestudio.tomarkpilot.data.Repo.state.collectAsState()
+    if (pro.owned || st.proGranted) { onDismiss(); return }
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(stringResource(R.string.pro_title)) },
@@ -80,12 +81,14 @@ fun ProCard() {
     val scope = rememberCoroutineScope()
     val pro by Billing.pro.collectAsState()
     var busy by remember { mutableStateOf(false) }
+    val st by com.cannonadestudio.tomarkpilot.data.Repo.state.collectAsState()
+    val clip = androidx.compose.ui.platform.LocalClipboardManager.current
     Card(Modifier.fillMaxWidth()) {
         Column(Modifier.padding(16.dp)) {
             Text(stringResource(R.string.pro_title), style = MaterialTheme.typography.titleMedium)
-            if (pro.owned) {
+            if (pro.owned || st.proGranted) {
                 Text(stringResource(R.string.pro_active), color = HbgPink, fontWeight = FontWeight.SemiBold)
-                Text(stringResource(R.string.pro_thanks), style = MaterialTheme.typography.bodySmall)
+                Text(stringResource(if (pro.owned) R.string.pro_thanks else R.string.pro_granted), style = MaterialTheme.typography.bodySmall)
             } else {
                 ProBody()
                 Row(Modifier.padding(top = 8.dp)) {
@@ -94,11 +97,21 @@ fun ProCard() {
                         busy = true
                         scope.launch {
                             Billing.refresh()
+                            com.cannonadestudio.tomarkpilot.data.Repo.checkProGrant()
                             busy = false
-                            Toast.makeText(ctx, ctx.getString(if (Billing.pro.value.owned) R.string.pro_restored else R.string.pro_not_found), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(ctx, ctx.getString(if (Billing.isPro()) R.string.pro_restored else R.string.pro_not_found), Toast.LENGTH_SHORT).show()
                         }
                     }) { Text(stringResource(R.string.pro_restore)) }
                 }
+            }
+            // Install code – the owner finds this phone by it in the panel (e.g. to grant Pro by hand).
+            val code = remember { com.cannonadestudio.tomarkpilot.data.Repo.installCode() }
+            Row(Modifier.padding(top = 8.dp), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+                Text(stringResource(R.string.install_code, code), style = MaterialTheme.typography.bodySmall, modifier = Modifier.weight(1f))
+                TextButton(onClick = {
+                    clip.setText(androidx.compose.ui.text.AnnotatedString(code))
+                    Toast.makeText(ctx, code, Toast.LENGTH_SHORT).show()
+                }) { Text(stringResource(R.string.copy)) }
             }
         }
     }
