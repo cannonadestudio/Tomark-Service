@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -522,8 +523,10 @@ private fun SponsorCard() {
     }
     val ctx = LocalContext.current
     androidx.compose.runtime.LaunchedEffect(b.id) { Repo.track("sponsor_view", "sponsor:" + b.id) }
+    // The "AD" tab hangs just under the banner's bottom edge, drawn on top – it takes no space of its own.
+    androidx.compose.foundation.layout.Box(Modifier.fillMaxWidth().padding(top = 10.dp).zIndex(1f)) {
     Card(
-        Modifier.fillMaxWidth().padding(top = 10.dp).clickable(enabled = b.url.isNotBlank()) {
+        Modifier.fillMaxWidth().clickable(enabled = b.url.isNotBlank()) {
             Repo.track("sponsor_click", "sponsor:" + b.id)
             openUrl(ctx, b.url)
         },
@@ -543,13 +546,13 @@ private fun SponsorCard() {
                     Text(cur.text.ifBlank { cur.title }, modifier = Modifier.fillMaxWidth().padding(start = 12.dp, end = 70.dp, top = 12.dp, bottom = 12.dp))
                 }
             }
-            // Always above the picture.
-            Text(
-                stringResource(R.string.ad_label), fontSize = 9.sp, color = Color.White, fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.align(Alignment.TopEnd).zIndex(1f).padding(6.dp)
-                    .background(Color.Black.copy(alpha = 0.45f), androidx.compose.foundation.shape.RoundedCornerShape(4.dp))
-                    .padding(horizontal = 5.dp, vertical = 1.dp),
-            )
         }
+    }
+    Text(
+        stringResource(R.string.ad_label), fontSize = 8.sp, lineHeight = 10.sp, color = Color.White, fontWeight = FontWeight.SemiBold,
+        modifier = Modifier.align(Alignment.BottomEnd).offset(y = 12.dp).padding(end = 16.dp).zIndex(1f)
+            .background(Color.Black.copy(alpha = 0.55f), androidx.compose.foundation.shape.RoundedCornerShape(bottomStart = 4.dp, bottomEnd = 4.dp))
+            .padding(horizontal = 6.dp, vertical = 1.dp),
+    )
     }
 }
