@@ -136,6 +136,9 @@
     <string name="years_n">%1$s years</string>
     <string name="rescue_years">Service life / repack every (years)</string>
     <string name="rescue_hint">6 years by default – set what your rescue system\'s manual says.</string>
+    <string name="open_logbook">Pilot Logbook</string>
+    <string name="collapse">Collapse</string>
+    <string name="expand">Show details</string>
     <string name="type_change_warning">Changing the type changes the maintenance programme and bulletins.</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>

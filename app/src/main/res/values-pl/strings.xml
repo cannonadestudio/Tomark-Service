@@ -135,6 +135,9 @@
     <string name="years_n">%1$s lat</string>
     <string name="rescue_years">Resurs / przepakowanie co (lat)</string>
     <string name="rescue_hint">Domyślnie 6 lat – ustaw zgodnie z instrukcją swojego systemu ratunkowego.</string>
+    <string name="open_logbook">Pilot Logbook</string>
+    <string name="collapse">Zwiń</string>
+    <string name="expand">Rozwiń</string>
     <string name="type_change_warning">Zmiana typu zmienia program obsługi i listę biuletynów.</string>
     <string name="save">Zapisz</string>
     <string name="cancel">Anuluj</string>

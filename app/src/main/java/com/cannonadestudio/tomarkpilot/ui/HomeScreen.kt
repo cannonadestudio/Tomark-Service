@@ -49,6 +49,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.foundation.background
 import androidx.compose.ui.zIndex
 import androidx.compose.ui.Modifier
@@ -100,12 +102,12 @@ fun HomeScreen(
     val attention = due.filter { Maintenance.needsAttention(it) }
     val openBulletins = Repo.openBulletins(aircraft, state, feed)
 
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)) {
-        // Header – white on the gradient background
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(start = 16.dp, end = 16.dp, bottom = 16.dp)) {
+        // Header – white on the gradient background, tight under the top bar
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
-                Text(aircraft.registration, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, color = Color.White)
-                Text(type.name, style = MaterialTheme.typography.titleSmall, color = Color.White)
+                Text(aircraft.registration, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, color = Color.White, lineHeight = 30.sp)
+                Text(type.name, style = MaterialTheme.typography.titleSmall, color = Color.White, lineHeight = 18.sp)
                 EngineSerialLine(aircraft, Color.White)
             }
             Chip(if (type.category == "EASA") "EASA ${type.tcds ?: ""}".trim() else "UL / LSA", HbgPink, Color.White)
@@ -385,17 +387,17 @@ fun EngineSerialLine(a: Aircraft, color: Color) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
                 if (value.isNullOrBlank()) label + ": " + stringResource(R.string.tap_to_enter) else "$label: $value",
-                color = color, style = MaterialTheme.typography.bodyMedium,
+                color = color, style = MaterialTheme.typography.bodyMedium, lineHeight = 18.sp,
                 fontWeight = if (value.isNullOrBlank()) FontWeight.Normal else FontWeight.SemiBold,
-                modifier = Modifier.clickable { edit = true }.padding(vertical = 1.dp),
+                modifier = Modifier.clickable { edit = true },
             )
             if (copyable && !value.isNullOrBlank()) {
                 IconButton(onClick = {
                     val cm = ctx.getSystemService(android.content.ClipboardManager::class.java)
                     cm?.setPrimaryClip(android.content.ClipData.newPlainText(label, value))
                     android.widget.Toast.makeText(ctx, ctx.getString(R.string.copied, value), android.widget.Toast.LENGTH_SHORT).show()
-                }, modifier = Modifier.size(30.dp)) {
-                    Icon(Icons.Filled.ContentCopy, stringResource(R.string.copy), tint = color, modifier = Modifier.size(17.dp))
+                }, modifier = Modifier.size(24.dp)) {
+                    Icon(Icons.Filled.ContentCopy, stringResource(R.string.copy), tint = color, modifier = Modifier.size(15.dp))
                 }
             }
         }
@@ -444,36 +446,51 @@ private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, 
         com.cannonadestudio.tomarkpilot.data.DueStatus.SOON -> Color(0xFFB26A00)
         else -> look.bg
     }
-    Card(Modifier.fillMaxWidth().padding(top = 10.dp).clickable(onClick = onClick)) {
-        Row(Modifier.padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
-            Column(Modifier.weight(1f)) {
-                Text(stringResource(R.string.next_insp_title), style = MaterialTheme.typography.labelLarge, color = HbgPink)
-                if (rem >= 0) {
-                    Row(verticalAlignment = Alignment.Bottom) {
-                        Text(fmtH(rem), fontSize = 34.sp, fontWeight = FontWeight.Bold, color = numColor)
-                        Text(" h", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = numColor, modifier = Modifier.padding(bottom = 5.dp))
+    // Collapsed: hours left + status. Tap to unfold the details.
+    var open by androidx.compose.runtime.saveable.rememberSaveable { mutableStateOf(false) }
+    Card(Modifier.fillMaxWidth().padding(top = 8.dp).clickable { open = !open }) {
+        Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text(stringResource(R.string.next_insp_title), style = MaterialTheme.typography.labelLarge, color = HbgPink)
+                    if (rem >= 0) {
+                        Row(verticalAlignment = Alignment.Bottom) {
+                            Text(fmtH(rem), fontSize = 30.sp, fontWeight = FontWeight.Bold, color = numColor, lineHeight = 32.sp)
+                            Text(" h", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = numColor, modifier = Modifier.padding(bottom = 4.dp))
+                        }
+                    } else {
+                        Text(stringResource(R.string.next_insp_over, fmtH(-rem)), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = numColor)
                     }
-                } else {
-                    Text(stringResource(R.string.next_insp_over, fmtH(-rem)), fontSize = 22.sp, fontWeight = FontWeight.Bold, color = numColor)
                 }
-                Text(stringResource(R.string.next_insp_at, d.task.title.get(lg), fmtH(d.dueHours ?: 0.0)), style = MaterialTheme.typography.bodyMedium)
-                val todo = com.cannonadestudio.tomarkpilot.data.Maintenance.itemsDue(d.task, d.dueHours)
-                if (todo.isNotEmpty()) {
-                    todo.take(6).forEach { Text("• " + it.title.get(lg), style = MaterialTheme.typography.bodySmall) }
-                    if (todo.size > 6) Text(stringResource(R.string.items_more, todo.size - 6), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                }
-                d.dueDate?.let { Text(stringResource(R.string.next_insp_date, fmtDate(it)), style = MaterialTheme.typography.bodySmall) }
-                val synced = state.logbookSyncedEpochDay
-                Text(
-                    if (a.logbookBaseHours != null && synced != null && state.logbookError == null) stringResource(R.string.next_insp_logbook, fmtEpochDay(synced))
-                    else stringResource(R.string.next_insp_manual),
-                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                StatusChip(d.status)
+                Icon(
+                    if (open) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+                    stringResource(if (open) R.string.collapse else R.string.expand),
+                    modifier = Modifier.padding(start = 6.dp),
                 )
-                androidx.compose.material3.FilledTonalButton(onClick = onBook, modifier = Modifier.padding(top = 6.dp)) {
-                    Text(stringResource(R.string.req_book))
+            }
+            androidx.compose.animation.AnimatedVisibility(open) {
+                Column {
+                    Text(stringResource(R.string.next_insp_at, d.task.title.get(lg), fmtH(d.dueHours ?: 0.0)), style = MaterialTheme.typography.bodyMedium)
+                    val todo = com.cannonadestudio.tomarkpilot.data.Maintenance.itemsDue(d.task, d.dueHours)
+                    if (todo.isNotEmpty()) {
+                        todo.take(6).forEach { Text("• " + it.title.get(lg), style = MaterialTheme.typography.bodySmall) }
+                        if (todo.size > 6) Text(stringResource(R.string.items_more, todo.size - 6), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                    d.dueDate?.let { Text(stringResource(R.string.next_insp_date, fmtDate(it)), style = MaterialTheme.typography.bodySmall) }
+                    val synced = state.logbookSyncedEpochDay
+                    Text(
+                        if (a.logbookBaseHours != null && synced != null && state.logbookError == null) stringResource(R.string.next_insp_logbook, fmtEpochDay(synced))
+                        else stringResource(R.string.next_insp_manual),
+                        style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Row(Modifier.padding(top = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+                        androidx.compose.material3.FilledTonalButton(onClick = onBook) { Text(stringResource(R.string.req_book)) }
+                        Spacer(Modifier.width(6.dp))
+                        TextButton(onClick = onClick) { Text(stringResource(R.string.tab_service)) }
+                    }
                 }
             }
-            StatusChip(d.status)
         }
     }
 }

@@ -192,7 +192,11 @@ data class NewsFeed(val version: Int = 0, val updated: String = "", val messages
 
 /** data/config.json on GitHub: points all apps to the owner's own server when set. */
 @Serializable
-data class RemoteConfig(val dataBaseUrl: String? = null)
+data class RemoteConfig(
+    val dataBaseUrl: String? = null,
+    /** Android package of the Pilot Logbook app (opened from the top bar; Google Play if not installed). */
+    val logbookPackage: String? = null,
+)
 
 // ---------------------------------------------------------------- user data (filesDir/state.json)
 

@@ -135,6 +135,9 @@
     <string name="years_n">%1$s let</string>
     <string name="rescue_years">Přebalení každých (let)</string>
     <string name="rescue_hint">Výchozí 6 let – dle příručky systému.</string>
+    <string name="open_logbook">Pilot Logbook</string>
+    <string name="collapse">Sbalit</string>
+    <string name="expand">Rozbalit</string>
     <string name="type_change_warning">Změna typu mění program údržby a seznam bulletinů.</string>
     <string name="save">Uložit</string>
     <string name="cancel">Zrušit</string>

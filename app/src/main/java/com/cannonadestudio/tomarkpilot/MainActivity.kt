@@ -26,6 +26,7 @@ import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Dashboard
 import androidx.compose.material.icons.filled.Flight
+import androidx.compose.material.icons.filled.EditCalendar
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.AlertDialog
@@ -146,6 +147,7 @@ private fun Root(tab: Int, setTab: (Int) -> Unit) {
         containerColor = Color.Transparent,
         topBar = {
             TopAppBar(
+                expandedHeight = 52.dp,
                 title = {
                     Text(
                         when (val o = overlay) {
@@ -164,6 +166,9 @@ private fun Root(tab: Int, setTab: (Int) -> Unit) {
                 actions = {
                     if (overlay == null) {
                         IconButton(onClick = { overlay = Overlay.List }) { Icon(Icons.Filled.Flight, stringResource(R.string.aircraft)) }
+                        // Pilot Logbook: open the app, or its Google Play page when it is not installed
+                        val c = androidx.compose.ui.platform.LocalContext.current
+                        IconButton(onClick = { openPilotLogbook(c) }) { Icon(Icons.Filled.EditCalendar, stringResource(R.string.open_logbook)) }
                         IconButton(onClick = { overlay = Overlay.About }) { Icon(Icons.Filled.Info, stringResource(R.string.about)) }
                     }
                 },
@@ -397,5 +402,22 @@ private object BuildConfigCompat {
     fun versionName(): String {
         val ctx = androidx.compose.ui.platform.LocalContext.current
         return runCatching { ctx.packageManager.getPackageInfo(ctx.packageName, 0).versionName }.getOrNull() ?: ""
+    }
+}
+
+
+/** Opens Pilot Logbook; if it is not installed, its page in Google Play (or the web store). */
+fun openPilotLogbook(ctx: android.content.Context) {
+    val pkg = Repo.logbookPackage
+    val launch = ctx.packageManager.getLaunchIntentForPackage(pkg)
+        ?: Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER).setPackage(pkg)
+    try {
+        ctx.startActivity(launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+    } catch (_: android.content.ActivityNotFoundException) {
+        try {
+            ctx.startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("market://details?id=$pkg")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        } catch (_: android.content.ActivityNotFoundException) {
+            ctx.startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://play.google.com/store/apps/details?id=$pkg")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        }
     }
 }

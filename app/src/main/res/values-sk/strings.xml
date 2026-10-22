@@ -135,6 +135,9 @@
     <string name="years_n">%1$s rokov</string>
     <string name="rescue_years">Prebalenie každých (rokov)</string>
     <string name="rescue_hint">Predvolene 6 rokov – podľa príručky systému.</string>
+    <string name="open_logbook">Pilot Logbook</string>
+    <string name="collapse">Zbaliť</string>
+    <string name="expand">Rozbaliť</string>
     <string name="type_change_warning">Zmena typu mení program údržby a zoznam bulletinov.</string>
     <string name="save">Uložiť</string>
     <string name="cancel">Zrušiť</string>

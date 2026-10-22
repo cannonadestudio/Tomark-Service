@@ -135,6 +135,9 @@
     <string name="years_n">%1$s ans</string>
     <string name="rescue_years">Repliage tous les (ans)</string>
     <string name="rescue_hint">6 ans par défaut – selon le manuel.</string>
+    <string name="open_logbook">Pilot Logbook</string>
+    <string name="collapse">Réduire</string>
+    <string name="expand">Afficher</string>
     <string name="type_change_warning">Changer de type modifie le programme d\'entretien et les bulletins.</string>
     <string name="save">Enregistrer</string>
     <string name="cancel">Annuler</string>

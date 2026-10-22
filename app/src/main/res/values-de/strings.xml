@@ -135,6 +135,9 @@
     <string name="years_n">%1$s Jahre</string>
     <string name="rescue_years">Packintervall (Jahre)</string>
     <string name="rescue_hint">Standard 6 Jahre – laut Handbuch.</string>
+    <string name="open_logbook">Pilot Logbook</string>
+    <string name="collapse">Einklappen</string>
+    <string name="expand">Details</string>
     <string name="type_change_warning">Eine Änderung des Musters ändert das Instandhaltungsprogramm und die Bulletins.</string>
     <string name="save">Speichern</string>
     <string name="cancel">Abbrechen</string>

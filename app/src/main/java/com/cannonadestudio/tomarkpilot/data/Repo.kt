@@ -51,6 +51,12 @@ object Repo {
     private val typesCache get() = File(app.filesDir, "types_cache.json")
     private val newsCache get() = File(app.filesDir, "news_cache.json")
     private val baseCache get() = File(app.filesDir, "data_base.txt")
+    private val logbookPkgCache get() = File(app.filesDir, "logbook_package.txt")
+
+    /** Pilot Logbook app – default id, can be changed remotely in data/config.json ("logbookPackage"). */
+    @Volatile
+    var logbookPackage: String = "com.cannonadestudio.pilotlogbook"
+        private set
 
     private val examinersCache get() = File(app.filesDir, "examiners_cache.json")
     private val _examiners = MutableStateFlow(ContactFeed())
@@ -83,6 +89,7 @@ object Repo {
                 ?.takeIf { it.isNotEmpty() }?.let { c -> c + bundledEngines.filter { b -> c.none { it.id == b.id } } } ?: bundledEngines
             _feed.value = loadFeed()
             runCatching { baseCache.readText().trim() }.getOrNull()?.takeIf { it.startsWith("https://") }?.let { dataBase = it }
+            runCatching { logbookPkgCache.readText().trim() }.getOrNull()?.takeIf { it.isNotBlank() }?.let { logbookPackage = it }
             _examiners.value = runCatching { json.decodeFromString<ContactFeed>(examinersCache.readText()) }.getOrNull() ?: ContactFeed()
             _news.value = runCatching { json.decodeFromString<NewsFeed>(newsCache.readText()) }.getOrNull() ?: NewsFeed()
             _sponsor.value = runCatching { json.decodeFromString<SponsorFeed>(sponsorCache.readText()) }.getOrNull() ?: SponsorFeed()
@@ -157,6 +164,7 @@ object Repo {
             val b = cfg.dataBaseUrl?.trim()?.takeIf { it.startsWith("https://") } ?: GITHUB_DATA
             dataBase = b
             baseCache.writeText(b)
+            cfg.logbookPackage?.trim()?.takeIf { Regex("^[a-zA-Z][\\w.]+$").matches(it) }?.let { logbookPackage = it; logbookPkgCache.writeText(it) }
         }
     }
 

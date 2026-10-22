@@ -1394,5 +1394,13 @@
  "rescue_hint": {
   "de": "Standard 6 Jahre – laut Handbuch.",
   "cs": "Výchozí 6 let – dle příručky systému."
+ },
+ "collapse": {
+  "de": "Einklappen",
+  "cs": "Sbalit"
+ },
+ "expand": {
+  "de": "Details",
+  "cs": "Rozbalit"
  }
 }
