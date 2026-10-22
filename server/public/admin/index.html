@@ -204,7 +204,7 @@ function renderTabs() {
     ["Kontakty", Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => [g, CGROUPS[g].name, count(g)])],
     ["Zarabianie", [["partners", "Partnerzy", partners().filter(isActive).length], ["requests", "Zapytania serwisowe", state.reqCount, state.reqCount > 0], ["sponsor", "Sponsor / baner", (state.data.sponsor?.banners || []).length]]],
     ["Użytkownicy aplikacji", [["subs", "Zgłoszenia", state.subCount, state.subCount > 0], ["stats", "Statystyki"], ["installs", "Instalacje i Pro"]]],
-    ["System", [["history", "Historia i kopie"], ...(state.user?.role === "admin" ? [["users", "Konta panelu"], ["settings", "Ustawienia poczty"]] : [])]],
+    ["System", [["history", "Historia i kopie"], ...(state.user?.role === "admin" ? [["users", "Konta panelu"], ["settings", "Ustawienia"]] : [])]],
   ];
   const nav = $("#tabs");
   nav.classList.add("shown");
@@ -686,14 +686,19 @@ function editBanner(b) {
 async function renderSettings() {
   const v = $("#view");
   const j = await api("settings");
-  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Ustawienia poczty</h3>
-    <form id="setF"><div class="grid2">${field("notifyEmail", "Twój e-mail – kopia każdego zapytania serwisowego", j.settings.notifyEmail, "email")}
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Ustawienia</h3>
+    <form id="setF">
+    <b>Aplikacja Pilot Logbook</b>
+    ${field("logbookPackage", "Link z Google Play albo identyfikator aplikacji (np. https://play.google.com/store/apps/details?id=…)", j.settings.logbookPackage)}
+    <p class="muted" style="margin-top:4px">Ikona kalendarza na górze AeroHangar otwiera tę aplikację, a gdy jej nie ma w telefonie – jej stronę w Google Play. Aplikacje odczytają zmianę przy następnym otwarciu.</p>
+    <b>Poczta</b>
+    <div class="grid2">${field("notifyEmail", "Twój e-mail – kopia każdego zapytania serwisowego", j.settings.notifyEmail, "email")}
     ${field("mailFrom", "Nadawca e-maili (adres w Twojej domenie, np. aerohangar@horyzontbezgranic.pl)", j.settings.mailFrom, "email")}</div>
     <div class="row" style="margin-top:10px"><button type="submit">Zapisz</button><button type="button" class="ghost" id="testMail">Wyślij e-mail testowy</button></div></form>
     <p class="muted">Serwer wysyła pocztę funkcją PHP mail(). Na większości hostingów działa od razu; adres nadawcy powinien być w Twojej domenie, żeby e-maile nie trafiały do spamu.</p></div>`;
   $("#setF").onsubmit = async e => {
     e.preventDefault(); const fd = new FormData(e.target);
-    try { await api("settings", { body: { notifyEmail: fd.get("notifyEmail").trim(), mailFrom: fd.get("mailFrom").trim() } }); status("Zapisano ustawienia poczty.") } catch (err) { status(err.message, false) }
+    try { const r = await api("settings", { body: { notifyEmail: fd.get("notifyEmail").trim(), mailFrom: fd.get("mailFrom").trim(), logbookPackage: fd.get("logbookPackage").trim() } }); status("Zapisano ustawienia." + (r.settings.logbookPackage ? " Pilot Logbook: " + r.settings.logbookPackage : "")); renderSettings() } catch (err) { status(err.message, false) }
   };
   $("#testMail").onclick = async () => { try { const r = await api("settings", { q: "&test=1" }); status(r.test ? "Wysłano e-mail testowy na " + r.settings.notifyEmail : "Nie udało się wysłać – sprawdź adres lub poczty na hostingu.", !!r.test) } catch (e) { status(e.message, false) } };
 }

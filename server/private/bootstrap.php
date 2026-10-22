@@ -346,7 +346,7 @@ function ah_clean_str($v, int $max): string
 /** Panel settings kept in private/state/settings.json (notification address, sender). */
 function ah_settings(): array
 {
-    return ah_store_read('settings') + ['notifyEmail' => '', 'mailFrom' => ''];
+    return ah_store_read('settings') + ['notifyEmail' => '', 'mailFrom' => '', 'logbookPackage' => ''];
 }
 
 function ah_partner_active(array $c): bool

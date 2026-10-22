@@ -425,7 +425,17 @@ switch ($action) {
                 if ($v !== '' && !filter_var($v, FILTER_VALIDATE_EMAIL)) out(400, ['error' => "$k: niepoprawny adres e-mail"]);
                 $new[$k] = $v;
             }
+            // Pilot Logbook: Google Play link or package id -> package id
+            if (array_key_exists('logbookPackage', $body ?? [])) {
+                $lp = trim((string)$body['logbookPackage']);
+                if (preg_match('/[?&]id=([A-Za-z][\w.]+)/', $lp, $m)) $lp = $m[1];
+                if ($lp !== '' && !preg_match('/^[A-Za-z][\w]*(\.[A-Za-z][\w]*)+$/', $lp)) out(400, ['error' => 'Pilot Logbook: podaj link z Google Play albo identyfikator, np. com.firma.aplikacja']);
+                $new['logbookPackage'] = $lp;
+            }
             ah_store_update('settings', function (&$d) use ($new) { $d = array_merge($d, $new); });
+            // Public part read by the apps (no e-mail addresses there)
+            $s = ah_settings();
+            ah_write_atomic(ah_data_path('app_config'), ah_json(['logbookPackage' => $s['logbookPackage'] ?: null]));
             ah_log($u['login'], 'settings changed');
         }
         if (($_GET['test'] ?? '') === '1' && $u['role'] === 'admin') {

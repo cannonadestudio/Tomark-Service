@@ -175,6 +175,7 @@ object Repo {
         refreshContacts()
         refreshTypes()
         refreshEngines()
+        refreshAppConfig()
         refreshNews()
         refreshSponsor()
         if (_state.value.examinersEnabled) refreshExaminers()
@@ -433,6 +434,18 @@ object Repo {
             if (t.engine.isBlank() && b != null) t.copy(engine = b.engine, kind = b.kind, bulletinGroups = b.bulletinGroups) else t
         }
         return fixed + bundledTypes.filter { b -> fixed.none { it.id == b.id } }
+    }
+
+    /** app_config.json from the owner's server (set in the panel): Pilot Logbook package for the top-bar button. */
+    suspend fun refreshAppConfig(): Result<Unit> = withContext(Dispatchers.IO) {
+        runCatching {
+            val cfg = json.decodeFromString<RemoteConfig>(downloadData("app_config"))
+            cfg.logbookPackage?.trim()?.takeIf { Regex("^[a-zA-Z][\\w.]+$").matches(it) }?.let {
+                logbookPackage = it
+                logbookPkgCache.writeText(it)
+            }
+            Unit
+        }
     }
 
     suspend fun refreshEngines(): Result<Int> = withContext(Dispatchers.IO) {
