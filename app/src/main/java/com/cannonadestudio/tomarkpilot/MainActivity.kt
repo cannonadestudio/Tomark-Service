@@ -406,18 +406,33 @@ private object BuildConfigCompat {
 }
 
 
-/** Opens Pilot Logbook; if it is not installed, its page in Google Play (or the web store). */
+/**
+ * Opens Pilot Logbook installed on this phone: first by the id set in the server panel, then by the app
+ * name among installed apps (e.g. a copy installed from GitHub with another id). Only when nothing is
+ * found does it open the app's page in Google Play.
+ */
 fun openPilotLogbook(ctx: android.content.Context) {
+    val pm = ctx.packageManager
     val pkg = Repo.logbookPackage
-    val launch = ctx.packageManager.getLaunchIntentForPackage(pkg)
-        ?: Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER).setPackage(pkg)
-    try {
-        ctx.startActivity(launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-    } catch (_: android.content.ActivityNotFoundException) {
-        try {
-            ctx.startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("market://details?id=$pkg")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-        } catch (_: android.content.ActivityNotFoundException) {
-            ctx.startActivity(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://play.google.com/store/apps/details?id=$pkg")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-        }
+    fun start(i: Intent) = try { ctx.startActivity(i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); true } catch (_: android.content.ActivityNotFoundException) { false }
+
+    // 1. the configured id
+    pm.getLaunchIntentForPackage(pkg)?.let { if (start(it)) return }
+    // 2. any installed app called "Pilot Logbook" / "Logbook pilota" (own apps first)
+    val launcher = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
+    val apps = runCatching { pm.queryIntentActivities(launcher, 0) }.getOrDefault(emptyList())
+        .filter { it.activityInfo.packageName != ctx.packageName }
+    val names = listOf("pilot logbook", "logbook pilota", "pilotlogbook")
+    val found = apps.filter { r ->
+        val label = r.loadLabel(pm).toString().lowercase()
+        names.any { it in label } || r.activityInfo.packageName.lowercase().contains("logbook")
+    }.sortedBy { if (it.activityInfo.packageName.startsWith("com.cannonadestudio")) 0 else 1 }.firstOrNull()
+    if (found != null) {
+        val i = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
+            .setClassName(found.activityInfo.packageName, found.activityInfo.name)
+        if (start(i)) return
     }
+    // 3. not installed: Google Play app, or the web store
+    if (start(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("market://details?id=$pkg")))) return
+    start(Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://play.google.com/store/apps/details?id=$pkg")))
 }
