@@ -345,8 +345,6 @@ object Repo {
                     proGranted = cur.proGranted, installId = cur.installId, lastPingEpochDay = cur.lastPingEpochDay,
                     accountKey = cur.accountKey, accountName = cur.accountName, accountPro = cur.accountPro,
                     accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountBlocked = cur.accountBlocked,
-                    accountServerTime = cur.accountServerTime,
-                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountBlocked = cur.accountBlocked,
                     accountSyncMillis = System.currentTimeMillis(), accountServerTime = st ?: cur.accountServerTime, accountDirty = false,
                     selectedId = restored.selectedId ?: cur.selectedId,
                 )
@@ -769,6 +767,8 @@ object Repo {
                     logbookUri = cur.logbookUri, logbookSyncedEpochDay = cur.logbookSyncedEpochDay,
                     disclaimerAccepted = true, proCached = cur.proCached, proGranted = cur.proGranted, lastPingEpochDay = null,
                     accountKey = cur.accountKey, accountName = cur.accountName, accountPro = cur.accountPro,
+                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountBlocked = cur.accountBlocked,
+                    accountServerTime = cur.accountServerTime,
                     installId = cur.installId,
                 )
             }
