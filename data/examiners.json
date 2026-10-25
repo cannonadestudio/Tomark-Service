@@ -1,5 +1,5 @@
 {
- "version": 2,
+ "version": 3,
  "updated": "2026-10-25",
  "source": "https://ulc.gov.pl/personel-lotniczy/komisja-egzaminacyjna/egzaminy-praktyczne",
  "contacts": [
@@ -2192,7 +2192,6 @@
    "address": "Centrum Medyczne LUXMED, ul. Swobodna 1, 50-088 Wrocław II",
    "lat": 51.1151888,
    "lon": 17.0310797,
-   "email": "kancelaria@ulc.gov.pl",
    "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
    "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
   }
