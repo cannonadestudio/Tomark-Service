@@ -1,6 +1,6 @@
 {
- "version": 1,
- "updated": "2026-10-20",
+ "version": 2,
+ "updated": "2026-10-25",
  "source": "https://ulc.gov.pl/personel-lotniczy/komisja-egzaminacyjna/egzaminy-praktyczne",
  "contacts": [
   {
@@ -1400,6 +1400,801 @@
    "email": "kpawelek@royal-star.pl",
    "note": "Egzaminator ULC – mechanicy lotniczy. B1.2, B2, C; B1.2, B1,3, B1.4, B2, C; 31.03.2028 – B1.2, B1,3, B1.4, B2, C; B1.2, B1.3, B2, C; 28.02.2028 – B1.2, B1.3, B2, C; B1.1, B1.2, B2, C; 28.02.2029 – B1.1, B1.2, B2, C. PL//M/13938 PL/M/4316 PL/M/6798",
    "source": "https://ulc.gov.pl/_download/2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
+  },
+  {
+   "id": "ulc-ame-leszek-buczyłko-warszawa",
+   "name": "Leszek Buczyłko",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Przychodnia ALERGO-MED AVIATION, ul. Lanciego 12/lok. U7/U8, 02-797 Warszawa",
+   "lat": 52.1466809,
+   "lon": 21.0659898,
+   "phone": "224484777",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-magdalena-kaizer-będkowska-gliwice",
+   "name": "Magdalena Kaizer-Będkowska",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Gliwice",
+   "address": "Centrum Medyczne LUXMED Sp. z o.o., ul. Piwna 8, 44-100 Gliwice",
+   "lat": 50.2904955,
+   "lon": 18.6680561,
+   "phone": "223381666",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-andrzej-cholewiński-radom",
+   "name": "Andrzej Cholewiński",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Radom",
+   "address": "Specjalistyczny Gabinet Lekarski, ul. Chrobrego 48 oraz ul. Chrobrego 46, 26-600 Radom",
+   "lat": 51.394689,
+   "lon": 21.1536074,
+   "phone": "602377170",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-henryk-domagała-pińczów",
+   "name": "Henryk Domagała",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Pińczów",
+   "address": "Prywatny Gabinet Lekarski, ul. 11- listopada 8, 28-400 Pińczów",
+   "lat": 50.5023939,
+   "lon": 20.5158219,
+   "phone": "512093823",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-tomasz-fijołek-karczew",
+   "name": "Tomasz Fijołek",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Karczew",
+   "address": "CENTRUM MEDYCZNE Endo-Med. Sp. z o.o., ul. A. Krajowej 80, 05-480 Karczew",
+   "lat": 52.0554318,
+   "lon": 21.2567716,
+   "phone": "885900301",
+   "email": "rejestracja@endo-med.pl",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-bogusława-ignatowicz-wrocław",
+   "name": "Bogusława Ignatowicz",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Wrocław",
+   "address": "Przychodnia na Biskupinie, ul. K. Olszewskiego 21, 51-642 Wrocław",
+   "lat": 51.1021913,
+   "lon": 17.0985295,
+   "phone": "713483081",
+   "email": "lotniczebignatowicz@gmail.com",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-bożena-kajfasz-warszawa",
+   "name": "Bożena Kajfasz",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Przychodnia ALERGO-MED AVIATION, ul. Lanciego 12/lok. U7/U8, 02-797 Warszawa",
+   "lat": 52.1466809,
+   "lon": 21.0659898,
+   "phone": "224504813",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-marek-kajfasz-warszawa",
+   "name": "Marek Kajfasz",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Przychodnia ALERGO-MED AVIATION, ul. Lanciego 12/lok. U7/U8, 02-797 Warszawa",
+   "lat": 52.1466809,
+   "lon": 21.0659898,
+   "phone": "224484777",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-krzysztof-kowalczuk-warszawa",
+   "name": "Krzysztof Kowalczuk",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Centrum Medycyny Lotniczej Wojskowy Instytut Medycyny Lotniczej, ul. Krasińskiego 54, 01-755 Warszawa",
+   "lat": 52.2605419,
+   "lon": 20.9653982,
+   "phone": "261852833",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-mirosława-mielczarek-landowska-warszawa",
+   "name": "Mirosława Mielczarek-Landowska",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Centrum Medycyny Lotniczej LUXMED, ul. Komitetu Obrony Robotników 39, 02-148 Warszawa",
+   "lat": 52.1793316,
+   "lon": 20.9772993,
+   "phone": "224504813",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-andrzej-michałczenko-warszawa",
+   "name": "Andrzej Michałczenko",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Przychodnia ALERGO-MED AVIATION, ul. Lanciego 12/lok. U7/U8, 02-797 Warszawa",
+   "lat": 52.1466809,
+   "lon": 21.0659898,
+   "phone": "224504813",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-piotr-rozlau-warszawa-tel",
+   "name": "Piotr Rozlau",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa Tel",
+   "address": "Centrum Medycyny Lotniczej Wojskowy Instytut Medycyny Lotniczej, ul. Krasińskiego 54, 01-755 Warszawa Tel",
+   "phone": "261852833",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-tomasz-setny-warszawa",
+   "name": "Tomasz Setny",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Centrum Medycyny Lotniczej LUXMED, ul. Komitetu Obrony Robotników 39, 02-148 Warszawa",
+   "lat": 52.1793316,
+   "lon": 20.9772993,
+   "phone": "224504813",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-ireneusz-stawowski-antoniew",
+   "name": "Ireneusz Stawowski",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Antoniew",
+   "address": "IMI-MED Centrum Medyczno-Psychologiczne, ul. Dorotki 4, 95-070 Antoniew",
+   "phone": "502563914",
+   "email": "kontakt@imimed.pl",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-artur-szmiel-łódź",
+   "name": "Artur Szmiel",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Łódź",
+   "address": "Wojskowa Specjalistyczna Przychodnia Lekarska, ul. Sporna 19/23, 91-738 Łódź",
+   "lat": 51.7865149,
+   "lon": 19.4786212,
+   "phone": "664083399",
+   "email": "aszmiel@gmail.com",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-marian-wiaderek-dęblin",
+   "name": "Marian Wiaderek",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Dęblin",
+   "address": "NZOZ Medycyny Pracy, ul. 15 P. P. „Wilków” 34 A/9, 08-530 Dęblin",
+   "lat": 51.5669401,
+   "lon": 21.8513924,
+   "phone": "601443663",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-magdalena-kozak-warszawa",
+   "name": "Magdalena Kozak",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Centrum Medycyny Lotniczej Wojskowy Instytut Medycyny Lotniczej, ul. Krasińskiego 54, 01-755 Warszawa",
+   "lat": 52.2605419,
+   "lon": 20.9653982,
+   "phone": "261852833",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-tadeusz-zgud-kraków",
+   "name": "Tadeusz Zgud",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Kraków",
+   "address": "Prywatny Gabinet Lekarski, ul. Prądnicka 10, 30-002 Kraków",
+   "lat": 50.0770394,
+   "lon": 19.9362538,
+   "phone": "601425263",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-piotr-zagórski-kielce",
+   "name": "Piotr Zagórski",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Kielce",
+   "address": "Gabinet Lekarski Zagórscy, ul. Wyspiańskiego 1B/LU6, 25-409 Kielce",
+   "lat": 50.8851597,
+   "lon": 20.646529,
+   "phone": "512800196",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-dariusz-kraśnicki-wrocław",
+   "name": "Dariusz Kraśnicki",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Wrocław",
+   "address": "Przychodnia Medycyny Pracy, ul. Kmicica 1a/1, 54-514 Wrocław",
+   "lat": 51.1180309,
+   "lon": 16.928728,
+   "phone": "601775123",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-katarzyna-lorenc-podgórska-kraków",
+   "name": "Katarzyna Lorenc-Podgórska",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Kraków",
+   "address": "Specjalistyczny Gabinet Lekarski, 30-549 Kraków",
+   "lat": 50.0466441,
+   "lon": 19.9570394,
+   "phone": "509789878",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-maciej-kozina-wrocław-tel",
+   "name": "Maciej Kozina",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Wrocław Tel",
+   "address": "Główny Ośrodek Badań Lotniczo-Lekarskich Aeroklubu Polskiego, Wojewódzka Przychodnia Sportowo-Lekars, ul. H. Sienkiewicza 108/110, 50-348 Wrocław Tel",
+   "phone": "713282892",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-paweł-jaranowski-wrocław-tel",
+   "name": "Paweł Jaranowski",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Wrocław Tel",
+   "address": "Prywatny Gabinet Specjalistyczny, ul. Legnicka 19, 53-671 Wrocław Tel",
+   "phone": "717475404",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-mikołaj-maryniec-mielec-tel",
+   "name": "Mikołaj Maryniec",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Mielec Tel",
+   "address": "Gabinet lekarski, ul. Lotniskowa 22, 39-300 Mielec Tel",
+   "phone": "518979584",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-grzegorz-kempa-warszawa",
+   "name": "Grzegorz Kempa",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Centrum Medycyny Lotniczej LUXMED, ul. Komitetu Obrony Robotników 39, 02-148 Warszawa",
+   "lat": 52.1793316,
+   "lon": 20.9772993,
+   "phone": "224504813",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-jerzy-marek-warszawa",
+   "name": "Jerzy Marek",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Centrum Medycyny Lotniczej LUXMED, ul. Komitetu Obrony Robotników 39, 02-148 Warszawa",
+   "lat": 52.1793316,
+   "lon": 20.9772993,
+   "phone": "224504813",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-wojciech-stanik-rzeszów-tel",
+   "name": "Wojciech Stanik",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Rzeszów Tel",
+   "address": "Przychodnia Rzeszowska, ul. I. Łukaszewicza45, 35-604 Rzeszów Tel",
+   "phone": "451293033",
+   "email": "biuro@przychodniarzeszowska.pl",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-piotr-tomczyk-gdańsk",
+   "name": "Piotr Tomczyk",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Gdańsk",
+   "address": "MK Medycyna i Kosmetologia Sp. z o.o., ul. Chrzanowskiego 38 A, 80-278 Gdańsk",
+   "lat": 54.3846034,
+   "lon": 18.5815434,
+   "phone": "503752151",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-ilona-długiewicz-żabko-poznań",
+   "name": "Ilona Długiewicz-Żabko",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Poznań",
+   "address": "Specjalistyczna Przychodnia Lekarska Gabinet badań lotniczo-lekarskich 60-787 Poznań, 60-787 Poznań",
+   "lat": 52.4063942,
+   "lon": 16.9004058,
+   "phone": "601678863",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-krzysztof-dziewiatowski-chwaszczyno",
+   "name": "Krzysztof Dziewiatowski",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Chwaszczyno",
+   "address": "Gabinet Lekarski Tuchom, ul. Polna 12, 80-209 Chwaszczyno",
+   "lat": 54.4353069,
+   "lon": 18.4108537,
+   "phone": "509855588",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-dariusz-kosiński-włocławek",
+   "name": "Dariusz Kosiński",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Włocławek",
+   "address": "Wojewódzki Ośrodek Medycyny Pracy – Prywatna Praktyka Lekarska, ul. Wyszyńskiego 21, 87-800 Włocławek",
+   "lat": 52.6447398,
+   "lon": 19.0582156,
+   "phone": "691693493",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-jarosław-mierka-elbląg",
+   "name": "Jarosław Mierka",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Elbląg",
+   "address": "Gabinet Lekarski, ul. Studzienna 32 B, 82-300 Elbląg",
+   "lat": 54.1718763,
+   "lon": 19.415131,
+   "phone": "602671001",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-natalia-urbaniak-rzeszów",
+   "name": "Natalia Urbaniak",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Rzeszów",
+   "address": "Centrum Medyczne MEDYK, ul. Rejtana 53, 35-326 Rzeszów",
+   "lat": 50.01095,
+   "lon": 22.0101031,
+   "phone": "178652002",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-anna-ginter-piotrków-trybunalski",
+   "name": "Anna Ginter",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Piotrków Trybunalski",
+   "address": "Prywatny Gabinet Lekarski, ul. R. Dmowskiego 16/3, 97-300 Piotrków Trybunalski",
+   "lat": 51.4113089,
+   "lon": 19.6896888,
+   "phone": "604280124",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-paweł-cholewiński-radom",
+   "name": "Paweł Cholewiński",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Radom",
+   "address": "Prywatny Gabinet Lekarski, ul. Chrobrego 46, 26-600 Radom",
+   "lat": 51.394689,
+   "lon": 21.1536074,
+   "phone": "883500321",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-artur-rydzyk-kraków",
+   "name": "Artur Rydzyk",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Kraków",
+   "address": "Centrum Medyczne Medycyna Pracy R P Tel.: 12 315 35 73, 12 306 77 01, ul. Rusznikarska 17, 31-261 Kraków",
+   "lat": 50.0843678,
+   "lon": 19.927355,
+   "phone": "123153573",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-piotr-puc-kraków",
+   "name": "Piotr Puc",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Kraków",
+   "address": "Centrum Medyczne Medycyna Pracy R P Tel.: 12 315 35 73, 12 306 77 01, ul. Rusznikarska 17, 31-261 Kraków",
+   "lat": 50.0843678,
+   "lon": 19.927355,
+   "phone": "123153573",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-agnieszka-mazurek-warszawa",
+   "name": "Agnieszka Mazurek",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Centrum Medycyny Lotniczej LUXMED, ul. Komitetu Obrony Robotników 39, 02-148 Warszawa",
+   "lat": 52.1793316,
+   "lon": 20.9772993,
+   "phone": "224504813",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-beata-jendrych-warszawa",
+   "name": "Beata Jendrych",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Centrum Medycyny Lotniczej LUXMED, ul. Komitetu Obrony Robotników 39, 02-148 Warszawa",
+   "lat": 52.1793316,
+   "lon": 20.9772993,
+   "phone": "224504813",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-mariola-sowińska-wrocław",
+   "name": "Mariola Sowińska",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Wrocław",
+   "address": "Centrum medyczne LUXMED, ul. Swobodna 1, 50-088 Wrocław",
+   "lat": 51.0979144,
+   "lon": 17.0306819,
+   "phone": "223381666",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-adam-roszczak-poznań",
+   "name": "Adam Roszczak",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Poznań",
+   "address": "Centrum Medyczne LUXMED, ul. Roosvelta 18, 60-829 Poznań",
+   "lat": 52.4094745,
+   "lon": 16.9126831,
+   "phone": "223381666",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-adam-hodakowski-wrocław-tel",
+   "name": "Adam Hodakowski",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Wrocław Tel",
+   "address": "Główny Ośrodek Badań Lotniczo-Lekarskich Aeroklubu Polskiego, Wojewódzka Przychodnia Sportowo-Lekars, ul. H. Sienkiewicza 108/110, 50-348 Wrocław Tel",
+   "phone": "713282892",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-irena-ślósarz-lusowo-tel",
+   "name": "Irena Ślósarz",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Lusowo Tel",
+   "address": "„Zdrowo Lusowo”, ul. Zakątek 2, 62-080 Lusowo Tel",
+   "phone": "795070903",
+   "email": "kontakt@zdrowolusowo.pl",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-joanna-wacławik-wrocław",
+   "name": "Joanna Wacławik",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Wrocław",
+   "address": "Przychodnia Medycyny Pracy, ul. Kmicica 1a/1, 54-514 Wrocław",
+   "lat": 51.1180309,
+   "lon": 16.928728,
+   "phone": "601775123",
+   "email": "lekarz@krasnicki.com.pl",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-lilianna-wisłocka-wrocław",
+   "name": "Lilianna Wisłocka",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Wrocław",
+   "address": "– Rawson Główny Ośrodek Badań Lotniczo-Lekarskich Aeroklubu Polskiego, Wojewódzka Przychodnia Sporto, ul. H. Sienkiewicza 108/110, 50-348 Wrocław",
+   "lat": 51.1159859,
+   "lon": 17.0595388,
+   "phone": "713282892",
+   "email": "kll@gobll.pl",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-bernadeta-moskal-gruszczyńska-dąbrowa",
+   "name": "Bernadeta Moskal-Gruszczyńska",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Dąbrowa",
+   "address": "Lekarz Med Sp. z o.o. Sp. K., ul. Szafirowa 1A, 62-070 Dąbrowa",
+   "lat": 52.3966597,
+   "lon": 16.7572756,
+   "phone": "510963049",
+   "email": "kontakt@centrumdabrowa.pl",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-margit-kis-wojciechowska-dąbrowa",
+   "name": "Margit Kis-Wojciechowska",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Dąbrowa",
+   "address": "Lekarz Med Sp. z o.o. Sp. K., ul. Szafirowa 1A, 62-070 Dąbrowa",
+   "lat": 52.3966597,
+   "lon": 16.7572756,
+   "phone": "510963049",
+   "email": "kontakt@centrumdabrowa.pl",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-szymon-nazar-warszawa",
+   "name": "Szymon Nazar",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Warszawa",
+   "address": "Centrum Medycyny Lotniczej Wojskowy Instytut Medycyny Lotniczej, ul. Krasińskiego 54, 01-755 Warszawa",
+   "lat": 52.2605419,
+   "lon": 20.9653982,
+   "phone": "261852833",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-krzysztof-szymkowiak-katowice",
+   "name": "Krzysztof Szymkowiak",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Katowice",
+   "address": "Centrum Medyczne POLMED, ul. Dąbrówki 10, 40-081 Katowice",
+   "lat": 50.2632223,
+   "lon": 19.0086126,
+   "phone": "517218523",
+   "email": "recepcja.katowice@polmed.pl",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-mariola-sowińska-wrocław-ii",
+   "name": "Mariola Sowińska",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Wrocław II",
+   "address": "Centrum Medyczne LUXMED, ul. Swobodna 1, 50-088 Wrocław II",
+   "lat": 51.1151888,
+   "lon": 17.0310797,
+   "email": "kancelaria@ulc.gov.pl",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
   }
  ]
 }
