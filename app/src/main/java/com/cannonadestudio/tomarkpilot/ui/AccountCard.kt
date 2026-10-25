@@ -43,9 +43,11 @@ fun AccountCard() {
     var key by remember { mutableStateOf("") }
     var busy by remember { mutableStateOf(false) }
     var confirmPull by remember { mutableStateOf(false) }
+    var choice by remember { mutableStateOf<Int?>(null) }
     fun err(e: Throwable) = when (e.message) {
         "401" -> ctx.getString(R.string.account_bad_key)
         "404" -> ctx.getString(R.string.account_no_backup)
+        "403" -> ctx.getString(R.string.account_blocked)
         else -> ctx.getString(R.string.refresh_fail) + " (" + (e.message ?: "") + ")"
     }
     Card(Modifier.fillMaxWidth()) {
@@ -61,7 +63,8 @@ fun AccountCard() {
                         scope.launch {
                             val r = Repo.linkAccount(key)
                             busy = false
-                            Toast.makeText(ctx, r.fold({ ctx.getString(R.string.account_linked, it) }, { err(it) }), Toast.LENGTH_LONG).show()
+                            r.onSuccess { if (it.choose) choice = it.accountAircraft }
+                            Toast.makeText(ctx, r.fold({ ctx.getString(R.string.account_linked, it.name) }, { err(it) }), Toast.LENGTH_LONG).show()
                         }
                     }) { Text(stringResource(R.string.account_link)) }
                 }
@@ -72,7 +75,13 @@ fun AccountCard() {
                     style = MaterialTheme.typography.bodySmall,
                 )
                 if (st.accountPro) Text(stringResource(R.string.account_pro), style = MaterialTheme.typography.bodySmall, color = HbgPink)
-                st.accountError?.let { Text(if (it == "401") stringResource(R.string.account_bad_key) else stringResource(R.string.backup_error, it), color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall) }
+                st.accountPlan?.let { p ->
+                    Text(stringResource(R.string.account_plan, stringResource(when (p) { "mechanic" -> R.string.plan_mechanic; "club" -> R.string.plan_club; else -> R.string.plan_pilot })),
+                        style = MaterialTheme.typography.bodySmall)
+                }
+                st.accountMaxAircraft?.let { Text(stringResource(R.string.account_limit, it), style = MaterialTheme.typography.bodySmall) }
+                if (st.accountBlocked) Text(stringResource(R.string.account_blocked), color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall)
+                st.accountError?.takeIf { it != "403" }?.let { Text(if (it == "401") stringResource(R.string.account_bad_key) else stringResource(R.string.backup_error, it), color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall) }
                 Text(stringResource(R.string.account_auto), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Row(Modifier.padding(top = 4.dp)) {
                     TextButton(enabled = !busy, onClick = {
@@ -88,6 +97,30 @@ fun AccountCard() {
                 }
             }
         }
+    }
+    // Second phone: both sides have data – the pilot decides which copy stays.
+    choice?.let { n ->
+        AlertDialog(
+            onDismissRequest = { },
+            title = { Text(stringResource(R.string.account_choose_title)) },
+            text = { Text(stringResource(R.string.account_choose_text, n, st.aircraft.size)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    choice = null; busy = true
+                    scope.launch {
+                        val r = Repo.pullAccount()
+                        busy = false
+                        Toast.makeText(ctx, r.fold({ ctx.getString(R.string.account_restored, it) }, { err(it) }), Toast.LENGTH_LONG).show()
+                    }
+                }) { Text(stringResource(R.string.account_choose_pull)) }
+            },
+            dismissButton = {
+                TextButton(onClick = {
+                    choice = null; busy = true
+                    scope.launch { Repo.pushAccount(); busy = false }
+                }) { Text(stringResource(R.string.account_choose_push)) }
+            },
+        )
     }
     if (confirmPull) AlertDialog(
         onDismissRequest = { confirmPull = false },

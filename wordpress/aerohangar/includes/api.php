@@ -479,7 +479,9 @@ function ah_api_dispatch(): void
                 if ($u['role'] !== 'admin') out(403, ['error' => 'admin only']);
                 $uid = (int)($body['user'] ?? 0);
                 if (!get_userdata($uid)) out(404, ['error' => 'no such user']);
-                if (($body['action'] ?? '') === 'pro') {
+                if (($body['action'] ?? '') === 'save') {
+                    ah_account_save($uid, (array)($body['data'] ?? []), $u['login']);
+                } elseif (($body['action'] ?? '') === 'pro') {
                     update_user_meta($uid, 'aerohangar_pro', !empty($body['on']) ? 1 : 0);
                     ah_log($u['login'], "account #$uid: Pro " . (!empty($body['on']) ? 'ON' : 'OFF'));
                 } elseif (($body['action'] ?? '') === 'unlink') {
@@ -487,7 +489,7 @@ function ah_api_dispatch(): void
                     ah_log($u['login'], "account #$uid: key revoked");
                 }
             }
-            out(200, ['accounts' => ah_accounts_list()]);
+            out(200, ['accounts' => ah_accounts_list(sanitize_text_field((string)($_GET['q'] ?? '')))]);
     
         default:
             out(404, ['error' => 'unknown action']);

@@ -153,6 +153,17 @@
     <string name="account_restored">Wiederhergestellt: %1$d Flugzeug(e)</string>
     <string name="kind_ame">Fliegerarzt (AME)</string>
     <string name="kind_aemc">Flugmedizinisches Zentrum</string>
+    <string name="account_blocked">Der Administrator hat dieses Konto gesperrt.</string>
+    <string name="account_plan">Plan: %1$s</string>
+    <string name="plan_pilot">Pilot / Halter</string>
+    <string name="plan_mechanic">Mechaniker / Werkstatt</string>
+    <string name="plan_club">Verein / Schule</string>
+    <string name="account_limit">Erlaubte Flugzeuge: %1$d</string>
+    <string name="account_limit_reached">Dieses Konto darf %1$d Flugzeug(e) haben.</string>
+    <string name="account_choose_title">Welche Daten behalten?</string>
+    <string name="account_choose_text">Im Konto sind Daten eines anderen Telefons (%1$d), dieses Telefon hat eigene (%2$d).</string>
+    <string name="account_choose_pull">Kontodaten übernehmen</string>
+    <string name="account_choose_push">Daten dieses Telefons senden</string>
     <string name="type_change_warning">Eine Änderung des Musters ändert das Instandhaltungsprogramm und die Bulletins.</string>
     <string name="save">Speichern</string>
     <string name="cancel">Abbrechen</string>

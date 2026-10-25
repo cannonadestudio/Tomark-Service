@@ -230,36 +230,75 @@ object Repo {
         (json.parseToJsonElement(text) as kotlinx.serialization.json.JsonObject)[name]?.let { (it as kotlinx.serialization.json.JsonPrimitive).content }
     }.getOrNull()
 
-    /** Checks the key, stores it, sends a first backup if the account has none. Result = account name. */
-    suspend fun linkAccount(key: String): Result<String> = withContext(Dispatchers.IO) {
+    /** Result of connecting: [choose] = both this phone and the account hold data – the pilot decides which to keep. */
+    data class LinkResult(val name: String, val choose: Boolean, val accountAircraft: Int)
+
+    /**
+     * Checks the key and stores it. Empty account → this phone's data goes up; empty phone → the account copy
+     * comes down; both with data → [LinkResult.choose] (nothing is overwritten until the pilot picks).
+     */
+    suspend fun linkAccount(key: String): Result<LinkResult> = withContext(Dispatchers.IO) {
         runCatching {
             if (!accountAvailable) resolveBase().also { refreshAppConfig() }
             val base = accountBase ?: error("no account server")
+            val root = restRoot() ?: error("no account server")
             val k = key.trim().uppercase()
             val (code, text) = accountCall("GET", base + "me", k)
             if (code == 401) error("401")
             if (code != 200) error("HTTP $code")
             val name = field(text, "name") ?: ""
-            setStateNoBackup { it.copy(accountKey = k, accountName = name, accountError = null) }
-            refreshAccount()
-            name
+            val (c2, info) = accountCall("GET", root + "aerohangar/v1/account", k)
+            if (c2 == 403) error("403")
+            val last = field(info, "lastSync")?.toLongOrNull() ?: 0L
+            val remoteAc = field(info, "aircraft")?.toIntOrNull() ?: 0
+            setStateNoBackup { it.copy(accountKey = k, accountName = name, accountError = null, accountDirty = false, accountServerTime = null) }
+            val localAc = _state.value.aircraft.size
+            when {
+                last == 0L || remoteAc == 0 -> { pushAccount(); refreshAccount(); LinkResult(name, false, remoteAc) }
+                localAc == 0 -> { pullAccount(last); refreshAccount(); LinkResult(name, false, remoteAc) }
+                else -> {
+                    // keep the key, mark this copy as "seen" so nothing syncs before the choice
+                    setStateNoBackup { it.copy(accountServerTime = last) }
+                    LinkResult(name, true, remoteAc)
+                }
+            }
         }
     }
 
-    fun unlinkAccount() = setStateNoBackup { it.copy(accountKey = null, accountName = null, accountPro = false, accountSyncMillis = null, accountError = null) }
+    fun unlinkAccount() = setStateNoBackup {
+        it.copy(accountKey = null, accountName = null, accountPro = false, accountSyncMillis = null, accountError = null,
+            accountServerTime = null, accountDirty = false, accountBlocked = false, accountPlan = null, accountMaxAircraft = null)
+    }
 
-    /** Pro and last-sync time from the account. */
+    private fun device() = (_state.value.installId ?: "").replace("-", "").take(12)
+
+    /**
+     * Account status and two-way sync between the pilot's phones: a newer copy on the account (written by
+     * another phone) is pulled in; unsent changes on this phone are pushed.
+     */
     suspend fun refreshAccount(): Result<Unit> = withContext(Dispatchers.IO) {
         runCatching {
             val key = _state.value.accountKey ?: return@runCatching
             val root = restRoot() ?: return@runCatching
             val (code, text) = accountCall("GET", root + "aerohangar/v1/account", key)
             if (code == 401) { setStateNoBackup { it.copy(accountError = "401") }; return@runCatching }
+            if (code == 403) { setStateNoBackup { it.copy(accountError = "403", accountBlocked = true, accountPro = false) }; return@runCatching }
             if (code != 200) error("HTTP $code")
-            val pro = field(text, "pro") == "true"
             val last = field(text, "lastSync")?.toLongOrNull() ?: 0L
-            setStateNoBackup { it.copy(accountPro = pro, accountError = null) }
-            if (last == 0L) pushAccount()
+            val lastDevice = field(text, "lastDevice") ?: ""
+            setStateNoBackup {
+                it.copy(
+                    accountPro = field(text, "pro") == "true", accountBlocked = false, accountError = null,
+                    accountPlan = field(text, "plan")?.takeIf { p -> p.isNotBlank() && p != "null" },
+                    accountMaxAircraft = field(text, "maxAircraft")?.toIntOrNull(),
+                )
+            }
+            val s = _state.value
+            when {
+                last == 0L -> pushAccount()
+                last > (s.accountServerTime ?: 0L) && lastDevice != device() && !s.accountDirty -> pullAccount(last)
+                s.accountDirty -> pushAccount()
+            }
         }
     }
 
@@ -269,28 +308,47 @@ object Repo {
             val key = _state.value.accountKey ?: return@runCatching
             val root = restRoot() ?: error("no account server")
             val body = json.encodeToString(AppState.serializer(), withoutDeviceFields(_state.value))
-            val (code, text) = accountCall("PUT", root + "aerohangar/v1/account/data", key, body)
-            if (code != 200) error(if (code == 401) "401" else "HTTP $code")
-            setStateNoBackup { it.copy(accountSyncMillis = System.currentTimeMillis(), accountError = null, accountPro = field(text, "pro") == "true") }
+            val conn = URL(root + "aerohangar/v1/account/data").openConnection() as HttpURLConnection
+            conn.connectTimeout = 10_000; conn.readTimeout = 20_000; conn.requestMethod = "PUT"; conn.doOutput = true
+            conn.setRequestProperty("Authorization", "Bearer $key")
+            conn.setRequestProperty("Content-Type", "application/json; charset=utf-8")
+            conn.setRequestProperty("X-AeroHangar-Device", device())
+            val (code, text) = try {
+                conn.outputStream.use { it.write(body.toByteArray()) }
+                conn.responseCode to ((if (conn.responseCode in 200..299) conn.inputStream else conn.errorStream)?.bufferedReader()?.use { it.readText() } ?: "")
+            } finally { conn.disconnect() }
+            if (code != 200) error(code.toString().takeIf { code == 401 || code == 403 } ?: "HTTP $code")
+            setStateNoBackup {
+                it.copy(accountSyncMillis = System.currentTimeMillis(), accountError = null, accountDirty = false,
+                    accountServerTime = field(text, "saved")?.toLongOrNull() ?: it.accountServerTime, accountPro = field(text, "pro") == "true")
+            }
         }.onFailure { e -> setStateNoBackup { it.copy(accountError = e.message ?: e.javaClass.simpleName) } }
     }
 
     /** Replaces this phone's data with the account copy (device settings stay). Result = aircraft count. */
-    suspend fun pullAccount(): Result<Int> = withContext(Dispatchers.IO) {
+    suspend fun pullAccount(serverTime: Long? = null): Result<Int> = withContext(Dispatchers.IO) {
         runCatching {
             val key = _state.value.accountKey ?: error("no key")
             val root = restRoot() ?: error("no account server")
             val (code, text) = accountCall("GET", root + "aerohangar/v1/account/data", key)
             if (code == 404) error("404")
-            if (code != 200) error(if (code == 401) "401" else "HTTP $code")
+            if (code != 200) error(code.toString().takeIf { code == 401 || code == 403 } ?: "HTTP $code")
             val restored = json.decodeFromString<AppState>(text)
             val cur = _state.value
+            val st = serverTime ?: runCatching {
+                field(accountCall("GET", root + "aerohangar/v1/account", key).second, "lastSync")?.toLongOrNull()
+            }.getOrNull()
             setStateNoBackup {
                 restored.copy(
                     backupUri = cur.backupUri, lastBackupMillis = cur.lastBackupMillis, logbookUri = cur.logbookUri,
                     logbookSyncedEpochDay = cur.logbookSyncedEpochDay, disclaimerAccepted = true, proCached = cur.proCached,
-                    proGranted = cur.proGranted, installId = cur.installId, accountKey = cur.accountKey, accountName = cur.accountName,
-                    accountPro = cur.accountPro, accountSyncMillis = System.currentTimeMillis(),
+                    proGranted = cur.proGranted, installId = cur.installId, lastPingEpochDay = cur.lastPingEpochDay,
+                    accountKey = cur.accountKey, accountName = cur.accountName, accountPro = cur.accountPro,
+                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountBlocked = cur.accountBlocked,
+                    accountServerTime = cur.accountServerTime,
+                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountBlocked = cur.accountBlocked,
+                    accountSyncMillis = System.currentTimeMillis(), accountServerTime = st ?: cur.accountServerTime, accountDirty = false,
+                    selectedId = restored.selectedId ?: cur.selectedId,
                 )
             }
             restored.aircraft.size
@@ -301,6 +359,7 @@ object Repo {
 
     private fun scheduleAccountPush() {
         if (_state.value.accountKey == null) return
+        if (!_state.value.accountDirty) setStateNoBackup { it.copy(accountDirty = true) }
         accountJob?.cancel()
         accountJob = ioScope.launch { delay(6_000); pushAccount() }
     }
@@ -668,6 +727,7 @@ object Repo {
         logbookUri = null, logbookError = null, logbookSyncedEpochDay = null, proCached = false, proGranted = false,
         installId = null, lastPingEpochDay = null,
         accountKey = null, accountName = null, accountPro = false, accountSyncMillis = null, accountError = null,
+        accountServerTime = null, accountDirty = false, accountBlocked = false, accountPlan = null, accountMaxAircraft = null,
         aircraft = s.aircraft.map { it.copy(pohUri = null) },
     )
 

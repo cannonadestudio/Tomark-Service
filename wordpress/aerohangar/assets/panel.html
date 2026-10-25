@@ -192,6 +192,7 @@ async function start() {
   $("#who").innerHTML = `<span>${esc(me.user.login)} (${esc(me.user.role)})</span><button class="ghost" style="color:#fff;border-color:rgba(255,255,255,.5);padding:5px 12px" id="logout">Wyloguj</button>`;
   $("#logout").onclick = async () => { if (me.wp) { location.href = me.logout; return } await api("logout", { body: {} }); location.reload() };
   if (me.wp) $("#logout").insertAdjacentHTML("beforebegin", `<a href="${esc(window.AH_WP.wpAdmin)}" style="color:#fff;margin-right:8px">← WordPress</a>`);
+  if (location.hash.length > 1) state.tab = location.hash.slice(1);
   renderTabs(); render(); loadSubCount(); loadReqCount();
 }
 $("#loginForm").onsubmit = async e => {
@@ -713,22 +714,52 @@ async function renderSettings() {
 // ---------------------------------------------------------------- pilot accounts (WordPress): one key for AeroHangar and Pilot Logbook
 async function renderAccounts() {
   const v = $("#view");
-  const j = await api("accounts");
+  const j = await api("accounts", { q: "&q=" + encodeURIComponent(state.filter || "") });
+  state.accounts = j.accounts;
   const admin = state.user?.role === "admin";
-  const d = t => t ? new Date(t * 1000).toISOString().slice(0, 16).replace("T", " ") : "—";
-  const q = (state.filter || "").toLowerCase();
-  const list = j.accounts.filter(a => !q || [a.login, a.name, a.email].join(" ").toLowerCase().includes(q));
-  v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Szukaj: login, imię, e-mail…" value="${esc(state.filter)}" style="flex:1"></div>
-    <p class="muted">Piloci z kontem WordPress. Klucz tworzą na stronie z kodem <code>[cannonade_konto]</code> (albo w Profil → Konto Cannonade) i wklejają go w AeroHangar oraz w Pilot Logbook. <b>Pro dla konta</b> działa na wszystkich telefonach pilota – z zakupu w WooCommerce (produkt z opcją „Daje dostęp AeroHangar”) albo przyznane ręcznie.</p>
-    <table><tr><th>Pilot</th><th>Klucz</th><th>Ostatnio</th><th class="hide-sm">Kopia danych</th><th>Samoloty</th><th>Pro</th><th></th></tr>
-    ${list.map(a => `<tr><td><b>${esc(a.name)}</b><div class="muted">${esc(a.login)} · ${esc(a.email)}</div></td>
+  const d = t => t ? new Date(t * 1000).toISOString().slice(0, 10) : "—";
+  const PLAN = { pilot: "Pilot", mechanic: "Mechanik", club: "Aeroklub" };
+  const ROLE = { admin: "administrator", editor: "edycja danych", viewer: "podgląd", "": "" };
+  v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Szukaj konta: login, imię, e-mail…" value="${esc(state.filter)}" style="flex:1"></div>
+    <p class="muted">Wszystkie konta WordPress (ostatnie 500 / wynik wyszukiwania). <b>Edytuj</b> – dostęp do aplikacji, plan, Pro (bez limitu albo do daty), limit samolotów i rola w panelu. Pilot łączy aplikacje kluczem ze strony <code>[cannonade_konto]</code>; dostęp kupiony w WooCommerce dolicza się sam.</p>
+    <table><tr><th>Konto</th><th>Dostęp w AeroHangar</th><th>Klucz</th><th class="hide-sm">Ostatnio / kopia</th><th>Samoloty</th><th></th></tr>
+    ${j.accounts.map(a => `<tr><td><b>${esc(a.name)}</b><div class="muted">${esc(a.login)} · ${esc(a.email)}</div><div class="muted">${esc(a.wpRole)} · od ${esc(a.registered)}</div></td>
+      <td>${a.blocked ? '<span class="chip" style="background:#fde2e8;color:#a3123f">zablokowany</span>' : (a.proActive ? '<span class="chip p">Pro</span>' : '<span class="chip">darmowy</span>')}
+        ${a.plan ? `<span class="chip">${esc(PLAN[a.plan] || a.plan)}</span>` : ""}
+        ${a.pro && a.proUntil ? `<div class="muted">Pro ręczne do ${esc(a.proUntil)}</div>` : (a.pro ? '<div class="muted">Pro ręczne</div>' : "")}
+        ${a.access ? `<div class="muted">zakup: ${esc(PLAN[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + d(a.access.until) : "bez limitu"}</div>` : ""}
+        ${a.maxAircraft !== "" ? `<div class="muted">limit samolotów: ${a.maxAircraft}</div>` : ""}
+        ${a.panelRole ? `<div class="muted">panel: ${esc(ROLE[a.panelRole])}</div>` : ""}
+        ${a.note ? `<div class="muted"><i>${esc(a.note)}</i></div>` : ""}</td>
       <td>${a.key ? `<span class="chip g">…${esc(a.keyHint)}</span>` : '<span class="muted">brak</span>'}</td>
-      <td class="nowrap">${d(a.lastSeen)}</td><td class="hide-sm nowrap">${d(a.lastSync)}</td><td>${a.aircraft}</td>
-      <td>${a.access ? `<span class="chip p" title="Zakup WooCommerce">${esc({ pilot: "Pilot", mechanic: "Mechanik", club: "Aeroklub" }[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + new Date(a.access.until * 1000).toISOString().slice(0, 10) : "∞"}</span> ` : ""}${admin ? `<button class="pub ${a.pro ? "on" : "off"}" data-pro="${a.id}" data-on="${a.pro ? 0 : 1}" title="Pro przyznane ręcznie">${a.pro ? "ręczne: tak" : "ręczne: nie"}</button>` : (a.pro ? "ręczne" : "")}</td>
-      <td>${admin && a.key ? `<button class="ghost" data-unlink="${a.id}">Unieważnij klucz</button>` : ""}</td></tr>`).join("") || '<tr><td class="muted">Brak kont z kluczem.</td></tr>'}</table></div>`;
-  $("#q").oninput = e => { state.filter = e.target.value; clearTimeout(state._qt); state._qt = setTimeout(() => renderAccounts().then(() => { const x = $("#q"); x.focus(); x.setSelectionRange(x.value.length, x.value.length) }), 250) };
-  v.querySelectorAll("button[data-pro]").forEach(b => b.onclick = async () => { try { await api("accounts", { body: { user: +b.dataset.pro, action: "pro", on: b.dataset.on === "1" } }); renderAccounts() } catch (e) { status(e.message, false) } });
-  v.querySelectorAll("button[data-unlink]").forEach(b => b.onclick = async () => { if (!confirm("Unieważnić klucz? Aplikacje pilota stracą połączenie z kontem.")) return; try { await api("accounts", { body: { user: +b.dataset.unlink, action: "unlink" } }); renderAccounts() } catch (e) { status(e.message, false) } });
+      <td class="hide-sm nowrap">${d(a.lastSeen)}<div class="muted">${d(a.lastSync)}</div></td><td>${a.aircraft}</td>
+      <td class="nowrap">${admin ? `<button class="ghost" data-edit="${a.id}">Edytuj</button>` : ""}</td></tr>`).join("") || '<tr><td class="muted">Brak kont.</td></tr>'}</table></div>`;
+  $("#q").oninput = e => { state.filter = e.target.value; clearTimeout(state._qt); state._qt = setTimeout(() => renderAccounts().then(() => { const x = $("#q"); x.focus(); x.setSelectionRange(x.value.length, x.value.length) }), 350) };
+  v.querySelectorAll("button[data-edit]").forEach(b => b.onclick = () => editAccount(state.accounts.find(a => a.id === +b.dataset.edit)));
+}
+function editAccount(a) {
+  const isAdminUser = a.panelRole === "admin";
+  openDialog(`<h3>${esc(a.name)} <span class="muted" style="font-size:14px">${esc(a.email)}</span></h3>
+    <label class="inl"><input type="checkbox" name="blocked" ${a.blocked ? "checked" : ""}> zablokuj dostęp aplikacji (klucz przestaje działać w AeroHangar)</label>
+    <div class="grid2">
+      ${select("plan", "Plan", [["", "—"], ["pilot", "Pilot / właściciel"], ["mechanic", "Mechanik / serwis"], ["club", "Aeroklub / szkoła"]], a.plan)}
+      ${field("maxAircraft", "Limit samolotów w aplikacji (puste = 1 za darmo, bez limitu z Pro)", a.maxAircraft, "number", 'min="0" max="999"')}
+    </div>
+    <label class="inl"><input type="checkbox" name="pro" ${a.pro ? "checked" : ""}> Pro przyznane ręcznie</label>
+    <div class="grid2">${field("proUntil", "Pro ręczne do (puste = bez limitu)", a.proUntil, "date")}
+      ${isAdminUser ? '<p class="muted">Administrator WordPressa – pełny dostęp do panelu.</p>' : select("panelRole", "Dostęp do panelu AeroHangar", [["", "brak"], ["viewer", "podgląd"], ["editor", "edycja danych (biuletyny, kontakty…)"]], a.panelRole)}</div>
+    ${field("note", "Notatka (widoczna tylko tutaj)", a.note)}
+    ${a.access ? `<p class="muted">Dostęp z zakupu WooCommerce: ${esc(a.access.plan)} ${a.access.until ? "do " + new Date(a.access.until * 1000).toISOString().slice(0, 10) : "bez limitu"} – liczy się niezależnie od ustawień powyżej (blokada go wyłącza).</p>` : ""}
+    ${a.key ? `<p><button type="button" class="ghost" id="unlinkKey">Unieważnij klucz (…${esc(a.keyHint)})</button></p>` : '<p class="muted">Konto nie ma jeszcze klucza aplikacji.</p>'}`,
+    async fd => {
+      const data = { blocked: !!fd.get("blocked"), pro: !!fd.get("pro"), proUntil: fd.get("proUntil") || "", plan: fd.get("plan") || "",
+        maxAircraft: fd.get("maxAircraft") === "" ? "" : +fd.get("maxAircraft"), panelRole: fd.get("panelRole") || (isAdminUser ? "admin" : ""), note: (fd.get("note") || "").trim() };
+      await api("accounts", { body: { user: a.id, action: "save", data } });
+      status("Zapisano uprawnienia konta " + a.login + ".");
+      renderAccounts();
+    });
+  const u = $("#unlinkKey");
+  if (u) u.onclick = async () => { if (!confirm("Unieważnić klucz? Aplikacje tego konta stracą połączenie.")) return; await api("accounts", { body: { user: a.id, action: "unlink" } }); $("#dlg").close(); status("Klucz unieważniony."); renderAccounts() };
 }
 
 // ---------------------------------------------------------------- installations: manual Pro, reset

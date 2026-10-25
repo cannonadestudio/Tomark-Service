@@ -154,6 +154,17 @@
     <string name="account_restored">Restored: %1$d aircraft</string>
     <string name="kind_ame">Aeromedical examiner (AME)</string>
     <string name="kind_aemc">Aeromedical centre (AeMC)</string>
+    <string name="account_blocked">The administrator has blocked this account in AeroHangar.</string>
+    <string name="account_plan">Plan: %1$s</string>
+    <string name="plan_pilot">pilot / owner</string>
+    <string name="plan_mechanic">mechanic / service</string>
+    <string name="plan_club">club / school</string>
+    <string name="account_limit">Aircraft allowed for this account: %1$d</string>
+    <string name="account_limit_reached">This account may have %1$d aircraft – ask the administrator for more.</string>
+    <string name="account_choose_title">Which data to keep?</string>
+    <string name="account_choose_text">Your account already holds data from another phone (%1$d aircraft) and this phone has its own (%2$d aircraft). From now on both phones show the same data.</string>
+    <string name="account_choose_pull">Use the account data here</string>
+    <string name="account_choose_push">Send this phone\'s data</string>
     <string name="type_change_warning">Changing the type changes the maintenance programme and bulletins.</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>

@@ -1462,5 +1462,49 @@
  "kind_aemc": {
   "de": "Flugmedizinisches Zentrum",
   "cs": "Centrum letecké medicíny"
+ },
+ "account_blocked": {
+  "de": "Der Administrator hat dieses Konto gesperrt.",
+  "cs": "Správce zablokoval tento účet."
+ },
+ "account_plan": {
+  "de": "Plan: %1$s",
+  "cs": "Plán: %1$s"
+ },
+ "plan_pilot": {
+  "de": "Pilot / Halter",
+  "cs": "pilot / majitel"
+ },
+ "plan_mechanic": {
+  "de": "Mechaniker / Werkstatt",
+  "cs": "mechanik / servis"
+ },
+ "plan_club": {
+  "de": "Verein / Schule",
+  "cs": "aeroklub / škola"
+ },
+ "account_limit": {
+  "de": "Erlaubte Flugzeuge: %1$d",
+  "cs": "Limit letadel: %1$d"
+ },
+ "account_limit_reached": {
+  "de": "Dieses Konto darf %1$d Flugzeug(e) haben.",
+  "cs": "Účet může mít %1$d letadla."
+ },
+ "account_choose_title": {
+  "de": "Welche Daten behalten?",
+  "cs": "Která data ponechat?"
+ },
+ "account_choose_text": {
+  "de": "Im Konto sind Daten eines anderen Telefons (%1$d), dieses Telefon hat eigene (%2$d).",
+  "cs": "Na účtu jsou data z jiného telefonu (%1$d), tento telefon má vlastní (%2$d)."
+ },
+ "account_choose_pull": {
+  "de": "Kontodaten übernehmen",
+  "cs": "Použít data z účtu"
+ },
+ "account_choose_push": {
+  "de": "Daten dieses Telefons senden",
+  "cs": "Odeslat data z telefonu"
  }
 }

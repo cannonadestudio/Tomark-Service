@@ -153,6 +153,17 @@
     <string name="account_restored">Restauré : %1$d avion(s)</string>
     <string name="kind_ame">Médecin examinateur (AME)</string>
     <string name="kind_aemc">Centre aéromédical</string>
+    <string name="account_blocked">L\'administrateur a bloqué ce compte.</string>
+    <string name="account_plan">Formule : %1$s</string>
+    <string name="plan_pilot">pilote / propriétaire</string>
+    <string name="plan_mechanic">mécanicien / atelier</string>
+    <string name="plan_club">aéroclub / école</string>
+    <string name="account_limit">Avions autorisés : %1$d</string>
+    <string name="account_limit_reached">Ce compte peut avoir %1$d avion(s).</string>
+    <string name="account_choose_title">Quelles données garder ?</string>
+    <string name="account_choose_text">Le compte contient déjà des données d\'un autre téléphone (%1$d), ce téléphone a les siennes (%2$d).</string>
+    <string name="account_choose_pull">Utiliser celles du compte</string>
+    <string name="account_choose_push">Envoyer celles du téléphone</string>
     <string name="type_change_warning">Changer de type modifie le programme d\'entretien et les bulletins.</string>
     <string name="save">Enregistrer</string>
     <string name="cancel">Annuler</string>

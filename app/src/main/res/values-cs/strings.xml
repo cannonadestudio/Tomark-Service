@@ -153,6 +153,17 @@
     <string name="account_restored">Obnoveno: %1$d letadla</string>
     <string name="kind_ame">Letecký lékař (AME)</string>
     <string name="kind_aemc">Centrum letecké medicíny</string>
+    <string name="account_blocked">Správce zablokoval tento účet.</string>
+    <string name="account_plan">Plán: %1$s</string>
+    <string name="plan_pilot">pilot / majitel</string>
+    <string name="plan_mechanic">mechanik / servis</string>
+    <string name="plan_club">aeroklub / škola</string>
+    <string name="account_limit">Limit letadel: %1$d</string>
+    <string name="account_limit_reached">Účet může mít %1$d letadla.</string>
+    <string name="account_choose_title">Která data ponechat?</string>
+    <string name="account_choose_text">Na účtu jsou data z jiného telefonu (%1$d), tento telefon má vlastní (%2$d).</string>
+    <string name="account_choose_pull">Použít data z účtu</string>
+    <string name="account_choose_push">Odeslat data z telefonu</string>
     <string name="type_change_warning">Změna typu mění program údržby a seznam bulletinů.</string>
     <string name="save">Uložit</string>
     <string name="cancel">Zrušit</string>

@@ -328,4 +328,12 @@ data class AppState(
     val accountPro: Boolean = false,
     val accountSyncMillis: Long? = null,
     val accountError: String? = null,
+    /** Server time (unix s) of the account copy this phone holds – a newer one on the server is pulled in. */
+    val accountServerTime: Long? = null,
+    /** Changes on this phone not yet sent to the account. */
+    val accountDirty: Boolean = false,
+    /** Set by the administrator: blocked account, plan label, aircraft limit (null = default). */
+    val accountBlocked: Boolean = false,
+    val accountPlan: String? = null,
+    val accountMaxAircraft: Int? = null,
 )

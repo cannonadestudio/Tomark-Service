@@ -153,6 +153,17 @@
     <string name="account_restored">Przywrócono: %1$d samolot(y)</string>
     <string name="kind_ame">Lekarz orzecznik (AME)</string>
     <string name="kind_aemc">Centrum medycyny lotniczej</string>
+    <string name="account_blocked">Administrator zablokował to konto w AeroHangar.</string>
+    <string name="account_plan">Plan: %1$s</string>
+    <string name="plan_pilot">pilot / właściciel</string>
+    <string name="plan_mechanic">mechanik / serwis</string>
+    <string name="plan_club">aeroklub / szkoła</string>
+    <string name="account_limit">Limit samolotów dla konta: %1$d</string>
+    <string name="account_limit_reached">To konto może mieć %1$d samolot(y) – o więcej poproś administratora.</string>
+    <string name="account_choose_title">Które dane zachować?</string>
+    <string name="account_choose_text">Na koncie są już dane z innego telefonu (%1$d samolot(y)), a ten telefon ma własne (%2$d). Od teraz oba telefony będą pokazywać te same dane.</string>
+    <string name="account_choose_pull">Pobierz dane z konta</string>
+    <string name="account_choose_push">Wyślij dane z tego telefonu</string>
     <string name="type_change_warning">Zmiana typu zmienia program obsługi i listę biuletynów.</string>
     <string name="save">Zapisz</string>
     <string name="cancel">Anuluj</string>
