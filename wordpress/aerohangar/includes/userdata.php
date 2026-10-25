@@ -27,6 +27,7 @@ add_action('rest_api_init', function () {
                 if (is_wp_error($uid)) return $uid;
                 $raw = (string)get_user_meta($uid, 'aerohangar_state', true);
                 if ($raw === '') return new WP_Error('aerohangar_empty', 'no backup on this account yet', ['status' => 404]);
+                do_action('aerohangar_state_downloaded', $uid);
                 $res = new WP_REST_Response(json_decode($raw, true));
                 $res->header('X-AeroHangar-Saved', (string)get_user_meta($uid, 'aerohangar_state_time', true));
                 return $res;
@@ -43,11 +44,16 @@ add_action('rest_api_init', function () {
                 if (!is_array($d) || !isset($d['aircraft']) || !is_array($d['aircraft'])) return new WP_Error('aerohangar_bad', 'not an AeroHangar backup', ['status' => 400]);
                 // Never keep device-only fields or anything that could grant Pro.
                 unset($d['proCached'], $d['proGranted'], $d['installId'], $d['backupUri'], $d['logbookUri'], $d['accountKey']);
+                // changes made in the browser that this phone has not seen yet are applied on top
+                $d = apply_filters('aerohangar_incoming_state', $d, $uid);
+                $merged = !empty($d['__merged']);
+                unset($d['__merged']);
                 update_user_meta($uid, 'aerohangar_state', wp_slash(wp_json_encode($d, JSON_UNESCAPED_UNICODE)));
                 update_user_meta($uid, 'aerohangar_state_time', time());
                 update_user_meta($uid, 'aerohangar_aircraft', count($d['aircraft']));
-                update_user_meta($uid, 'aerohangar_state_device', substr(sanitize_key((string)$r->get_header('x-aerohangar-device')), 0, 40));
-                return ['ok' => true, 'saved' => time()] + ah_permissions($uid);
+                update_user_meta($uid, 'aerohangar_state_device', $merged ? 'web' : substr(sanitize_key((string)$r->get_header('x-aerohangar-device')), 0, 40));
+                // merged: report an older time, so the phone pulls the combined copy at its next refresh
+                return ['ok' => true, 'saved' => $merged ? time() - 1 : time(), 'merged' => $merged] + ah_permissions($uid);
             },
         ],
     ]);
@@ -123,6 +129,11 @@ function ah_account_save(int $uid, array $b, string $by): void
         if ($b['caps'] === null || $b['caps'] === 'default') delete_user_meta($uid, 'aerohangar_caps');
         else update_user_meta($uid, 'aerohangar_caps', array_values(array_intersect(array_keys(ah_caps_all()), (array)$b['caps'])));
     }
+    if (array_key_exists('panel', $b) && function_exists('ah_panel_sections')) {
+        $m = [];
+        foreach (ah_panel_sections() as $k => $_) if (in_array(($b['panel'][$k] ?? ''), ['view', 'edit'], true)) $m[$k] = $b['panel'][$k];
+        if ($m) update_user_meta($uid, 'aerohangar_panel', $m); else delete_user_meta($uid, 'aerohangar_panel');
+    }
     if (array_key_exists('contactId', $b)) {
         $cid = sanitize_text_field((string)$b['contactId']);
         if ($cid === '') delete_user_meta($uid, 'aerohangar_contact_id');
@@ -135,7 +146,7 @@ function ah_account_save(int $uid, array $b, string $by): void
         if ($role === 'viewer') $u->add_cap('aerohangar_view');
         if ($role === 'editor') { $u->add_cap('aerohangar_view'); $u->add_cap('aerohangar_edit'); }
     }
-    ah_log($by, "account #$uid ({$u->user_login}): " . wp_json_encode(array_intersect_key($b, array_flip(['blocked', 'pro', 'proUntil', 'plan', 'maxAircraft', 'maxTypes', 'panelRole', 'caps', 'contactId']))));
+    ah_log($by, "account #$uid ({$u->user_login}): " . wp_json_encode(array_intersect_key($b, array_flip(['blocked', 'pro', 'proUntil', 'plan', 'maxAircraft', 'maxTypes', 'panelRole', 'caps', 'contactId', 'panel']))));
 }
 
 // Status line on the account page and in /cannonade/v1/me
@@ -171,6 +182,7 @@ function ah_accounts_list(string $q = ''): array
             'maxTypes' => ($mt === '' || $mt === false) ? '' : (int)$mt, 'note' => (string)get_user_meta($u->ID, 'aerohangar_note', true),
             'panelRole' => ah_panel_role($u), 'proActive' => ah_account_pro($u->ID), 'hasAccess' => ah_has_access($u->ID),
             'capsCustom' => ah_caps_custom($u->ID), 'caps' => ah_caps($u->ID), 'contactId' => ah_user_contact_id($u->ID),
+            'panel' => (object)ah_user_sections($u->ID), 'clientPanel' => ah_client_panel($u->ID),
             'access' => $acc ? ['plan' => $acc['plan'], 'until' => (int)$acc['until'], 'maxAircraft' => $acc['maxAircraft'] ?? null, 'maxTypes' => $acc['maxTypes'] ?? null] : null];
     }
     usort($out, fn($a, $b) => max($b['lastSeen'], $b['lastSync']) <=> max($a['lastSeen'], $a['lastSync']));
@@ -245,14 +257,3 @@ add_filter('wp_nav_menu_objects', function ($items) {
     }
     return $items;
 });
-
-// Short address of the panel: /aerohangar-panel (also /index.php/aerohangar-panel)
-add_action('init', function () {
-    $path = trim((string)parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
-    $home = trim((string)parse_url(home_url(), PHP_URL_PATH), '/');
-    if ($home !== '' && str_starts_with($path, $home)) $path = trim(substr($path, strlen($home)), '/');
-    if (preg_match('~^(index\.php/)?(aerohangar-panel|panel-aerohangar)$~', $path)) {
-        wp_safe_redirect(admin_url('admin.php?page=aerohangar-panel'));
-        exit;
-    }
-}, 1);

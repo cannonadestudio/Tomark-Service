@@ -19,12 +19,10 @@ function ah_out(int $code, array $data): never
 }
 
 /** WordPress user → panel role: admin (manage_options or aerohangar_admin), editor (aerohangar_edit), viewer (aerohangar_view). */
-function ah_require_login(): array
+/** Panel login: staff always; clients only for the sections the administrator gave them (see backoffice.php). */
+function ah_require_login($section = null): array
 {
-    $wu = wp_get_current_user();
-    if (!$wu || !$wu->ID || !(current_user_can('aerohangar_view') || current_user_can('manage_options'))) ah_out(401, ['error' => 'login required']);
-    $role = (current_user_can('manage_options') || current_user_can('aerohangar_admin')) ? 'admin' : (current_user_can('aerohangar_edit') ? 'editor' : 'viewer');
-    return ['login' => $wu->user_login, 'role' => $role];
+    return ah_panel_user($section);
 }
 
 /** REST cookie authentication already verifies the X-WP-Nonce header; without it the user is anonymous. */
@@ -45,25 +43,31 @@ function ah_api_dispatch(): void
 
     if ($action === 'me') {
         $wu = wp_get_current_user();
-        $u = ($wu && $wu->ID && (current_user_can('aerohangar_view') || current_user_can('manage_options'))) ? ah_require_login() : null;
+        $u = null;
+        if ($wu && $wu->ID && ah_is_staff()) $u = ah_require_login();
+        elseif ($wu && $wu->ID && ah_client_panel($wu->ID)) $u = ['login' => $wu->user_login, 'role' => 'client', 'id' => $wu->ID,
+            'sections' => (object)ah_user_sections($wu->ID), 'fleet' => ah_can($wu->ID, 'fleet'), 'fleetEdit' => ah_can($wu->ID, 'fleet_edit'), 'name' => $wu->display_name];
+        if ($u && ah_is_staff()) $u['fleet'] = true;
         ah_out(200, ['user' => $u, 'csrf' => $u ? wp_create_nonce('wp_rest') : null, 'files' => AH_FILES, 'publicBase' => ah_data_url(),
             'logout' => wp_logout_url(admin_url()), 'login' => wp_login_url(admin_url('admin.php?page=aerohangar')), 'wp' => true]);
     }
 
+    if ($action === 'myfleet') ah_myfleet_api(is_array($body) ? $body : null);
+
     switch ($action) {
         case 'get':
-            ah_require_login();
             $f = (string)($_GET['f'] ?? '');
             if (!in_array($f, AH_FILES, true)) ah_out(400, ['error' => 'unknown file']);
+            ah_require_login(ah_file_section($f, false));
             $raw = ah_read_editable($f);
             ah_out(200, ['data' => $raw === '' ? null : json_decode($raw, true), 'rev' => $raw === '' ? '' : sha1($raw)]);
     
         case 'save':
-            $u = ah_require_login();
-            ah_require_csrf();
-            if ($u['role'] === 'viewer') ah_out(403, ['error' => 'read-only account']);
             $f = (string)($body['f'] ?? '');
             if (!in_array($f, AH_FILES, true)) ah_out(400, ['error' => 'unknown file']);
+            $u = ah_require_login(ah_file_section($f, true));
+            ah_require_csrf();
+            if ($u['role'] === 'viewer') ah_out(403, ['error' => 'read-only account']);
             $err = ah_validate($f, $body['data'] ?? null);
             if ($err) ah_out(422, ['error' => $err]);
             $current = ah_read_editable($f);
@@ -76,11 +80,11 @@ function ah_api_dispatch(): void
             ah_out(200, ['rev' => $rev]);
     
         case 'backups':
-            ah_require_login();
+            ah_require_login('history');
             ah_out(200, ['backups' => ah_list_backups()]);
     
         case 'restore':
-            $u = ah_require_login();
+            $u = ah_require_login('history');
             ah_require_csrf();
             if ($u['role'] !== 'admin') ah_out(403, ['error' => 'admin only']);
             $name = basename((string)($body['name'] ?? ''));
@@ -89,7 +93,7 @@ function ah_api_dispatch(): void
             ah_out(200, ['ok' => true]);
     
         case 'log':
-            $u = ah_require_login();
+            $u = ah_require_login('history');
             ah_out(200, ['log' => ah_read_log(200)]);
     
         case 'import':
@@ -134,7 +138,7 @@ function ah_api_dispatch(): void
     
         case 'pull_github':
             // Panel button: take the newest official ULC lists straight from the GitHub repository.
-            $u = ah_require_login();
+            $u = ah_require_login(['contacts', 'examiners']);
             ah_require_csrf();
             if ($u['role'] === 'viewer') ah_out(403, ['error' => 'read-only account']);
             $base = rtrim('https://raw.githubusercontent.com/cannonadestudio/Tomark-Service/main/data', '/');
@@ -339,7 +343,7 @@ function ah_api_dispatch(): void
         // ------------------------------------------------------------ panel: partners, requests, settings
     
         case 'requests':
-            $u = ah_require_login();
+            $u = ah_require_login('requests');
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ah_require_csrf();
                 if ($u['role'] === 'viewer') ah_out(403, ['error' => 'read-only account']);
@@ -356,12 +360,12 @@ function ah_api_dispatch(): void
             ah_out(200, ['requests' => array_reverse(ah_store_read('requests'))]);
     
         case 'events':
-            ah_require_login();
+            ah_require_login(['stats', 'partners', 'sponsor']);
             ah_out(200, ['events' => ah_store_read('events')]);
     
         case 'installs':
             // Panel: list of installations, manual Pro, counter reset.
-            $u = ah_require_login();
+            $u = ah_require_login('installs');
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ah_require_csrf();
                 if ($u['role'] !== 'admin') ah_out(403, ['error' => 'admin only']);
@@ -423,7 +427,7 @@ function ah_api_dispatch(): void
         // ------------------------------------------------------------ panel: statistics and submissions
     
         case 'stats':
-            ah_require_login();
+            ah_require_login('stats');
             $d = ah_store_read('installs');
             $now = time();
             $active = fn($days) => count(array_filter($d, fn($i) => strtotime($i['last'] ?? '1970-01-01') >= $now - $days * 86400));
@@ -440,7 +444,7 @@ function ah_api_dispatch(): void
                 'versions' => $by('v'), 'langs' => $by('lang'), 'types' => array_slice($types, 0, 15, true), 'newPerMonth' => $months]);
     
         case 'submissions':
-            $u = ah_require_login();
+            $u = ah_require_login('subs');
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ah_require_csrf();
                 if ($u['role'] === 'viewer') ah_out(403, ['error' => 'read-only account']);
@@ -491,7 +495,7 @@ function ah_api_dispatch(): void
             }
             ah_out(200, ['accounts' => ah_accounts_list(sanitize_text_field((string)($_GET['q'] ?? ''))), 'capsAll' => ah_caps_all(),
                 'planCaps' => array_combine(array_keys(ah_plans()), array_map('ah_plan_caps', array_keys(ah_plans()))), 'contacts' => ah_contacts_brief(),
-                'loginPage' => ah_login_page_url()]);
+                'loginPage' => ah_login_page_url(), 'panelSections' => ah_panel_sections()]);
     
         default:
             ah_out(404, ['error' => 'unknown action']);

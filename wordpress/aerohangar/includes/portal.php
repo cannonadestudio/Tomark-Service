@@ -18,6 +18,7 @@ function ah_caps_all(): array
     return [
         'app' => 'Aplikacja AeroHangar (klucz, kopia danych, kilka telefonów)',
         'fleet' => 'Flota w przeglądarce (samoloty, naloty, ostatnie przeglądy)',
+        'fleet_edit' => 'Edycja samolotów w przeglądarce (własne biuletyny, wykonane biuletyny)',
         'export' => 'Eksport floty do pliku CSV',
         'requests' => 'Zapytania serwisowe od użytkowników aplikacji',
         'listing' => 'Edycja własnej wizytówki w katalogu aplikacji',
@@ -28,10 +29,10 @@ function ah_caps_all(): array
 /** Defaults per plan (used until the administrator sets the account's own list). */
 function ah_plan_caps(string $plan): array
 {
-    $business = ['app', 'fleet', 'export', 'requests', 'listing', 'stats'];
+    $business = ['app', 'fleet', 'fleet_edit', 'export', 'requests', 'listing', 'stats'];
     return match ($plan) {
         'mechanic', 'school', 'dealer', 'service', 'club' => $business,
-        default => ['app', 'fleet', 'export'],
+        default => ['app', 'fleet', 'fleet_edit', 'export'],
     };
 }
 
@@ -216,6 +217,7 @@ function ah_portal_html(): string
 
     $h = '<div class="ahp"><p>Zalogowano jako <b>' . esc_html($u->display_name) . '</b> · <a href="' . esc_url(wp_logout_url($page)) . '">Wyloguj</a>';
     if (current_user_can('aerohangar_view') || current_user_can('manage_options')) $h .= ' · <a class="cna-btn" href="' . esc_url(admin_url('admin.php?page=aerohangar-panel')) . '">✈ ' . esc_html(cannonade_t('open_panel')) . '</a>';
+    elseif (ah_client_panel($uid)) $h .= ' · <a class="cna-btn" href="' . esc_url(home_url('/index.php/aerohangar-panel')) . '">✈ Zaplecze AeroHangar</a>';
     $h .= '</p>';
     if ($msg) $h .= '<p class="ok"><b>' . esc_html($msg) . '</b></p>';
     $h .= '<nav class="ahp-tabs">';

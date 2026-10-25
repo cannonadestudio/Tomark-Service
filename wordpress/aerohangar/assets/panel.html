@@ -126,6 +126,20 @@ const CGROUPS = {
 const fileOfKind = k => (k === "examiner" || k === "ame") ? "examiners" : "contacts";
 const state = { tab: "home", data: {}, sha: {}, filter: "" };
 const $ = s => document.querySelector(s);
+// Client accounts (pilots, mechanics, schools, dealers, services) see only the sections the administrator gave them.
+const isClient = () => state.user?.role === "client";
+const CLIENT_FILE_TABS = { contacts: "contacts", examiners: "examiners" };
+function secOf(tab) { if (CGROUPS[tab]) return CGROUPS[tab].file === "examiners" ? "examiners" : "contacts"; return tab }
+function canSee(tab) {
+  if (tab === "myfleet") return !!state.user?.fleet;
+  if (!isClient()) return true;
+  return !!(state.user.sections || {})[secOf(tab)];
+}
+function canEdit(tab = state.tab) {
+  if (tab === "myfleet") return isClient() ? !!state.user.fleetEdit : true;
+  if (!isClient()) return state.user?.role !== "viewer";
+  return (state.user.sections || {})[secOf(tab)] === "edit";
+}
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 function store(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v) } catch (e) { } }
@@ -175,7 +189,10 @@ async function start() {
   state.csrf = me.csrf; state.user = me.user; state.publicBase = me.publicBase;
   // Optional files (e.g. examiners on an older server) must not block the login.
   const missing = [];
-  await Promise.all(Object.keys(FILES).map(f => readFile(f).catch(e => {
+  const sec = me.user.sections || {};
+  const wanted = Object.keys(FILES).filter(f => !isClient() || ["bulletins", "types", "news", "sponsor"].includes(f) || (f === "contacts" && (sec.contacts || sec.partners)) || (f === "examiners" && sec.examiners));
+  if (isClient()) { state.data.contacts = { version: 0, updated: "", contacts: [] }; state.data.examiners = { version: 0, updated: "", contacts: [] } }
+  await Promise.all(wanted.map(f => readFile(f).catch(e => {
     if (f === "examiners" || f === "news" || f === "sponsor") { missing.push(f); state.data[f] = f === "news" ? { version: 0, updated: "", messages: [] } : f === "sponsor" ? { version: 0, updated: "", banners: [] } : { version: 0, updated: "", contacts: [] }; state.sha[f] = "" }
     else throw e;
   })));
@@ -189,11 +206,14 @@ async function start() {
   }
   $("#login").style.display = "none";
   $("#who").style.display = "flex";
-  $("#who").innerHTML = `<span>${esc(me.user.login)} (${esc(me.user.role)})</span><button class="ghost" style="color:#fff;border-color:rgba(255,255,255,.5);padding:5px 12px" id="logout">Wyloguj</button>`;
+  $("#who").innerHTML = `<span>${esc(me.user.name || me.user.login)} (${esc(isClient() ? "konto klienta" : me.user.role)})</span><button class="ghost" style="color:#fff;border-color:rgba(255,255,255,.5);padding:5px 12px" id="logout">Wyloguj</button>`;
   $("#logout").onclick = async () => { if (me.wp) { location.href = me.logout; return } await api("logout", { body: {} }); location.reload() };
-  if (me.wp) $("#logout").insertAdjacentHTML("beforebegin", `<a href="${esc(window.AH_WP.wpAdmin)}" style="color:#fff;margin-right:8px">← WordPress</a>`);
+  if (me.wp) $("#logout").insertAdjacentHTML("beforebegin", `<a href="${esc(window.AH_WP.wpAdmin)}" style="color:#fff;margin-right:8px">← ${isClient() ? "Moje AeroHangar" : "WordPress"}</a>`);
   if (location.hash.length > 1) state.tab = location.hash.slice(1);
-  renderTabs(); render(); loadSubCount(); loadReqCount();
+  if (isClient() && (state.tab === "home" || !canSee(state.tab))) state.tab = state.user.fleet ? "myfleet" : (Object.keys(sec)[0] === "contacts" ? "c_service" : Object.keys(sec)[0] === "examiners" ? "c_exam" : Object.keys(sec)[0] || "myfleet");
+  renderTabs(); render();
+  if (canSee("subs")) loadSubCount();
+  if (canSee("requests")) loadReqCount();
 }
 $("#loginForm").onsubmit = async e => {
   e.preventDefault();
@@ -205,13 +225,15 @@ $("#loginForm").onsubmit = async e => {
 function renderTabs() {
   const count = g => (state.data[CGROUPS[g].file]?.contacts || []).filter(c => CGROUPS[g].kinds.includes(c.kind)).length;
   const groups = [
-    ["", [["home", "Pulpit"]]],
+    ["", [...(isClient() ? [] : [["home", "Pulpit"]]), ...(state.user?.fleet ? [["myfleet", "Moje samoloty"]] : [])]],
     ["Dane w aplikacji", [["bulletins", "Biuletyny", state.data.bulletins?.bulletins?.length], ["types", "Typy samolotów", state.data.types?.length], ["news", "Komunikaty", state.data.news?.messages?.length]]],
     ["Kontakty", Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => [g, CGROUPS[g].name, count(g)])],
     ["Zarabianie", [["partners", "Partnerzy", partners().filter(isActive).length], ["requests", "Zapytania serwisowe", state.reqCount, state.reqCount > 0], ["sponsor", "Sponsor / baner", (state.data.sponsor?.banners || []).length]]],
     ["Użytkownicy aplikacji", [["subs", "Zgłoszenia", state.subCount, state.subCount > 0], ["stats", "Statystyki"], ["installs", "Instalacje i Pro"], ...(window.AH_WP ? [["accounts", "Konta pilotów"]] : [])]],
     ["System", [["history", "Historia i kopie"], ...(state.user?.role === "admin" ? [...(window.AH_WP ? [] : [["users", "Konta panelu"]]), ["settings", "Ustawienia"]] : [])]],
   ];
+  groups.forEach(g => g[1] = g[1].filter(([k]) => canSee(k) && !(isClient() && ["home", "accounts", "settings", "users"].includes(k))));
+  for (let i = groups.length - 1; i >= 0; i--) if (!groups[i][1].length) groups.splice(i, 1);
   const nav = $("#tabs");
   nav.classList.add("shown");
   nav.innerHTML = groups.map(([g, items]) => (g ? `<div class="grp">${g}</div>` : "") + items.map(([k, n, c, alert]) =>
@@ -236,6 +258,7 @@ function openDialog(html, onSave, onDelete) {
     const btn = $("#dSave"); btn.disabled = true;
     try { await onSave(new FormData(f)); $("#dlg").close(); render() } catch (e) { if (!(e instanceof Error) || !String(e.message).match(/^\d{3}/)) status(String(e.message || e), false) } finally { btn.disabled = false }
   };
+  if (!canEdit()) { $("#dSave").style.display = "none"; if ($("#dDel")) $("#dDel").style.display = "none"; f.querySelectorAll("input,select,textarea").forEach(i => i.disabled = true) }
   if (onDelete) $("#dDel").onclick = async () => { if (confirm("Usunąć ten wpis?")) { try { await onDelete(); $("#dlg").close(); render() } catch (e) { } } };
   $("#dlg").showModal();
 }
@@ -716,7 +739,7 @@ const PLAN = { pilot: "Pilot", mechanic: "Mechanik", school: "Szkoła lotnicza",
 async function renderAccounts() {
   const v = $("#view");
   const j = await api("accounts", { q: "&q=" + encodeURIComponent(state.filter || "") });
-  state.accounts = j.accounts; state.capsAll = j.capsAll || {}; state.planCaps = j.planCaps || {}; state.contactsBrief = j.contacts || []; state.loginPage = j.loginPage || "";
+  state.accounts = j.accounts; state.capsAll = j.capsAll || {}; state.planCaps = j.planCaps || {}; state.contactsBrief = j.contacts || []; state.loginPage = j.loginPage || ""; state.panelSections = j.panelSections || {};
   const admin = state.user?.role === "admin";
   const d = t => t ? new Date(t * 1000).toISOString().slice(0, 10) : "—";
   const ROLE = { admin: "administrator", editor: "edycja danych", viewer: "podgląd", "": "" };
@@ -724,13 +747,14 @@ async function renderAccounts() {
     <p class="muted">Wszystkie konta WordPress (ostatnie 500 / wynik wyszukiwania). <b>Edytuj</b> – dostęp do aplikacji, plan, Pro (bez limitu albo do daty), limit samolotów i własnych typów oraz rola w panelu. Pilot łączy aplikacje kluczem ze strony <code>[cannonade_konto]</code>; dostęp kupiony w WooCommerce dolicza się sam. <b>Konto bez zakupu i bez ręcznie przyznanego dostępu nie może utworzyć klucza</b>, a istniejący klucz przestaje działać.</p>
     <table><tr><th>Konto</th><th>Dostęp w AeroHangar</th><th>Klucz</th><th class="hide-sm">Ostatnio / kopia</th><th>Samoloty</th><th></th></tr>
     ${j.accounts.map(a => `<tr><td><b>${esc(a.name)}</b><div class="muted">${esc(a.login)} · ${esc(a.email)}</div><div class="muted">${esc(a.wpRole)} · od ${esc(a.registered)}</div></td>
-      <td>${a.blocked ? '<span class="chip" style="background:#fde2e8;color:#a3123f">zablokowany</span>' : (a.proActive ? '<span class="chip p">Pro</span>' : '<span class="chip">bez dostępu</span>')}
+      <td>${a.blocked ? '<span class="chip" style="background:#fde2e8;color:#a3123f">zablokowany</span>' : (a.proActive ? '<span class="chip p">Pro</span>' : (a.hasAccess ? '<span class="chip g">dostęp (personel)</span>' : '<span class="chip">bez dostępu</span>'))}
         ${a.plan ? `<span class="chip">${esc(PLAN[a.plan] || a.plan)}</span>` : ""}
         ${a.pro && a.proUntil ? `<div class="muted">Pro ręczne do ${esc(a.proUntil)}</div>` : (a.pro ? '<div class="muted">Pro ręczne</div>' : "")}
         ${a.access ? `<div class="muted">zakup: ${esc(PLAN[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + d(a.access.until) : "bez limitu"}</div>` : ""}
         ${a.maxAircraft !== "" ? `<div class="muted">limit samolotów: ${a.maxAircraft}</div>` : (a.access && a.access.maxAircraft != null ? `<div class="muted">limit samolotów (produkt): ${a.access.maxAircraft}</div>` : "")}
         ${a.maxTypes !== "" ? `<div class="muted">limit typów: ${a.maxTypes}</div>` : (a.access && a.access.maxTypes != null ? `<div class="muted">limit typów (produkt): ${a.access.maxTypes}</div>` : "")}
         ${a.hasAccess ? `<div class="muted">możliwości: ${a.caps.length}/${Object.keys(state.capsAll).length}${a.capsCustom ? " (własne)" : " (wg planu)"}</div>` : ""}
+        ${a.clientPanel ? `<div class="muted">zaplecze: ${Object.keys(a.panel || {}).length ? Object.entries(a.panel).map(([k, l]) => esc((state.panelSections[k] || k).split(" ")[0]) + (l === "edit" ? "✎" : "")).join(", ") : "tylko Moje samoloty"}</div>` : ""}
         ${a.contactId ? `<div class="muted">wizytówka: ${esc((state.contactsBrief.find(c => c.id === a.contactId) || {}).name || a.contactId)}</div>` : ""}
         ${a.panelRole ? `<div class="muted">panel: ${esc(ROLE[a.panelRole])}</div>` : ""}
         ${a.note ? `<div class="muted"><i>${esc(a.note)}</i></div>` : ""}</td>
@@ -755,6 +779,9 @@ function editAccount(a) {
     <h4 style="margin:14px 0 4px">Możliwości w systemie</h4>
     <label class="inl"><input type="checkbox" name="capsDefault" id="capsDefault" ${a.capsCustom ? "" : "checked"}> według planu (domyślne dla wybranego planu)</label>
     <div id="capsBox" style="margin:4px 0 8px 18px">${Object.entries(state.capsAll).map(([k, v]) => `<label class="inl"><input type="checkbox" name="cap_${k}" data-cap="${k}" ${(a.capsCustom || a.caps || []).includes(k) ? "checked" : ""}> ${esc(v)}</label>`).join("")}</div>
+    <h4 style="margin:14px 0 4px">Zaplecze (panel) – co konto widzi</h4>
+    <p class="muted" style="margin:0 0 6px">Klient wchodzi przez link „Zaplecze AeroHangar” (adres /index.php/aerohangar-panel). „Moje samoloty” widzi zawsze, gdy ma możliwość „Flota”; edycja – z możliwością „Edycja samolotów w przeglądarce”.</p>
+    <div class="grid2">${Object.entries(state.panelSections || {}).map(([k, n]) => select("sec_" + k, n, [["", "brak"], ["view", "podgląd"], ["edit", "edycja"]], (a.panel || {})[k] || "")).join("")}</div>
     ${field("contactId", "Wizytówka w katalogu (dla firm: zapytania, edycja wizytówki, statystyki) – wpisz nazwę i wybierz", a.contactId, "text", 'list="ahContacts" autocomplete="off"')}
     <datalist id="ahContacts">${state.contactsBrief.map(c => `<option value="${esc(c.id)}">${esc(c.name + (c.city ? " – " + c.city : ""))}</option>`).join("")}</datalist>
     <p class="muted">Klient loguje się na stronie <a href="${esc(state.loginPage)}" target="_blank">AeroHangar – logowanie</a> (link „Logowanie” w menu).</p>
@@ -766,6 +793,7 @@ function editAccount(a) {
         maxAircraft: fd.get("maxAircraft") === "" ? "" : +fd.get("maxAircraft"), maxTypes: fd.get("maxTypes") === "" ? "" : +fd.get("maxTypes"), panelRole: fd.get("panelRole") || (isAdminUser ? "admin" : ""), note: (fd.get("note") || "").trim() };
       data.caps = fd.get("capsDefault") ? "default" : Object.keys(state.capsAll).filter(k => fd.get("cap_" + k));
       data.contactId = (fd.get("contactId") || "").trim();
+      data.panel = Object.fromEntries(Object.keys(state.panelSections || {}).map(k => [k, fd.get("sec_" + k) || ""]));
       await api("accounts", { body: { user: a.id, action: "save", data } });
       status("Zapisano uprawnienia konta " + a.login + ".");
       renderAccounts();
@@ -860,6 +888,62 @@ async function renderHome() {
 }
 
 // ---------------------------------------------------------------- render
+
+// ---------------------------------------------------------------- Moje samoloty (own fleet from the app, own bulletins)
+const dayStr = d => d == null ? "" : new Date(d * 86400000).toISOString().slice(0, 10);
+async function renderMyFleet() {
+  const v = $("#view");
+  const j = await api("myfleet");
+  state.fleet = j;
+  if (!j.aircraft.length) {
+    v.innerHTML = `<div class="card"><h3 style="margin-top:0">Moje samoloty</h3><p>Brak samolotów na koncie. Połącz aplikację AeroHangar kluczem konta (O aplikacji → Konto Cannonade) – samoloty pojawią się tutaj po pierwszej synchronizacji.</p></div>`;
+    return;
+  }
+  if (!j.aircraft.find(a => a.id === state.fleetSel)) state.fleetSel = j.aircraft[0].id;
+  const a = j.aircraft.find(x => x.id === state.fleetSel);
+  const st = Object.fromEntries(j.status.filter(x => x.aircraftId === a.id).map(x => [x.bulletinId, x]));
+  const own = j.own.filter(o => o.aircraftId === a.id).map(o => ({ ...o.bulletin, own: true }));
+  const pub = (state.data.bulletins?.bulletins || []).filter(b => (b.groups || []).some(g => a.groups.includes(g)) && !own.find(o => o.id === b.id));
+  const q = (state.fleetQ || "").toLowerCase();
+  const rows = [...own, ...pub].filter(b => !q || (b.id + " " + b.title).toLowerCase().includes(q)).sort((x, y) => String(y.date).localeCompare(String(x.date)));
+  const edit = j.canEdit;
+  const chip = b => { const x = st[b.id]; return x ? (x.status === "DONE" ? `<span class="chip g">wykonany ${esc(dayStr(x.epochDay))}${x.hours != null ? " · " + esc(x.hours) + " h" : ""}</span>` : '<span class="chip">nie dotyczy</span>') : (b.kind === "DOC" ? "" : `<span class="chip${b.mandatory ? " p" : ""}">${b.mandatory ? "obowiązkowy – otwarty" : "otwarty"}</span>`) };
+  v.innerHTML = `<div class="card"><div class="row" style="flex-wrap:wrap;gap:6px">${j.aircraft.map(x => `<button class="${x.id === a.id ? "" : "ghost"}" data-ac="${esc(x.id)}">${esc(x.registration || x.type)}</button>`).join("")}</div>
+    <h3 style="margin:12px 0 4px">${esc(a.registration)} <span class="muted" style="font-size:15px">${esc(a.type)}</span></h3>
+    <div class="muted">${a.hours != null ? "Nalot " + esc(Math.round(a.hours * 10) / 10) + " h · " : ""}${a.serial ? "S/N " + esc(a.serial) + " · " : ""}${a.engineSerial ? "silnik " + esc(a.engineSerial) + " · " : ""}kopia z aplikacji: ${j.lastSync ? new Date(j.lastSync * 1000).toLocaleString("pl-PL") : "—"}${j.pending ? ` · <b>${j.pending} zmian czeka na telefon</b>` : ""}</div>
+    <p class="muted">Zmiany zapisane tutaj trafiają do aplikacji przy jej następnym odświeżeniu konta (otwarcie aplikacji).</p>
+    <div class="row" style="margin:8px 0"><input id="fq" placeholder="Szukaj biuletynu: numer, tytuł…" value="${esc(state.fleetQ || "")}" style="flex:1">${edit ? '<button id="ownAdd">+ Dodaj biuletyn spoza systemu</button>' : ""}</div>
+    <table><tr><th>Data</th><th>Numer</th><th>Tytuł</th><th>Rodzaj</th><th>Status</th><th></th></tr>
+    ${rows.map(b => `<tr><td class="nowrap">${esc(b.date)}</td><td>${esc(b.id)}${b.own ? ' <span class="chip p">własny</span>' : ""}</td><td>${b.url ? `<a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.title)}</a>` : esc(b.title)}</td><td>${esc(b.kind)}</td><td>${chip(b)}</td>
+      <td class="nowrap">${edit ? `<button class="ghost" data-st="${esc(b.id)}">Status</button>${b.own ? ` <button class="ghost" data-own="${esc(b.id)}">Edytuj</button>` : ""}` : ""}</td></tr>`).join("") || '<tr><td colspan="6" class="muted">Brak biuletynów.</td></tr>'}</table></div>`;
+  v.querySelectorAll("button[data-ac]").forEach(b => b.onclick = () => { state.fleetSel = b.dataset.ac; renderMyFleet() });
+  $("#fq").oninput = e => { state.fleetQ = e.target.value; clearTimeout(state._fq); state._fq = setTimeout(() => renderMyFleet().then(() => { const x = $("#fq"); x.focus(); x.setSelectionRange(x.value.length, x.value.length) }), 300) };
+  const post = body => api("myfleet", { body: { aircraftId: a.id, ...body } });
+  const ownDlg = b => openDialog(`<h3>${b ? "Biuletyn własny " + esc(b.id) : "Nowy biuletyn spoza systemu"} – ${esc(a.registration)}</h3>
+    <div class="grid2">${field("id", "Numer (np. SB-912-077)", b?.id || "", "text", b ? "readonly" : "required")}${field("date", "Data wydania", b?.date || new Date().toISOString().slice(0, 10), "date")}</div>
+    ${field("title", "Tytuł", b?.title || "")}
+    <div class="grid2">${select("kind", "Rodzaj", KINDS_B.map(k => [k, k]), b?.kind || "SB")}${select("mandatory", "Obowiązkowy", [["", "sprawdź w dokumencie"], ["1", "tak"], ["0", "nie"]], b?.mandatory == null ? "" : b.mandatory ? "1" : "0")}</div>
+    ${field("url", "Link do dokumentu (opcjonalnie)", b?.url || "", "url")}`,
+    async fd => {
+      const m = fd.get("mandatory");
+      await post({ action: "own_save", bulletin: { id: (fd.get("id") || "").trim(), date: fd.get("date"), title: (fd.get("title") || "").trim(), kind: fd.get("kind"), mandatory: m === "" ? null : m === "1", url: (fd.get("url") || "").trim() } });
+      status("Zapisano biuletyn – aplikacja pobierze go przy następnym odświeżeniu.");
+    },
+    b ? async () => { await post({ action: "own_delete", id: b.id }); status("Usunięto biuletyn własny.") } : null);
+  if ($("#ownAdd")) $("#ownAdd").onclick = () => ownDlg(null);
+  v.querySelectorAll("button[data-own]").forEach(x => x.onclick = () => ownDlg(own.find(o => o.id === x.dataset.own)));
+  v.querySelectorAll("button[data-st]").forEach(x => x.onclick = () => {
+    const b = rows.find(r => r.id === x.dataset.st), cur = st[b.id];
+    openDialog(`<h3>${esc(b.id)} – ${esc(a.registration)}</h3><p class="muted">${esc(b.title)}</p>
+      <div class="grid2">${select("status", "Status", [["", "otwarty (do wykonania)"], ["DONE", "wykonany"], ["NA", "nie dotyczy"]], cur?.status || "")}${field("date", "Data", cur ? dayStr(cur.epochDay) : new Date().toISOString().slice(0, 10), "date")}</div>
+      <div class="grid2">${field("hours", "Nalot przy wykonaniu (h)", cur?.hours ?? (a.hours != null ? Math.round(a.hours * 10) / 10 : ""), "number", 'step="0.1" min="0"')}${field("note", "Uwagi", cur?.note || "")}</div>`,
+      async fd => {
+        await post({ action: "status", bulletinId: b.id, status: fd.get("status") || null, date: fd.get("date"), hours: fd.get("hours") === "" ? null : +fd.get("hours"), note: fd.get("note") || "" });
+        status("Zapisano status – aplikacja pobierze go przy następnym odświeżeniu.");
+      });
+  });
+}
+
 function render(keepFocus) {
   if (!state.data.types) return;
   const v = $("#view");
@@ -871,6 +955,8 @@ function render(keepFocus) {
     v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editContact(state.data[file].contacts.find(c => c.id === r.dataset.id), g));
     hookContactTools(g);
   }
+  if (!canSee(state.tab)) { v.innerHTML = '<div class="card"><p>Ten dział nie jest dla Ciebie dostępny.</p></div>'; return }
+  if (state.tab === "myfleet") { renderMyFleet().catch(e => status(e.message, false)); return }
   if (state.tab === "home") { renderHome().catch(e => status(e.message, false)); return }
   if (state.tab === "subs") { renderSubs().catch(e => status(e.message, false)); return }
   if (state.tab === "partners") { renderPartners().catch(e => status(e.message, false)); return }
