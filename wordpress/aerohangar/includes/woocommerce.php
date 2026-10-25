@@ -140,12 +140,15 @@ add_action('plugins_loaded', function () {
         }
     });
 
-    // Access products need an account (no guest checkout for them).
-    add_filter('woocommerce_checkout_registration_required', function ($required) {
-        if (!WC()->cart) return $required;
+    // Access products need an account: no guest checkout for them, and the account is created at checkout
+    // (even when open registration is switched off on the site – then buying is the only way to get an account).
+    $hasAccess = function (): bool {
+        if (!function_exists('WC') || !WC()->cart) return false;
         foreach (WC()->cart->get_cart() as $ci) if (!empty($ci['data']) && ah_product_access($ci['data'])) return true;
-        return $required;
-    });
+        return false;
+    };
+    add_filter('woocommerce_checkout_registration_required', fn($required) => $hasAccess() ? true : $required);
+    add_filter('woocommerce_checkout_registration_enabled', fn($enabled) => $hasAccess() ? true : $enabled);
 
     // My Account → AeroHangar (key + status)
     add_action('init', fn() => add_rewrite_endpoint('aerohangar', EP_ROOT | EP_PAGES));
