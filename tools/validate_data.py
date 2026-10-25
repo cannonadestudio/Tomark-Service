@@ -66,8 +66,8 @@ for path in ("data/bulletins.json",):
                 errors.append(f"{path}/{bl['id']}: unknown group {g}")
 
 ef = load("data/examiners.json")
-if any(c.get("kind") != "examiner" for c in ef["contacts"]):
-    errors.append("examiners.json: only kind=examiner entries allowed")
+if any(c.get("kind") not in ("examiner", "ame") for c in ef["contacts"]):
+    errors.append("examiners.json: only examiners and aeromedical examiners (ame) allowed")
 cf0 = load("data/contacts.json")
 if any(c["id"].startswith("ulc-exam-") for c in cf0["contacts"]):
     errors.append("contacts.json must not contain examiners (they are downloaded on request)")
@@ -76,7 +76,7 @@ cids = [c["id"] for c in cf["contacts"]]
 if len(cids) != len(set(cids)):
     errors.append("contacts: duplicate ids")
 for c in cf["contacts"]:
-    if c["kind"] not in ("manufacturer", "dealer", "rotax_distributor", "rotax_service", "mechanic", "maintenance", "instructor", "school", "examiner"):
+    if c["kind"] not in ("manufacturer", "dealer", "rotax_distributor", "rotax_service", "mechanic", "maintenance", "instructor", "school", "examiner", "aemc"):
         errors.append(f"contact {c['id']}: bad kind")
     if not (-90 <= (c.get("lat") or 0) <= 90 and -180 <= (c.get("lon") or 0) <= 180):
         errors.append(f"contact {c['id']}: bad coords")

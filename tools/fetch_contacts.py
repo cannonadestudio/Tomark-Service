@@ -4,6 +4,7 @@
   * examiners – ultralights, gyroplanes, paragliders (UACP, UAGP …)
   * examiners – aircraft mechanics
   * approved maintenance organisations Part-CAO and Part-145
+  * aeromedical examiners (AME, lekarze orzecznicy) and aeromedical centres (AeMC)
 The newest PDF is always taken from the ULC page that links it. Entries are replaced as a whole
 (prefix ulc-…), so the app always shows the current lists. Coordinates: region (voivodeship) centre for
 examiners, OpenStreetMap geocoding of the postcode/city for organisations (cached in tools/geocache.json).
@@ -23,6 +24,8 @@ UA = {"User-Agent": "Mozilla/5.0 (AeroHangar contacts; +https://github.com/canno
 
 EXAM_PAGE = "https://ulc.gov.pl/personel-lotniczy/komisja-egzaminacyjna/egzaminy-praktyczne"
 ORG_PAGE = "https://ulc.gov.pl/technika-lotnicza/wykazy-organizacji"
+MED_PAGE = "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+AEMC_PAGE = "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/centra-medycyny-lotniczej"
 # Used when the examiner page does not link a mechanics list (ULC sometimes keeps it under "dla egzaminatora").
 MECH_FALLBACK = "https://ulc.gov.pl/_download/personel_lotniczy/dla-egzaminatora/01-2026/LISTA_EGZAMINATOR%C3%93W_PRAKTYCZNYCH_-_MECHANICY.pdf"
 
@@ -181,6 +184,113 @@ def parse_examiners(url, label, ul, prefix=None, layout=None):
     return out
 
 
+# ---------------------------------------------------------------- aeromedical examiners / centres
+
+def doc_links(page_url):
+    """PDF / XLSX / DOCX links on a ULC page."""
+    page = get(page_url)
+    hrefs = re.findall(r'href="([^"]+\.(?:pdf|xlsx?|docx?))"', page, re.I)
+    return page, [urllib.parse.urljoin(page_url, html.unescape(h)) for h in hrefs]
+
+
+def html_rows(page):
+    rows = []
+    for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", page, re.S | re.I):
+        cells = [" ".join(html.unescape(re.sub(r"<[^>]+>", " ", c)).split()) for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", tr, re.S | re.I)]
+        if any(cells):
+            rows.append(cells)
+    return rows
+
+
+def xlsx_rows(url):
+    import zipfile, io, xml.etree.ElementTree as ET
+    z = zipfile.ZipFile(io.BytesIO(get(url, binary=True)))
+    ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+    shared = []
+    if "xl/sharedStrings.xml" in z.namelist():
+        for si in ET.fromstring(z.read("xl/sharedStrings.xml")).findall("m:si", ns):
+            shared.append("".join(t.text or "" for t in si.iter("{%s}t" % ns["m"])))
+    rows = []
+    for name in sorted(n for n in z.namelist() if n.startswith("xl/worksheets/sheet")):
+        for row in ET.fromstring(z.read(name)).iter("{%s}row" % ns["m"]):
+            cells = []
+            for c in row.findall("m:c", ns):
+                v = c.find("m:v", ns)
+                t = (shared[int(v.text)] if c.get("t") == "s" and v is not None else (v.text if v is not None else "")) or ""
+                cells.append(" ".join(t.split()))
+            if any(cells):
+                rows.append(cells)
+    return rows
+
+
+AME_NO = re.compile(r"\bPL[.\s/-]*(?:AME|MED|AeMC|AMC)[.\s/-]*\d+[\w./-]*", re.I)
+POST = re.compile(r"\b(\d{2}-\d{3})\s+([A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ-]+(?:[ -][A-ZŁŚŻŹĆŃÓ][\wąćęłńóśźżĄĆĘŁŃÓŚŹŻ-]+)?)")
+PERSON = re.compile(r"(?:(?:lek\.?|dr|n\. ?med\.|hab\.|prof\.|med\.|lekarz)\s*)*([A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+(?:-[A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+)?\s+[A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+(?:-[A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+)?)")
+
+
+def parse_medical(rows, url, kind, cache):
+    """One row = one examiner / centre: name, certificate number, address (postcode + city), phone, e-mail, classes."""
+    out, seen = [], set()
+    for r in rows:
+        line = " | ".join(c for c in r if c)
+        low = line.lower()
+        if not line or low.startswith(("lp", "l.p", "imię", "nazwa", "nr ")) or "nazwisko" in low[:40]:
+            continue
+        no = AME_NO.search(line)
+        post = POST.search(line)
+        if not (no or post):
+            continue
+        if kind == "ame":
+            m = PERSON.search(line)
+            if not m:
+                continue
+            name = m.group(1)
+        else:
+            name = next((c for c in r if c and not AME_NO.search(c) and not POST.search(c) and not EMAIL.search(c) and len(c) > 4), "")
+            if not name:
+                continue
+        email = EMAIL.search(line)
+        tel = TEL_RX.search(line) or PHONE.search(line)
+        classes = sorted(set(re.findall(r"\b(?:klas[ay]?\s*)?(1|2|3)\b(?=[^\d]|$)", " ".join(c for c in r if re.search(r"klas|class|LAPL|1|2", c, re.I) and len(c) < 40))))
+        lapl = "LAPL" in line.upper()
+        city = post.group(2) if post else ""
+        street = re.search(r"(?:ul\.|al\.|pl\.|os\.)\s*[^,|]{3,40}", line, re.I)
+        addr = ", ".join(x for x in ((street.group(0).strip() if street else ""), (post.group(0) if post else "")) if x)
+        ll = geocode(f"{post.group(1)} {city}, Polska", cache) if post else None
+        key = re.sub(r"\W+", "-", (name + "-" + city).lower()).strip("-")
+        cid = ("ulc-ame-" if kind == "ame" else "ulc-aemc-") + key[:60]
+        if cid in seen:
+            continue
+        seen.add(cid)
+        scope = ", ".join(([f"klasa {'/'.join(classes)}"] if classes else []) + (["LAPL"] if lapl else []))
+        label = "Lekarz orzecznik medycyny lotniczej (AME)" if kind == "ame" else "Centrum medycyny lotniczej (AeMC)"
+        c = {"id": cid, "name": name[:120], "kind": kind, "brands": [b for b in (scope, no.group(0) if no else "") if b][:3],
+             "country": "PL", "city": city, "address": addr, "lat": ll[0] if ll else None, "lon": ll[1] if ll else None,
+             "phone": norm_phone(tel.group(1) if tel and tel.lastindex else (tel.group(0) if tel else "")), "email": email.group(0) if email else "",
+             "note": label + (f". {scope}" if scope else "") + (f". {no.group(0)}" if no else ""), "source": url}
+        out.append({k: v for k, v in c.items() if v not in (None, "", [])})
+    return out
+
+
+def collect_medical(page_url, kind, cache):
+    page, docs = doc_links(page_url)
+    notice(f"{kind}: page {len(page)} chars, documents: " + " ".join(urllib.parse.unquote(d).rsplit('/', 1)[-1] for d in docs[:8]))
+    rows, src = html_rows(page), page_url
+    for d in docs:
+        low = urllib.parse.unquote(d).lower()
+        if not re.search(r"lekar|ame|orzecz|aemc|centr|medycyn|wykaz|lista", low):
+            continue
+        try:
+            rows = xlsx_rows(d) if low.endswith((".xlsx", ".xls")) else pdf_rows(d) if low.endswith(".pdf") else rows
+            src = d
+            break
+        except Exception as e:
+            notice(f"{kind}: {d} ERROR {type(e).__name__}: {e}")
+    if DRY:
+        notice(mask(f"{kind}: {len(rows)} rows from {src}; sample: " + " ## ".join(" ¦ ".join(c[:28] for c in r) for r in rows[:6])))
+    return parse_medical(rows, src, kind, cache)
+
+
 # ---------------------------------------------------------------- organisations
 
 def geocode(query, cache):
@@ -267,6 +377,15 @@ def main():
     except Exception as e:
         notice(f"organisations: ERROR {type(e).__name__}: {e}")
 
+    try:
+        collected["ulc-ame-"] = collect_medical(MED_PAGE, "ame", cache)
+    except Exception as e:
+        notice(f"ame: ERROR {type(e).__name__}: {e}")
+    try:
+        collected["ulc-aemc-"] = collect_medical(AEMC_PAGE, "aemc", cache)
+    except Exception as e:
+        notice(f"aemc: ERROR {type(e).__name__}: {e}")
+
     for prefix, items in collected.items():
         sample = " || ".join(f"{c['name']} [{c.get('city','')}] {'e-mail' if c.get('email') else '-'} {'tel' if c.get('phone') else '-'} {c.get('note','')[:90]}" for c in items[:4])
         with_contact = sum(1 for c in items if c.get("email") or c.get("phone"))
@@ -294,14 +413,16 @@ def main():
         json.dump(feed, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         return len(merged)
 
-    exam_prefixes = [p for p in collected if p.startswith("ulc-exam-")]
+    # Aeromedical examiners are people as well: on-demand file, like examiners (only when something was found).
+    exam_prefixes = [p for p in collected if (p.startswith("ulc-exam-") or p == "ulc-ame-") and collected[p]]
     # Examiners (personal data published by ULC) live in a separate file the app downloads only on request.
     n_exam = write(EXAMINERS, exam_prefixes, exam_prefixes)
     # …and are removed from the general contacts list, which is bundled with the app.
     feed = json.load(open(CONTACTS, encoding="utf-8"))
-    feed["contacts"] = [c for c in feed["contacts"] if not c["id"].startswith("ulc-exam-")]
+    feed["contacts"] = [c for c in feed["contacts"] if not c["id"].startswith(("ulc-exam-", "ulc-ame-"))]
     json.dump(feed, open(CONTACTS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    n_cont = write(CONTACTS, ["ulc-pl-"], ["ulc-pl-"]) if "ulc-pl-" in collected else len(feed["contacts"])
+    cont_prefixes = [p for p in ("ulc-pl-", "ulc-aemc-") if collected.get(p)]
+    n_cont = write(CONTACTS, cont_prefixes, cont_prefixes) if cont_prefixes else len(feed["contacts"])
     json.dump(cache, open(GEOCACHE, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     notice(f"written: contacts {n_cont}, examiners {n_exam}")
 
