@@ -278,6 +278,10 @@ def article_text(page):
     m = re.search(r'<div[^>]+(?:itemprop="articleBody"|class="[^"]*com-content-article__body[^"]*")[^>]*>(.*)', page, re.S | re.I)
     if m:
         body = m.group(1)
+    # stop at the end of the article – the page footer holds ULC's own address ("Kontakt", ul. M. Flisa 2)
+    end = re.search(r"</article>|<footer|id=\"footer|class=\"[^\"]*footer|</main>", body, re.I)
+    if end:
+        body = body[:end.start()]
     # <span id="cloakXXXX">…</span><script>…addyXXXX = 'name' + '&#64;'; addyXXXX = addyXXXX + 'domain' + '&#46;' + 'pl';…</script>
     def uncloak(mm):
         script = mm.group(2)
@@ -332,7 +336,7 @@ def block_contact(block, kind, url, cache, scope_default=""):
         if len(name) < 4:
             return None
     post = POST.search(one)
-    if not post:
+    if not post or (kind == "aemc" and "kancelaria@ulc.gov.pl" in one.lower()):
         return None
     email = EMAIL.search(one)
     tel = TEL_RX.search(one) or PHONE.search(one)
@@ -369,9 +373,10 @@ def collect_medical(page_url, kind, cache):
         while i < len(lines):
             if POST.search(lines[i]):
                 j = i
-                while j > 0 and re.match(r"^(ul\.|al\.|pl\.|os\.|tel|fax|e-?mail|www|\d)", lines[j].strip(), re.I) and not re.search(r"[A-ZŁŚ][a-z]+ [A-ZŁŚ]", lines[j][:3]):
+                while j > 0 and (re.match(r"^(ul\.|al\.|pl\.|os\.|tel|fax|e-?mail|www|\d|kontakt|adres|siedziba|dane kontaktowe)", lines[j].strip(), re.I)
+                                 or len(lines[j].strip()) < 5):
                     j -= 1
-                name_i = j if j != i else max(0, i - 1) if re.match(r"^(ul\.|al\.)", lines[i].strip(), re.I) else i
+                name_i = j if j != i else max(0, i - 1) if re.match(r"^(ul\.|al\.|kontakt)", lines[i].strip(), re.I) else i
                 end = i + 1
                 while end < len(lines) and not POST.search(lines[end]) and re.match(r"^(tel|fax|e-?mail|www|\+|\d|[\w.+-]+@)", lines[end].strip(), re.I):
                     end += 1

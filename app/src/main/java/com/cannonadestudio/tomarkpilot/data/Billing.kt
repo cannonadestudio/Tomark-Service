@@ -133,5 +133,5 @@ object Billing : PurchasesUpdatedListener {
     fun canAddAircraft(s: AppState = Repo.state.value) = s.aircraft.size < FREE_AIRCRAFT || isPro(s)
 
     /** Bought in Google Play or granted by the app owner in the server panel. */
-    fun isPro(s: AppState = Repo.state.value) = _pro.value.owned || s.proGranted
+    fun isPro(s: AppState = Repo.state.value) = _pro.value.owned || s.proGranted || s.accountPro
 }

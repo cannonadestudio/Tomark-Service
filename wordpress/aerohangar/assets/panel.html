@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AeroHangar – panel</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--violet:#7A3E9D;--blue:#2E8FC4;--teal:#0FB3A6;--pink:#E84F8C;--ink:#2B2A33;--muted:#6b6676;--card:#fff;--line:#e7e2ee;--bg:#f4f1f8}
+*{box-sizing:border-box}
+body{margin:0;font-family:Poppins,system-ui,sans-serif;color:var(--ink);background:linear-gradient(135deg,var(--violet),var(--blue) 55%,var(--teal));min-height:100vh}
+header{color:#fff;padding:16px 20px 6px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+header h1{font-size:20px;margin:0;flex:1}
+header small{opacity:.85;font-weight:400}
+.layout{display:flex;gap:18px;padding:0 20px 40px;align-items:flex-start;max-width:1400px;margin:auto}
+nav#tabs{flex:0 0 230px;position:sticky;top:12px;background:rgba(255,255,255,.12);border-radius:14px;padding:10px;display:none}
+nav#tabs .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.75);margin:12px 8px 4px}
+nav#tabs .grp:first-child{margin-top:2px}
+main{flex:1;min-width:0}
+.tile{background:#fff;border-radius:14px;padding:16px;box-shadow:0 6px 20px rgba(0,0,0,.12);cursor:pointer;display:flex;flex-direction:column;gap:2px;min-height:112px;transition:transform .1s}
+.tile:hover{transform:translateY(-2px)}
+.tile .n{font-size:34px;font-weight:600;line-height:1.1}
+.tile .l{font-size:14px;font-weight:500}
+.tile .s{font-size:12px;color:var(--muted)}
+.tile.accent{background:var(--pink);color:#fff}.tile.accent .s{color:rgba(255,255,255,.85)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin:12px 0}
+.sec{color:#fff;font-weight:600;margin:18px 0 0}
+nav#tabs.shown{display:block}
+@media (max-width:820px){.layout{flex-direction:column;padding:0 12px 30px;gap:8px}
+  nav#tabs.shown{position:sticky;top:0;z-index:6;width:100%;flex:none;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:6px;background:rgba(80,40,110,.85);backdrop-filter:blur(6px)}
+  nav#tabs .grp{display:none}
+  .tiles{grid-template-columns:repeat(2,1fr)}.tile .n{font-size:28px}.tile{min-height:96px;padding:12px}
+  header small{display:none}}
+.card{background:var(--card);border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 6px 20px rgba(0,0,0,.12)}
+.tab{display:flex;justify-content:space-between;align-items:center;width:100%;border:0;border-radius:10px;padding:9px 12px;background:transparent;color:#fff;font:inherit;cursor:pointer;text-align:left}
+.tab:hover{background:rgba(255,255,255,.15)}
+.tab.on{background:#fff;color:var(--violet);font-weight:600}
+.tab .cnt{font-size:12px;background:rgba(255,255,255,.22);border-radius:999px;padding:0 8px}
+.tab.on .cnt{background:var(--bg)}
+.tab .cnt.alert{background:var(--pink);color:#fff}
+@media (max-width:820px){.tab{width:auto;white-space:nowrap;flex:0 0 auto;gap:6px}}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:8px;padding:8px;min-width:0;background:#fff;color:var(--ink)}
+textarea{width:100%;min-height:90px}
+label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:3px;flex:1 1 160px}
+button{font:inherit;cursor:pointer;border-radius:8px;border:0;padding:8px 14px;background:var(--violet);color:#fff}
+button.ghost{background:transparent;color:var(--violet);border:1px solid var(--line)}
+button.danger{background:#c62828}
+button:disabled{opacity:.5;cursor:default}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.item:hover{background:#faf7fd;cursor:pointer}
+.chip{display:inline-block;border-radius:999px;padding:1px 9px;font-size:12px;background:var(--pink);color:#fff;margin-right:4px}
+.chip.g{background:#e8f6f4;color:#00594f}
+.muted{color:var(--muted);font-size:13px}
+.status{position:sticky;top:0;z-index:5;margin:0 0 8px;padding:10px 14px;border-radius:10px;background:#fff;display:none}
+.status.ok{display:block;border-left:5px solid var(--teal)}
+.status.err{display:block;border-left:5px solid #c62828}
+dialog{border:0;border-radius:14px;max-width:820px;width:calc(100% - 24px);padding:18px}
+dialog::backdrop{background:rgba(30,10,40,.5)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.small td,.small th{padding:4px}
+.tab small{opacity:.75}
+table.contacts td{font-size:14px}
+.ell{max-width:420px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nowrap{white-space:nowrap}
+.chip{white-space:nowrap}
+.inl{flex-direction:row;align-items:center;gap:6px;flex:0 0 auto;font-size:13px;color:var(--ink)}
+.bulk{margin:4px 0 10px}
+button.pub{padding:3px 10px;font-size:12px;border-radius:999px}
+button.pub.on{background:var(--teal)}
+button.pub.off{background:#b9b3c4}
+.small input{width:100%}
+@media (max-width:600px){.hide-sm{display:none}}
+.chip.p{background:linear-gradient(90deg,#7b3fa0,#e2457a);color:#fff}
+fieldset.partner{border:1px solid var(--line);border-radius:12px;margin-top:12px;padding:10px 12px}
+fieldset.partner legend{color:var(--pink);font-weight:600;padding:0 6px}
+</style>
+</head>
+<body>
+<header>
+  <h1>AeroHangar – zarządzanie <small>· dane, które aplikacje pobierają przy każdym otwarciu</small></h1>
+  <div id="who" class="row" style="color:#fff;display:none"></div>
+</header>
+<div class="layout">
+<nav id="tabs"></nav>
+<main>
+  <div id="status" class="status"></div>
+
+  <section class="card" id="login" style="max-width:420px;margin:30px auto">
+    <h3 style="margin-top:0">Logowanie</h3>
+    <form id="loginForm">
+      <label>Login<input id="lg" autocomplete="username" required></label>
+      <label style="margin-top:8px">Hasło<input id="pw" type="password" autocomplete="current-password" required></label>
+      <div class="row" style="margin-top:12px"><button>Zaloguj</button></div>
+    </form>
+  </section>
+  <section id="view"></section>
+</main>
+</div>
+
+<dialog id="dlg"><form method="dialog" id="dlgForm"></form></dialog>
+
+<script>
+/*AH_WP_CONFIG*/
+const FILES = { bulletins: 1, contacts: 1, types: 1, news: 1, examiners: 1, sponsor: 1 };
+const KINDS_B = ["AD", "ASB", "SB", "SIB", "DOC"];
+const KINDS_C = { dealer: "Dealer", manufacturer: "Producent", rotax_service: "Serwis Rotax", rotax_distributor: "Dystrybutor Rotax", maintenance: "Organizacja obsługowa", mechanic: "Mechanik", instructor: "Instruktor", school: "Szkoła lotnicza", examiner: "Egzaminator", ame: "Lekarz orzecznik (AME)", aemc: "Centrum medycyny lotniczej (AeMC)" };
+const LANGS = ["pl", "en", "sk", "fr"];
+// Contact tabs: which kinds each shows, and which data file holds them (examiners are a separate on-demand file).
+const CGROUPS = {
+  c_service: { name: "Serwisy", kinds: ["rotax_service", "rotax_distributor", "maintenance"], file: "contacts", newKind: "maintenance" },
+  c_maker: { name: "Producenci", kinds: ["manufacturer"], file: "contacts", newKind: "manufacturer" },
+  c_dealer: { name: "Dealerzy", kinds: ["dealer"], file: "contacts", newKind: "dealer" },
+  c_mech: { name: "Mechanicy", kinds: ["mechanic"], file: "contacts", newKind: "mechanic" },
+  c_instr: { name: "Instruktorzy", kinds: ["instructor"], file: "contacts", newKind: "instructor" },
+  c_school: { name: "Szkoły", kinds: ["school"], file: "contacts", newKind: "school" },
+  c_exam: { name: "Egzaminatorzy", kinds: ["examiner"], file: "examiners", newKind: "examiner" },
+  c_ame: { name: "Lekarze orzecznicy", kinds: ["ame"], file: "examiners", newKind: "ame" },
+  c_aemc: { name: "Centra medyczne", kinds: ["aemc"], file: "contacts", newKind: "aemc" },
+};
+const fileOfKind = k => (k === "examiner" || k === "ame") ? "examiners" : "contacts";
+const state = { tab: "home", data: {}, sha: {}, filter: "" };
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function store(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v) } catch (e) { } }
+function load(k) { try { return localStorage.getItem(k) } catch (e) { return null } }
+
+function status(msg, ok = true) {
+  const el = $("#status"); el.textContent = msg; el.className = "status " + (ok ? "ok" : "err");
+  if (ok) setTimeout(() => { if (el.textContent === msg) el.className = "status" }, 6000);
+}
+
+// ---------------------------------------------------------------- server API
+async function api(action, opts = {}) {
+  const WP = window.AH_WP;
+  const r = await fetch((WP ? WP.api + "?a=" : "api.php?a=") + action + (opts.q || ""), {
+    method: opts.body ? "POST" : "GET", credentials: "same-origin",
+    headers: WP ? { "Content-Type": "application/json", "X-WP-Nonce": state.csrf || WP.nonce } : { "Content-Type": "application/json", "X-CSRF": state.csrf || "" },
+    body: opts.body ? JSON.stringify(opts.body) : undefined,
+  });
+  const j = await r.json().catch(() => ({}));
+  if (r.status === 401 && action !== "login") { showLogin(); throw new Error("401 zaloguj się ponownie") }
+  if (!r.ok) throw new Error(r.status + " " + (j.error || r.statusText));
+  return j;
+}
+async function readFile(key) {
+  const j = await api("get", { q: "&f=" + key });
+  state.sha[key] = j.rev;
+  state.data[key] = j.data ?? (key === "news" ? { version: 0, updated: "", messages: [] } : key === "examiners" ? { version: 0, updated: "", contacts: [] } : key === "sponsor" ? { version: 0, updated: "", banners: [] } : null);
+}
+async function writeFile(key, message) {
+  const d = state.data[key];
+  if (key === "bulletins") { d.bulletins.sort((a, b) => b.date.localeCompare(a.date)); d.updated = d.bulletins[0]?.date || d.updated; d.version = (d.version || 0) + 1 }
+  if (key === "contacts" || key === "news" || key === "examiners" || key === "sponsor") { d.updated = new Date().toISOString().slice(0, 10); d.version = (d.version || 0) + 1 }
+  try {
+    const j = await api("save", { body: { f: key, data: d, rev: state.sha[key], message } });
+    state.sha[key] = j.rev;
+    status("Zapisano: " + message + ". Aplikacje pobiorą zmianę przy następnym otwarciu (najpóźniej w ciągu doby).");
+  } catch (e) {
+    status("Błąd zapisu: " + e.message, false);
+    await readFile(key).catch(() => { });
+    throw e;
+  }
+}
+function showLogin() { if (window.AH_WP) { location.href = window.AH_WP.login; return } $("#login").style.display = ""; $("#who").style.display = "none"; $("#view").innerHTML = ""; $("#tabs").innerHTML = ""; $("#tabs").classList.remove("shown") }
+async function start() {
+  const me = await api("me");
+  if (!me.user) return showLogin();
+  state.csrf = me.csrf; state.user = me.user; state.publicBase = me.publicBase;
+  // Optional files (e.g. examiners on an older server) must not block the login.
+  const missing = [];
+  await Promise.all(Object.keys(FILES).map(f => readFile(f).catch(e => {
+    if (f === "examiners" || f === "news" || f === "sponsor") { missing.push(f); state.data[f] = f === "news" ? { version: 0, updated: "", messages: [] } : f === "sponsor" ? { version: 0, updated: "", banners: [] } : { version: 0, updated: "", contacts: [] }; state.sha[f] = "" }
+    else throw e;
+  })));
+  if (missing.includes("sponsor")) {
+    status("Serwer nie obsługuje jeszcze partnerów i sponsora – podmień private/bootstrap.php i admin/api.php z nowej paczki.", false);
+    state.noSponsor = true;
+  }
+  if (missing.includes("examiners")) {
+    status("Serwer nie obsługuje jeszcze listy egzaminatorów – podmień plik private/bootstrap.php i admin/api.php z nowej paczki. Pozostałe dane działają.", false);
+    state.noExaminers = true;
+  }
+  $("#login").style.display = "none";
+  $("#who").style.display = "flex";
+  $("#who").innerHTML = `<span>${esc(me.user.login)} (${esc(me.user.role)})</span><button class="ghost" style="color:#fff;border-color:rgba(255,255,255,.5);padding:5px 12px" id="logout">Wyloguj</button>`;
+  $("#logout").onclick = async () => { if (me.wp) { location.href = me.logout; return } await api("logout", { body: {} }); location.reload() };
+  if (me.wp) $("#logout").insertAdjacentHTML("beforebegin", `<a href="${esc(window.AH_WP.wpAdmin)}" style="color:#fff;margin-right:8px">← WordPress</a>`);
+  renderTabs(); render(); loadSubCount(); loadReqCount();
+}
+$("#loginForm").onsubmit = async e => {
+  e.preventDefault();
+  try { const j = await api("login", { body: { login: $("#lg").value, password: $("#pw").value } }); state.csrf = j.csrf; $("#pw").value = ""; await start() }
+  catch (err) { status("Logowanie nieudane: " + err.message, false) }
+};
+
+// ---------------------------------------------------------------- UI helpers
+function renderTabs() {
+  const count = g => (state.data[CGROUPS[g].file]?.contacts || []).filter(c => CGROUPS[g].kinds.includes(c.kind)).length;
+  const groups = [
+    ["", [["home", "Pulpit"]]],
+    ["Dane w aplikacji", [["bulletins", "Biuletyny", state.data.bulletins?.bulletins?.length], ["types", "Typy samolotów", state.data.types?.length], ["news", "Komunikaty", state.data.news?.messages?.length]]],
+    ["Kontakty", Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => [g, CGROUPS[g].name, count(g)])],
+    ["Zarabianie", [["partners", "Partnerzy", partners().filter(isActive).length], ["requests", "Zapytania serwisowe", state.reqCount, state.reqCount > 0], ["sponsor", "Sponsor / baner", (state.data.sponsor?.banners || []).length]]],
+    ["Użytkownicy aplikacji", [["subs", "Zgłoszenia", state.subCount, state.subCount > 0], ["stats", "Statystyki"], ["installs", "Instalacje i Pro"], ...(window.AH_WP ? [["accounts", "Konta pilotów"]] : [])]],
+    ["System", [["history", "Historia i kopie"], ...(state.user?.role === "admin" ? [...(window.AH_WP ? [] : [["users", "Konta panelu"]]), ["settings", "Ustawienia"]] : [])]],
+  ];
+  const nav = $("#tabs");
+  nav.classList.add("shown");
+  nav.innerHTML = groups.map(([g, items]) => (g ? `<div class="grp">${g}</div>` : "") + items.map(([k, n, c, alert]) =>
+    `<button class="tab ${state.tab === k ? "on" : ""}" data-tab="${k}"><span>${n}</span>${c != null ? `<span class="cnt ${alert ? "alert" : ""}">${c}</span>` : ""}</button>`).join("")).join("");
+  nav.querySelectorAll("button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; state.filter = ""; renderTabs(); render(); window.scrollTo(0, 0) });
+  nav.querySelector(".tab.on")?.scrollIntoView({ block: "nearest", inline: "center" });
+}
+
+function field(name, label, value = "", type = "text", extra = "") {
+  return `<label>${label}<input name="${name}" type="${type}" value="${esc(value)}" ${extra}></label>`;
+}
+function select(name, label, options, value) {
+  return `<label>${label}<select name="${name}">${options.map(([v, n]) => `<option value="${esc(v)}" ${String(v) === String(value) ? "selected" : ""}>${esc(n)}</option>`).join("")}</select></label>`;
+}
+function openDialog(html, onSave, onDelete) {
+  const f = $("#dlgForm");
+  f.innerHTML = html + `<div class="row" style="margin-top:14px;justify-content:flex-end">
+    ${onDelete ? '<button type="button" class="danger" id="dDel">Usuń</button><span style="flex:1"></span>' : ""}
+    <button type="button" class="ghost" id="dCancel">Anuluj</button><button type="button" id="dSave">Zapisz w repozytorium</button></div>`;
+  $("#dCancel").onclick = () => $("#dlg").close();
+  $("#dSave").onclick = async () => {
+    const btn = $("#dSave"); btn.disabled = true;
+    try { await onSave(new FormData(f)); $("#dlg").close(); render() } catch (e) { if (!(e instanceof Error) || !String(e.message).match(/^\d{3}/)) status(String(e.message || e), false) } finally { btn.disabled = false }
+  };
+  if (onDelete) $("#dDel").onclick = async () => { if (confirm("Usunąć ten wpis?")) { try { await onDelete(); $("#dlg").close(); render() } catch (e) { } } };
+  $("#dlg").showModal();
+}
+const allGroups = () => [...new Set(state.data.types.flatMap(t => t.bulletinGroups))].sort();
+const searchBox = ph => `<div class="row" style="margin-bottom:8px"><input id="q" placeholder="${ph}" value="${esc(state.filter)}" style="flex:1"><button id="add">+ Dodaj</button></div>`;
+function hookSearch(addFn) {
+  $("#q").oninput = e => { state.filter = e.target.value; render(true) };
+  $("#add").onclick = addFn;
+}
+
+// ---------------------------------------------------------------- bulletins
+function renderBulletins() {
+  const list = state.data.bulletins.bulletins.filter(b => !state.filter || (b.id + " " + b.title + " " + b.groups.join(" ")).toLowerCase().includes(state.filter.toLowerCase()));
+  return `<div class="card">${searchBox("Szukaj numeru, tytułu, grupy…")}
+    <p class="muted">Grupa decyduje, którzy właściciele zobaczą biuletyn. <b>ROTAX_912</b> = wszystkie samoloty z Rotaxem 912. Nowe dokumenty TOMARK dopisuje automat (cron).</p>
+    <table><tr><th>Data</th><th>Numer</th><th>Tytuł</th><th class="hide-sm">Grupy</th></tr>
+    ${list.map(b => `<tr class="item" data-id="${esc(b.id)}"><td>${esc(b.date)}</td><td><span class="chip">${esc(b.kind)}</span>${b.mandatory ? '<span class="chip" style="background:#0B2545">obow.</span>' : ""}<br>${esc(b.id)}</td><td>${esc(b.title)}</td><td class="hide-sm">${b.groups.map(g => `<span class="chip g">${esc(g)}</span>`).join("")}</td></tr>`).join("")}
+    </table></div>`;
+}
+function editBulletin(b) {
+  const isNew = !b; b = b || { id: "", date: new Date().toISOString().slice(0, 10), title: "", groups: [], kind: "SB", mandatory: null, url: "" };
+  openDialog(`<h3>${isNew ? "Nowy biuletyn" : "Biuletyn " + esc(b.id)}</h3>
+    <div class="grid2">${field("id", "Numer (unikalny)", b.id, "text", isNew ? "required" : "readonly")}${field("date", "Data", b.date, "date")}
+    ${select("kind", "Rodzaj", KINDS_B.map(k => [k, k]), b.kind)}
+    ${select("mandatory", "Obowiązkowy", [["null", "Sprawdź dokument"], ["true", "Tak"], ["false", "Nie / informacyjny"]], String(b.mandatory))}</div>
+    <label>Tytuł<textarea name="title">${esc(b.title)}</textarea></label>
+    ${field("url", "Link do źródła", b.url || "", "url")}
+    <p class="muted">Grupy (komu pokazać):</p>
+    <div class="row">${allGroups().map(g => `<label style="flex:0 0 auto;flex-direction:row;align-items:center"><input type="checkbox" name="g_${g}" ${b.groups.includes(g) ? "checked" : ""}> ${g}</label>`).join("")}</div>`,
+    async fd => {
+      const groups = allGroups().filter(g => fd.get("g_" + g));
+      const id = fd.get("id").trim();
+      if (!id || !fd.get("title").trim() || !groups.length) throw new Error("Uzupełnij numer, tytuł i co najmniej jedną grupę.");
+      if (isNew && state.data.bulletins.bulletins.some(x => x.id === id)) throw new Error("Taki numer już istnieje.");
+      const m = fd.get("mandatory");
+      const nb = { id, date: fd.get("date"), title: fd.get("title").trim(), groups, kind: fd.get("kind"), mandatory: m === "null" ? null : m === "true", url: fd.get("url").trim() || null };
+      const list = state.data.bulletins.bulletins;
+      const i = list.findIndex(x => x.id === id);
+      if (i >= 0) list[i] = nb; else list.push(nb);
+      await writeFile("bulletins", (isNew ? "Add bulletin " : "Edit bulletin ") + id);
+    },
+    isNew ? null : async () => {
+      state.data.bulletins.bulletins = state.data.bulletins.bulletins.filter(x => x.id !== b.id);
+      await writeFile("bulletins", "Delete bulletin " + b.id);
+    });
+}
+
+// ---------------------------------------------------------------- contacts (one tab per group)
+function groupList(g) {
+  const G = CGROUPS[g];
+  const q = state.filter.toLowerCase();
+  return (state.data[G.file]?.contacts || []).filter(c => G.kinds.includes(c.kind))
+    .filter(c => !q || [c.name, c.city, c.country, c.address, c.note, (c.brands || []).join(" ")].join(" ").toLowerCase().includes(q))
+    .sort((a, b) => ((a.country || "PL") !== "PL") - ((b.country || "PL") !== "PL") || (a.country || "").localeCompare(b.country || "") || (a.city || "").localeCompare(b.city || "", "pl") || a.name.localeCompare(b.name, "pl"));
+}
+function renderContacts(g) {
+  const G = CGROUPS[g];
+  const list = groupList(g);
+  const auto = c => /^ulc-/.test(c.id) ? '<span class="chip g" title="Odświeżane automatycznie z listy ULC">ULC</span>' : "";
+  const hint = {
+    c_service: "Serwisy Rotax, dystrybutorzy i organizacje obsługowe (Part-CAO / Part-145 z listy ULC – odświeżane co tydzień).",
+    c_exam: "Listy ULC (samoloty, UL, mechanicy) – odświeżane co tydzień. Aplikacja pobiera je tylko na żądanie użytkownika. Ręcznie dodani egzaminatorzy zostają.",
+    c_ame: "Lista lekarzy orzeczników ULC (klasa 1, 2, 3, LAPL) – odświeżana co tydzień, pobierana w aplikacji razem z egzaminatorami (na żądanie).",
+    c_aemc: "Centra medycyny lotniczej z listy ULC – odświeżane co tydzień.",
+    c_mech: "Mechanicy dodani ręcznie. Dane osób prywatnych publikuj tylko za ich zgodą.",
+    c_instr: "Instruktorzy dodani ręcznie. Dane osób prywatnych publikuj tylko za ich zgodą.",
+  }[g] || "Współrzędne służą do sortowania „najbliżsi” w aplikacji.";
+  const feed = state.data[G.file] || {};
+  const pubCount = list.filter(c => c.publish !== false).length;
+  const official = g === "c_exam" || g === "c_service" || g === "c_ame" || g === "c_aemc";
+  return `<div class="card">${searchBox("Szukaj nazwy, miasta, marki, uprawnień…")}
+    <p class="muted">${hint} Pokazano: <b>${list.length}</b>, w aplikacji: <b>${pubCount}</b>.</p>
+    <div class="row bulk">
+      <label class="inl"><input type="checkbox" id="selAll"> zaznacz wszystkie widoczne</label>
+      <button class="ghost" data-bulk="pub">Publikuj zaznaczone</button>
+      <button class="ghost" data-bulk="hide">Ukryj zaznaczone</button>
+      ${official ? `<span style="flex:1"></span>
+        <label class="inl" title="Dotyczy wpisów, które przyjdą z list ULC po raz pierwszy"><input type="checkbox" id="pubNew" ${(feed.publishNew ?? true) ? "checked" : ""}> nowe wpisy z ULC od razu publiczne</label>
+        <button class="ghost" id="pullGh">Pobierz teraz listy ULC i biuletyny</button>` : ""}
+    </div>
+    <table class="contacts"><tr><th></th><th>Nazwa</th>${G.kinds.length > 1 ? "<th>Rodzaj</th>" : ""}<th>Miejscowość</th><th class="hide-sm">Telefon</th><th class="hide-sm">E-mail</th><th>W aplikacji</th></tr>
+    ${list.map(c => `<tr class="item" data-id="${esc(c.id)}">
+      <td class="nosel"><input type="checkbox" class="sel" value="${esc(c.id)}"></td>
+      <td><b>${esc(c.name)}</b> ${auto(c)} ${partnerChip(c)}<div class="muted ell">${esc((c.brands || []).join(", "))}</div></td>
+      ${G.kinds.length > 1 ? `<td><span class="chip">${esc(KINDS_C[c.kind] || c.kind)}</span></td>` : ""}
+      <td>${esc(c.city || "")}${c.country && c.country !== "PL" ? ` <span class="muted">${esc(c.country)}</span>` : ""}${c.lat == null ? ' <span class="muted" title="brak współrzędnych">⌖?</span>' : ""}</td>
+      <td class="hide-sm nowrap">${esc(c.phone || "")}</td><td class="hide-sm">${esc(c.email || "")}</td>
+      <td class="nosel"><button class="pub ${c.publish === false ? "off" : "on"}" data-pub="${esc(c.id)}">${c.publish === false ? "ukryty" : "publiczny"}</button></td></tr>`).join("") || `<tr><td class="muted">Brak wpisów</td></tr>`}
+    </table></div>`;
+}
+function editContact(c, g) {
+  const isNew = !c; c = c || { id: "", name: "", kind: CGROUPS[g].newKind, brands: [], country: "PL" };
+  const kinds = Object.entries(KINDS_C).filter(([k]) => fileOfKind(k) === fileOfKind(c.kind));
+  openDialog(`<h3>${isNew ? "Nowy wpis – " + esc(CGROUPS[g].name) : esc(c.name)}</h3>
+    ${/^ulc-/.test(c.id) ? '<p class="muted">Wpis z listy ULC – przy najbliższym odświeżeniu zostanie nadpisany danymi z ULC.</p>' : ""}
+    <div class="grid2">${field("name", "Nazwa / imię i nazwisko", c.name, "text", "required")}
+    ${select("kind", "Rodzaj", kinds, c.kind)}
+    ${field("brands", "Typy / marki / uprawnienia (po przecinku)", (c.brands || []).join(", "))}
+    ${field("phone", "Telefon", c.phone)}${field("email", "E-mail", c.email, "email")}${field("web", "WWW", c.web)}
+    ${field("address", "Adres / lotnisko", c.address)}${field("city", "Miejscowość", c.city)}${field("country", "Kraj (2 litery)", c.country, "text", 'maxlength="2"')}
+    ${field("lat", "Szerokość (lat)", c.lat ?? "", "number", 'step="any"')}${field("lon", "Długość (lon)", c.lon ?? "", "number", 'step="any"')}
+    ${field("source", "Źródło", c.source)}</div>
+    <label>Uwagi<textarea name="note">${esc(c.note || "")}</textarea></label>
+    <label class="inl"><input type="checkbox" name="publish" ${c.publish === false ? "" : "checked"}> pokazuj w aplikacji (publiczny)</label>
+    ${fileOfKind(c.kind) === "contacts" ? `<fieldset class="partner"><legend>Partner – płatne wyróżnienie</legend>
+      <div class="grid2">${field("partnerUntil", "Partner do (puste = brak)", c.partnerUntil || "", "date")}${field("logo", "Logo – adres https obrazka (np. z biblioteki mediów WordPress)", c.logo || "", "url")}</div>
+      <label>Tekst promocyjny w aplikacji (do 200 znaków)<textarea name="promo" maxlength="200">${esc(c.promo || "")}</textarea></label>
+      <label class="inl"><input type="checkbox" name="requests" ${c.requests ? "checked" : ""}> przyjmuje zapytania „Umów przegląd” z aplikacji (wysyłane na e-mail powyżej)</label>
+      <p class="muted">Aktywny partner jest na górze listy w promieniu ~250 km, z wyróżnieniem i logo. Po dacie końca wraca automatycznie do zwykłego wpisu.</p></fieldset>` : ""}
+    <p class="muted">Współrzędne: w Mapach Google kliknij prawym przyciskiem na miejsce i skopiuj liczby. Osoby prywatne publikuj tylko za ich zgodą (RODO).</p>`,
+    async fd => {
+      const name = fd.get("name").trim(); if (!name) throw new Error("Podaj nazwę.");
+      const num = k => { const v = parseFloat(String(fd.get(k)).replace(",", ".")); return isNaN(v) ? undefined : v };
+      const kind = fd.get("kind");
+      const file = fileOfKind(kind);
+      const slug = name.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const id = c.id || ((file === "examiners" ? "my-exam-" : (fd.get("country") || "xx").toLowerCase() + "-") + slug).slice(0, 60) + "-" + Date.now().toString(36);
+      const nc = { id, name, kind, brands: fd.get("brands").split(",").map(s => s.trim()).filter(Boolean), country: fd.get("country").toUpperCase(), city: fd.get("city"), address: fd.get("address"), lat: num("lat"), lon: num("lon"), phone: fd.get("phone"), email: fd.get("email"), web: fd.get("web"), source: fd.get("source"), note: fd.get("note") };
+      Object.keys(nc).forEach(k => (nc[k] === "" || nc[k] === undefined || (Array.isArray(nc[k]) && !nc[k].length)) && delete nc[k]);
+      if (!fd.get("publish")) nc.publish = false;
+      if (fd.has("partnerUntil")) {
+        const pu = fd.get("partnerUntil"); if (pu) nc.partnerUntil = pu;
+        const promo = (fd.get("promo") || "").trim().slice(0, 200); if (promo) nc.promo = promo;
+        const logo = (fd.get("logo") || "").trim(); if (logo) { if (!/^https:\/\//.test(logo)) throw new Error("Logo musi być adresem https://"); nc.logo = logo }
+        if (fd.get("requests")) { if (!nc.email) throw new Error("Do przyjmowania zapytań potrzebny jest e-mail."); nc.requests = true }
+      }
+      if (!state.data[file]) state.data[file] = { version: 0, updated: "", contacts: [] };
+      const list = state.data[file].contacts; const i = list.findIndex(x => x.id === id);
+      if (i >= 0) list[i] = nc; else list.push(nc);
+      await writeFile(file, (isNew ? "Add " : "Edit ") + kind + " " + name);
+      renderTabs();
+    },
+    isNew ? null : async () => {
+      const file = fileOfKind(c.kind);
+      state.data[file].contacts = state.data[file].contacts.filter(x => x.id !== c.id);
+      state.data[file].deletedIds = [...new Set([...(state.data[file].deletedIds || []), c.id])];
+      await writeFile(file, "Delete " + c.kind + " " + c.name);
+      renderTabs();
+    });
+}
+
+// ---------------------------------------------------------------- types
+function renderTypes() {
+  const list = state.data.types.filter(t => !state.filter || (t.name + " " + (t.manufacturer || "")).toLowerCase().includes(state.filter.toLowerCase()));
+  return `<div class="card">${searchBox("Szukaj typu lub producenta…")}
+    <p class="muted">Prędkości i program obsługi każdego typu. Zmiana trafia do wszystkich użytkowników – wartości bierz wyłącznie z AFM/AMM/TCDS i zaznaczaj „potwierdzone” tylko wtedy.</p>
+    <table><tr><th>Typ</th><th>Kategoria</th><th class="hide-sm">Prędkości</th></tr>
+    ${list.map(t => `<tr class="item" data-id="${esc(t.id)}"><td><b>${esc(t.name)}</b><br><span class="muted">${esc(t.manufacturer || "")}</span></td><td><span class="chip">${esc(t.category)}</span> ${esc(t.tcds || "")}</td><td class="hide-sm muted">${t.speeds.filter(s => s.value != null).map(s => `${s.key} ${s.value}`).join(" · ")} ${t.speeds[0]?.unit === "kmh" ? "km/h" : "kt"}</td></tr>`).join("")}
+    </table></div>`;
+}
+function editType(t) {
+  const isNew = !t;
+  t = t || { id: "", name: "", family: "", manufacturer: "", category: "UL", tcds: null, bulletinGroups: ["ROTAX_912"], speeds: JSON.parse(JSON.stringify(state.data.types.at(-1).speeds)).map(s => ({ ...s, value: null, verified: false, source: "AFM – uzupełnij / fill in" })), manual: [], tasks: JSON.parse(JSON.stringify(state.data.types.find(x => x.category === "UL" && x.id !== "sd4_ul" && x.id !== "gt9")?.tasks || [])) };
+  const speedRows = t.speeds.map((s, i) => `<tr><td><b>${esc(s.key)}</b></td><td><input name="sv_${i}" value="${s.value ?? ""}" type="number" step="any"></td>
+    <td>${select("su_" + i, "", [["kt", "kt"], ["kmh", "km/h"]], s.unit).replace("<label>", "<label style='min-width:70px'>")}</td>
+    <td><input name="ss_${i}" value="${esc(s.source)}"></td><td><input type="checkbox" name="sok_${i}" ${s.verified ? "checked" : ""}></td></tr>`).join("");
+  const taskRows = t.tasks.map((k, i) => `<tr><td>${esc(k.title.pl)}<br><span class="muted">${esc(k.id)}</span></td>
+    <td><input name="th_${i}" value="${k.intervalHours ?? ""}" type="number" step="any"></td><td><input name="tm_${i}" value="${k.intervalMonths ?? ""}" type="number"></td>
+    <td><input name="tt_${i}" value="${k.toleranceHours ?? ""}" type="number" step="any"></td><td><input name="tsrc_${i}" value="${esc(k.source)}"></td><td><input type="checkbox" name="tok_${i}" ${k.verified ? "checked" : ""}></td></tr>`).join("");
+  openDialog(`<h3>${isNew ? "Nowy typ" : esc(t.name)}</h3>
+    <div class="grid2">${field("id", "Id (bez spacji)", t.id, "text", isNew ? "required" : "readonly")}${field("name", "Nazwa", t.name)}${field("manufacturer", "Producent", t.manufacturer)}
+    ${select("category", "Kategoria", [["EASA", "EASA"], ["UL", "UL / LSA"]], t.category)}${field("tcds", "TCDS", t.tcds || "")}${field("groups", "Grupy biuletynów (po przecinku)", t.bulletinGroups.join(", "))}</div>
+    <h4>Prędkości (IAS)</h4><table class="small"><tr><th>Klucz</th><th>Wartość</th><th>Jedn.</th><th>Źródło</th><th>Potw.</th></tr>${speedRows}</table>
+    <h4>Program obsługi</h4><table class="small"><tr><th>Praca</th><th>Co h</th><th>Co mies.</th><th>Tol. h</th><th>Źródło</th><th>Potw.</th></tr>${taskRows}</table>
+    <details><summary class="muted">Zaawansowane: pełny JSON typu (sekcje instrukcji, tłumaczenia)</summary><textarea name="raw" style="min-height:220px;font-family:monospace;font-size:12px">${esc(JSON.stringify(t, null, 1))}</textarea></details>`,
+    async fd => {
+      let nt;
+      const rawChanged = fd.get("raw") !== JSON.stringify(t, null, 1);
+      if (rawChanged) { nt = JSON.parse(fd.get("raw")) } else {
+        nt = JSON.parse(JSON.stringify(t));
+        nt.id = fd.get("id").trim(); nt.name = fd.get("name").trim(); nt.manufacturer = fd.get("manufacturer").trim(); nt.family = nt.family || nt.manufacturer.toLowerCase().split(" ")[0];
+        nt.category = fd.get("category"); nt.tcds = fd.get("tcds").trim() || null;
+        nt.bulletinGroups = fd.get("groups").split(",").map(s => s.trim()).filter(Boolean);
+        const n = v => v === "" || v == null ? null : Number(v);
+        nt.speeds.forEach((s, i) => { s.value = n(fd.get("sv_" + i)); s.unit = fd.get("su_" + i); s.source = fd.get("ss_" + i); s.verified = !!fd.get("sok_" + i) && s.value != null });
+        nt.tasks.forEach((k, i) => { k.intervalHours = n(fd.get("th_" + i)); const m = n(fd.get("tm_" + i)); k.intervalMonths = m == null ? null : Math.round(m); k.toleranceHours = n(fd.get("tt_" + i)); k.source = fd.get("tsrc_" + i); k.verified = !!fd.get("tok_" + i) });
+      }
+      if (!nt.id || !/^[a-z0-9_]+$/.test(nt.id)) throw new Error("Id: małe litery, cyfry i _.");
+      if (!["EASA", "UL"].includes(nt.category)) throw new Error("Kategoria musi być EASA albo UL.");
+      if (isNew && state.data.types.some(x => x.id === nt.id)) throw new Error("Taki id już istnieje.");
+      const i = state.data.types.findIndex(x => x.id === nt.id);
+      if (i >= 0) state.data.types[i] = nt; else state.data.types.push(nt);
+      await writeFile("types", (isNew ? "Add type " : "Edit type ") + nt.name);
+    },
+    isNew ? null : async () => {
+      if (["sd4_rtc", "sd4_nvfr", "sd4_ul", "gt9"].includes(t.id) && !confirm("To typ TOMARK – na pewno usunąć?")) throw new Error("cancel");
+      state.data.types = state.data.types.filter(x => x.id !== t.id);
+      await writeFile("types", "Delete type " + t.name);
+    });
+}
+
+
+// ---------------------------------------------------------------- news (announcements shown on the app's home card)
+function renderNews() {
+  const list = state.data.news.messages.filter(n => !state.filter || (n.title + " " + n.text).toLowerCase().includes(state.filter.toLowerCase()));
+  return `<div class="card">${searchBox("Szukaj komunikatu…")}
+    <p class="muted">Komunikaty pojawiają się na karcie głównej aplikacji (maks. 3 najnowsze). Użytkownik może zamknąć komunikat u siebie.</p>
+    <table><tr><th>Data</th><th>Tytuł</th><th class="hide-sm">Treść</th></tr>
+    ${list.map(n => `<tr class="item" data-id="${esc(n.id)}"><td>${esc(n.date)}</td><td><b>${esc(n.title)}</b></td><td class="hide-sm muted">${esc(n.text)}</td></tr>`).join("")}</table></div>`;
+}
+function editNews(n) {
+  const isNew = !n; n = n || { id: "n" + Date.now().toString(36), date: new Date().toISOString().slice(0, 10), title: "", text: "", url: "" };
+  openDialog(`<h3>${isNew ? "Nowy komunikat" : "Komunikat"}</h3>
+    <div class="grid2">${field("date", "Data", n.date, "date")}${field("title", "Tytuł", n.title, "text", "required")}</div>
+    <label>Treść<textarea name="text">${esc(n.text)}</textarea></label>${field("url", "Link (opcjonalnie)", n.url || "", "url")}`,
+    async fd => {
+      if (!fd.get("title").trim()) throw new Error("Podaj tytuł.");
+      const nn = { id: n.id, date: fd.get("date"), title: fd.get("title").trim(), text: fd.get("text").trim(), url: fd.get("url").trim() || null };
+      const list = state.data.news.messages; const i = list.findIndex(x => x.id === n.id);
+      if (i >= 0) list[i] = nn; else list.unshift(nn);
+      list.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+      await writeFile("news", (isNew ? "Add news " : "Edit news ") + nn.title);
+    },
+    isNew ? null : async () => { state.data.news.messages = state.data.news.messages.filter(x => x.id !== n.id); await writeFile("news", "Delete news " + n.title) });
+}
+
+// ---------------------------------------------------------------- history: backups + audit log
+async function renderHistory() {
+  const v = $("#view");
+  v.innerHTML = `<div class="card"><p class="muted">Wczytywanie…</p></div>`;
+  const [b, l] = await Promise.all([api("backups"), api("log")]);
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Kopie zapasowe</h3>
+    <p class="muted">Przed każdym zapisem system zachowuje poprzednią wersję pliku (ostatnie 40 na plik). Przywrócenie też tworzy kopię bieżącej wersji.</p>
+    <table>${b.backups.map(x => `<tr><td>${esc(x.name)}</td><td class="muted">${Math.round(x.size / 1024)} kB</td><td>${state.user.role === "admin" ? `<button class="ghost" data-r="${esc(x.name)}">Przywróć</button>` : ""}</td></tr>`).join("") || "<tr><td class='muted'>Brak kopii</td></tr>"}</table></div>
+    <div class="card"><h3 style="margin-top:0">Dziennik zmian</h3><pre style="white-space:pre-wrap;font-size:12px">${esc(l.log.join("\n"))}</pre></div>
+    <div class="card"><h3 style="margin-top:0">Adres danych dla aplikacji</h3><p><code>${esc(state.publicBase || "")}</code></p>
+    <p class="muted">Wpisz go jako <code>dataBaseUrl</code> w pliku <code>data/config.json</code> repozytorium GitHub – wtedy wszystkie aplikacje przełączą się na ten serwer.</p></div>`;
+  v.querySelectorAll("button[data-r]").forEach(btn => btn.onclick = async () => {
+    if (!confirm("Przywrócić " + btn.dataset.r + "?")) return;
+    try { await api("restore", { body: { name: btn.dataset.r } }); await Promise.all(Object.keys(FILES).map(readFile)); status("Przywrócono " + btn.dataset.r); renderHistory() } catch (e) { status(e.message, false) }
+  });
+}
+
+// ---------------------------------------------------------------- users
+async function renderUsers() {
+  const v = $("#view");
+  const j = await api("users");
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Użytkownicy panelu</h3>
+    <p class="muted"><b>admin</b> – wszystko, <b>editor</b> – edycja danych, <b>viewer</b> – tylko podgląd.</p>
+    <table>${j.users.map(u => `<tr><td><b>${esc(u.login)}</b></td><td><span class="chip">${esc(u.role)}</span></td><td><button class="ghost" data-u="${esc(u.login)}" data-role="${esc(u.role)}">Edytuj</button></td></tr>`).join("")}</table>
+    <div class="row" style="margin-top:10px"><button id="addUser">+ Dodaj użytkownika</button></div></div>`;
+  const edit = (login, role) => openDialog(`<h3>${login ? esc(login) : "Nowy użytkownik"}</h3>
+    <div class="grid2">${field("login", "Login", login || "", "text", login ? "readonly" : "required")}
+    ${select("role", "Rola", [["editor", "editor"], ["admin", "admin"], ["viewer", "viewer"]], role || "editor")}
+    ${field("password", login ? "Nowe hasło (puste = bez zmiany)" : "Hasło (min. 10 znaków)", "", "password", 'autocomplete="new-password"')}</div>`,
+    async fd => { await api("users", { body: { login: fd.get("login"), role: fd.get("role"), password: fd.get("password") } }); status("Zapisano użytkownika") },
+    login ? async () => { await api("users", { body: { login, role, delete: true } }); status("Usunięto użytkownika") } : null);
+  v.querySelectorAll("button[data-u]").forEach(b => b.onclick = () => edit(b.dataset.u, b.dataset.role));
+  $("#addUser").onclick = () => edit(null, null);
+}
+
+
+// ---------------------------------------------------------------- publish toggles, bulk actions, GitHub pull
+async function setPublish(file, ids, on, label) {
+  const set = new Set(ids);
+  state.data[file].contacts.forEach(c => { if (set.has(c.id)) { if (on) delete c.publish; else c.publish = false } });
+  await writeFile(file, `${on ? "Publish" : "Hide"} ${ids.length} ${label}`);
+  render();
+}
+function hookContactTools(g) {
+  const G = CGROUPS[g], v = $("#view");
+  v.querySelectorAll("button[data-pub]").forEach(b => b.onclick = e => {
+    e.stopPropagation();
+    const c = state.data[G.file].contacts.find(x => x.id === b.dataset.pub);
+    setPublish(G.file, [c.id], c.publish === false, c.name).catch(() => { });
+  });
+  v.querySelectorAll(".nosel").forEach(td => td.onclick = e => e.stopPropagation());
+  $("#selAll").onchange = e => v.querySelectorAll("input.sel").forEach(x => x.checked = e.target.checked);
+  v.querySelectorAll("button[data-bulk]").forEach(b => b.onclick = () => {
+    const ids = [...v.querySelectorAll("input.sel:checked")].map(x => x.value);
+    if (!ids.length) return status("Zaznacz wpisy w pierwszej kolumnie.", false);
+    setPublish(G.file, ids, b.dataset.bulk === "pub", G.name.toLowerCase()).catch(() => { });
+  });
+  const pn = $("#pubNew");
+  if (pn) pn.onchange = async () => { state.data[G.file].publishNew = pn.checked; await writeFile(G.file, "Default for new ULC entries: " + (pn.checked ? "public" : "hidden")).catch(() => { }) };
+  const pg = $("#pullGh");
+  if (pg) pg.onclick = async () => {
+    pg.disabled = true; pg.textContent = "Pobieranie…";
+    try {
+      const r = await api("pull_github", { body: {} });
+      await Promise.all(["examiners", "contacts", "bulletins"].map(readFile));
+      const fmt = x => x?.error ? "błąd" : `${x?.imported ?? x?.total ?? 0}${x?.new != null ? ` (nowe: ${x.new})` : ""}`;
+      status(`Pobrano z GitHuba – egzaminatorzy: ${fmt(r.examiners)}, organizacje: ${fmt(r.contacts)}, biuletyny – nowe: ${r.bulletins?.new ?? "błąd"}.`);
+      renderTabs(); render();
+    } catch (e) { status(e.message, false); pg.disabled = false }
+  };
+}
+
+// ---------------------------------------------------------------- submissions from the app
+async function loadSubCount() {
+  try { state.subCount = (await api("submissions")).submissions.length; renderTabs(); if (state.tab === "home") renderHome() } catch (e) { }
+}
+async function renderSubs() {
+  const v = $("#view");
+  const j = await api("submissions");
+  state.subCount = j.submissions.length; renderTabs();
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Zgłoszenia z aplikacji</h3>
+    <p class="muted">Użytkownicy proponują wpisy (mechanik, szkoła, serwis…). „Przyjmij” dodaje wpis do bazy jako <b>ukryty</b> – opublikujesz go w zakładce kategorii, gdy osoba wyrazi zgodę (RODO).</p>
+    ${j.submissions.map(s => `<div class="card" style="box-shadow:none;border:1px solid var(--line)">
+      <div class="row"><b style="flex:1">${esc(s.contact.name)}</b><span class="chip">${esc(KINDS_C[s.contact.kind] || s.contact.kind)}</span><span class="muted">${esc(s.date.slice(0, 16).replace("T", " "))}</span></div>
+      <div class="muted">${esc([s.contact.address, s.contact.city, s.contact.country].filter(Boolean).join(", "))} · ${esc(s.contact.phone || "")} ${esc(s.contact.email || "")} ${esc(s.contact.web || "")}</div>
+      ${(s.contact.brands || []).length ? `<div class="muted">${esc(s.contact.brands.join(", "))}</div>` : ""}
+      ${s.contact.note ? `<div>${esc(s.contact.note)}</div>` : ""}
+      ${s.message ? `<div><i>Wiadomość: ${esc(s.message)}</i></div>` : ""}
+      <div class="muted">Zgłaszający: ${esc(s.from || "—")} · zgoda osoby zadeklarowana: <b>${s.consent ? "tak" : "nie"}</b></div>
+      <div class="row" style="margin-top:8px"><button data-acc="${esc(s.id)}">Przyjmij (ukryty)</button><button class="ghost" data-rej="${esc(s.id)}">Odrzuć</button></div>
+    </div>`).join("") || '<p class="muted">Brak nowych zgłoszeń.</p>'}</div>`;
+  const act = async (id, action) => {
+    try {
+      await api("submissions", { body: { id, action } });
+      if (action === "accept") await Promise.all(["contacts", "examiners"].map(readFile));
+      status(action === "accept" ? "Przyjęto – wpis jest ukryty, opublikuj go w zakładce kategorii." : "Odrzucono zgłoszenie.");
+      renderSubs();
+    } catch (e) { status(e.message, false) }
+  };
+  v.querySelectorAll("button[data-acc]").forEach(b => b.onclick = () => act(b.dataset.acc, "accept"));
+  v.querySelectorAll("button[data-rej]").forEach(b => b.onclick = () => confirm("Odrzucić zgłoszenie?") && act(b.dataset.rej, "reject"));
+}
+
+// ---------------------------------------------------------------- installation statistics
+async function renderStats() {
+  const v = $("#view");
+  const j = await api("stats");
+  const tbl = (title, obj) => `<div class="card" style="box-shadow:none;border:1px solid var(--line);flex:1 1 220px"><b>${title}</b>
+    <table class="small">${Object.entries(obj).map(([k, n]) => `<tr><td>${esc(k || "?")}</td><td style="text-align:right">${n}</td></tr>`).join("") || "<tr><td class='muted'>brak danych</td></tr>"}</table></div>`;
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Instalacje aplikacji</h3>
+    <div class="row" style="gap:24px;font-size:18px"><div><b style="font-size:30px">${j.total}</b><br><span class="muted">wszystkich instalacji</span></div>
+    <div><b style="font-size:30px">${j.active30}</b><br><span class="muted">aktywnych w 30 dni</span></div>
+    <div><b style="font-size:30px">${j.active7}</b><br><span class="muted">aktywnych w 7 dni</span></div>
+    <div><b style="font-size:30px;color:var(--pink)">${j.pro ?? 0}</b><br><span class="muted">z wersją Pro</span></div></div>
+    <p class="muted">Aplikacja raz dziennie wysyła anonimowy, losowy identyfikator instalacji, wersję, język, wersję Androida i typy samolotów. Bez nazwisk, znaków rejestracyjnych i lokalizacji. Liczone są tylko telefony, które pobierają dane z tego serwera.</p>
+    <div class="row" style="align-items:stretch">${tbl("Nowe instalacje / miesiąc", j.newPerMonth)}${tbl("Wersje", j.versions)}${tbl("Języki", j.langs)}${tbl("Typy samolotów", j.types)}</div></div>`;
+}
+
+
+// ---------------------------------------------------------------- earning: partners, service requests, sponsor
+const today = () => new Date().toISOString().slice(0, 10);
+const partners = () => (state.data.contacts?.contacts || []).filter(c => c.partnerUntil);
+const isActive = c => !!c.partnerUntil && c.partnerUntil >= today();
+const daysLeft = c => Math.ceil((new Date(c.partnerUntil) - new Date(today())) / 86400e3);
+const bannerLive = b => b.active !== false && (!b.from || b.from <= today()) && (!b.until || b.until >= today());
+function partnerChip(c) {
+  if (!c.partnerUntil) return "";
+  return isActive(c) ? `<span class="chip p" title="Partner do ${esc(c.partnerUntil)}">★ Partner</span>` : `<span class="chip" title="Wygasło ${esc(c.partnerUntil)}">partner wygasł</span>`;
+}
+async function loadReqCount() {
+  try { state.reqCount = (await api("requests")).requests.filter(r => r.status === "new").length; renderTabs(); if (state.tab === "home") renderHome() } catch (e) { }
+}
+const EV = { view: "wyświetlenia", call: "telefon", email: "e-mail", web: "strona", map: "mapa", request: "zapytania" };
+function sumEvents(ev, id, months) {
+  const out = {}; months.forEach(m => Object.entries((ev[m] || {})[id] || {}).forEach(([k, n]) => out[k] = (out[k] || 0) + n)); return out;
+}
+const lastMonths = n => Array.from({ length: n }, (_, i) => { const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - i); return d.toISOString().slice(0, 7) });
+async function renderPartners() {
+  const v = $("#view");
+  const ev = (await api("events").catch(() => ({ events: {} }))).events || {};
+  const m1 = lastMonths(1), m12 = lastMonths(12);
+  const fmt = o => Object.keys(EV).filter(k => o[k]).map(k => `${EV[k]}: <b>${o[k]}</b>`).join(" · ") || '<span class="muted">brak</span>';
+  const list = partners().sort((a, b) => (b.partnerUntil || "").localeCompare(a.partnerUntil || ""));
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Partnerzy – płatne wyróżnienia</h3>
+    <p class="muted">Partner to zwykły wpis kontaktu z datą „Partner do”. Otwórz serwis, dealera lub szkołę w zakładce kontaktów i wypełnij sekcję „Partner”. W aplikacji partner jest na górze listy w swoim regionie, z logo, tekstem promocyjnym i przyciskiem „Umów przegląd”. Statystyki poniżej (anonimowe) to Twój raport dla partnera.</p>
+    <table><tr><th>Firma</th><th>Do</th><th>Ten miesiąc</th><th class="hide-sm">Ostatnie 12 mies.</th><th></th></tr>
+    ${list.map(c => `<tr class="item" data-id="${esc(c.id)}"><td><b>${esc(c.name)}</b> <span class="chip">${esc(KINDS_C[c.kind] || c.kind)}</span>${c.requests ? ' <span class="chip g">zapytania</span>' : ""}<div class="muted">${esc(c.city || "")}</div></td>
+      <td class="nowrap">${isActive(c) ? (daysLeft(c) <= 30 ? `<b style="color:var(--pink)">${esc(c.partnerUntil)}</b><div class="muted">zostało ${daysLeft(c)} dni</div>` : esc(c.partnerUntil)) : `<span class="muted">wygasł ${esc(c.partnerUntil)}</span>`}</td>
+      <td>${fmt(sumEvents(ev, c.id, m1))}</td><td class="hide-sm">${fmt(sumEvents(ev, c.id, m12))}</td>
+      <td class="nosel"><button class="ghost" data-rep="${esc(c.id)}">Raport</button></td></tr>`).join("") || '<tr><td class="muted">Brak partnerów – dodaj datę „Partner do” w dowolnym wpisie kontaktu.</td></tr>'}</table></div>`;
+  v.querySelectorAll("tr.item").forEach(r => r.onclick = e => {
+    if (e.target.closest(".nosel")) return;
+    const c = state.data.contacts.contacts.find(x => x.id === r.dataset.id);
+    const g = Object.keys(CGROUPS).find(k => CGROUPS[k].kinds.includes(c.kind)) || "c_service";
+    editContact(c, g);
+  });
+  v.querySelectorAll("button[data-rep]").forEach(b => b.onclick = () => {
+    const c = state.data.contacts.contacts.find(x => x.id === b.dataset.rep);
+    const rows = lastMonths(12).reverse().map(m => { const o = sumEvents(ev, c.id, [m]); return `${m}: ` + (Object.keys(EV).filter(k => o[k]).map(k => `${EV[k]} ${o[k]}`).join(", ") || "—") }).join("\n");
+    const t = `Raport AeroHangar – ${c.name}\nPartner do: ${c.partnerUntil}\n\nAktywność użytkowników aplikacji (anonimowo):\n${rows}\n\nWyświetlenia = pokazanie wyróżnionego wpisu na liście; telefon/e-mail/strona/mapa = kliknięcia; zapytania = wysłane „Umów przegląd”.`;
+    openDialog(`<h3>Raport dla partnera</h3><textarea style="min-height:320px;font-family:monospace" id="repTxt">${esc(t)}</textarea><p class="muted">Skopiuj i wyślij partnerowi.</p>`, async () => { await navigator.clipboard?.writeText($("#repTxt").value).catch(() => { }); status("Skopiowano raport.") });
+  });
+}
+async function renderRequests() {
+  const v = $("#view");
+  const j = await api("requests");
+  state.reqCount = j.requests.filter(r => r.status === "new").length; renderTabs();
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Zapytania serwisowe („Umów przegląd”)</h3>
+    <p class="muted">Właściciel samolotu wybiera w aplikacji serwis partnerski – zapytanie idzie e-mailem do serwisu i zapisuje się tutaj. Kopię dostajesz na adres z „Ustawienia poczty”. Zapytania starsze niż 400 dni są usuwane automatycznie (RODO).</p>
+    ${j.requests.map(r => `<div class="card" style="box-shadow:none;border:1px solid var(--line);${r.status === "done" ? "opacity:.6" : ""}">
+      <div class="row"><b style="flex:1">${esc(r.aircraft?.registration || "")} ${esc(r.aircraft?.type || "")} → ${esc(r.contactName)}</b><span class="muted">${esc(r.date.slice(0, 16).replace("T", " "))}</span>
+        ${r.mailed ? '<span class="chip g">wysłano e-mail</span>' : '<span class="chip" style="background:#fde2e8;color:#a3123f" title="Sprawdź Ustawienia poczty – serwis nie dostał e-maila, przekaż zapytanie ręcznie">e-mail nie wyszedł</span>'}</div>
+      <div>${esc(r.work)} · nalot ${esc(r.aircraft?.hours || "?")} h${r.preferredDate ? " · termin: " + esc(r.preferredDate) : ""}</div>
+      <div class="muted">${esc(r.name)} · ${esc(r.phone)} ${esc(r.email)}</div>
+      ${r.message ? `<div><i>${esc(r.message)}</i></div>` : ""}
+      <div class="row" style="margin-top:8px">${r.status === "done" ? `<button class="ghost" data-act="new" data-id="${esc(r.id)}">Przywróć</button>` : `<button data-act="done" data-id="${esc(r.id)}">Załatwione</button>`}<button class="ghost" data-act="delete" data-id="${esc(r.id)}">Usuń</button></div>
+    </div>`).join("") || '<p class="muted">Brak zapytań.</p>'}</div>`;
+  v.querySelectorAll("button[data-act]").forEach(b => b.onclick = async () => {
+    if (b.dataset.act === "delete" && !confirm("Usunąć zapytanie?")) return;
+    try { await api("requests", { body: { id: b.dataset.id, action: b.dataset.act } }); renderRequests() } catch (e) { status(e.message, false) }
+  });
+}
+async function renderSponsor() {
+  const v = $("#view");
+  const ev = (await api("events").catch(() => ({ events: {} }))).events || {};
+  const list = state.data.sponsor.banners;
+  v.innerHTML = `<div class="card">${searchBox("Szukaj banera…")}
+    <div class="row" style="margin-bottom:8px"><label class="inl">Zmiana reklamy co <input id="rotSec" type="number" min="0" max="600" step="1" style="width:80px" value="${state.data.sponsor.rotateSeconds ?? 8}"> s</label><button class="ghost" id="rotSave">Zapisz</button>
+      <span class="muted">0 = bez zmiany (losowa reklama przy każdym otwarciu aplikacji)</span></div>
+    <p class="muted">Banery na karcie głównej aplikacji – aktywne w zakresie dat zmieniają się po kolei co ustawioną liczbę sekund. Obrazek: adres https lub link z Dysku Google, najlepiej poziomy ok. 1200×300 px. Licznik: wyświetlenia (raz na uruchomienie aplikacji) i kliknięcia.</p>
+    <table><tr><th>Baner</th><th>Okres</th><th>Ten miesiąc</th><th class="hide-sm">12 mies.</th></tr>
+    ${list.map(b => { const id = "sponsor:" + b.id, a = sumEvents(ev, id, lastMonths(1)), y = sumEvents(ev, id, lastMonths(12));
+      return `<tr class="item" data-id="${esc(b.id)}"><td>${b.image ? `<img src="${esc(directImageUrl(b.image))}" alt="" style="height:38px;max-width:150px;object-fit:cover;border-radius:6px;vertical-align:middle;margin-right:8px">` : ""}<b>${esc(b.title || "(obrazek)")}</b> ${bannerLive(b) ? '<span class="chip g">w aplikacji</span>' : '<span class="chip">nieaktywny</span>'}<div class="muted ell">${esc(b.url || "")}</div></td>
+      <td class="nowrap">${esc(b.from || "…")} – ${esc(b.until || "…")}</td><td>${a.sponsor_view || 0} / ${a.sponsor_click || 0} klik.</td><td class="hide-sm">${y.sponsor_view || 0} / ${y.sponsor_click || 0} klik.</td></tr>` }).join("") || '<tr><td class="muted">Brak banerów.</td></tr>'}</table></div>`;
+  hookSearch(() => editBanner(null));
+  v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editBanner(list.find(b => b.id === r.dataset.id)));
+  $("#rotSave").onclick = async () => {
+    const n = Math.max(0, Math.min(600, parseInt($("#rotSec").value, 10) || 0));
+    state.data.sponsor.rotateSeconds = n;
+    try { await writeFile("sponsor", "Banner rotation " + n + " s") } catch (e) { }
+  };
+}
+function directImageUrl(u) {
+  u = (u || "").trim();
+  const m = u.match(/(?:drive|docs)\.google\.com\/.*?(?:\/d\/|[?&]id=)([A-Za-z0-9_-]{10,})/);
+  if (m) return "https://lh3.googleusercontent.com/d/" + m[1];
+  if (/dropbox\.com/.test(u)) return u.replace("dl=0", "raw=1");
+  return u;
+}
+function hookBannerPreview() {
+  const inp = document.querySelector('#dlgForm input[name=image]'), img = $("#bnPrev");
+  if (!inp || !img) return;
+  const show = () => { const u = directImageUrl(inp.value); if (/^https:\/\//.test(u)) { img.src = u; img.style.display = "" } else img.style.display = "none" };
+  img.onerror = () => { img.style.display = "none"; $("#bnHint").innerHTML = '<b style="color:var(--pink)">Nie da się wczytać obrazka.</b> Sprawdź, czy plik na Dysku jest udostępniony „Każda osoba mająca link”.' };
+  inp.oninput = show; show();
+}
+function editBanner(b) {
+  setTimeout(hookBannerPreview, 0);
+  const isNew = !b; b = b || { id: "b" + Date.now().toString(36), title: "", text: "", image: "", url: "", from: today(), until: "", active: true };
+  openDialog(`<h3>${isNew ? "Nowy baner" : "Baner"}</h3>
+    <div class="grid2">${field("title", "Nazwa sponsora (tylko w panelu)", b.title)}${field("url", "Link po kliknięciu (https)", b.url, "url")}
+    ${field("from", "Od", b.from || "", "date")}${field("until", "Do", b.until || "", "date")}</div>
+    ${field("image", "Obrazek (https, poziomy) – może być link „Udostępnij” z Dysku Google", b.image, "url")}
+    <img id="bnPrev" alt="" style="max-width:100%;border-radius:10px;margin-top:6px;display:none">
+    <p class="muted" id="bnHint">Na Dysku Google ustaw udostępnianie: „Każda osoba mająca link”. W aplikacji obrazek ma tylko mały napis REKLAMA.</p>
+    <label>Tekst zastępczy (pokazywany tylko, gdy nie ma obrazka)<textarea name="text" maxlength="160">${esc(b.text || "")}</textarea></label>
+    <label class="inl"><input type="checkbox" name="active" ${b.active === false ? "" : "checked"}> aktywny</label>`,
+    async fd => {
+      const nb = { id: b.id, title: fd.get("title").trim(), text: fd.get("text").trim(), image: fd.get("image").trim(), url: fd.get("url").trim(), from: fd.get("from"), until: fd.get("until"), active: !!fd.get("active") };
+      if (!nb.title && !nb.image) throw new Error("Podaj nazwę lub obrazek.");
+      nb.image = directImageUrl(nb.image);
+      for (const k of ["url", "image"]) if (nb[k] && !/^https:\/\//.test(nb[k])) throw new Error("Adresy muszą zaczynać się od https://");
+      Object.keys(nb).forEach(k => nb[k] === "" && delete nb[k]);
+      const list = state.data.sponsor.banners; const i = list.findIndex(x => x.id === b.id);
+      if (i >= 0) list[i] = nb; else list.unshift(nb);
+      await writeFile("sponsor", (isNew ? "Add banner " : "Edit banner ") + (nb.title || nb.id)); renderTabs();
+    },
+    isNew ? null : async () => { state.data.sponsor.banners = state.data.sponsor.banners.filter(x => x.id !== b.id); await writeFile("sponsor", "Delete banner " + (b.title || b.id)); renderTabs() });
+}
+async function renderSettings() {
+  const v = $("#view");
+  const j = await api("settings");
+  v.innerHTML = `<div class="card"><h3 style="margin-top:0">Ustawienia</h3>
+    <form id="setF">
+    <b>Aplikacja Pilot Logbook</b>
+    ${field("logbookPackage", "Link z Google Play albo identyfikator aplikacji (np. https://play.google.com/store/apps/details?id=…)", j.settings.logbookPackage)}
+    <p class="muted" style="margin-top:4px">Ikona kalendarza na górze AeroHangar otwiera tę aplikację, a gdy jej nie ma w telefonie – jej stronę w Google Play. Aplikacje odczytają zmianę przy następnym otwarciu.</p>
+    <b>Poczta</b>
+    <div class="grid2">${field("notifyEmail", "Twój e-mail – kopia każdego zapytania serwisowego", j.settings.notifyEmail, "email")}
+    ${field("mailFrom", "Nadawca e-maili (adres w Twojej domenie, np. aerohangar@horyzontbezgranic.pl)", j.settings.mailFrom, "email")}</div>
+    <div class="row" style="margin-top:10px"><button type="submit">Zapisz</button><button type="button" class="ghost" id="testMail">Wyślij e-mail testowy</button></div></form>
+    <p class="muted">Serwer wysyła pocztę funkcją PHP mail(). Na większości hostingów działa od razu; adres nadawcy powinien być w Twojej domenie, żeby e-maile nie trafiały do spamu.</p></div>`;
+  $("#setF").onsubmit = async e => {
+    e.preventDefault(); const fd = new FormData(e.target);
+    try { const r = await api("settings", { body: { notifyEmail: fd.get("notifyEmail").trim(), mailFrom: fd.get("mailFrom").trim(), logbookPackage: fd.get("logbookPackage").trim() } }); status("Zapisano ustawienia." + (r.settings.logbookPackage ? " Pilot Logbook: " + r.settings.logbookPackage : "")); renderSettings() } catch (err) { status(err.message, false) }
+  };
+  $("#testMail").onclick = async () => { try { const r = await api("settings", { q: "&test=1" }); status(r.test ? "Wysłano e-mail testowy na " + r.settings.notifyEmail : "Nie udało się wysłać – sprawdź adres lub poczty na hostingu.", !!r.test) } catch (e) { status(e.message, false) } };
+}
+
+// ---------------------------------------------------------------- pilot accounts (WordPress): one key for AeroHangar and Pilot Logbook
+async function renderAccounts() {
+  const v = $("#view");
+  const j = await api("accounts");
+  const admin = state.user?.role === "admin";
+  const d = t => t ? new Date(t * 1000).toISOString().slice(0, 16).replace("T", " ") : "—";
+  const q = (state.filter || "").toLowerCase();
+  const list = j.accounts.filter(a => !q || [a.login, a.name, a.email].join(" ").toLowerCase().includes(q));
+  v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Szukaj: login, imię, e-mail…" value="${esc(state.filter)}" style="flex:1"></div>
+    <p class="muted">Piloci z kontem WordPress. Klucz tworzą na stronie z kodem <code>[cannonade_konto]</code> (albo w Profil → Konto Cannonade) i wklejają go w AeroHangar oraz w Pilot Logbook. <b>Pro dla konta</b> działa na wszystkich telefonach pilota.</p>
+    <table><tr><th>Pilot</th><th>Klucz</th><th>Ostatnio</th><th class="hide-sm">Kopia danych</th><th>Samoloty</th><th>Pro</th><th></th></tr>
+    ${list.map(a => `<tr><td><b>${esc(a.name)}</b><div class="muted">${esc(a.login)} · ${esc(a.email)}</div></td>
+      <td>${a.key ? `<span class="chip g">…${esc(a.keyHint)}</span>` : '<span class="muted">brak</span>'}</td>
+      <td class="nowrap">${d(a.lastSeen)}</td><td class="hide-sm nowrap">${d(a.lastSync)}</td><td>${a.aircraft}</td>
+      <td>${admin ? `<button class="pub ${a.pro ? "on" : "off"}" data-pro="${a.id}" data-on="${a.pro ? 0 : 1}">${a.pro ? "tak" : "nie"}</button>` : (a.pro ? "tak" : "nie")}</td>
+      <td>${admin && a.key ? `<button class="ghost" data-unlink="${a.id}">Unieważnij klucz</button>` : ""}</td></tr>`).join("") || '<tr><td class="muted">Brak kont z kluczem.</td></tr>'}</table></div>`;
+  $("#q").oninput = e => { state.filter = e.target.value; clearTimeout(state._qt); state._qt = setTimeout(() => renderAccounts().then(() => { const x = $("#q"); x.focus(); x.setSelectionRange(x.value.length, x.value.length) }), 250) };
+  v.querySelectorAll("button[data-pro]").forEach(b => b.onclick = async () => { try { await api("accounts", { body: { user: +b.dataset.pro, action: "pro", on: b.dataset.on === "1" } }); renderAccounts() } catch (e) { status(e.message, false) } });
+  v.querySelectorAll("button[data-unlink]").forEach(b => b.onclick = async () => { if (!confirm("Unieważnić klucz? Aplikacje pilota stracą połączenie z kontem.")) return; try { await api("accounts", { body: { user: +b.dataset.unlink, action: "unlink" } }); renderAccounts() } catch (e) { status(e.message, false) } });
+}
+
+// ---------------------------------------------------------------- installations: manual Pro, reset
+async function renderInstalls() {
+  const v = $("#view");
+  const j = await api("installs");
+  const admin = state.user?.role === "admin";
+  const q = (state.filter || "").trim().toUpperCase();
+  const list = j.installs.filter(i => !q || i.code.includes(q) || (i.note || "").toUpperCase().includes(q) || (i.types || []).join(" ").toUpperCase().includes(q));
+  v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Kod instalacji (8 znaków z „O aplikacji”), notatka lub typ samolotu…" value="${esc(state.filter)}" style="flex:1">
+      ${admin ? '<button class="danger" id="resetInst">Resetuj licznik instalacji</button>' : ""}</div>
+    <p class="muted">Użytkownik widzi swój <b>kod instalacji</b> w aplikacji: „O aplikacji” → AeroHangar Pro. Wpisz go tutaj i włącz <b>Pro ręcznie</b> (np. dla testerów, partnerów, instruktorów). Aplikacja odczyta to przy następnym otwarciu albo po „Przywróć zakup”. Pro ręczne jest bezpłatnym przydziałem – w wersji z Google Play nie sprzedawaj go poza sklepem.</p>
+    <p class="muted">Wszystkich: <b>${j.installs.length}</b> · Pro z Google Play: <b>${j.installs.filter(i => i.pro).length}</b> · Pro ręczne: <b>${j.installs.filter(i => i.proGranted).length}</b>. Pokazano ${Math.min(list.length, 300)} z ${list.length}.</p>
+    <table><tr><th>Kod</th><th>Ostatnio</th><th class="hide-sm">Pierwsza</th><th class="hide-sm">Wersja</th><th>Samoloty</th><th>Pro</th><th class="hide-sm">Notatka</th></tr>
+    ${list.slice(0, 300).map(i => `<tr><td class="nowrap"><b style="font-family:monospace">${esc(i.code)}</b></td><td class="nowrap">${esc(i.last || "")}</td><td class="hide-sm nowrap">${esc(i.first || "")}</td>
+      <td class="hide-sm">${esc(i.v || "")} <span class="muted">${esc(i.lang || "")}</span></td><td>${i.ac ?? "?"}<div class="muted ell">${esc((i.types || []).join(", "))}</div></td>
+      <td class="nowrap">${i.pro ? '<span class="chip p">Google Play</span> ' : ""}${admin ? `<button class="pub ${i.proGranted ? "on" : "off"}" data-grant="${esc(i.id)}" data-on="${i.proGranted ? 0 : 1}">${i.proGranted ? "ręczne: tak" : "ręczne: nie"}</button>` : (i.proGranted ? "ręczne" : "")}</td>
+      <td class="hide-sm">${admin ? `<input data-note="${esc(i.id)}" value="${esc(i.note || "")}" placeholder="np. Jan K., tester" style="min-width:140px">` : esc(i.note || "")}</td></tr>`).join("") || '<tr><td class="muted">Brak instalacji.</td></tr>'}</table></div>`;
+  $("#q").oninput = e => { state.filter = e.target.value; clearTimeout(state._qt); state._qt = setTimeout(() => renderInstalls().then(() => { const x = $("#q"); x.focus(); x.setSelectionRange(x.value.length, x.value.length) }), 250) };
+  v.querySelectorAll("button[data-grant]").forEach(b => b.onclick = async () => {
+    try { await api("installs", { body: { action: "grant", id: b.dataset.grant, on: b.dataset.on === "1" } }); status(b.dataset.on === "1" ? "Włączono Pro dla tej instalacji." : "Wyłączono ręczne Pro."); renderInstalls() } catch (e) { status(e.message, false) }
+  });
+  v.querySelectorAll("input[data-note]").forEach(inp => inp.onchange = async () => {
+    try { await api("installs", { body: { action: "note", id: inp.dataset.note, note: inp.value } }); status("Zapisano notatkę.") } catch (e) { status(e.message, false) }
+  });
+  const r = $("#resetInst");
+  if (r) r.onclick = async () => {
+    if (!confirm("Wyzerować licznik instalacji? Instalacje z ręcznie przyznanym Pro zostaną. Kopia poprzedniej listy zostaje w private/state.")) return;
+    try { await api("installs", { body: { action: "reset" } }); status("Licznik instalacji wyzerowany."); renderInstalls() } catch (e) { status(e.message, false) }
+  };
+}
+
+// ---------------------------------------------------------------- dashboard
+async function renderHome() {
+  const v = $("#view");
+  const st = await api("stats").catch(() => null);
+  const contacts = state.data.contacts?.contacts || [], exams = state.data.examiners?.contacts || [];
+  const pub = l => l.filter(c => c.publish !== false).length;
+  const b = state.data.bulletins?.bulletins || [];
+  const since = new Date(Date.now() - 30 * 86400e3).toISOString().slice(0, 10);
+  const tile = (go, n, l, s2, cls = "") => `<div class="tile ${cls}" data-go="${go}"><span class="n">${n}</span><span class="l">${l}</span><span class="s">${s2}</span></div>`;
+  const cnt = g => (state.data[CGROUPS[g].file]?.contacts || []).filter(c => CGROUPS[g].kinds.includes(c.kind));
+  v.innerHTML = `
+    <div class="sec">Aplikacja</div>
+    <div class="tiles">
+      ${tile("stats", st ? st.total : "–", "Instalacje", st ? `aktywne: ${st.active30} w 30 dni, ${st.active7} w 7 dni` : "brak danych")}
+      ${tile("stats", st ? Object.values(st.newPerMonth || {}).slice(-1)[0] || 0 : "–", "Nowe w tym miesiącu", st ? `wersje: ${Object.keys(st.versions || {}).slice(0, 3).join(", ") || "–"}` : "")}
+      ${tile("subs", state.subCount ?? 0, "Zgłoszenia do zatwierdzenia", state.subCount ? "kliknij, aby przejrzeć" : "brak nowych", state.subCount ? "accent" : "")}
+      ${tile("news", (state.data.news?.messages || []).length, "Komunikaty", "na karcie głównej aplikacji")}
+    </div>
+    ${state.noSponsor ? "" : `<div class="sec">Zarabianie</div>
+    <div class="tiles">
+      ${tile("partners", partners().filter(isActive).length, "Aktywni partnerzy", (() => { const s = partners().filter(c => isActive(c) && daysLeft(c) <= 30).length; return s ? `kończy się w 30 dni: ${s}` : "wyróżnione wpisy w aplikacji" })(), partners().some(c => isActive(c) && daysLeft(c) <= 30) ? "accent" : "")}
+      ${tile("requests", state.reqCount ?? 0, "Nowe zapytania serwisowe", "„Umów przegląd” z aplikacji", state.reqCount ? "accent" : "")}
+      ${tile("sponsor", (state.data.sponsor?.banners || []).filter(bannerLive).length, "Banery sponsora", "aktywne teraz w aplikacji")}
+      ${tile("stats", st ? (st.pro ?? 0) : "–", "Użytkownicy Pro", "zakup w aplikacji (więcej niż 1 samolot)")}
+    </div>`}
+    <div class="sec">Dane</div>
+    <div class="tiles">
+      ${tile("bulletins", b.length, "Biuletyny", `nowe w 30 dni: ${b.filter(x => x.date >= since).length} · obowiązkowe: ${b.filter(x => x.mandatory === true).length}`)}
+      ${tile("types", (state.data.types || []).length, "Typy samolotów", `producentów: ${new Set((state.data.types || []).map(t => t.manufacturer)).size}`)}
+    </div>
+    <div class="sec">Kontakty</div>
+    <div class="tiles">
+      ${Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => { const l = cnt(g); return tile(g, l.length, CGROUPS[g].name, `w aplikacji: ${pub(l)}${l.length - pub(l) ? ` · ukryte: ${l.length - pub(l)}` : ""}`) }).join("")}
+    </div>
+    <div class="card"><div class="row"><b style="flex:1">Aktualizacja danych z GitHuba</b><button id="pullHome">Pobierz teraz listy ULC, producentów, biuletyny i typy</button></div>
+    <p class="muted" style="margin-bottom:0">Dodaje tylko brakujące wpisy – Twoich zmian i usuniętych wpisów nie przywraca. Listy ULC podmienia, zachowując Twoje ustawienia publikacji.</p></div>`;
+  v.querySelectorAll(".tile[data-go]").forEach(t => t.onclick = () => { state.tab = t.dataset.go; renderTabs(); render() });
+  $("#pullHome").onclick = async () => {
+    const btn = $("#pullHome"); btn.disabled = true; btn.textContent = "Pobieranie…";
+    try {
+      const r = await api("pull_github", { body: {} });
+      await Promise.all(["examiners", "contacts", "bulletins", "types"].map(readFile));
+      status(`Pobrano – kontakty: +${(r.contacts?.added_other || 0) + (r.contacts?.new || 0)}, egzaminatorzy: +${(r.examiners?.added_other || 0) + (r.examiners?.new || 0)}, biuletyny: +${r.bulletins?.new ?? 0}, typy: +${r.types?.new ?? 0}${r.types?.upgraded ? ` (zaktualizowane ${r.types.upgraded})` : ""}.` + (r.contacts?.error || r.bulletins?.error ? " Część plików nie została pobrana – sprawdź połączenie serwera z internetem." : ""));
+      renderTabs(); renderHome();
+    } catch (e) { status(e.message, false); btn.disabled = false }
+  };
+}
+
+// ---------------------------------------------------------------- render
+function render(keepFocus) {
+  if (!state.data.types) return;
+  const v = $("#view");
+  const sel = keepFocus ? $("#q")?.selectionStart : null;
+  if (state.tab === "bulletins") { v.innerHTML = renderBulletins(); hookSearch(() => editBulletin(null)); v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editBulletin(state.data.bulletins.bulletins.find(b => b.id === r.dataset.id))) }
+  if (CGROUPS[state.tab]) {
+    const g = state.tab, file = CGROUPS[g].file;
+    v.innerHTML = renderContacts(g); hookSearch(() => editContact(null, g));
+    v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editContact(state.data[file].contacts.find(c => c.id === r.dataset.id), g));
+    hookContactTools(g);
+  }
+  if (state.tab === "home") { renderHome().catch(e => status(e.message, false)); return }
+  if (state.tab === "subs") { renderSubs().catch(e => status(e.message, false)); return }
+  if (state.tab === "partners") { renderPartners().catch(e => status(e.message, false)); return }
+  if (state.tab === "requests") { renderRequests().catch(e => status(e.message, false)); return }
+  if (state.tab === "sponsor") { renderSponsor().catch(e => status(e.message, false)); return }
+  if (state.tab === "settings") { renderSettings().catch(e => status(e.message, false)); return }
+  if (state.tab === "stats") { renderStats().catch(e => status(e.message, false)); return }
+  if (state.tab === "installs") { renderInstalls().catch(e => status(e.message, false)); return }
+  if (state.tab === "accounts") { renderAccounts().catch(e => status(e.message, false)); return }
+  if (state.tab === "news") { v.innerHTML = renderNews(); hookSearch(() => editNews(null)); v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editNews(state.data.news.messages.find(n => n.id === r.dataset.id))) }
+  if (state.tab === "history") { renderHistory().catch(e => status(e.message, false)); return }
+  if (state.tab === "users") { renderUsers().catch(e => status(e.message, false)); return }
+  if (state.tab === "types") { v.innerHTML = renderTypes(); hookSearch(() => editType(null)); v.querySelectorAll("tr.item").forEach(r => r.onclick = () => editType(state.data.types.find(t => t.id === r.dataset.id))) }
+  if (keepFocus) { const q = $("#q"); q.focus(); q.setSelectionRange(sel, sel) }
+}
+
+start().catch(e => status("Serwer: " + e.message, false));
+</script>
+</body>
+</html>

@@ -79,7 +79,7 @@ import com.cannonadestudio.tomarkpilot.data.Repo
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
-val CONTACT_KINDS = listOf("dealer", "manufacturer", "rotax_service", "rotax_distributor", "maintenance", "mechanic", "instructor", "school", "examiner")
+val CONTACT_KINDS = listOf("dealer", "manufacturer", "rotax_service", "rotax_distributor", "maintenance", "mechanic", "instructor", "school", "examiner", "ame", "aemc")
 
 @Composable
 fun kindName(k: String): String = stringResource(
@@ -92,6 +92,8 @@ fun kindName(k: String): String = stringResource(
         "maintenance" -> R.string.kind_maintenance
         "instructor" -> R.string.kind_instructor
         "school" -> R.string.kind_school
+        "ame" -> R.string.kind_ame
+        "aemc" -> R.string.kind_aemc
         else -> R.string.kind_examiner
     }
 )

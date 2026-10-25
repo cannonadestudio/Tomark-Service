@@ -52,6 +52,20 @@ object Repo {
     private val newsCache get() = File(app.filesDir, "news_cache.json")
     private val baseCache get() = File(app.filesDir, "data_base.txt")
     private val logbookPkgCache get() = File(app.filesDir, "logbook_package.txt")
+    private val endpointsCache get() = File(app.filesDir, "endpoints.json")
+
+    /** WordPress plugin endpoints (null = standalone server / GitHub). */
+    @Volatile var apiBase: String? = null
+        private set
+    @Volatile var accountBase: String? = null
+        private set
+
+    private fun setEndpoints(api: String?, account: String?) {
+        val a = api?.trim()?.takeIf { it.startsWith("https://") } ?: return
+        apiBase = a
+        accountBase = account?.trim()?.takeIf { it.startsWith("https://") }?.let { if (it.endsWith("/")) it else "$it/" }
+        runCatching { endpointsCache.writeText(json.encodeToString(RemoteConfig.serializer(), RemoteConfig(apiUrl = apiBase, accountUrl = accountBase))) }
+    }
 
     /** Pilot Logbook app – default id, can be changed remotely in data/config.json ("logbookPackage"). */
     @Volatile
@@ -90,6 +104,7 @@ object Repo {
             _feed.value = loadFeed()
             runCatching { baseCache.readText().trim() }.getOrNull()?.takeIf { it.startsWith("https://") }?.let { dataBase = it }
             runCatching { logbookPkgCache.readText().trim() }.getOrNull()?.takeIf { it.isNotBlank() }?.let { logbookPackage = it }
+            runCatching { json.decodeFromString<RemoteConfig>(endpointsCache.readText()) }.getOrNull()?.let { apiBase = it.apiUrl; accountBase = it.accountUrl }
             _examiners.value = runCatching { json.decodeFromString<ContactFeed>(examinersCache.readText()) }.getOrNull() ?: ContactFeed()
             _news.value = runCatching { json.decodeFromString<NewsFeed>(newsCache.readText()) }.getOrNull() ?: NewsFeed()
             _sponsor.value = runCatching { json.decodeFromString<SponsorFeed>(sponsorCache.readText()) }.getOrNull() ?: SponsorFeed()
@@ -165,6 +180,7 @@ object Repo {
             dataBase = b
             baseCache.writeText(b)
             cfg.logbookPackage?.trim()?.takeIf { Regex("^[a-zA-Z][\\w.]+$").matches(it) }?.let { logbookPackage = it; logbookPkgCache.writeText(it) }
+            setEndpoints(cfg.apiUrl, cfg.accountUrl)
         }
     }
 
@@ -180,12 +196,119 @@ object Repo {
         refreshSponsor()
         if (_state.value.examinersEnabled) refreshExaminers()
         pingIfDue()
+        if (_state.value.accountKey != null) refreshAccount()
+    }
+
+    // ---------------------------------------------------------------- Cannonade account (WordPress plugin)
+
+    /** Account features need the AeroHangar WordPress plugin on the owner's site. */
+    val accountAvailable: Boolean get() = accountBase != null
+
+    private fun restRoot() = accountBase?.removeSuffix("cannonade/v1/")
+
+    private fun accountCall(method: String, url: String, key: String, body: String? = null): Pair<Int, String> {
+        val conn = URL(url).openConnection() as HttpURLConnection
+        conn.connectTimeout = 10_000; conn.readTimeout = 20_000
+        conn.requestMethod = method
+        conn.setRequestProperty("Authorization", "Bearer $key")
+        conn.setRequestProperty("Accept", "application/json")
+        try {
+            if (body != null) {
+                conn.doOutput = true
+                conn.setRequestProperty("Content-Type", "application/json; charset=utf-8")
+                conn.outputStream.use { it.write(body.toByteArray()) }
+            }
+            val code = conn.responseCode
+            val text = (if (code in 200..299) conn.inputStream else conn.errorStream)?.bufferedReader()?.use { it.readText() } ?: ""
+            return code to text
+        } finally {
+            conn.disconnect()
+        }
+    }
+
+    private fun field(text: String, name: String): String? = runCatching {
+        (json.parseToJsonElement(text) as kotlinx.serialization.json.JsonObject)[name]?.let { (it as kotlinx.serialization.json.JsonPrimitive).content }
+    }.getOrNull()
+
+    /** Checks the key, stores it, sends a first backup if the account has none. Result = account name. */
+    suspend fun linkAccount(key: String): Result<String> = withContext(Dispatchers.IO) {
+        runCatching {
+            if (!accountAvailable) resolveBase().also { refreshAppConfig() }
+            val base = accountBase ?: error("no account server")
+            val k = key.trim().uppercase()
+            val (code, text) = accountCall("GET", base + "me", k)
+            if (code == 401) error("401")
+            if (code != 200) error("HTTP $code")
+            val name = field(text, "name") ?: ""
+            setStateNoBackup { it.copy(accountKey = k, accountName = name, accountError = null) }
+            refreshAccount()
+            name
+        }
+    }
+
+    fun unlinkAccount() = setStateNoBackup { it.copy(accountKey = null, accountName = null, accountPro = false, accountSyncMillis = null, accountError = null) }
+
+    /** Pro and last-sync time from the account. */
+    suspend fun refreshAccount(): Result<Unit> = withContext(Dispatchers.IO) {
+        runCatching {
+            val key = _state.value.accountKey ?: return@runCatching
+            val root = restRoot() ?: return@runCatching
+            val (code, text) = accountCall("GET", root + "aerohangar/v1/account", key)
+            if (code == 401) { setStateNoBackup { it.copy(accountError = "401") }; return@runCatching }
+            if (code != 200) error("HTTP $code")
+            val pro = field(text, "pro") == "true"
+            val last = field(text, "lastSync")?.toLongOrNull() ?: 0L
+            setStateNoBackup { it.copy(accountPro = pro, accountError = null) }
+            if (last == 0L) pushAccount()
+        }
+    }
+
+    /** Sends this phone's data to the account (same content as the Drive backup). */
+    suspend fun pushAccount(): Result<Unit> = withContext(Dispatchers.IO) {
+        runCatching {
+            val key = _state.value.accountKey ?: return@runCatching
+            val root = restRoot() ?: error("no account server")
+            val body = json.encodeToString(AppState.serializer(), withoutDeviceFields(_state.value))
+            val (code, text) = accountCall("PUT", root + "aerohangar/v1/account/data", key, body)
+            if (code != 200) error(if (code == 401) "401" else "HTTP $code")
+            setStateNoBackup { it.copy(accountSyncMillis = System.currentTimeMillis(), accountError = null, accountPro = field(text, "pro") == "true") }
+        }.onFailure { e -> setStateNoBackup { it.copy(accountError = e.message ?: e.javaClass.simpleName) } }
+    }
+
+    /** Replaces this phone's data with the account copy (device settings stay). Result = aircraft count. */
+    suspend fun pullAccount(): Result<Int> = withContext(Dispatchers.IO) {
+        runCatching {
+            val key = _state.value.accountKey ?: error("no key")
+            val root = restRoot() ?: error("no account server")
+            val (code, text) = accountCall("GET", root + "aerohangar/v1/account/data", key)
+            if (code == 404) error("404")
+            if (code != 200) error(if (code == 401) "401" else "HTTP $code")
+            val restored = json.decodeFromString<AppState>(text)
+            val cur = _state.value
+            setStateNoBackup {
+                restored.copy(
+                    backupUri = cur.backupUri, lastBackupMillis = cur.lastBackupMillis, logbookUri = cur.logbookUri,
+                    logbookSyncedEpochDay = cur.logbookSyncedEpochDay, disclaimerAccepted = true, proCached = cur.proCached,
+                    proGranted = cur.proGranted, installId = cur.installId, accountKey = cur.accountKey, accountName = cur.accountName,
+                    accountPro = cur.accountPro, accountSyncMillis = System.currentTimeMillis(),
+                )
+            }
+            restored.aircraft.size
+        }
+    }
+
+    private var accountJob: Job? = null
+
+    private fun scheduleAccountPush() {
+        if (_state.value.accountKey == null) return
+        accountJob?.cancel()
+        accountJob = ioScope.launch { delay(6_000); pushAccount() }
     }
 
     /** True when apps read from the owner's server (not GitHub) – needed for submissions and the install counter. */
     val serverConnected: Boolean get() = dataBase != GITHUB_DATA
 
-    private fun apiUrl(action: String) = dataBase.trimEnd('/').removeSuffix("/data") + "/admin/api.php?a=" + action
+    private fun apiUrl(action: String) = apiBase?.let { it + action } ?: (dataBase.trimEnd('/').removeSuffix("/data") + "/admin/api.php?a=" + action)
 
     private fun post(url: String, body: String): Int {
         val conn = URL(url).openConnection() as HttpURLConnection
@@ -444,6 +567,7 @@ object Repo {
                 logbookPackage = it
                 logbookPkgCache.writeText(it)
             }
+            setEndpoints(cfg.apiUrl, cfg.accountUrl)
             Unit
         }
     }
@@ -543,6 +667,7 @@ object Repo {
         backupUri = null, lastBackupMillis = null, backupError = null,
         logbookUri = null, logbookError = null, logbookSyncedEpochDay = null, proCached = false, proGranted = false,
         installId = null, lastPingEpochDay = null,
+        accountKey = null, accountName = null, accountPro = false, accountSyncMillis = null, accountError = null,
         aircraft = s.aircraft.map { it.copy(pohUri = null) },
     )
 
@@ -583,6 +708,7 @@ object Repo {
                     backupUri = cur.backupUri, lastBackupMillis = cur.lastBackupMillis, backupError = null,
                     logbookUri = cur.logbookUri, logbookSyncedEpochDay = cur.logbookSyncedEpochDay,
                     disclaimerAccepted = true, proCached = cur.proCached, proGranted = cur.proGranted, lastPingEpochDay = null,
+                    accountKey = cur.accountKey, accountName = cur.accountName, accountPro = cur.accountPro,
                     installId = cur.installId,
                 )
             }
@@ -613,6 +739,7 @@ object Repo {
     fun update(transform: (AppState) -> AppState) {
         setStateNoBackup(transform)
         scheduleBackup()
+        scheduleAccountPush()
     }
 
     fun type(id: String): AircraftType? = types.firstOrNull { it.id == id } ?: _state.value.customTypes.firstOrNull { it.id == id }

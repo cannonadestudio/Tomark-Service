@@ -283,6 +283,8 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
         Spacer(Modifier.height(16.dp))
         com.cannonadestudio.tomarkpilot.ui.ProCard()
         Spacer(Modifier.height(12.dp))
+        com.cannonadestudio.tomarkpilot.ui.AccountCard()
+        if (Repo.accountAvailable || state.accountKey != null) Spacer(Modifier.height(12.dp))
 
         Card(Modifier.fillMaxWidth()) {
             Column(Modifier.padding(16.dp)) {

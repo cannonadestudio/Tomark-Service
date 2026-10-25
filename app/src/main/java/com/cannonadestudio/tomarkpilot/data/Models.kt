@@ -196,6 +196,10 @@ data class RemoteConfig(
     val dataBaseUrl: String? = null,
     /** Android package of the Pilot Logbook app (opened from the top bar; Google Play if not installed). */
     val logbookPackage: String? = null,
+    /** WordPress plugin: panel/app API ("…/wp-json/aerohangar/v1/api?a=") – replaces "<base>/admin/api.php?a=". */
+    val apiUrl: String? = null,
+    /** WordPress plugin: Cannonade account API ("…/wp-json/cannonade/v1/"). */
+    val accountUrl: String? = null,
 )
 
 // ---------------------------------------------------------------- user data (filesDir/state.json)
@@ -317,4 +321,11 @@ data class AppState(
     val customTypes: List<AircraftType> = emptyList(),
     val logEntries: List<LogEntry> = emptyList(),
     val ownBulletins: List<OwnBulletin> = emptyList(),
+    /** Cannonade account key (one key for AeroHangar and Pilot Logbook) – this phone only, never in a backup. */
+    val accountKey: String? = null,
+    val accountName: String? = null,
+    /** Pro granted to the whole account by the app owner. */
+    val accountPro: Boolean = false,
+    val accountSyncMillis: Long? = null,
+    val accountError: String? = null,
 )

@@ -3681,20 +3681,6 @@
    "phone": "224504813",
    "note": "Centrum medycyny lotniczej (AeMC)",
    "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/centra-medycyny-lotniczej"
-  },
-  {
-   "id": "ulc-aemc-kontakt-warszawa",
-   "name": "Kontakt",
-   "kind": "aemc",
-   "country": "PL",
-   "city": "Warszawa",
-   "address": "ul. M. Flisa 2, 02-247 Warszawa",
-   "lat": 52.1900185,
-   "lon": 20.9520749,
-   "phone": "+48225207200",
-   "email": "kancelaria@ulc.gov.pl",
-   "note": "Centrum medycyny lotniczej (AeMC)",
-   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/centra-medycyny-lotniczej"
   }
  ]
 }

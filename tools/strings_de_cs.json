@@ -824,8 +824,8 @@
   "cs": "Sources: EASA TCDS (A.606, A.006, A.583, A.412, A.527, A.065, A.439, A.537, A.644, A.598, A.642); DULV / DAeC / Traficom / BMAA data sheets; manufacturer POH/AFM; BRP-Rotax MML-912; TOMARK technical support list; EASA AD 2026-0170; flyrotax.com distributor pages."
  },
  "examiners_title": {
-  "de": "ULC-Prüfer (öffentliche Daten)",
-  "cs": "Examinátoři ULC (veřejné údaje)"
+  "de": "ULC-Prüfer und Fliegerärzte (öffentliche Daten)",
+  "cs": "Examinátoři a letečtí lékaři ULC (veřejné údaje)"
  },
  "examiners_hint": {
   "de": "Die vom polnischen Luftfahrtamt veröffentlichten Prüferlisten (Flugzeuge, UL, Mechaniker) sind nicht Teil der App. Nur bei Bedarf herunterladen.",
@@ -1402,5 +1402,65 @@
  "expand": {
   "de": "Details",
   "cs": "Rozbalit"
+ },
+ "account_title": {
+  "de": "Konto (AeroHangar + Pilot Logbook)",
+  "cs": "Účet (AeroHangar + Pilot Logbook)"
+ },
+ "account_hint": {
+  "de": "Auf der AeroHangar-Website anmelden, Schlüssel erstellen und hier einfügen. Derselbe Schlüssel verbindet auch Pilot Logbook.",
+  "cs": "Přihlaste se na webu AeroHangar, vytvořte klíč a vložte ho sem. Stejný klíč propojí i Pilot Logbook."
+ },
+ "account_key": {
+  "de": "Kontoschlüssel",
+  "cs": "Klíč účtu"
+ },
+ "account_link": {
+  "de": "Verbinden",
+  "cs": "Propojit"
+ },
+ "account_linked": {
+  "de": "Verbunden: %1$s",
+  "cs": "Propojeno: %1$s"
+ },
+ "account_synced": {
+  "de": "Kopie im Konto: %1$s",
+  "cs": "Kopie na účtu: %1$s"
+ },
+ "account_pro": {
+  "de": "Pro für dieses Konto – auf allen Telefonen",
+  "cs": "Pro pro tento účet – na všech telefonech"
+ },
+ "account_bad_key": {
+  "de": "Schlüssel ungültig – neuen erstellen.",
+  "cs": "Klíč je neplatný – vytvořte nový."
+ },
+ "account_no_backup": {
+  "de": "Noch keine Kopie im Konto.",
+  "cs": "Na účtu zatím není kopie."
+ },
+ "account_auto": {
+  "de": "Die Kopie aktualisiert sich nach jeder Änderung.",
+  "cs": "Kopie se aktualizuje po každé změně."
+ },
+ "account_restore": {
+  "de": "Aus Konto wiederherstellen",
+  "cs": "Obnovit z účtu"
+ },
+ "account_restore_q": {
+  "de": "Daten auf diesem Telefon durch die Kontokopie ersetzen?",
+  "cs": "Nahradit data v telefonu kopií z účtu?"
+ },
+ "account_restored": {
+  "de": "Wiederhergestellt: %1$d Flugzeug(e)",
+  "cs": "Obnoveno: %1$d letadla"
+ },
+ "kind_ame": {
+  "de": "Fliegerarzt (AME)",
+  "cs": "Letecký lékař (AME)"
+ },
+ "kind_aemc": {
+  "de": "Flugmedizinisches Zentrum",
+  "cs": "Centrum letecké medicíny"
  }
 }
