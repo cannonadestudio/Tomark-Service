@@ -158,6 +158,11 @@
     <string name="plan_pilot">pilot / majiteľ</string>
     <string name="plan_mechanic">mechanik / servis</string>
     <string name="plan_club">aeroklub / škola</string>
+    <string name="plan_school">letecká škola</string>
+    <string name="plan_dealer">predajca</string>
+    <string name="plan_service">servis</string>
+    <string name="account_types_limit">Limit vlastných typov: %1$d</string>
+    <string name="account_types_reached">Účet môže mať %1$d vlastné typy.</string>
     <string name="account_limit">Limit lietadiel: %1$d</string>
     <string name="account_limit_reached">Účet môže mať %1$d lietadlá.</string>
     <string name="account_choose_title">Ktoré údaje ponechať?</string>

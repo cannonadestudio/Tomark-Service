@@ -48,6 +48,7 @@ function aerohangar_info_page(): void
                 <tr><td><code>AH_CRON_KEY</code></td><td><code><?php echo esc_html(ah_cron_key()); ?></code></td></tr>
             </table>
         <?php endif; ?>
+        <?php if ($admin) aerohangar_products_box(); ?>
         <h2>Konta pilotów (AeroHangar + Pilot Logbook)</h2>
         <p>Wstaw na dowolną stronę krótki kod <code>[cannonade_konto]</code> – zalogowany pilot utworzy tam swój klucz i wklei go w obu aplikacjach. Ta sama strona jest też w <a href="<?php echo esc_url(admin_url('profile.php?page=cannonade-account')); ?>">Profil → Konto Cannonade</a>.</p>
         <p>Rejestracja nowych użytkowników: Ustawienia → Ogólne → „Każdy może się zarejestrować” (rola: Subskrybent).</p>
@@ -55,6 +56,37 @@ function aerohangar_info_page(): void
         <p>Publiczne dane dla aplikacji: <code><?php echo esc_html($data); ?></code>. Dane prywatne (wpisy ukryte, instalacje, zapytania, kopie, dziennik) są w bazie WordPressa – zwykła kopia bazy obejmuje je.</p>
     </div>
     <?php
+}
+
+/** WooCommerce: the five monthly AeroHangar plans – one button creates them. */
+function aerohangar_products_box(): void
+{
+    echo '<h2>Sprzedaż dostępu – produkty WooCommerce</h2>';
+    if (!class_exists('WooCommerce')) { echo '<p>Zainstaluj i włącz WooCommerce, żeby sprzedawać abonamenty.</p>'; return; }
+    $msg = [];
+    if (!empty($_POST['ah_products']) && check_admin_referer('ah_products')) $msg = ah_create_products();
+    if ($msg) echo '<div class="notice notice-success inline"><p>' . implode('<br>', array_map('esc_html', $msg)) . '</p></div>';
+    $subs = class_exists('WC_Product_Subscription');
+    if (!$subs) {
+        echo '<div class="notice notice-warning inline"><p><b>Automatyczna płatność co miesiąc wymaga wtyczki WooCommerce Subscriptions</b> (plus bramka płatności z płatnościami cyklicznymi, np. Stripe lub WooPayments). '
+            . 'Bez niej produkty powstaną jako <b>szkice na 30 dni</b> bez odnawiania – po zainstalowaniu Subscriptions kliknij przycisk ponownie, a zamienią się w subskrypcje i zostaną opublikowane.</p></div>';
+    }
+    if (get_woocommerce_currency() !== 'PLN') echo '<p style="color:#b32d2e">Waluta sklepu to ' . esc_html(get_woocommerce_currency()) . ' – kwoty są w złotych (WooCommerce → Ustawienia → Ogólne → Waluta).</p>';
+    $ids = (array)get_option('aerohangar_products', []);
+    echo '<table class="widefat striped" style="max-width:900px"><tr><th>Plan</th><th>Netto / mies.</th><th>Produkt</th></tr>';
+    foreach (AH_PRODUCTS as $plan => [$name, $net]) {
+        $id = (int)($ids[$plan] ?? 0);
+        $p = $id ? wc_get_product($id) : null;
+        $cell = $p && get_post_status($id) !== 'trash'
+            ? '<a href="' . esc_url(get_edit_post_link($id)) . '">' . esc_html($p->get_name()) . '</a> · ' . esc_html($p->get_regular_price() . ' ' . get_woocommerce_currency()) . ' · ' . esc_html($p->is_type('subscription') ? 'subskrypcja' : 'bez odnawiania') . ' · ' . esc_html(get_post_status($id) === 'publish' ? 'opublikowany' : 'szkic')
+            : '<span class="description">nie utworzono</span>';
+        echo '<tr><td>' . esc_html($name) . '</td><td>' . esc_html($net) . ' zł</td><td>' . $cell . '</td></tr>';
+    }
+    echo '</table>';
+    echo '<p class="description">Ceny są netto: jeśli sklep wpisuje ceny z podatkiem (WooCommerce → Ustawienia → Podatek), wtyczka dolicza stawkę VAT sklepu. Po zakupie konto kupującego dostaje Pro i plan; limit samolotów i własnych typów ustawiasz w produkcie (pole AeroHangar) albo przy koncie w panelu → Konta pilotów.</p>';
+    echo '<form method="post">';
+    wp_nonce_field('ah_products');
+    echo '<p><button class="button button-primary" name="ah_products" value="1">Utwórz / uzupełnij produkty AeroHangar</button></p></form>';
 }
 
 function aerohangar_import_page(): void

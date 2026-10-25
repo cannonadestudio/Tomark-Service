@@ -712,23 +712,24 @@ async function renderSettings() {
 }
 
 // ---------------------------------------------------------------- pilot accounts (WordPress): one key for AeroHangar and Pilot Logbook
+const PLAN = { pilot: "Pilot", mechanic: "Mechanik", school: "Szkoła lotnicza", dealer: "Dealer", service: "Serwis", club: "Aeroklub" };
 async function renderAccounts() {
   const v = $("#view");
   const j = await api("accounts", { q: "&q=" + encodeURIComponent(state.filter || "") });
   state.accounts = j.accounts;
   const admin = state.user?.role === "admin";
   const d = t => t ? new Date(t * 1000).toISOString().slice(0, 10) : "—";
-  const PLAN = { pilot: "Pilot", mechanic: "Mechanik", club: "Aeroklub" };
   const ROLE = { admin: "administrator", editor: "edycja danych", viewer: "podgląd", "": "" };
   v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Szukaj konta: login, imię, e-mail…" value="${esc(state.filter)}" style="flex:1"></div>
-    <p class="muted">Wszystkie konta WordPress (ostatnie 500 / wynik wyszukiwania). <b>Edytuj</b> – dostęp do aplikacji, plan, Pro (bez limitu albo do daty), limit samolotów i rola w panelu. Pilot łączy aplikacje kluczem ze strony <code>[cannonade_konto]</code>; dostęp kupiony w WooCommerce dolicza się sam.</p>
+    <p class="muted">Wszystkie konta WordPress (ostatnie 500 / wynik wyszukiwania). <b>Edytuj</b> – dostęp do aplikacji, plan, Pro (bez limitu albo do daty), limit samolotów i własnych typów oraz rola w panelu. Pilot łączy aplikacje kluczem ze strony <code>[cannonade_konto]</code>; dostęp kupiony w WooCommerce dolicza się sam.</p>
     <table><tr><th>Konto</th><th>Dostęp w AeroHangar</th><th>Klucz</th><th class="hide-sm">Ostatnio / kopia</th><th>Samoloty</th><th></th></tr>
     ${j.accounts.map(a => `<tr><td><b>${esc(a.name)}</b><div class="muted">${esc(a.login)} · ${esc(a.email)}</div><div class="muted">${esc(a.wpRole)} · od ${esc(a.registered)}</div></td>
       <td>${a.blocked ? '<span class="chip" style="background:#fde2e8;color:#a3123f">zablokowany</span>' : (a.proActive ? '<span class="chip p">Pro</span>' : '<span class="chip">darmowy</span>')}
         ${a.plan ? `<span class="chip">${esc(PLAN[a.plan] || a.plan)}</span>` : ""}
         ${a.pro && a.proUntil ? `<div class="muted">Pro ręczne do ${esc(a.proUntil)}</div>` : (a.pro ? '<div class="muted">Pro ręczne</div>' : "")}
         ${a.access ? `<div class="muted">zakup: ${esc(PLAN[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + d(a.access.until) : "bez limitu"}</div>` : ""}
-        ${a.maxAircraft !== "" ? `<div class="muted">limit samolotów: ${a.maxAircraft}</div>` : ""}
+        ${a.maxAircraft !== "" ? `<div class="muted">limit samolotów: ${a.maxAircraft}</div>` : (a.access && a.access.maxAircraft != null ? `<div class="muted">limit samolotów (produkt): ${a.access.maxAircraft}</div>` : "")}
+        ${a.maxTypes !== "" ? `<div class="muted">limit typów: ${a.maxTypes}</div>` : (a.access && a.access.maxTypes != null ? `<div class="muted">limit typów (produkt): ${a.access.maxTypes}</div>` : "")}
         ${a.panelRole ? `<div class="muted">panel: ${esc(ROLE[a.panelRole])}</div>` : ""}
         ${a.note ? `<div class="muted"><i>${esc(a.note)}</i></div>` : ""}</td>
       <td>${a.key ? `<span class="chip g">…${esc(a.keyHint)}</span>` : '<span class="muted">brak</span>'}</td>
@@ -742,18 +743,19 @@ function editAccount(a) {
   openDialog(`<h3>${esc(a.name)} <span class="muted" style="font-size:14px">${esc(a.email)}</span></h3>
     <label class="inl"><input type="checkbox" name="blocked" ${a.blocked ? "checked" : ""}> zablokuj dostęp aplikacji (klucz przestaje działać w AeroHangar)</label>
     <div class="grid2">
-      ${select("plan", "Plan", [["", "—"], ["pilot", "Pilot / właściciel"], ["mechanic", "Mechanik / serwis"], ["club", "Aeroklub / szkoła"]], a.plan)}
-      ${field("maxAircraft", "Limit samolotów w aplikacji (puste = 1 za darmo, bez limitu z Pro)", a.maxAircraft, "number", 'min="0" max="999"')}
+      ${select("plan", "Plan", [["", "—"], ["pilot", "Pilot / właściciel"], ["mechanic", "Mechanik"], ["school", "Szkoła lotnicza"], ["dealer", "Dealer"], ["service", "Serwis"], ["club", "Aeroklub (stary plan)"]], a.plan)}
+      ${field("maxAircraft", "Limit samolotów (puste = z produktu, inaczej 1 za darmo / bez limitu z Pro)", a.maxAircraft, "number", 'min="0" max="999"')}
+      ${field("maxTypes", "Limit własnych typów samolotów (puste = z produktu, inaczej bez limitu)", a.maxTypes, "number", 'min="0" max="999"')}
     </div>
     <label class="inl"><input type="checkbox" name="pro" ${a.pro ? "checked" : ""}> Pro przyznane ręcznie</label>
     <div class="grid2">${field("proUntil", "Pro ręczne do (puste = bez limitu)", a.proUntil, "date")}
       ${isAdminUser ? '<p class="muted">Administrator WordPressa – pełny dostęp do panelu.</p>' : select("panelRole", "Dostęp do panelu AeroHangar", [["", "brak"], ["viewer", "podgląd"], ["editor", "edycja danych (biuletyny, kontakty…)"]], a.panelRole)}</div>
     ${field("note", "Notatka (widoczna tylko tutaj)", a.note)}
-    ${a.access ? `<p class="muted">Dostęp z zakupu WooCommerce: ${esc(a.access.plan)} ${a.access.until ? "do " + new Date(a.access.until * 1000).toISOString().slice(0, 10) : "bez limitu"} – liczy się niezależnie od ustawień powyżej (blokada go wyłącza).</p>` : ""}
+    ${a.access ? `<p class="muted">Dostęp z zakupu WooCommerce: ${esc(PLAN[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + new Date(a.access.until * 1000).toISOString().slice(0, 10) : "bez limitu"} – liczy się niezależnie od ustawień powyżej (blokada go wyłącza).</p>` : ""}
     ${a.key ? `<p><button type="button" class="ghost" id="unlinkKey">Unieważnij klucz (…${esc(a.keyHint)})</button></p>` : '<p class="muted">Konto nie ma jeszcze klucza aplikacji.</p>'}`,
     async fd => {
       const data = { blocked: !!fd.get("blocked"), pro: !!fd.get("pro"), proUntil: fd.get("proUntil") || "", plan: fd.get("plan") || "",
-        maxAircraft: fd.get("maxAircraft") === "" ? "" : +fd.get("maxAircraft"), panelRole: fd.get("panelRole") || (isAdminUser ? "admin" : ""), note: (fd.get("note") || "").trim() };
+        maxAircraft: fd.get("maxAircraft") === "" ? "" : +fd.get("maxAircraft"), maxTypes: fd.get("maxTypes") === "" ? "" : +fd.get("maxTypes"), panelRole: fd.get("panelRole") || (isAdminUser ? "admin" : ""), note: (fd.get("note") || "").trim() };
       await api("accounts", { body: { user: a.id, action: "save", data } });
       status("Zapisano uprawnienia konta " + a.login + ".");
       renderAccounts();

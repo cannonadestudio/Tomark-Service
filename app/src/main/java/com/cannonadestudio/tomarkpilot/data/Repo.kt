@@ -267,7 +267,7 @@ object Repo {
 
     fun unlinkAccount() = setStateNoBackup {
         it.copy(accountKey = null, accountName = null, accountPro = false, accountSyncMillis = null, accountError = null,
-            accountServerTime = null, accountDirty = false, accountBlocked = false, accountPlan = null, accountMaxAircraft = null)
+            accountServerTime = null, accountDirty = false, accountBlocked = false, accountPlan = null, accountMaxAircraft = null, accountMaxTypes = null)
     }
 
     private fun device() = (_state.value.installId ?: "").replace("-", "").take(12)
@@ -291,6 +291,7 @@ object Repo {
                     accountPro = field(text, "pro") == "true", accountBlocked = false, accountError = null,
                     accountPlan = field(text, "plan")?.takeIf { p -> p.isNotBlank() && p != "null" },
                     accountMaxAircraft = field(text, "maxAircraft")?.toIntOrNull(),
+                    accountMaxTypes = field(text, "maxTypes")?.toIntOrNull(),
                 )
             }
             val s = _state.value
@@ -344,7 +345,7 @@ object Repo {
                     logbookSyncedEpochDay = cur.logbookSyncedEpochDay, disclaimerAccepted = true, proCached = cur.proCached,
                     proGranted = cur.proGranted, installId = cur.installId, lastPingEpochDay = cur.lastPingEpochDay,
                     accountKey = cur.accountKey, accountName = cur.accountName, accountPro = cur.accountPro,
-                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountBlocked = cur.accountBlocked,
+                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountMaxTypes = cur.accountMaxTypes, accountBlocked = cur.accountBlocked,
                     accountSyncMillis = System.currentTimeMillis(), accountServerTime = st ?: cur.accountServerTime, accountDirty = false,
                     selectedId = restored.selectedId ?: cur.selectedId,
                 )
@@ -725,7 +726,7 @@ object Repo {
         logbookUri = null, logbookError = null, logbookSyncedEpochDay = null, proCached = false, proGranted = false,
         installId = null, lastPingEpochDay = null,
         accountKey = null, accountName = null, accountPro = false, accountSyncMillis = null, accountError = null,
-        accountServerTime = null, accountDirty = false, accountBlocked = false, accountPlan = null, accountMaxAircraft = null,
+        accountServerTime = null, accountDirty = false, accountBlocked = false, accountPlan = null, accountMaxAircraft = null, accountMaxTypes = null,
         aircraft = s.aircraft.map { it.copy(pohUri = null) },
     )
 
@@ -767,7 +768,7 @@ object Repo {
                     logbookUri = cur.logbookUri, logbookSyncedEpochDay = cur.logbookSyncedEpochDay,
                     disclaimerAccepted = true, proCached = cur.proCached, proGranted = cur.proGranted, lastPingEpochDay = null,
                     accountKey = cur.accountKey, accountName = cur.accountName, accountPro = cur.accountPro,
-                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountBlocked = cur.accountBlocked,
+                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountMaxTypes = cur.accountMaxTypes, accountBlocked = cur.accountBlocked,
                     accountServerTime = cur.accountServerTime,
                     installId = cur.installId,
                 )

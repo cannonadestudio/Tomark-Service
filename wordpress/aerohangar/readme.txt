@@ -2,7 +2,7 @@
 Contributors: Cannonade Łukasz Bełdowski
 Requires at least: 6.2
 Requires PHP: 8.1
-Stable tag: 1.0.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 
 Serwer aplikacji AeroHangar w WordPressie + konta pilotów (Konto Cannonade: jeden klucz dla AeroHangar i Pilot Logbook) + sprzedaż dostępu przez WooCommerce.
@@ -29,3 +29,11 @@ UWAGA (Google Play): w aplikacji z Google Play nie umieszczaj linków ani przyci
 
 == Dane ==
 Publiczne: wp-content/uploads/aerohangar/data/*.json. Prywatne: tabela {prefix}aerohangar_store w bazie WordPressa (kopia bazy = kopia wszystkiego).
+
+== Changelog ==
+= 1.2.0 =
+* AeroHangar → Informacje: przycisk „Utwórz / uzupełnij produkty AeroHangar” – 5 abonamentów miesięcznych (Pilot 10 zł, Mechanik 35 zł, Szkoła lotnicza 400 zł, Dealer 500 zł, Serwis 500 zł netto). Z WooCommerce Subscriptions – automatyczna płatność co miesiąc.
+* Nowe plany: szkoła lotnicza, dealer, serwis.
+* Limit samolotów i własnych typów w produkcie i przy koncie (konto ma pierwszeństwo).
+= 1.1.1 =
+* Naprawa krytycznego błędu przy instalacji (aktualizacja danych na „init”).

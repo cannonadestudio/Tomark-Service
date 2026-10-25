@@ -57,18 +57,24 @@ add_action('rest_api_init', function () {
  * What the administrator allows this account in AeroHangar (panel → Konta pilotów, or the user's profile):
  *   aerohangar_blocked      1 = no access for the apps
  *   aerohangar_pro          1 = Pro granted by hand, aerohangar_pro_until = unix time (0/empty = no end)
- *   aerohangar_plan         pilot | mechanic | club (label; WooCommerce purchases set it too)
- *   aerohangar_max_aircraft number of aircraft allowed in the app ('' = 1 free / unlimited with Pro)
+ *   aerohangar_plan         pilot | mechanic | school | dealer | service (label; WooCommerce purchases set it too)
+ *   aerohangar_max_aircraft number of aircraft allowed in the app ('' = from the bought product, else 1 free / unlimited with Pro)
+ *   aerohangar_max_types    number of own aircraft types allowed ('' = from the bought product, else unlimited)
  * The panel role (none / viewer / editor) is a WordPress capability on the user.
  */
 function ah_permissions(int $uid): array
 {
     $blocked = (bool)get_user_meta($uid, 'aerohangar_blocked', true);
-    $max = get_user_meta($uid, 'aerohangar_max_aircraft', true);
     $acc = ah_access_active($uid) ? ah_access($uid) : null;
+    // the administrator's value wins; otherwise the limit of the product the account bought
+    $lim = function (string $meta, string $k) use ($uid, $acc) {
+        $v = get_user_meta($uid, $meta, true);
+        if ($v !== '' && $v !== false) return max(0, (int)$v);
+        return isset($acc[$k]) && $acc[$k] !== null && $acc[$k] !== '' ? max(0, (int)$acc[$k]) : null;
+    };
     return ['blocked' => $blocked, 'pro' => !$blocked && ah_account_pro($uid),
         'plan' => (string)(get_user_meta($uid, 'aerohangar_plan', true) ?: ($acc['plan'] ?? '')),
-        'maxAircraft' => ($max === '' || $max === false) ? null : max(0, (int)$max)];
+        'maxAircraft' => $lim('aerohangar_max_aircraft', 'maxAircraft'), 'maxTypes' => $lim('aerohangar_max_types', 'maxTypes')];
 }
 
 /** Pro granted by the owner to the whole account (all the pilot's phones): by hand (optionally until a date) or bought. */
@@ -105,9 +111,11 @@ function ah_account_save(int $uid, array $b, string $by): void
     update_user_meta($uid, 'aerohangar_pro', !empty($b['pro']) ? 1 : 0);
     $until = !empty($b['proUntil']) && preg_match('/^\d{4}-\d{2}-\d{2}$/', (string)$b['proUntil']) ? strtotime($b['proUntil'] . ' 23:59:59 UTC') : 0;
     update_user_meta($uid, 'aerohangar_pro_until', $until);
-    update_user_meta($uid, 'aerohangar_plan', in_array($b['plan'] ?? '', ['pilot', 'mechanic', 'club'], true) ? $b['plan'] : '');
+    update_user_meta($uid, 'aerohangar_plan', isset(ah_plans()[$b['plan'] ?? '']) ? $b['plan'] : '');
     $max = $b['maxAircraft'] ?? '';
     update_user_meta($uid, 'aerohangar_max_aircraft', ($max === '' || $max === null) ? '' : max(0, min(999, (int)$max)));
+    $mt = $b['maxTypes'] ?? '';
+    update_user_meta($uid, 'aerohangar_max_types', ($mt === '' || $mt === null) ? '' : max(0, min(999, (int)$mt)));
     update_user_meta($uid, 'aerohangar_note', sanitize_text_field((string)($b['note'] ?? '')));
     // panel role (never changes administrators)
     if (!$u->has_cap('manage_options')) {
@@ -116,7 +124,7 @@ function ah_account_save(int $uid, array $b, string $by): void
         if ($role === 'viewer') $u->add_cap('aerohangar_view');
         if ($role === 'editor') { $u->add_cap('aerohangar_view'); $u->add_cap('aerohangar_edit'); }
     }
-    ah_log($by, "account #$uid ({$u->user_login}): " . wp_json_encode(array_intersect_key($b, array_flip(['blocked', 'pro', 'proUntil', 'plan', 'maxAircraft', 'panelRole']))));
+    ah_log($by, "account #$uid ({$u->user_login}): " . wp_json_encode(array_intersect_key($b, array_flip(['blocked', 'pro', 'proUntil', 'plan', 'maxAircraft', 'maxTypes', 'panelRole']))));
 }
 
 // Status line on the account page and in /cannonade/v1/me
@@ -140,6 +148,7 @@ function ah_accounts_list(string $q = ''): array
         $acc = ah_access_active($u->ID) ? ah_access($u->ID) : null;
         $until = (int)get_user_meta($u->ID, 'aerohangar_pro_until', true);
         $max = get_user_meta($u->ID, 'aerohangar_max_aircraft', true);
+        $mt = get_user_meta($u->ID, 'aerohangar_max_types', true);
         $out[] = ['id' => $u->ID, 'login' => $u->user_login, 'name' => $u->display_name, 'email' => $u->user_email,
             'registered' => substr($u->user_registered, 0, 10), 'wpRole' => implode(', ', $u->roles),
             'key' => (bool)get_user_meta($u->ID, 'cannonade_key_hash', true), 'keyHint' => (string)get_user_meta($u->ID, 'cannonade_key_hint', true),
@@ -147,9 +156,10 @@ function ah_accounts_list(string $q = ''): array
             'aircraft' => (int)get_user_meta($u->ID, 'aerohangar_aircraft', true),
             'blocked' => (bool)get_user_meta($u->ID, 'aerohangar_blocked', true), 'pro' => (bool)get_user_meta($u->ID, 'aerohangar_pro', true),
             'proUntil' => $until ? gmdate('Y-m-d', $until) : '', 'plan' => (string)get_user_meta($u->ID, 'aerohangar_plan', true),
-            'maxAircraft' => ($max === '' || $max === false) ? '' : (int)$max, 'note' => (string)get_user_meta($u->ID, 'aerohangar_note', true),
+            'maxAircraft' => ($max === '' || $max === false) ? '' : (int)$max,
+            'maxTypes' => ($mt === '' || $mt === false) ? '' : (int)$mt, 'note' => (string)get_user_meta($u->ID, 'aerohangar_note', true),
             'panelRole' => ah_panel_role($u), 'proActive' => ah_account_pro($u->ID),
-            'access' => $acc ? ['plan' => $acc['plan'], 'until' => (int)$acc['until']] : null];
+            'access' => $acc ? ['plan' => $acc['plan'], 'until' => (int)$acc['until'], 'maxAircraft' => $acc['maxAircraft'] ?? null, 'maxTypes' => $acc['maxTypes'] ?? null] : null];
     }
     usort($out, fn($a, $b) => max($b['lastSeen'], $b['lastSync']) <=> max($a['lastSeen'], $a['lastSync']));
     return $out;

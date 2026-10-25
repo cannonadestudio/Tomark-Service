@@ -182,7 +182,13 @@ fun AircraftEditScreen(existing: Aircraft?, onDone: () -> Unit) {
             (if (typeKind == "custom") it.custom else !it.custom && it.kind == typeKind) &&
                 (typeQuery.isBlank() || it.name.contains(typeQuery.trim(), true) || it.manufacturer.contains(typeQuery.trim(), true))
         }
-        TextButton(onClick = { customTypeNew = true }) { Text("+ " + stringResource(R.string.custom_type_add)) }
+        val ctxT = androidx.compose.ui.platform.LocalContext.current
+        TextButton(onClick = {
+            // limit of own types set by the administrator for this account
+            val max = appState.accountMaxTypes
+            if (max != null && appState.customTypes.size >= max) android.widget.Toast.makeText(ctxT, ctxT.getString(R.string.account_types_reached, max), android.widget.Toast.LENGTH_LONG).show()
+            else customTypeNew = true
+        }) { Text("+ " + stringResource(R.string.custom_type_add)) }
         if (typeKind == "custom" && shown.isEmpty()) Text(stringResource(R.string.custom_type_hint), style = MaterialTheme.typography.bodySmall)
         listOf("EASA", "UL").forEach { cat ->
             val inCat = shown.filter { it.category == cat }

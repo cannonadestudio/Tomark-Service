@@ -158,6 +158,11 @@
     <string name="plan_pilot">pilot / właściciel</string>
     <string name="plan_mechanic">mechanik / serwis</string>
     <string name="plan_club">aeroklub / szkoła</string>
+    <string name="plan_school">szkoła lotnicza</string>
+    <string name="plan_dealer">dealer</string>
+    <string name="plan_service">serwis</string>
+    <string name="account_types_limit">Limit własnych typów: %1$d</string>
+    <string name="account_types_reached">To konto może mieć %1$d własny(ch) typ(ów) – o więcej poproś administratora.</string>
     <string name="account_limit">Limit samolotów dla konta: %1$d</string>
     <string name="account_limit_reached">To konto może mieć %1$d samolot(y) – o więcej poproś administratora.</string>
     <string name="account_choose_title">Które dane zachować?</string>

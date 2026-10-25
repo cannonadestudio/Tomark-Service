@@ -1506,5 +1506,25 @@
  "account_choose_push": {
   "de": "Daten dieses Telefons senden",
   "cs": "Odeslat data z telefonu"
+ },
+ "plan_school": {
+  "de": "Flugschule",
+  "cs": "letecká škola"
+ },
+ "plan_dealer": {
+  "de": "Händler",
+  "cs": "prodejce"
+ },
+ "plan_service": {
+  "de": "Wartungsbetrieb",
+  "cs": "servis"
+ },
+ "account_types_limit": {
+  "de": "Erlaubte eigene Typen: %1$d",
+  "cs": "Limit vlastních typů: %1$d"
+ },
+ "account_types_reached": {
+  "de": "Dieses Konto darf %1$d eigene(n) Typ(en) haben.",
+  "cs": "Účet může mít %1$d vlastní typy."
  }
 }

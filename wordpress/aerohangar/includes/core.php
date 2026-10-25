@@ -326,3 +326,9 @@ function ah_mail(string $to, string $subject, string $body, string $replyTo = ''
     if ($replyTo !== '' && is_email($replyTo)) $h[] = 'Reply-To: ' . $replyTo;
     return (bool)wp_mail($to, $subject, $body, $h);
 }
+
+/** AeroHangar plans (account label; WooCommerce products set it on purchase). 'club' kept for older accounts. */
+function ah_plans(): array
+{
+    return ['pilot' => 'Pilot', 'mechanic' => 'Mechanik', 'school' => 'Szkoła lotnicza', 'dealer' => 'Dealer', 'service' => 'Serwis', 'club' => 'Aeroklub'];
+}

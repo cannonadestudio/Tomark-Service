@@ -336,4 +336,5 @@ data class AppState(
     val accountBlocked: Boolean = false,
     val accountPlan: String? = null,
     val accountMaxAircraft: Int? = null,
+    val accountMaxTypes: Int? = null,
 )

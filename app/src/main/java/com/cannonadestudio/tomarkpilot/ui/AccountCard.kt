@@ -76,10 +76,11 @@ fun AccountCard() {
                 )
                 if (st.accountPro) Text(stringResource(R.string.account_pro), style = MaterialTheme.typography.bodySmall, color = HbgPink)
                 st.accountPlan?.let { p ->
-                    Text(stringResource(R.string.account_plan, stringResource(when (p) { "mechanic" -> R.string.plan_mechanic; "club" -> R.string.plan_club; else -> R.string.plan_pilot })),
+                    Text(stringResource(R.string.account_plan, stringResource(when (p) { "mechanic" -> R.string.plan_mechanic; "club" -> R.string.plan_club; "school" -> R.string.plan_school; "dealer" -> R.string.plan_dealer; "service" -> R.string.plan_service; else -> R.string.plan_pilot })),
                         style = MaterialTheme.typography.bodySmall)
                 }
                 st.accountMaxAircraft?.let { Text(stringResource(R.string.account_limit, it), style = MaterialTheme.typography.bodySmall) }
+                st.accountMaxTypes?.let { Text(stringResource(R.string.account_types_limit, it), style = MaterialTheme.typography.bodySmall) }
                 if (st.accountBlocked) Text(stringResource(R.string.account_blocked), color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall)
                 st.accountError?.takeIf { it != "403" }?.let { Text(if (it == "401") stringResource(R.string.account_bad_key) else stringResource(R.string.backup_error, it), color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall) }
                 Text(stringResource(R.string.account_auto), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
