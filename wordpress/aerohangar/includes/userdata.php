@@ -54,7 +54,7 @@ add_action('rest_api_init', function () {
 /** Pro granted by the owner to the whole account (all the pilot's phones). */
 function ah_account_pro(int $uid): bool
 {
-    return (bool)get_user_meta($uid, 'aerohangar_pro', true);
+    return (bool)get_user_meta($uid, 'aerohangar_pro', true) || ah_access_active($uid);
 }
 
 // Status line on the account page and in /cannonade/v1/me
@@ -73,7 +73,8 @@ function ah_accounts_list(): array
 {
     $ids = array_unique(array_merge(
         get_users(['meta_key' => 'cannonade_key_hash', 'fields' => 'ID', 'number' => 2000]),
-        get_users(['meta_key' => 'aerohangar_state_time', 'fields' => 'ID', 'number' => 2000])
+        get_users(['meta_key' => 'aerohangar_state_time', 'fields' => 'ID', 'number' => 2000]),
+        get_users(['meta_key' => 'aerohangar_access', 'fields' => 'ID', 'number' => 2000])
     ));
     $out = [];
     foreach ($ids as $id) {
@@ -82,7 +83,8 @@ function ah_accounts_list(): array
         $out[] = ['id' => $u->ID, 'login' => $u->user_login, 'name' => $u->display_name, 'email' => $u->user_email,
             'key' => (bool)get_user_meta($u->ID, 'cannonade_key_hash', true), 'keyHint' => (string)get_user_meta($u->ID, 'cannonade_key_hint', true),
             'lastSeen' => (int)get_user_meta($u->ID, 'cannonade_last_seen', true), 'lastSync' => (int)get_user_meta($u->ID, 'aerohangar_state_time', true),
-            'aircraft' => (int)get_user_meta($u->ID, 'aerohangar_aircraft', true), 'pro' => ah_account_pro($u->ID)];
+            'aircraft' => (int)get_user_meta($u->ID, 'aerohangar_aircraft', true), 'pro' => (bool)get_user_meta($u->ID, 'aerohangar_pro', true),
+            'access' => ah_access_active($u->ID) ? ['plan' => ah_access($u->ID)['plan'], 'until' => (int)ah_access($u->ID)['until']] : null];
     }
     usort($out, fn($a, $b) => max($b['lastSeen'], $b['lastSync']) <=> max($a['lastSeen'], $a['lastSync']));
     return $out;

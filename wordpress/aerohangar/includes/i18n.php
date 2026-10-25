@@ -36,6 +36,9 @@ if (!function_exists('cannonade_lang')) {
             'register' => ['pl' => 'Załóż konto', 'en' => 'Create account', 'de' => 'Registrieren', 'cs' => 'Registrace', 'sk' => 'Registrácia', 'fr' => 'Créer un compte'],
             'ah_status' => ['pl' => 'kopia danych: %1$s, samoloty: %2$d%3$s', 'en' => 'data backup: %1$s, aircraft: %2$d%3$s', 'de' => 'Datensicherung: %1$s, Flugzeuge: %2$d%3$s', 'cs' => 'záloha: %1$s, letadla: %2$d%3$s', 'sk' => 'záloha: %1$s, lietadlá: %2$d%3$s', 'fr' => 'sauvegarde : %1$s, avions : %2$d%3$s'],
             'never' => ['pl' => 'jeszcze nie', 'en' => 'not yet', 'de' => 'noch nicht', 'cs' => 'zatím ne', 'sk' => 'zatiaľ nie', 'fr' => 'pas encore'],
+            'access_active' => ['pl' => 'Dostęp AeroHangar aktywny', 'en' => 'AeroHangar access active', 'de' => 'AeroHangar-Zugang aktiv', 'cs' => 'Přístup AeroHangar aktivní', 'sk' => 'Prístup AeroHangar aktívny', 'fr' => 'Accès AeroHangar actif'],
+            'access_unlimited' => ['pl' => '(bez limitu czasu)', 'en' => '(no end date)', 'de' => '(unbegrenzt)', 'cs' => '(bez omezení)', 'sk' => '(bez obmedzenia)', 'fr' => '(sans limite)'],
+            'access_until' => ['pl' => 'do %s', 'en' => 'until %s', 'de' => 'bis %s', 'cs' => 'do %s', 'sk' => 'do %s', 'fr' => 'jusqu\'au %s'],
             'pro' => ['pl' => ', Pro aktywne', 'en' => ', Pro active', 'de' => ', Pro aktiv', 'cs' => ', Pro aktivní', 'sk' => ', Pro aktívne', 'fr' => ', Pro actif'],
         ];
         $l = cannonade_lang();

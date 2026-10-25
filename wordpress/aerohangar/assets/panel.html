@@ -719,12 +719,12 @@ async function renderAccounts() {
   const q = (state.filter || "").toLowerCase();
   const list = j.accounts.filter(a => !q || [a.login, a.name, a.email].join(" ").toLowerCase().includes(q));
   v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Szukaj: login, imię, e-mail…" value="${esc(state.filter)}" style="flex:1"></div>
-    <p class="muted">Piloci z kontem WordPress. Klucz tworzą na stronie z kodem <code>[cannonade_konto]</code> (albo w Profil → Konto Cannonade) i wklejają go w AeroHangar oraz w Pilot Logbook. <b>Pro dla konta</b> działa na wszystkich telefonach pilota.</p>
+    <p class="muted">Piloci z kontem WordPress. Klucz tworzą na stronie z kodem <code>[cannonade_konto]</code> (albo w Profil → Konto Cannonade) i wklejają go w AeroHangar oraz w Pilot Logbook. <b>Pro dla konta</b> działa na wszystkich telefonach pilota – z zakupu w WooCommerce (produkt z opcją „Daje dostęp AeroHangar”) albo przyznane ręcznie.</p>
     <table><tr><th>Pilot</th><th>Klucz</th><th>Ostatnio</th><th class="hide-sm">Kopia danych</th><th>Samoloty</th><th>Pro</th><th></th></tr>
     ${list.map(a => `<tr><td><b>${esc(a.name)}</b><div class="muted">${esc(a.login)} · ${esc(a.email)}</div></td>
       <td>${a.key ? `<span class="chip g">…${esc(a.keyHint)}</span>` : '<span class="muted">brak</span>'}</td>
       <td class="nowrap">${d(a.lastSeen)}</td><td class="hide-sm nowrap">${d(a.lastSync)}</td><td>${a.aircraft}</td>
-      <td>${admin ? `<button class="pub ${a.pro ? "on" : "off"}" data-pro="${a.id}" data-on="${a.pro ? 0 : 1}">${a.pro ? "tak" : "nie"}</button>` : (a.pro ? "tak" : "nie")}</td>
+      <td>${a.access ? `<span class="chip p" title="Zakup WooCommerce">${esc({ pilot: "Pilot", mechanic: "Mechanik", club: "Aeroklub" }[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + new Date(a.access.until * 1000).toISOString().slice(0, 10) : "∞"}</span> ` : ""}${admin ? `<button class="pub ${a.pro ? "on" : "off"}" data-pro="${a.id}" data-on="${a.pro ? 0 : 1}" title="Pro przyznane ręcznie">${a.pro ? "ręczne: tak" : "ręczne: nie"}</button>` : (a.pro ? "ręczne" : "")}</td>
       <td>${admin && a.key ? `<button class="ghost" data-unlink="${a.id}">Unieważnij klucz</button>` : ""}</td></tr>`).join("") || '<tr><td class="muted">Brak kont z kluczem.</td></tr>'}</table></div>`;
   $("#q").oninput = e => { state.filter = e.target.value; clearTimeout(state._qt); state._qt = setTimeout(() => renderAccounts().then(() => { const x = $("#q"); x.focus(); x.setSelectionRange(x.value.length, x.value.length) }), 250) };
   v.querySelectorAll("button[data-pro]").forEach(b => b.onclick = async () => { try { await api("accounts", { body: { user: +b.dataset.pro, action: "pro", on: b.dataset.on === "1" } }); renderAccounts() } catch (e) { status(e.message, false) } });

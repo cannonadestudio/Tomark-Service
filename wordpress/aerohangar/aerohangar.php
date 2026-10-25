@@ -21,6 +21,7 @@ require_once __DIR__ . '/includes/api.php';
 require_once __DIR__ . '/includes/account.php';
 require_once __DIR__ . '/includes/userdata.php';
 require_once __DIR__ . '/includes/admin.php';
+require_once __DIR__ . '/includes/woocommerce.php';
 
 register_activation_hook(__FILE__, 'aerohangar_activate');
 
