@@ -74,7 +74,8 @@ function ah_permissions(int $uid): array
     };
     return ['blocked' => $blocked, 'pro' => !$blocked && ah_account_pro($uid),
         'plan' => (string)(get_user_meta($uid, 'aerohangar_plan', true) ?: ($acc['plan'] ?? '')),
-        'maxAircraft' => $lim('aerohangar_max_aircraft', 'maxAircraft'), 'maxTypes' => $lim('aerohangar_max_types', 'maxTypes')];
+        'maxAircraft' => $lim('aerohangar_max_aircraft', 'maxAircraft'), 'maxTypes' => $lim('aerohangar_max_types', 'maxTypes'),
+        'caps' => function_exists('ah_caps') ? ah_caps($uid) : []];
 }
 
 /** Pro granted by the owner to the whole account (all the pilot's phones): by hand (optionally until a date) or bought. */
@@ -117,6 +118,16 @@ function ah_account_save(int $uid, array $b, string $by): void
     $mt = $b['maxTypes'] ?? '';
     update_user_meta($uid, 'aerohangar_max_types', ($mt === '' || $mt === null) ? '' : max(0, min(999, (int)$mt)));
     update_user_meta($uid, 'aerohangar_note', sanitize_text_field((string)($b['note'] ?? '')));
+    // capabilities: explicit list, or plan defaults
+    if (array_key_exists('caps', $b)) {
+        if ($b['caps'] === null || $b['caps'] === 'default') delete_user_meta($uid, 'aerohangar_caps');
+        else update_user_meta($uid, 'aerohangar_caps', array_values(array_intersect(array_keys(ah_caps_all()), (array)$b['caps'])));
+    }
+    if (array_key_exists('contactId', $b)) {
+        $cid = sanitize_text_field((string)$b['contactId']);
+        if ($cid === '') delete_user_meta($uid, 'aerohangar_contact_id');
+        elseif (in_array($cid, array_column(ah_contacts_brief(), 'id'), true)) update_user_meta($uid, 'aerohangar_contact_id', $cid);
+    }
     // panel role (never changes administrators)
     if (!$u->has_cap('manage_options')) {
         $role = (string)($b['panelRole'] ?? '');
@@ -124,7 +135,7 @@ function ah_account_save(int $uid, array $b, string $by): void
         if ($role === 'viewer') $u->add_cap('aerohangar_view');
         if ($role === 'editor') { $u->add_cap('aerohangar_view'); $u->add_cap('aerohangar_edit'); }
     }
-    ah_log($by, "account #$uid ({$u->user_login}): " . wp_json_encode(array_intersect_key($b, array_flip(['blocked', 'pro', 'proUntil', 'plan', 'maxAircraft', 'maxTypes', 'panelRole']))));
+    ah_log($by, "account #$uid ({$u->user_login}): " . wp_json_encode(array_intersect_key($b, array_flip(['blocked', 'pro', 'proUntil', 'plan', 'maxAircraft', 'maxTypes', 'panelRole', 'caps', 'contactId']))));
 }
 
 // Status line on the account page and in /cannonade/v1/me
@@ -158,7 +169,8 @@ function ah_accounts_list(string $q = ''): array
             'proUntil' => $until ? gmdate('Y-m-d', $until) : '', 'plan' => (string)get_user_meta($u->ID, 'aerohangar_plan', true),
             'maxAircraft' => ($max === '' || $max === false) ? '' : (int)$max,
             'maxTypes' => ($mt === '' || $mt === false) ? '' : (int)$mt, 'note' => (string)get_user_meta($u->ID, 'aerohangar_note', true),
-            'panelRole' => ah_panel_role($u), 'proActive' => ah_account_pro($u->ID),
+            'panelRole' => ah_panel_role($u), 'proActive' => ah_account_pro($u->ID), 'hasAccess' => ah_has_access($u->ID),
+            'capsCustom' => ah_caps_custom($u->ID), 'caps' => ah_caps($u->ID), 'contactId' => ah_user_contact_id($u->ID),
             'access' => $acc ? ['plan' => $acc['plan'], 'until' => (int)$acc['until'], 'maxAircraft' => $acc['maxAircraft'] ?? null, 'maxTypes' => $acc['maxTypes'] ?? null] : null];
     }
     usort($out, fn($a, $b) => max($b['lastSeen'], $b['lastSync']) <=> max($a['lastSeen'], $a['lastSync']));

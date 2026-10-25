@@ -716,7 +716,7 @@ const PLAN = { pilot: "Pilot", mechanic: "Mechanik", school: "Szkoła lotnicza",
 async function renderAccounts() {
   const v = $("#view");
   const j = await api("accounts", { q: "&q=" + encodeURIComponent(state.filter || "") });
-  state.accounts = j.accounts;
+  state.accounts = j.accounts; state.capsAll = j.capsAll || {}; state.planCaps = j.planCaps || {}; state.contactsBrief = j.contacts || []; state.loginPage = j.loginPage || "";
   const admin = state.user?.role === "admin";
   const d = t => t ? new Date(t * 1000).toISOString().slice(0, 10) : "—";
   const ROLE = { admin: "administrator", editor: "edycja danych", viewer: "podgląd", "": "" };
@@ -730,6 +730,8 @@ async function renderAccounts() {
         ${a.access ? `<div class="muted">zakup: ${esc(PLAN[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + d(a.access.until) : "bez limitu"}</div>` : ""}
         ${a.maxAircraft !== "" ? `<div class="muted">limit samolotów: ${a.maxAircraft}</div>` : (a.access && a.access.maxAircraft != null ? `<div class="muted">limit samolotów (produkt): ${a.access.maxAircraft}</div>` : "")}
         ${a.maxTypes !== "" ? `<div class="muted">limit typów: ${a.maxTypes}</div>` : (a.access && a.access.maxTypes != null ? `<div class="muted">limit typów (produkt): ${a.access.maxTypes}</div>` : "")}
+        ${a.hasAccess ? `<div class="muted">możliwości: ${a.caps.length}/${Object.keys(state.capsAll).length}${a.capsCustom ? " (własne)" : " (wg planu)"}</div>` : ""}
+        ${a.contactId ? `<div class="muted">wizytówka: ${esc((state.contactsBrief.find(c => c.id === a.contactId) || {}).name || a.contactId)}</div>` : ""}
         ${a.panelRole ? `<div class="muted">panel: ${esc(ROLE[a.panelRole])}</div>` : ""}
         ${a.note ? `<div class="muted"><i>${esc(a.note)}</i></div>` : ""}</td>
       <td>${a.key ? `<span class="chip g">…${esc(a.keyHint)}</span>` : '<span class="muted">brak</span>'}</td>
@@ -750,16 +752,31 @@ function editAccount(a) {
     <label class="inl"><input type="checkbox" name="pro" ${a.pro ? "checked" : ""}> <b>dostęp przyznany ręcznie</b> (Pro – klucz działa bez zakupu)</label>
     <div class="grid2">${field("proUntil", "Dostęp ręczny do (puste = bez limitu)", a.proUntil, "date")}
       ${isAdminUser ? '<p class="muted">Administrator WordPressa – pełny dostęp do panelu.</p>' : select("panelRole", "Dostęp do panelu AeroHangar", [["", "brak"], ["viewer", "podgląd"], ["editor", "edycja danych (biuletyny, kontakty…)"]], a.panelRole)}</div>
+    <h4 style="margin:14px 0 4px">Możliwości w systemie</h4>
+    <label class="inl"><input type="checkbox" name="capsDefault" id="capsDefault" ${a.capsCustom ? "" : "checked"}> według planu (domyślne dla wybranego planu)</label>
+    <div id="capsBox" style="margin:4px 0 8px 18px">${Object.entries(state.capsAll).map(([k, v]) => `<label class="inl"><input type="checkbox" name="cap_${k}" data-cap="${k}" ${(a.capsCustom || a.caps || []).includes(k) ? "checked" : ""}> ${esc(v)}</label>`).join("")}</div>
+    ${field("contactId", "Wizytówka w katalogu (dla firm: zapytania, edycja wizytówki, statystyki) – wpisz nazwę i wybierz", a.contactId, "text", 'list="ahContacts" autocomplete="off"')}
+    <datalist id="ahContacts">${state.contactsBrief.map(c => `<option value="${esc(c.id)}">${esc(c.name + (c.city ? " – " + c.city : ""))}</option>`).join("")}</datalist>
+    <p class="muted">Klient loguje się na stronie <a href="${esc(state.loginPage)}" target="_blank">AeroHangar – logowanie</a> (link „Logowanie” w menu).</p>
     ${field("note", "Notatka (widoczna tylko tutaj)", a.note)}
     ${a.access ? `<p class="muted">Dostęp z zakupu WooCommerce: ${esc(PLAN[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + new Date(a.access.until * 1000).toISOString().slice(0, 10) : "bez limitu"} – liczy się niezależnie od ustawień powyżej (blokada go wyłącza).</p>` : ""}
     ${a.key ? `<p><button type="button" class="ghost" id="unlinkKey">Unieważnij klucz (…${esc(a.keyHint)})</button></p>` : '<p class="muted">Konto nie ma jeszcze klucza aplikacji.</p>'}`,
     async fd => {
       const data = { blocked: !!fd.get("blocked"), pro: !!fd.get("pro"), proUntil: fd.get("proUntil") || "", plan: fd.get("plan") || "",
         maxAircraft: fd.get("maxAircraft") === "" ? "" : +fd.get("maxAircraft"), maxTypes: fd.get("maxTypes") === "" ? "" : +fd.get("maxTypes"), panelRole: fd.get("panelRole") || (isAdminUser ? "admin" : ""), note: (fd.get("note") || "").trim() };
+      data.caps = fd.get("capsDefault") ? "default" : Object.keys(state.capsAll).filter(k => fd.get("cap_" + k));
+      data.contactId = (fd.get("contactId") || "").trim();
       await api("accounts", { body: { user: a.id, action: "save", data } });
       status("Zapisano uprawnienia konta " + a.login + ".");
       renderAccounts();
     });
+  const cd = $("#capsDefault"), planSel = $("#dlgForm").querySelector("select[name=plan]");
+  const syncCaps = () => {
+    const box = $("#capsBox"); box.style.opacity = cd.checked ? .55 : 1;
+    if (cd.checked) { const def = state.planCaps[planSel.value || "pilot"] || []; box.querySelectorAll("input[data-cap]").forEach(i => { i.checked = def.includes(i.dataset.cap); i.disabled = true }); }
+    else box.querySelectorAll("input[data-cap]").forEach(i => i.disabled = false);
+  };
+  cd.onchange = syncCaps; planSel.onchange = syncCaps; syncCaps();
   const u = $("#unlinkKey");
   if (u) u.onclick = async () => { if (!confirm("Unieważnić klucz? Aplikacje tego konta stracą połączenie.")) return; await api("accounts", { body: { user: a.id, action: "unlink" } }); $("#dlg").close(); status("Klucz unieważniony."); renderAccounts() };
 }

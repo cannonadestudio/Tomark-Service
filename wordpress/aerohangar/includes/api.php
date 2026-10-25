@@ -489,7 +489,9 @@ function ah_api_dispatch(): void
                     ah_log($u['login'], "account #$uid: key revoked");
                 }
             }
-            ah_out(200, ['accounts' => ah_accounts_list(sanitize_text_field((string)($_GET['q'] ?? '')))]);
+            ah_out(200, ['accounts' => ah_accounts_list(sanitize_text_field((string)($_GET['q'] ?? ''))), 'capsAll' => ah_caps_all(),
+                'planCaps' => array_combine(array_keys(ah_plans()), array_map('ah_plan_caps', array_keys(ah_plans()))), 'contacts' => ah_contacts_brief(),
+                'loginPage' => ah_login_page_url()]);
     
         default:
             ah_out(404, ['error' => 'unknown action']);
