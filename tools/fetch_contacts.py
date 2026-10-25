@@ -275,6 +275,16 @@ def parse_medical(rows, url, kind, cache):
 def collect_medical(page_url, kind, cache):
     page, docs = doc_links(page_url)
     notice(f"{kind}: page {len(page)} chars, documents: " + " ".join(urllib.parse.unquote(d).rsplit('/', 1)[-1] for d in docs[:8]))
+    if DRY:
+        hrefs = [h for h in re.findall(r'href="([^"]+)"', page) if re.search(r"download|_download|\.pdf|\.xls|lekarz|ame|orzecz|aemc|centr", h, re.I)]
+        notice(f"{kind}: interesting links: " + " ".join(sorted(set(hrefs))[:40]))
+        body = re.sub(r"<script.*?</script>|<style.*?</style>", " ", page, flags=re.S | re.I)
+        txt = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", body)).split())
+        i = max(0, txt.lower().find("lekar" if kind == "ame" else "centr", 2000))
+        notice(mask(f"{kind}: text: " + txt[i:i + 1500]))
+        tags = re.findall(r"<(table|ul|ol|div class=\"[^\"]{0,40}|p|li|tr|iframe)", body, re.I)
+        from collections import Counter
+        notice(f"{kind}: tags: " + str(Counter(t.lower()[:30] for t in tags).most_common(15)))
     rows, src = html_rows(page), page_url
     for d in docs:
         low = urllib.parse.unquote(d).lower()
