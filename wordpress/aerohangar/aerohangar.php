@@ -3,7 +3,7 @@
  * Plugin Name:       AeroHangar
  * Plugin URI:        https://horyzontbezgranic.pl/
  * Description:       Serwer aplikacji AeroHangar w WordPressie: biuletyny, typy, kontakty, partnerzy, reklamy, zapytania serwisowe, instalacje i Pro – oraz konta pilotów z jednym kluczem dla AeroHangar i Pilot Logbook (Konto Cannonade).
- * Version:           1.1.0
+ * Version:           1.1.1
  * Requires at least: 6.2
  * Requires PHP:      8.1
  * Author:            Cannonade Łukasz Bełdowski
@@ -12,7 +12,15 @@
  */
 defined('ABSPATH') || exit;
 
-define('AEROHANGAR_VERSION', '1.1.0');
+// Too old PHP: show a notice instead of breaking the site.
+if (PHP_VERSION_ID < 80100) {
+    add_action('admin_notices', function () {
+        echo '<div class="notice notice-error"><p>AeroHangar wymaga PHP 8.1 lub nowszego (jest ' . esc_html(PHP_VERSION) . '). Zmień wersję PHP w panelu hostingu.</p></div>';
+    });
+    return;
+}
+
+define('AEROHANGAR_VERSION', '1.1.1');
 define('AEROHANGAR_DIR', __DIR__);
 define('AEROHANGAR_URL', plugin_dir_url(__FILE__));
 
@@ -23,7 +31,26 @@ require_once __DIR__ . '/includes/userdata.php';
 require_once __DIR__ . '/includes/admin.php';
 require_once __DIR__ . '/includes/woocommerce.php';
 
-register_activation_hook(__FILE__, 'aerohangar_activate');
+register_activation_hook(__FILE__, 'aerohangar_activate_safe');
+
+/** Activation / upgrade never breaks the site: errors are logged and shown as an admin notice. */
+function aerohangar_activate_safe(): void
+{
+    try {
+        aerohangar_activate();
+        delete_option('aerohangar_setup_error');
+    } catch (Throwable $e) {
+        update_option('aerohangar_setup_error', $e->getMessage() . ' (' . basename($e->getFile()) . ':' . $e->getLine() . ')', false);
+        error_log('AeroHangar setup: ' . $e);
+    }
+}
+
+add_action('admin_notices', function () {
+    $err = get_option('aerohangar_setup_error');
+    if ($err && current_user_can('manage_options')) {
+        echo '<div class="notice notice-error"><p><b>AeroHangar:</b> nie udało się przygotować danych – ' . esc_html($err) . '. Sprawdź, czy folder wp-content/uploads jest zapisywalny, i wyłącz/włącz wtyczkę.</p></div>';
+    }
+});
 
 function aerohangar_activate(): void
 {
@@ -69,6 +96,7 @@ add_action('rest_api_init', function () {
 });
 
 // Upgrades without re-activation (new table columns, new starting files, config).
-add_action('plugins_loaded', function () {
-    if (get_option('aerohangar_version') !== AEROHANGAR_VERSION) aerohangar_activate();
-});
+// On "init" – WordPress (rewrite rules, REST URLs) is ready then; never on "plugins_loaded".
+add_action('init', function () {
+    if (get_option('aerohangar_version') !== AEROHANGAR_VERSION) aerohangar_activate_safe();
+}, 99);

@@ -8,7 +8,7 @@
  */
 defined('ABSPATH') || exit;
 
-function out(int $code, array $data): never
+function ah_out(int $code, array $data): never
 {
     status_header($code);
     header('Content-Type: application/json; charset=utf-8');
@@ -19,16 +19,16 @@ function out(int $code, array $data): never
 }
 
 /** WordPress user → panel role: admin (manage_options or aerohangar_admin), editor (aerohangar_edit), viewer (aerohangar_view). */
-function require_login(): array
+function ah_require_login(): array
 {
     $wu = wp_get_current_user();
-    if (!$wu || !$wu->ID || !(current_user_can('aerohangar_view') || current_user_can('manage_options'))) out(401, ['error' => 'login required']);
+    if (!$wu || !$wu->ID || !(current_user_can('aerohangar_view') || current_user_can('manage_options'))) ah_out(401, ['error' => 'login required']);
     $role = (current_user_can('manage_options') || current_user_can('aerohangar_admin')) ? 'admin' : (current_user_can('aerohangar_edit') ? 'editor' : 'viewer');
     return ['login' => $wu->user_login, 'role' => $role];
 }
 
 /** REST cookie authentication already verifies the X-WP-Nonce header; without it the user is anonymous. */
-function require_csrf(): void
+function ah_require_csrf(): void
 {
 }
 
@@ -45,59 +45,59 @@ function ah_api_dispatch(): void
 
     if ($action === 'me') {
         $wu = wp_get_current_user();
-        $u = ($wu && $wu->ID && (current_user_can('aerohangar_view') || current_user_can('manage_options'))) ? require_login() : null;
-        out(200, ['user' => $u, 'csrf' => $u ? wp_create_nonce('wp_rest') : null, 'files' => AH_FILES, 'publicBase' => ah_data_url(),
+        $u = ($wu && $wu->ID && (current_user_can('aerohangar_view') || current_user_can('manage_options'))) ? ah_require_login() : null;
+        ah_out(200, ['user' => $u, 'csrf' => $u ? wp_create_nonce('wp_rest') : null, 'files' => AH_FILES, 'publicBase' => ah_data_url(),
             'logout' => wp_logout_url(admin_url()), 'login' => wp_login_url(admin_url('admin.php?page=aerohangar')), 'wp' => true]);
     }
 
     switch ($action) {
         case 'get':
-            require_login();
+            ah_require_login();
             $f = (string)($_GET['f'] ?? '');
-            if (!in_array($f, AH_FILES, true)) out(400, ['error' => 'unknown file']);
+            if (!in_array($f, AH_FILES, true)) ah_out(400, ['error' => 'unknown file']);
             $raw = ah_read_editable($f);
-            out(200, ['data' => $raw === '' ? null : json_decode($raw, true), 'rev' => $raw === '' ? '' : sha1($raw)]);
+            ah_out(200, ['data' => $raw === '' ? null : json_decode($raw, true), 'rev' => $raw === '' ? '' : sha1($raw)]);
     
         case 'save':
-            $u = require_login();
-            require_csrf();
-            if ($u['role'] === 'viewer') out(403, ['error' => 'read-only account']);
+            $u = ah_require_login();
+            ah_require_csrf();
+            if ($u['role'] === 'viewer') ah_out(403, ['error' => 'read-only account']);
             $f = (string)($body['f'] ?? '');
-            if (!in_array($f, AH_FILES, true)) out(400, ['error' => 'unknown file']);
+            if (!in_array($f, AH_FILES, true)) ah_out(400, ['error' => 'unknown file']);
             $err = ah_validate($f, $body['data'] ?? null);
-            if ($err) out(422, ['error' => $err]);
+            if ($err) ah_out(422, ['error' => $err]);
             $current = ah_read_editable($f);
             if (($body['rev'] ?? '') !== ($current === '' ? '' : sha1($current))) {
-                out(409, ['error' => 'the file was changed by someone else – reload']);
+                ah_out(409, ['error' => 'the file was changed by someone else – reload']);
             }
             ah_backup($f, $current);
             $rev = ah_write_editable($f, $body['data']);
             ah_log($u['login'], 'save ' . $f . ': ' . mb_substr((string)($body['message'] ?? ''), 0, 200));
-            out(200, ['rev' => $rev]);
+            ah_out(200, ['rev' => $rev]);
     
         case 'backups':
-            require_login();
-            out(200, ['backups' => ah_list_backups()]);
+            ah_require_login();
+            ah_out(200, ['backups' => ah_list_backups()]);
     
         case 'restore':
-            $u = require_login();
-            require_csrf();
-            if ($u['role'] !== 'admin') out(403, ['error' => 'admin only']);
+            $u = ah_require_login();
+            ah_require_csrf();
+            if ($u['role'] !== 'admin') ah_out(403, ['error' => 'admin only']);
             $name = basename((string)($body['name'] ?? ''));
             $ok = ah_restore($name, $u['login']);
-            if (!$ok) out(404, ['error' => 'backup not found']);
-            out(200, ['ok' => true]);
+            if (!$ok) ah_out(404, ['error' => 'backup not found']);
+            ah_out(200, ['ok' => true]);
     
         case 'log':
-            $u = require_login();
-            out(200, ['log' => ah_read_log(200)]);
+            $u = ah_require_login();
+            ah_out(200, ['log' => ah_read_log(200)]);
     
         case 'import':
             // Bulletins collected by the GitHub bot (EASA ADs, manufacturers' pages). Adds only unknown ids.
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
-            if (!hash_equals(ah_cron_key(), (string)($_GET['key'] ?? ''))) out(403, ['error' => 'bad key']);
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') ah_out(405, ['error' => 'POST only']);
+            if (!hash_equals(ah_cron_key(), (string)($_GET['key'] ?? ''))) ah_out(403, ['error' => 'bad key']);
             $incoming = $body['bulletins'] ?? null;
-            if (!is_array($incoming)) out(400, ['error' => 'no bulletins']);
+            if (!is_array($incoming)) ah_out(400, ['error' => 'no bulletins']);
             $path = ah_data_path('bulletins');
             $raw = is_file($path) ? (string)file_get_contents($path) : '';
             $feed = $raw ? json_decode($raw, true) : ['version' => 0, 'updated' => '', 'bulletins' => []];
@@ -118,25 +118,25 @@ function ah_api_dispatch(): void
                 ah_write_atomic($path, json_encode($feed, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n");
                 ah_log('bot', "import: $added new bulletins");
             }
-            out(200, ['added' => $added]);
+            ah_out(200, ['added' => $added]);
     
         case 'import_contacts':
             // Official lists collected by the GitHub bot (ULC examiners, maintenance organisations).
             // Replaces all entries with the given id prefixes; contacts added in the panel stay untouched.
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
-            if (!hash_equals(ah_cron_key(), (string)($_GET['key'] ?? ''))) out(403, ['error' => 'bad key']);
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') ah_out(405, ['error' => 'POST only']);
+            if (!hash_equals(ah_cron_key(), (string)($_GET['key'] ?? ''))) ah_out(403, ['error' => 'bad key']);
             $prefixes = array_values(array_filter((array)($body['prefixes'] ?? []), fn($p) => is_string($p) && preg_match('/^ulc-[a-z-]+$/', $p)));
             $incoming = array_values(array_filter((array)($body['contacts'] ?? []), fn($c) => is_array($c) && !empty($c['id']) && !empty($c['name']) && !empty($c['kind'])
                 && array_filter($prefixes, fn($p) => str_starts_with($c['id'], $p))));
-            if (!$prefixes || !$incoming) out(400, ['error' => 'nothing to import']);
+            if (!$prefixes || !$incoming) ah_out(400, ['error' => 'nothing to import']);
             $target = in_array($body['file'] ?? 'contacts', ['contacts', 'examiners'], true) ? ($body['file'] ?? 'contacts') : 'contacts';
-            out(200, ah_merge_official($target, $prefixes, $incoming, 'bot'));
+            ah_out(200, ah_merge_official($target, $prefixes, $incoming, 'bot'));
     
         case 'pull_github':
             // Panel button: take the newest official ULC lists straight from the GitHub repository.
-            $u = require_login();
-            require_csrf();
-            if ($u['role'] === 'viewer') out(403, ['error' => 'read-only account']);
+            $u = ah_require_login();
+            ah_require_csrf();
+            if ($u['role'] === 'viewer') ah_out(403, ['error' => 'read-only account']);
             $base = rtrim('https://raw.githubusercontent.com/cannonadestudio/Tomark-Service/main/data', '/');
             $ctx = null;
             $res = [];
@@ -230,16 +230,16 @@ function ah_api_dispatch(): void
             } else {
                 $res['types'] = ['error' => 'download failed'];
             }
-            out(200, $res);
+            ah_out(200, $res);
     
         // ------------------------------------------------------------ public endpoints used by the app
     
         case 'ping':
             // Anonymous install counter: random id generated on the phone, app version, language, Android version.
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
-            if (!ah_rate_ok('ping', 30, 3600)) out(429, ['error' => 'slow down']);
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') ah_out(405, ['error' => 'POST only']);
+            if (!ah_rate_ok('ping', 30, 3600)) ah_out(429, ['error' => 'slow down']);
             $id = (string)($body['id'] ?? '');
-            if (!preg_match('/^[0-9a-f-]{36}$/', $id)) out(400, ['error' => 'bad id']);
+            if (!preg_match('/^[0-9a-f-]{36}$/', $id)) ah_out(400, ['error' => 'bad id']);
             $info = ['v' => ah_clean_str($body['v'] ?? '', 20), 'lang' => ah_clean_str($body['lang'] ?? '', 5), 'sdk' => (int)($body['sdk'] ?? 0), 'types' => array_slice(array_map(fn($t) => ah_clean_str($t, 40), (array)($body['types'] ?? [])), 0, 5), 'pro' => !empty($body['pro']), 'ac' => max(0, min(99, (int)($body['ac'] ?? 0)))];
             $granted = ah_store_update('installs', function (&$d) use ($id, $info) {
                 if (!isset($d[$id]) && count($d) > 200000) return false;
@@ -248,16 +248,16 @@ function ah_api_dispatch(): void
                 $d[$id] = array_merge($d[$id], $info, ['last' => $today]);
                 return !empty($d[$id]['proGranted']);
             });
-            out(200, ['ok' => true, 'pro' => (bool)$granted]);
+            ah_out(200, ['ok' => true, 'pro' => (bool)$granted]);
     
         case 'submit':
             // Contact proposed from the app – waits in the panel until the owner accepts it.
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
-            if (!ah_rate_ok('submit', 10, 86400)) out(429, ['error' => 'too many submissions today']);
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') ah_out(405, ['error' => 'POST only']);
+            if (!ah_rate_ok('submit', 10, 86400)) ah_out(429, ['error' => 'too many submissions today']);
             $c = (array)($body['contact'] ?? []);
             $kinds = ['manufacturer', 'dealer', 'rotax_distributor', 'rotax_service', 'maintenance', 'mechanic', 'instructor', 'examiner', 'school'];
             $name = ah_clean_str($c['name'] ?? '', 120);
-            if ($name === '' || !in_array($c['kind'] ?? '', $kinds, true)) out(400, ['error' => 'name and kind required']);
+            if ($name === '' || !in_array($c['kind'] ?? '', $kinds, true)) ah_out(400, ['error' => 'name and kind required']);
             $clean = ['name' => $name, 'kind' => $c['kind']];
             foreach (['country' => 2, 'city' => 80, 'address' => 160, 'phone' => 40, 'email' => 120, 'web' => 200, 'note' => 1000] as $k => $max) {
                 $v = ah_clean_str($c[$k] ?? '', $max);
@@ -273,13 +273,13 @@ function ah_api_dispatch(): void
                 $d[] = $sub;
                 return count($d);
             });
-            if ($count < 0) out(503, ['error' => 'queue full']);
-            out(200, ['ok' => true]);
+            if ($count < 0) ah_out(503, ['error' => 'queue full']);
+            ah_out(200, ['ok' => true]);
     
         case 'event':
             // Anonymous counters for partners and sponsors (views and taps) – the numbers you show them.
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
-            if (!ah_rate_ok('event', 120, 3600)) out(429, ['error' => 'slow down']);
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') ah_out(405, ['error' => 'POST only']);
+            if (!ah_rate_ok('event', 120, 3600)) ah_out(429, ['error' => 'slow down']);
             $allowed = ['view', 'call', 'email', 'web', 'map', 'request', 'sponsor_view', 'sponsor_click'];
             $evs = array_slice((array)($body['events'] ?? []), 0, 50);
             $month = date('Y-m');
@@ -294,15 +294,15 @@ function ah_api_dispatch(): void
                 // keep two years
                 foreach (array_keys($d) as $m) if ($m < date('Y-m', strtotime('-24 months'))) unset($d[$m]);
             });
-            out(200, ['ok' => true]);
+            ah_out(200, ['ok' => true]);
     
         case 'request':
             // "Book an inspection" from the app – forwarded by e-mail to a partner service that accepts requests.
-            if ($_SERVER['REQUEST_METHOD'] !== 'POST') out(405, ['error' => 'POST only']);
-            if (!ah_rate_ok('request', 6, 86400)) out(429, ['error' => 'too many requests today']);
-            if (empty($body['consent'])) out(400, ['error' => 'consent required']);
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') ah_out(405, ['error' => 'POST only']);
+            if (!ah_rate_ok('request', 6, 86400)) ah_out(429, ['error' => 'too many requests today']);
+            if (empty($body['consent'])) ah_out(400, ['error' => 'consent required']);
             $c = ah_public_contact((string)($body['contactId'] ?? ''));
-            if (!$c || empty($c['requests']) || empty($c['email']) || !ah_partner_active($c)) out(404, ['error' => 'service does not take requests']);
+            if (!$c || empty($c['requests']) || empty($c['email']) || !ah_partner_active($c)) ah_out(404, ['error' => 'service does not take requests']);
             $a = (array)($body['aircraft'] ?? []);
             $r = ['id' => bin2hex(random_bytes(6)), 'date' => date('c'), 'status' => 'new', 'contactId' => $c['id'], 'contactName' => $c['name'],
                 'aircraft' => [], 'work' => ah_clean_str($body['work'] ?? '', 300), 'preferredDate' => ah_clean_str($body['preferredDate'] ?? '', 10),
@@ -312,7 +312,7 @@ function ah_api_dispatch(): void
                 $v = ah_clean_str($a[$k] ?? '', $max);
                 if ($v !== '') $r['aircraft'][$k] = $v;
             }
-            if ($r['name'] === '' || ($r['phone'] === '' && !filter_var($r['email'], FILTER_VALIDATE_EMAIL))) out(400, ['error' => 'name and phone or e-mail required']);
+            if ($r['name'] === '' || ($r['phone'] === '' && !filter_var($r['email'], FILTER_VALIDATE_EMAIL))) ah_out(400, ['error' => 'name and phone or e-mail required']);
             $ac = $r['aircraft'];
             $txt = "Zapytanie o przegląd z aplikacji AeroHangar\n\n"
                 . "Samolot: " . ($ac['registration'] ?? '') . "  " . ($ac['type'] ?? '') . "\n"
@@ -332,17 +332,17 @@ function ah_api_dispatch(): void
                 $d[] = $r;
                 return count($d);
             });
-            if ($n < 0) out(503, ['error' => 'queue full']);
+            if ($n < 0) ah_out(503, ['error' => 'queue full']);
             ah_store_update('events', function (&$d) use ($c) { $m = date('Y-m'); $d[$m][$c['id']]['request'] = ($d[$m][$c['id']]['request'] ?? 0) + 1; });
-            out(200, ['ok' => true, 'mailed' => $r['mailed']]);
+            ah_out(200, ['ok' => true, 'mailed' => $r['mailed']]);
     
         // ------------------------------------------------------------ panel: partners, requests, settings
     
         case 'requests':
-            $u = require_login();
+            $u = ah_require_login();
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                require_csrf();
-                if ($u['role'] === 'viewer') out(403, ['error' => 'read-only account']);
+                ah_require_csrf();
+                if ($u['role'] === 'viewer') ah_out(403, ['error' => 'read-only account']);
                 $rid = (string)($body['id'] ?? '');
                 $act = (string)($body['action'] ?? '');
                 ah_store_update('requests', function (&$d) use ($rid, $act) {
@@ -353,18 +353,18 @@ function ah_api_dispatch(): void
                 });
                 ah_log($u['login'], "request $rid: $act");
             }
-            out(200, ['requests' => array_reverse(ah_store_read('requests'))]);
+            ah_out(200, ['requests' => array_reverse(ah_store_read('requests'))]);
     
         case 'events':
-            require_login();
-            out(200, ['events' => ah_store_read('events')]);
+            ah_require_login();
+            ah_out(200, ['events' => ah_store_read('events')]);
     
         case 'installs':
             // Panel: list of installations, manual Pro, counter reset.
-            $u = require_login();
+            $u = ah_require_login();
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                require_csrf();
-                if ($u['role'] !== 'admin') out(403, ['error' => 'admin only']);
+                ah_require_csrf();
+                if ($u['role'] !== 'admin') ah_out(403, ['error' => 'admin only']);
                 $act = (string)($body['action'] ?? '');
                 if ($act === 'reset') {
                     // Copy kept in private/state; installs with Pro granted by hand stay (their grant must not vanish).
@@ -382,31 +382,31 @@ function ah_api_dispatch(): void
                         if ($act === 'grant') $d[$id]['proGranted'] = !empty($body['on']); else $d[$id]['note'] = ah_clean_str($body['note'] ?? '', 200);
                         return true;
                     });
-                    if (!$ok) out(404, ['error' => 'install not found']);
+                    if (!$ok) ah_out(404, ['error' => 'install not found']);
                     ah_log($u['login'], "install " . substr($id, 0, 8) . ": " . ($act === 'grant' ? ('manual Pro ' . (!empty($body['on']) ? 'ON' : 'OFF')) : 'note'));
                 }
             }
             $list = [];
             foreach (ah_store_read('installs') as $id => $i) $list[] = ['id' => $id, 'code' => strtoupper(substr(str_replace('-', '', $id), 0, 8))] + $i;
             usort($list, fn($a, $b) => strcmp($b['last'] ?? '', $a['last'] ?? ''));
-            out(200, ['installs' => $list]);
+            ah_out(200, ['installs' => $list]);
     
         case 'settings':
-            $u = require_login();
+            $u = ah_require_login();
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                require_csrf();
-                if ($u['role'] !== 'admin') out(403, ['error' => 'admin only']);
+                ah_require_csrf();
+                if ($u['role'] !== 'admin') ah_out(403, ['error' => 'admin only']);
                 $new = [];
                 foreach (['notifyEmail', 'mailFrom'] as $k) {
                     $v = ah_clean_str($body[$k] ?? '', 120);
-                    if ($v !== '' && !filter_var($v, FILTER_VALIDATE_EMAIL)) out(400, ['error' => "$k: niepoprawny adres e-mail"]);
+                    if ($v !== '' && !filter_var($v, FILTER_VALIDATE_EMAIL)) ah_out(400, ['error' => "$k: niepoprawny adres e-mail"]);
                     $new[$k] = $v;
                 }
                 // Pilot Logbook: Google Play link or package id -> package id
                 if (array_key_exists('logbookPackage', $body ?? [])) {
                     $lp = trim((string)$body['logbookPackage']);
                     if (preg_match('/[?&]id=([A-Za-z][\w.]+)/', $lp, $m)) $lp = $m[1];
-                    if ($lp !== '' && !preg_match('/^[A-Za-z][\w]*(\.[A-Za-z][\w]*)+$/', $lp)) out(400, ['error' => 'Pilot Logbook: podaj link z Google Play albo identyfikator, np. com.firma.aplikacja']);
+                    if ($lp !== '' && !preg_match('/^[A-Za-z][\w]*(\.[A-Za-z][\w]*)+$/', $lp)) ah_out(400, ['error' => 'Pilot Logbook: podaj link z Google Play albo identyfikator, np. com.firma.aplikacja']);
                     $new['logbookPackage'] = $lp;
                 }
                 ah_store_update('settings', function (&$d) use ($new) { $d = array_merge($d, $new); });
@@ -416,14 +416,14 @@ function ah_api_dispatch(): void
             }
             if (($_GET['test'] ?? '') === '1' && $u['role'] === 'admin') {
                 $to = ah_settings()['notifyEmail'];
-                out(200, ['settings' => ah_settings(), 'test' => $to ? ah_mail($to, 'AeroHangar – test poczty', "Poczta z serwera działa.\n") : false]);
+                ah_out(200, ['settings' => ah_settings(), 'test' => $to ? ah_mail($to, 'AeroHangar – test poczty', "Poczta z serwera działa.\n") : false]);
             }
-            out(200, ['settings' => ah_settings()]);
+            ah_out(200, ['settings' => ah_settings()]);
     
         // ------------------------------------------------------------ panel: statistics and submissions
     
         case 'stats':
-            require_login();
+            ah_require_login();
             $d = ah_store_read('installs');
             $now = time();
             $active = fn($days) => count(array_filter($d, fn($i) => strtotime($i['last'] ?? '1970-01-01') >= $now - $days * 86400));
@@ -436,21 +436,21 @@ function ah_api_dispatch(): void
             ksort($months);
             $pro = count(array_filter($d, fn($i) => !empty($i['pro']) || !empty($i['proGranted'])));
             $multi = count(array_filter($d, fn($i) => empty($i['pro']) && ($i['ac'] ?? 0) >= 1 && strtotime($i['last'] ?? '1970-01-01') >= $now - 30 * 86400));
-            out(200, ['total' => count($d), 'active7' => $active(7), 'active30' => $active(30), 'pro' => $pro, 'freeActiveWithAircraft' => $multi,
+            ah_out(200, ['total' => count($d), 'active7' => $active(7), 'active30' => $active(30), 'pro' => $pro, 'freeActiveWithAircraft' => $multi,
                 'versions' => $by('v'), 'langs' => $by('lang'), 'types' => array_slice($types, 0, 15, true), 'newPerMonth' => $months]);
     
         case 'submissions':
-            $u = require_login();
+            $u = ah_require_login();
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                require_csrf();
-                if ($u['role'] === 'viewer') out(403, ['error' => 'read-only account']);
+                ah_require_csrf();
+                if ($u['role'] === 'viewer') ah_out(403, ['error' => 'read-only account']);
                 $sid = (string)($body['id'] ?? '');
                 $act = (string)($body['action'] ?? '');
                 $sub = ah_store_update('submissions', function (&$d) use ($sid) {
                     foreach ($d as $i => $s) if ($s['id'] === $sid) { array_splice($d, $i, 1); return $s; }
                     return null;
                 });
-                if (!$sub) out(404, ['error' => 'not found']);
+                if (!$sub) ah_out(404, ['error' => 'not found']);
                 if ($act === 'accept') {
                     $c = $sub['contact'];
                     $target = $c['kind'] === 'examiner' ? 'examiners' : 'contacts';
@@ -469,16 +469,16 @@ function ah_api_dispatch(): void
                     ah_log($u['login'], "reject submission {$sub['id']}: " . ($sub['contact']['name'] ?? ''));
                 }
             }
-            out(200, ['submissions' => ah_store_read('submissions')]);
+            ah_out(200, ['submissions' => ah_store_read('submissions')]);
     
         // ------------------------------------------------------------ panel: pilot accounts (one key for AeroHangar and Pilot Logbook)
     
         case 'accounts':
-            $u = require_login();
+            $u = ah_require_login();
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                if ($u['role'] !== 'admin') out(403, ['error' => 'admin only']);
+                if ($u['role'] !== 'admin') ah_out(403, ['error' => 'admin only']);
                 $uid = (int)($body['user'] ?? 0);
-                if (!get_userdata($uid)) out(404, ['error' => 'no such user']);
+                if (!get_userdata($uid)) ah_out(404, ['error' => 'no such user']);
                 if (($body['action'] ?? '') === 'save') {
                     ah_account_save($uid, (array)($body['data'] ?? []), $u['login']);
                 } elseif (($body['action'] ?? '') === 'pro') {
@@ -489,10 +489,10 @@ function ah_api_dispatch(): void
                     ah_log($u['login'], "account #$uid: key revoked");
                 }
             }
-            out(200, ['accounts' => ah_accounts_list(sanitize_text_field((string)($_GET['q'] ?? '')))]);
+            ah_out(200, ['accounts' => ah_accounts_list(sanitize_text_field((string)($_GET['q'] ?? '')))]);
     
         default:
-            out(404, ['error' => 'unknown action']);
+            ah_out(404, ['error' => 'unknown action']);
     }
     
 }
