@@ -37,7 +37,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun AccountCard() {
     val st by Repo.state.collectAsState()
-    if (!Repo.accountAvailable && st.accountKey == null) return
     val ctx = LocalContext.current
     val scope = rememberCoroutineScope()
     var key by remember { mutableStateOf("") }

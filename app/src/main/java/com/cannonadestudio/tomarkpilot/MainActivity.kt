@@ -28,6 +28,7 @@ import androidx.compose.material.icons.filled.Dashboard
 import androidx.compose.material.icons.filled.Flight
 import androidx.compose.material.icons.filled.EditCalendar
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Badge
@@ -169,7 +170,7 @@ private fun Root(tab: Int, setTab: (Int) -> Unit) {
                         // Pilot Logbook: open the app, or its Google Play page when it is not installed
                         val c = androidx.compose.ui.platform.LocalContext.current
                         IconButton(onClick = { openPilotLogbook(c) }) { Icon(Icons.Filled.EditCalendar, stringResource(R.string.open_logbook)) }
-                        IconButton(onClick = { overlay = Overlay.About }) { Icon(Icons.Filled.Info, stringResource(R.string.about)) }
+                        IconButton(onClick = { overlay = Overlay.About }) { Icon(Icons.Filled.AccountCircle, stringResource(R.string.account_title)) }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -281,10 +282,11 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
         Text(stringResource(R.string.app_name), style = MaterialTheme.typography.headlineSmall)
         Text("v" + BuildConfigCompat.versionName(), style = MaterialTheme.typography.bodySmall)
         Spacer(Modifier.height(16.dp))
+        // Account key first – that is where a pilot links the app with the website.
+        com.cannonadestudio.tomarkpilot.ui.AccountCard()
+        Spacer(Modifier.height(12.dp))
         com.cannonadestudio.tomarkpilot.ui.ProCard()
         Spacer(Modifier.height(12.dp))
-        com.cannonadestudio.tomarkpilot.ui.AccountCard()
-        if (Repo.accountAvailable || state.accountKey != null) Spacer(Modifier.height(12.dp))
 
         Card(Modifier.fillMaxWidth()) {
             Column(Modifier.padding(16.dp)) {

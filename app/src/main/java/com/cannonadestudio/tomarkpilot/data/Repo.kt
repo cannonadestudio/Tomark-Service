@@ -21,6 +21,8 @@ import java.util.UUID
 object Repo {
     /** Default data location (GitHub). data/config.json there can redirect every app to the owner's server. */
     const val GITHUB_DATA = "https://raw.githubusercontent.com/cannonadestudio/Tomark-Service/main/data"
+    /** The owner's WordPress site (AeroHangar plugin) – used until data/config.json says otherwise. */
+    const val DEFAULT_ACCOUNT = "https://horyzontbezgranic.pl/index.php/wp-json/cannonade/v1/"
 
     @Volatile
     var dataBase: String = GITHUB_DATA
@@ -57,13 +59,13 @@ object Repo {
     /** WordPress plugin endpoints (null = standalone server / GitHub). */
     @Volatile var apiBase: String? = null
         private set
-    @Volatile var accountBase: String? = null
+    @Volatile var accountBase: String? = DEFAULT_ACCOUNT
         private set
 
     private fun setEndpoints(api: String?, account: String?) {
         val a = api?.trim()?.takeIf { it.startsWith("https://") } ?: return
         apiBase = a
-        accountBase = account?.trim()?.takeIf { it.startsWith("https://") }?.let { if (it.endsWith("/")) it else "$it/" }
+        accountBase = account?.trim()?.takeIf { it.startsWith("https://") }?.let { if (it.endsWith("/")) it else "$it/" } ?: accountBase ?: DEFAULT_ACCOUNT
         runCatching { endpointsCache.writeText(json.encodeToString(RemoteConfig.serializer(), RemoteConfig(apiUrl = apiBase, accountUrl = accountBase))) }
     }
 
@@ -104,7 +106,7 @@ object Repo {
             _feed.value = loadFeed()
             runCatching { baseCache.readText().trim() }.getOrNull()?.takeIf { it.startsWith("https://") }?.let { dataBase = it }
             runCatching { logbookPkgCache.readText().trim() }.getOrNull()?.takeIf { it.isNotBlank() }?.let { logbookPackage = it }
-            runCatching { json.decodeFromString<RemoteConfig>(endpointsCache.readText()) }.getOrNull()?.let { apiBase = it.apiUrl; accountBase = it.accountUrl }
+            runCatching { json.decodeFromString<RemoteConfig>(endpointsCache.readText()) }.getOrNull()?.let { apiBase = it.apiUrl; accountBase = it.accountUrl ?: DEFAULT_ACCOUNT }
             _examiners.value = runCatching { json.decodeFromString<ContactFeed>(examinersCache.readText()) }.getOrNull() ?: ContactFeed()
             _news.value = runCatching { json.decodeFromString<NewsFeed>(newsCache.readText()) }.getOrNull() ?: NewsFeed()
             _sponsor.value = runCatching { json.decodeFromString<SponsorFeed>(sponsorCache.readText()) }.getOrNull() ?: SponsorFeed()

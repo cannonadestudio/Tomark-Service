@@ -1,4 +1,6 @@
 {
- "dataBaseUrl": "https://horyzontbezgranic.pl/aerohangar/public/data",
- "_info": "Set dataBaseUrl to https://your-server/.../data to move all apps to your own AeroHangar server. null = use this GitHub repo."
+ "dataBaseUrl": "https://horyzontbezgranic.pl/wp-content/uploads/aerohangar/data",
+ "apiUrl": "https://horyzontbezgranic.pl/index.php/wp-json/aerohangar/v1/api?a=",
+ "accountUrl": "https://horyzontbezgranic.pl/index.php/wp-json/cannonade/v1/",
+ "_info": "Apps read their data from the AeroHangar WordPress plugin on horyzontbezgranic.pl. null dataBaseUrl = use this GitHub repo."
 }

@@ -23,6 +23,31 @@ if (!defined('CANNONADE_ACCOUNT')) {
         return hash_hmac('sha256', strtoupper(trim($key)), wp_salt('auth'));
     }
 
+    function cannonade_key_secret(): string
+    {
+        return hash('sha256', wp_salt('auth') . 'cannonade-key', true);
+    }
+
+    function cannonade_key_encrypt(string $key): string
+    {
+        if (!function_exists('openssl_encrypt')) return '';
+        $iv = random_bytes(16);
+        $ct = openssl_encrypt($key, 'aes-256-cbc', cannonade_key_secret(), OPENSSL_RAW_DATA, $iv);
+        return $ct === false ? '' : base64_encode($iv . $ct);
+    }
+
+    /** The account's whole key (null for keys made before keys were kept, or after "disconnect"). */
+    function cannonade_key_plain(int $user_id): ?string
+    {
+        $enc = (string)get_user_meta($user_id, 'cannonade_key_enc', true);
+        if ($enc === '' || !function_exists('openssl_decrypt')) return null;
+        $raw = base64_decode($enc, true);
+        if ($raw === false || strlen($raw) < 17) return null;
+        $key = openssl_decrypt(substr($raw, 16), 'aes-256-cbc', cannonade_key_secret(), OPENSSL_RAW_DATA, substr($raw, 0, 16));
+        // only a key that still matches the active one
+        return ($key && hash_equals((string)get_user_meta($user_id, 'cannonade_key_hash', true), cannonade_key_hash($key))) ? $key : null;
+    }
+
     function cannonade_new_key(int $user_id): string
     {
         $raw = strtoupper(bin2hex(random_bytes(10)));
@@ -30,6 +55,8 @@ if (!defined('CANNONADE_ACCOUNT')) {
         update_user_meta($user_id, 'cannonade_key_hash', cannonade_key_hash($key));
         update_user_meta($user_id, 'cannonade_key_hint', substr($key, -5));
         update_user_meta($user_id, 'cannonade_key_created', time());
+        // Encrypted copy, so the owner can always see the key on the account page and in the user menu.
+        update_user_meta($user_id, 'cannonade_key_enc', cannonade_key_encrypt($key));
         do_action('cannonade_key_changed', $user_id);
         return $key;
     }
@@ -38,6 +65,7 @@ if (!defined('CANNONADE_ACCOUNT')) {
     {
         delete_user_meta($user_id, 'cannonade_key_hash');
         delete_user_meta($user_id, 'cannonade_key_hint');
+        delete_user_meta($user_id, 'cannonade_key_enc');
         do_action('cannonade_key_changed', $user_id);
     }
 
@@ -130,12 +158,14 @@ if (!defined('CANNONADE_ACCOUNT')) {
                 <p><b><?php echo esc_html($t('paid_only')); ?></b></p>
                 <?php if ($hint): ?><p class="cna-warn"><?php echo esc_html($t('no_access_key')); ?></p><?php endif; ?>
                 <?php echo apply_filters('cannonade_offer_html', '', $uid); ?>
-            <?php elseif ($newKey): ?>
-                <p class="cna-key"><code id="cna-key"><?php echo esc_html($newKey); ?></code>
+            <?php elseif (($full = $newKey ?: cannonade_key_plain($uid))): ?>
+                <p><?php echo esc_html(cannonade_t('your_key')); ?></p>
+                <p class="cna-key"><code id="cna-key"><?php echo esc_html($full); ?></code>
                     <button type="button" class="cna-btn" onclick="navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('cna-key').textContent);this.textContent='✓'"><?php echo esc_html($t('copy')); ?></button></p>
-                <p class="cna-warn"><?php echo esc_html($t('shown_once')); ?></p>
+                <p class="cna-small"><?php echo esc_html(cannonade_t('key_where')); ?></p>
             <?php elseif ($hint): ?>
                 <p><?php echo esc_html(sprintf($t('key_active'), '…' . $hint)); ?></p>
+                <p class="cna-warn"><?php echo esc_html(cannonade_t('key_old')); ?></p>
             <?php else: ?>
                 <p><?php echo esc_html($t('no_key')); ?></p>
             <?php endif; ?>
@@ -158,6 +188,20 @@ if (!defined('CANNONADE_ACCOUNT')) {
         <style>.cna-offer{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:10px 0 14px}.cna-offer div{border:1px solid #e3dcea;border-radius:12px;padding:10px 12px}.cna-offer b{display:block}.cna-box{border:1px solid #e3dcea;border-radius:14px;padding:16px 18px;max-width:720px}.cna-btn{background:#7A3E9D;color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;display:inline-block}.cna-ghost{background:transparent;color:#7A3E9D;border:1px solid #7A3E9D}.cna-key code{font-size:1.15em;padding:6px 10px;background:#f4f1f8;border-radius:8px}.cna-warn{color:#b0003a}.cna-small{font-size:.9em;color:#6b6676}</style>
         <?php return (string)ob_get_clean();
     }
+
+    // User menu (top bar, "Witaj, …"): the whole key with a copy action.
+    add_action('admin_bar_menu', function (WP_Admin_Bar $bar) {
+        if (!is_user_logged_in()) return;
+        $uid = get_current_user_id();
+        $key = cannonade_key_plain($uid);
+        $page = function_exists('ah_login_page_url') ? add_query_arg('ah', 'key', ah_login_page_url()) : admin_url('profile.php?page=cannonade-account');
+        if ($key) {
+            $bar->add_node(['parent' => 'user-actions', 'id' => 'cannonade-key', 'title' => esc_html(cannonade_t('key_menu')) . ' <code style="font-size:12px">' . esc_html($key) . '</code>', 'href' => '#',
+                'meta' => ['onclick' => 'navigator.clipboard&&navigator.clipboard.writeText(' . esc_attr(wp_json_encode($key)) . ');this.querySelector("code").textContent="✓ ' . esc_js(cannonade_t('copied')) . '";return false;', 'title' => cannonade_t('copy')]]);
+        } elseif (cannonade_can_have_key($uid)) {
+            $bar->add_node(['parent' => 'user-actions', 'id' => 'cannonade-key', 'title' => esc_html(cannonade_t('key_menu_make')), 'href' => esc_url($page)]);
+        }
+    }, 90);
 
     add_shortcode('cannonade_konto', 'cannonade_account_html');
     add_shortcode('cannonade_account', 'cannonade_account_html');
