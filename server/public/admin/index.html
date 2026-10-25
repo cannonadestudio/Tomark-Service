@@ -108,7 +108,7 @@ fieldset.partner legend{color:var(--pink);font-weight:600;padding:0 6px}
 <script>
 const FILES = { bulletins: 1, contacts: 1, types: 1, news: 1, examiners: 1, sponsor: 1 };
 const KINDS_B = ["AD", "ASB", "SB", "SIB", "DOC"];
-const KINDS_C = { dealer: "Dealer", manufacturer: "Producent", rotax_service: "Serwis Rotax", rotax_distributor: "Dystrybutor Rotax", maintenance: "Organizacja obsługowa", mechanic: "Mechanik", instructor: "Instruktor", school: "Szkoła lotnicza", examiner: "Egzaminator" };
+const KINDS_C = { dealer: "Dealer", manufacturer: "Producent", rotax_service: "Serwis Rotax", rotax_distributor: "Dystrybutor Rotax", maintenance: "Organizacja obsługowa", mechanic: "Mechanik", instructor: "Instruktor", school: "Szkoła lotnicza", examiner: "Egzaminator", ame: "Lekarz orzecznik (AME)", aemc: "Centrum medycyny lotniczej (AeMC)" };
 const LANGS = ["pl", "en", "sk", "fr"];
 // Contact tabs: which kinds each shows, and which data file holds them (examiners are a separate on-demand file).
 const CGROUPS = {
@@ -119,8 +119,10 @@ const CGROUPS = {
   c_instr: { name: "Instruktorzy", kinds: ["instructor"], file: "contacts", newKind: "instructor" },
   c_school: { name: "Szkoły", kinds: ["school"], file: "contacts", newKind: "school" },
   c_exam: { name: "Egzaminatorzy", kinds: ["examiner"], file: "examiners", newKind: "examiner" },
+  c_ame: { name: "Lekarze orzecznicy", kinds: ["ame"], file: "examiners", newKind: "ame" },
+  c_aemc: { name: "Centra medyczne", kinds: ["aemc"], file: "contacts", newKind: "aemc" },
 };
-const fileOfKind = k => k === "examiner" ? "examiners" : "contacts";
+const fileOfKind = k => (k === "examiner" || k === "ame") ? "examiners" : "contacts";
 const state = { tab: "home", data: {}, sha: {}, filter: "" };
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -292,12 +294,14 @@ function renderContacts(g) {
   const hint = {
     c_service: "Serwisy Rotax, dystrybutorzy i organizacje obsługowe (Part-CAO / Part-145 z listy ULC – odświeżane co tydzień).",
     c_exam: "Listy ULC (samoloty, UL, mechanicy) – odświeżane co tydzień. Aplikacja pobiera je tylko na żądanie użytkownika. Ręcznie dodani egzaminatorzy zostają.",
+    c_ame: "Lista lekarzy orzeczników ULC (klasa 1, 2, 3, LAPL) – odświeżana co tydzień, pobierana w aplikacji razem z egzaminatorami (na żądanie).",
+    c_aemc: "Centra medycyny lotniczej z listy ULC – odświeżane co tydzień.",
     c_mech: "Mechanicy dodani ręcznie. Dane osób prywatnych publikuj tylko za ich zgodą.",
     c_instr: "Instruktorzy dodani ręcznie. Dane osób prywatnych publikuj tylko za ich zgodą.",
   }[g] || "Współrzędne służą do sortowania „najbliżsi” w aplikacji.";
   const feed = state.data[G.file] || {};
   const pubCount = list.filter(c => c.publish !== false).length;
-  const official = g === "c_exam" || g === "c_service";
+  const official = g === "c_exam" || g === "c_service" || g === "c_ame" || g === "c_aemc";
   return `<div class="card">${searchBox("Szukaj nazwy, miasta, marki, uprawnień…")}
     <p class="muted">${hint} Pokazano: <b>${list.length}</b>, w aplikacji: <b>${pubCount}</b>.</p>
     <div class="row bulk">

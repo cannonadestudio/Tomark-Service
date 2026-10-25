@@ -163,7 +163,7 @@ switch ($action) {
         $base = rtrim((string)(ah_config()['githubData'] ?? 'https://raw.githubusercontent.com/cannonadestudio/Tomark-Service/main/data'), '/');
         $ctx = stream_context_create(['http' => ['timeout' => 30, 'header' => "User-Agent: AeroHangar server\r\n"]]);
         $res = [];
-        foreach ([['examiners', ['ulc-exam-']], ['contacts', ['ulc-pl-']]] as [$f, $prefixes]) {
+        foreach ([['examiners', ['ulc-exam-', 'ulc-ame-']], ['contacts', ['ulc-pl-', 'ulc-aemc-']]] as [$f, $prefixes]) {
             $raw = @file_get_contents("$base/$f.json", false, $ctx);
             $d = $raw ? json_decode($raw, true) : null;
             if (!is_array($d['contacts'] ?? null)) { $res[$f] = ['error' => 'download failed']; continue; }

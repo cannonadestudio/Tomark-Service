@@ -285,6 +285,16 @@ def article_text(page):
         email = html.unescape("".join("".join(re.findall(r"'([^']*)'", x)) for x in parts[:2]))
         return " " + email + " " if EMAIL.fullmatch(email.strip()) else " "
     body = re.sub(r'<span id="cloak([0-9a-f]+)"[^>]*>.*?</span>\s*<script[^>]*>(.*?)</script>', uncloak, body, flags=re.S | re.I)
+    # Joomla 4/5: <joomla-hidden-mail first="base64(name)" last="base64(domain)" …>
+    def hidden(mm):
+        import base64
+        at = dict(re.findall(r'(\w+)="([^"]*)"', mm.group(1)))
+        try:
+            email = base64.b64decode(at.get("first", "")).decode() + "@" + base64.b64decode(at.get("last", "")).decode()
+        except Exception:
+            return " "
+        return " " + email + " " if EMAIL.fullmatch(email) else " "
+    body = re.sub(r"<joomla-hidden-mail([^>]*)>.*?</joomla-hidden-mail>", hidden, body, flags=re.S | re.I)
     body = re.sub(r"<script.*?</script>|<style.*?</style>", " ", body, flags=re.S | re.I)
     body = re.sub(r'<a [^>]*href="mailto:([^"]+)"[^>]*>.*?</a>', lambda mm: " " + html.unescape(mm.group(1)) + " ", body, flags=re.S | re.I)
     body = re.sub(r"<br\s*/?>|</p>|</li>|</div>|</h\d>", "\n", body, flags=re.I)
@@ -315,6 +325,10 @@ def block_contact(block, kind, url, cache, scope_default=""):
         line0 = block.strip().split("\n")[0]
         name = line0.split(" ul.")[0].split(" al.")[0].strip(" ,;-")[:120]
         org = ""
+        susp = re.search(r"\s*[-–]\s*czasowe zawieszenie[^\n]*", name, re.I)
+        if susp:
+            name = name[:susp.start()]
+            scope_default = "certyfikat czasowo zawieszony"
         if len(name) < 4:
             return None
     post = POST.search(one)
@@ -349,9 +363,22 @@ def collect_medical(page_url, kind, cache):
         body = txt[start.end():] if start else txt
         blocks = [b for b in TITLE.split(body) if b.strip()]
     else:
-        blocks = [b for b in re.split(r"\n\s*\n+", txt) if POST.search(b)]
-        if len(blocks) < 2:
-            blocks = [b for b in txt.split("\n") if POST.search(b)]
+        # Centres: the name is the nearest line above the address that is not an address / phone / e-mail.
+        lines = [l for l in txt.split("\n") if l.strip()]
+        blocks, i = [], 0
+        while i < len(lines):
+            if POST.search(lines[i]):
+                j = i
+                while j > 0 and re.match(r"^(ul\.|al\.|pl\.|os\.|tel|fax|e-?mail|www|\d)", lines[j].strip(), re.I) and not re.search(r"[A-ZŁŚ][a-z]+ [A-ZŁŚ]", lines[j][:3]):
+                    j -= 1
+                name_i = j if j != i else max(0, i - 1) if re.match(r"^(ul\.|al\.)", lines[i].strip(), re.I) else i
+                end = i + 1
+                while end < len(lines) and not POST.search(lines[end]) and re.match(r"^(tel|fax|e-?mail|www|\+|\d|[\w.+-]+@)", lines[end].strip(), re.I):
+                    end += 1
+                blocks.append("\n".join(lines[name_i:end]))
+                i = end
+            else:
+                i += 1
     out, seen = [], set()
     for b in blocks:
         c = block_contact(b, kind, page_url, cache, scope if kind == "ame" else "")
