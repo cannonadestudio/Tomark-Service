@@ -245,6 +245,7 @@ object Repo {
             val k = key.trim().uppercase()
             val (code, text) = accountCall("GET", base + "me", k)
             if (code == 401) error("401")
+            if (code == 402) error("402")
             if (code != 200) error("HTTP $code")
             val name = field(text, "name") ?: ""
             val (c2, info) = accountCall("GET", root + "aerohangar/v1/account", k)
@@ -283,6 +284,7 @@ object Repo {
             val (code, text) = accountCall("GET", root + "aerohangar/v1/account", key)
             if (code == 401) { setStateNoBackup { it.copy(accountError = "401") }; return@runCatching }
             if (code == 403) { setStateNoBackup { it.copy(accountError = "403", accountBlocked = true, accountPro = false) }; return@runCatching }
+            if (code == 402) { setStateNoBackup { it.copy(accountError = "402", accountPro = false) }; return@runCatching }
             if (code != 200) error("HTTP $code")
             val last = field(text, "lastSync")?.toLongOrNull() ?: 0L
             val lastDevice = field(text, "lastDevice") ?: ""
@@ -318,7 +320,7 @@ object Repo {
                 conn.outputStream.use { it.write(body.toByteArray()) }
                 conn.responseCode to ((if (conn.responseCode in 200..299) conn.inputStream else conn.errorStream)?.bufferedReader()?.use { it.readText() } ?: "")
             } finally { conn.disconnect() }
-            if (code != 200) error(code.toString().takeIf { code == 401 || code == 403 } ?: "HTTP $code")
+            if (code != 200) error(code.toString().takeIf { code == 401 || code == 402 || code == 403 } ?: "HTTP $code")
             setStateNoBackup {
                 it.copy(accountSyncMillis = System.currentTimeMillis(), accountError = null, accountDirty = false,
                     accountServerTime = field(text, "saved")?.toLongOrNull() ?: it.accountServerTime, accountPro = field(text, "pro") == "true")
@@ -333,7 +335,7 @@ object Repo {
             val root = restRoot() ?: error("no account server")
             val (code, text) = accountCall("GET", root + "aerohangar/v1/account/data", key)
             if (code == 404) error("404")
-            if (code != 200) error(code.toString().takeIf { code == 401 || code == 403 } ?: "HTTP $code")
+            if (code != 200) error(code.toString().takeIf { code == 401 || code == 402 || code == 403 } ?: "HTTP $code")
             val restored = json.decodeFromString<AppState>(text)
             val cur = _state.value
             val st = serverTime ?: runCatching {

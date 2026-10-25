@@ -48,6 +48,7 @@ fun AccountCard() {
         "401" -> ctx.getString(R.string.account_bad_key)
         "404" -> ctx.getString(R.string.account_no_backup)
         "403" -> ctx.getString(R.string.account_blocked)
+        "402" -> ctx.getString(R.string.account_no_access)
         else -> ctx.getString(R.string.refresh_fail) + " (" + (e.message ?: "") + ")"
     }
     Card(Modifier.fillMaxWidth()) {
@@ -82,7 +83,7 @@ fun AccountCard() {
                 st.accountMaxAircraft?.let { Text(stringResource(R.string.account_limit, it), style = MaterialTheme.typography.bodySmall) }
                 st.accountMaxTypes?.let { Text(stringResource(R.string.account_types_limit, it), style = MaterialTheme.typography.bodySmall) }
                 if (st.accountBlocked) Text(stringResource(R.string.account_blocked), color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall)
-                st.accountError?.takeIf { it != "403" }?.let { Text(if (it == "401") stringResource(R.string.account_bad_key) else stringResource(R.string.backup_error, it), color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall) }
+                st.accountError?.takeIf { it != "403" }?.let { Text(when (it) { "401" -> stringResource(R.string.account_bad_key); "402" -> stringResource(R.string.account_no_access); else -> stringResource(R.string.backup_error, it) }, color = Color(0xFFC62828), style = MaterialTheme.typography.bodySmall) }
                 Text(stringResource(R.string.account_auto), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Row(Modifier.padding(top = 4.dp)) {
                     TextButton(enabled = !busy, onClick = {

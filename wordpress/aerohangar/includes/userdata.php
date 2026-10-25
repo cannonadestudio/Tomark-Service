@@ -171,6 +171,76 @@ add_filter('manage_users_custom_column', function ($v, $col, $uid) {
     if ($col !== 'aerohangar') return $v;
     $p = ah_permissions((int)$uid);
     if ($p['blocked']) return '<span style="color:#b0003a">zablokowany</span>';
-    $bits = array_filter([$p['pro'] ? 'Pro' : 'darmowy', $p['plan'] ?: '', get_user_meta($uid, 'cannonade_key_hash', true) ? 'klucz ✓' : '']);
+    $bits = array_filter([$p['pro'] ? 'Pro' : 'bez dostępu', $p['plan'] ?: '', get_user_meta($uid, 'cannonade_key_hash', true) ? 'klucz ✓' : '']);
     return esc_html(implode(' · ', $bits)) . ' · <a href="' . esc_url(admin_url('admin.php?page=aerohangar-panel#accounts')) . '">zarządzaj</a>';
 }, 10, 3);
+
+/**
+ * Paid service: an account may create and use the app key only when it has access – bought in WooCommerce,
+ * granted by the administrator (Pro by hand), or it is a panel user / administrator. Blocked = never.
+ */
+function ah_has_access(int $uid): bool
+{
+    if (!$uid || get_user_meta($uid, 'aerohangar_blocked', true)) return false;
+    return user_can($uid, 'manage_options') || user_can($uid, 'aerohangar_view') || ah_account_pro($uid);
+}
+add_filter('cannonade_can_have_key', fn($ok, $uid) => $ok && ah_has_access((int)$uid), 10, 2);
+
+/** Offer shown instead of the key to accounts without access: the published AeroHangar products. */
+add_filter('cannonade_offer_html', function ($html, $uid) {
+    if (!function_exists('wc_get_product')) return $html;
+    $out = '';
+    foreach ((array)get_option('aerohangar_products', []) as $id) {
+        $p = wc_get_product((int)$id);
+        if (!$p || $p->get_status() !== 'publish') continue;
+        $out .= '<div><b>' . esc_html(preg_replace('/^AeroHangar – /u', '', $p->get_name())) . '</b>' . wp_kses_post($p->get_price_html())
+            . '<p style="margin:6px 0 0"><a class="cna-btn" href="' . esc_url($p->add_to_cart_url()) . '">' . esc_html(cannonade_t('buy')) . '</a></p></div>';
+    }
+    return $html . ($out ? '<div class="cna-offer">' . $out . '</div>' : '');
+}, 10, 2);
+
+/** Button to the management panel for the administrator and panel users. */
+add_filter('cannonade_account_top_html', function ($html, $uid) {
+    if (!user_can($uid, 'aerohangar_view') && !user_can($uid, 'manage_options')) return $html;
+    return $html . '<p><a class="cna-btn" href="' . esc_url(admin_url('admin.php?page=aerohangar-panel')) . '">✈ ' . esc_html(cannonade_t('open_panel')) . '</a></p>';
+}, 10, 2);
+
+// Top toolbar (site and wp-admin): "AeroHangar – panel" for panel users.
+add_action('admin_bar_menu', function (WP_Admin_Bar $bar) {
+    if (!current_user_can('aerohangar_view') && !current_user_can('manage_options')) return;
+    $bar->add_node(['id' => 'aerohangar-panel', 'title' => '<span class="ab-icon dashicons dashicons-airplane" style="top:2px"></span>AeroHangar', 'href' => admin_url('admin.php?page=aerohangar-panel')]);
+    $bar->add_node(['id' => 'aerohangar-panel-open', 'parent' => 'aerohangar-panel', 'title' => 'Panel (samoloty, biuletyny, konta…)', 'href' => admin_url('admin.php?page=aerohangar-panel')]);
+    $bar->add_node(['id' => 'aerohangar-panel-accounts', 'parent' => 'aerohangar-panel', 'title' => 'Konta pilotów', 'href' => admin_url('admin.php?page=aerohangar-panel#accounts')]);
+    $bar->add_node(['id' => 'aerohangar-panel-info', 'parent' => 'aerohangar-panel', 'title' => 'Produkty i ustawienia', 'href' => admin_url('admin.php?page=aerohangar')]);
+}, 80);
+
+/**
+ * Site menu items by CSS class (Wygląd → Menu → "Klasy CSS"):
+ *   ah-panel  – only for the administrator / panel users (e.g. a link to the panel)
+ *   ah-guest  – only for visitors who are not logged in
+ *   ah-user   – only for logged-in users
+ */
+add_filter('wp_nav_menu_objects', function ($items) {
+    $panel = current_user_can('aerohangar_view') || current_user_can('manage_options');
+    $in = is_user_logged_in();
+    $drop = [];
+    foreach ($items as $k => $it) {
+        $c = (array)$it->classes;
+        if ((in_array('ah-panel', $c, true) && !$panel) || (in_array('ah-guest', $c, true) && $in) || (in_array('ah-user', $c, true) && !$in) || in_array((int)$it->menu_item_parent, $drop, true)) {
+            $drop[] = (int)$it->ID;
+            unset($items[$k]);
+        }
+    }
+    return $items;
+});
+
+// Short address of the panel: /aerohangar-panel (also /index.php/aerohangar-panel)
+add_action('init', function () {
+    $path = trim((string)parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
+    $home = trim((string)parse_url(home_url(), PHP_URL_PATH), '/');
+    if ($home !== '' && str_starts_with($path, $home)) $path = trim(substr($path, strlen($home)), '/');
+    if (preg_match('~^(index\.php/)?(aerohangar-panel|panel-aerohangar)$~', $path)) {
+        wp_safe_redirect(admin_url('admin.php?page=aerohangar-panel'));
+        exit;
+    }
+}, 1);

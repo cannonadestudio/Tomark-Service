@@ -1526,5 +1526,9 @@
  "account_types_reached": {
   "de": "Dieses Konto darf %1$d eigene(n) Typ(en) haben.",
   "cs": "Účet může mít %1$d vlastní typy."
+ },
+ "account_no_access": {
+  "de": "Dieses Konto hat keinen aktiven AeroHangar-Zugang. Wenden Sie sich an den Administrator.",
+  "cs": "Tento účet nemá aktivní přístup k AeroHangar. Kontaktujte správce služby."
  }
 }

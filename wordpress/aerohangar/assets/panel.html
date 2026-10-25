@@ -721,10 +721,10 @@ async function renderAccounts() {
   const d = t => t ? new Date(t * 1000).toISOString().slice(0, 10) : "—";
   const ROLE = { admin: "administrator", editor: "edycja danych", viewer: "podgląd", "": "" };
   v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Szukaj konta: login, imię, e-mail…" value="${esc(state.filter)}" style="flex:1"></div>
-    <p class="muted">Wszystkie konta WordPress (ostatnie 500 / wynik wyszukiwania). <b>Edytuj</b> – dostęp do aplikacji, plan, Pro (bez limitu albo do daty), limit samolotów i własnych typów oraz rola w panelu. Pilot łączy aplikacje kluczem ze strony <code>[cannonade_konto]</code>; dostęp kupiony w WooCommerce dolicza się sam.</p>
+    <p class="muted">Wszystkie konta WordPress (ostatnie 500 / wynik wyszukiwania). <b>Edytuj</b> – dostęp do aplikacji, plan, Pro (bez limitu albo do daty), limit samolotów i własnych typów oraz rola w panelu. Pilot łączy aplikacje kluczem ze strony <code>[cannonade_konto]</code>; dostęp kupiony w WooCommerce dolicza się sam. <b>Konto bez zakupu i bez ręcznie przyznanego dostępu nie może utworzyć klucza</b>, a istniejący klucz przestaje działać.</p>
     <table><tr><th>Konto</th><th>Dostęp w AeroHangar</th><th>Klucz</th><th class="hide-sm">Ostatnio / kopia</th><th>Samoloty</th><th></th></tr>
     ${j.accounts.map(a => `<tr><td><b>${esc(a.name)}</b><div class="muted">${esc(a.login)} · ${esc(a.email)}</div><div class="muted">${esc(a.wpRole)} · od ${esc(a.registered)}</div></td>
-      <td>${a.blocked ? '<span class="chip" style="background:#fde2e8;color:#a3123f">zablokowany</span>' : (a.proActive ? '<span class="chip p">Pro</span>' : '<span class="chip">darmowy</span>')}
+      <td>${a.blocked ? '<span class="chip" style="background:#fde2e8;color:#a3123f">zablokowany</span>' : (a.proActive ? '<span class="chip p">Pro</span>' : '<span class="chip">bez dostępu</span>')}
         ${a.plan ? `<span class="chip">${esc(PLAN[a.plan] || a.plan)}</span>` : ""}
         ${a.pro && a.proUntil ? `<div class="muted">Pro ręczne do ${esc(a.proUntil)}</div>` : (a.pro ? '<div class="muted">Pro ręczne</div>' : "")}
         ${a.access ? `<div class="muted">zakup: ${esc(PLAN[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + d(a.access.until) : "bez limitu"}</div>` : ""}
@@ -747,8 +747,8 @@ function editAccount(a) {
       ${field("maxAircraft", "Limit samolotów (puste = z produktu, inaczej 1 za darmo / bez limitu z Pro)", a.maxAircraft, "number", 'min="0" max="999"')}
       ${field("maxTypes", "Limit własnych typów samolotów (puste = z produktu, inaczej bez limitu)", a.maxTypes, "number", 'min="0" max="999"')}
     </div>
-    <label class="inl"><input type="checkbox" name="pro" ${a.pro ? "checked" : ""}> Pro przyznane ręcznie</label>
-    <div class="grid2">${field("proUntil", "Pro ręczne do (puste = bez limitu)", a.proUntil, "date")}
+    <label class="inl"><input type="checkbox" name="pro" ${a.pro ? "checked" : ""}> <b>dostęp przyznany ręcznie</b> (Pro – klucz działa bez zakupu)</label>
+    <div class="grid2">${field("proUntil", "Dostęp ręczny do (puste = bez limitu)", a.proUntil, "date")}
       ${isAdminUser ? '<p class="muted">Administrator WordPressa – pełny dostęp do panelu.</p>' : select("panelRole", "Dostęp do panelu AeroHangar", [["", "brak"], ["viewer", "podgląd"], ["editor", "edycja danych (biuletyny, kontakty…)"]], a.panelRole)}</div>
     ${field("note", "Notatka (widoczna tylko tutaj)", a.note)}
     ${a.access ? `<p class="muted">Dostęp z zakupu WooCommerce: ${esc(PLAN[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + new Date(a.access.until * 1000).toISOString().slice(0, 10) : "bez limitu"} – liczy się niezależnie od ustawień powyżej (blokada go wyłącza).</p>` : ""}

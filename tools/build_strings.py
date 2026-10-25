@@ -185,6 +185,7 @@ S = {
  "plan_service": ('maintenance service', 'serwis', 'servis', 'atelier d\'entretien'),
  "account_types_limit": ('Own aircraft types allowed: %1$d', 'Limit własnych typów: %1$d', 'Limit vlastných typov: %1$d', 'Types personnels autorisés : %1$d'),
  "account_types_reached": ('This account may have %1$d own aircraft type(s) – ask the administrator for more.', 'To konto może mieć %1$d własny(ch) typ(ów) – o więcej poproś administratora.', 'Účet môže mať %1$d vlastné typy.', 'Ce compte peut avoir %1$d type(s) personnel(s).'),
+ "account_no_access": ('This account has no active AeroHangar access. Contact the administrator of the service.', 'To konto nie ma aktywnego dostępu do AeroHangar. Skontaktuj się z administratorem serwisu.', 'Tento účet nemá aktívny prístup k AeroHangar. Kontaktujte správcu služby.', "Ce compte n'a pas d'accès AeroHangar actif. Contactez l'administrateur du service."),
  "account_limit": ('Aircraft allowed for this account: %1$d', 'Limit samolotów dla konta: %1$d', 'Limit lietadiel: %1$d', 'Avions autorisés : %1$d'),
  "account_limit_reached": ('This account may have %1$d aircraft – ask the administrator for more.', 'To konto może mieć %1$d samolot(y) – o więcej poproś administratora.', 'Účet môže mať %1$d lietadlá.', 'Ce compte peut avoir %1$d avion(s).'),
  "account_choose_title": ('Which data to keep?', 'Które dane zachować?', 'Ktoré údaje ponechať?', 'Quelles données garder ?'),

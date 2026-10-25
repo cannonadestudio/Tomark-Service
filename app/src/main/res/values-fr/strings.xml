@@ -163,6 +163,7 @@
     <string name="plan_service">atelier d\'entretien</string>
     <string name="account_types_limit">Types personnels autorisés : %1$d</string>
     <string name="account_types_reached">Ce compte peut avoir %1$d type(s) personnel(s).</string>
+    <string name="account_no_access">Ce compte n\'a pas d\'accès AeroHangar actif. Contactez l\'administrateur du service.</string>
     <string name="account_limit">Avions autorisés : %1$d</string>
     <string name="account_limit_reached">Ce compte peut avoir %1$d avion(s).</string>
     <string name="account_choose_title">Quelles données garder ?</string>

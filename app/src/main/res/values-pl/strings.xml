@@ -163,6 +163,7 @@
     <string name="plan_service">serwis</string>
     <string name="account_types_limit">Limit własnych typów: %1$d</string>
     <string name="account_types_reached">To konto może mieć %1$d własny(ch) typ(ów) – o więcej poproś administratora.</string>
+    <string name="account_no_access">To konto nie ma aktywnego dostępu do AeroHangar. Skontaktuj się z administratorem serwisu.</string>
     <string name="account_limit">Limit samolotów dla konta: %1$d</string>
     <string name="account_limit_reached">To konto może mieć %1$d samolot(y) – o więcej poproś administratora.</string>
     <string name="account_choose_title">Które dane zachować?</string>

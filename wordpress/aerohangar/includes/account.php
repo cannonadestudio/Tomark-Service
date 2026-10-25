@@ -63,7 +63,15 @@ if (!defined('CANNONADE_ACCOUNT')) {
             return new WP_Error('cannonade_key', 'invalid key', ['status' => 401]);
         }
         update_user_meta($uid, 'cannonade_last_seen', time());
+        // Paid service: a key works only while the account has access (bought or granted by the administrator).
+        if (!cannonade_can_have_key($uid)) return new WP_Error('cannonade_no_access', 'no active access on this account', ['status' => 402]);
         return $uid;
+    }
+
+    /** Whether this account may create and use an app key (AeroHangar: bought or granted access). */
+    function cannonade_can_have_key(int $uid): bool
+    {
+        return (bool)apply_filters('cannonade_can_have_key', true, $uid);
     }
 
     function cannonade_apps(int $uid): array
@@ -107,8 +115,9 @@ if (!defined('CANNONADE_ACCOUNT')) {
         }
         $uid = get_current_user_id();
         $newKey = '';
+        $allowed = cannonade_can_have_key($uid);
         if (!empty($_POST['cna_action']) && check_admin_referer('cna_key_' . $uid)) {
-            if ($_POST['cna_action'] === 'new') $newKey = cannonade_new_key($uid);
+            if ($_POST['cna_action'] === 'new' && $allowed) $newKey = cannonade_new_key($uid);
             if ($_POST['cna_action'] === 'revoke') cannonade_revoke_key($uid);
         }
         $hint = get_user_meta($uid, 'cannonade_key_hint', true);
@@ -116,7 +125,12 @@ if (!defined('CANNONADE_ACCOUNT')) {
         <div class="cna-box">
             <h3><?php echo esc_html($t('title')); ?></h3>
             <p><?php echo esc_html($t('intro')); ?></p>
-            <?php if ($newKey): ?>
+            <?php echo apply_filters('cannonade_account_top_html', '', $uid); ?>
+            <?php if (!$allowed): ?>
+                <p><b><?php echo esc_html($t('paid_only')); ?></b></p>
+                <?php if ($hint): ?><p class="cna-warn"><?php echo esc_html($t('no_access_key')); ?></p><?php endif; ?>
+                <?php echo apply_filters('cannonade_offer_html', '', $uid); ?>
+            <?php elseif ($newKey): ?>
                 <p class="cna-key"><code id="cna-key"><?php echo esc_html($newKey); ?></code>
                     <button type="button" class="cna-btn" onclick="navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('cna-key').textContent);this.textContent='✓'"><?php echo esc_html($t('copy')); ?></button></p>
                 <p class="cna-warn"><?php echo esc_html($t('shown_once')); ?></p>
@@ -125,11 +139,11 @@ if (!defined('CANNONADE_ACCOUNT')) {
             <?php else: ?>
                 <p><?php echo esc_html($t('no_key')); ?></p>
             <?php endif; ?>
-            <form method="post" style="display:inline">
+            <?php if ($allowed || $hint): ?><form method="post" style="display:inline">
                 <?php wp_nonce_field('cna_key_' . $uid); ?>
-                <button class="cna-btn" name="cna_action" value="new"<?php if ($hint) echo ' onclick="return confirm(' . esc_attr(wp_json_encode($t('confirm_new'))) . ')"'; ?>><?php echo esc_html($hint ? $t('new_key') : $t('make_key')); ?></button>
+                <?php if ($allowed): ?><button class="cna-btn" name="cna_action" value="new"<?php if ($hint) echo ' onclick="return confirm(' . esc_attr(wp_json_encode($t('confirm_new'))) . ')"'; ?>><?php echo esc_html($hint ? $t('new_key') : $t('make_key')); ?></button><?php endif; ?>
                 <?php if ($hint): ?><button class="cna-btn cna-ghost" name="cna_action" value="revoke" onclick="return confirm(<?php echo esc_attr(wp_json_encode($t('confirm_revoke'))); ?>)"><?php echo esc_html($t('revoke')); ?></button><?php endif; ?>
-            </form>
+            </form><?php endif; ?>
             <h4><?php echo esc_html($t('apps')); ?></h4>
             <ul class="cna-apps">
                 <?php foreach (cannonade_apps($uid) as $app): ?>
@@ -141,7 +155,7 @@ if (!defined('CANNONADE_ACCOUNT')) {
             </ul>
             <p class="cna-small"><?php echo esc_html($t('howto')); ?></p>
         </div>
-        <style>.cna-box{border:1px solid #e3dcea;border-radius:14px;padding:16px 18px;max-width:720px}.cna-btn{background:#7A3E9D;color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;display:inline-block}.cna-ghost{background:transparent;color:#7A3E9D;border:1px solid #7A3E9D}.cna-key code{font-size:1.15em;padding:6px 10px;background:#f4f1f8;border-radius:8px}.cna-warn{color:#b0003a}.cna-small{font-size:.9em;color:#6b6676}</style>
+        <style>.cna-offer{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:10px 0 14px}.cna-offer div{border:1px solid #e3dcea;border-radius:12px;padding:10px 12px}.cna-offer b{display:block}.cna-box{border:1px solid #e3dcea;border-radius:14px;padding:16px 18px;max-width:720px}.cna-btn{background:#7A3E9D;color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;display:inline-block}.cna-ghost{background:transparent;color:#7A3E9D;border:1px solid #7A3E9D}.cna-key code{font-size:1.15em;padding:6px 10px;background:#f4f1f8;border-radius:8px}.cna-warn{color:#b0003a}.cna-small{font-size:.9em;color:#6b6676}</style>
         <?php return (string)ob_get_clean();
     }
 

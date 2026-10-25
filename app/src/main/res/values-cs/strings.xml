@@ -163,6 +163,7 @@
     <string name="plan_service">servis</string>
     <string name="account_types_limit">Limit vlastních typů: %1$d</string>
     <string name="account_types_reached">Účet může mít %1$d vlastní typy.</string>
+    <string name="account_no_access">Tento účet nemá aktivní přístup k AeroHangar. Kontaktujte správce služby.</string>
     <string name="account_limit">Limit letadel: %1$d</string>
     <string name="account_limit_reached">Účet může mít %1$d letadla.</string>
     <string name="account_choose_title">Která data ponechat?</string>
