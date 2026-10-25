@@ -272,33 +272,95 @@ def parse_medical(rows, url, kind, cache):
     return out
 
 
+def article_text(page):
+    """Article body as text: one line per <br>/<p>; Joomla's anti-spam e-mail scripts decoded in place."""
+    body = page
+    m = re.search(r'<div[^>]+(?:itemprop="articleBody"|class="[^"]*com-content-article__body[^"]*")[^>]*>(.*)', page, re.S | re.I)
+    if m:
+        body = m.group(1)
+    # <span id="cloakXXXX">…</span><script>…addyXXXX = 'name' + '&#64;'; addyXXXX = addyXXXX + 'domain' + '&#46;' + 'pl';…</script>
+    def uncloak(mm):
+        script = mm.group(2)
+        parts = re.findall(r"addy[0-9a-f]+\s*=\s*(?:addy[0-9a-f]+\s*\+\s*)?((?:'[^']*'\s*\+?\s*)+);", script)
+        email = html.unescape("".join("".join(re.findall(r"'([^']*)'", x)) for x in parts[:2]))
+        return " " + email + " " if EMAIL.fullmatch(email.strip()) else " "
+    body = re.sub(r'<span id="cloak([0-9a-f]+)"[^>]*>.*?</span>\s*<script[^>]*>(.*?)</script>', uncloak, body, flags=re.S | re.I)
+    body = re.sub(r"<script.*?</script>|<style.*?</style>", " ", body, flags=re.S | re.I)
+    body = re.sub(r'<a [^>]*href="mailto:([^"]+)"[^>]*>.*?</a>', lambda mm: " " + html.unescape(mm.group(1)) + " ", body, flags=re.S | re.I)
+    body = re.sub(r"<br\s*/?>|</p>|</li>|</div>|</h\d>", "\n", body, flags=re.I)
+    txt = html.unescape(re.sub(r"<[^>]+>", " ", body))
+    txt = txt.replace("Ten adres pocztowy jest chroniony przed spamowaniem. Aby go zobaczyć, konieczne jest włączenie w przeglądarce obsługi JavaScript.", " ")
+    return "\n".join(" ".join(l.split()) for l in txt.split("\n"))
+
+
+TITLE = re.compile(r"(?:(?<=\n)|(?<=\s))(?=(?:lek\.\s*med\.|lek\.\s*dent\.|lek\.|dr\s+n\.\s*med\.|dr\s+hab\.|dr\s+med\.|dr\s+|prof\.)\s*(?:n\.\s*med\.\s*|hab\.\s*|med\.\s*|dr\s*)*[A-ZŁŚŻŹĆŃÓ])")
+TITLE_HEAD = re.compile(r"^(?:(?:lek\.\s*med\.|lek\.\s*dent\.|lek\.|dr|n\.\s*med\.|hab\.|med\.|prof\.)\s*)+")
+NAME2 = re.compile(r"^([A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+(?:-[A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+)?(?:\s+[A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+(?:-[A-ZŁŚŻŹĆŃÓ][a-ząćęłńóśźż]+)?){1,2})")
+
+
+def block_contact(block, kind, url, cache, scope_default=""):
+    one = " ".join(block.split())
+    if kind == "ame":
+        rest = TITLE_HEAD.sub("", one).strip()
+        first = TITLE_HEAD.sub("", block.strip().split("\n")[0]).strip()
+        m = NAME2.match(rest)
+        if not m:
+            return None
+        # The name is the block's first line when the page breaks lines; otherwise first name + surname
+        # (a third capitalised word is the practice: "Przychodnia", "Centrum"…).
+        words = m.group(1).split()
+        name = first if (first and len(first.split()) <= 3 and first.split()[:2] == words[:2] and "\n" in block.strip()) else " ".join(words[:2])
+        org = rest[len(name):].split(" ul.")[0].split(" al.")[0].strip(" ,;-")[:100]
+    else:
+        line0 = block.strip().split("\n")[0]
+        name = line0.split(" ul.")[0].split(" al.")[0].strip(" ,;-")[:120]
+        org = ""
+        if len(name) < 4:
+            return None
+    post = POST.search(one)
+    if not post:
+        return None
+    email = EMAIL.search(one)
+    tel = TEL_RX.search(one) or PHONE.search(one)
+    street = re.search(r"(?:ul\.|al\.|pl\.|os\.)\s*[^,]{3,40}?(?=\s+\d{2}-\d{3}|,)", one, re.I)
+    city = post.group(2)
+    ll = geocode(f"{post.group(1)} {city}, Polska", cache)
+    key = re.sub(r"\W+", "-", (name + "-" + city).lower()).strip("-")
+    label = "Lekarz orzecznik medycyny lotniczej (AME)" if kind == "ame" else "Centrum medycyny lotniczej (AeMC)"
+    c = {"id": ("ulc-ame-" if kind == "ame" else "ulc-aemc-") + key[:60], "name": name, "kind": kind,
+         "brands": [b for b in [scope_default] if b], "country": "PL", "city": city,
+         "address": ", ".join(x for x in ((org if org else ""), (street.group(0).strip() if street else ""), post.group(0)) if x),
+         "lat": ll[0] if ll else None, "lon": ll[1] if ll else None,
+         "phone": norm_phone(tel.group(1) if (tel and tel.re is TEL_RX) else (tel.group(0) if tel else "")),
+         "email": email.group(0) if email else "",
+         "note": label + (f". {scope_default}" if scope_default else ""), "source": url}
+    return {k: v for k, v in c.items() if v not in (None, "", [])}
+
+
 def collect_medical(page_url, kind, cache):
-    page, docs = doc_links(page_url)
-    notice(f"{kind}: page {len(page)} chars, documents: " + " ".join(urllib.parse.unquote(d).rsplit('/', 1)[-1] for d in docs[:8]))
-    if DRY:
-        hrefs = [h for h in re.findall(r'href="([^"]+)"', page) if re.search(r"download|_download|\.pdf|\.xls|lekarz|ame|orzecz|aemc|centr", h, re.I)]
-        notice(f"{kind}: interesting links: " + " ".join(sorted(set(hrefs))[:40]))
-        body = re.sub(r"<script.*?</script>|<style.*?</style>", " ", page, flags=re.S | re.I)
-        txt = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", body)).split())
-        i = max(0, txt.lower().find("lekar" if kind == "ame" else "centr", 2000))
-        notice(mask(f"{kind}: text: " + txt[i:i + 1500]))
-        tags = re.findall(r"<(table|ul|ol|div class=\"[^\"]{0,40}|p|li|tr|iframe)", body, re.I)
-        from collections import Counter
-        notice(f"{kind}: tags: " + str(Counter(t.lower()[:30] for t in tags).most_common(15)))
-    rows, src = html_rows(page), page_url
-    for d in docs:
-        low = urllib.parse.unquote(d).lower()
-        if not re.search(r"lekar|ame|orzecz|aemc|centr|medycyn|wykaz|lista", low):
-            continue
-        try:
-            rows = xlsx_rows(d) if low.endswith((".xlsx", ".xls")) else pdf_rows(d) if low.endswith(".pdf") else rows
-            src = d
-            break
-        except Exception as e:
-            notice(f"{kind}: {d} ERROR {type(e).__name__}: {e}")
-    if DRY:
-        notice(mask(f"{kind}: {len(rows)} rows from {src}; sample: " + " ## ".join(" ¦ ".join(c[:28] for c in r) for r in rows[:6])))
-    return parse_medical(rows, src, kind, cache)
+    page = get(page_url)
+    txt = article_text(page)
+    scope = ""
+    sm = re.search(r"Klasa\s+1[^\n]{0,40}", txt)
+    if sm:
+        scope = " ".join(sm.group(0).split())[:60]
+    if kind == "ame":
+        start = re.search(r"personelu pokładowego\s*:|orzeczników[^\n]{0,200}:\s", txt)
+        body = txt[start.end():] if start else txt
+        blocks = [b for b in TITLE.split(body) if b.strip()]
+    else:
+        blocks = [b for b in re.split(r"\n\s*\n+", txt) if POST.search(b)]
+        if len(blocks) < 2:
+            blocks = [b for b in txt.split("\n") if POST.search(b)]
+    out, seen = [], set()
+    for b in blocks:
+        c = block_contact(b, kind, page_url, cache, scope if kind == "ame" else "")
+        if c and c["id"] not in seen:
+            seen.add(c["id"])
+            out.append(c)
+    notice(mask(f"{kind}: {len(blocks)} blocks → {len(out)} entries, {sum(1 for c in out if c.get('email'))} with e-mail, "
+                f"{sum(1 for c in out if c.get('lat'))} with coords; e.g. " + " || ".join(f"{c['name']} [{c.get('city','')}] {c.get('address','')[:50]}" for c in out[:4])))
+    return out
 
 
 # ---------------------------------------------------------------- organisations
