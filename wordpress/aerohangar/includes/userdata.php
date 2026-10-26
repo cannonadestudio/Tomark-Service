@@ -60,7 +60,7 @@ add_action('rest_api_init', function () {
 });
 
 /**
- * What the administrator allows this account in AeroHangar (panel → Konta pilotów, or the user's profile):
+ * What the administrator allows this account in AeroHangar (panel → Konta użytkowników, or the user's profile):
  *   aerohangar_blocked      1 = no access for the apps
  *   aerohangar_pro          1 = Pro granted by hand, aerohangar_pro_until = unix time (0/empty = no end)
  *   aerohangar_plan         pilot | mechanic | school | dealer | service (label; WooCommerce purchases set it too)
@@ -202,7 +202,7 @@ add_filter('manage_users_custom_column', function ($v, $col, $uid) {
     $p = ah_permissions((int)$uid);
     if ($p['blocked']) return '<span style="color:#C62828">zablokowany</span>';
     $bits = array_filter([$p['pro'] ? 'Pro' : 'bez dostępu', $p['plan'] ?: '', get_user_meta($uid, 'cannonade_key_hash', true) ? 'klucz ✓' : '']);
-    return esc_html(implode(' · ', $bits)) . ' · <a href="' . esc_url(admin_url('admin.php?page=aerohangar-panel#accounts')) . '">zarządzaj</a>';
+    return esc_html(implode(' · ', $bits)) . ' · <a href="' . esc_url(admin_url('admin.php?page=aerohangar-p-accounts')) . '">zarządzaj</a>';
 }, 10, 3);
 
 /**
@@ -245,7 +245,7 @@ add_action('admin_bar_menu', function (WP_Admin_Bar $bar) {
     if (!current_user_can('aerohangar_view') && !current_user_can('manage_options')) return;
     $bar->add_node(['id' => 'aerohangar-panel', 'title' => '<span class="ab-icon dashicons dashicons-airplane" style="top:2px"></span>AeroHangar', 'href' => admin_url('admin.php?page=aerohangar-panel')]);
     $bar->add_node(['id' => 'aerohangar-panel-open', 'parent' => 'aerohangar-panel', 'title' => 'Panel (samoloty, biuletyny, konta…)', 'href' => admin_url('admin.php?page=aerohangar-panel')]);
-    $bar->add_node(['id' => 'aerohangar-panel-accounts', 'parent' => 'aerohangar-panel', 'title' => 'Konta pilotów', 'href' => admin_url('admin.php?page=aerohangar-panel#accounts')]);
+    $bar->add_node(['id' => 'aerohangar-panel-accounts', 'parent' => 'aerohangar-panel', 'title' => 'Konta użytkowników', 'href' => admin_url('admin.php?page=aerohangar-p-accounts')]);
     $bar->add_node(['id' => 'aerohangar-panel-info', 'parent' => 'aerohangar-panel', 'title' => 'Produkty i ustawienia', 'href' => admin_url('admin.php?page=aerohangar')]);
 }, 80);
 
@@ -281,7 +281,7 @@ function ah_plan_limit_text(string $plan): string
     return ah_plan_max_aircraft($plan) >= 999 ? 'bez limitu samolotów' : 'do ' . ah_plan_max_aircraft($plan) . ' samolotów';
 }
 
-// ---------------------------------------------------------------- WordPress account data (panel → Konta pilotów)
+// ---------------------------------------------------------------- WordPress account data (panel → Konta użytkowników)
 
 /** WordPress roles the panel may give (administrators are changed only in wp-admin). */
 function ah_wp_roles(): array

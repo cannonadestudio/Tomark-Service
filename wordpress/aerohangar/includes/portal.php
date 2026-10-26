@@ -7,7 +7,7 @@
  * backup (+ CSV export), and – for businesses linked to their catalogue entry – service requests from app users,
  * their own listing in the app's catalogue and its statistics.
  *
- * What each account may use is set by the administrator (panel → Konta pilotów → Edytuj → "Możliwości"); until
+ * What each account may use is set by the administrator (panel → Konta użytkowników → Edytuj → "Możliwości"); until
  * then the plan's defaults apply. Without access (purchase or manual grant) nothing but the offer is shown.
  */
 defined('ABSPATH') || exit;

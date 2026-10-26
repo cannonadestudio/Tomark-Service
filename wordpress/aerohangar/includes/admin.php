@@ -5,25 +5,71 @@
  */
 defined('ABSPATH') || exit;
 
+/** Panel sections shown as items of the WordPress menu "AeroHangar" (slug => [menu title, panel tab]). */
+function ah_admin_sections(): array
+{
+    return [
+        'aerohangar-panel' => ['Pulpit', 'home'],
+        'aerohangar-p-bulletins' => ['Biuletyny', 'bulletins'],
+        'aerohangar-p-types' => ['Typy samolotów', 'types'],
+        'aerohangar-p-news' => ['Komunikaty', 'news'],
+        'aerohangar-p-contacts' => ['Kontakty', 'c_service'],
+        'aerohangar-p-money' => ['Partnerzy i reklamy', 'partners'],
+        'aerohangar-p-accounts' => ['Konta użytkowników', 'accounts'],
+        'aerohangar-p-users' => ['Zgłoszenia i statystyki', 'subs'],
+        'aerohangar-p-history' => ['Historia i kopie', 'history'],
+        'aerohangar-p-settings' => ['Ustawienia panelu', 'settings'],
+    ];
+}
+
 add_action('admin_menu', function () {
-    add_menu_page('AeroHangar', 'AeroHangar', 'aerohangar_view', 'aerohangar', 'aerohangar_info_page', 'dashicons-airplane', 58);
-    add_submenu_page('aerohangar', 'AeroHangar – informacje', 'Informacje i ustawienia', 'aerohangar_view', 'aerohangar', 'aerohangar_info_page');
-    add_submenu_page('aerohangar', 'Panel AeroHangar', 'Otwórz panel', 'aerohangar_view', 'aerohangar-panel', '__return_null');
-    add_submenu_page('aerohangar', 'Import ze starego serwera', 'Import ze starego serwera', 'manage_options', 'aerohangar-import', 'aerohangar_import_page');
+    add_menu_page('AeroHangar', 'AeroHangar', 'aerohangar_view', 'aerohangar-panel', 'aerohangar_embed_page', 'dashicons-airplane', 58);
+    $i = 0;
+    foreach (ah_admin_sections() as $slug => [$title, $tab]) {
+        $cap = $tab === 'settings' ? 'manage_options' : 'aerohangar_view';
+        add_submenu_page('aerohangar-panel', 'AeroHangar – ' . $title, $title, $cap, $slug, 'aerohangar_embed_page', $i++);
+    }
+    add_submenu_page('aerohangar-panel', 'AeroHangar – informacje', 'Informacje i produkty', 'aerohangar_view', 'aerohangar', 'aerohangar_info_page', 50);
+    add_submenu_page('aerohangar-panel', 'Import ze starego serwera', 'Import ze starego serwera', 'manage_options', 'aerohangar-import', 'aerohangar_import_page', 60);
+    // the panel application itself (loaded inside the pages above), not in the menu
+    add_submenu_page('', 'AeroHangar', '', 'aerohangar_view', 'aerohangar-app', '__return_null');
 });
 
-// The panel is a full-screen page of its own (it has its own layout and menu).
+/** A panel section inside the normal wp-admin screen (WordPress menu on the left, the panel on the right). */
+function aerohangar_embed_page(): void
+{
+    $slug = sanitize_key($_GET['page'] ?? 'aerohangar-panel');
+    $tab = ah_admin_sections()[$slug][1] ?? 'home';
+    $src = admin_url('admin.php?page=aerohangar-app&embed=1');
+    ?>
+    <div class="wrap ah-embed-wrap" style="margin:10px 20px 0 0">
+        <iframe id="ah-panel-frame" title="AeroHangar" style="width:100%;border:0;display:block;background:#F2F4F8;border-radius:8px;height:calc(100vh - 32px - 30px)"></iframe>
+    </div>
+    <script>
+    (function () {
+        var f = document.getElementById('ah-panel-frame');
+        var tab = (location.hash.length > 1 ? location.hash.slice(1) : <?php echo wp_json_encode($tab); ?>);
+        f.src = <?php echo wp_json_encode($src); ?> + '#' + tab;
+        document.getElementById('wpfooter') && (document.getElementById('wpfooter').style.display = 'none');
+    })();
+    </script>
+    <?php
+}
+
+// The panel application: full screen (front-end clients) or inside the wp-admin pages above (?embed=1).
 add_action('admin_init', function () {
-    if (($_GET['page'] ?? '') !== 'aerohangar-panel') return;
+    if (($_GET['page'] ?? '') !== 'aerohangar-app') return;
     if (!current_user_can('aerohangar_view') && !current_user_can('manage_options')) wp_die('Brak uprawnień.');
     $html = (string)file_get_contents(AEROHANGAR_DIR . '/assets/panel.html');
     $cfg = ['api' => rest_url('aerohangar/v1/api'), 'nonce' => wp_create_nonce('wp_rest'), 'assets' => AEROHANGAR_URL . 'assets/',
-        'wpAdmin' => admin_url('admin.php?page=aerohangar'), 'login' => wp_login_url(admin_url('admin.php?page=aerohangar-panel'))];
+        'wpAdmin' => admin_url('admin.php?page=aerohangar'), 'login' => wp_login_url(admin_url('admin.php?page=aerohangar-panel')),
+        'embed' => !empty($_GET['embed']), 'adminPages' => array_map(fn($x) => $x[1], ah_admin_sections()), 'adminBase' => admin_url('admin.php?page=')];
     $html = str_replace('/*AH_WP_CONFIG*/', 'window.AH_WP = ' . wp_json_encode($cfg) . ';', $html);
     $html = str_replace('href="favicon.ico"', 'href="' . esc_url(AEROHANGAR_URL . 'assets/favicon.ico') . '"', $html);
     $html = str_replace(['href="icon-192.png"', 'href="apple-touch-icon.png"'], ['href="' . esc_url(AEROHANGAR_URL . 'assets/icon-192.png') . '"', 'href="' . esc_url(AEROHANGAR_URL . 'assets/apple-touch-icon.png') . '"'], $html);
     nocache_headers();
     header('Content-Type: text/html; charset=utf-8');
+    header('X-Frame-Options: SAMEORIGIN');
     echo $html;
     exit;
 });
@@ -36,7 +82,6 @@ function aerohangar_info_page(): void
     ?>
     <div class="wrap">
         <h1>AeroHangar</h1>
-        <p><a class="button button-primary button-hero" href="<?php echo esc_url(admin_url('admin.php?page=aerohangar-panel')); ?>">Otwórz panel AeroHangar</a></p>
         <?php $lp = get_option('aerohangar_last_pull'); $nx = wp_next_scheduled('aerohangar_daily_pull'); ?>
         <h2>Codzienna aktualizacja z GitHuba</h2>
         <p>Strona sama, raz dziennie (rano), pobiera nowe biuletyny (AD EASA, producenci), typy samolotów, katalog silników i listy ULC. Aplikacje pobierają je przy każdym uruchomieniu i raz dziennie w tle.<br>
@@ -55,7 +100,7 @@ function aerohangar_info_page(): void
             </table>
         <?php endif; ?>
         <?php if ($admin) aerohangar_products_box(); ?>
-        <h2>Konta pilotów (AeroHangar + Pilot Logbook)</h2>
+        <h2>Konta użytkowników (AeroHangar + Pilot Logbook)</h2>
         <p>Wstaw na dowolną stronę krótki kod <code>[cannonade_konto]</code> – zalogowany pilot utworzy tam swój klucz i wklei go w obu aplikacjach. Ta sama strona jest też w <a href="<?php echo esc_url(admin_url('profile.php?page=cannonade-account')); ?>">Profil → Konto Cannonade</a>.</p>
         <p>Rejestracja nowych użytkowników: Ustawienia → Ogólne → „Każdy może się zarejestrować” (rola: Subskrybent).</p>
         <h2>Pliki danych</h2>

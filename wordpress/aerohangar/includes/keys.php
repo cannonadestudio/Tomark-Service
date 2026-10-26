@@ -7,7 +7,7 @@
 defined('ABSPATH') || exit;
 
 add_action('admin_menu', function () {
-    add_submenu_page('aerohangar', 'Klucze aplikacji', 'Klucze aplikacji', 'manage_options', 'aerohangar-keys', 'aerohangar_keys_page');
+    add_submenu_page('aerohangar-panel', 'Klucze aplikacji', 'Klucze aplikacji', 'manage_options', 'aerohangar-keys', 'aerohangar_keys_page', 7);
     // also under Users, where WordPress accounts are managed
     add_users_page('Klucze aplikacji', 'Klucze aplikacji (AeroHangar)', 'manage_options', 'aerohangar-keys-users', 'aerohangar_keys_page');
 }, 20);
@@ -135,7 +135,7 @@ function aerohangar_keys_page(): void
                         <?php else: ?>
                             <?php echo $btn('new', $u->ID, 'Generuj klucz', '', 'button button-primary'); ?>
                         <?php endif; ?>
-                        <a class="button-link" style="margin-left:6px" href="<?php echo esc_url(admin_url('admin.php?page=aerohangar-panel#accounts')); ?>">uprawnienia</a>
+                        <a class="button-link" style="margin-left:6px" href="<?php echo esc_url(admin_url('admin.php?page=aerohangar-p-accounts')); ?>">uprawnienia</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

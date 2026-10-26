@@ -30,6 +30,15 @@ main{flex:1;min-width:0}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin:12px 0}
 .sec{color:var(--violet);font-weight:700;margin:18px 0 0}
 nav#tabs.shown{display:block}
+body.embed{background:#F2F4F8}
+body.embed header{display:none}
+body.embed .layout{display:block;padding:12px 16px 30px;max-width:none}
+body.embed nav#tabs.shown{position:static;display:flex;flex-wrap:wrap;gap:6px;background:transparent;box-shadow:none;padding:0 0 10px}
+body.embed nav#tabs .grp{display:none}
+body.embed nav#tabs .tab{width:auto;background:#fff;color:var(--violet);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+body.embed nav#tabs .tab.on{background:var(--violet);color:#fff}
+body.embed nav#tabs .tab .cnt{background:rgba(11,42,91,.10);margin-left:8px}
+body.embed nav#tabs .tab.on .cnt{background:rgba(255,255,255,.25)}
 @media (max-width:820px){.layout{flex-direction:column;padding:0 12px 30px;gap:8px}
   nav#tabs.shown{position:sticky;top:0;z-index:6;width:100%;flex:none;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:6px;background:var(--violet)}
   nav#tabs .grp{display:none}
@@ -128,6 +137,8 @@ const state = { tab: "home", data: {}, sha: {}, filter: "" };
 const $ = s => document.querySelector(s);
 // Client accounts (pilots, mechanics, schools, dealers, services) see only the sections the administrator gave them.
 const isClient = () => state.user?.role === "client";
+const EMBED = !!(window.AH_WP && window.AH_WP.embed);
+if (EMBED) document.body.classList.add("embed");
 const CLIENT_FILE_TABS = { contacts: "contacts", examiners: "examiners" };
 function secOf(tab) { if (CGROUPS[tab]) return CGROUPS[tab].file === "examiners" ? "examiners" : "contacts"; return tab }
 function canSee(tab) {
@@ -222,6 +233,17 @@ $("#loginForm").onsubmit = async e => {
 };
 
 // ---------------------------------------------------------------- UI helpers
+/** Go to a section; inside wp-admin through the WordPress menu page of that section (keeps the menu in step). */
+function goTab(tab) {
+  if (EMBED && window.AH_WP.adminPages) {
+    const SUB = { c_maker: "c_service", c_dealer: "c_service", c_mech: "c_service", c_instr: "c_service", c_school: "c_service", c_exam: "c_service", c_ame: "c_service", c_aemc: "c_service",
+      requests: "partners", sponsor: "partners", stats: "subs", installs: "subs", settings: "settings", users: "settings" };
+    const base = SUB[tab] || tab;
+    const slug = Object.keys(window.AH_WP.adminPages).find(k => window.AH_WP.adminPages[k] === base);
+    if (slug) { window.top.location.href = window.AH_WP.adminBase + slug + "#" + tab; return }
+  }
+  state.tab = tab; renderTabs(); render();
+}
 function renderTabs() {
   const count = g => (state.data[CGROUPS[g].file]?.contacts || []).filter(c => CGROUPS[g].kinds.includes(c.kind)).length;
   const groups = [
@@ -229,16 +251,23 @@ function renderTabs() {
     ["Dane w aplikacji", [["bulletins", "Biuletyny", state.data.bulletins?.bulletins?.length], ["types", "Typy samolotów", state.data.types?.length], ["news", "Komunikaty", state.data.news?.messages?.length]]],
     ["Kontakty", Object.keys(CGROUPS).filter(g => !(state.noExaminers && CGROUPS[g].file === "examiners")).map(g => [g, CGROUPS[g].name, count(g)])],
     ["Zarabianie", [["partners", "Partnerzy", partners().filter(isActive).length], ["requests", "Zapytania serwisowe", state.reqCount, state.reqCount > 0], ["sponsor", "Sponsor / baner", (state.data.sponsor?.banners || []).length]]],
-    ["Użytkownicy aplikacji", [["subs", "Zgłoszenia", state.subCount, state.subCount > 0], ["stats", "Statystyki"], ["installs", "Instalacje i Pro"], ...(window.AH_WP ? [["accounts", "Konta pilotów"]] : [])]],
+    ["Użytkownicy aplikacji", [["subs", "Zgłoszenia", state.subCount, state.subCount > 0], ["stats", "Statystyki"], ["installs", "Instalacje i Pro"]]],
+    ...(window.AH_WP ? [["Konta", [["accounts", "Konta użytkowników"]]]] : []),
     ["System", [["history", "Historia i kopie"], ...(state.user?.role === "admin" ? [...(window.AH_WP ? [] : [["users", "Konta panelu"]]), ["settings", "Ustawienia"]] : [])]],
   ];
   groups.forEach(g => g[1] = g[1].filter(([k]) => canSee(k) && !(isClient() && ["home", "accounts", "settings", "users"].includes(k))));
   for (let i = groups.length - 1; i >= 0; i--) if (!groups[i][1].length) groups.splice(i, 1);
+  if (EMBED) {
+    // inside wp-admin the WordPress menu chooses the section; here only its sub-pages (e.g. contact lists)
+    const g = groups.find(([, items]) => items.some(([k]) => k === state.tab));
+    groups.splice(0, groups.length, ...(g && g[1].length > 1 ? [g] : []));
+  }
   const nav = $("#tabs");
   nav.classList.add("shown");
   nav.innerHTML = groups.map(([g, items]) => (g ? `<div class="grp">${g}</div>` : "") + items.map(([k, n, c, alert]) =>
     `<button class="tab ${state.tab === k ? "on" : ""}" data-tab="${k}"><span>${n}</span>${c != null ? `<span class="cnt ${alert ? "alert" : ""}">${c}</span>` : ""}</button>`).join("")).join("");
-  nav.querySelectorAll("button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; state.filter = ""; renderTabs(); render(); window.scrollTo(0, 0) });
+  nav.querySelectorAll("button").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; state.filter = ""; try { history.replaceState(null, "", "#" + state.tab) } catch (e) { } renderTabs(); render(); window.scrollTo(0, 0) });
+  if (EMBED && !groups.length) nav.classList.remove("shown");
   nav.querySelector(".tab.on")?.scrollIntoView({ block: "nearest", inline: "center" });
 }
 
@@ -743,10 +772,22 @@ async function renderAccounts() {
   const admin = state.user?.role === "admin";
   const d = t => t ? new Date(t * 1000).toISOString().slice(0, 10) : "—";
   const ROLE = { admin: "administrator", editor: "edycja danych", viewer: "podgląd", "": "" };
+  // categories: by plan (bought or set by the administrator), staff, no access
+  const CATS = [["all", "Wszystkie"], ["pilot", "Piloci / właściciele"], ["mechanic", "Mechanicy"], ["school", "Szkoły lotnicze"], ["dealer", "Dealerzy"], ["service", "Serwisy"], ["staff", "Personel panelu"], ["none", "Bez dostępu"]];
+  const catOf = a => {
+    if (a.panelRole) return "staff";
+    if (!a.hasAccess && !a.proActive) return "none";
+    const p = a.plan || a.access?.plan || "pilot";
+    return p === "club" ? "school" : (["mechanic", "school", "dealer", "service"].includes(p) ? p : "pilot");
+  };
+  const cnt = {}; j.accounts.forEach(a => { const c = catOf(a); cnt[c] = (cnt[c] || 0) + 1 }); cnt.all = j.accounts.length;
+  if (!CATS.some(([k]) => k === state.accCat)) state.accCat = "all";
+  const list = j.accounts.filter(a => state.accCat === "all" || catOf(a) === state.accCat);
   v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Szukaj konta: login, imię, e-mail…" value="${esc(state.filter)}" style="flex:1">${admin ? '<button id="accNew">+ Nowe konto</button>' : ""}</div>
     <p class="muted">Wszystkie konta WordPress (ostatnie 500 / wynik wyszukiwania). <b>Edytuj</b> – dostęp do aplikacji, plan, Pro (bez limitu albo do daty), limit samolotów i własnych typów oraz rola w panelu. Pilot łączy aplikacje kluczem ze strony <code>[cannonade_konto]</code>; dostęp kupiony w WooCommerce dolicza się sam. <b>Konto bez zakupu i bez ręcznie przyznanego dostępu nie może utworzyć klucza</b>, a istniejący klucz przestaje działać.</p>
+    <div class="row" style="flex-wrap:wrap;gap:6px;margin:6px 0 10px">${CATS.map(([k, n]) => `<button class="${state.accCat === k ? "" : "ghost"}" data-cat="${k}" style="padding:5px 12px">${n} <span class="muted" style="color:inherit;opacity:.8">${cnt[k] || 0}</span></button>`).join("")}</div>
     <table><tr><th>Konto</th><th>Dostęp w AeroHangar</th><th>Klucz</th><th class="hide-sm">Ostatnio / kopia</th><th>Samoloty</th><th></th></tr>
-    ${j.accounts.map(a => `<tr><td><b>${esc(a.name)}</b><div class="muted">${esc(a.login)} · ${esc(a.email)}</div><div class="muted">${esc(a.wpRole)} · od ${esc(a.registered)}</div></td>
+    ${list.map(a => `<tr><td><b>${esc(a.name)}</b><div class="muted">${esc(a.login)} · ${esc(a.email)}</div><div class="muted">${esc(a.wpRole)} · od ${esc(a.registered)}</div></td>
       <td>${a.blocked ? '<span class="chip" style="background:#fde2e8;color:#a3123f">zablokowany</span>' : (a.proActive ? '<span class="chip p">Pro</span>' : (a.hasAccess ? '<span class="chip g">dostęp (personel)</span>' : '<span class="chip">bez dostępu</span>'))}
         ${a.plan ? `<span class="chip">${esc(PLAN[a.plan] || a.plan)}</span>` : ""}
         ${a.pro && a.proUntil ? `<div class="muted">Pro ręczne do ${esc(a.proUntil)}</div>` : (a.pro ? '<div class="muted">Pro ręczne</div>' : "")}
@@ -760,9 +801,10 @@ async function renderAccounts() {
         ${a.note ? `<div class="muted"><i>${esc(a.note)}</i></div>` : ""}</td>
       <td>${a.keyFull ? `<code style="font-size:12px;user-select:all">${esc(a.keyFull)}</code> <button class="ghost" style="padding:2px 8px" data-copy="${esc(a.keyFull)}">Kopiuj</button>` : a.key ? `<span class="chip g">…${esc(a.keyHint)}</span>` : '<span class="muted">brak</span>'}</td>
       <td class="hide-sm nowrap">${d(a.lastSeen)}<div class="muted">${d(a.lastSync)}</div></td><td>${a.aircraft}</td>
-      <td class="nowrap">${admin ? `<button class="ghost" data-edit="${a.id}">Edytuj</button>` : ""}</td></tr>`).join("") || '<tr><td class="muted">Brak kont.</td></tr>'}</table></div>`;
+      <td class="nowrap">${admin ? `<button class="ghost" data-edit="${a.id}">Edytuj</button>` : ""}</td></tr>`).join("") || '<tr><td class="muted">Brak kont w tej kategorii.</td></tr>'}</table></div>`;
   $("#q").oninput = e => { state.filter = e.target.value; clearTimeout(state._qt); state._qt = setTimeout(() => renderAccounts().then(() => { const x = $("#q"); x.focus(); x.setSelectionRange(x.value.length, x.value.length) }), 350) };
   v.querySelectorAll("button[data-edit]").forEach(b => b.onclick = () => editAccount(state.accounts.find(a => a.id === +b.dataset.edit)));
+  v.querySelectorAll("button[data-cat]").forEach(b => b.onclick = () => { state.accCat = b.dataset.cat; renderAccounts() });
   if ($("#accNew")) $("#accNew").onclick = () => openDialog(`<h3>Nowe konto</h3>
     <div class="grid2">${field("name", "Imię i nazwisko / firma")}${field("email", "E-mail", "", "email", "required")}</div>
     <div class="grid2">${field("login", "Login (puste = z e-maila)")}${select("wpRole", "Rola WordPress", Object.entries(state.wpRoles), "subscriber")}</div>
@@ -899,7 +941,7 @@ async function renderHome() {
     </div>
     <div class="card"><div class="row"><b style="flex:1">Aktualizacja danych z GitHuba</b><button id="pullHome">Pobierz teraz listy ULC, producentów, biuletyny i typy</button></div>
     <p class="muted" style="margin-bottom:0">Dodaje tylko brakujące wpisy – Twoich zmian i usuniętych wpisów nie przywraca. Listy ULC podmienia, zachowując Twoje ustawienia publikacji.</p></div>`;
-  v.querySelectorAll(".tile[data-go]").forEach(t => t.onclick = () => { state.tab = t.dataset.go; renderTabs(); render() });
+  v.querySelectorAll(".tile[data-go]").forEach(t => t.onclick = () => goTab(t.dataset.go));
   $("#pullHome").onclick = async () => {
     const btn = $("#pullHome"); btn.disabled = true; btn.textContent = "Pobieranie…";
     try {
