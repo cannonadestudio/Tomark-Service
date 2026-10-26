@@ -15,8 +15,8 @@ add_action('admin_menu', function () {
 /** Key state of one account for the table. */
 function ah_key_row(WP_User $u): array
 {
+    $plain = cannonade_key_plain($u->ID);          // also picks up a key made in Pilot Logbook
     $hash = (string)get_user_meta($u->ID, 'cannonade_key_hash', true);
-    $plain = $hash ? cannonade_key_plain($u->ID) : null;
     return [
         'key' => $plain,
         'legacy' => $hash && !$plain,                       // made by an older version: works, but cannot be shown
@@ -49,7 +49,7 @@ function aerohangar_keys_page(): void
         } elseif ($act === 'missing') {
             $n = 0;
             foreach (get_users(['number' => 2000, 'fields' => 'all']) as $x) {
-                if (get_user_meta($x->ID, 'cannonade_key_hash', true)) continue;
+                if (get_user_meta($x->ID, 'cannonade_key_hash', true) || cannonade_key_plain($x->ID)) continue;
                 if (!cannonade_can_have_key($x->ID)) continue;
                 cannonade_new_key($x->ID);
                 $n++;
@@ -91,7 +91,7 @@ function aerohangar_keys_page(): void
     <div class="wrap">
         <h1>Klucze aplikacji <span style="font-size:14px;font-weight:400;color:#55606f">– jeden klucz konta działa w AeroHangar i w Pilot Logbook</span></h1>
         <?php foreach ($msg as $m): ?><div class="notice notice-success is-dismissible"><p><?php echo esc_html($m); ?></p></div><?php endforeach; ?>
-        <p>Pilot (albo mechanik, szkoła…) wkleja klucz w <b>AeroHangar</b>: ikona konta u góry → Konto Cannonade → Połącz, oraz w <b>Pilot Logbook</b> – oba telefony i obie aplikacje widzą wtedy to samo konto. Klucz działa tylko na koncie z dostępem (zakup w sklepie albo dostęp przyznany ręcznie w panelu → Konta pilotów).</p>
+        <p>Pilot (albo mechanik, szkoła…) wkleja <b>ten sam klucz</b> w <b>AeroHangar</b> (ikona konta u góry → Konto Cannonade → Połącz) i w <b>Pilot Logbook</b> – obie aplikacje i wszystkie jego telefony widzą wtedy to samo konto.<?php if (function_exists('ah_plb_on') && ah_plb_on()) echo ' Klucz to osobisty klucz Pilot Logbook (<code>plb_…</code>) – nowy klucz utworzony tutaj albo w Pilot Logbook działa od razu w obu aplikacjach; starsze klucze <code>CNA-…</code> nadal działają w AeroHangar.'; ?> Klucz działa tylko na koncie z dostępem (zakup w sklepie albo dostęp przyznany ręcznie w panelu → Konta pilotów).</p>
         <form method="get" style="margin:12px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
             <input type="hidden" name="page" value="<?php echo esc_attr(sanitize_key($_GET['page'] ?? 'aerohangar-keys')); ?>">
             <input type="search" name="s" value="<?php echo esc_attr($q); ?>" placeholder="Szukaj: imię, login, e-mail" class="regular-text">

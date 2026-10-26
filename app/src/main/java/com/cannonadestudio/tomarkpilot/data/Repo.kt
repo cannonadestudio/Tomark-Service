@@ -213,6 +213,7 @@ object Repo {
         conn.connectTimeout = 10_000; conn.readTimeout = 20_000
         conn.requestMethod = method
         conn.setRequestProperty("Authorization", "Bearer $key")
+        conn.setRequestProperty("X-Cannonade-Key", key)   // some hostings drop Authorization
         conn.setRequestProperty("Accept", "application/json")
         try {
             if (body != null) {
@@ -244,7 +245,8 @@ object Repo {
             if (!accountAvailable) resolveBase().also { refreshAppConfig() }
             val base = accountBase ?: error("no account server")
             val root = restRoot() ?: error("no account server")
-            val k = key.trim().uppercase()
+            // Pilot Logbook keys (plb_…) are case-sensitive; CNA-… keys are typed in any case
+            val k = key.trim().let { if (it.startsWith("plb_", ignoreCase = true)) it else it.uppercase() }
             val (code, text) = accountCall("GET", base + "me", k)
             if (code == 401) error("401")
             if (code == 402) error("402")
@@ -316,6 +318,7 @@ object Repo {
             val conn = URL(root + "aerohangar/v1/account/data").openConnection() as HttpURLConnection
             conn.connectTimeout = 10_000; conn.readTimeout = 20_000; conn.requestMethod = "PUT"; conn.doOutput = true
             conn.setRequestProperty("Authorization", "Bearer $key")
+            conn.setRequestProperty("X-Cannonade-Key", key)   // some hostings drop Authorization
             conn.setRequestProperty("Content-Type", "application/json; charset=utf-8")
             conn.setRequestProperty("X-AeroHangar-Device", device())
             val (code, text) = try {

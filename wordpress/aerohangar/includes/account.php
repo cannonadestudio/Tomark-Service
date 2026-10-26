@@ -39,6 +39,8 @@ if (!defined('CANNONADE_ACCOUNT')) {
     /** The account's whole key (null for keys made before keys were kept, or after "disconnect"). */
     function cannonade_key_plain(int $user_id): ?string
     {
+        $shared = apply_filters('cannonade_key_plain', null, $user_id);
+        if (is_string($shared) && $shared !== '') return $shared;
         $enc = (string)get_user_meta($user_id, 'cannonade_key_enc', true);
         if ($enc === '' || !function_exists('openssl_decrypt')) return null;
         $raw = base64_decode($enc, true);
@@ -50,8 +52,12 @@ if (!defined('CANNONADE_ACCOUNT')) {
 
     function cannonade_new_key(int $user_id): string
     {
-        $raw = strtoupper(bin2hex(random_bytes(10)));
-        $key = 'CNA-' . implode('-', str_split($raw, 5));
+        // A plugin may provide the shared key (Pilot Logbook: its personal pilot key), so one key works in every app.
+        $key = (string)apply_filters('cannonade_new_key', '', $user_id);
+        if ($key === '') {
+            $raw = strtoupper(bin2hex(random_bytes(10)));
+            $key = 'CNA-' . implode('-', str_split($raw, 5));
+        }
         update_user_meta($user_id, 'cannonade_key_hash', cannonade_key_hash($key));
         update_user_meta($user_id, 'cannonade_key_hint', substr($key, -5));
         update_user_meta($user_id, 'cannonade_key_created', time());
@@ -66,6 +72,7 @@ if (!defined('CANNONADE_ACCOUNT')) {
         delete_user_meta($user_id, 'cannonade_key_hash');
         delete_user_meta($user_id, 'cannonade_key_hint');
         delete_user_meta($user_id, 'cannonade_key_enc');
+        do_action('cannonade_key_revoked', $user_id);
         do_action('cannonade_key_changed', $user_id);
     }
 
@@ -82,6 +89,7 @@ if (!defined('CANNONADE_ACCOUNT')) {
     function cannonade_user_from_request(WP_REST_Request $r)
     {
         $h = (string)$r->get_header('authorization');
+        if ($h === '' && !empty($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) $h = sanitize_text_field(wp_unslash($_SERVER['REDIRECT_HTTP_AUTHORIZATION']));
         $key = preg_match('/^Bearer\s+(.+)$/i', $h, $m) ? $m[1] : (string)$r->get_header('x-cannonade-key');
         $ipKey = 'cna_fail_' . md5($_SERVER['REMOTE_ADDR'] ?? '');
         if ((int)get_transient($ipKey) >= 20) return new WP_Error('cannonade_blocked', 'too many wrong keys – wait 15 minutes', ['status' => 429]);

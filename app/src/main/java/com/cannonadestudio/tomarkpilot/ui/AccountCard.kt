@@ -56,7 +56,7 @@ fun AccountCard() {
             if (st.accountKey == null) {
                 Text(stringResource(R.string.account_hint), style = MaterialTheme.typography.bodySmall)
                 OutlinedTextField(key, { key = it }, label = { Text(stringResource(R.string.account_key)) }, singleLine = true,
-                    placeholder = { Text("CNA-…") }, modifier = Modifier.fillMaxWidth().padding(top = 6.dp))
+                    placeholder = { Text("plb_… / CNA-…") }, modifier = Modifier.fillMaxWidth().padding(top = 6.dp))
                 Row(Modifier.padding(top = 6.dp)) {
                     if (busy) CircularProgressIndicator(Modifier.padding(8.dp)) else Button(enabled = key.trim().length >= 10, onClick = {
                         busy = true
