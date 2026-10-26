@@ -37,6 +37,12 @@ function aerohangar_info_page(): void
     <div class="wrap">
         <h1>AeroHangar</h1>
         <p><a class="button button-primary button-hero" href="<?php echo esc_url(admin_url('admin.php?page=aerohangar-panel')); ?>">Otwórz panel AeroHangar</a></p>
+        <?php $lp = get_option('aerohangar_last_pull'); $nx = wp_next_scheduled('aerohangar_daily_pull'); ?>
+        <h2>Codzienna aktualizacja z GitHuba</h2>
+        <p>Strona sama, raz dziennie (rano), pobiera nowe biuletyny (AD EASA, producenci), typy samolotów, katalog silników i listy ULC. Aplikacje pobierają je przy każdym uruchomieniu i raz dziennie w tle.<br>
+        Ostatnio: <b><?php echo $lp ? esc_html(wp_date('Y-m-d H:i', $lp['time']) . ' (' . ($lp['by'] === 'cron' ? 'automatycznie' : $lp['by']) . ')') : 'jeszcze nie'; ?></b><?php
+        if ($lp && isset($lp['result']['bulletins']['new'])) echo esc_html(' – nowe biuletyny: ' . (int)$lp['result']['bulletins']['new'] . ', razem ' . (int)($lp['result']['bulletins']['total'] ?? 0)); ?>
+        · następna: <?php echo $nx ? esc_html(wp_date('Y-m-d H:i', $nx)) : '—'; ?></p>
         <h2>Połączenie aplikacji z tą stroną</h2>
         <p>W repozytorium GitHub zmień <code>data/config.json</code> – wszystkie zainstalowane aplikacje przejdą na tę stronę przy następnym otwarciu:</p>
         <pre style="background:#fff;padding:12px;border:1px solid #ddd;max-width:900px;overflow:auto"><?php echo esc_html(wp_json_encode(['dataBaseUrl' => $data, 'apiUrl' => $api . '?a='], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)); ?></pre>
