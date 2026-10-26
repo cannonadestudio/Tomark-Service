@@ -35,6 +35,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.EventAvailable
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Language
@@ -318,35 +321,61 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
 @Composable
 private fun PartnerLine(c: Contact, km: Double?, modifier: Modifier, onRequest: (() -> Unit)?, onOpen: () -> Unit) {
     val ctx = LocalContext.current
+    val gold = Color(0xFFE8A317)
     androidx.compose.runtime.LaunchedEffect(c.id) { Repo.track("view", c.id) }
-    Card(
-        modifier.clickable(onClick = onOpen),
-        border = androidx.compose.foundation.BorderStroke(1.5.dp, HbgPink),
-    ) {
-        Row(Modifier.padding(horizontal = 10.dp, vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text("★", color = HbgPink, fontWeight = FontWeight.Bold, modifier = Modifier.padding(end = 6.dp))
-            if (c.logo.startsWith("https://")) {
-                coil.compose.AsyncImage(
-                    model = directImageUrl(c.logo), contentDescription = null,
-                    modifier = Modifier.size(28.dp).padding(end = 6.dp), contentScale = androidx.compose.ui.layout.ContentScale.Fit,
-                )
-            }
-            Column(Modifier.weight(1f)) {
-                Text(c.name, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
-                Text(listOfNotNull(kindName(c.kind), c.city.takeIf { it.isNotBlank() }, km?.let { if (it < 10) "%.1f km".format(it) else "${it.roundToInt()} km" }).joinToString(" · "),
-                    style = MaterialTheme.typography.bodySmall, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
-            }
-            if (c.phone.isNotBlank()) IconButton(onClick = { Repo.track("call", c.id); open(ctx, Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + c.phone.filter { it.isDigit() || it == '+' }))) }, modifier = Modifier.size(36.dp)) {
-                Icon(Icons.Filled.Call, c.phone)
-            }
-            if (onRequest != null) androidx.compose.material3.Button(
-                onClick = { Repo.track("request", c.id); onRequest() }, modifier = Modifier.height(32.dp),
-                shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp),
-                contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 10.dp),
-            ) {
-                Icon(Icons.Filled.EventAvailable, null, Modifier.size(16.dp))
+    Column(modifier) {
+        // "PARTNER" tab above the card, on the left – like a small flag
+        androidx.compose.material3.Surface(
+            color = LotNavy, contentColor = Color.White,
+            shape = androidx.compose.foundation.shape.RoundedCornerShape(topStart = 8.dp, topEnd = 8.dp),
+            modifier = Modifier.padding(start = 14.dp),
+        ) {
+            Row(Modifier.padding(horizontal = 10.dp, vertical = 3.dp), verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Filled.Star, null, Modifier.size(12.dp))
                 Spacer(Modifier.width(4.dp))
-                Text(stringResource(R.string.request_short), style = MaterialTheme.typography.labelLarge, maxLines = 1)
+                Text(stringResource(R.string.partner).uppercase(), style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold,
+                    letterSpacing = androidx.compose.ui.unit.TextUnit(1.2f, androidx.compose.ui.unit.TextUnitType.Sp))
+            }
+        }
+        Card(
+            Modifier.fillMaxWidth().clickable(onClick = onOpen),
+            shape = androidx.compose.foundation.shape.RoundedCornerShape(topStart = 0.dp, topEnd = 14.dp, bottomStart = 14.dp, bottomEnd = 14.dp),
+            colors = androidx.compose.material3.CardDefaults.cardColors(containerColor = Color.White),
+            elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = 3.dp),
+            border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+        ) {
+            Row(Modifier.padding(horizontal = 10.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                Box(
+                    Modifier.size(36.dp).background(Color(0xFFFFF1CF), androidx.compose.foundation.shape.CircleShape)
+                        .border(2.dp, gold, androidx.compose.foundation.shape.CircleShape),
+                    contentAlignment = Alignment.Center,
+                ) { Icon(Icons.Filled.Star, stringResource(R.string.partner), tint = gold, modifier = Modifier.size(22.dp)) }
+                Spacer(Modifier.width(8.dp))
+                if (c.logo.startsWith("https://")) {
+                    coil.compose.AsyncImage(
+                        model = directImageUrl(c.logo), contentDescription = null,
+                        modifier = Modifier.size(width = 44.dp, height = 28.dp).padding(end = 6.dp), contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                    )
+                }
+                Column(Modifier.weight(1f)) {
+                    Text(c.name, fontWeight = FontWeight.Bold, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                    Text(listOfNotNull(kindName(c.kind), c.city.takeIf { it.isNotBlank() }, km?.let { if (it < 10) "%.1f km".format(it) else "${it.roundToInt()} km" }).joinToString(" · "),
+                        style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                }
+                if (c.phone.isNotBlank()) IconButton(onClick = { Repo.track("call", c.id); open(ctx, Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + c.phone.filter { it.isDigit() || it == '+' }))) }, modifier = Modifier.size(38.dp)) {
+                    Icon(Icons.Filled.Call, c.phone, tint = LotNavy)
+                }
+                if (onRequest != null) androidx.compose.material3.Button(
+                    onClick = { Repo.track("request", c.id); onRequest() }, modifier = Modifier.height(34.dp),
+                    shape = androidx.compose.foundation.shape.RoundedCornerShape(9.dp),
+                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(containerColor = LotNavy, contentColor = Color.White),
+                    contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 10.dp),
+                ) {
+                    Icon(Icons.Filled.EventAvailable, null, Modifier.size(16.dp))
+                    Spacer(Modifier.width(4.dp))
+                    Text(stringResource(R.string.request_short), style = MaterialTheme.typography.labelLarge, maxLines = 1)
+                }
             }
         }
     }
