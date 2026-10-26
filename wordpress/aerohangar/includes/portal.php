@@ -152,10 +152,10 @@ function ah_portal_html(): string
     $page = ah_login_page_url();
     $css = '<style>.ahp{max-width:980px}.ahp-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px}.ahp-tabs a{padding:7px 14px;border-radius:999px;border:1px solid #0B2A5B;color:#0B2A5B;text-decoration:none}.ahp-tabs a.on{background:#0B2A5B;color:#fff}.ahp-card{border:1px solid #DDE3EB;border-radius:14px;padding:16px 18px;margin-bottom:14px}.ahp table{width:100%;border-collapse:collapse;font-size:.95em}.ahp td,.ahp th{padding:7px 8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}.ahp .muted{color:#55606F;font-size:.9em}.ahp input[type=text],.ahp input[type=email],.ahp input[type=url],.ahp textarea{width:100%;padding:7px 9px;border:1px solid #ccc;border-radius:8px}.ahp label{display:block;margin:8px 0 3px;font-weight:600}.ahp .cna-btn,.ahp button.cna-btn{background:#0B2A5B;color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;display:inline-block}.ahp .chip{display:inline-block;padding:2px 10px;border-radius:999px;background:#E6EEF8;margin:2px 4px 2px 0;font-size:.9em}.ahp .ok{color:#1b7a3d}.ahp .cna-offer{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:10px 0 4px}.ahp .cna-offer>div{border:1px solid #DDE3EB;border-radius:12px;padding:12px 14px;background:#fff}.ahp .cna-offer b{display:block;color:#0B2A5B}.ahp h3{color:#0B2A5B}.ahp .bad{color:#C62828}</style>';
 
+    $css .= ah_dashboard_css();
     if (!is_user_logged_in()) {
-        $h = '<div class="ahp"><div class="ahp-card"><h3>AeroHangar – logowanie</h3>'
-            . '<p>Konto dla pilotów i właścicieli, mechaników, szkół lotniczych, dealerów i serwisów. Zaloguj się, żeby zobaczyć swoją flotę, klucz do aplikacji i zapytania od klientów.</p>'
-            . '<p><a class="cna-btn" href="' . esc_url(wp_login_url($page)) . '">' . esc_html(cannonade_t('login')) . '</a> &nbsp;<a href="' . esc_url(wp_lostpassword_url($page)) . '">Nie pamiętasz hasła?</a></p></div>';
+        $h = '<div class="ahp">' . ah_login_form_html()
+            . '<p class="muted" style="text-align:center">Konto dla pilotów i właścicieli, mechaników, szkół lotniczych, dealerów i serwisów – karta samolotu z terminami przeglądów, biuletyny, flota i klucz do aplikacji.</p>';
         $offer = apply_filters('cannonade_offer_html', '', 0);
         if ($offer) $h .= '<div class="ahp-card"><h3>Nie masz konta?</h3><p>Wybierz abonament – konto założysz przy zamówieniu, a dostęp włączy się po opłaceniu.</p>' . $offer . '</div>';
         return $css . $h . '</div>';
@@ -206,19 +206,19 @@ function ah_portal_html(): string
         }
     }
 
-    $tabs = ['start' => 'Moje AeroHangar'];
+    $tabs = ['card' => 'Karta', 'start' => 'Moje AeroHangar'];
     if (in_array('app', $caps, true) || get_user_meta($uid, 'cannonade_key_hint', true)) $tabs['key'] = 'Klucz do aplikacji';
     if (in_array('fleet', $caps, true)) $tabs['fleet'] = 'Flota';
     if ($cid && in_array('requests', $caps, true)) $tabs['requests'] = 'Zapytania';
     if ($cid && in_array('listing', $caps, true)) $tabs['listing'] = 'Wizytówka';
     if ($cid && in_array('stats', $caps, true)) $tabs['stats'] = 'Statystyki';
-    $tab = isset($tabs[$_GET['ah'] ?? '']) ? $_GET['ah'] : 'start';
+    $tab = isset($tabs[$_GET['ah'] ?? '']) ? $_GET['ah'] : (ah_has_access($uid) ? 'card' : 'start');
     $link = fn($t) => esc_url(add_query_arg('ah', $t, $page));
 
-    $h = '<div class="ahp"><p>Zalogowano jako <b>' . esc_html($u->display_name) . '</b> · <a href="' . esc_url(wp_logout_url($page)) . '">Wyloguj</a>';
-    if (current_user_can('aerohangar_view') || current_user_can('manage_options')) $h .= ' · <a class="cna-btn" href="' . esc_url(admin_url('admin.php?page=aerohangar-panel')) . '">✈ ' . esc_html(cannonade_t('open_panel')) . '</a>';
-    elseif (ah_client_panel($uid)) $h .= ' · <a class="cna-btn" href="' . esc_url(home_url('/index.php/aerohangar-panel')) . '">✈ Zaplecze AeroHangar</a>';
-    $h .= '</p>';
+    $h = '<div class="ahp"><div class="ahp-top"><span>✈ <b>AeroHangar</b> · ' . esc_html($u->display_name) . ($perm['plan'] ? ' · ' . esc_html(ah_plans()[$perm['plan']] ?? $perm['plan']) : '') . '</span><span class="sp"></span>';
+    if (current_user_can('aerohangar_view') || current_user_can('manage_options')) $h .= '<a class="cna-btn" href="' . esc_url(admin_url('admin.php?page=aerohangar-panel')) . '">' . esc_html(cannonade_t('open_panel')) . '</a>';
+    elseif (ah_client_panel($uid)) $h .= '<a class="cna-btn" href="' . esc_url(home_url('/index.php/aerohangar-panel')) . '">Zaplecze AeroHangar</a>';
+    $h .= '<a href="' . esc_url(wp_logout_url($page)) . '">Wyloguj</a></div>';
     if ($msg) $h .= '<p class="ok"><b>' . esc_html($msg) . '</b></p>';
     $h .= '<nav class="ahp-tabs">';
     foreach ($tabs as $k => $v) $h .= '<a class="' . ($k === $tab ? 'on' : '') . '" href="' . $link($k) . '">' . esc_html($v) . '</a>';
@@ -226,6 +226,11 @@ function ah_portal_html(): string
     $nonce = wp_nonce_field('ahp_' . $uid, '_wpnonce', true, false);
 
     switch ($tab) {
+        case 'card':
+            if ($perm['blocked']) { $h .= '<p class="bad"><b>Konto zablokowane przez administratora.</b></p>'; break; }
+            $h .= ah_dashboard_html($uid, $page);
+            break;
+
         case 'start':
             $acc = ah_access_active($uid) ? ah_access($uid) : null;
             $h .= '<div class="ahp-card"><h3>Status</h3>';
