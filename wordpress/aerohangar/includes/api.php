@@ -234,6 +234,16 @@ function ah_api_dispatch(): void
             } else {
                 $res['types'] = ['error' => 'download failed'];
             }
+            // Engine catalogue (Rotax, Jabiru, Lycoming, Continental…): taken as it is on GitHub.
+            $raw = ah_http_get("$base/engines.json");
+            $ge = $raw ? json_decode($raw, true) : null;
+            if (is_array($ge) && array_is_list($ge) && in_array('rotax_912', array_column($ge, 'id'), true)) {
+                ah_write_atomic(ah_data_path('engines'), $raw);
+                $res['engines'] = ['total' => count($ge)];
+                ah_log($u['login'], 'pull engines: ' . count($ge));
+            } else {
+                $res['engines'] = ['error' => 'download failed'];
+            }
             ah_out(200, $res);
     
         // ------------------------------------------------------------ public endpoints used by the app

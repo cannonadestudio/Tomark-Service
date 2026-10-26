@@ -124,6 +124,78 @@
     [
      "ULPOWER"
     ]
+   ],
+   [
+    "\\bPIPER\\b",
+    [
+     "PIPER"
+    ]
+   ],
+   [
+    "\\bCESSNA\\b|\\bTEXTRON AVIATION\\b",
+    [
+     "CESSNA"
+    ]
+   ],
+   [
+    "\\bCIRRUS\\b",
+    [
+     "CIRRUS"
+    ]
+   ],
+   [
+    "\\bPZL\\b.*\\b(WILGA|104)\\b|\\bPZL-104\\b",
+    [
+     "PZL_WILGA"
+    ]
+   ],
+   [
+    "\\bKOLIBER\\b|\\bPZL-110\\b",
+    [
+     "PZL_KOLIBER"
+    ]
+   ],
+   [
+    "\\bM ?26\\b.*ISKIERKA|\\bISKIERKA\\b",
+    [
+     "PZL_M26"
+    ]
+   ],
+   [
+    "\\b(SOCATA|DAHER)\\b.*\\bTB ?(9|10|20|21|200)\\b",
+    [
+     "SOCATA_TB"
+    ]
+   ],
+   [
+    "\\bRALLYE\\b|\\bMS ?8[89]\\d\\b",
+    [
+     "SOCATA_RALLYE"
+    ]
+   ],
+   [
+    "\\bLYCOMING\\b",
+    [
+     "LYCOMING"
+    ]
+   ],
+   [
+    "\\bCONTINENTAL\\b.*\\b(O-200|O-300|O-470|IO-520|IO-550|TSIO|IO-360)|\\bCONTINENTAL MOTORS\\b|\\bCONTINENTAL AEROSPACE\\b",
+    [
+     "CONTINENTAL"
+    ]
+   ],
+   [
+    "\\bFRANKLIN\\b",
+    [
+     "PZL_FRANKLIN"
+    ]
+   ],
+   [
+    "\\bAI-14\\b|\\bPZL-KALISZ\\b",
+    [
+     "AI14"
+    ]
    ]
   ]
  },

@@ -1,7 +1,87 @@
 {
- "version": 4,
- "updated": "2026-10-20",
+ "version": 5,
+ "updated": "2026-10-26",
  "bulletins": [
+  {
+   "id": "LYCOMING-DOCS",
+   "date": "2026-10-26",
+   "title": "Lycoming – service bulletins, instructions and letters (official list)",
+   "groups": [
+    "LYCOMING"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://www.lycoming.com/support/publications"
+  },
+  {
+   "id": "CONTINENTAL-DOCS",
+   "date": "2026-10-26",
+   "title": "Continental – technical publications, SB / SIL (official list)",
+   "groups": [
+    "CONTINENTAL"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://continental.aero/technical-publications/"
+  },
+  {
+   "id": "EASA-AD-PIPER",
+   "date": "2026-10-26",
+   "title": "EASA / FAA AD for Piper aircraft – check in the EASA AD tool",
+   "groups": [
+    "PIPER"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://ad.easa.europa.eu/search/simple/result/?search=piper"
+  },
+  {
+   "id": "EASA-AD-CESSNA",
+   "date": "2026-10-26",
+   "title": "EASA / FAA AD for Cessna (Textron) aircraft – check in the EASA AD tool",
+   "groups": [
+    "CESSNA"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://ad.easa.europa.eu/search/simple/result/?search=cessna"
+  },
+  {
+   "id": "EASA-AD-CIRRUS",
+   "date": "2026-10-26",
+   "title": "EASA / FAA AD for Cirrus aircraft – check in the EASA AD tool",
+   "groups": [
+    "CIRRUS"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://ad.easa.europa.eu/search/simple/result/?search=cirrus"
+  },
+  {
+   "id": "EASA-AD-PZL",
+   "date": "2026-10-26",
+   "title": "EASA AD for PZL aircraft (Wilga, Koliber, M26) – check in the EASA AD tool",
+   "groups": [
+    "PZL_WILGA",
+    "PZL_KOLIBER",
+    "PZL_M26"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://ad.easa.europa.eu/search/simple/result/?search=pzl"
+  },
+  {
+   "id": "EASA-AD-SOCATA",
+   "date": "2026-10-26",
+   "title": "EASA AD for Socata / Daher TB and Rallye – check in the EASA AD tool",
+   "groups": [
+    "SOCATA_TB",
+    "SOCATA_RALLYE"
+   ],
+   "kind": "DOC",
+   "mandatory": null,
+   "url": "https://ad.easa.europa.eu/search/simple/result/?search=socata"
+  },
   {
    "id": "ROTAX-DOCS",
    "date": "2026-10-20",

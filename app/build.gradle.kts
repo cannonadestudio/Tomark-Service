@@ -13,8 +13,8 @@ android {
         applicationId = "com.cannonadestudio.aerohangar"
         minSdk = 23
         targetSdk = 35
-        versionCode = 32
-        versionName = "3.6.1"
+        versionCode = 33
+        versionName = "3.7.0"
     }
 
     // Release signing: the key comes from GitHub secrets (see README "Podpis aplikacji").

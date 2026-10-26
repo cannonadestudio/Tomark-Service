@@ -5658,6 +5658,3116 @@
   ]
  },
  {
+  "id": "lycoming_o235",
+  "name": "Lycoming O-235",
+  "fullName": "Lycoming O-235 (-C, -E, -H, -K, -L, -M, -N, -P; -F, -G, -J)",
+  "manufacturer": "Lycoming",
+  "bulletinGroups": [
+   "LYCOMING"
+  ],
+  "tboHours": 2400,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL (min. gatunek wg wersji – SI 1070)",
+  "notes": "TBO 2400 h / 12 lat wg Lycoming SI 1009BF (O-235-F/-G/-J: 2000 h). Olej co 50 h lub 4 mies. z filtrem pełnoprzepływowym (25 h tylko z sitem) – SB 480F.",
+  "bulletinsPage": "https://www.lycoming.com/support/publications",
+  "tasks": [
+   {
+    "id": "lycoming_o235_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF (TBO), SB 480F (olej), SI 1191A (sprężanie)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy (SI 1191A)",
+       "en": "Cylinder compression test (differential, SI 1191A)",
+       "sk": "Cylinder compression test (differential, SI 1191A)",
+       "fr": "Cylinder compression test (differential, SI 1191A)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej i filtr: wymiana, filtr rozciąć i sprawdzić, sito ssące",
+       "en": "Oil and filter change, cut filter, clean suction screen",
+       "sk": "Oil and filter change, cut filter, clean suction screen",
+       "fr": "Oil and filter change, cut filter, clean suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i filtr powietrza",
+       "en": "Induction system and air filter",
+       "sk": "Induction system and air filter",
+       "fr": "Induction system and air filter"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ wydechowy (pęknięcia, nieszczelności)",
+       "en": "Exhaust system (cracks, leaks)",
+       "sk": "Exhaust system (cracks, leaks)",
+       "fr": "Exhaust system (cracks, leaks)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ paliwowy: gaźnik / wtrysk, przewody",
+       "en": "Fuel system: carburettor / injection, lines",
+       "sk": "Fuel system: carburettor / injection, lines",
+       "fr": "Fuel system: carburettor / injection, lines"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Owiewki, przegrody chłodzenia, żebra cylindrów",
+       "en": "Baffles, cowling, cylinder fins",
+       "sk": "Baffles, cowling, cylinder fins",
+       "fr": "Baffles, cowling, cylinder fins"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Łoże silnika, węże, wycieki",
+       "en": "Engine mounts, hoses, leaks",
+       "sk": "Engine mounts, hoses, leaks",
+       "fr": "Engine mounts, hoses, leaks"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie silnikiem (gaz, mieszanka, obroty)",
+       "en": "Engine controls (throttle, mixture, prop)",
+       "sk": "Engine controls (throttle, mixture, prop)",
+       "fr": "Engine controls (throttle, mixture, prop)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h (wg Slick / Bendix)",
+       "en": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "sk": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "fr": "Magnetos – 500 h inspection (Slick / Bendix)"
+      },
+      "everyHours": 500,
+      "verified": false
+     }
+    ]
+   },
+   {
+    "id": "lycoming_o235_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 4 mies. – olej i filtr",
+     "en": "50 h / 4 months inspection – oil and filter",
+     "sk": "50 h / 4 months inspection – oil and filter",
+     "fr": "50 h / 4 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 4,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Lycoming SB 480F",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Czyszczenie sita ssącego oleju",
+       "en": "Clean oil suction screen",
+       "sk": "Clean oil suction screen",
+       "fr": "Clean oil suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "lycoming_o235_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2400,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "lycoming_o320",
+  "name": "Lycoming O-320",
+  "fullName": "Lycoming O-320 (-A, -B, -C, -D, -E, -H)",
+  "manufacturer": "Lycoming",
+  "bulletinGroups": [
+   "LYCOMING"
+  ],
+  "tboHours": 2000,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL (O-320-A/-E min. 80/87)",
+  "notes": "TBO 2000 h / 12 lat wg Lycoming SI 1009BF (nowe/fabrycznie odnowione 2600 h; O-320-H 2400 h). Olej co 50 h lub 4 mies. z filtrem pełnoprzepływowym (25 h tylko z sitem) – SB 480F.",
+  "bulletinsPage": "https://www.lycoming.com/support/publications",
+  "tasks": [
+   {
+    "id": "lycoming_o320_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF (TBO), SB 480F (olej), SI 1191A (sprężanie)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy (SI 1191A)",
+       "en": "Cylinder compression test (differential, SI 1191A)",
+       "sk": "Cylinder compression test (differential, SI 1191A)",
+       "fr": "Cylinder compression test (differential, SI 1191A)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej i filtr: wymiana, filtr rozciąć i sprawdzić, sito ssące",
+       "en": "Oil and filter change, cut filter, clean suction screen",
+       "sk": "Oil and filter change, cut filter, clean suction screen",
+       "fr": "Oil and filter change, cut filter, clean suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i filtr powietrza",
+       "en": "Induction system and air filter",
+       "sk": "Induction system and air filter",
+       "fr": "Induction system and air filter"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ wydechowy (pęknięcia, nieszczelności)",
+       "en": "Exhaust system (cracks, leaks)",
+       "sk": "Exhaust system (cracks, leaks)",
+       "fr": "Exhaust system (cracks, leaks)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ paliwowy: gaźnik / wtrysk, przewody",
+       "en": "Fuel system: carburettor / injection, lines",
+       "sk": "Fuel system: carburettor / injection, lines",
+       "fr": "Fuel system: carburettor / injection, lines"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Owiewki, przegrody chłodzenia, żebra cylindrów",
+       "en": "Baffles, cowling, cylinder fins",
+       "sk": "Baffles, cowling, cylinder fins",
+       "fr": "Baffles, cowling, cylinder fins"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Łoże silnika, węże, wycieki",
+       "en": "Engine mounts, hoses, leaks",
+       "sk": "Engine mounts, hoses, leaks",
+       "fr": "Engine mounts, hoses, leaks"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie silnikiem (gaz, mieszanka, obroty)",
+       "en": "Engine controls (throttle, mixture, prop)",
+       "sk": "Engine controls (throttle, mixture, prop)",
+       "fr": "Engine controls (throttle, mixture, prop)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h (wg Slick / Bendix)",
+       "en": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "sk": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "fr": "Magnetos – 500 h inspection (Slick / Bendix)"
+      },
+      "everyHours": 500,
+      "verified": false
+     }
+    ]
+   },
+   {
+    "id": "lycoming_o320_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 4 mies. – olej i filtr",
+     "en": "50 h / 4 months inspection – oil and filter",
+     "sk": "50 h / 4 months inspection – oil and filter",
+     "fr": "50 h / 4 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 4,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Lycoming SB 480F",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Czyszczenie sita ssącego oleju",
+       "en": "Clean oil suction screen",
+       "sk": "Clean oil suction screen",
+       "fr": "Clean oil suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "lycoming_o320_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "lycoming_o360",
+  "name": "Lycoming O-360",
+  "fullName": "Lycoming O-360 (-A, -B, -C, -D, -F, -G, -J; -E)",
+  "manufacturer": "Lycoming",
+  "bulletinGroups": [
+   "LYCOMING"
+  ],
+  "tboHours": 2000,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 2000 h / 12 lat wg Lycoming SI 1009BF (nowe/fabrycznie odnowione 2600 h). Olej co 50 h lub 4 mies. z filtrem pełnoprzepływowym (25 h tylko z sitem) – SB 480F.",
+  "bulletinsPage": "https://www.lycoming.com/support/publications",
+  "tasks": [
+   {
+    "id": "lycoming_o360_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF (TBO), SB 480F (olej), SI 1191A (sprężanie)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy (SI 1191A)",
+       "en": "Cylinder compression test (differential, SI 1191A)",
+       "sk": "Cylinder compression test (differential, SI 1191A)",
+       "fr": "Cylinder compression test (differential, SI 1191A)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej i filtr: wymiana, filtr rozciąć i sprawdzić, sito ssące",
+       "en": "Oil and filter change, cut filter, clean suction screen",
+       "sk": "Oil and filter change, cut filter, clean suction screen",
+       "fr": "Oil and filter change, cut filter, clean suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i filtr powietrza",
+       "en": "Induction system and air filter",
+       "sk": "Induction system and air filter",
+       "fr": "Induction system and air filter"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ wydechowy (pęknięcia, nieszczelności)",
+       "en": "Exhaust system (cracks, leaks)",
+       "sk": "Exhaust system (cracks, leaks)",
+       "fr": "Exhaust system (cracks, leaks)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ paliwowy: gaźnik / wtrysk, przewody",
+       "en": "Fuel system: carburettor / injection, lines",
+       "sk": "Fuel system: carburettor / injection, lines",
+       "fr": "Fuel system: carburettor / injection, lines"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Owiewki, przegrody chłodzenia, żebra cylindrów",
+       "en": "Baffles, cowling, cylinder fins",
+       "sk": "Baffles, cowling, cylinder fins",
+       "fr": "Baffles, cowling, cylinder fins"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Łoże silnika, węże, wycieki",
+       "en": "Engine mounts, hoses, leaks",
+       "sk": "Engine mounts, hoses, leaks",
+       "fr": "Engine mounts, hoses, leaks"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie silnikiem (gaz, mieszanka, obroty)",
+       "en": "Engine controls (throttle, mixture, prop)",
+       "sk": "Engine controls (throttle, mixture, prop)",
+       "fr": "Engine controls (throttle, mixture, prop)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h (wg Slick / Bendix)",
+       "en": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "sk": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "fr": "Magnetos – 500 h inspection (Slick / Bendix)"
+      },
+      "everyHours": 500,
+      "verified": false
+     }
+    ]
+   },
+   {
+    "id": "lycoming_o360_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 4 mies. – olej i filtr",
+     "en": "50 h / 4 months inspection – oil and filter",
+     "sk": "50 h / 4 months inspection – oil and filter",
+     "fr": "50 h / 4 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 4,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Lycoming SB 480F",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Czyszczenie sita ssącego oleju",
+       "en": "Clean oil suction screen",
+       "sk": "Clean oil suction screen",
+       "fr": "Clean oil suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "lycoming_o360_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "lycoming_io360",
+  "name": "Lycoming IO-360",
+  "fullName": "Lycoming IO-360 (180 / 200 KM)",
+  "manufacturer": "Lycoming",
+  "bulletinGroups": [
+   "LYCOMING"
+  ],
+  "tboHours": 2000,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 2000 h / 12 lat wg Lycoming SI 1009BF (nowe/fabrycznie odnowione 2600 h). Olej co 50 h lub 4 mies. z filtrem pełnoprzepływowym (25 h tylko z sitem) – SB 480F.",
+  "bulletinsPage": "https://www.lycoming.com/support/publications",
+  "tasks": [
+   {
+    "id": "lycoming_io360_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF (TBO), SB 480F (olej), SI 1191A (sprężanie)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy (SI 1191A)",
+       "en": "Cylinder compression test (differential, SI 1191A)",
+       "sk": "Cylinder compression test (differential, SI 1191A)",
+       "fr": "Cylinder compression test (differential, SI 1191A)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej i filtr: wymiana, filtr rozciąć i sprawdzić, sito ssące",
+       "en": "Oil and filter change, cut filter, clean suction screen",
+       "sk": "Oil and filter change, cut filter, clean suction screen",
+       "fr": "Oil and filter change, cut filter, clean suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i filtr powietrza",
+       "en": "Induction system and air filter",
+       "sk": "Induction system and air filter",
+       "fr": "Induction system and air filter"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ wydechowy (pęknięcia, nieszczelności)",
+       "en": "Exhaust system (cracks, leaks)",
+       "sk": "Exhaust system (cracks, leaks)",
+       "fr": "Exhaust system (cracks, leaks)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ paliwowy: gaźnik / wtrysk, przewody",
+       "en": "Fuel system: carburettor / injection, lines",
+       "sk": "Fuel system: carburettor / injection, lines",
+       "fr": "Fuel system: carburettor / injection, lines"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Owiewki, przegrody chłodzenia, żebra cylindrów",
+       "en": "Baffles, cowling, cylinder fins",
+       "sk": "Baffles, cowling, cylinder fins",
+       "fr": "Baffles, cowling, cylinder fins"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Łoże silnika, węże, wycieki",
+       "en": "Engine mounts, hoses, leaks",
+       "sk": "Engine mounts, hoses, leaks",
+       "fr": "Engine mounts, hoses, leaks"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie silnikiem (gaz, mieszanka, obroty)",
+       "en": "Engine controls (throttle, mixture, prop)",
+       "sk": "Engine controls (throttle, mixture, prop)",
+       "fr": "Engine controls (throttle, mixture, prop)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h (wg Slick / Bendix)",
+       "en": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "sk": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "fr": "Magnetos – 500 h inspection (Slick / Bendix)"
+      },
+      "everyHours": 500,
+      "verified": false
+     }
+    ]
+   },
+   {
+    "id": "lycoming_io360_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 4 mies. – olej i filtr",
+     "en": "50 h / 4 months inspection – oil and filter",
+     "sk": "50 h / 4 months inspection – oil and filter",
+     "fr": "50 h / 4 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 4,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Lycoming SB 480F",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Czyszczenie sita ssącego oleju",
+       "en": "Clean oil suction screen",
+       "sk": "Clean oil suction screen",
+       "fr": "Clean oil suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "lycoming_io360_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "lycoming_io540",
+  "name": "Lycoming IO-540 / AEIO-540",
+  "fullName": "Lycoming IO-540 (-C, -D, -K, -L, -M, -N, -T, -V, -W…), AEIO-540",
+  "manufacturer": "Lycoming",
+  "bulletinGroups": [
+   "LYCOMING"
+  ],
+  "tboHours": 2000,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 2000 h / 12 lat wg Lycoming SI 1009BF (nowe/fabrycznie odnowione 2600 h). Olej co 50 h lub 4 mies. z filtrem pełnoprzepływowym (25 h tylko z sitem) – SB 480F.",
+  "bulletinsPage": "https://www.lycoming.com/support/publications",
+  "tasks": [
+   {
+    "id": "lycoming_io540_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF (TBO), SB 480F (olej), SI 1191A (sprężanie)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy (SI 1191A)",
+       "en": "Cylinder compression test (differential, SI 1191A)",
+       "sk": "Cylinder compression test (differential, SI 1191A)",
+       "fr": "Cylinder compression test (differential, SI 1191A)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej i filtr: wymiana, filtr rozciąć i sprawdzić, sito ssące",
+       "en": "Oil and filter change, cut filter, clean suction screen",
+       "sk": "Oil and filter change, cut filter, clean suction screen",
+       "fr": "Oil and filter change, cut filter, clean suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i filtr powietrza",
+       "en": "Induction system and air filter",
+       "sk": "Induction system and air filter",
+       "fr": "Induction system and air filter"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ wydechowy (pęknięcia, nieszczelności)",
+       "en": "Exhaust system (cracks, leaks)",
+       "sk": "Exhaust system (cracks, leaks)",
+       "fr": "Exhaust system (cracks, leaks)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ paliwowy: gaźnik / wtrysk, przewody",
+       "en": "Fuel system: carburettor / injection, lines",
+       "sk": "Fuel system: carburettor / injection, lines",
+       "fr": "Fuel system: carburettor / injection, lines"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Owiewki, przegrody chłodzenia, żebra cylindrów",
+       "en": "Baffles, cowling, cylinder fins",
+       "sk": "Baffles, cowling, cylinder fins",
+       "fr": "Baffles, cowling, cylinder fins"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Łoże silnika, węże, wycieki",
+       "en": "Engine mounts, hoses, leaks",
+       "sk": "Engine mounts, hoses, leaks",
+       "fr": "Engine mounts, hoses, leaks"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie silnikiem (gaz, mieszanka, obroty)",
+       "en": "Engine controls (throttle, mixture, prop)",
+       "sk": "Engine controls (throttle, mixture, prop)",
+       "fr": "Engine controls (throttle, mixture, prop)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h (wg Slick / Bendix)",
+       "en": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "sk": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "fr": "Magnetos – 500 h inspection (Slick / Bendix)"
+      },
+      "everyHours": 500,
+      "verified": false
+     }
+    ]
+   },
+   {
+    "id": "lycoming_io540_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 4 mies. – olej i filtr",
+     "en": "50 h / 4 months inspection – oil and filter",
+     "sk": "50 h / 4 months inspection – oil and filter",
+     "fr": "50 h / 4 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 4,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Lycoming SB 480F",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Czyszczenie sita ssącego oleju",
+       "en": "Clean oil suction screen",
+       "sk": "Clean oil suction screen",
+       "fr": "Clean oil suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "lycoming_io540_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "lycoming_tio540",
+  "name": "Lycoming TIO-540",
+  "fullName": "Lycoming TIO-540 (turbo)",
+  "manufacturer": "Lycoming",
+  "bulletinGroups": [
+   "LYCOMING"
+  ],
+  "tboHours": 2000,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 2000 h / 12 lat wg Lycoming SI 1009BF (TIO-540-A/-F/-J/-N/-R/-S/-U: 1800 h). Olej co 50 h lub 4 mies. z filtrem pełnoprzepływowym (25 h tylko z sitem) – SB 480F.",
+  "bulletinsPage": "https://www.lycoming.com/support/publications",
+  "tasks": [
+   {
+    "id": "lycoming_tio540_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF (TBO), SB 480F (olej), SI 1191A (sprężanie)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy (SI 1191A)",
+       "en": "Cylinder compression test (differential, SI 1191A)",
+       "sk": "Cylinder compression test (differential, SI 1191A)",
+       "fr": "Cylinder compression test (differential, SI 1191A)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej i filtr: wymiana, filtr rozciąć i sprawdzić, sito ssące",
+       "en": "Oil and filter change, cut filter, clean suction screen",
+       "sk": "Oil and filter change, cut filter, clean suction screen",
+       "fr": "Oil and filter change, cut filter, clean suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Turbosprężarka, wastegate, sterownik",
+       "en": "Turbocharger, wastegate, controller",
+       "sk": "Turbocharger, wastegate, controller",
+       "fr": "Turbocharger, wastegate, controller"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i filtr powietrza",
+       "en": "Induction system and air filter",
+       "sk": "Induction system and air filter",
+       "fr": "Induction system and air filter"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ wydechowy (pęknięcia, nieszczelności)",
+       "en": "Exhaust system (cracks, leaks)",
+       "sk": "Exhaust system (cracks, leaks)",
+       "fr": "Exhaust system (cracks, leaks)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ paliwowy: gaźnik / wtrysk, przewody",
+       "en": "Fuel system: carburettor / injection, lines",
+       "sk": "Fuel system: carburettor / injection, lines",
+       "fr": "Fuel system: carburettor / injection, lines"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Owiewki, przegrody chłodzenia, żebra cylindrów",
+       "en": "Baffles, cowling, cylinder fins",
+       "sk": "Baffles, cowling, cylinder fins",
+       "fr": "Baffles, cowling, cylinder fins"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Łoże silnika, węże, wycieki",
+       "en": "Engine mounts, hoses, leaks",
+       "sk": "Engine mounts, hoses, leaks",
+       "fr": "Engine mounts, hoses, leaks"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie silnikiem (gaz, mieszanka, obroty)",
+       "en": "Engine controls (throttle, mixture, prop)",
+       "sk": "Engine controls (throttle, mixture, prop)",
+       "fr": "Engine controls (throttle, mixture, prop)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h (wg Slick / Bendix)",
+       "en": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "sk": "Magnetos – 500 h inspection (Slick / Bendix)",
+       "fr": "Magnetos – 500 h inspection (Slick / Bendix)"
+      },
+      "everyHours": 500,
+      "verified": false
+     }
+    ]
+   },
+   {
+    "id": "lycoming_tio540_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 4 mies. – olej i filtr",
+     "en": "50 h / 4 months inspection – oil and filter",
+     "sk": "50 h / 4 months inspection – oil and filter",
+     "fr": "50 h / 4 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 4,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Lycoming SB 480F",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Czyszczenie sita ssącego oleju",
+       "en": "Clean oil suction screen",
+       "sk": "Clean oil suction screen",
+       "fr": "Clean oil suction screen"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "lycoming_tio540_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Lycoming SI 1009BF",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "continental_o200",
+  "name": "Continental O-200",
+  "fullName": "Continental O-200-A, -B, -D",
+  "manufacturer": "Continental",
+  "bulletinGroups": [
+   "CONTINENTAL"
+  ],
+  "tboHours": 2000,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 2000 h / 12 lat wg Continental SIL98-9C (O-200-A/B S/N < 1006000: 1800 h). +200 h przy średnio ≥ 40 h/mies. Olej co 50 h lub 6 mies.",
+  "bulletinsPage": "https://continental.aero/technical-publications/",
+  "tasks": [
+   {
+    "id": "continental_o200_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C (TBO), Maintenance Manual X30634A (olej 50 h / 6 mies., przegląd 100 h)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy",
+       "en": "Cylinder compression test (differential)",
+       "sk": "Cylinder compression test (differential)",
+       "fr": "Cylinder compression test (differential)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej: wymiana, filtr rozciąć i sprawdzić",
+       "en": "Oil drain, filter cut and inspect",
+       "sk": "Oil drain, filter cut and inspect",
+       "fr": "Oil drain, filter cut and inspect"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Cylindry, żebra i przegrody chłodzenia",
+       "en": "Cylinders, cooling fins and baffling",
+       "sk": "Cylinders, cooling fins and baffling",
+       "fr": "Cylinders, cooling fins and baffling"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i wydechowy",
+       "en": "Induction and exhaust systems",
+       "sk": "Induction and exhaust systems",
+       "fr": "Induction and exhaust systems"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Paliwo / olej: przewody, wycieki, dysze wtrysku",
+       "en": "Fuel / oil lines, leaks, injector nozzles",
+       "sk": "Fuel / oil lines, leaks, injector nozzles",
+       "fr": "Fuel / oil lines, leaks, injector nozzles"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie, cięgna, akcesoria, łoże",
+       "en": "Controls, cables, accessories, engine mount",
+       "sk": "Controls, cables, accessories, engine mount",
+       "fr": "Controls, cables, accessories, engine mount"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Próba silnika po przeglądzie",
+       "en": "Post-inspection engine run",
+       "sk": "Post-inspection engine run",
+       "fr": "Post-inspection engine run"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h",
+       "en": "Magnetos – 500 h inspection",
+       "sk": "Magnetos – 500 h inspection",
+       "fr": "Magnetos – 500 h inspection"
+      },
+      "everyHours": 500,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "continental_o200_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 6 mies. – olej i filtr",
+     "en": "50 h / 6 months inspection – oil and filter",
+     "sk": "50 h / 6 months inspection – oil and filter",
+     "fr": "50 h / 6 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 6,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "continental_o200_mag48",
+    "title": {
+     "pl": "Iskrowniki TCM – remont / wymiana co 4 lata",
+     "en": "TCM magnetos – overhaul / replace every 4 years",
+     "sk": "TCM magnetos – overhaul / replace every 4 years",
+     "fr": "TCM magnetos – overhaul / replace every 4 years"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 48,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": []
+   },
+   {
+    "id": "continental_o200_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "continental_o300",
+  "name": "Continental O-300",
+  "fullName": "Continental O-300-A…D",
+  "manufacturer": "Continental",
+  "bulletinGroups": [
+   "CONTINENTAL"
+  ],
+  "tboHours": 1800,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 1800 h / 12 lat wg Continental SIL98-9C (). +200 h przy średnio ≥ 40 h/mies. Olej co 50 h lub 6 mies.",
+  "bulletinsPage": "https://continental.aero/technical-publications/",
+  "tasks": [
+   {
+    "id": "continental_o300_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C (TBO), Maintenance Manual X30634A (olej 50 h / 6 mies., przegląd 100 h)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy",
+       "en": "Cylinder compression test (differential)",
+       "sk": "Cylinder compression test (differential)",
+       "fr": "Cylinder compression test (differential)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej: wymiana, filtr rozciąć i sprawdzić",
+       "en": "Oil drain, filter cut and inspect",
+       "sk": "Oil drain, filter cut and inspect",
+       "fr": "Oil drain, filter cut and inspect"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Cylindry, żebra i przegrody chłodzenia",
+       "en": "Cylinders, cooling fins and baffling",
+       "sk": "Cylinders, cooling fins and baffling",
+       "fr": "Cylinders, cooling fins and baffling"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i wydechowy",
+       "en": "Induction and exhaust systems",
+       "sk": "Induction and exhaust systems",
+       "fr": "Induction and exhaust systems"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Paliwo / olej: przewody, wycieki, dysze wtrysku",
+       "en": "Fuel / oil lines, leaks, injector nozzles",
+       "sk": "Fuel / oil lines, leaks, injector nozzles",
+       "fr": "Fuel / oil lines, leaks, injector nozzles"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie, cięgna, akcesoria, łoże",
+       "en": "Controls, cables, accessories, engine mount",
+       "sk": "Controls, cables, accessories, engine mount",
+       "fr": "Controls, cables, accessories, engine mount"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Próba silnika po przeglądzie",
+       "en": "Post-inspection engine run",
+       "sk": "Post-inspection engine run",
+       "fr": "Post-inspection engine run"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h",
+       "en": "Magnetos – 500 h inspection",
+       "sk": "Magnetos – 500 h inspection",
+       "fr": "Magnetos – 500 h inspection"
+      },
+      "everyHours": 500,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "continental_o300_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 6 mies. – olej i filtr",
+     "en": "50 h / 6 months inspection – oil and filter",
+     "sk": "50 h / 6 months inspection – oil and filter",
+     "fr": "50 h / 6 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 6,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "continental_o300_mag48",
+    "title": {
+     "pl": "Iskrowniki TCM – remont / wymiana co 4 lata",
+     "en": "TCM magnetos – overhaul / replace every 4 years",
+     "sk": "TCM magnetos – overhaul / replace every 4 years",
+     "fr": "TCM magnetos – overhaul / replace every 4 years"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 48,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": []
+   },
+   {
+    "id": "continental_o300_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 1800,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "continental_o470",
+  "name": "Continental O-470",
+  "fullName": "Continental O-470 (-K, -L, -M, -R, -S, -U…)",
+  "manufacturer": "Continental",
+  "bulletinGroups": [
+   "CONTINENTAL"
+  ],
+  "tboHours": 1500,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 1500 h / 12 lat wg Continental SIL98-9C (S/N ≥ 1006000: 1700 h; O-470-U wg spec. 2000/2200 h). +200 h przy średnio ≥ 40 h/mies. Olej co 50 h lub 6 mies.",
+  "bulletinsPage": "https://continental.aero/technical-publications/",
+  "tasks": [
+   {
+    "id": "continental_o470_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C (TBO), Maintenance Manual X30634A (olej 50 h / 6 mies., przegląd 100 h)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy",
+       "en": "Cylinder compression test (differential)",
+       "sk": "Cylinder compression test (differential)",
+       "fr": "Cylinder compression test (differential)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej: wymiana, filtr rozciąć i sprawdzić",
+       "en": "Oil drain, filter cut and inspect",
+       "sk": "Oil drain, filter cut and inspect",
+       "fr": "Oil drain, filter cut and inspect"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Cylindry, żebra i przegrody chłodzenia",
+       "en": "Cylinders, cooling fins and baffling",
+       "sk": "Cylinders, cooling fins and baffling",
+       "fr": "Cylinders, cooling fins and baffling"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i wydechowy",
+       "en": "Induction and exhaust systems",
+       "sk": "Induction and exhaust systems",
+       "fr": "Induction and exhaust systems"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Paliwo / olej: przewody, wycieki, dysze wtrysku",
+       "en": "Fuel / oil lines, leaks, injector nozzles",
+       "sk": "Fuel / oil lines, leaks, injector nozzles",
+       "fr": "Fuel / oil lines, leaks, injector nozzles"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie, cięgna, akcesoria, łoże",
+       "en": "Controls, cables, accessories, engine mount",
+       "sk": "Controls, cables, accessories, engine mount",
+       "fr": "Controls, cables, accessories, engine mount"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Próba silnika po przeglądzie",
+       "en": "Post-inspection engine run",
+       "sk": "Post-inspection engine run",
+       "fr": "Post-inspection engine run"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h",
+       "en": "Magnetos – 500 h inspection",
+       "sk": "Magnetos – 500 h inspection",
+       "fr": "Magnetos – 500 h inspection"
+      },
+      "everyHours": 500,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "continental_o470_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 6 mies. – olej i filtr",
+     "en": "50 h / 6 months inspection – oil and filter",
+     "sk": "50 h / 6 months inspection – oil and filter",
+     "fr": "50 h / 6 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 6,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "continental_o470_mag48",
+    "title": {
+     "pl": "Iskrowniki TCM – remont / wymiana co 4 lata",
+     "en": "TCM magnetos – overhaul / replace every 4 years",
+     "sk": "TCM magnetos – overhaul / replace every 4 years",
+     "fr": "TCM magnetos – overhaul / replace every 4 years"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 48,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": []
+   },
+   {
+    "id": "continental_o470_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 1500,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "continental_io520",
+  "name": "Continental IO-520",
+  "fullName": "Continental IO-520 (-A…-P)",
+  "manufacturer": "Continental",
+  "bulletinGroups": [
+   "CONTINENTAL"
+  ],
+  "tboHours": 1700,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 1700 h / 12 lat wg Continental SIL98-9C (część wersji S/N ≥ 1006000: 1900 h; L/IO-520-P 2000/2200 h). +200 h przy średnio ≥ 40 h/mies. Olej co 50 h lub 6 mies.",
+  "bulletinsPage": "https://continental.aero/technical-publications/",
+  "tasks": [
+   {
+    "id": "continental_io520_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C (TBO), Maintenance Manual X30634A (olej 50 h / 6 mies., przegląd 100 h)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy",
+       "en": "Cylinder compression test (differential)",
+       "sk": "Cylinder compression test (differential)",
+       "fr": "Cylinder compression test (differential)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej: wymiana, filtr rozciąć i sprawdzić",
+       "en": "Oil drain, filter cut and inspect",
+       "sk": "Oil drain, filter cut and inspect",
+       "fr": "Oil drain, filter cut and inspect"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Cylindry, żebra i przegrody chłodzenia",
+       "en": "Cylinders, cooling fins and baffling",
+       "sk": "Cylinders, cooling fins and baffling",
+       "fr": "Cylinders, cooling fins and baffling"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i wydechowy",
+       "en": "Induction and exhaust systems",
+       "sk": "Induction and exhaust systems",
+       "fr": "Induction and exhaust systems"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Paliwo / olej: przewody, wycieki, dysze wtrysku",
+       "en": "Fuel / oil lines, leaks, injector nozzles",
+       "sk": "Fuel / oil lines, leaks, injector nozzles",
+       "fr": "Fuel / oil lines, leaks, injector nozzles"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie, cięgna, akcesoria, łoże",
+       "en": "Controls, cables, accessories, engine mount",
+       "sk": "Controls, cables, accessories, engine mount",
+       "fr": "Controls, cables, accessories, engine mount"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Próba silnika po przeglądzie",
+       "en": "Post-inspection engine run",
+       "sk": "Post-inspection engine run",
+       "fr": "Post-inspection engine run"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h",
+       "en": "Magnetos – 500 h inspection",
+       "sk": "Magnetos – 500 h inspection",
+       "fr": "Magnetos – 500 h inspection"
+      },
+      "everyHours": 500,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Czyszczenie dysz wtryskowych (co 300 h i przy przeglądzie rocznym)",
+       "en": "Fuel nozzle cleaning (every 300 h and at annual)",
+       "sk": "Fuel nozzle cleaning (every 300 h and at annual)",
+       "fr": "Fuel nozzle cleaning (every 300 h and at annual)"
+      },
+      "everyHours": 300,
+      "verified": false
+     }
+    ]
+   },
+   {
+    "id": "continental_io520_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 6 mies. – olej i filtr",
+     "en": "50 h / 6 months inspection – oil and filter",
+     "sk": "50 h / 6 months inspection – oil and filter",
+     "fr": "50 h / 6 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 6,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "continental_io520_mag48",
+    "title": {
+     "pl": "Iskrowniki TCM – remont / wymiana co 4 lata",
+     "en": "TCM magnetos – overhaul / replace every 4 years",
+     "sk": "TCM magnetos – overhaul / replace every 4 years",
+     "fr": "TCM magnetos – overhaul / replace every 4 years"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 48,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": []
+   },
+   {
+    "id": "continental_io520_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 1700,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "continental_io550",
+  "name": "Continental IO-550",
+  "fullName": "Continental IO-550 (-A…-R), IOF-550-N",
+  "manufacturer": "Continental",
+  "bulletinGroups": [
+   "CONTINENTAL"
+  ],
+  "tboHours": 2000,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 2000 h / 12 lat wg Continental SIL98-9C (IO-550-G/N/P/R; S/N ≥ 1006000 2200 h; IO-550-A…L 1700/1900 h). +200 h przy średnio ≥ 40 h/mies. Olej co 50 h lub 6 mies.",
+  "bulletinsPage": "https://continental.aero/technical-publications/",
+  "tasks": [
+   {
+    "id": "continental_io550_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C (TBO), Maintenance Manual X30634A (olej 50 h / 6 mies., przegląd 100 h)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy",
+       "en": "Cylinder compression test (differential)",
+       "sk": "Cylinder compression test (differential)",
+       "fr": "Cylinder compression test (differential)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej: wymiana, filtr rozciąć i sprawdzić",
+       "en": "Oil drain, filter cut and inspect",
+       "sk": "Oil drain, filter cut and inspect",
+       "fr": "Oil drain, filter cut and inspect"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Cylindry, żebra i przegrody chłodzenia",
+       "en": "Cylinders, cooling fins and baffling",
+       "sk": "Cylinders, cooling fins and baffling",
+       "fr": "Cylinders, cooling fins and baffling"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i wydechowy",
+       "en": "Induction and exhaust systems",
+       "sk": "Induction and exhaust systems",
+       "fr": "Induction and exhaust systems"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Paliwo / olej: przewody, wycieki, dysze wtrysku",
+       "en": "Fuel / oil lines, leaks, injector nozzles",
+       "sk": "Fuel / oil lines, leaks, injector nozzles",
+       "fr": "Fuel / oil lines, leaks, injector nozzles"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie, cięgna, akcesoria, łoże",
+       "en": "Controls, cables, accessories, engine mount",
+       "sk": "Controls, cables, accessories, engine mount",
+       "fr": "Controls, cables, accessories, engine mount"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Próba silnika po przeglądzie",
+       "en": "Post-inspection engine run",
+       "sk": "Post-inspection engine run",
+       "fr": "Post-inspection engine run"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h",
+       "en": "Magnetos – 500 h inspection",
+       "sk": "Magnetos – 500 h inspection",
+       "fr": "Magnetos – 500 h inspection"
+      },
+      "everyHours": 500,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Czyszczenie dysz wtryskowych (co 300 h i przy przeglądzie rocznym)",
+       "en": "Fuel nozzle cleaning (every 300 h and at annual)",
+       "sk": "Fuel nozzle cleaning (every 300 h and at annual)",
+       "fr": "Fuel nozzle cleaning (every 300 h and at annual)"
+      },
+      "everyHours": 300,
+      "verified": false
+     }
+    ]
+   },
+   {
+    "id": "continental_io550_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 6 mies. – olej i filtr",
+     "en": "50 h / 6 months inspection – oil and filter",
+     "sk": "50 h / 6 months inspection – oil and filter",
+     "fr": "50 h / 6 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 6,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "continental_io550_mag48",
+    "title": {
+     "pl": "Iskrowniki TCM – remont / wymiana co 4 lata",
+     "en": "TCM magnetos – overhaul / replace every 4 years",
+     "sk": "TCM magnetos – overhaul / replace every 4 years",
+     "fr": "TCM magnetos – overhaul / replace every 4 years"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 48,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": []
+   },
+   {
+    "id": "continental_io550_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "continental_tsio520",
+  "name": "Continental TSIO-520",
+  "fullName": "Continental TSIO-520 (turbo)",
+  "manufacturer": "Continental",
+  "bulletinGroups": [
+   "CONTINENTAL"
+  ],
+  "tboHours": 1400,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 1400 h / 12 lat wg Continental SIL98-9C (zależnie od wersji 1400–2200 h – sprawdź SIL98-9). +200 h przy średnio ≥ 40 h/mies. Olej co 50 h lub 6 mies.",
+  "bulletinsPage": "https://continental.aero/technical-publications/",
+  "tasks": [
+   {
+    "id": "continental_tsio520_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C (TBO), Maintenance Manual X30634A (olej 50 h / 6 mies., przegląd 100 h)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy",
+       "en": "Cylinder compression test (differential)",
+       "sk": "Cylinder compression test (differential)",
+       "fr": "Cylinder compression test (differential)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej: wymiana, filtr rozciąć i sprawdzić",
+       "en": "Oil drain, filter cut and inspect",
+       "sk": "Oil drain, filter cut and inspect",
+       "fr": "Oil drain, filter cut and inspect"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Turbosprężarka, wastegate, sterownik",
+       "en": "Turbocharger, wastegate, controller",
+       "sk": "Turbocharger, wastegate, controller",
+       "fr": "Turbocharger, wastegate, controller"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Cylindry, żebra i przegrody chłodzenia",
+       "en": "Cylinders, cooling fins and baffling",
+       "sk": "Cylinders, cooling fins and baffling",
+       "fr": "Cylinders, cooling fins and baffling"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i wydechowy",
+       "en": "Induction and exhaust systems",
+       "sk": "Induction and exhaust systems",
+       "fr": "Induction and exhaust systems"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Paliwo / olej: przewody, wycieki, dysze wtrysku",
+       "en": "Fuel / oil lines, leaks, injector nozzles",
+       "sk": "Fuel / oil lines, leaks, injector nozzles",
+       "fr": "Fuel / oil lines, leaks, injector nozzles"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie, cięgna, akcesoria, łoże",
+       "en": "Controls, cables, accessories, engine mount",
+       "sk": "Controls, cables, accessories, engine mount",
+       "fr": "Controls, cables, accessories, engine mount"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Próba silnika po przeglądzie",
+       "en": "Post-inspection engine run",
+       "sk": "Post-inspection engine run",
+       "fr": "Post-inspection engine run"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h",
+       "en": "Magnetos – 500 h inspection",
+       "sk": "Magnetos – 500 h inspection",
+       "fr": "Magnetos – 500 h inspection"
+      },
+      "everyHours": 500,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Czyszczenie dysz wtryskowych (co 300 h i przy przeglądzie rocznym)",
+       "en": "Fuel nozzle cleaning (every 300 h and at annual)",
+       "sk": "Fuel nozzle cleaning (every 300 h and at annual)",
+       "fr": "Fuel nozzle cleaning (every 300 h and at annual)"
+      },
+      "everyHours": 300,
+      "verified": false
+     }
+    ]
+   },
+   {
+    "id": "continental_tsio520_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 6 mies. – olej i filtr",
+     "en": "50 h / 6 months inspection – oil and filter",
+     "sk": "50 h / 6 months inspection – oil and filter",
+     "fr": "50 h / 6 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 6,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "continental_tsio520_mag48",
+    "title": {
+     "pl": "Iskrowniki TCM – remont / wymiana co 4 lata",
+     "en": "TCM magnetos – overhaul / replace every 4 years",
+     "sk": "TCM magnetos – overhaul / replace every 4 years",
+     "fr": "TCM magnetos – overhaul / replace every 4 years"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 48,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": []
+   },
+   {
+    "id": "continental_tsio520_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 1400,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "continental_tsio550",
+  "name": "Continental TSIO-550",
+  "fullName": "Continental TSIO-550 (-B, -C, -E, -G, -K, -N)",
+  "manufacturer": "Continental",
+  "bulletinGroups": [
+   "CONTINENTAL"
+  ],
+  "tboHours": 2000,
+  "tboYears": 12,
+  "fuel": "AVGAS 100LL",
+  "notes": "TBO 2000 h / 12 lat wg Continental SIL98-9C (TSIO-550-C/G/K/N; S/N ≥ 1006000 2200 h; -B/-E 1600/1800 h). +200 h przy średnio ≥ 40 h/mies. Olej co 50 h lub 6 mies.",
+  "bulletinsPage": "https://continental.aero/technical-publications/",
+  "tasks": [
+   {
+    "id": "continental_tsio550_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C (TBO), Maintenance Manual X30634A (olej 50 h / 6 mies., przegląd 100 h)",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania różnicowy",
+       "en": "Cylinder compression test (differential)",
+       "sk": "Cylinder compression test (differential)",
+       "fr": "Cylinder compression test (differential)"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej: wymiana, filtr rozciąć i sprawdzić",
+       "en": "Oil drain, filter cut and inspect",
+       "sk": "Oil drain, filter cut and inspect",
+       "fr": "Oil drain, filter cut and inspect"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Turbosprężarka, wastegate, sterownik",
+       "en": "Turbocharger, wastegate, controller",
+       "sk": "Turbocharger, wastegate, controller",
+       "fr": "Turbocharger, wastegate, controller"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Cylindry, żebra i przegrody chłodzenia",
+       "en": "Cylinders, cooling fins and baffling",
+       "sk": "Cylinders, cooling fins and baffling",
+       "fr": "Cylinders, cooling fins and baffling"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i wydechowy",
+       "en": "Induction and exhaust systems",
+       "sk": "Induction and exhaust systems",
+       "fr": "Induction and exhaust systems"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Paliwo / olej: przewody, wycieki, dysze wtrysku",
+       "en": "Fuel / oil lines, leaks, injector nozzles",
+       "sk": "Fuel / oil lines, leaks, injector nozzles",
+       "fr": "Fuel / oil lines, leaks, injector nozzles"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Sterowanie, cięgna, akcesoria, łoże",
+       "en": "Controls, cables, accessories, engine mount",
+       "sk": "Controls, cables, accessories, engine mount",
+       "fr": "Controls, cables, accessories, engine mount"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Próba silnika po przeglądzie",
+       "en": "Post-inspection engine run",
+       "sk": "Post-inspection engine run",
+       "fr": "Post-inspection engine run"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki – przegląd 500 h",
+       "en": "Magnetos – 500 h inspection",
+       "sk": "Magnetos – 500 h inspection",
+       "fr": "Magnetos – 500 h inspection"
+      },
+      "everyHours": 500,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Czyszczenie dysz wtryskowych (co 300 h i przy przeglądzie rocznym)",
+       "en": "Fuel nozzle cleaning (every 300 h and at annual)",
+       "sk": "Fuel nozzle cleaning (every 300 h and at annual)",
+       "fr": "Fuel nozzle cleaning (every 300 h and at annual)"
+      },
+      "everyHours": 300,
+      "verified": false
+     }
+    ]
+   },
+   {
+    "id": "continental_tsio550_50h",
+    "title": {
+     "pl": "Przegląd 50 h / 6 mies. – olej i filtr",
+     "en": "50 h / 6 months inspection – oil and filter",
+     "sk": "50 h / 6 months inspection – oil and filter",
+     "fr": "50 h / 6 months inspection – oil and filter"
+    },
+    "category": "engine",
+    "intervalHours": 50,
+    "intervalMonths": 6,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Wymiana oleju i filtra, filtr rozciąć i sprawdzić",
+       "en": "Oil and filter change, cut filter open",
+       "sk": "Oil and filter change, cut filter open",
+       "fr": "Oil and filter change, cut filter open"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   },
+   {
+    "id": "continental_tsio550_mag48",
+    "title": {
+     "pl": "Iskrowniki TCM – remont / wymiana co 4 lata",
+     "en": "TCM magnetos – overhaul / replace every 4 years",
+     "sk": "TCM magnetos – overhaul / replace every 4 years",
+     "fr": "TCM magnetos – overhaul / replace every 4 years"
+    },
+    "category": "engine",
+    "intervalHours": null,
+    "intervalMonths": 48,
+    "oneTimeAtHours": null,
+    "toleranceHours": null,
+    "mandatory": true,
+    "source": "Continental X30634A",
+    "verified": true,
+    "note": null,
+    "items": []
+   },
+   {
+    "id": "continental_tsio550_tbo",
+    "title": {
+     "pl": "Remont główny (TBO)",
+     "en": "Overhaul (TBO)",
+     "sk": "Overhaul (TBO)",
+     "fr": "Overhaul (TBO)"
+    },
+    "category": "engine",
+    "intervalHours": 2000,
+    "intervalMonths": 144,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Continental SIL98-9C",
+    "verified": true,
+    "note": null,
+    "items": []
+   }
+  ]
+ },
+ {
+  "id": "ivchenko_ai14r",
+  "name": "AI-14RA",
+  "fullName": "AI-14R / AI-14RA (WSK PZL-Kalisz), 9-cyl. radial ~260 KM",
+  "manufacturer": "WSK PZL-Kalisz",
+  "bulletinGroups": [
+   "AI14"
+  ],
+  "tboHours": null,
+  "tboYears": null,
+  "fuel": "wg instrukcji silnika / AFM",
+  "notes": "Resurs i okresy obsługi wg dokumentacji WSK PZL-Kalisz i programu obsługi (AMP) – wpisz je ręcznie.",
+  "bulletinsPage": null,
+  "tasks": [
+   {
+    "id": "ivchenko_ai14r_100h",
+    "title": {
+     "pl": "Przegląd silnika wg programu obsługi",
+     "en": "Engine inspection per maintenance programme",
+     "sk": "Engine inspection per maintenance programme",
+     "fr": "Engine inspection per maintenance programme"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Program obsługi (AMP) / dokumentacja silnika – sprawdź / verify",
+    "verified": false,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania",
+       "en": "Cylinder compression check",
+       "sk": "Cylinder compression check",
+       "fr": "Cylinder compression check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej, filtr / sita",
+       "en": "Oil, filter / screens",
+       "sk": "Oil, filter / screens",
+       "fr": "Oil, filter / screens"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i filtr powietrza",
+       "en": "Induction system and air filter",
+       "sk": "Induction system and air filter",
+       "fr": "Induction system and air filter"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ paliwowy: gaźnik / wtrysk, przewody",
+       "en": "Fuel system: carburettor / injection, lines",
+       "sk": "Fuel system: carburettor / injection, lines",
+       "fr": "Fuel system: carburettor / injection, lines"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Owiewki, przegrody chłodzenia, żebra cylindrów",
+       "en": "Baffles, cowling, cylinder fins",
+       "sk": "Baffles, cowling, cylinder fins",
+       "fr": "Baffles, cowling, cylinder fins"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Łoże silnika, węże, wycieki",
+       "en": "Engine mounts, hoses, leaks",
+       "sk": "Engine mounts, hoses, leaks",
+       "fr": "Engine mounts, hoses, leaks"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "pzl_franklin_4a235",
+  "name": "PZL-Franklin 4A-235",
+  "fullName": "Franklin 4A-235-B3, -B31, -B4",
+  "manufacturer": "Franklin (PZL-Rzeszów)",
+  "bulletinGroups": [
+   "PZL_FRANKLIN"
+  ],
+  "tboHours": null,
+  "tboYears": null,
+  "fuel": "AVGAS min. 100/130 (100LL) – EASA TCDS E.087",
+  "notes": "TBO i okresy wymiany oleju wg instrukcji 26.0.061 (EN) / 26.0.055 (PL) – brak w TCDS, wpisz ręcznie.",
+  "bulletinsPage": null,
+  "tasks": [
+   {
+    "id": "pzl_franklin_4a235_100h",
+    "title": {
+     "pl": "Przegląd silnika 100 h / 12 mies.",
+     "en": "Engine inspection 100 h / 12 months",
+     "sk": "Engine inspection 100 h / 12 months",
+     "fr": "Engine inspection 100 h / 12 months"
+    },
+    "category": "engine",
+    "intervalHours": 100,
+    "intervalMonths": 12,
+    "oneTimeAtHours": null,
+    "toleranceHours": 10,
+    "mandatory": true,
+    "source": "Instrukcja 26.0.061 – sprawdź / verify",
+    "verified": false,
+    "note": null,
+    "items": [
+     {
+      "title": {
+       "pl": "Pomiar sprężania",
+       "en": "Cylinder compression check",
+       "sk": "Cylinder compression check",
+       "fr": "Cylinder compression check"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Świece: czyszczenie, przerwa, rotacja",
+       "en": "Spark plugs: clean, gap, rotate",
+       "sk": "Spark plugs: clean, gap, rotate",
+       "fr": "Spark plugs: clean, gap, rotate"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Iskrowniki: zapłon i wiązka zapłonowa",
+       "en": "Magneto timing and ignition harness",
+       "sk": "Magneto timing and ignition harness",
+       "fr": "Magneto timing and ignition harness"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Olej, filtr / sita",
+       "en": "Oil, filter / screens",
+       "sk": "Oil, filter / screens",
+       "fr": "Oil, filter / screens"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ dolotowy i filtr powietrza",
+       "en": "Induction system and air filter",
+       "sk": "Induction system and air filter",
+       "fr": "Induction system and air filter"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Układ paliwowy: gaźnik / wtrysk, przewody",
+       "en": "Fuel system: carburettor / injection, lines",
+       "sk": "Fuel system: carburettor / injection, lines",
+       "fr": "Fuel system: carburettor / injection, lines"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Owiewki, przegrody chłodzenia, żebra cylindrów",
+       "en": "Baffles, cowling, cylinder fins",
+       "sk": "Baffles, cowling, cylinder fins",
+       "fr": "Baffles, cowling, cylinder fins"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Łoże silnika, węże, wycieki",
+       "en": "Engine mounts, hoses, leaks",
+       "sk": "Engine mounts, hoses, leaks",
+       "fr": "Engine mounts, hoses, leaks"
+      },
+      "everyHours": null,
+      "verified": true
+     },
+     {
+      "title": {
+       "pl": "Przegląd biuletynów (SB/SI) i AD",
+       "en": "SB / SI and AD compliance check",
+       "sk": "SB / SI and AD compliance check",
+       "fr": "SB / SI and AD compliance check"
+      },
+      "everyHours": null,
+      "verified": true
+     }
+    ]
+   }
+  ]
+ },
+ {
   "id": "other",
   "name": "Inny silnik",
   "fullName": "Other engine",
