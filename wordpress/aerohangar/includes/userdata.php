@@ -177,7 +177,7 @@ function ah_accounts_list(string $q = ''): array
         $mt = get_user_meta($u->ID, 'aerohangar_max_types', true);
         $out[] = ['id' => $u->ID, 'login' => $u->user_login, 'name' => $u->display_name, 'email' => $u->user_email,
             'registered' => substr($u->user_registered, 0, 10), 'wpRole' => implode(', ', $u->roles),
-            'key' => (bool)get_user_meta($u->ID, 'cannonade_key_hash', true), 'keyHint' => (string)get_user_meta($u->ID, 'cannonade_key_hint', true),
+            'key' => (bool)get_user_meta($u->ID, 'cannonade_key_hash', true), 'keyHint' => (string)get_user_meta($u->ID, 'cannonade_key_hint', true), 'keyFull' => cannonade_key_plain($u->ID),
             'lastSeen' => (int)get_user_meta($u->ID, 'cannonade_last_seen', true), 'lastSync' => (int)get_user_meta($u->ID, 'aerohangar_state_time', true),
             'aircraft' => (int)get_user_meta($u->ID, 'aerohangar_aircraft', true),
             'blocked' => (bool)get_user_meta($u->ID, 'aerohangar_blocked', true), 'pro' => (bool)get_user_meta($u->ID, 'aerohangar_pro', true),

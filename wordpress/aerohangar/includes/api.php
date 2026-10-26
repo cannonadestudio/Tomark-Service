@@ -488,6 +488,9 @@ function ah_api_dispatch(): void
                 } elseif (($body['action'] ?? '') === 'pro') {
                     update_user_meta($uid, 'aerohangar_pro', !empty($body['on']) ? 1 : 0);
                     ah_log($u['login'], "account #$uid: Pro " . (!empty($body['on']) ? 'ON' : 'OFF'));
+                } elseif (($body['action'] ?? '') === 'newkey') {
+                    cannonade_new_key($uid);
+                    ah_log($u['login'], "account #$uid: new key");
                 } elseif (($body['action'] ?? '') === 'unlink') {
                     cannonade_revoke_key($uid);
                     ah_log($u['login'], "account #$uid: key revoked");

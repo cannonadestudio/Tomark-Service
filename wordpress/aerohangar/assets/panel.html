@@ -758,11 +758,12 @@ async function renderAccounts() {
         ${a.contactId ? `<div class="muted">wizytówka: ${esc((state.contactsBrief.find(c => c.id === a.contactId) || {}).name || a.contactId)}</div>` : ""}
         ${a.panelRole ? `<div class="muted">panel: ${esc(ROLE[a.panelRole])}</div>` : ""}
         ${a.note ? `<div class="muted"><i>${esc(a.note)}</i></div>` : ""}</td>
-      <td>${a.key ? `<span class="chip g">…${esc(a.keyHint)}</span>` : '<span class="muted">brak</span>'}</td>
+      <td>${a.keyFull ? `<code style="font-size:12px;user-select:all">${esc(a.keyFull)}</code> <button class="ghost" style="padding:2px 8px" data-copy="${esc(a.keyFull)}">Kopiuj</button>` : a.key ? `<span class="chip g">…${esc(a.keyHint)}</span>` : '<span class="muted">brak</span>'}</td>
       <td class="hide-sm nowrap">${d(a.lastSeen)}<div class="muted">${d(a.lastSync)}</div></td><td>${a.aircraft}</td>
       <td class="nowrap">${admin ? `<button class="ghost" data-edit="${a.id}">Edytuj</button>` : ""}</td></tr>`).join("") || '<tr><td class="muted">Brak kont.</td></tr>'}</table></div>`;
   $("#q").oninput = e => { state.filter = e.target.value; clearTimeout(state._qt); state._qt = setTimeout(() => renderAccounts().then(() => { const x = $("#q"); x.focus(); x.setSelectionRange(x.value.length, x.value.length) }), 350) };
   v.querySelectorAll("button[data-edit]").forEach(b => b.onclick = () => editAccount(state.accounts.find(a => a.id === +b.dataset.edit)));
+  v.querySelectorAll("button[data-copy]").forEach(b => b.onclick = e => { e.stopPropagation(); navigator.clipboard?.writeText(b.dataset.copy); b.textContent = "✓" });
 }
 function editAccount(a) {
   const isAdminUser = a.panelRole === "admin";
@@ -787,7 +788,7 @@ function editAccount(a) {
     <p class="muted">Klient loguje się na stronie <a href="${esc(state.loginPage)}" target="_blank">AeroHangar – logowanie</a> (link „Logowanie” w menu).</p>
     ${field("note", "Notatka (widoczna tylko tutaj)", a.note)}
     ${a.access ? `<p class="muted">Dostęp z zakupu WooCommerce: ${esc(PLAN[a.access.plan] || a.access.plan)} ${a.access.until ? "do " + new Date(a.access.until * 1000).toISOString().slice(0, 10) : "bez limitu"} – liczy się niezależnie od ustawień powyżej (blokada go wyłącza).</p>` : ""}
-    ${a.key ? `<p><button type="button" class="ghost" id="unlinkKey">Unieważnij klucz (…${esc(a.keyHint)})</button></p>` : '<p class="muted">Konto nie ma jeszcze klucza aplikacji.</p>'}`,
+    <p>${a.keyFull ? `Klucz: <code style="user-select:all">${esc(a.keyFull)}</code> ` : a.key ? `Klucz …${esc(a.keyHint)} (starszy, niewidoczny) ` : "Brak klucza. "}<button type="button" class="ghost" id="newKey">${a.key ? "Nowy klucz" : "Generuj klucz"}</button> ${a.key ? `<button type="button" class="ghost" id="unlinkKey">Unieważnij</button>` : ""}</p>`,
     async fd => {
       const data = { blocked: !!fd.get("blocked"), pro: !!fd.get("pro"), proUntil: fd.get("proUntil") || "", plan: fd.get("plan") || "",
         maxAircraft: fd.get("maxAircraft") === "" ? "" : +fd.get("maxAircraft"), maxTypes: fd.get("maxTypes") === "" ? "" : +fd.get("maxTypes"), panelRole: fd.get("panelRole") || (isAdminUser ? "admin" : ""), note: (fd.get("note") || "").trim() };
@@ -805,6 +806,8 @@ function editAccount(a) {
     else box.querySelectorAll("input[data-cap]").forEach(i => i.disabled = false);
   };
   cd.onchange = syncCaps; planSel.onchange = syncCaps; syncCaps();
+  const nk = $("#newKey");
+  if (nk) nk.onclick = async () => { if (a.key && !confirm("Nowy klucz? Stary przestanie działać w obu aplikacjach.")) return; await api("accounts", { body: { user: a.id, action: "newkey" } }); $("#dlg").close(); status("Klucz wygenerowany dla " + a.login + "."); renderAccounts() };
   const u = $("#unlinkKey");
   if (u) u.onclick = async () => { if (!confirm("Unieważnić klucz? Aplikacje tego konta stracą połączenie.")) return; await api("accounts", { body: { user: a.id, action: "unlink" } }); $("#dlg").close(); status("Klucz unieważniony."); renderAccounts() };
 }

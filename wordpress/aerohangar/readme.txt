@@ -2,7 +2,7 @@
 Contributors: Cannonade Łukasz Bełdowski
 Requires at least: 6.2
 Requires PHP: 8.1
-Stable tag: 1.6.0
+Stable tag: 1.7.0
 License: GPLv2 or later
 
 Serwer aplikacji AeroHangar w WordPressie + konta pilotów (Konto Cannonade: jeden klucz dla AeroHangar i Pilot Logbook) + sprzedaż dostępu przez WooCommerce.
@@ -31,6 +31,8 @@ UWAGA (Google Play): w aplikacji z Google Play nie umieszczaj linków ani przyci
 Publiczne: wp-content/uploads/aerohangar/data/*.json. Prywatne: tabela {prefix}aerohangar_store w bazie WordPressa (kopia bazy = kopia wszystkiego).
 
 == Changelog ==
+= 1.7.0 =
+* AeroHangar → Klucze aplikacji (też Użytkownicy → Klucze aplikacji): wszystkie klucze widoczne w całości, kopiowanie, generowanie, wymiana, unieważnianie, wyszukiwarka, „Utwórz brakujące klucze”, wymiana starszych kluczy. Kolumna z kluczem na liście użytkowników i w panelu → Konta pilotów.
 = 1.6.0 =
 * Wygląd w stylu lot.com: granat, biel, jasne tło (panel, logowanie, konto).
 * Limity: aplikacja bezpłatna dla 1 samolotu; właściciel do 3 samolotów, mechanik, szkoła, dealer i serwis bez limitu (informacja przy ofercie).
