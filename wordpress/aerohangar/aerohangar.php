@@ -3,7 +3,7 @@
  * Plugin Name:       AeroHangar
  * Plugin URI:        https://horyzontbezgranic.pl/
  * Description:       Serwer aplikacji AeroHangar w WordPressie: biuletyny, typy, kontakty, partnerzy, reklamy, zapytania serwisowe, instalacje i Pro – oraz konta pilotów z jednym kluczem dla AeroHangar i Pilot Logbook (Konto Cannonade).
- * Version:           1.7.1
+ * Version:           1.8.0
  * Requires at least: 6.2
  * Requires PHP:      8.1
  * Author:            Cannonade Łukasz Bełdowski
@@ -20,7 +20,7 @@ if (PHP_VERSION_ID < 80100) {
     return;
 }
 
-define('AEROHANGAR_VERSION', '1.7.1');
+define('AEROHANGAR_VERSION', '1.8.0');
 define('AEROHANGAR_DIR', __DIR__);
 define('AEROHANGAR_URL', plugin_dir_url(__FILE__));
 

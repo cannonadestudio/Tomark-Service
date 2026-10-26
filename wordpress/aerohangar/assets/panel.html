@@ -259,7 +259,7 @@ function openDialog(html, onSave, onDelete) {
     try { await onSave(new FormData(f)); $("#dlg").close(); render() } catch (e) { if (!(e instanceof Error) || !String(e.message).match(/^\d{3}/)) status(String(e.message || e), false) } finally { btn.disabled = false }
   };
   if (!canEdit()) { $("#dSave").style.display = "none"; if ($("#dDel")) $("#dDel").style.display = "none"; f.querySelectorAll("input,select,textarea").forEach(i => i.disabled = true) }
-  if (onDelete) $("#dDel").onclick = async () => { if (confirm("Usunąć ten wpis?")) { try { await onDelete(); $("#dlg").close(); render() } catch (e) { } } };
+  if (onDelete) $("#dDel").onclick = async () => { if (confirm(onDelete.msg || "Usunąć ten wpis?")) { try { await onDelete(); $("#dlg").close(); render() } catch (e) { } } };
   $("#dlg").showModal();
 }
 const allGroups = () => [...new Set(state.data.types.flatMap(t => t.bulletinGroups))].sort();
@@ -739,11 +739,11 @@ const PLAN = { pilot: "Pilot", mechanic: "Mechanik", school: "Szkoła lotnicza",
 async function renderAccounts() {
   const v = $("#view");
   const j = await api("accounts", { q: "&q=" + encodeURIComponent(state.filter || "") });
-  state.accounts = j.accounts; state.capsAll = j.capsAll || {}; state.planCaps = j.planCaps || {}; state.contactsBrief = j.contacts || []; state.loginPage = j.loginPage || ""; state.panelSections = j.panelSections || {};
+  state.accounts = j.accounts; state.capsAll = j.capsAll || {}; state.planCaps = j.planCaps || {}; state.contactsBrief = j.contacts || []; state.loginPage = j.loginPage || ""; state.panelSections = j.panelSections || {}; state.wpRoles = j.wpRoles || {}; state.meId = j.me;
   const admin = state.user?.role === "admin";
   const d = t => t ? new Date(t * 1000).toISOString().slice(0, 10) : "—";
   const ROLE = { admin: "administrator", editor: "edycja danych", viewer: "podgląd", "": "" };
-  v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Szukaj konta: login, imię, e-mail…" value="${esc(state.filter)}" style="flex:1"></div>
+  v.innerHTML = `<div class="card"><div class="row" style="margin-bottom:8px"><input id="q" placeholder="Szukaj konta: login, imię, e-mail…" value="${esc(state.filter)}" style="flex:1">${admin ? '<button id="accNew">+ Nowe konto</button>' : ""}</div>
     <p class="muted">Wszystkie konta WordPress (ostatnie 500 / wynik wyszukiwania). <b>Edytuj</b> – dostęp do aplikacji, plan, Pro (bez limitu albo do daty), limit samolotów i własnych typów oraz rola w panelu. Pilot łączy aplikacje kluczem ze strony <code>[cannonade_konto]</code>; dostęp kupiony w WooCommerce dolicza się sam. <b>Konto bez zakupu i bez ręcznie przyznanego dostępu nie może utworzyć klucza</b>, a istniejący klucz przestaje działać.</p>
     <table><tr><th>Konto</th><th>Dostęp w AeroHangar</th><th>Klucz</th><th class="hide-sm">Ostatnio / kopia</th><th>Samoloty</th><th></th></tr>
     ${j.accounts.map(a => `<tr><td><b>${esc(a.name)}</b><div class="muted">${esc(a.login)} · ${esc(a.email)}</div><div class="muted">${esc(a.wpRole)} · od ${esc(a.registered)}</div></td>
@@ -763,11 +763,29 @@ async function renderAccounts() {
       <td class="nowrap">${admin ? `<button class="ghost" data-edit="${a.id}">Edytuj</button>` : ""}</td></tr>`).join("") || '<tr><td class="muted">Brak kont.</td></tr>'}</table></div>`;
   $("#q").oninput = e => { state.filter = e.target.value; clearTimeout(state._qt); state._qt = setTimeout(() => renderAccounts().then(() => { const x = $("#q"); x.focus(); x.setSelectionRange(x.value.length, x.value.length) }), 350) };
   v.querySelectorAll("button[data-edit]").forEach(b => b.onclick = () => editAccount(state.accounts.find(a => a.id === +b.dataset.edit)));
+  if ($("#accNew")) $("#accNew").onclick = () => openDialog(`<h3>Nowe konto</h3>
+    <div class="grid2">${field("name", "Imię i nazwisko / firma")}${field("email", "E-mail", "", "email", "required")}</div>
+    <div class="grid2">${field("login", "Login (puste = z e-maila)")}${select("wpRole", "Rola WordPress", Object.entries(state.wpRoles), "subscriber")}</div>
+    <label class="inl"><input type="checkbox" name="sendLink" checked> wyślij e-mail z linkiem do ustawienia hasła</label>
+    <p class="muted">Dostęp do AeroHangar, plan, limity i klucz ustawisz po utworzeniu (Edytuj).</p>`,
+    async fd => {
+      const j = await api("accounts", { body: { action: "create", data: { name: fd.get("name"), email: fd.get("email"), login: fd.get("login"), wpRole: fd.get("wpRole"), sendLink: !!fd.get("sendLink") } } });
+      status("Utworzono konto " + fd.get("email") + ".");
+      state.filter = fd.get("email"); await renderAccounts();
+      const n = state.accounts.find(a => a.id === j.created); if (n) setTimeout(() => editAccount(n), 150);
+    });
   v.querySelectorAll("button[data-copy]").forEach(b => b.onclick = e => { e.stopPropagation(); navigator.clipboard?.writeText(b.dataset.copy); b.textContent = "✓" });
 }
 function editAccount(a) {
   const isAdminUser = a.panelRole === "admin";
-  openDialog(`<h3>${esc(a.name)} <span class="muted" style="font-size:14px">${esc(a.email)}</span></h3>
+  const canDelete = !a.isAdmin && a.id !== state.meId;
+  openDialog(`<h3>${esc(a.name)} <span class="muted" style="font-size:14px">${esc(a.login)}</span></h3>
+    <h4 style="margin:4px 0">Dane konta</h4>
+    <div class="grid2">${field("p_name", "Wyświetlana nazwa", a.name)}${field("p_email", "E-mail", a.email, "email")}</div>
+    <div class="grid2">${field("p_first", "Imię", a.firstName)}${field("p_last", "Nazwisko", a.lastName)}</div>
+    <div class="grid2">${field("p_phone", "Telefon", a.phone)}${a.isAdmin || a.id === state.meId ? '<p class="muted">Rola WordPress: ' + esc(a.wpRole) + ' (zmiana tylko w WordPressie)</p>' : select("p_role", "Rola WordPress", Object.entries(state.wpRoles), a.wpRoleKey)}</div>
+    <p><button type="button" class="ghost" id="resetPw">Wyślij link do zmiany hasła</button> <span class="muted">zarejestrowane ${esc(a.registered)}</span></p>
+    <h4 style="margin:14px 0 4px">AeroHangar</h4>
     <label class="inl"><input type="checkbox" name="blocked" ${a.blocked ? "checked" : ""}> zablokuj dostęp aplikacji (klucz przestaje działać w AeroHangar)</label>
     <div class="grid2">
       ${select("plan", "Plan", [["", "—"], ["pilot", "Pilot / właściciel"], ["mechanic", "Mechanik"], ["school", "Szkoła lotnicza"], ["dealer", "Dealer"], ["service", "Serwis"], ["club", "Aeroklub (stary plan)"]], a.plan)}
@@ -795,10 +813,11 @@ function editAccount(a) {
       data.caps = fd.get("capsDefault") ? "default" : Object.keys(state.capsAll).filter(k => fd.get("cap_" + k));
       data.contactId = (fd.get("contactId") || "").trim();
       data.panel = Object.fromEntries(Object.keys(state.panelSections || {}).map(k => [k, fd.get("sec_" + k) || ""]));
+      await api("accounts", { body: { user: a.id, action: "profile", data: { name: fd.get("p_name"), email: fd.get("p_email"), firstName: fd.get("p_first"), lastName: fd.get("p_last"), phone: fd.get("p_phone"), wpRole: fd.get("p_role") || "" } } });
       await api("accounts", { body: { user: a.id, action: "save", data } });
       status("Zapisano uprawnienia konta " + a.login + ".");
       renderAccounts();
-    });
+    }, canDelete ? Object.assign(async () => { await api("accounts", { body: { user: a.id, action: "delete" } }); status("Usunięto konto " + a.login + "."); renderAccounts() }, { msg: `Usunąć konto ${a.login} (${a.email})? Zniknie z WordPressa razem z kopią danych AeroHangar i kluczem. Tego nie da się cofnąć.` }) : null);
   const cd = $("#capsDefault"), planSel = $("#dlgForm").querySelector("select[name=plan]");
   const syncCaps = () => {
     const box = $("#capsBox"); box.style.opacity = cd.checked ? .55 : 1;
@@ -806,6 +825,8 @@ function editAccount(a) {
     else box.querySelectorAll("input[data-cap]").forEach(i => i.disabled = false);
   };
   cd.onchange = syncCaps; planSel.onchange = syncCaps; syncCaps();
+  const rp = $("#resetPw");
+  if (rp) rp.onclick = async () => { await api("accounts", { body: { user: a.id, action: "resetpw" } }); status("Wysłano link do zmiany hasła na " + a.email + ".") };
   const nk = $("#newKey");
   if (nk) nk.onclick = async () => { if (a.key && !confirm("Nowy klucz? Stary przestanie działać w obu aplikacjach.")) return; await api("accounts", { body: { user: a.id, action: "newkey" } }); $("#dlg").close(); status("Klucz wygenerowany dla " + a.login + "."); renderAccounts() };
   const u = $("#unlinkKey");

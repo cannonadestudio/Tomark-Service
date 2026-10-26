@@ -176,6 +176,8 @@ function ah_accounts_list(string $q = ''): array
         $max = get_user_meta($u->ID, 'aerohangar_max_aircraft', true);
         $mt = get_user_meta($u->ID, 'aerohangar_max_types', true);
         $out[] = ['id' => $u->ID, 'login' => $u->user_login, 'name' => $u->display_name, 'email' => $u->user_email,
+            'firstName' => (string)$u->first_name, 'lastName' => (string)$u->last_name, 'wpRoleKey' => (string)($u->roles[0] ?? ''),
+            'phone' => (string)get_user_meta($u->ID, 'billing_phone', true), 'isAdmin' => user_can($u->ID, 'manage_options'),
             'registered' => substr($u->user_registered, 0, 10), 'wpRole' => implode(', ', $u->roles),
             'key' => (bool)get_user_meta($u->ID, 'cannonade_key_hash', true), 'keyHint' => (string)get_user_meta($u->ID, 'cannonade_key_hint', true), 'keyFull' => cannonade_key_plain($u->ID),
             'lastSeen' => (int)get_user_meta($u->ID, 'cannonade_last_seen', true), 'lastSync' => (int)get_user_meta($u->ID, 'aerohangar_state_time', true),
@@ -277,4 +279,70 @@ function ah_plan_max_aircraft(string $plan): int
 function ah_plan_limit_text(string $plan): string
 {
     return ah_plan_max_aircraft($plan) >= 999 ? 'bez limitu samolotów' : 'do ' . ah_plan_max_aircraft($plan) . ' samolotów';
+}
+
+// ---------------------------------------------------------------- WordPress account data (panel → Konta pilotów)
+
+/** WordPress roles the panel may give (administrators are changed only in wp-admin). */
+function ah_wp_roles(): array
+{
+    $out = [];
+    foreach (wp_roles()->get_names() as $k => $n) if ($k !== 'administrator') $out[$k] = translate_user_role($n);
+    return $out;
+}
+
+/** Name, e-mail and WordPress role of an account. */
+function ah_account_profile(int $uid, array $b, string $by)
+{
+    $u = get_userdata($uid);
+    $email = sanitize_email((string)($b['email'] ?? $u->user_email));
+    if (!is_email($email)) return new WP_Error('email', 'Niepoprawny adres e-mail.');
+    $other = email_exists($email);
+    if ($other && (int)$other !== $uid) return new WP_Error('email', 'Ten e-mail ma już inne konto.');
+    $first = sanitize_text_field((string)($b['firstName'] ?? ''));
+    $last = sanitize_text_field((string)($b['lastName'] ?? ''));
+    $display = sanitize_text_field((string)($b['name'] ?? '')) ?: trim("$first $last") ?: $u->user_login;
+    $r = wp_update_user(['ID' => $uid, 'user_email' => $email, 'display_name' => $display, 'first_name' => $first, 'last_name' => $last]);
+    if (is_wp_error($r)) return $r;
+    $role = sanitize_key((string)($b['wpRole'] ?? ''));
+    if ($role !== '' && isset(ah_wp_roles()[$role]) && !user_can($uid, 'manage_options') && $uid !== get_current_user_id()) {
+        $x = new WP_User($uid);
+        $x->set_role($role);
+    }
+    if (function_exists('WC') && isset($b['phone'])) update_user_meta($uid, 'billing_phone', sanitize_text_field((string)$b['phone']));
+    ah_log($by, "account #$uid ({$u->user_login}): profile " . wp_json_encode(['email' => $email, 'name' => $display, 'role' => $role]));
+    return true;
+}
+
+/** Deletes a WordPress account (never yourself or an administrator); its posts go to the one deleting. */
+function ah_account_delete(int $uid, string $by)
+{
+    $u = get_userdata($uid);
+    if ($uid === get_current_user_id()) return new WP_Error('self', 'Nie możesz usunąć własnego konta.');
+    if (user_can($uid, 'manage_options')) return new WP_Error('admin', 'Konto administratora usuwa się tylko w WordPressie (Użytkownicy).');
+    require_once ABSPATH . 'wp-admin/includes/user.php';
+    if (function_exists('cannonade_revoke_key')) cannonade_revoke_key($uid);
+    $ok = wp_delete_user($uid, get_current_user_id());
+    if (!$ok) return new WP_Error('delete', 'Nie udało się usunąć konta.');
+    ah_log($by, "account #$uid ({$u->user_login}, {$u->user_email}) deleted");
+    return true;
+}
+
+/** New account from the panel; optionally sends the "set your password" e-mail. */
+function ah_account_create(array $b, string $by)
+{
+    $email = sanitize_email((string)($b['email'] ?? ''));
+    if (!is_email($email)) return new WP_Error('email', 'Podaj poprawny e-mail.');
+    if (email_exists($email)) return new WP_Error('email', 'Ten e-mail ma już konto.');
+    $login = sanitize_user((string)($b['login'] ?? ''), true) ?: sanitize_user(strstr($email, '@', true), true);
+    $base = $login ?: 'pilot'; $i = 1;
+    while (username_exists($login)) $login = $base . (++$i);
+    $role = sanitize_key((string)($b['wpRole'] ?? ''));
+    if (!isset(ah_wp_roles()[$role])) $role = get_option('default_role', 'subscriber');
+    $uid = wp_insert_user(['user_login' => $login, 'user_email' => $email, 'user_pass' => wp_generate_password(24),
+        'display_name' => sanitize_text_field((string)($b['name'] ?? '')) ?: $login, 'role' => $role]);
+    if (is_wp_error($uid)) return $uid;
+    if (!empty($b['sendLink'])) wp_new_user_notification($uid, null, 'user');
+    ah_log($by, "account #$uid ($login, $email) created in the panel");
+    return (int)$uid;
 }

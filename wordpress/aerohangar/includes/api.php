@@ -479,10 +479,28 @@ function ah_api_dispatch(): void
     
         case 'accounts':
             $u = ah_require_login();
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($body['action'] ?? '') === 'create') {
+                if ($u['role'] !== 'admin') ah_out(403, ['error' => 'admin only']);
+                $r = ah_account_create((array)($body['data'] ?? []), $u['login']);
+                if (is_wp_error($r)) ah_out(400, ['error' => $r->get_error_message()]);
+                ah_out(200, ['created' => $r, 'accounts' => ah_accounts_list('')]);
+            }
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($u['role'] !== 'admin') ah_out(403, ['error' => 'admin only']);
                 $uid = (int)($body['user'] ?? 0);
                 if (!get_userdata($uid)) ah_out(404, ['error' => 'no such user']);
+                $act = (string)($body['action'] ?? '');
+                if ($act === 'profile') {
+                    $r = ah_account_profile($uid, (array)($body['data'] ?? []), $u['login']);
+                    if (is_wp_error($r)) ah_out(400, ['error' => $r->get_error_message()]);
+                } elseif ($act === 'delete') {
+                    $r = ah_account_delete($uid, $u['login']);
+                    if (is_wp_error($r)) ah_out(400, ['error' => $r->get_error_message()]);
+                } elseif ($act === 'resetpw') {
+                    $r = retrieve_password(get_userdata($uid)->user_login);
+                    if (is_wp_error($r)) ah_out(400, ['error' => $r->get_error_message()]);
+                    ah_log($u['login'], "account #$uid: password link sent");
+                }
                 if (($body['action'] ?? '') === 'save') {
                     ah_account_save($uid, (array)($body['data'] ?? []), $u['login']);
                 } elseif (($body['action'] ?? '') === 'pro') {
@@ -498,7 +516,7 @@ function ah_api_dispatch(): void
             }
             ah_out(200, ['accounts' => ah_accounts_list(sanitize_text_field((string)($_GET['q'] ?? ''))), 'capsAll' => ah_caps_all(),
                 'planCaps' => array_combine(array_keys(ah_plans()), array_map('ah_plan_caps', array_keys(ah_plans()))), 'contacts' => ah_contacts_brief(),
-                'loginPage' => ah_login_page_url(), 'panelSections' => ah_panel_sections()]);
+                'loginPage' => ah_login_page_url(), 'panelSections' => ah_panel_sections(), 'wpRoles' => ah_wp_roles(), 'me' => get_current_user_id()]);
     
         default:
             ah_out(404, ['error' => 'unknown action']);
