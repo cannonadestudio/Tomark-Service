@@ -78,9 +78,13 @@ function ah_permissions(int $uid): array
         if ($v !== '' && $v !== false) return max(0, (int)$v);
         return isset($acc[$k]) && $acc[$k] !== null && $acc[$k] !== '' ? max(0, (int)$acc[$k]) : null;
     };
+    $plan = (string)(get_user_meta($uid, 'aerohangar_plan', true) ?: ($acc['plan'] ?? ''));
+    $maxA = $lim('aerohangar_max_aircraft', 'maxAircraft');
+    // Plan defaults when nothing is set: aircraft owner up to 3, businesses no limit (999 = no limit in the app).
+    if ($maxA === null && !$blocked && ah_account_pro($uid)) $maxA = ah_plan_max_aircraft($plan);
     return ['blocked' => $blocked, 'pro' => !$blocked && ah_account_pro($uid),
-        'plan' => (string)(get_user_meta($uid, 'aerohangar_plan', true) ?: ($acc['plan'] ?? '')),
-        'maxAircraft' => $lim('aerohangar_max_aircraft', 'maxAircraft'), 'maxTypes' => $lim('aerohangar_max_types', 'maxTypes'),
+        'plan' => $plan,
+        'maxAircraft' => $maxA, 'maxTypes' => $lim('aerohangar_max_types', 'maxTypes'),
         'caps' => function_exists('ah_caps') ? ah_caps($uid) : []];
 }
 
@@ -194,7 +198,7 @@ add_filter('manage_users_columns', fn($c) => $c + ['aerohangar' => 'AeroHangar']
 add_filter('manage_users_custom_column', function ($v, $col, $uid) {
     if ($col !== 'aerohangar') return $v;
     $p = ah_permissions((int)$uid);
-    if ($p['blocked']) return '<span style="color:#b0003a">zablokowany</span>';
+    if ($p['blocked']) return '<span style="color:#C62828">zablokowany</span>';
     $bits = array_filter([$p['pro'] ? 'Pro' : 'bez dostępu', $p['plan'] ?: '', get_user_meta($uid, 'cannonade_key_hash', true) ? 'klucz ✓' : '']);
     return esc_html(implode(' · ', $bits)) . ' · <a href="' . esc_url(admin_url('admin.php?page=aerohangar-panel#accounts')) . '">zarządzaj</a>';
 }, 10, 3);
@@ -217,10 +221,15 @@ add_filter('cannonade_offer_html', function ($html, $uid) {
     foreach ((array)get_option('aerohangar_products', []) as $id) {
         $p = wc_get_product((int)$id);
         if (!$p || $p->get_status() !== 'publish') continue;
+        $plan = (string)get_post_meta($p->get_id(), '_aerohangar_plan', true) ?: 'pilot';
+        $pm = get_post_meta($p->get_id(), '_aerohangar_max_aircraft', true);
+        $limit = ($pm !== '' && $pm !== false) ? ((int)$pm >= 999 ? 'bez limitu samolotów' : 'do ' . (int)$pm . ' samolotów') : ah_plan_limit_text($plan);
         $out .= '<div><b>' . esc_html(preg_replace('/^AeroHangar – /u', '', $p->get_name())) . '</b>' . wp_kses_post($p->get_price_html())
+            . '<div style="font-size:.9em;color:#55606f;margin-top:2px">' . esc_html($limit) . '</div>'
             . '<p style="margin:6px 0 0"><a class="cna-btn" href="' . esc_url($p->add_to_cart_url()) . '">' . esc_html(cannonade_t('buy')) . '</a></p></div>';
     }
-    return $html . ($out ? '<div class="cna-offer">' . $out . '</div>' : '');
+    if (!$out) return $html;
+    return $html . '<p class="cna-small" style="margin:8px 0 0"><b>Aplikacja AeroHangar jest bezpłatna dla jednego samolotu.</b> Za kolejne samoloty dopłacasz: właściciel samolotu może mieć maksymalnie 3 samoloty, a mechanik, szkoła lotnicza, dealer i serwis – bez limitu.</p><div class="cna-offer">' . $out . '</div>';
 }, 10, 2);
 
 /** Button to the management panel for the administrator and panel users. */
@@ -257,3 +266,15 @@ add_filter('wp_nav_menu_objects', function ($items) {
     }
     return $items;
 });
+
+/** Default number of aircraft per plan: aircraft owner (pilot) 3, mechanic / school / dealer / service no limit. */
+function ah_plan_max_aircraft(string $plan): int
+{
+    return in_array($plan, ['mechanic', 'school', 'dealer', 'service', 'club'], true) ? 999 : 3;
+}
+
+/** Text for the website: what each plan allows. */
+function ah_plan_limit_text(string $plan): string
+{
+    return ah_plan_max_aircraft($plan) >= 999 ? 'bez limitu samolotów' : 'do ' . ah_plan_max_aircraft($plan) . ' samolotów';
+}

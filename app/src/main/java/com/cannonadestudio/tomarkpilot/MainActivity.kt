@@ -91,7 +91,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         Repo.init(this)
         com.cannonadestudio.tomarkpilot.data.Billing.init(this)
-        enableEdgeToEdge()
+        // white status-bar icons on the navy top bar, dark icons on the white bottom bar
+        enableEdgeToEdge(
+            statusBarStyle = androidx.activity.SystemBarStyle.dark(android.graphics.Color.TRANSPARENT),
+            navigationBarStyle = androidx.activity.SystemBarStyle.light(android.graphics.Color.WHITE, android.graphics.Color.BLACK),
+        )
         startTab.intValue = intent.getIntExtra(EXTRA_TAB, TAB_HOME)
         if (Build.VERSION.SDK_INT >= 33) notifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
         setContent { AppTheme { Root(startTab.intValue) { startTab.intValue = it } } }
@@ -174,7 +178,7 @@ private fun Root(tab: Int, setTab: (Int) -> Unit) {
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Transparent,
+                    containerColor = com.cannonadestudio.tomarkpilot.ui.LotNavy,
                     titleContentColor = Color.White,
                     actionIconContentColor = Color.White,
                     navigationIconContentColor = Color.White,
@@ -185,7 +189,7 @@ private fun Root(tab: Int, setTab: (Int) -> Unit) {
             if (overlay == null && aircraft != null) {
                 val serviceBadge = Maintenance.compute(aircraft, state.completions).count { Maintenance.needsAttention(it) }
                 val bulletinBadge = Repo.openBulletins(aircraft, state, feed).count { it.mandatory == true }
-                NavigationBar {
+                NavigationBar(containerColor = Color.White, tonalElevation = 0.dp) {
                     NavItem(tab == MainActivity.TAB_HOME, { setTab(MainActivity.TAB_HOME) }, R.string.tab_home, 0) { Icon(Icons.Filled.Dashboard, null) }
                     NavItem(tab == MainActivity.TAB_MANUAL, { setTab(MainActivity.TAB_MANUAL) }, R.string.tab_manual, 0) { Icon(Icons.AutoMirrored.Filled.MenuBook, null) }
                     NavItem(tab == MainActivity.TAB_SERVICE, { setTab(MainActivity.TAB_SERVICE) }, R.string.tab_service, serviceBadge) { Icon(Icons.Filled.Build, null) }

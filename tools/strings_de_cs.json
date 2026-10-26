@@ -1080,8 +1080,8 @@
   "cs": "Zdarma: %1$d letadlo se všemi funkcemi."
  },
  "pro_paid": {
-  "de": "Pro: beliebig viele Flugzeuge.",
-  "cs": "Pro: libovolný počet letadel."
+  "de": "Pro: bis zu 3 Flugzeuge für Halter.",
+  "cs": "Pro: až 3 letadla pro majitele."
  },
  "pro_once": {
   "de": "Einmalzahlung über Google Play, kein Abo. Gilt für Ihr Google-Konto – auch auf einem neuen Telefon.",
@@ -1108,8 +1108,8 @@
   "cs": "Nákup nenalezen"
  },
  "pro_active": {
-  "de": "Pro aktiv – unbegrenzt Flugzeuge",
-  "cs": "Pro aktivní – bez limitu letadel"
+  "de": "Pro aktiv – bis zu 3 Flugzeuge",
+  "cs": "Pro aktivní – až 3 letadla"
  },
  "pro_thanks": {
   "de": "Danke für Ihre Unterstützung!",
@@ -1530,5 +1530,13 @@
  "account_no_access": {
   "de": "Dieses Konto hat keinen aktiven AeroHangar-Zugang. Wenden Sie sich an den Administrator.",
   "cs": "Tento účet nemá aktivní přístup k AeroHangar. Kontaktujte správce služby."
+ },
+ "pro_limit_reached": {
+  "de": "Ein Halter kann bis zu %1$d Flugzeuge haben.",
+  "cs": "Majitel může mít až %1$d letadla."
+ },
+ "account_unlimited": {
+  "de": "Flugzeuge: unbegrenzt",
+  "cs": "Letadla: bez omezení"
  }
 }

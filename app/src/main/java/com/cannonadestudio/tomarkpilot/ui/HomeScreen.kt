@@ -107,9 +107,9 @@ fun HomeScreen(
         // Header – white on the gradient background, tight under the top bar
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
-                Text(aircraft.registration, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, color = Color.White, lineHeight = 30.sp)
-                Text(type.name, style = MaterialTheme.typography.titleSmall, color = Color.White, lineHeight = 18.sp)
-                EngineSerialLine(aircraft, Color.White)
+                Text(aircraft.registration, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, color = OnPage, lineHeight = 30.sp)
+                Text(type.name, style = MaterialTheme.typography.titleSmall, color = OnPage, lineHeight = 18.sp)
+                EngineSerialLine(aircraft, OnPage)
             }
             Chip(if (type.category == "EASA") "EASA ${type.tcds ?: ""}".trim() else "UL / LSA", HbgPink, Color.White)
         }
@@ -141,11 +141,11 @@ fun HomeScreen(
             }.padding(vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(Icons.Filled.TravelExplore, null, tint = Color.White)
+            Icon(Icons.Filled.TravelExplore, null, tint = OnPage)
             Spacer(Modifier.width(6.dp))
             Column {
-                Text(stringResource(R.string.fr24), color = Color.White, fontWeight = FontWeight.SemiBold)
-                Text(stringResource(R.string.fr24_hint), color = Color.White.copy(alpha = 0.8f), style = MaterialTheme.typography.bodySmall)
+                Text(stringResource(R.string.fr24), color = OnPage, fontWeight = FontWeight.SemiBold)
+                Text(stringResource(R.string.fr24_hint), color = OnPage.copy(alpha = 0.75f), style = MaterialTheme.typography.bodySmall)
             }
         }
         // Announcements from the management system
@@ -287,8 +287,8 @@ private fun SpeedTile(s: SpeedDef, a: Aircraft, kmh: Boolean, lg: String, modifi
     val overridden = a.speedOverrides.containsKey(s.key)
     val main = toDisplay(raw, s.unit, kmh).roundToInt()
     val other = toDisplay(raw, s.unit, !kmh).roundToInt()
-    val dark = true   // cards are always dark now
-    val tile = Color(0xFF34333B)
+    val dark = false   // light airline look
+    val tile = Color.White
     val (bg, fg) = when (s.zone) {
         "red" -> Color(0xFFC62828) to Color.White
         "green" -> Color(0xFF2E7D32) to Color.White

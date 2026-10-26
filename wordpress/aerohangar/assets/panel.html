@@ -8,30 +8,30 @@
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--violet:#7A3E9D;--blue:#2E8FC4;--teal:#0FB3A6;--pink:#E84F8C;--ink:#2B2A33;--muted:#6b6676;--card:#fff;--line:#e7e2ee;--bg:#f4f1f8}
+:root{--violet:#0B2A5B;--blue:#1C5DB8;--teal:#3B8DDB;--pink:#1C5DB8;--ink:#1A2333;--muted:#55606F;--card:#fff;--line:#DDE3EB;--bg:#F2F4F8}
 *{box-sizing:border-box}
-body{margin:0;font-family:Poppins,system-ui,sans-serif;color:var(--ink);background:linear-gradient(135deg,var(--violet),var(--blue) 55%,var(--teal));min-height:100vh}
+body{margin:0;font-family:Lato,system-ui,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--violet) 0,var(--violet) 170px,var(--bg) 170px);background-attachment:scroll;min-height:100vh}
 header{color:#fff;padding:16px 20px 6px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 header h1{font-size:20px;margin:0;flex:1}
 header small{opacity:.85;font-weight:400}
 .layout{display:flex;gap:18px;padding:0 20px 40px;align-items:flex-start;max-width:1400px;margin:auto}
-nav#tabs{flex:0 0 230px;position:sticky;top:12px;background:rgba(255,255,255,.12);border-radius:14px;padding:10px;display:none}
+nav#tabs{flex:0 0 230px;position:sticky;top:12px;background:var(--violet);border-radius:12px;padding:10px;display:none;box-shadow:0 6px 18px rgba(11,42,91,.18)}
 nav#tabs .grp{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.75);margin:12px 8px 4px}
 nav#tabs .grp:first-child{margin-top:2px}
 main{flex:1;min-width:0}
-.tile{background:#fff;border-radius:14px;padding:16px;box-shadow:0 6px 20px rgba(0,0,0,.12);cursor:pointer;display:flex;flex-direction:column;gap:2px;min-height:112px;transition:transform .1s}
+.tile{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 10px rgba(11,42,91,.10);border:1px solid var(--line);cursor:pointer;display:flex;flex-direction:column;gap:2px;min-height:112px;transition:transform .1s}
 .tile:hover{transform:translateY(-2px)}
 .tile .n{font-size:34px;font-weight:600;line-height:1.1}
 .tile .l{font-size:14px;font-weight:500}
 .tile .s{font-size:12px;color:var(--muted)}
 .tile.accent{background:var(--pink);color:#fff}.tile.accent .s{color:rgba(255,255,255,.85)}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin:12px 0}
-.sec{color:#fff;font-weight:600;margin:18px 0 0}
+.sec{color:var(--violet);font-weight:700;margin:18px 0 0}
 nav#tabs.shown{display:block}
 @media (max-width:820px){.layout{flex-direction:column;padding:0 12px 30px;gap:8px}
-  nav#tabs.shown{position:sticky;top:0;z-index:6;width:100%;flex:none;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:6px;background:rgba(80,40,110,.85);backdrop-filter:blur(6px)}
+  nav#tabs.shown{position:sticky;top:0;z-index:6;width:100%;flex:none;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:4px;padding:6px;background:var(--violet)}
   nav#tabs .grp{display:none}
   .tiles{grid-template-columns:repeat(2,1fr)}.tile .n{font-size:28px}.tile{min-height:96px;padding:12px}
   header small{display:none}}
@@ -53,9 +53,9 @@ button.danger{background:#c62828}
 button:disabled{opacity:.5;cursor:default}
 table{width:100%;border-collapse:collapse;font-size:14px}
 th,td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
-tr.item:hover{background:#faf7fd;cursor:pointer}
+tr.item:hover{background:#F4F7FB;cursor:pointer}
 .chip{display:inline-block;border-radius:999px;padding:1px 9px;font-size:12px;background:var(--pink);color:#fff;margin-right:4px}
-.chip.g{background:#e8f6f4;color:#00594f}
+.chip.g{background:#E3F2E8;color:#1B5E20}
 .muted{color:var(--muted);font-size:13px}
 .status{position:sticky;top:0;z-index:5;margin:0 0 8px;padding:10px 14px;border-radius:10px;background:#fff;display:none}
 .status.ok{display:block;border-left:5px solid var(--teal)}
@@ -76,7 +76,7 @@ button.pub.on{background:var(--teal)}
 button.pub.off{background:#b9b3c4}
 .small input{width:100%}
 @media (max-width:600px){.hide-sm{display:none}}
-.chip.p{background:linear-gradient(90deg,#7b3fa0,#e2457a);color:#fff}
+.chip.p{background:#0B2A5B;color:#fff}
 fieldset.partner{border:1px solid var(--line);border-radius:12px;margin-top:12px;padding:10px 12px}
 fieldset.partner legend{color:var(--pink);font-weight:600;padding:0 6px}
 </style>

@@ -283,7 +283,7 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
             item {
                 Text(
                     stringResource(R.string.contacts_hint),
-                    style = MaterialTheme.typography.bodySmall, color = Color.White,
+                    style = MaterialTheme.typography.bodySmall, color = OnPage,
                     modifier = Modifier.padding(vertical = 8.dp),
                 )
                 Spacer(Modifier.height(80.dp))

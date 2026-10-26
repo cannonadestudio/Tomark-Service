@@ -75,7 +75,7 @@ fun ServiceScreen(state: AppState, aircraft: Aircraft) {
             item {
                 Spacer(Modifier.height(12.dp))
                 EngineSerialLine(aircraft, MaterialTheme.colorScheme.primary)
-                Text(stringResource(R.string.engine_label, Repo.engineOf(aircraft).name), style = MaterialTheme.typography.bodySmall, color = Color.White)
+                Text(stringResource(R.string.engine_label, Repo.engineOf(aircraft).name), style = MaterialTheme.typography.bodySmall, color = OnPage)
                 Text(
                     stringResource(R.string.service_intro, fmtH(aircraft.hours)),
                     style = MaterialTheme.typography.bodySmall,

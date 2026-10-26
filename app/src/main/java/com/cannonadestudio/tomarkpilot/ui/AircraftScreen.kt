@@ -96,6 +96,7 @@ fun AircraftListScreen(state: AppState, onEdit: (Aircraft?) -> Unit, onSelected:
                 com.cannonadestudio.tomarkpilot.data.Billing.canAddAircraft(state) -> onEdit(null)
                 // limit set by the administrator for this account (Pro does not lift it)
                 state.accountMaxAircraft != null -> android.widget.Toast.makeText(ctxA, ctxA.getString(R.string.account_limit_reached, state.accountMaxAircraft), android.widget.Toast.LENGTH_LONG).show()
+                com.cannonadestudio.tomarkpilot.data.Billing.isPro(state) -> android.widget.Toast.makeText(ctxA, ctxA.getString(R.string.pro_limit_reached, com.cannonadestudio.tomarkpilot.data.Billing.PRO_AIRCRAFT), android.widget.Toast.LENGTH_LONG).show()
                 else -> proAsk = true
             }
         }) {

@@ -36,21 +36,32 @@ import kotlin.math.roundToInt
 
 // ---------------------------------------------------------------- theme
 
-// Colours taken from horyzontbezgranic.pl: violet → teal gradient, pink labels, white cards.
-val HbgViolet = Color(0xFF7A3E9D)
-val HbgBlue = Color(0xFF2E8FC4)
-val HbgTeal = Color(0xFF0FB3A6)
-val HbgPink = Color(0xFFE84F8C)
-val HbgInk = Color(0xFF2B2A33)
+// Airline look (as lot.com): navy top bar, white cards on a light grey page, blue accents, no gradients.
+val LotNavy = Color(0xFF0B2A5B)
+val LotBlue = Color(0xFF1C5DB8)
+val LotSky = Color(0xFFE6EEF8)
+val LotPage = Color(0xFFF2F4F8)
+val LotInk = Color(0xFF1A2333)
+// Older names kept so every screen follows the new palette.
+val HbgViolet = LotNavy
+val HbgBlue = LotBlue
+val HbgTeal = Color(0xFF3B8DDB)
+val HbgPink = LotBlue
+val HbgInk = LotInk
+/** Text and icons placed straight on the page background (not on a card). */
+val OnPage = LotNavy
 
 private val LightColors = lightColorScheme(
-    primary = HbgViolet, onPrimary = Color.White,
-    primaryContainer = Color(0xFFEDE3F5), onPrimaryContainer = Color(0xFF3B1652),
-    secondary = HbgTeal, onSecondary = Color.White,
-    secondaryContainer = Color(0xFFD5F3F0), onSecondaryContainer = Color(0xFF00413B),
-    tertiary = HbgPink, onTertiary = Color.White,
-    background = Color(0xFFF4F1F8), surface = Color.White, onSurface = HbgInk,
-    surfaceVariant = Color(0xFFF0EDF4), onSurfaceVariant = Color(0xFF5E5A66),
+    primary = LotNavy, onPrimary = Color.White,
+    primaryContainer = LotSky, onPrimaryContainer = LotNavy,
+    secondary = LotBlue, onSecondary = Color.White,
+    secondaryContainer = Color(0xFFDCE8F7), onSecondaryContainer = LotNavy,
+    tertiary = LotBlue, onTertiary = Color.White,
+    background = LotPage, onBackground = LotInk, surface = Color.White, onSurface = LotInk,
+    surfaceVariant = Color(0xFFEEF2F7), onSurfaceVariant = Color(0xFF55606F),
+    surfaceContainerLowest = Color.White, surfaceContainerLow = Color.White, surfaceContainer = Color.White,
+    surfaceContainerHigh = Color.White, surfaceContainerHighest = Color(0xFFF7F9FC), surfaceTint = Color.White,
+    outline = Color(0xFFC9D2DE), outlineVariant = Color(0xFFDDE3EB),
 )
 private val DarkColors = darkColorScheme(
     primary = Color(0xFFD0A8EA), onPrimary = Color(0xFF3B1652),
@@ -67,14 +78,13 @@ private val DarkColors = darkColorScheme(
     surfaceTint = Color(0xFF000000),
 )
 
-/** The site's diagonal violet → blue → teal gradient. */
+/** Page background: plain light grey (airline style). */
 @Suppress("UNUSED_PARAMETER")
-fun hbgGradient(dark: Boolean = false): Brush = Brush.linearGradient(listOf(HbgViolet, HbgBlue, HbgTeal))
+fun hbgGradient(dark: Boolean = false): Brush = androidx.compose.ui.graphics.SolidColor(LotPage)
 
 @Composable
 fun AppTheme(content: @Composable () -> Unit) {
-    // Always dark cards (as requested); the background keeps the bright HBG gradient in both modes.
-    MaterialTheme(colorScheme = DarkColors, content = content)
+    MaterialTheme(colorScheme = LightColors, content = content)
 }
 
 // ---------------------------------------------------------------- helpers

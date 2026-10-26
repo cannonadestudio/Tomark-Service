@@ -185,7 +185,7 @@ if (!defined('CANNONADE_ACCOUNT')) {
             </ul>
             <p class="cna-small"><?php echo esc_html($t('howto')); ?></p>
         </div>
-        <style>.cna-offer{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:10px 0 14px}.cna-offer div{border:1px solid #e3dcea;border-radius:12px;padding:10px 12px}.cna-offer b{display:block}.cna-box{border:1px solid #e3dcea;border-radius:14px;padding:16px 18px;max-width:720px}.cna-btn{background:#7A3E9D;color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;display:inline-block}.cna-ghost{background:transparent;color:#7A3E9D;border:1px solid #7A3E9D}.cna-key code{font-size:1.15em;padding:6px 10px;background:#f4f1f8;border-radius:8px}.cna-warn{color:#b0003a}.cna-small{font-size:.9em;color:#6b6676}</style>
+        <style>.cna-offer{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:10px 0 14px}.cna-offer div{border:1px solid #DDE3EB;border-radius:12px;padding:10px 12px}.cna-offer b{display:block}.cna-box{border:1px solid #DDE3EB;border-radius:14px;padding:16px 18px;max-width:720px}.cna-btn{background:#0B2A5B;color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;display:inline-block}.cna-ghost{background:transparent;color:#0B2A5B;border:1px solid #0B2A5B}.cna-key code{font-size:1.15em;padding:6px 10px;background:#F2F4F8;border-radius:8px}.cna-warn{color:#C62828}.cna-small{font-size:.9em;color:#55606F}</style>
         <?php return (string)ob_get_clean();
     }
 
