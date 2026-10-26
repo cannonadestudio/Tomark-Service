@@ -294,6 +294,8 @@
     <string name="notif_due_days">%1$s za %2$d dní</string>
     <string name="notif_due_over">%1$s – termín uplynul</string>
     <string name="notif_important_bulletins">%1$d důležitý(ch) bulletin(ů) – AD / povinné</string>
+    <string name="examiners_menu">Stáhnout</string>
+    <string name="request_short">Objednat</string>
     <string name="notif_settings">Upozornění</string>
     <string name="notif_settings_hint">Připomínka přijde před termínem a znovu po něm.</string>
     <string name="notif_hours">Hodin předem</string>

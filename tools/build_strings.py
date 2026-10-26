@@ -322,6 +322,8 @@ S = {
  "notif_due_days": ("%1$s in %2$d days", "%1$s za %2$d dni", "%1$s o %2$d dní", "%1$s dans %2$d jours"),
  "notif_due_over": ("%1$s – due now / overdue", "%1$s – termin minął / do wykonania teraz", "%1$s – termín uplynul", "%1$s – échéance dépassée"),
  "notif_important_bulletins": ("%1$d important bulletin(s) – AD / mandatory", "%1$d ważny(ch) biuletyn(ów) – AD / obowiązkowe", "%1$d dôležitý(ch) bulletin(ov) – AD / povinné", "%1$d bulletin(s) important(s) – AD / obligatoires"),
+ "examiners_menu": ("ULC lists", "Pobierz", "Stiahnuť", "Listes ULC"),
+ "request_short": ("Book", "Umów", "Objednať", "Réserver"),
  "notif_settings": ("Notifications", "Powiadomienia", "Upozornenia", "Notifications"),
  "notif_settings_hint": ("A reminder comes once when an inspection is this close, and again when it is due. Checked when flight hours change and twice a day in the background.", "Przypomnienie przyjdzie raz, gdy do przeglądu zostanie tyle nalotu lub dni, i drugi raz, gdy termin minie. Sprawdzane po każdej zmianie nalotu i dwa razy dziennie w tle.", "Pripomienka príde raz pred termínom a znova po ňom.", "Un rappel avant l'échéance, puis à l'échéance."),
  "notif_hours": ("Hours before", "Godzin przed", "Hodín pred", "Heures avant"),

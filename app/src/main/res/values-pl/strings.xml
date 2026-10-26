@@ -294,6 +294,8 @@
     <string name="notif_due_days">%1$s za %2$d dni</string>
     <string name="notif_due_over">%1$s – termin minął / do wykonania teraz</string>
     <string name="notif_important_bulletins">%1$d ważny(ch) biuletyn(ów) – AD / obowiązkowe</string>
+    <string name="examiners_menu">Pobierz</string>
+    <string name="request_short">Umów</string>
     <string name="notif_settings">Powiadomienia</string>
     <string name="notif_settings_hint">Przypomnienie przyjdzie raz, gdy do przeglądu zostanie tyle nalotu lub dni, i drugi raz, gdy termin minie. Sprawdzane po każdej zmianie nalotu i dwa razy dziennie w tle.</string>
     <string name="notif_hours">Godzin przed</string>

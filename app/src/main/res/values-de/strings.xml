@@ -294,6 +294,8 @@
     <string name="notif_due_days">%1$s in %2$d Tagen</string>
     <string name="notif_due_over">%1$s – fällig / überfällig</string>
     <string name="notif_important_bulletins">%1$d wichtige(s) Bulletin(s) – AD / verbindlich</string>
+    <string name="examiners_menu">ULC-Listen</string>
+    <string name="request_short">Termin</string>
     <string name="notif_settings">Benachrichtigungen</string>
     <string name="notif_settings_hint">Eine Erinnerung vor dem Termin und eine bei Fälligkeit.</string>
     <string name="notif_hours">Stunden vorher</string>

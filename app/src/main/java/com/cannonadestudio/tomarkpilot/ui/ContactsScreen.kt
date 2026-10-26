@@ -33,6 +33,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Language
@@ -164,6 +165,7 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
     val localIds = state.localContacts.map { it.id }.toSet()
     val exams by Repo.examiners.collectAsState()
     var examLoading by remember { mutableStateOf(false) }
+    var examMenu by remember { mutableStateOf(false) }
     val all = Repo.contacts(state, feed, exams)
     val list = all
         .filter { kinds.isEmpty() || it.kind in kinds }
@@ -190,6 +192,34 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
                                     if (loc != null) stringResource(R.string.sorted_by_distance) else stringResource(R.string.no_location),
                                     style = MaterialTheme.typography.bodySmall,
                                 )
+                            }
+                            // Public ULC lists (examiners, aeromedical examiners) – small menu instead of a whole card
+                            Box {
+                                TextButton(onClick = { examMenu = true }, contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 8.dp)) {
+                                    if (examLoading) CircularProgressIndicator(Modifier.size(16.dp)) else Text(stringResource(R.string.examiners_menu))
+                                    Icon(Icons.Filled.ArrowDropDown, null)
+                                }
+                                DropdownMenu(examMenu, { examMenu = false }) {
+                                    Text(
+                                        stringResource(R.string.examiners_title) + "\n" + (if (state.examinersEnabled && exams.contacts.isNotEmpty())
+                                            stringResource(R.string.examiners_loaded, exams.contacts.size, exams.updated) else stringResource(R.string.examiners_hint)),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp).width(260.dp),
+                                    )
+                                    DropdownMenuItem(text = { Text(stringResource(if (state.examinersEnabled) R.string.examiners_refresh else R.string.examiners_download)) }, onClick = {
+                                        examMenu = false; examLoading = true
+                                        scope.launch {
+                                            val r = Repo.refreshExaminers()
+                                            examLoading = false
+                                            Toast.makeText(ctx, r.fold({ ctx.getString(R.string.examiners_done, it) }, { ctx.getString(R.string.refresh_fail) + " (" + (it.message ?: it.javaClass.simpleName) + ")" }), Toast.LENGTH_LONG).show()
+                                        }
+                                    })
+                                    if (state.examinersEnabled) DropdownMenuItem(text = { Text(stringResource(R.string.examiners_remove)) }, onClick = { examMenu = false; Repo.removeExaminers() })
+                                    DropdownMenuItem(text = { Text("ULC – egzaminy / lekarze") }, onClick = {
+                                        examMenu = false
+                                        open(ctx, Intent(Intent.ACTION_VIEW, Uri.parse("https://ulc.gov.pl/personel-lotniczy/komisja-egzaminacyjna/egzaminy-praktyczne")))
+                                    })
+                                }
                             }
                             if (loading) CircularProgressIndicator(Modifier.size(24.dp)) else IconButton(onClick = {
                                 loading = true
@@ -242,41 +272,20 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
                         }
                     }
                 }
-                // Public examiner data is not part of the installed app – downloaded on request only.
-                Card(Modifier.fillMaxWidth().padding(top = 8.dp)) {
-                    Column(Modifier.padding(12.dp)) {
-                        Text(stringResource(R.string.examiners_title), style = MaterialTheme.typography.titleSmall)
-                        Text(
-                            if (state.examinersEnabled && exams.contacts.isNotEmpty())
-                                stringResource(R.string.examiners_loaded, exams.contacts.size, exams.updated)
-                            else stringResource(R.string.examiners_hint),
-                            style = MaterialTheme.typography.bodySmall,
-                        )
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            if (examLoading) {
-                                CircularProgressIndicator(Modifier.size(22.dp))
-                            } else {
-                                TextButton(onClick = {
-                                    examLoading = true
-                                    scope.launch {
-                                        val r = Repo.refreshExaminers()
-                                        examLoading = false
-                                        Toast.makeText(ctx, r.fold({ ctx.getString(R.string.examiners_done, it) }, { ctx.getString(R.string.refresh_fail) + " (" + (it.message ?: it.javaClass.simpleName) + ")" }), Toast.LENGTH_LONG).show()
-                                    }
-                                }) { Text(stringResource(if (state.examinersEnabled) R.string.examiners_refresh else R.string.examiners_download)) }
-                            }
-                            if (state.examinersEnabled) {
-                                TextButton(onClick = { Repo.removeExaminers() }) { Text(stringResource(R.string.examiners_remove)) }
-                            }
-                            TextButton(onClick = {
-                                open(ctx, Intent(Intent.ACTION_VIEW, Uri.parse("https://ulc.gov.pl/personel-lotniczy/komisja-egzaminacyjna/egzaminy-praktyczne")))
-                            }) { Text("ULC") }
-                        }
+                // Partners: always one compact line at the top, whatever category or search is chosen.
+                val partners = all.filter { it.isPartner() }.sortedBy { distanceKm(loc, it) ?: Double.MAX_VALUE }
+                val req = { c: Contact -> if (selectedAircraft != null && c.kind in SERVICE_KINDS && c.email.isNotBlank()) ({ requestFor = c }) else null }
+                if (partners.size == 1) {
+                    val c = partners[0]
+                    PartnerLine(c, distanceKm(loc, c), Modifier.fillMaxWidth().padding(top = 8.dp), req(c)) { editing = c }
+                } else if (partners.size > 1) {
+                    Row(Modifier.horizontalScroll(rememberScrollState()).padding(top = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        partners.forEach { c -> PartnerLine(c, distanceKm(loc, c), Modifier.width(300.dp), req(c)) { editing = c } }
                     }
                 }
                 Spacer(Modifier.height(8.dp))
             }
-            items(list, key = { it.id }) { c ->
+            items(list.filter { !it.isPartner() }, key = { it.id }) { c ->
                 ContactCard(c, distanceKm(loc, c), c.id in localIds, onRequest = if (selectedAircraft != null && c.kind in SERVICE_KINDS && c.email.isNotBlank() && c.isPartner()) ({ requestFor = c }) else null) { editing = c }
                 Spacer(Modifier.height(8.dp))
             }
@@ -289,17 +298,46 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
                 Spacer(Modifier.height(80.dp))
             }
         }
-        ExtendedFloatingActionButton(
+        androidx.compose.material3.SmallFloatingActionButton(
             onClick = { creating = true },
-            icon = { Icon(Icons.Filled.Add, null) },
-            text = { Text(stringResource(R.string.contact_add)) },
             modifier = Modifier.align(Alignment.BottomEnd).padding(16.dp),
-        )
+        ) { Icon(Icons.Filled.Add, stringResource(R.string.contact_add)) }
     }
 
     editing?.let { c -> ContactDialog(c, loc, isNew = false) { editing = null } }
     requestFor?.let { c -> selectedAircraft?.let { a -> ServiceRequestDialog(a, nextWorkText(a, state), c) { requestFor = null } } }
     if (creating) ContactDialog(null, loc, isNew = true) { creating = false }
+}
+
+@Composable
+private fun PartnerLine(c: Contact, km: Double?, modifier: Modifier, onRequest: (() -> Unit)?, onOpen: () -> Unit) {
+    val ctx = LocalContext.current
+    androidx.compose.runtime.LaunchedEffect(c.id) { Repo.track("view", c.id) }
+    Card(
+        modifier.clickable(onClick = onOpen),
+        border = androidx.compose.foundation.BorderStroke(1.5.dp, HbgPink),
+    ) {
+        Row(Modifier.padding(horizontal = 10.dp, vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text("★", color = HbgPink, fontWeight = FontWeight.Bold, modifier = Modifier.padding(end = 6.dp))
+            if (c.logo.startsWith("https://")) {
+                coil.compose.AsyncImage(
+                    model = directImageUrl(c.logo), contentDescription = null,
+                    modifier = Modifier.size(28.dp).padding(end = 6.dp), contentScale = androidx.compose.ui.layout.ContentScale.Fit,
+                )
+            }
+            Column(Modifier.weight(1f)) {
+                Text(c.name, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                Text(listOfNotNull(kindName(c.kind), c.city.takeIf { it.isNotBlank() }, km?.let { if (it < 10) "%.1f km".format(it) else "${it.roundToInt()} km" }).joinToString(" · "),
+                    style = MaterialTheme.typography.bodySmall, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+            }
+            if (c.phone.isNotBlank()) IconButton(onClick = { Repo.track("call", c.id); open(ctx, Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + c.phone.filter { it.isDigit() || it == '+' }))) }, modifier = Modifier.size(36.dp)) {
+                Icon(Icons.Filled.Call, c.phone)
+            }
+            if (onRequest != null) TextButton(onClick = { Repo.track("request", c.id); onRequest() }, contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 8.dp)) {
+                Text(stringResource(R.string.request_short))
+            }
+        }
+    }
 }
 
 @Composable

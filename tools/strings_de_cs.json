@@ -1586,5 +1586,13 @@
  "notif_news_switch": {
   "de": "Mitteilungen (AeroHangar)",
   "cs": "Oznámení (AeroHangar)"
+ },
+ "examiners_menu": {
+  "de": "ULC-Listen",
+  "cs": "Stáhnout"
+ },
+ "request_short": {
+  "de": "Termin",
+  "cs": "Objednat"
  }
 }
