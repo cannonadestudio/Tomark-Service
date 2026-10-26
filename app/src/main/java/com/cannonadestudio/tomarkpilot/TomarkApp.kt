@@ -8,7 +8,7 @@ class TomarkApp : Application() {
     override fun onCreate() {
         super.onCreate()
         Repo.init(this)
-        CheckWorker.createChannel(this)
+        com.cannonadestudio.tomarkpilot.work.Notifier.createChannels(this)
         CheckWorker.schedule(this)
     }
 }

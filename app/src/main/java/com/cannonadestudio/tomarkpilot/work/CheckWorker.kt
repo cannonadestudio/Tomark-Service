@@ -24,7 +24,7 @@ import com.cannonadestudio.tomarkpilot.data.Maintenance
 import com.cannonadestudio.tomarkpilot.data.Repo
 import java.util.concurrent.TimeUnit
 
-/** Daily: download bulletin list, notify about new bulletins and maintenance coming due. */
+/** Every 12 h: download the lists, then notify (see [Notifier]). */
 class CheckWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx, params) {
 
     override suspend fun doWork(): Result {
@@ -34,77 +34,19 @@ class CheckWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx,
         Repo.backupNow()
         Repo.syncLogbook()
 
-        val s = Repo.state.value
-        val feed = Repo.feed.value
-
-        // New bulletins applicable to any of the owner's aircraft
-        val applicable = s.aircraft.flatMap { Repo.bulletinsFor(it, feed) }.map { it.id }.toSet()
-        val fresh = applicable - s.notifiedBulletinIds
-        if (fresh.isNotEmpty()) {
-            notify(
-                ID_BULLETINS,
-                applicationContext.getString(R.string.notif_new_bulletins, fresh.size),
-                feed.bulletins.filter { it.id in fresh }.joinToString("\n") { "${it.id}: ${it.title}" },
-                MainActivity.TAB_BULLETINS,
-            )
-            Repo.update { it.copy(notifiedBulletinIds = it.notifiedBulletinIds + fresh) }
-        }
-
-        // Maintenance per aircraft
-        s.aircraft.forEachIndexed { i, a ->
-            val due = Maintenance.compute(a, s.completions).filter { Maintenance.needsAttention(it) }
-            if (due.isNotEmpty()) {
-                val lang = java.util.Locale.getDefault().language
-                notify(
-                    ID_MAINT_BASE + i,
-                    applicationContext.getString(R.string.notif_maintenance, a.registration, due.size),
-                    due.joinToString("\n") { it.task.title.get(lang) },
-                    MainActivity.TAB_SERVICE,
-                )
-            }
-        }
+        Notifier.checkFeeds(applicationContext)
+        Notifier.checkMaintenance(applicationContext)
         return Result.success()
     }
 
-    private fun notify(id: Int, title: String, text: String, tab: Int) {
-        val ctx = applicationContext
-        if (Build.VERSION.SDK_INT >= 33 &&
-            ContextCompat.checkSelfPermission(ctx, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
-        ) return
-        val intent = Intent(ctx, MainActivity::class.java)
-            .putExtra(MainActivity.EXTRA_TAB, tab)
-            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val pi = PendingIntent.getActivity(ctx, id, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
-        val n = NotificationCompat.Builder(ctx, CHANNEL)
-            .setSmallIcon(R.drawable.ic_stat_plane)
-            .setContentTitle(title)
-            .setContentText(text.lineSequence().firstOrNull() ?: "")
-            .setStyle(NotificationCompat.BigTextStyle().bigText(text))
-            .setContentIntent(pi)
-            .setAutoCancel(true)
-            .build()
-        try {
-            NotificationManagerCompat.from(ctx).notify(id, n)
-        } catch (_: SecurityException) {
-        }
-    }
-
     companion object {
-        const val CHANNEL = "maintenance"
-        private const val ID_BULLETINS = 1000
-        private const val ID_MAINT_BASE = 2000
-
-        fun createChannel(ctx: Context) {
-            if (Build.VERSION.SDK_INT < 26) return
-            val ch = NotificationChannel(CHANNEL, ctx.getString(R.string.notif_channel), NotificationManager.IMPORTANCE_DEFAULT)
-            ctx.getSystemService(NotificationManager::class.java).createNotificationChannel(ch)
-        }
+        fun createChannel(ctx: Context) = Notifier.createChannels(ctx)
 
         fun schedule(ctx: Context) {
-            val req = PeriodicWorkRequestBuilder<CheckWorker>(1, TimeUnit.DAYS)
+            val req = PeriodicWorkRequestBuilder<CheckWorker>(12, TimeUnit.HOURS)
                 .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.NOT_REQUIRED).build())
                 .build()
-            WorkManager.getInstance(ctx).enqueueUniquePeriodicWork("daily_check", ExistingPeriodicWorkPolicy.KEEP, req)
+            WorkManager.getInstance(ctx).enqueueUniquePeriodicWork("daily_check", ExistingPeriodicWorkPolicy.UPDATE, req)
         }
     }
 }

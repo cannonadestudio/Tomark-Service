@@ -290,6 +290,14 @@ data class AppState(
     val bulletinStatus: List<BulletinStatus> = emptyList(),
     val seenBulletinIds: Set<String> = emptySet(),
     val notifiedBulletinIds: Set<String> = emptySet(),
+    /** Reminders: a maintenance item is announced once when it is this close (hours of flight / days). */
+    val remindHours: Int = 5,
+    val remindDays: Int = 7,
+    val notifyBulletins: Boolean = true,
+    val notifyNews: Boolean = true,
+    /** Already announced: "aircraftId|taskId|due|level" and announcement ids – each reminder only once. */
+    val notifiedDue: Set<String> = emptySet(),
+    val notifiedNewsIds: Set<String> = emptySet(),
     val useKmh: Boolean = false,
     val disclaimerAccepted: Boolean = false,
     /** Contacts added or edited by the user (an edited feed contact keeps its id). */

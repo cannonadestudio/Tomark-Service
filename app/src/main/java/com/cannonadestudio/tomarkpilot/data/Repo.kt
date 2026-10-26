@@ -354,7 +354,7 @@ object Repo {
                     logbookSyncedEpochDay = cur.logbookSyncedEpochDay, disclaimerAccepted = true, proCached = cur.proCached,
                     proGranted = cur.proGranted, installId = cur.installId, lastPingEpochDay = cur.lastPingEpochDay,
                     accountKey = cur.accountKey, accountName = cur.accountName, accountPro = cur.accountPro,
-                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountMaxTypes = cur.accountMaxTypes, accountBlocked = cur.accountBlocked,
+                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountMaxTypes = cur.accountMaxTypes, notifiedDue = cur.notifiedDue, notifiedNewsIds = cur.notifiedNewsIds, accountBlocked = cur.accountBlocked,
                     accountSyncMillis = System.currentTimeMillis(), accountServerTime = st ?: cur.accountServerTime, accountDirty = false,
                     selectedId = restored.selectedId ?: cur.selectedId,
                 )
@@ -736,6 +736,7 @@ object Repo {
         installId = null, lastPingEpochDay = null,
         accountKey = null, accountName = null, accountPro = false, accountSyncMillis = null, accountError = null,
         accountServerTime = null, accountDirty = false, accountBlocked = false, accountPlan = null, accountMaxAircraft = null, accountMaxTypes = null,
+        notifiedDue = emptySet(), notifiedNewsIds = emptySet(),
         aircraft = s.aircraft.map { it.copy(pohUri = null) },
     )
 
@@ -777,7 +778,7 @@ object Repo {
                     logbookUri = cur.logbookUri, logbookSyncedEpochDay = cur.logbookSyncedEpochDay,
                     disclaimerAccepted = true, proCached = cur.proCached, proGranted = cur.proGranted, lastPingEpochDay = null,
                     accountKey = cur.accountKey, accountName = cur.accountName, accountPro = cur.accountPro,
-                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountMaxTypes = cur.accountMaxTypes, accountBlocked = cur.accountBlocked,
+                    accountPlan = cur.accountPlan, accountMaxAircraft = cur.accountMaxAircraft, accountMaxTypes = cur.accountMaxTypes, notifiedDue = cur.notifiedDue, notifiedNewsIds = cur.notifiedNewsIds, accountBlocked = cur.accountBlocked,
                     accountServerTime = cur.accountServerTime,
                     installId = cur.installId,
                 )
@@ -789,6 +790,9 @@ object Repo {
     fun setProCached(owned: Boolean) {
         if (_state.value.proCached != owned) setStateNoBackup { it.copy(proCached = owned) }
     }
+
+    /** Device-only change (no backup, no account upload) – e.g. which reminders were already shown. */
+    fun updateLocal(transform: (AppState) -> AppState) = setStateNoBackup(transform)
 
     private fun setStateNoBackup(transform: (AppState) -> AppState) {
         synchronized(lock) {

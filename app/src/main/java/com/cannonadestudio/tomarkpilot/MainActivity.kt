@@ -79,6 +79,8 @@ import com.cannonadestudio.tomarkpilot.ui.ContactsScreen
 import com.cannonadestudio.tomarkpilot.ui.hbgGradient
 import com.cannonadestudio.tomarkpilot.ui.logbookErrorMsg
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 class MainActivity : ComponentActivity() {
 
@@ -99,6 +101,13 @@ class MainActivity : ComponentActivity() {
         startTab.intValue = intent.getIntExtra(EXTRA_TAB, TAB_HOME)
         if (Build.VERSION.SDK_INT >= 33) notifPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
         setContent { AppTheme { Root(startTab.intValue) { startTab.intValue = it } } }
+        // Reminders right after flight hours or maintenance records change (e.g. "service in 5 h").
+        lifecycleScope.launch {
+            Repo.state
+                .map { st -> st.aircraft.map { it.id to it.hours } to (st.completions.size to (st.remindHours to st.remindDays)) }
+                .distinctUntilChanged()
+                .collect { com.cannonadestudio.tomarkpilot.work.Notifier.checkMaintenance(this@MainActivity) }
+        }
     }
 
     override fun onResume() {
@@ -106,7 +115,10 @@ class MainActivity : ComponentActivity() {
         // Re-read the logbook export every time the app comes to the front.
         lifecycleScope.launch { Repo.syncLogbook() }
         // Fresh bulletins, contacts and types whenever the app is opened (the daily job covers the rest).
-        lifecycleScope.launch { Repo.refreshAll() }
+        lifecycleScope.launch {
+            Repo.refreshAll()
+            com.cannonadestudio.tomarkpilot.work.Notifier.checkFeeds(this@MainActivity)
+        }
         lifecycleScope.launch { com.cannonadestudio.tomarkpilot.data.Billing.refresh() }
         lifecycleScope.launch { Repo.checkProGrantIfStale() }
     }
@@ -290,6 +302,8 @@ private fun AboutScreen(state: com.cannonadestudio.tomarkpilot.data.AppState) {
         com.cannonadestudio.tomarkpilot.ui.AccountCard()
         Spacer(Modifier.height(12.dp))
         com.cannonadestudio.tomarkpilot.ui.ProCard()
+        Spacer(Modifier.height(12.dp))
+        com.cannonadestudio.tomarkpilot.ui.NotifyCard()
         Spacer(Modifier.height(12.dp))
 
         Card(Modifier.fillMaxWidth()) {

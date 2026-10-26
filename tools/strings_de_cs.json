@@ -1538,5 +1538,53 @@
  "account_unlimited": {
   "de": "Flugzeuge: unbegrenzt",
   "cs": "Letadla: bez omezení"
+ },
+ "notif_channel_important": {
+  "de": "Wichtig: Wartungstermine, ADs, Mitteilungen",
+  "cs": "Důležité: termíny údržby, AD, oznámení"
+ },
+ "notif_maintenance_title": {
+  "de": "%1$s – Wartungserinnerung",
+  "cs": "%1$s – připomínka údržby"
+ },
+ "notif_due_hours": {
+  "de": "%1$s in %2$s Flugstunden",
+  "cs": "%1$s za %2$s h náletu"
+ },
+ "notif_due_days": {
+  "de": "%1$s in %2$d Tagen",
+  "cs": "%1$s za %2$d dní"
+ },
+ "notif_due_over": {
+  "de": "%1$s – fällig / überfällig",
+  "cs": "%1$s – termín uplynul"
+ },
+ "notif_important_bulletins": {
+  "de": "%1$d wichtige(s) Bulletin(s) – AD / verbindlich",
+  "cs": "%1$d důležitý(ch) bulletin(ů) – AD / povinné"
+ },
+ "notif_settings": {
+  "de": "Benachrichtigungen",
+  "cs": "Upozornění"
+ },
+ "notif_settings_hint": {
+  "de": "Eine Erinnerung vor dem Termin und eine bei Fälligkeit.",
+  "cs": "Připomínka přijde před termínem a znovu po něm."
+ },
+ "notif_hours": {
+  "de": "Stunden vorher",
+  "cs": "Hodin předem"
+ },
+ "notif_days": {
+  "de": "Tage vorher",
+  "cs": "Dní předem"
+ },
+ "notif_bulletins_switch": {
+  "de": "Neue Bulletins und ADs",
+  "cs": "Nové bulletiny a AD"
+ },
+ "notif_news_switch": {
+  "de": "Mitteilungen (AeroHangar)",
+  "cs": "Oznámení (AeroHangar)"
  }
 }
