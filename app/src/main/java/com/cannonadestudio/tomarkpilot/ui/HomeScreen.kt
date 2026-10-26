@@ -449,8 +449,15 @@ private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, 
     }
     // Collapsed: hours left + status. Tap to unfold the details.
     var open by androidx.compose.runtime.saveable.rememberSaveable { mutableStateOf(false) }
-    Card(Modifier.fillMaxWidth().padding(top = 8.dp).clickable { open = !open }) {
-        Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp)) {
+    // Clearly framed, rounded box (like the ad card) – colour of the frame follows the status.
+    Card(
+        Modifier.fillMaxWidth().padding(top = 10.dp).clickable { open = !open },
+        shape = androidx.compose.foundation.shape.RoundedCornerShape(18.dp),
+        border = androidx.compose.foundation.BorderStroke(2.dp, numColor),
+        colors = androidx.compose.material3.CardDefaults.cardColors(containerColor = Color.White),
+        elevation = androidx.compose.material3.CardDefaults.cardElevation(defaultElevation = 4.dp),
+    ) {
+        Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Column(Modifier.weight(1f)) {
                     Text(stringResource(R.string.next_insp_title), style = MaterialTheme.typography.labelLarge, color = HbgPink)
