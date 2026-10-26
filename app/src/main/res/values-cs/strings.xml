@@ -296,6 +296,10 @@
     <string name="notif_important_bulletins">%1$d důležitý(ch) bulletin(ů) – AD / povinné</string>
     <string name="examiners_menu">Stáhnout</string>
     <string name="request_short">Objednat</string>
+    <string name="open_in_maps">Otevřít v Mapách Google</string>
+    <string name="contact_save_send">Uložit a odeslat</string>
+    <string name="contact_new_hint">Přidejte kontakt – po schválení ho uvidí všichni.</string>
+    <string name="contact_own_hint">Váš záznam – vidíte ho jen vy, dokud nebude schválen.</string>
     <string name="notif_settings">Upozornění</string>
     <string name="notif_settings_hint">Připomínka přijde před termínem a znovu po něm.</string>
     <string name="notif_hours">Hodin předem</string>

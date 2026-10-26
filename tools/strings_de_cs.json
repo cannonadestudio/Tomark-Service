@@ -1594,5 +1594,21 @@
  "request_short": {
   "de": "Termin",
   "cs": "Objednat"
+ },
+ "open_in_maps": {
+  "de": "In Google Maps öffnen",
+  "cs": "Otevřít v Mapách Google"
+ },
+ "contact_save_send": {
+  "de": "Speichern und senden",
+  "cs": "Uložit a odeslat"
+ },
+ "contact_new_hint": {
+  "de": "Kontakt hinzufügen – nach Freigabe für alle sichtbar.",
+  "cs": "Přidejte kontakt – po schválení ho uvidí všichni."
+ },
+ "contact_own_hint": {
+  "de": "Ihr Eintrag – nur für Sie sichtbar bis zur Freigabe.",
+  "cs": "Váš záznam – vidíte ho jen vy, dokud nebude schválen."
  }
 }

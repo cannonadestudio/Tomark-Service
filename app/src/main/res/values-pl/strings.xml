@@ -296,6 +296,10 @@
     <string name="notif_important_bulletins">%1$d ważny(ch) biuletyn(ów) – AD / obowiązkowe</string>
     <string name="examiners_menu">Pobierz</string>
     <string name="request_short">Umów</string>
+    <string name="open_in_maps">Otwórz w Mapach Google</string>
+    <string name="contact_save_send">Zapisz i wyślij</string>
+    <string name="contact_new_hint">Dodaj znanego Ci mechanika, serwis, szkołę lub inny kontakt. Zapisze się w telefonie i trafi do AeroHangar do zatwierdzenia – po akceptacji zobaczą go wszyscy.</string>
+    <string name="contact_own_hint">Twój wpis – widzisz go tylko Ty, dopóki nie zostanie zatwierdzony.</string>
     <string name="notif_settings">Powiadomienia</string>
     <string name="notif_settings_hint">Przypomnienie przyjdzie raz, gdy do przeglądu zostanie tyle nalotu lub dni, i drugi raz, gdy termin minie. Sprawdzane po każdej zmianie nalotu i dwa razy dziennie w tle.</string>
     <string name="notif_hours">Godzin przed</string>

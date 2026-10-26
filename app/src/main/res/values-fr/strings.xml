@@ -296,6 +296,10 @@
     <string name="notif_important_bulletins">%1$d bulletin(s) important(s) – AD / obligatoires</string>
     <string name="examiners_menu">Listes ULC</string>
     <string name="request_short">Réserver</string>
+    <string name="open_in_maps">Ouvrir dans Google Maps</string>
+    <string name="contact_save_send">Enregistrer et envoyer</string>
+    <string name="contact_new_hint">Ajoutez un contact – visible par tous après validation.</string>
+    <string name="contact_own_hint">Votre saisie – visible par vous seul jusqu\'à validation.</string>
     <string name="notif_settings">Notifications</string>
     <string name="notif_settings_hint">Un rappel avant l\'échéance, puis à l\'échéance.</string>
     <string name="notif_hours">Heures avant</string>

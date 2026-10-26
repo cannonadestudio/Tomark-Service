@@ -296,6 +296,10 @@
     <string name="notif_important_bulletins">%1$d wichtige(s) Bulletin(s) – AD / verbindlich</string>
     <string name="examiners_menu">ULC-Listen</string>
     <string name="request_short">Termin</string>
+    <string name="open_in_maps">In Google Maps öffnen</string>
+    <string name="contact_save_send">Speichern und senden</string>
+    <string name="contact_new_hint">Kontakt hinzufügen – nach Freigabe für alle sichtbar.</string>
+    <string name="contact_own_hint">Ihr Eintrag – nur für Sie sichtbar bis zur Freigabe.</string>
     <string name="notif_settings">Benachrichtigungen</string>
     <string name="notif_settings_hint">Eine Erinnerung vor dem Termin und eine bei Fälligkeit.</string>
     <string name="notif_hours">Stunden vorher</string>

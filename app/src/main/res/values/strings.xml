@@ -297,6 +297,10 @@
     <string name="notif_important_bulletins">%1$d important bulletin(s) – AD / mandatory</string>
     <string name="examiners_menu">ULC lists</string>
     <string name="request_short">Book</string>
+    <string name="open_in_maps">Open in Google Maps</string>
+    <string name="contact_save_send">Save and send</string>
+    <string name="contact_new_hint">Add a mechanic, service, school or other contact you know. It is saved on this phone and sent to AeroHangar for approval – after approval everyone sees it.</string>
+    <string name="contact_own_hint">Your own entry – only you see it until it is approved.</string>
     <string name="notif_settings">Notifications</string>
     <string name="notif_settings_hint">A reminder comes once when an inspection is this close, and again when it is due. Checked when flight hours change and twice a day in the background.</string>
     <string name="notif_hours">Hours before</string>

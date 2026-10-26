@@ -34,6 +34,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.EventAvailable
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Language
@@ -141,6 +142,9 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
     var loc by remember { mutableStateOf(lastLocation(ctx)) }
     var editing by remember { mutableStateOf<Contact?>(null) }
     var creating by remember { mutableStateOf(false) }
+    // Shared entries (partners, services, schools, doctors…) are read-only; only own entries can be edited.
+    var viewing by remember { mutableStateOf<Contact?>(null) }
+    var submitFor by remember { mutableStateOf<Contact?>(null) }
     var menu by remember { mutableStateOf(false) }
     var loading by remember { mutableStateOf(false) }
 
@@ -277,16 +281,16 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
                 val req = { c: Contact -> if (selectedAircraft != null && c.kind in SERVICE_KINDS && c.email.isNotBlank()) ({ requestFor = c }) else null }
                 if (partners.size == 1) {
                     val c = partners[0]
-                    PartnerLine(c, distanceKm(loc, c), Modifier.fillMaxWidth().padding(top = 8.dp), req(c)) { editing = c }
+                    PartnerLine(c, distanceKm(loc, c), Modifier.fillMaxWidth().padding(top = 8.dp), req(c)) { viewing = c }
                 } else if (partners.size > 1) {
                     Row(Modifier.horizontalScroll(rememberScrollState()).padding(top = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        partners.forEach { c -> PartnerLine(c, distanceKm(loc, c), Modifier.width(300.dp), req(c)) { editing = c } }
+                        partners.forEach { c -> PartnerLine(c, distanceKm(loc, c), Modifier.width(300.dp), req(c)) { viewing = c } }
                     }
                 }
                 Spacer(Modifier.height(8.dp))
             }
             items(list.filter { !it.isPartner() }, key = { it.id }) { c ->
-                ContactCard(c, distanceKm(loc, c), c.id in localIds, onRequest = if (selectedAircraft != null && c.kind in SERVICE_KINDS && c.email.isNotBlank() && c.isPartner()) ({ requestFor = c }) else null) { editing = c }
+                ContactCard(c, distanceKm(loc, c), c.id in localIds, onRequest = if (selectedAircraft != null && c.kind in SERVICE_KINDS && c.email.isNotBlank() && c.isPartner()) ({ requestFor = c }) else null) { viewing = c }
                 Spacer(Modifier.height(8.dp))
             }
             item {
@@ -304,9 +308,11 @@ fun ContactsScreen(state: AppState, feed: ContactFeed, type: AircraftType?) {
         ) { Icon(Icons.Filled.Add, stringResource(R.string.contact_add)) }
     }
 
+    viewing?.let { c -> ContactDetails(c, distanceKm(loc, c), onEdit = { viewing = null; editing = c }, onSubmit = { viewing = null; submitFor = c }) { viewing = null } }
     editing?.let { c -> ContactDialog(c, loc, isNew = false) { editing = null } }
+    submitFor?.let { c -> SubmitDialog(c) { submitFor = null } }
     requestFor?.let { c -> selectedAircraft?.let { a -> ServiceRequestDialog(a, nextWorkText(a, state), c) { requestFor = null } } }
-    if (creating) ContactDialog(null, loc, isNew = true) { creating = false }
+    if (creating) ContactDialog(null, loc, isNew = true, onSaved = { saved -> if (Repo.serverConnected) submitFor = saved }) { creating = false }
 }
 
 @Composable
@@ -333,8 +339,14 @@ private fun PartnerLine(c: Contact, km: Double?, modifier: Modifier, onRequest: 
             if (c.phone.isNotBlank()) IconButton(onClick = { Repo.track("call", c.id); open(ctx, Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + c.phone.filter { it.isDigit() || it == '+' }))) }, modifier = Modifier.size(36.dp)) {
                 Icon(Icons.Filled.Call, c.phone)
             }
-            if (onRequest != null) TextButton(onClick = { Repo.track("request", c.id); onRequest() }, contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 8.dp)) {
-                Text(stringResource(R.string.request_short))
+            if (onRequest != null) androidx.compose.material3.Button(
+                onClick = { Repo.track("request", c.id); onRequest() }, modifier = Modifier.height(32.dp),
+                shape = androidx.compose.foundation.shape.RoundedCornerShape(8.dp),
+                contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 10.dp),
+            ) {
+                Icon(Icons.Filled.EventAvailable, null, Modifier.size(16.dp))
+                Spacer(Modifier.width(4.dp))
+                Text(stringResource(R.string.request_short), style = MaterialTheme.typography.labelLarge, maxLines = 1)
             }
         }
     }
@@ -385,9 +397,16 @@ private fun ContactCard(c: Contact, km: Double?, mine: Boolean, onRequest: (() -
                 if (c.lat != null && c.lon != null) IconButton(onClick = {
                     tap("map"); open(ctx, Intent(Intent.ACTION_VIEW, Uri.parse("geo:${c.lat},${c.lon}?q=${c.lat},${c.lon}(${Uri.encode(c.name)})")))
                 }) { Icon(Icons.Filled.Map, null) }
-                if (onRequest != null) {
-                    Spacer(Modifier.weight(1f))
-                    androidx.compose.material3.FilledTonalButton(onClick = onRequest) { Text(stringResource(R.string.req_book)) }
+            }
+            if (onRequest != null) {
+                androidx.compose.material3.Button(
+                    onClick = onRequest, modifier = Modifier.fillMaxWidth().padding(top = 4.dp).height(40.dp),
+                    shape = androidx.compose.foundation.shape.RoundedCornerShape(10.dp),
+                    contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 12.dp),
+                ) {
+                    Icon(Icons.Filled.EventAvailable, null, Modifier.size(18.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Text(stringResource(R.string.req_book), maxLines = 1)
                 }
             }
         }
@@ -395,7 +414,7 @@ private fun ContactCard(c: Contact, km: Double?, mine: Boolean, onRequest: (() -
 }
 
 @Composable
-private fun ContactDialog(c: Contact?, loc: Location?, isNew: Boolean, onDismiss: () -> Unit) {
+private fun ContactDialog(c: Contact?, loc: Location?, isNew: Boolean, onSaved: (Contact) -> Unit = {}, onDismiss: () -> Unit) {
     var name by remember { mutableStateOf(c?.name ?: "") }
     var kind by remember { mutableStateOf(c?.kind ?: "mechanic") }
     var brands by remember { mutableStateOf(c?.brands?.joinToString(", ") ?: "") }
@@ -418,6 +437,7 @@ private fun ContactDialog(c: Contact?, loc: Location?, isNew: Boolean, onDismiss
         title = { Text(stringResource(if (isNew) R.string.contact_add else R.string.contact_edit)) },
         text = {
             Column(Modifier.verticalScroll(rememberScrollState())) {
+                if (isNew) Text(stringResource(R.string.contact_new_hint), style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(bottom = 6.dp))
                 OutlinedTextField(name, { name = it }, label = { Text(stringResource(R.string.contact_name)) }, modifier = Modifier.fillMaxWidth())
                 CONTACT_KINDS.forEach { k ->
                     Row(Modifier.fillMaxWidth().clickable { kind = k }, verticalAlignment = Alignment.CenterVertically) {
@@ -459,7 +479,7 @@ private fun ContactDialog(c: Contact?, loc: Location?, isNew: Boolean, onDismiss
         },
         confirmButton = {
             TextButton(enabled = name.isNotBlank(), onClick = {
-                Repo.saveContact(
+                val saved = (
                     Contact(
                         id = c?.id ?: ("my_" + Repo.newId()), name = name.trim(), kind = kind,
                         brands = brands.split(',').map { it.trim() }.filter { it.isNotEmpty() },
@@ -468,10 +488,64 @@ private fun ContactDialog(c: Contact?, loc: Location?, isNew: Boolean, onDismiss
                         web = web.trim(), source = c?.source ?: "", note = note.trim(),
                     )
                 )
+                Repo.saveContact(saved)
                 onDismiss()
-            }) { Text(stringResource(R.string.save)) }
+                if (isNew) onSaved(saved)
+            }) { Text(stringResource(if (isNew && Repo.serverConnected) R.string.contact_save_send else R.string.save)) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
+    )
+}
+
+@Composable
+private fun DetailLink(label: String, icon: androidx.compose.ui.graphics.vector.ImageVector, onClick: () -> Unit) {
+    TextButton(onClick = onClick, contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 4.dp)) {
+        Icon(icon, null, Modifier.size(18.dp)); Spacer(Modifier.width(8.dp)); Text(label, maxLines = 1)
+    }
+}
+
+/** Read-only card of a shared entry (partner, service, school, doctor…); own entries also get edit / send. */
+@Composable
+private fun ContactDetails(c: Contact, km: Double?, onEdit: () -> Unit, onSubmit: () -> Unit, onDismiss: () -> Unit) {
+    val ctx = LocalContext.current
+    val own = c.id.startsWith("my_")
+    val tap = { what: String -> if (c.isPartner()) Repo.track(what, c.id) }
+    val place = listOf(c.address, c.city, c.country).filter { it.isNotBlank() }.distinct().joinToString(", ")
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(c.name) },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                Row(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.padding(bottom = 6.dp)) {
+                    if (c.isPartner()) Chip("★ " + stringResource(R.string.partner), HbgPink, Color.White)
+                    Chip(kindName(c.kind), MaterialTheme.colorScheme.primaryContainer, MaterialTheme.colorScheme.onPrimaryContainer)
+                    if (own) Chip(stringResource(R.string.contact_mine), MaterialTheme.colorScheme.secondaryContainer, MaterialTheme.colorScheme.onSecondaryContainer)
+                }
+                if (c.isPartner() && c.promo.isNotBlank()) Text(c.promo, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(bottom = 6.dp))
+                if (place.isNotBlank()) Text(place + (km?.let { " · " + (if (it < 10) "%.1f km".format(it) else "${it.roundToInt()} km") } ?: ""), style = MaterialTheme.typography.bodyMedium)
+                if (c.brands.isNotEmpty()) Text(c.brands.joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 4.dp))
+                if (c.note.isNotBlank()) Text(c.note, style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 4.dp))
+                Spacer(Modifier.height(6.dp))
+                if (c.phone.isNotBlank()) DetailLink(c.phone, Icons.Filled.Call) { tap("call"); open(ctx, Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + c.phone.filter { it.isDigit() || it == '+' }))) }
+                if (c.email.isNotBlank()) DetailLink(c.email, Icons.Filled.Email) { tap("email"); open(ctx, Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + c.email))) }
+                if (c.web.isNotBlank()) DetailLink(c.web.removePrefix("https://").removePrefix("http://"), Icons.Filled.Language) {
+                    tap("web"); open(ctx, Intent(Intent.ACTION_VIEW, Uri.parse(if (c.web.startsWith("http")) c.web else "https://" + c.web)))
+                }
+                val maps = if (c.lat != null && c.lon != null) "https://www.google.com/maps/search/?api=1&query=${c.lat},${c.lon}"
+                    else "https://www.google.com/maps/search/?api=1&query=" + Uri.encode(listOf(c.name, place).filter { it.isNotBlank() }.joinToString(", "))
+                DetailLink(stringResource(R.string.open_in_maps), Icons.Filled.Map) { tap("map"); open(ctx, Intent(Intent.ACTION_VIEW, Uri.parse(maps))) }
+                if (c.source.isNotBlank() && !own) Text(stringResource(R.string.source_label, c.source), style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 6.dp))
+                if (own) {
+                    Text(stringResource(R.string.contact_own_hint), style = MaterialTheme.typography.bodySmall, modifier = Modifier.padding(top = 8.dp))
+                    Row {
+                        TextButton(onClick = onEdit) { Text(stringResource(R.string.edit)) }
+                        if (Repo.serverConnected) TextButton(onClick = onSubmit) { Text(stringResource(R.string.submit_to_base)) }
+                        TextButton(onClick = { Repo.deleteContact(c.id); onDismiss() }) { Text(stringResource(R.string.delete), color = Color(0xFFC62828)) }
+                    }
+                }
+            }
+        },
+        confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.close)) } },
     )
 }
 
