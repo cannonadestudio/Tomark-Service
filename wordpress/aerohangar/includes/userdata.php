@@ -28,7 +28,7 @@ add_action('rest_api_init', function () {
                 $raw = (string)get_user_meta($uid, 'aerohangar_state', true);
                 if ($raw === '') return new WP_Error('aerohangar_empty', 'no backup on this account yet', ['status' => 404]);
                 do_action('aerohangar_state_downloaded', $uid);
-                $res = new WP_REST_Response(json_decode($raw, true));
+                $res = new WP_REST_Response(ah_state_maps(json_decode($raw, true)));
                 $res->header('X-AeroHangar-Saved', (string)get_user_meta($uid, 'aerohangar_state_time', true));
                 return $res;
             },
@@ -345,4 +345,19 @@ function ah_account_create(array $b, string $by)
     if (!empty($b['sendLink'])) wp_new_user_notification($uid, null, 'user');
     ah_log($by, "account #$uid ($login, $email) created in the panel");
     return (int)$uid;
+}
+
+/**
+ * PHP turns empty JSON objects into [] – the app's map fields must stay objects ({}), otherwise the phone
+ * cannot read the account copy. Applied to everything the server sends back.
+ */
+function ah_state_maps($d)
+{
+    if (!is_array($d)) return $d;
+    foreach ((array)($d['aircraft'] ?? []) as $i => $a) {
+        foreach (['speedOverrides', 'taskOverrides'] as $k) {
+            if (!isset($a[$k]) || (is_array($a[$k]) && !$a[$k])) $d['aircraft'][$i][$k] = new stdClass();
+        }
+    }
+    return $d;
 }

@@ -341,7 +341,9 @@ object Repo {
             val (code, text) = accountCall("GET", root + "aerohangar/v1/account/data", key)
             if (code == 404) error("404")
             if (code != 200) error(code.toString().takeIf { code == 401 || code == 402 || code == 403 } ?: "HTTP $code")
-            val restored = json.decodeFromString<AppState>(text)
+            // older servers sent empty maps as [] (PHP) – read them as {}
+            val fixed = text.replace(Regex("\"(speedOverrides|taskOverrides)\"\\s*:\\s*\\[\\s*]"), "\"$1\":{}")
+            val restored = json.decodeFromString<AppState>(fixed)
             val cur = _state.value
             val st = serverTime ?: runCatching {
                 field(accountCall("GET", root + "aerohangar/v1/account", key).second, "lastSync")?.toLongOrNull()
