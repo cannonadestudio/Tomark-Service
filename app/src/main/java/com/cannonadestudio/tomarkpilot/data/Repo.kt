@@ -342,7 +342,7 @@ object Repo {
             if (code == 404) error("404")
             if (code != 200) error(code.toString().takeIf { code == 401 || code == 402 || code == 403 } ?: "HTTP $code")
             // older servers sent empty maps as [] (PHP) – read them as {}
-            val fixed = text.replace(Regex("\"(speedOverrides|taskOverrides)\"\\s*:\\s*\\[\\s*]"), "\"$1\":{}")
+            val fixed = text.replace(Regex("\"(speedOverrides|taskOverrides|itemEdits)\"\\s*:\\s*\\[\\s*]"), "\"$1\":{}")
             val restored = json.decodeFromString<AppState>(fixed)
             val cur = _state.value
             val st = serverTime ?: runCatching {
@@ -871,6 +871,62 @@ object Repo {
     }
 
     fun isOwnBulletin(a: Aircraft, id: String, s: AppState = _state.value) = s.ownBulletins.any { it.aircraftId == a.id && it.bulletin.id == id }
+
+    // ---------------------------------------------------------------- inspection checklists
+
+    fun saveProtocol(p: Protocol) = update { s ->
+        s.copy(protocols = s.protocols.filterNot { it.id == p.id } + p.copy(updatedMillis = System.currentTimeMillis()))
+    }
+
+    fun deleteProtocol(id: String) = update { s -> s.copy(protocols = s.protocols.filterNot { it.id == id }) }
+
+    /** Signs off the checklist: the protocol is closed and the inspection logged (terms are counted from it). */
+    fun finishProtocol(p: Protocol, epochDay: Long, hours: Double) = update { s ->
+        val rec = CompletionRecord(
+            id = p.completionId ?: newId(), aircraftId = p.aircraftId, taskId = p.taskId, epochDay = epochDay, hours = hours,
+            dueAtHours = p.dueAtHours, note = listOfNotNull(p.mechanic.takeIf { it.isNotBlank() }, p.notes.takeIf { it.isNotBlank() }).joinToString(" · "),
+        )
+        val fin = p.copy(finished = true, epochDay = epochDay, hours = hours, completionId = rec.id, updatedMillis = System.currentTimeMillis())
+        s.copy(
+            protocols = s.protocols.filterNot { it.id == p.id } + fin,
+            completions = s.completions.filterNot { it.id == rec.id } + rec,
+        )
+    }
+
+    /** The aircraft's own version of a task's checklist; null = back to the list from the database. */
+    fun saveItemEdits(aircraftId: String, taskId: String, items: List<TaskItem>?) = update { s ->
+        s.copy(aircraft = s.aircraft.map { a ->
+            if (a.id != aircraftId) a
+            else a.copy(itemEdits = if (items == null) a.itemEdits - taskId else a.itemEdits + (taskId to items))
+        })
+    }
+
+    /** Proposes a correction of a checklist item to the database; the administrator reviews it in the panel. */
+    suspend fun suggestChecklist(a: Aircraft, taskId: String, original: String?, item: TaskItem?, comment: String): Result<Unit> = withContext(Dispatchers.IO) {
+        runCatching {
+            if (!serverConnected) error("no server")
+            val body = kotlinx.serialization.json.buildJsonObject {
+                put("typeId", kotlinx.serialization.json.JsonPrimitive(a.typeId))
+                put("engineId", kotlinx.serialization.json.JsonPrimitive(engineOf(a).id))
+                put("taskId", kotlinx.serialization.json.JsonPrimitive(taskId))
+                put("original", kotlinx.serialization.json.JsonPrimitive(original ?: ""))
+                if (item != null) put("item", json.encodeToJsonElement(TaskItem.serializer(), item))
+                put("comment", kotlinx.serialization.json.JsonPrimitive(comment))
+                put("installId", kotlinx.serialization.json.JsonPrimitive(_state.value.installId ?: ""))
+            }.toString()
+            val conn = URL(apiUrl("checklist_suggest")).openConnection() as HttpURLConnection
+            conn.connectTimeout = 10_000; conn.readTimeout = 15_000
+            conn.requestMethod = "POST"; conn.doOutput = true
+            conn.setRequestProperty("Content-Type", "application/json; charset=utf-8")
+            _state.value.accountKey?.let { conn.setRequestProperty("X-Cannonade-Key", it) }
+            try {
+                conn.outputStream.use { it.write(body.toByteArray()) }
+                if (conn.responseCode != 200) error("HTTP ${conn.responseCode}")
+            } finally {
+                conn.disconnect()
+            }
+        }
+    }
 
     fun saveLogEntry(e: LogEntry) = update { s -> s.copy(logEntries = s.logEntries.filterNot { it.id == e.id } + e) }
 

@@ -64,6 +64,7 @@ fun ServiceScreen(state: AppState, aircraft: Aircraft) {
     var showHidden by remember { mutableStateOf(false) }
     var open by remember { mutableStateOf<String?>(null) }
     var adding by remember { mutableStateOf(false) }
+    var checklist by remember { mutableStateOf<String?>(null) }
     val all = Maintenance.compute(aircraft, state.completions, includeHidden = true)
     val list = all.filter { showHidden || !Maintenance.isHidden(it.task, aircraft) }
     var logEdit by remember { mutableStateOf<com.cannonadestudio.tomarkpilot.data.LogEntry?>(null) }
@@ -124,7 +125,8 @@ fun ServiceScreen(state: AppState, aircraft: Aircraft) {
         )
     }
 
-    open?.let { id -> all.firstOrNull { it.task.id == id }?.let { TaskDialog(it, aircraft, state, lg) { open = null } } }
+    open?.let { id -> all.firstOrNull { it.task.id == id }?.let { TaskDialog(it, aircraft, state, lg, onChecklist = { open = null; checklist = id }) { open = null } } }
+    checklist?.let { id -> all.firstOrNull { it.task.id == id }?.let { ChecklistDialog(state, aircraft, it) { checklist = null } } }
     if (adding) AddTaskDialog(aircraft) { adding = false }
     if (logNew) LogEntryDialog(aircraft, null) { logNew = false }
     logEdit?.let { e -> LogEntryDialog(aircraft, e) { logEdit = null } }
@@ -190,7 +192,8 @@ fun intervalText(t: TaskDef): String {
 }
 
 @Composable
-private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onDismiss: () -> Unit) {
+private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onChecklist: () -> Unit, onDismiss: () -> Unit) {
+    val ctx = androidx.compose.ui.platform.LocalContext.current
     var tab by remember { mutableIntStateOf(0) }
     var editing by remember { mutableStateOf<CompletionRecord?>(null) }
     var date by remember { mutableStateOf(fmtDate(LocalDate.now())) }
@@ -219,6 +222,13 @@ private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onD
                         if (editing != null) {
                             Text(stringResource(R.string.editing_entry), color = HbgPink, style = MaterialTheme.typography.bodySmall)
                         }
+                        if (editing == null && (d.task.items.isNotEmpty() || Checklist.draft(state, a, d.task.id) != null)) {
+                            androidx.compose.material3.Button(
+                                onClick = onChecklist, modifier = Modifier.fillMaxWidth(),
+                                colors = androidx.compose.material3.ButtonDefaults.buttonColors(containerColor = LotNavy),
+                            ) { Text(stringResource(if (Checklist.draft(state, a, d.task.id) != null) R.string.chk_continue else R.string.chk_open)) }
+                            Spacer(Modifier.height(8.dp))
+                        }
                         DateField(date, { date = it }, stringResource(R.string.done_date), Modifier.fillMaxWidth())
                         NumberField(hours, { hours = it }, stringResource(R.string.done_hours), Modifier.fillMaxWidth())
                         OutlinedTextField(note, { note = it }, label = { Text(stringResource(R.string.note)) }, modifier = Modifier.fillMaxWidth())
@@ -240,6 +250,26 @@ private fun TaskDialog(d: DueInfo, a: Aircraft, state: AppState, lg: String, onD
                         SourceLine(d.task.source, d.task.verified)
                     }
                     1 -> {
+                        val protos = state.protocols.filter { it.aircraftId == a.id && (it.taskId == d.task.id || it.taskId in d.task.aliases) }.sortedByDescending { it.epochDay ?: Long.MAX_VALUE }
+                        if (protos.isNotEmpty()) {
+                            Text(stringResource(R.string.chk_protocols), style = MaterialTheme.typography.labelLarge, color = HbgPink)
+                            protos.forEach { pr ->
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Column(Modifier.weight(1f)) {
+                                        Text(
+                                            if (pr.finished) listOfNotNull(pr.epochDay?.let { fmtEpochDay(it) }, pr.hours?.let { fmtH(it) + " h" }).joinToString(" · ")
+                                            else stringResource(R.string.chk_draft),
+                                            fontWeight = FontWeight.SemiBold,
+                                        )
+                                        Text(stringResource(R.string.chk_progress, pr.items.count { it.done || it.na }, pr.items.size) + (if (pr.mechanic.isNotBlank()) " · " + pr.mechanic else ""), style = MaterialTheme.typography.bodySmall)
+                                    }
+                                    if (pr.finished) TextButton(onClick = { ProtocolPdf.share(ctx, a, pr, state) }) { Text("PDF") }
+                                    else TextButton(onClick = onChecklist) { Text(stringResource(R.string.chk_open)) }
+                                }
+                                HorizontalDivider()
+                            }
+                            Spacer(Modifier.height(10.dp))
+                        }
                         if (history.isEmpty()) Text(stringResource(R.string.no_history))
                         history.forEach { r ->
                             Row(verticalAlignment = Alignment.CenterVertically) {

@@ -1610,5 +1610,181 @@
  "contact_own_hint": {
   "de": "Ihr Eintrag – nur für Sie sichtbar bis zur Freigabe.",
   "cs": "Váš záznam – vidíte ho jen vy, dokud nebude schválen."
+ },
+ "chk_open": {
+  "de": "Checkliste",
+  "cs": "Checklist"
+ },
+ "chk_at": {
+  "de": "bei %1$s h",
+  "cs": "při %1$s h"
+ },
+ "chk_progress": {
+  "de": "%1$d von %2$d erledigt",
+  "cs": "%1$d z %2$d hotovo"
+ },
+ "chk_finish": {
+  "de": "Inspektion abschließen",
+  "cs": "Ukončit prohlídku"
+ },
+ "chk_add_item": {
+  "de": "Punkt hinzufügen",
+  "cs": "Přidat položku"
+ },
+ "chk_edit_item": {
+  "de": "Punkt bearbeiten",
+  "cs": "Upravit položku"
+ },
+ "chk_text": {
+  "de": "Text",
+  "cs": "Text"
+ },
+ "chk_every_field": {
+  "de": "Alle … h (leer = bei jeder Inspektion)",
+  "cs": "Každých … h (prázdné = při každé prohlídce)"
+ },
+ "chk_fields": {
+  "de": "Zu notierende Werte (durch Komma getrennt)",
+  "cs": "Hodnoty k zapsání (oddělené čárkou)"
+ },
+ "chk_unit": {
+  "de": "Einheit",
+  "cs": "Jednotka"
+ },
+ "chk_scope_here": {
+  "de": "Nur für %1$s",
+  "cs": "Jen pro %1$s"
+ },
+ "chk_scope_here_hint": {
+  "de": "Ihre Version der Liste für dieses Flugzeug",
+  "cs": "Vaše verze seznamu pro toto letadlo"
+ },
+ "chk_scope_suggest": {
+  "de": "Korrektur an die Datenbank melden",
+  "cs": "Nahlásit opravu do databáze"
+ },
+ "chk_scope_suggest_hint": {
+  "de": "Auch hier gespeichert; der Administrator prüft und korrigiert die Liste für alle",
+  "cs": "Uloženo i zde; administrátor to zkontroluje a opraví seznam pro všechny"
+ },
+ "chk_comment": {
+  "de": "Kommentar für den Administrator (Dokument, Seite)",
+  "cs": "Komentář pro administrátora (dokument, strana)"
+ },
+ "chk_remove": {
+  "de": "Punkt entfernen",
+  "cs": "Odstranit položku"
+ },
+ "chk_na": {
+  "de": "n. z.",
+  "cs": "n/a"
+ },
+ "chk_unverified": {
+  "de": "NICHT GEPRÜFT",
+  "cs": "NEOVĚŘENO"
+ },
+ "chk_every_chip": {
+  "de": "ALLE %1$s h",
+  "cs": "KAŽDÝCH %1$s h"
+ },
+ "chk_reset": {
+  "de": "Liste aus der Datenbank wiederherstellen",
+  "cs": "Obnovit seznam z databáze"
+ },
+ "chk_place": {
+  "de": "Ort (Flugplatz)",
+  "cs": "Místo (letiště)"
+ },
+ "chk_mechanic": {
+  "de": "Mechaniker",
+  "cs": "Mechanik"
+ },
+ "chk_licence": {
+  "de": "Lizenz- / Genehmigungs-Nr.",
+  "cs": "Č. oprávnění"
+ },
+ "chk_remarks": {
+  "de": "Bemerkungen",
+  "cs": "Poznámky"
+ },
+ "chk_not_all": {
+  "de": "%1$d Punkte nicht abgehakt – im Protokoll als nicht erledigt.",
+  "cs": "%1$d položek neoznačeno – v protokolu budou jako nevykonané."
+ },
+ "chk_pdf": {
+  "de": "Protokoll PDF",
+  "cs": "Protokol PDF"
+ },
+ "chk_protocols": {
+  "de": "Inspektionsprotokolle",
+  "cs": "Protokoly prohlídek"
+ },
+ "chk_draft": {
+  "de": "in Arbeit",
+  "cs": "probíhá"
+ },
+ "chk_continue": {
+  "de": "Checkliste fortsetzen",
+  "cs": "Pokračovat v checklistu"
+ },
+ "chk_discard": {
+  "de": "Verwerfen",
+  "cs": "Zahodit"
+ },
+ "chk_sent": {
+  "de": "An den Administrator gesendet – danke",
+  "cs": "Odesláno administrátorovi – děkujeme"
+ },
+ "chk_send_fail": {
+  "de": "Nicht gesendet (keine Verbindung) – nur für dieses Flugzeug gespeichert",
+  "cs": "Neodesláno (bez připojení) – uloženo jen pro toto letadlo"
+ },
+ "chk_pdf_title": {
+  "de": "Inspektionsprotokoll",
+  "cs": "Protokol prohlídky"
+ },
+ "chk_pdf_disclaimer": {
+  "de": "Die Checkliste ist eine Hilfe nach Herstellerunterlagen (%1$s). Es gilt das aktuelle Wartungshandbuch des Herstellers; verantwortlich ist der Mechaniker. Erstellt mit AeroHangar.",
+  "cs": "Seznam prací je pomůcka podle dokumentů výrobce (%1$s). Platí aktuální příručka údržby výrobce; za práce odpovídá mechanik. Vytvořeno v AeroHangar."
+ },
+ "chk_signature": {
+  "de": "Unterschrift",
+  "cs": "Podpis"
+ },
+ "chk_done": {
+  "de": "erledigt",
+  "cs": "hotovo"
+ },
+ "chk_not_done": {
+  "de": "nicht erledigt",
+  "cs": "nevykonáno"
+ },
+ "chk_na_long": {
+  "de": "nicht zutreffend",
+  "cs": "netýká se"
+ },
+ "chk_source": {
+  "de": "Quelle: %1$s",
+  "cs": "Zdroj: %1$s"
+ },
+ "chk_empty": {
+  "de": "Keine Punkte – fügen Sie den ersten hinzu.",
+  "cs": "Žádné položky – přidejte první."
+ },
+ "chk_bulletins_open": {
+  "de": "Offene Pflicht-Bulletins",
+  "cs": "Otevřené povinné bulletiny"
+ },
+ "chk_item": {
+  "de": "Arbeit",
+  "cs": "Úkon"
+ },
+ "chk_result": {
+  "de": "Ergebnis / Bemerkungen",
+  "cs": "Výsledek / poznámky"
+ },
+ "chk_edited": {
+  "de": "eigene Liste",
+  "cs": "vlastní seznam"
  }
 }

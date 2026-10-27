@@ -64,6 +64,8 @@ data class TaskDef(
     val aliases: List<String> = emptyList(),
     /** Off unless the owner switches it on (e.g. 50 h oil change only with leaded AVGAS). */
     val defaultHidden: Boolean = false,
+    /** Where the item list comes from when it differs from [source] (e.g. a general scope to be checked). */
+    val itemsSource: String = "",
 )
 
 @Serializable
@@ -72,6 +74,10 @@ data class TaskItem(
     /** null = at every occurrence of the inspection; 200 = only when the inspection falls on a 200 h step. */
     val everyHours: Double? = null,
     val verified: Boolean = true,
+    /** Values written down during the work (e.g. compression per cylinder); labels of the input boxes. */
+    val fields: List<L10n> = emptyList(),
+    /** Unit of the values (N, rpm, bar, /80…). */
+    val unit: String = "",
 )
 
 /** Engine catalogue (assets/engines.json): inspections and bulletin groups of an engine family. */
@@ -243,6 +249,46 @@ data class Aircraft(
     val rescueSystem: Boolean = false,
     /** Rescue system service life / repack interval in months (6 years by default). */
     val rescueMonths: Int = 72,
+    /** The owner's / mechanic's own version of a task's checklist (task id -> full item list). */
+    val itemEdits: Map<String, List<TaskItem>> = emptyMap(),
+)
+
+/** One line of an inspection protocol (checklist) – a copy of the item at the time of the work. */
+@Serializable
+data class ProtocolItem(
+    val title: String,
+    val section: String = "",
+    val everyHours: Double? = null,
+    val verified: Boolean = true,
+    val fields: List<String> = emptyList(),
+    val unit: String = "",
+    val values: List<String> = emptyList(),
+    val done: Boolean = false,
+    /** Not applicable on this aircraft. */
+    val na: Boolean = false,
+    val note: String = "",
+)
+
+/** Checklist of one inspection: a draft while working, then the signed-off protocol (PDF). */
+@Serializable
+data class Protocol(
+    val id: String,
+    val aircraftId: String,
+    val taskId: String,
+    val taskTitle: String,
+    val dueAtHours: Double? = null,
+    val items: List<ProtocolItem> = emptyList(),
+    val finished: Boolean = false,
+    val epochDay: Long? = null,
+    val hours: Double? = null,
+    val place: String = "",
+    val mechanic: String = "",
+    val licence: String = "",
+    val notes: String = "",
+    val source: String = "",
+    /** Completion record created when the protocol was finished. */
+    val completionId: String? = null,
+    val updatedMillis: Long = 0,
 )
 
 /** Own maintenance log entry (anything not in the programme: tyres, battery, repairs…). */
@@ -287,6 +333,8 @@ data class AppState(
     val aircraft: List<Aircraft> = emptyList(),
     val selectedId: String? = null,
     val completions: List<CompletionRecord> = emptyList(),
+    /** Inspection checklists: drafts in progress and finished protocols. */
+    val protocols: List<Protocol> = emptyList(),
     val bulletinStatus: List<BulletinStatus> = emptyList(),
     val seenBulletinIds: Set<String> = emptySet(),
     val notifiedBulletinIds: Set<String> = emptySet(),

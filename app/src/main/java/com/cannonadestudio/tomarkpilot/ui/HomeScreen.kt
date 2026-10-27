@@ -99,6 +99,7 @@ fun HomeScreen(
     val lg = lang()
     var hoursDialog by remember { mutableStateOf(false) }
     var bookWork by remember { mutableStateOf<String?>(null) }
+    var checklistFor by remember { mutableStateOf<com.cannonadestudio.tomarkpilot.data.DueInfo?>(null) }
     val due = Maintenance.compute(aircraft, state.completions)
     val attention = due.filter { Maintenance.needsAttention(it) }
     val openBulletins = Repo.openBulletins(aircraft, state, feed)
@@ -116,7 +117,8 @@ fun HomeScreen(
         // Hours left to the next hour-based inspection (hours follow the logbook when linked)
         due.filter { it.remainingHours != null && it.status != com.cannonadestudio.tomarkpilot.data.DueStatus.DONE }
             .minByOrNull { it.remainingHours!! }?.let { d ->
-                NextInspectionCard(d, aircraft, state, lg, onBook = { bookWork = d.task.title.get(lg) }) { onTab(MainActivity.TAB_SERVICE) }
+                NextInspectionCard(d, aircraft, state, lg, onBook = { bookWork = d.task.title.get(lg) }, onChecklist = { checklistFor = d }) { onTab(MainActivity.TAB_SERVICE) }
+                checklistFor?.let { cd -> ChecklistDialog(state, aircraft, cd) { checklistFor = null } }
             } ?: run {
                 // Nothing to count from yet (aircraft added with gaps in the records) – a hint instead of alarms.
                 if (due.any { it.status == com.cannonadestudio.tomarkpilot.data.DueStatus.NO_DATA }) {
@@ -439,7 +441,7 @@ fun EngineSerialLine(a: Aircraft, color: Color) {
 
 
 @Composable
-private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, a: Aircraft, state: AppState, lg: String, onBook: () -> Unit, onClick: () -> Unit) {
+private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, a: Aircraft, state: AppState, lg: String, onBook: () -> Unit, onChecklist: () -> Unit, onClick: () -> Unit) {
     val rem = d.remainingHours ?: return
     val look = statusLook(d.status)
     val numColor = when (d.status) {
@@ -492,7 +494,11 @@ private fun NextInspectionCard(d: com.cannonadestudio.tomarkpilot.data.DueInfo, 
                         else stringResource(R.string.next_insp_manual),
                         style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
-                    Row(Modifier.padding(top = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+                    androidx.compose.material3.Button(
+                        onClick = onChecklist, modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(containerColor = LotNavy),
+                    ) { Text(stringResource(if (Checklist.draft(state, a, d.task.id) != null) R.string.chk_continue else R.string.chk_open)) }
+                    Row(Modifier.padding(top = 2.dp), verticalAlignment = Alignment.CenterVertically) {
                         androidx.compose.material3.FilledTonalButton(onClick = onBook) { Text(stringResource(R.string.req_book)) }
                         Spacer(Modifier.width(6.dp))
                         TextButton(onClick = onClick) { Text(stringResource(R.string.tab_service)) }

@@ -28,8 +28,9 @@ object Maintenance {
 
     /** Task definition with the owner's interval overrides applied. */
     fun effective(t: TaskDef, a: Aircraft): TaskDef {
-        val o = a.taskOverrides[t.id] ?: return t
-        return t.copy(
+        val edited = a.itemEdits[t.id]?.let { t.copy(items = it) } ?: t
+        val o = a.taskOverrides[t.id] ?: return edited
+        return edited.copy(
             intervalHours = o.intervalHours ?: t.intervalHours,
             intervalMonths = o.intervalMonths ?: t.intervalMonths,
         )
@@ -38,6 +39,20 @@ object Maintenance {
     fun isHidden(t: TaskDef, a: Aircraft) = a.taskOverrides[t.id]?.hidden ?: t.defaultHidden
 
     private fun l(pl: String, en: String, sk: String = en, fr: String = en, de: String = en, cs: String = sk) = L10n(pl, en, sk, fr, de, cs)
+
+    private val AIRFRAME = l("Płatowiec", "Airframe", "Drak", "Cellule", "Zelle", "Drak")
+    private val ENGINE = l("Silnik", "Engine", "Motor", "Moteur", "Motor", "Motor")
+
+    private fun prefixed(t: L10n, p: L10n) = L10n(
+        p.pl + ": " + t.pl, p.en + ": " + t.en, t.sk?.let { p.sk + ": " + it }, t.fr?.let { p.fr + ": " + it },
+        t.de?.let { p.de + ": " + it }, t.cs?.let { p.cs + ": " + it },
+    )
+
+    /** "Silnik: Wymiana oleju" -> ("Silnik", "Wymiana oleju") – the checklist groups items by that prefix. */
+    fun splitSection(title: String): Pair<String, String> {
+        val i = title.indexOf(": ")
+        return if (i in 1..24) title.substring(0, i) to title.substring(i + 2) else "" to title
+    }
 
     private fun fmt(h: Double) = if (h % 1.0 == 0.0) h.toInt().toString() else h.toString()
 
@@ -63,11 +78,12 @@ object Maintenance {
                     "Visite périodique $h h / $m mois", "Regelinspektion $h h / $m Monate", "Periodická prohlídka $h h / $m měs."),
                 category = "periodic",
                 intervalMonths = m,
-                items = listOf(
+                items = (afBase.items.takeIf { it.isNotEmpty() }?.map { it.copy(title = prefixed(it.title, AIRFRAME)) } ?: listOf(
                     TaskItem(l("Płatowiec: przegląd okresowy wg instrukcji obsługi producenta", "Airframe: periodic inspection per the maintenance manual",
                         "Drak: periodická prehliadka podľa príručky údržby", "Cellule : visite selon le manuel d'entretien",
                         "Zelle: Inspektion nach Wartungshandbuch", "Drak: periodická prohlídka dle příručky údržby"), verified = afBase.verified),
-                ) + engBase.items.map { it.copy(title = it.title.copy(pl = "Silnik: " + it.title.pl, en = "Engine: " + it.title.en)) },
+                )) + engBase.items.map { it.copy(title = prefixed(it.title, ENGINE)) },
+                itemsSource = listOf(afBase.itemsSource, engBase.itemsSource).filter { it.isNotBlank() }.joinToString(" · "),
                 aliases = engBase.aliases + afBase.id + afBase.aliases,
                 source = listOf(afBase.source, engBase.source).filter { it.isNotBlank() }.joinToString(" · "),
                 mandatory = true,

@@ -64,7 +64,13 @@
        "fr": "Oil change, oil tank cleaning"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -114,7 +120,14 @@
        "fr": "Carburettor synchronisation (pneumatic) and idle speed"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -134,7 +147,14 @@
        "fr": "Propeller gearbox friction torque check"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Moment",
+        "en": "Torque"
+       }
+      ],
+      "unit": "Nm"
      },
      {
       "title": {
@@ -174,7 +194,14 @@
        "fr": "Engine test run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -184,7 +211,26 @@
        "fr": "Differential compression check"
       },
       "everyHours": 200,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -194,7 +240,26 @@
        "fr": "Spark plug connector pull-off force check (min. 30 N)"
       },
       "everyHours": 200,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Fajka 1",
+        "en": "Cap 1"
+       },
+       {
+        "pl": "Fajka 2",
+        "en": "Cap 2"
+       },
+       {
+        "pl": "Fajka 3",
+        "en": "Cap 3"
+       },
+       {
+        "pl": "Fajka 4",
+        "en": "Cap 4"
+       }
+      ],
+      "unit": "N"
      },
      {
       "title": {
@@ -319,7 +384,13 @@
        "fr": "Oil change, oil tank cleaning"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -369,7 +440,14 @@
        "fr": "Carburettor synchronisation (pneumatic) and idle speed"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -389,7 +467,14 @@
        "fr": "Propeller gearbox friction torque check"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Moment",
+        "en": "Torque"
+       }
+      ],
+      "unit": "Nm"
      },
      {
       "title": {
@@ -429,7 +514,14 @@
        "fr": "Engine test run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      }
     ],
     "defaultHidden": false
@@ -465,7 +557,13 @@
        "fr": "Oil change and oil tank cleaning"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -677,7 +775,13 @@
        "fr": "Oil change (approx. 3 l), oil tank cleaning"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -757,7 +861,14 @@
        "fr": "Engine test run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -767,7 +878,26 @@
        "fr": "Differential compression check"
       },
       "everyHours": 200,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -777,7 +907,26 @@
        "fr": "Spark plug connector pull-off force (min. 30 N)"
       },
       "everyHours": 200,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Fajka 1",
+        "en": "Cap 1"
+       },
+       {
+        "pl": "Fajka 2",
+        "en": "Cap 2"
+       },
+       {
+        "pl": "Fajka 3",
+        "en": "Cap 3"
+       },
+       {
+        "pl": "Fajka 4",
+        "en": "Cap 4"
+       }
+      ],
+      "unit": "N"
      },
      {
       "title": {
@@ -872,7 +1021,13 @@
        "fr": "Oil change (approx. 3 l), oil tank cleaning"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -952,7 +1107,14 @@
        "fr": "Engine test run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      }
     ],
     "defaultHidden": false
@@ -1134,7 +1296,13 @@
        "fr": "Oil change, oil tank cleaning"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -1184,7 +1352,14 @@
        "fr": "Carburettor synchronisation and idle speed"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -1194,7 +1369,14 @@
        "fr": "Gearbox friction torque check"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Moment",
+        "en": "Torque"
+       }
+      ],
+      "unit": "Nm"
      },
      {
       "title": {
@@ -1214,7 +1396,14 @@
        "fr": "Engine test run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -1224,7 +1413,26 @@
        "fr": "Differential compression check"
       },
       "everyHours": 200,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -1244,7 +1452,26 @@
        "fr": "Spark plug connector pull-off test (min. 30 N)"
       },
       "everyHours": 200,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Fajka 1",
+        "en": "Cap 1"
+       },
+       {
+        "pl": "Fajka 2",
+        "en": "Cap 2"
+       },
+       {
+        "pl": "Fajka 3",
+        "en": "Cap 3"
+       },
+       {
+        "pl": "Fajka 4",
+        "en": "Cap 4"
+       }
+      ],
+      "unit": "N"
      },
      {
       "title": {
@@ -1369,7 +1596,13 @@
        "fr": "Oil change, oil tank cleaning"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -1419,7 +1652,14 @@
        "fr": "Carburettor synchronisation and idle speed"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -1429,7 +1669,14 @@
        "fr": "Gearbox friction torque check"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Moment",
+        "en": "Torque"
+       }
+      ],
+      "unit": "Nm"
      },
      {
       "title": {
@@ -1449,7 +1696,14 @@
        "fr": "Engine test run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      }
     ],
     "defaultHidden": false
@@ -1636,7 +1890,13 @@
        "fr": "Oil change, oil tank cleaning, turbo oil sump screen"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -1676,7 +1936,26 @@
        "fr": "Spark plug inspection, connector pull-off force (min. 30 N)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Fajka 1",
+        "en": "Cap 1"
+       },
+       {
+        "pl": "Fajka 2",
+        "en": "Cap 2"
+       },
+       {
+        "pl": "Fajka 3",
+        "en": "Cap 3"
+       },
+       {
+        "pl": "Fajka 4",
+        "en": "Cap 4"
+       }
+      ],
+      "unit": "N"
      },
      {
       "title": {
@@ -1706,7 +1985,14 @@
        "fr": "Engine test run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -1716,7 +2002,26 @@
        "fr": "Differential compression check"
       },
       "everyHours": 200,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -1796,7 +2101,13 @@
        "fr": "Oil change, oil tank cleaning, turbo oil sump screen"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -1836,7 +2147,26 @@
        "fr": "Spark plug inspection, connector pull-off force (min. 30 N)"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Fajka 1",
+        "en": "Cap 1"
+       },
+       {
+        "pl": "Fajka 2",
+        "en": "Cap 2"
+       },
+       {
+        "pl": "Fajka 3",
+        "en": "Cap 3"
+       },
+       {
+        "pl": "Fajka 4",
+        "en": "Cap 4"
+       }
+      ],
+      "unit": "N"
      },
      {
       "title": {
@@ -1866,7 +2196,14 @@
        "fr": "Engine test run"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      }
     ],
     "defaultHidden": false
@@ -2033,7 +2370,13 @@
        "fr": "Oil and oil filter change, magnetic plug"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -2143,7 +2486,13 @@
        "fr": "Replace gearbox oil"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -2153,7 +2502,13 @@
        "fr": "Replace rotary valve lubrication oil"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -2315,7 +2670,18 @@
        "fr": "Compression check"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -2356,7 +2722,14 @@
        "fr": "Check/clean carburettors, readjust idle and cable tension"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -2711,7 +3084,13 @@
        "fr": "Oil change – switch from non-compounded run-in oil to compounded aviation oil"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -2792,7 +3171,13 @@
        "fr": "Oil and oil filter change (2.3 l)"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -2858,7 +3243,14 @@
        "fr": "Engine test run, check temperatures and pressures"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      }
     ],
     "defaultHidden": false
@@ -3066,7 +3458,13 @@
        "fr": "Oil change – switch from non-compounded run-in oil to compounded aviation oil"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -3147,7 +3545,13 @@
        "fr": "Oil and oil filter change (3.5 l)"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -3213,7 +3617,14 @@
        "fr": "Engine test run, check temperatures and pressures"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      }
     ],
     "defaultHidden": false
@@ -3375,7 +3786,13 @@
        "fr": "Oil and filter change"
       },
       "everyHours": null,
-      "verified": false
+      "verified": false,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -3582,7 +3999,13 @@
        "fr": "Oil change (approx. 3 l (iSA: 4 l)), clean magnetic drain plug, new copper washer (25 Nm)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -3662,7 +4085,25 @@
        "fr": "Differential compression check (at least once a year; every 50 h with leaded fuel)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ]
      },
      {
       "title": {
@@ -3672,7 +4113,14 @@
        "fr": "Engine test run, ignition coil test, idle check, re-check oil filter torque and oil level"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -3763,7 +4211,13 @@
        "fr": "Oil change (approx. 3 l (iSA: 4 l)), clean magnetic drain plug, new copper washer (25 Nm)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -3803,7 +4257,14 @@
        "fr": "Engine test run, ignition coil test, idle check, re-check oil filter torque and oil level"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -4000,7 +4461,13 @@
        "fr": "Oil change (approx. 3 l (iSA: 4 l)), clean magnetic drain plug, new copper washer (25 Nm)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -4080,7 +4547,25 @@
        "fr": "Differential compression check (at least once a year; every 50 h with leaded fuel)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ]
      },
      {
       "title": {
@@ -4090,7 +4575,14 @@
        "fr": "Engine test run, ignition coil test, idle check, re-check oil filter torque and oil level"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -4181,7 +4673,13 @@
        "fr": "Oil change (approx. 3 l (iSA: 4 l)), clean magnetic drain plug, new copper washer (25 Nm)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -4221,7 +4719,14 @@
        "fr": "Engine test run, ignition coil test, idle check, re-check oil filter torque and oil level"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -4418,7 +4923,13 @@
        "fr": "Oil change (approx. 4 l (iSA: 5 l)), clean magnetic drain plug, new copper washer (25 Nm)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -4498,7 +5009,25 @@
        "fr": "Differential compression check (at least once a year; every 50 h with leaded fuel)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ]
      },
      {
       "title": {
@@ -4508,7 +5037,14 @@
        "fr": "Engine test run, ignition coil test, idle check, re-check oil filter torque and oil level"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -4599,7 +5135,13 @@
        "fr": "Oil change (approx. 4 l (iSA: 5 l)), clean magnetic drain plug, new copper washer (25 Nm)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -4639,7 +5181,14 @@
        "fr": "Engine test run, ignition coil test, idle check, re-check oil filter torque and oil level"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -4836,7 +5385,13 @@
        "fr": "Oil change (approx. 4 l (iSA: 5 l)), clean magnetic drain plug, new copper washer (25 Nm)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -4916,7 +5471,25 @@
        "fr": "Differential compression check (at least once a year; every 50 h with leaded fuel)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ]
      },
      {
       "title": {
@@ -4926,7 +5499,14 @@
        "fr": "Engine test run, ignition coil test, idle check, re-check oil filter torque and oil level"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -5017,7 +5597,13 @@
        "fr": "Oil change (approx. 4 l (iSA: 5 l)), clean magnetic drain plug, new copper washer (25 Nm)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -5057,7 +5643,14 @@
        "fr": "Engine test run, ignition coil test, idle check, re-check oil filter torque and oil level"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty",
+        "en": "Idle"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -5304,7 +5897,25 @@
        "fr": "Compression check"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ]
      },
      {
       "title": {
@@ -5385,7 +5996,13 @@
        "fr": "Oil and oil filter change; check drain screw magnet"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -5506,7 +6123,13 @@
        "fr": "Oil and oil filter change; check drain screw magnet"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -5697,7 +6320,26 @@
        "fr": "Cylinder compression test (differential, SI 1191A)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -5837,7 +6479,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -5912,7 +6560,26 @@
        "fr": "Cylinder compression test (differential, SI 1191A)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -6052,7 +6719,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -6127,7 +6800,26 @@
        "fr": "Cylinder compression test (differential, SI 1191A)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -6267,7 +6959,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -6342,7 +7040,26 @@
        "fr": "Cylinder compression test (differential, SI 1191A)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -6482,7 +7199,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -6557,7 +7280,34 @@
        "fr": "Cylinder compression test (differential, SI 1191A)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       },
+       {
+        "pl": "Cyl 5",
+        "en": "Cyl 5"
+       },
+       {
+        "pl": "Cyl 6",
+        "en": "Cyl 6"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -6697,7 +7447,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -6772,7 +7528,34 @@
        "fr": "Cylinder compression test (differential, SI 1191A)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       },
+       {
+        "pl": "Cyl 5",
+        "en": "Cyl 5"
+       },
+       {
+        "pl": "Cyl 6",
+        "en": "Cyl 6"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -6922,7 +7705,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      },
      {
       "title": {
@@ -6997,7 +7786,26 @@
        "fr": "Cylinder compression test (differential)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -7077,7 +7885,14 @@
        "fr": "Post-inspection engine run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -7127,7 +7942,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      }
     ]
    },
@@ -7211,7 +8032,26 @@
        "fr": "Cylinder compression test (differential)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -7291,7 +8131,14 @@
        "fr": "Post-inspection engine run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -7341,7 +8188,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      }
     ]
    },
@@ -7425,7 +8278,34 @@
        "fr": "Cylinder compression test (differential)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       },
+       {
+        "pl": "Cyl 5",
+        "en": "Cyl 5"
+       },
+       {
+        "pl": "Cyl 6",
+        "en": "Cyl 6"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -7505,7 +8385,14 @@
        "fr": "Post-inspection engine run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -7555,7 +8442,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      }
     ]
    },
@@ -7639,7 +8532,34 @@
        "fr": "Cylinder compression test (differential)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       },
+       {
+        "pl": "Cyl 5",
+        "en": "Cyl 5"
+       },
+       {
+        "pl": "Cyl 6",
+        "en": "Cyl 6"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -7719,7 +8639,14 @@
        "fr": "Post-inspection engine run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -7779,7 +8706,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      }
     ]
    },
@@ -7863,7 +8796,34 @@
        "fr": "Cylinder compression test (differential)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       },
+       {
+        "pl": "Cyl 5",
+        "en": "Cyl 5"
+       },
+       {
+        "pl": "Cyl 6",
+        "en": "Cyl 6"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -7943,7 +8903,14 @@
        "fr": "Post-inspection engine run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -8003,7 +8970,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      }
     ]
    },
@@ -8087,7 +9060,34 @@
        "fr": "Cylinder compression test (differential)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       },
+       {
+        "pl": "Cyl 5",
+        "en": "Cyl 5"
+       },
+       {
+        "pl": "Cyl 6",
+        "en": "Cyl 6"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -8177,7 +9177,14 @@
        "fr": "Post-inspection engine run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -8237,7 +9244,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      }
     ]
    },
@@ -8321,7 +9334,34 @@
        "fr": "Cylinder compression test (differential)"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       },
+       {
+        "pl": "Cyl 5",
+        "en": "Cyl 5"
+       },
+       {
+        "pl": "Cyl 6",
+        "en": "Cyl 6"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
@@ -8411,7 +9451,14 @@
        "fr": "Post-inspection engine run"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Obroty max (statycznie)",
+        "en": "Static max rpm"
+       }
+      ],
+      "unit": "rpm"
      },
      {
       "title": {
@@ -8471,7 +9518,13 @@
        "fr": "Oil and filter change, cut filter open"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Olej / ilość",
+        "en": "Oil / quantity"
+       }
+      ]
      }
     ]
    },
@@ -8555,7 +9608,45 @@
        "fr": "Cylinder compression check"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       },
+       {
+        "pl": "Cyl 5",
+        "en": "Cyl 5"
+       },
+       {
+        "pl": "Cyl 6",
+        "en": "Cyl 6"
+       },
+       {
+        "pl": "Cyl 7",
+        "en": "Cyl 7"
+       },
+       {
+        "pl": "Cyl 8",
+        "en": "Cyl 8"
+       },
+       {
+        "pl": "Cyl 9",
+        "en": "Cyl 9"
+       }
+      ]
      },
      {
       "title": {
@@ -8681,7 +9772,26 @@
        "fr": "Cylinder compression check"
       },
       "everyHours": null,
-      "verified": true
+      "verified": true,
+      "fields": [
+       {
+        "pl": "Cyl 1",
+        "en": "Cyl 1"
+       },
+       {
+        "pl": "Cyl 2",
+        "en": "Cyl 2"
+       },
+       {
+        "pl": "Cyl 3",
+        "en": "Cyl 3"
+       },
+       {
+        "pl": "Cyl 4",
+        "en": "Cyl 4"
+       }
+      ],
+      "unit": "/80"
      },
      {
       "title": {
