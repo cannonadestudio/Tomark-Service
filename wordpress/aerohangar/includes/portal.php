@@ -152,7 +152,7 @@ function ah_portal_html(): string
     $page = ah_login_page_url();
     $css = '<style>.ahp{max-width:980px}.ahp-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px}.ahp-tabs a{padding:7px 14px;border-radius:999px;border:1px solid #0B2A5B;color:#0B2A5B;text-decoration:none}.ahp-tabs a.on{background:#0B2A5B;color:#fff}.ahp-card{border:1px solid #DDE3EB;border-radius:14px;padding:16px 18px;margin-bottom:14px}.ahp table{width:100%;border-collapse:collapse;font-size:.95em}.ahp td,.ahp th{padding:7px 8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}.ahp .muted{color:#55606F;font-size:.9em}.ahp input[type=text],.ahp input[type=email],.ahp input[type=url],.ahp textarea{width:100%;padding:7px 9px;border:1px solid #ccc;border-radius:8px}.ahp label{display:block;margin:8px 0 3px;font-weight:600}.ahp .cna-btn,.ahp button.cna-btn{background:#0B2A5B;color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;display:inline-block}.ahp .chip{display:inline-block;padding:2px 10px;border-radius:999px;background:#E6EEF8;margin:2px 4px 2px 0;font-size:.9em}.ahp .ok{color:#1b7a3d}.ahp .cna-offer{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:10px 0 4px}.ahp .cna-offer>div{border:1px solid #DDE3EB;border-radius:12px;padding:12px 14px;background:#fff}.ahp .cna-offer b{display:block;color:#0B2A5B}.ahp h3{color:#0B2A5B}.ahp .bad{color:#C62828}</style>';
 
-    $css .= ah_dashboard_css();
+    $css .= ah_dashboard_css() . ah_checklist_css();
     if (!is_user_logged_in()) {
         $h = '<div class="ahp">' . ah_login_form_html()
             . '<p class="muted" style="text-align:center">Konto dla pilotów i właścicieli, mechaników, szkół lotniczych, dealerów i serwisów – karta samolotu z terminami przeglądów, biuletyny, flota i klucz do aplikacji.</p>';
@@ -208,6 +208,7 @@ function ah_portal_html(): string
 
     $tabs = ['card' => 'Karta', 'start' => 'Moje AeroHangar'];
     if (in_array('app', $caps, true) || get_user_meta($uid, 'cannonade_key_hint', true)) $tabs['key'] = 'Klucz do aplikacji';
+    if (in_array('fleet', $caps, true)) $tabs['check'] = 'Checklista';
     if (in_array('fleet', $caps, true)) $tabs['fleet'] = 'Flota';
     if ($cid && in_array('requests', $caps, true)) $tabs['requests'] = 'Zapytania';
     if ($cid && in_array('listing', $caps, true)) $tabs['listing'] = 'Wizytówka';
@@ -229,6 +230,10 @@ function ah_portal_html(): string
         case 'card':
             if ($perm['blocked']) { $h .= '<p class="bad"><b>Konto zablokowane przez administratora.</b></p>'; break; }
             $h .= ah_dashboard_html($uid, $page);
+            break;
+
+        case 'check':
+            $h .= ah_checklist_html($uid, $page);
             break;
 
         case 'start':

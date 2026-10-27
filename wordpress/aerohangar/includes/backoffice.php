@@ -148,6 +148,12 @@ function ah_state_apply(array &$s, array $op): void
                 $s['bulletinStatus'][] = $row;
             }
             break;
+        case 'protocol_save':
+        case 'protocol_delete':
+        case 'protocol_finish':
+        case 'items_edit':
+            ah_chk_apply($s, $op);
+            break;
     }
 }
 

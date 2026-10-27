@@ -355,7 +355,7 @@ function ah_state_maps($d)
 {
     if (!is_array($d)) return $d;
     foreach ((array)($d['aircraft'] ?? []) as $i => $a) {
-        foreach (['speedOverrides', 'taskOverrides'] as $k) {
+        foreach (['speedOverrides', 'taskOverrides', 'itemEdits'] as $k) {
             if (!isset($a[$k]) || (is_array($a[$k]) && !$a[$k])) $d['aircraft'][$i][$k] = new stdClass();
         }
     }

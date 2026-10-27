@@ -150,11 +150,15 @@ function ah_mx_tasks(array $a, array $cat): array
         $af = $airframe[$afBase];
         $h = ah_fmt_h((float)$e['intervalHours']);
         $m = min((int)$e['intervalMonths'], (int)$af['intervalMonths']);
-        $items = [['title' => 'Płatowiec: przegląd okresowy wg instrukcji obsługi producenta']];
-        foreach ((array)($e['items'] ?? []) as $it) $items[] = ['title' => 'Silnik: ' . ah_l10n($it['title'] ?? ''), 'everyHours' => $it['everyHours'] ?? null];
+        $items = [];
+        foreach ((array)($af['items'] ?? []) as $it) $items[] = array_merge($it, ['title' => 'Płatowiec: ' . ah_l10n($it['title'] ?? '')]);
+        if (!$items) $items[] = ['title' => 'Płatowiec: przegląd okresowy wg instrukcji obsługi producenta'];
+        foreach ((array)($e['items'] ?? []) as $it) $items[] = array_merge($it, ['title' => 'Silnik: ' . ah_l10n($it['title'] ?? '')]);
         $out[] = array_merge($e, [
             'title' => "Przegląd okresowy $h h / $m mies.", 'category' => 'periodic', 'intervalMonths' => $m, 'items' => $items,
             'aliases' => array_merge((array)($e['aliases'] ?? []), [$af['id']], (array)($af['aliases'] ?? [])), 'mandatory' => true,
+            'source' => implode(' · ', array_filter([(string)($af['source'] ?? ''), (string)($e['source'] ?? '')])),
+            'itemsSource' => implode(' · ', array_filter([(string)($af['itemsSource'] ?? ''), (string)($e['itemsSource'] ?? '')])),
         ]);
         unset($airframe[$afBase], $engine[$engBase]);
     }
@@ -189,6 +193,8 @@ function ah_mx_compute(array $a, array $s, array $cat): array
         $id = (string)($t['id'] ?? '');
         $o = $ov[$id] ?? null;
         if (array_key_exists('hidden', (array)$o) ? !empty($o['hidden']) : !empty($t['defaultHidden'])) continue;
+        $ie = (array)($a['itemEdits'] ?? []);
+        if (isset($ie[$id]) && is_array($ie[$id])) $t['items'] = $ie[$id];
         if (is_array($o)) {
             if (isset($o['intervalHours'])) $t['intervalHours'] = $o['intervalHours'];
             if (isset($o['intervalMonths'])) $t['intervalMonths'] = $o['intervalMonths'];
@@ -414,7 +420,8 @@ function ah_dashboard_html(int $uid, string $page): string
             . '<span class="ahd-st" style="background:' . $col . '">' . esc_html($label) . '</span><span class="ahd-chev">▾</span></summary>'
             . '<div class="ahd-next-body"><p><b>' . esc_html(ah_l10n($next['task']['title'] ?? '')) . '</b> przy ' . esc_html(ah_fmt_h((float)$next['dueHours'])) . ' h'
             . ($next['dueDay'] !== null ? ' · najpóźniej ' . esc_html(ah_day_str($next['dueDay'])) : '') . '</p>'
-            . ($li ? '<ul>' . $li . '</ul>' : '') . '<p class="muted">' . esc_html($src) . '</p></div></details>';
+            . ($li ? '<ul>' . $li . '</ul>' : '') . '<p class="muted">' . esc_html($src) . '</p>'
+            . ($items ? '<p><a class="ahd-btn" href="' . esc_url(add_query_arg(['ah' => 'check', 'ac' => $a['id'] ?? '', 'task' => $next['task']['id']], $page)) . '">' . (ah_chk_draft($s, (string)($a['id'] ?? ''), (string)$next['task']['id']) ? 'Kontynuuj checklistę' : 'Checklista') . '</a></p>' : '') . '</div></details>';
     } elseif (array_filter($due, fn($d) => $d['status'] === 'NO_DATA')) {
         $h .= '<div class="ahp-card"><span class="ahd-lbl">Do kolejnego przeglądu</span><p>Brak danych do wyliczenia – wpisz w aplikacji, kiedy przeglądy były wykonane ostatnio.</p></div>';
     }

@@ -82,10 +82,19 @@ function ah_pull_github(string $by): array
         $cur = ah_read_editable('types');
         $types = $cur ? json_decode($cur, true) : [];
         $byId = []; foreach ($gt as $t) $byId[$t['id']] = $t;
-        $added = 0; $upgraded = 0; $have = [];
+        $added = 0; $upgraded = 0; $have = []; $checklists = 0;
         foreach ($types as &$t) {
             $have[$t['id']] = 1;
             $g = $byId[$t['id']] ?? null;
+            // checklists added on GitHub reach tasks that still have no item list here (edited lists stay)
+            if ($g) {
+                $gtasks = []; foreach ((array)($g['tasks'] ?? []) as $gk) $gtasks[$gk['id']] = $gk;
+                foreach ($t['tasks'] as &$k) {
+                    $gk = $gtasks[$k['id']] ?? null;
+                    if ($gk && empty($k['items']) && !empty($gk['items'])) { $k['items'] = $gk['items']; if (!empty($gk['itemsSource'])) $k['itemsSource'] = $gk['itemsSource']; $checklists++; }
+                }
+                unset($k);
+            }
             if ($g && empty($t['engine'])) {
                 $t['engine'] = $g['engine'] ?? 'rotax_912';
                 $t['kind'] = $g['kind'] ?? 'airplane';
@@ -96,8 +105,8 @@ function ah_pull_github(string $by): array
         }
         unset($t);
         foreach ($gt as $t) if (!isset($have[$t['id']])) { $types[] = $t; $added++; }
-        if ($added || $upgraded) { ah_backup('types', $cur); ah_write_editable('types', $types); ah_log($by, "pull types: $added new, $upgraded upgraded"); }
-        $res['types'] = ['new' => $added, 'upgraded' => $upgraded, 'total' => count($types)];
+        if ($added || $upgraded || $checklists) { ah_backup('types', $cur); ah_write_editable('types', $types); ah_log($by, "pull types: $added new, $upgraded upgraded, $checklists checklists"); }
+        $res['types'] = ['new' => $added, 'upgraded' => $upgraded, 'checklists' => $checklists, 'total' => count($types)];
     } else {
         $res['types'] = ['error' => 'download failed'];
     }
@@ -111,6 +120,8 @@ function ah_pull_github(string $by): array
     } else {
         $res['engines'] = ['error' => 'download failed'];
     }
+    // approved checklist corrections stay on top of the lists from GitHub
+    do_action('aerohangar_after_pull');
     update_option('aerohangar_last_pull', ['time' => time(), 'by' => $by, 'result' => $res], false);
     return $res;
 }

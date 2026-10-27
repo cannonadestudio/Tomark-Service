@@ -2,7 +2,7 @@
 Contributors: Cannonade Łukasz Bełdowski
 Requires at least: 6.2
 Requires PHP: 8.1
-Stable tag: 1.11.0
+Stable tag: 1.12.0
 License: GPLv2 or later
 
 Serwer aplikacji AeroHangar w WordPressie + konta pilotów (Konto Cannonade: jeden klucz dla AeroHangar i Pilot Logbook) + sprzedaż dostępu przez WooCommerce.
@@ -31,6 +31,12 @@ UWAGA (Google Play): w aplikacji z Google Play nie umieszczaj linków ani przyci
 Publiczne: wp-content/uploads/aerohangar/data/*.json. Prywatne: tabela {prefix}aerohangar_store w bazie WordPressa (kopia bazy = kopia wszystkiego).
 
 == Changelog ==
+
+= 1.12.0 =
+* Checklisty przeglądów: zakładka „Checklista” na stronie klienta (piloci, mechanicy) – prace wypadające przy przeglądzie, odhaczanie, wartości pomiarów, uwagi, „nie dotyczy”, edycja listy dla samolotu, zakończenie przeglądu z protokołem do druku / PDF; zsynchronizowane z aplikacją.
+* Poprawki checklist: propozycje z aplikacji i ze strony czekają w AeroHangar → Poprawki checklist; zatwierdzone trafiają do wspólnych list i zostają po codziennej aktualizacji z GitHuba.
+* Dzienna aktualizacja dokłada nowe listy prac do istniejących typów samolotów.
+
 
 = 1.11.0 =
 * Strona klienta: zakładka „Karta” jak ekran główny aplikacji – samolot, ramka „Do kolejnego przeglądu” z listą prac, terminy, otwarte biuletyny, rotujący baner sponsora (REKLAMA) i partnerzy.

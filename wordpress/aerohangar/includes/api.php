@@ -162,6 +162,10 @@ function ah_api_dispatch(): void
             });
             ah_out(200, ['ok' => true, 'pro' => (bool)$granted]);
     
+        case 'checklist_suggest':
+            // Correction of an inspection checklist proposed from the app – reviewed in wp-admin → Poprawki checklist.
+            ah_chk_suggest_api((array)$body);
+
         case 'submit':
             // Contact proposed from the app – waits in the panel until the owner accepts it.
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') ah_out(405, ['error' => 'POST only']);
