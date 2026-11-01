@@ -41,6 +41,21 @@ function ah_login_form_html(): string
     ob_start();
     do_action('login_form');
     $extra = (string)ob_get_clean();
+    // Jetpack Protect (brute-force protection) adds its math question only on wp-login.php, but checks it at every login
+    if (!str_contains($extra, 'jetpack_protect')) {
+        foreach (['Automattic\\Jetpack\\Waf\\Brute_Force_Protection\\Brute_Force_Protection_Math_Authenticate', 'Jetpack_Protect_Math_Authenticate'] as $c) {
+            if (!class_exists($c) || !method_exists($c, 'math_form')) continue;
+            try {
+                if (!(new ReflectionMethod($c, 'math_form'))->isStatic()) continue;
+                ob_start();
+                $c::math_form();
+                $extra .= '<div class="ahl-captcha">' . ob_get_clean() . '</div>';
+            } catch (Throwable $e) {
+                if (ob_get_level()) ob_end_clean();
+            }
+            break;
+        }
+    }
     $page = ah_login_page_url();
     return '<div class="ahl">'
         . '<div class="ahl-head"><span class="ahl-logo">✈</span><div><b>AeroHangar</b><small>Zaloguj się do swojego konta</small></div></div>'
@@ -496,6 +511,6 @@ function ah_dashboard_css(): string
 .ahl-body{padding:18px 22px 20px}.ahl-body label{display:block;font-weight:700;color:#0B2A5B;margin:10px 0 4px}.ahl-body input[type=text],.ahl-body input[type=password],.ahl-body input[type=email],.ahl-body input[type=number]{width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid #C9D2DE;border-radius:10px;font-size:1em}
 .ahl-body input:focus{outline:2px solid #1C5DB8;border-color:#1C5DB8}.ahl-body label.ahl-rem{font-weight:400;color:#333;display:flex;gap:6px;align-items:center}
 .ahl-btn{width:100%;margin-top:14px;background:#0B2A5B;color:#fff;border:0;border-radius:999px;padding:11px;font-size:1em;font-weight:700;cursor:pointer}.ahl-btn:hover{background:#1C5DB8}
-.ahl-err{background:#FDECEC;color:#C62828;border-radius:10px;padding:8px 12px;font-weight:700}.ahl-links{text-align:center;margin:12px 0 0}
+.ahl-captcha{margin:10px 0 0;color:#0B2A5B;font-weight:700}.ahl-captcha input{width:70px!important;height:auto!important;padding:6px 8px!important;border:1px solid #C9D2DE!important;border-radius:8px}.ahl-err{background:#FDECEC;color:#C62828;border-radius:10px;padding:8px 12px;font-weight:700}.ahl-links{text-align:center;margin:12px 0 0}
 </style>';
 }
