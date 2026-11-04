@@ -1,6 +1,6 @@
 {
- "version": 5,
- "updated": "2026-10-26",
+ "version": 6,
+ "updated": "2026-11-04",
  "bulletins": [
   {
    "id": "LYCOMING-DOCS",
@@ -1339,6 +1339,17 @@
    "kind": "SB",
    "mandatory": null,
    "url": "https://remos.com/wp-content/uploads/2017/03/SB-001-landing-gear_01.pdf"
+  },
+  {
+   "id": "EVEKTORRTCSBRTC085AR1",
+   "date": "2026-10-19",
+   "title": "sb-rtc-085a-r1: Service | Inspect the trailing edge ribs visually.",
+   "groups": [
+    "EVEKTOR_RTC"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/sb-rtc-085a-r1-en"
   },
   {
    "id": "ROTAX-SI-912-037",
