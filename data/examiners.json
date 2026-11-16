@@ -1,6 +1,6 @@
 {
- "version": 6,
- "updated": "2026-11-09",
+ "version": 7,
+ "updated": "2026-11-16",
  "source": "https://ulc.gov.pl/personel-lotniczy/komisja-egzaminacyjna/egzaminy-praktyczne",
  "contacts": [
   {
@@ -2031,6 +2031,23 @@
    "lat": 51.0979144,
    "lon": 17.0306819,
    "phone": "223381666",
+   "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
+   "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
+  },
+  {
+   "id": "ulc-ame-artur-chełmicki-katowice",
+   "name": "Artur Chełmicki",
+   "kind": "ame",
+   "brands": [
+    "Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe"
+   ],
+   "country": "PL",
+   "city": "Katowice",
+   "address": "Gabinet badań lotniczo-lekarskich 40-239 Katowice, 40-239 Katowice",
+   "lat": 50.2584506,
+   "lon": 19.0531636,
+   "phone": "575930875",
+   "email": "ame.katowice@gmail.com",
    "note": "Lekarz orzecznik medycyny lotniczej (AME). Klasa 1, 2, 3, LAPL oraz orzeczenia krajowe",
    "source": "https://ulc.gov.pl/personel-lotniczy/medycyna-lotnicza/lekarze-orzecznicy"
   },
