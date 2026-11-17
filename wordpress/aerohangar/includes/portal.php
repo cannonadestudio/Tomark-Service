@@ -216,7 +216,7 @@ function ah_portal_html(): string
     if ($cid && in_array('listing', $caps, true)) $tabs['listing'] = 'Wizytówka';
     if ($cid && in_array('stats', $caps, true)) $tabs['stats'] = 'Statystyki';
     // the data base (bulletins, types, contacts…) right on this page, without wp-admin
-    if (ah_is_staff() || ah_client_panel($uid)) $tabs['panel'] = 'Baza AeroHangar';
+    if (ah_backoffice_allowed($uid)) $tabs['panel'] = 'Baza AeroHangar';
     $all = $tabs + $set;
     $tab = isset($all[$_GET['ah'] ?? '']) ? $_GET['ah'] : (ah_has_access($uid) ? 'card' : 'start');
     $link = fn($t) => esc_url(add_query_arg('ah', $t, $page));

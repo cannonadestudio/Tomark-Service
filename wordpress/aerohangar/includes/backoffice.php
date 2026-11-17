@@ -42,11 +42,33 @@ function ah_is_staff(): bool
     return current_user_can('aerohangar_view') || current_user_can('manage_options');
 }
 
-/** May this account open the panel as a client (has access and at least one section or its fleet)? */
+/** May this account open the panel as a client? Only mechanic accounts (plan „Mechanik”) with access. */
 function ah_client_panel(int $uid): bool
 {
-    return $uid && ah_has_access($uid) && (ah_user_sections($uid) || ah_can($uid, 'fleet'));
+    return $uid && ah_has_access($uid) && (ah_permissions($uid)['plan'] ?? '') === 'mechanic'
+        && (ah_user_sections($uid) || ah_can($uid, 'fleet'));
 }
+
+/** The back office („Zaplecze AeroHangar”): administrator / AeroHangar team and mechanic accounts only. */
+function ah_backoffice_allowed(int $uid = 0): bool
+{
+    $uid = $uid ?: get_current_user_id();
+    if (!$uid) return false;
+    if (user_can($uid, 'manage_options') || user_can($uid, 'aerohangar_view')) return true;
+    return ah_client_panel($uid);
+}
+
+// Menu: the „Zaplecze AeroHangar” item (any link to /aerohangar-panel) only for those who may open it.
+add_filter('wp_nav_menu_objects', function ($items) {
+    if (ah_backoffice_allowed()) return $items;
+    $gone = [];
+    foreach ($items as $k => $it) {
+        if (preg_match('~/(index\.php/)?(aerohangar-panel|panel-aerohangar|zaplecze)/?(\?|#|$)~', (string)$it->url)) { $gone[] = (int)$it->ID; unset($items[$k]); }
+    }
+    // sub-items of a removed item go too
+    foreach ($items as $k => $it) if (in_array((int)$it->menu_item_parent, $gone, true)) unset($items[$k]);
+    return $items;
+}, 20);
 
 /**
  * Login check for a panel action. $section: null = staff only; string/array = also clients with that section
