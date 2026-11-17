@@ -270,6 +270,42 @@ object Repo {
         }
     }
 
+    /**
+     * Login with the Pilot Logbook account (e-mail or login + password). Pilot Logbook is the master account:
+     * it issues the device key (plb_…), which the AeroHangar plugin accepts – one account, one key, two apps.
+     */
+    suspend fun loginAccount(login: String, password: String): Result<LinkResult> = withContext(Dispatchers.IO) {
+        runCatching {
+            if (!accountAvailable) resolveBase().also { refreshAppConfig() }
+            val root = restRoot() ?: error("no account server")
+            val body = kotlinx.serialization.json.buildJsonObject {
+                put("login", kotlinx.serialization.json.JsonPrimitive(login.trim()))
+                put("password", kotlinx.serialization.json.JsonPrimitive(password))
+                put("device", kotlinx.serialization.json.JsonPrimitive(("AeroHangar " + android.os.Build.MODEL).take(60)))
+            }.toString()
+            val conn = URL(root + "pilot-logbook/v1/api/login").openConnection() as HttpURLConnection
+            val (code, text) = try {
+                conn.connectTimeout = 10_000; conn.readTimeout = 20_000
+                conn.requestMethod = "POST"; conn.doOutput = true
+                conn.setRequestProperty("Content-Type", "application/json; charset=utf-8")
+                conn.setRequestProperty("Accept", "application/json")
+                conn.outputStream.use { it.write(body.toByteArray()) }
+                val c = conn.responseCode
+                c to ((if (c in 200..299) conn.inputStream else conn.errorStream)?.bufferedReader()?.use { it.readText() } ?: "")
+            } finally { conn.disconnect() }
+            when (code) {
+                200 -> {}
+                400, 401 -> error("login")
+                403 -> error(if (field(text, "code") == "plb_pending") "pending" else "403")
+                404 -> error("nologbook")
+                429 -> error("429")
+                else -> error("HTTP $code")
+            }
+            val token = field(text, "token") ?: error("login")
+            linkAccount(token).getOrThrow()
+        }
+    }
+
     fun unlinkAccount() = setStateNoBackup {
         it.copy(accountKey = null, accountName = null, accountPro = false, accountSyncMillis = null, accountError = null,
             accountServerTime = null, accountDirty = false, accountBlocked = false, accountPlan = null, accountMaxAircraft = null, accountMaxTypes = null)

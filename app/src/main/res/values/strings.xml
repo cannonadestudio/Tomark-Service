@@ -450,4 +450,13 @@
     <string name="chk_item">Work</string>
     <string name="chk_result">Result / remarks</string>
     <string name="chk_edited">own list</string>
+    <string name="account_login_hint">Log in with your Pilot Logbook account (the same as on the website). One account works in AeroHangar and Pilot Logbook.</string>
+    <string name="account_email">E-mail or login</string>
+    <string name="account_password">Password</string>
+    <string name="account_login">Log in</string>
+    <string name="account_or_key">…or paste the account key (plb_…) from the account page:</string>
+    <string name="account_login_bad">Wrong e-mail/login or password.</string>
+    <string name="account_pending">The account is waiting for the administrator\'s approval.</string>
+    <string name="account_no_logbook">Pilot Logbook is not installed on the account server – use the key.</string>
+    <string name="account_too_many">Too many failed attempts – try again in 15 minutes.</string>
 </resources>

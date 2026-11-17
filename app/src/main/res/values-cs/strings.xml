@@ -448,4 +448,13 @@
     <string name="chk_item">Úkon</string>
     <string name="chk_result">Výsledek / poznámky</string>
     <string name="chk_edited">vlastní seznam</string>
+    <string name="account_login_hint">Přihlas se účtem Pilot Logbook (stejným jako na webu). Jeden účet funguje v AeroHangar i v Pilot Logbook.</string>
+    <string name="account_email">E-mail nebo login</string>
+    <string name="account_password">Heslo</string>
+    <string name="account_login">Přihlásit</string>
+    <string name="account_or_key">…nebo vlož klíč účtu (plb_…) ze stránky účtu:</string>
+    <string name="account_login_bad">Nesprávný e-mail/login nebo heslo.</string>
+    <string name="account_pending">Účet čeká na schválení administrátorem.</string>
+    <string name="account_no_logbook">Na serveru účtu není Pilot Logbook – použij klíč.</string>
+    <string name="account_too_many">Příliš mnoho neúspěšných pokusů – zkus to za 15 minut.</string>
 </resources>

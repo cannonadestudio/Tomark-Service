@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -25,6 +26,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.cannonadestudio.tomarkpilot.R
 import com.cannonadestudio.tomarkpilot.data.Repo
@@ -40,6 +43,8 @@ fun AccountCard() {
     val ctx = LocalContext.current
     val scope = rememberCoroutineScope()
     var key by remember { mutableStateOf("") }
+    var login by remember { mutableStateOf("") }
+    var pass by remember { mutableStateOf("") }
     var busy by remember { mutableStateOf(false) }
     var confirmPull by remember { mutableStateOf(false) }
     var choice by remember { mutableStateOf<Int?>(null) }
@@ -48,17 +53,43 @@ fun AccountCard() {
         "404" -> ctx.getString(R.string.account_no_backup)
         "403" -> ctx.getString(R.string.account_blocked)
         "402" -> ctx.getString(R.string.account_no_access)
+        "login" -> ctx.getString(R.string.account_login_bad)
+        "pending" -> ctx.getString(R.string.account_pending)
+        "nologbook" -> ctx.getString(R.string.account_no_logbook)
+        "429" -> ctx.getString(R.string.account_too_many)
         else -> ctx.getString(R.string.refresh_fail) + " (" + (e.message ?: "") + ")"
     }
     Card(Modifier.fillMaxWidth()) {
         Column(Modifier.padding(16.dp)) {
             Text(stringResource(R.string.account_title), style = MaterialTheme.typography.titleMedium)
             if (st.accountKey == null) {
-                Text(stringResource(R.string.account_hint), style = MaterialTheme.typography.bodySmall)
+                // 1) Pilot Logbook account: e-mail (or login) + password
+                Text(stringResource(R.string.account_login_hint), style = MaterialTheme.typography.bodySmall)
+                OutlinedTextField(login, { login = it }, label = { Text(stringResource(R.string.account_email)) }, singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                    modifier = Modifier.fillMaxWidth().padding(top = 6.dp))
+                OutlinedTextField(pass, { pass = it }, label = { Text(stringResource(R.string.account_password)) }, singleLine = true,
+                    visualTransformation = PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    modifier = Modifier.fillMaxWidth().padding(top = 6.dp))
+                Row(Modifier.padding(top = 6.dp)) {
+                    if (busy) CircularProgressIndicator(Modifier.padding(8.dp)) else Button(enabled = login.isNotBlank() && pass.isNotEmpty(), onClick = {
+                        busy = true
+                        scope.launch {
+                            val r = Repo.loginAccount(login, pass)
+                            busy = false
+                            r.onSuccess { pass = ""; if (it.choose) choice = it.accountAircraft }
+                            Toast.makeText(ctx, r.fold({ ctx.getString(R.string.account_linked, it.name) }, { err(it) }), Toast.LENGTH_LONG).show()
+                        }
+                    }) { Text(stringResource(R.string.account_login)) }
+                }
+                // 2) or paste the key
+                Text(stringResource(R.string.account_or_key), style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 12.dp))
                 OutlinedTextField(key, { key = it }, label = { Text(stringResource(R.string.account_key)) }, singleLine = true,
                     placeholder = { Text("plb_… / CNA-…") }, modifier = Modifier.fillMaxWidth().padding(top = 6.dp))
                 Row(Modifier.padding(top = 6.dp)) {
-                    if (busy) CircularProgressIndicator(Modifier.padding(8.dp)) else Button(enabled = key.trim().length >= 10, onClick = {
+                    if (!busy) androidx.compose.material3.OutlinedButton(enabled = key.trim().length >= 10, onClick = {
                         busy = true
                         scope.launch {
                             val r = Repo.linkAccount(key)

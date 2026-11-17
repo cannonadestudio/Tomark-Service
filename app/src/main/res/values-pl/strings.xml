@@ -448,4 +448,13 @@
     <string name="chk_item">Czynność</string>
     <string name="chk_result">Wynik / uwagi</string>
     <string name="chk_edited">własna lista</string>
+    <string name="account_login_hint">Zaloguj się kontem Pilot Logbook (tym samym co na stronie). Jedno konto działa w AeroHangar i w Pilot Logbook.</string>
+    <string name="account_email">E-mail lub login</string>
+    <string name="account_password">Hasło</string>
+    <string name="account_login">Zaloguj</string>
+    <string name="account_or_key">…albo wklej klucz konta (plb_…) ze strony konta:</string>
+    <string name="account_login_bad">Nieprawidłowy e-mail/login lub hasło.</string>
+    <string name="account_pending">Konto czeka na akceptację administratora.</string>
+    <string name="account_no_logbook">Na serwerze konta nie ma Pilot Logbook – użyj klucza.</string>
+    <string name="account_too_many">Za dużo nieudanych prób – spróbuj za 15 minut.</string>
 </resources>
