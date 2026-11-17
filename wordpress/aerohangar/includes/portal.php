@@ -150,7 +150,7 @@ add_shortcode('aerohangar_login', 'ah_portal_html');
 function ah_portal_html(): string
 {
     $page = ah_login_page_url();
-    $css = '<style>.ahp{max-width:980px}.ahp-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px}.ahp-tabs a{padding:7px 14px;border-radius:999px;border:1px solid #0B2A5B;color:#0B2A5B;text-decoration:none}.ahp-tabs a.on{background:#0B2A5B;color:#fff}.ahp-card{border:1px solid #DDE3EB;border-radius:14px;padding:16px 18px;margin-bottom:14px}.ahp table{width:100%;border-collapse:collapse;font-size:.95em}.ahp td,.ahp th{padding:7px 8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}.ahp .muted{color:#55606F;font-size:.9em}.ahp input[type=text],.ahp input[type=email],.ahp input[type=url],.ahp textarea{width:100%;padding:7px 9px;border:1px solid #ccc;border-radius:8px}.ahp label{display:block;margin:8px 0 3px;font-weight:600}.ahp .cna-btn,.ahp button.cna-btn{background:#0B2A5B;color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;display:inline-block}.ahp .chip{display:inline-block;padding:2px 10px;border-radius:999px;background:#E6EEF8;margin:2px 4px 2px 0;font-size:.9em}.ahp .ok{color:#1b7a3d}.ahp .cna-offer{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:10px 0 4px}.ahp .cna-offer>div{border:1px solid #DDE3EB;border-radius:12px;padding:12px 14px;background:#fff}.ahp .cna-offer b{display:block;color:#0B2A5B}.ahp h3{color:#0B2A5B}.ahp .bad{color:#C62828}</style>';
+    $css = '<style>.ahp{box-sizing:border-box;width:min(1440px,calc(100vw - 32px));max-width:none;margin-left:calc(50% - min(720px,calc(50vw - 16px)));margin-right:0;position:relative}.ahp *{box-sizing:border-box}.ahp-nav{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0 16px}.ahp-nav .ahp-tabs{margin:0;flex:1}.ahp-set{position:relative}.ahp-set summary{list-style:none;cursor:pointer;padding:7px 14px;border-radius:999px;border:1px solid #0B2A5B;color:#0B2A5B;font-weight:700;letter-spacing:.3px}.ahp-set summary::-webkit-details-marker{display:none}.ahp-set.on summary,.ahp-set[open] summary{background:#0B2A5B;color:#fff}.ahp-set .menu{position:absolute;right:0;top:calc(100% + 6px);z-index:50;background:#fff;border:1px solid #DDE3EB;border-radius:12px;box-shadow:0 10px 30px rgba(11,42,91,.15);padding:6px;min-width:220px}.ahp-set .menu a{display:block;padding:9px 12px;border-radius:8px;color:#0B2A5B;text-decoration:none}.ahp-set .menu a:hover,.ahp-set .menu a.on{background:#E6EEF8}.ahp-frame{width:100%;height:max(640px,calc(100vh - 150px));border:0;border-radius:14px;background:#F2F4F8;display:block}.ahp-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px}.ahp-tabs a{padding:7px 14px;border-radius:999px;border:1px solid #0B2A5B;color:#0B2A5B;text-decoration:none}.ahp-tabs a.on{background:#0B2A5B;color:#fff}.ahp-card{border:1px solid #DDE3EB;border-radius:14px;padding:16px 18px;margin-bottom:14px}.ahp table{width:100%;border-collapse:collapse;font-size:.95em}.ahp td,.ahp th{padding:7px 8px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}.ahp .muted{color:#55606F;font-size:.9em}.ahp input[type=text],.ahp input[type=email],.ahp input[type=url],.ahp textarea{width:100%;padding:7px 9px;border:1px solid #ccc;border-radius:8px}.ahp label{display:block;margin:8px 0 3px;font-weight:600}.ahp .cna-btn,.ahp button.cna-btn{background:#0B2A5B;color:#fff;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;text-decoration:none;display:inline-block}.ahp .chip{display:inline-block;padding:2px 10px;border-radius:999px;background:#E6EEF8;margin:2px 4px 2px 0;font-size:.9em}.ahp .ok{color:#1b7a3d}.ahp .cna-offer{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:10px 0 4px}.ahp .cna-offer>div{border:1px solid #DDE3EB;border-radius:12px;padding:12px 14px;background:#fff}.ahp .cna-offer b{display:block;color:#0B2A5B}.ahp h3{color:#0B2A5B}.ahp .bad{color:#C62828}</style>';
 
     $css .= ah_dashboard_css() . ah_checklist_css();
     if (!is_user_logged_in()) {
@@ -206,24 +206,30 @@ function ah_portal_html(): string
         }
     }
 
-    $tabs = ['card' => 'Karta', 'start' => 'Moje AeroHangar'];
-    if (in_array('app', $caps, true) || get_user_meta($uid, 'cannonade_key_hint', true)) $tabs['key'] = 'Klucz do aplikacji';
+    $tabs = ['card' => 'Karta'];
+    // under the ⚙ USTAWIENIA button
+    $set = ['start' => 'Moje AeroHangar'];
+    if (in_array('app', $caps, true) || get_user_meta($uid, 'cannonade_key_hint', true)) $set['key'] = 'Klucz do aplikacji';
     if (in_array('fleet', $caps, true)) $tabs['check'] = 'Checklista';
     if (in_array('fleet', $caps, true)) $tabs['fleet'] = 'Flota';
     if ($cid && in_array('requests', $caps, true)) $tabs['requests'] = 'Zapytania';
     if ($cid && in_array('listing', $caps, true)) $tabs['listing'] = 'Wizytówka';
     if ($cid && in_array('stats', $caps, true)) $tabs['stats'] = 'Statystyki';
-    $tab = isset($tabs[$_GET['ah'] ?? '']) ? $_GET['ah'] : (ah_has_access($uid) ? 'card' : 'start');
+    // the data base (bulletins, types, contacts…) right on this page, without wp-admin
+    if (ah_is_staff() || ah_client_panel($uid)) $tabs['panel'] = 'Baza AeroHangar';
+    $all = $tabs + $set;
+    $tab = isset($all[$_GET['ah'] ?? '']) ? $_GET['ah'] : (ah_has_access($uid) ? 'card' : 'start');
     $link = fn($t) => esc_url(add_query_arg('ah', $t, $page));
 
     $h = '<div class="ahp"><div class="ahp-top"><span>✈ <b>AeroHangar</b> · ' . esc_html($u->display_name) . ($perm['plan'] ? ' · ' . esc_html(ah_plans()[$perm['plan']] ?? $perm['plan']) : '') . '</span><span class="sp"></span>';
-    if (current_user_can('aerohangar_view') || current_user_can('manage_options')) $h .= '<a class="cna-btn" href="' . esc_url(admin_url('admin.php?page=aerohangar-panel')) . '">' . esc_html(cannonade_t('open_panel')) . '</a>';
-    elseif (ah_client_panel($uid)) $h .= '<a class="cna-btn" href="' . esc_url(home_url('/index.php/aerohangar-panel')) . '">Zaplecze AeroHangar</a>';
     $h .= '<a href="' . esc_url(wp_logout_url($page)) . '">Wyloguj</a></div>';
     if ($msg) $h .= '<p class="ok"><b>' . esc_html($msg) . '</b></p>';
-    $h .= '<nav class="ahp-tabs">';
+    $h .= '<div class="ahp-nav"><nav class="ahp-tabs">';
     foreach ($tabs as $k => $v) $h .= '<a class="' . ($k === $tab ? 'on' : '') . '" href="' . $link($k) . '">' . esc_html($v) . '</a>';
-    $h .= '</nav>';
+    $h .= '</nav><details class="ahp-set' . (isset($set[$tab]) ? ' on' : '') . '"><summary>⚙ USTAWIENIA</summary><div class="menu">';
+    foreach ($set as $k => $v) $h .= '<a class="' . ($k === $tab ? 'on' : '') . '" href="' . $link($k) . '">' . esc_html($v) . '</a>';
+    $h .= '</div></details></div>'
+        . '<script>document.addEventListener("click",function(e){document.querySelectorAll(".ahp-set[open]").forEach(function(d){if(!d.contains(e.target))d.removeAttribute("open")})});</script>';
     $nonce = wp_nonce_field('ahp_' . $uid, '_wpnonce', true, false);
 
     switch ($tab) {
@@ -234,6 +240,12 @@ function ah_portal_html(): string
 
         case 'check':
             $h .= ah_checklist_html($uid, $page);
+            break;
+
+        case 'panel':
+            $src = add_query_arg('frame', '1', home_url('/index.php/aerohangar-panel'));
+            $h .= '<iframe class="ahp-frame" title="Baza AeroHangar" src="' . esc_url($src) . '"></iframe>'
+                . '<p class="muted" style="text-align:right;margin-top:6px"><a href="' . esc_url(home_url('/index.php/aerohangar-panel')) . '" target="_blank" rel="noopener">Otwórz na pełnym ekranie ↗</a></p>';
             break;
 
         case 'start':
@@ -317,6 +329,8 @@ function ah_portal_html(): string
             $h .= '</table>' . ($any ? '' : '<p>Brak danych za ostatnie 12 miesięcy.</p>') . '</div>';
             break;
     }
+    // wide page: the panel breaks out of the theme's narrow text column and stays centred on the screen
+    $h .= '<script>(function(){var el=document.currentScript.parentNode;function S(k,v){el.style.setProperty(k,v,"important")}function fit(){S("margin-left","0px");S("margin-right","0px");S("max-width","none");var vw=document.documentElement.clientWidth,w=Math.min(1440,vw-32);S("width",w+"px");var r=el.getBoundingClientRect();S("margin-left",Math.round((vw-w)/2-r.left)+"px")}fit();addEventListener("resize",fit);addEventListener("load",fit)})();</script>';
     return $css . $h . '</div>';
 }
 

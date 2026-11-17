@@ -30,6 +30,7 @@ main{flex:1;min-width:0}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin:12px 0}
 .sec{color:var(--violet);font-weight:700;margin:18px 0 0}
 nav#tabs.shown{display:block}
+body.inframe header{display:none}body.inframe .layout{padding-top:10px}
 body.embed{background:#F2F4F8}
 body.embed header{display:none}
 body.embed .layout{display:block;padding:12px 16px 30px;max-width:none}
@@ -139,6 +140,7 @@ const $ = s => document.querySelector(s);
 const isClient = () => state.user?.role === "client";
 const EMBED = !!(window.AH_WP && window.AH_WP.embed);
 if (EMBED) document.body.classList.add("embed");
+if (window.AH_WP && window.AH_WP.frame) document.body.classList.add("inframe");
 const CLIENT_FILE_TABS = { contacts: "contacts", examiners: "examiners" };
 function secOf(tab) { if (CGROUPS[tab]) return CGROUPS[tab].file === "examiners" ? "examiners" : "contacts"; return tab }
 function canSee(tab) {
@@ -219,7 +221,7 @@ async function start() {
   $("#who").style.display = "flex";
   $("#who").innerHTML = `<span>${esc(me.user.name || me.user.login)} (${esc(isClient() ? "konto klienta" : me.user.role)})</span><button class="ghost" style="color:#fff;border-color:rgba(255,255,255,.5);padding:5px 12px" id="logout">Wyloguj</button>`;
   $("#logout").onclick = async () => { if (me.wp) { location.href = me.logout; return } await api("logout", { body: {} }); location.reload() };
-  if (me.wp) $("#logout").insertAdjacentHTML("beforebegin", `<a href="${esc(window.AH_WP.wpAdmin)}" style="color:#fff;margin-right:8px">← ${isClient() ? "Moje AeroHangar" : "WordPress"}</a>`);
+  if (me.wp) $("#logout").insertAdjacentHTML("beforebegin", `<a href="${esc(window.AH_WP.wpAdmin)}" style="color:#fff;margin-right:8px">← ${isClient() || window.AH_WP.front ? "Moje AeroHangar" : "WordPress"}</a>`);
   if (location.hash.length > 1) state.tab = location.hash.slice(1);
   if (isClient() && (state.tab === "home" || !canSee(state.tab))) state.tab = state.user.fleet ? "myfleet" : (Object.keys(sec)[0] === "contacts" ? "c_service" : Object.keys(sec)[0] === "examiners" ? "c_exam" : Object.keys(sec)[0] || "myfleet");
   renderTabs(); render();

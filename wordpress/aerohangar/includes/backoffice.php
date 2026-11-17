@@ -88,33 +88,33 @@ function ah_output_panel(): void
 {
     $html = (string)file_get_contents(AEROHANGAR_DIR . '/assets/panel.html');
     $cfg = ['api' => rest_url('aerohangar/v1/api'), 'nonce' => wp_create_nonce('wp_rest'), 'assets' => AEROHANGAR_URL . 'assets/',
-        'wpAdmin' => ah_is_staff() ? admin_url('admin.php?page=aerohangar') : ah_login_page_url(),
+        'wpAdmin' => ah_login_page_url(), 'front' => true, 'frame' => !empty($_GET['frame']),
         'login' => wp_login_url(home_url('/index.php/aerohangar-panel')), 'client' => !ah_is_staff()];
     $html = str_replace('/*AH_WP_CONFIG*/', 'window.AH_WP = ' . wp_json_encode($cfg) . ';', $html);
     $html = str_replace('href="favicon.ico"', 'href="' . esc_url(AEROHANGAR_URL . 'assets/favicon.ico') . '"', $html);
     $html = str_replace(['href="icon-192.png"', 'href="apple-touch-icon.png"'], ['href="' . esc_url(AEROHANGAR_URL . 'assets/icon-192.png') . '"', 'href="' . esc_url(AEROHANGAR_URL . 'assets/apple-touch-icon.png') . '"'], $html);
     nocache_headers();
     header('Content-Type: text/html; charset=utf-8');
+    header('X-Frame-Options: SAMEORIGIN');
     echo $html;
     exit;
 }
 
-// /aerohangar-panel: clients get the panel right here (no wp-admin), staff go to the wp-admin page.
+// /aerohangar-panel: the panel right here, without wp-admin – for clients and for the AeroHangar team.
 add_action('init', function () {
     $path = trim((string)parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');
     $home = trim((string)parse_url(home_url(), PHP_URL_PATH), '/');
     if ($home !== '' && str_starts_with($path, $home)) $path = trim(substr($path, strlen($home)), '/');
     if (!preg_match('~^(index\.php/)?(aerohangar-panel|panel-aerohangar|zaplecze)$~', $path)) return;
     if (!is_user_logged_in()) { wp_safe_redirect(wp_login_url(home_url('/index.php/aerohangar-panel'))); exit; }
-    if (ah_is_staff()) { wp_safe_redirect(admin_url('admin.php?page=aerohangar-panel')); exit; }
-    if (ah_client_panel(get_current_user_id())) ah_output_panel();
+    if (ah_is_staff() || ah_client_panel(get_current_user_id())) ah_output_panel();
     wp_safe_redirect(ah_login_page_url());
     exit;
 }, 0);
 
 // Logging in from the panel link: clients land back in the panel, not in wp-admin.
 add_filter('login_redirect', function ($to, $requested, $user) {
-    if ($user instanceof WP_User && str_contains((string)$requested, 'aerohangar-panel') && !user_can($user, 'aerohangar_view') && !user_can($user, 'manage_options')) return $requested;
+    if ($user instanceof WP_User && str_contains((string)$requested, 'aerohangar-panel') && !str_contains((string)$requested, 'wp-admin')) return $requested;
     return $to;
 }, 20, 3);
 

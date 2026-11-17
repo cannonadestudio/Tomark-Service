@@ -237,7 +237,7 @@ add_filter('cannonade_offer_html', function ($html, $uid) {
 /** Button to the management panel for the administrator and panel users. */
 add_filter('cannonade_account_top_html', function ($html, $uid) {
     if (!user_can($uid, 'aerohangar_view') && !user_can($uid, 'manage_options')) return $html;
-    return $html . '<p><a class="cna-btn" href="' . esc_url(admin_url('admin.php?page=aerohangar-panel')) . '">✈ ' . esc_html(cannonade_t('open_panel')) . '</a></p>';
+    return $html . '<p><a class="cna-btn" href="' . esc_url(home_url('/index.php/aerohangar-panel')) . '">✈ ' . esc_html(cannonade_t('open_panel')) . '</a></p>';
 }, 10, 2);
 
 // Top toolbar (site and wp-admin): "AeroHangar – panel" for panel users.
