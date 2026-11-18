@@ -1,7 +1,18 @@
 {
- "version": 6,
- "updated": "2026-11-04",
+ "version": 7,
+ "updated": "2026-11-18",
  "bulletins": [
+  {
+   "id": "EVEKTORRTCIBRTC084B",
+   "date": "2026-11-03",
+   "title": "ib-rtc-084b: Information | Replacement of the original cockpit canopy opening mechanism with a new Overhead panel S5210200S with a modified lock S5210030S.",
+   "groups": [
+    "EVEKTOR_RTC"
+   ],
+   "kind": "SIB",
+   "mandatory": null,
+   "url": "https://www.evektor.com/documents/ib-rtc-084b-en-2"
+  },
   {
    "id": "LYCOMING-DOCS",
    "date": "2026-10-26",
