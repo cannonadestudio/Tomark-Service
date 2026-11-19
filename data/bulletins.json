@@ -1,7 +1,18 @@
 {
- "version": 7,
- "updated": "2026-11-18",
+ "version": 8,
+ "updated": "2026-11-19",
  "bulletins": [
+  {
+   "id": "EVEKTORHARMONYHARMONYLSA050B",
+   "date": "2026-11-18",
+   "title": "Harmony-LSA-050b: Information | Issue of the new Illustrated Parts Catalogue for the Harmony LSA aircraft, doc. No. HARM_LSA_IPC_ENG, date of issue",
+   "groups": [
+    "EVEKTOR_HARMONY"
+   ],
+   "kind": "SB",
+   "mandatory": null,
+   "url": "https://cdn.prod.website-files.com/61a7640f9234736cc7a4a196/6afee5181e10c41607cb107a_Harmony_LSA-050b_EN.pdf"
+  },
   {
    "id": "EVEKTORRTCIBRTC084B",
    "date": "2026-11-03",
